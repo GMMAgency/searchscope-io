@@ -59,7 +59,10 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer__bottom">
-      <p class="footer__fine">© {year} Searchscope. Built by practitioners.</p>
+      <p class="footer__fine">
+        © {year} Searchscope. Built by practitioners.
+        <a href="/privacy" class="footer__fine-link">Privacy</a>
+      </p>
       <p class="footer__fine footer__fine--muted">
         Searchscope is the intelligence layer behind our work, not a product you buy.
       </p>
@@ -145,6 +148,14 @@ const year = new Date().getFullYear();
   }
   .footer__fine--muted {
     text-align: right;
+  }
+  .footer__fine-link {
+    margin-left: 0.8em;
+    color: var(--ink-dim);
+    transition: color var(--dur) var(--ease-out);
+  }
+  .footer__fine-link:hover {
+    color: var(--ink);
   }
 
   @media (max-width: 860px) {

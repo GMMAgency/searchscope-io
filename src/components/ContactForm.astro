@@ -57,12 +57,9 @@ const hasKey = FORM.web3formsKey.length > 0;
 
   <p class="cform__status" data-form-status role="status" aria-live="polite"></p>
 
-  {!hasKey && (
-    <p class="cform__note mono">
-      Tip · Add a free Web3Forms key in <code>src/consts.ts</code> to receive enquiries in-app.
-      Until then this opens a pre-filled email to {FORM.inbox}.
-    </p>
-  )}
+  <p class="cform__privacy mono">
+    We only use your details to reply. No lists, no sharing. <a href="/privacy">Privacy</a>.
+  </p>
 </form>
 
 <style>
@@ -140,13 +137,15 @@ const hasKey = FORM.web3formsKey.length > 0;
   .cform__status[data-state='err'] {
     color: var(--sev-rose);
   }
-  .cform__note {
+  .cform__privacy {
     font-size: var(--step--2);
     color: var(--ink-faint);
     line-height: 1.5;
   }
-  .cform__note code {
+  .cform__privacy a {
     color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   @media (max-width: 560px) {
