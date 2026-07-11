@@ -1,0 +1,103 @@
+---
+/**
+ * "How the answers describe you" — the Brand & AI visibility tracking card.
+ * Shows the answer an AI assistant gives about the brand, whether it's
+ * accurate, who gets cited, and your share of the answers you should own.
+ * Reused on the home reputation moment, the platform Brand & AI question,
+ * and the /brand-and-ai page (variants toggle citations, "everyone else"
+ * and the mentions timeline).
+ */
+interface Cite { q: string; cited: boolean; note: string; }
+interface Props {
+  url?: string;
+  tab?: string;
+  sub?: string;
+  citations?: Cite[];
+  everyoneElse?: boolean;
+  mentions?: boolean;
+  note?: string;
+}
+const {
+  url = 'app.searchscope.io/intelligence/brand-ai',
+  tab = 'Brand & AI visibility',
+  sub = '12 buyer questions · interviewed weekly',
+  citations = [],
+  everyoneElse = true,
+  mentions = true,
+  note = 'Coverage lands in week 9; by week 11 the brand is named in two more answers. Every placement tracked to the answer it changed.',
+} = Astro.props;
+---
+
+<div class="appwin">
+  <div class="awbar">
+    <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="awurl">{url}</span>
+    <span class="awtab">{tab}</span>
+  </div>
+  <div class="awbody">
+    <div class="awhead">
+      <div>
+        <span class="awtitle">How the answers describe you</span>
+        <span class="awsub">{sub}</span>
+      </div>
+    </div>
+
+    <div class="lquote">
+      <span class="src">Assistant answer · "is northwind outfitters any good"</span>
+      <p>"<b>Northwind Outfitters</b> is a UK outdoor and hiking gear retailer. Shoppers rate it for waterproof boots and 4-season tents, and it runs a fit-guarantee returns policy. Reviews are broadly positive on quality for the price."</p>
+      <div class="verdict">⚠ fair, but it misses the 2026 winter range and the free resole scheme · changed since last week</div>
+    </div>
+
+    {citations.length > 0 && (
+      <div class="lcit">
+        {citations.map((c) => (
+          <div class="lcitrow">
+            <span class="qy">{c.q}</span>
+            <span class="r"><span class={c.cited ? 'yes' : 'no'}>{c.cited ? 'cited' : 'not cited'}</span> · {c.note}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="lshhead">Share of the answers you should own</div>
+    <div class="lshrow">
+      <span class="n you">You</span>
+      <span class="lshtrack"><i style="width:34%;background:var(--sev-emerald-ink)"></i></span>
+      <span class="v">34%</span>
+    </div>
+    <div class="lshrow">
+      <span class="n">trailhaven.com</span>
+      <span class="lshtrack"><i style="width:22%;background:rgba(22,20,15,0.34)"></i></span>
+      <span class="v">22%</span>
+    </div>
+    <div class="lshrow">
+      <span class="n">thehikingguide.com</span>
+      <span class="lshtrack"><i style="width:19%;background:rgba(22,20,15,0.22)"></i></span>
+      <span class="v">19%</span>
+    </div>
+    {everyoneElse && (
+      <div class="lshrow">
+        <span class="n">everyone else</span>
+        <span class="lshtrack"><i style="width:25%;background:rgba(22,20,15,0.12)"></i></span>
+        <span class="v">25%</span>
+      </div>
+    )}
+
+    {mentions && (
+      <div class="lml">
+        <div class="lbl">
+          <span>Brand mentions · 12 weeks</span>
+          <span>secured placements in green</span>
+        </div>
+        <div class="lcols">
+          <i style="height:18px"></i><i style="height:22px"></i><i style="height:14px"></i>
+          <i style="height:20px"></i><i style="height:16px"></i><i style="height:24px"></i>
+          <i style="height:20px"></i><i style="height:28px"></i><i class="hit" style="height:44px"></i>
+          <i style="height:34px"></i><i class="hit" style="height:52px"></i><i style="height:46px"></i>
+        </div>
+      </div>
+    )}
+
+    <p class="awnote">{note}</p>
+  </div>
+</div>

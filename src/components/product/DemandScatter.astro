@@ -1,0 +1,84 @@
+---
+/**
+ * Demand vs your position — the signature scatter card. Every bubble is a
+ * query cluster; size is the opportunity; colour is the trend. The shaded
+ * band marks rising demand you rank weakly for. Reused on the home hero and
+ * the platform "where's the growth" question.
+ */
+interface Props {
+  url?: string;
+  /** the page called out as losing share */
+  standoutPath?: string;
+}
+const { url = 'app.searchscope.io/demand', standoutPath = '/tents/4-season' } = Astro.props;
+
+// Bubble field (cx, cy, r, trend). Trend: r=rising, f=flat, d=declining.
+const pts = [
+  [199.7,177.0,5.8,'f'],[143.0,83.8,10.0,'r'],[677.7,355.1,3.5,'f'],[386.1,118.1,8.0,'f'],
+  [143.0,28.4,15,'f'],[523.8,119.9,7.9,'d'],[507.6,322.2,3.6,'f'],[353.6,302.6,3.8,'f'],
+  [118.7,201.0,5.2,'r'],[321.2,342.6,3.5,'f'],[410.4,285.7,3.9,'r'],[661.5,94.3,9.3,'d'],
+  [442.8,131.0,7.4,'d'],[207.8,358.9,3.5,'r'],[369.8,252.4,4.3,'r'],[402.3,251.4,4.3,'r'],
+  [402.3,355.1,3.5,'d'],[369.8,312.2,3.7,'r'],[386.1,312.2,3.7,'r'],[167.3,50.4,12.8,'f'],
+  [499.5,342.6,3.5,'r'],[337.4,86.0,9.9,'r'],[272.6,297.8,3.8,'f'],[232.1,235.0,4.6,'r'],
+  [377.9,302.6,3.8,'r'],[645.3,209.4,5.0,'r'],[402.3,81.9,10.2,'d'],[329.3,189.8,5.4,'r'],
+  [572.4,176.4,5.8,'d'],[70.1,279.0,4.0,'r'],[118.7,87.9,9.7,'f'],[353.6,98.0,9.1,'r'],
+  [596.7,332.5,3.6,'d'],[386.1,195.1,5.3,'f'],[507.6,345.4,3.5,'d'],[523.8,334.8,3.6,'r'],
+  [580.5,302.6,3.8,'r'],[426.6,351.7,3.5,'r'],[540.0,75.2,10.7,'f'],[224.0,197.0,5.3,'f'],
+] as const;
+const cls = { r: 'pt ptr', f: 'pt ptf', d: 'pt ptd' };
+---
+
+<div class="appwin">
+  <div class="awbar">
+    <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="awurl">{url}</span>
+    <span class="awtab">Demand &amp; Trends</span>
+  </div>
+  <div class="awbody">
+    <div class="awhead">
+      <div>
+        <span class="awtitle">Demand vs your position</span>
+        <span class="awsub">geo UK · 142 clusters</span>
+      </div>
+      <div class="awleg">
+        <span><i class="dot" style="background:var(--sev-emerald-ink)"></i>rising</span>
+        <span><i class="dot" style="background:rgba(22,20,15,0.3)"></i>flat</span>
+        <span><i class="dot" style="background:var(--sev-rose-ink)"></i>falling</span>
+      </div>
+    </div>
+    <div class="awviz">
+      <svg viewBox="0 0 724 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monthly demand against your search position; bubbles coloured by trend; a shaded band marks rising demand you rank weakly for.">
+        <rect x="159.2" y="26" width="542.8" height="150.1" class="sc-zone"></rect>
+        <line x1="62" y1="372" x2="702" y2="372" class="sc-grid"></line>
+        <text x="54" y="375" class="sc-tick end">10</text>
+        <line x1="62" y1="256.7" x2="702" y2="256.7" class="sc-grid"></line>
+        <text x="54" y="259.7" class="sc-tick end">100</text>
+        <line x1="62" y1="141.3" x2="702" y2="141.3" class="sc-grid"></line>
+        <text x="54" y="144.3" class="sc-tick end">1k</text>
+        <line x1="62" y1="26" x2="702" y2="26" class="sc-grid"></line>
+        <text x="54" y="29" class="sc-tick end">10k</text>
+        <g>
+          {pts.map((p, i) => (
+            <circle cx={p[0]} cy={p[1]} r={p[2]} class={cls[p[3] as 'r'|'f'|'d']} style={`--i:${i}`}></circle>
+          ))}
+        </g>
+        <circle cx="296.9" cy="117.8" r="9" class="pt-standout"></circle>
+        <circle cx="296.9" cy="117.8" r="15" class="sc-ring"></circle>
+        <text x="62" y="398" class="sc-tick">better ←</text>
+        <text x="702" y="398" class="sc-tick end">→ worse · your position</text>
+      </svg>
+      <div class="awcall" style="left:44%; top:24%">
+        <span class="t">LOSING SHARE</span>
+        <span class="p">{standoutPath}</span>
+        <span class="m">demand ↑ · impr ↓ · 2 competing</span>
+      </div>
+    </div>
+    <p class="awnote">Shaded = rising demand you rank weakly for, your biggest openings.</p>
+    <div class="awstats">
+      <div class="awstat"><span class="v cnt" data-n="142">142</span><span class="l">Clusters</span></div>
+      <div class="awstat"><span class="v cnt" data-n="77">77</span><span class="l">Rising demand</span></div>
+      <div class="awstat"><span class="v cnt" data-n="72">72</span><span class="l">Losing share</span></div>
+      <div class="awstat"><span class="v cnt" data-n="104" data-suf="k">104k</span><span class="l">Addr. demand</span></div>
+    </div>
+  </div>
+</div>

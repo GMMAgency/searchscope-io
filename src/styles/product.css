@@ -141,6 +141,7 @@
 }
 .appwin.push { margin-top: var(--space-l); }
 .two .appwin, .pair .appwin, .ticked .appwin { margin-top: 0; }
+.ticked { position: relative; }
 .awbar {
   display: flex;
   align-items: center;

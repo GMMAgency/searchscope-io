@@ -1,0 +1,65 @@
+---
+/**
+ * Content decay trend card. Your weekly clicks (solid rose) fall while the
+ * topic's demand (dashed) climbs. Reused in the home "what it catches"
+ * section and the content-decay analyser story page.
+ */
+interface Props {
+  url?: string;
+  path?: string;
+  sub?: string;
+  note?: string;
+}
+const {
+  url = 'app.searchscope.io/workspaces/content-decay',
+  path = '/journal/winter-layering',
+  sub = '90 days · weekly',
+  note = "Caught on Monday's run: demand up 12% while clicks fell 34%. The refresh playbook is already drafted.",
+} = Astro.props;
+---
+
+<div class="appwin">
+  <div class="awbar">
+    <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="awurl">{url}</span>
+    <span class="awtab">Content decay</span>
+  </div>
+  <div class="awbody">
+    <div class="awhead">
+      <div>
+        <span class="awtitle">{path} · clicks vs demand</span>
+        <span class="awsub">{sub}</span>
+      </div>
+      <div class="awleg">
+        <span><i class="dot" style="background:var(--sev-rose-ink)"></i>your clicks</span>
+        <span><i class="dot" style="background:rgba(22,20,15,0.3)"></i>topic demand</span>
+      </div>
+    </div>
+    <div class="awviz">
+      <svg viewBox="0 0 724 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Weekly clicks falling over twelve weeks while topic demand rises; the decline is flagged as content decay.">
+        <line x1="56" y1="44" x2="700" y2="44" class="tr-grid"></line>
+        <line x1="56" y1="129" x2="700" y2="129" class="tr-grid"></line>
+        <line x1="56" y1="214" x2="700" y2="214" class="tr-grid"></line>
+        <path class="tr-area" d="M56,66 L110,72 L164,64 L218,84 L272,92 L326,104 L380,100 L434,120 L488,132 L542,150 L596,160 L650,172 L700,180 L700,214 L56,214 Z"></path>
+        <path class="tr-demand" d="M56,150 L164,146 L272,132 L380,124 L488,110 L596,96 L700,88"></path>
+        <line x1="434" y1="52" x2="434" y2="214" class="tr-mark"></line>
+        <path class="tr-line" d="M56,66 L110,72 L164,64 L218,84 L272,92 L326,104 L380,100 L434,120 L488,132 L542,150 L596,160 L650,172 L700,180"></path>
+        <circle cx="700" cy="180" r="4.5" class="tr-dot"></circle>
+        <circle cx="700" cy="88" r="3.5" class="tr-dot2"></circle>
+        <text x="56" y="240" class="sc-tick">12 weeks ago</text>
+        <text x="700" y="240" class="sc-tick end">this week</text>
+      </svg>
+      <div class="awcall" style="left:46%; top:10%">
+        <span class="t">CONTENT DECAY</span>
+        <span class="p">{path}</span>
+        <span class="m">clicks ↓ 34% · demand ↑ 12%</span>
+      </div>
+    </div>
+    <p class="awnote">{note}</p>
+    <div class="awstats c3">
+      <div class="awstat"><span class="v cnt" data-n="4120">4,120</span><span class="l">Clicks at risk</span></div>
+      <div class="awstat"><span class="v cnt" data-n="12">12</span><span class="l">Queries slipping</span></div>
+      <div class="awstat"><span class="v">4.2 → 7.8</span><span class="l">Position · 90d</span></div>
+    </div>
+  </div>
+</div>
