@@ -1,0 +1,459 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScatterHero from '../components/ScatterHero.astro';
+import AppFrame from '../components/AppFrame.astro';
+import WaveTimeline from '../components/WaveTimeline.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import CTABand from '../components/CTABand.astro';
+import { SITE, GMM } from '../consts';
+
+import MockGapCards from '../components/mocks/MockGapCards.astro';
+import MockAnalyzer from '../components/mocks/MockAnalyzer.astro';
+import MockAdvisor from '../components/mocks/MockAdvisor.astro';
+import MockWeekly from '../components/mocks/MockWeekly.astro';
+import MockCrawler from '../components/mocks/MockCrawler.astro';
+import MockContentStudio from '../components/mocks/MockContentStudio.astro';
+
+const problems = [
+  { no: '01', label: 'Internal competition', line: "Several pages target one topic, so engines can't tell which is the answer. Rankings swap between URLs and traffic turns unstable." },
+  { no: '02', label: 'Repetitive at scale', line: 'Thousands of near-identical template pages blur together in the results. Rankings hold; clicks quietly fall.' },
+  { no: '03', label: 'Buried content', line: 'Strong pages sit deep with few internal links, so the system reads them as unimportant, however good they are.' },
+];
+
+const metaDescription =
+  'Searchscope is an AI search intelligence co-pilot for SEO and growth teams. It reads your whole search picture, tells you what to fix and why, and our strategists turn it into growth.';
+
+// Product signal for search engines. No offers/price, so it stays on the right
+// side of the "not a product you buy" positioning.
+const softwareLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: SITE.name,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: SITE.url,
+  description: metaDescription,
+  publisher: { '@type': 'Organization', name: GMM.name, url: GMM.url },
+};
+---
+
+<BaseLayout description={metaDescription} headerTheme="dark" jsonLd={[softwareLd]}>
+  <!-- ============ HERO ============ -->
+  <section class="section hero theme-dark bg-grid">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container container--wide">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Search intelligence</span>
+          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+            The AI co-pilot for modern<br />search&nbsp;teams.
+          </h1>
+          <p class="hero__sub reveal" style="--reveal-delay:130ms">
+            Searchscope reads your whole search picture (your site, your search data, market
+            demand and AI search), pinpoints what is costing you traffic, and
+            <strong>our strategists turn it into work that ships.</strong>
+          </p>
+          <div class="hero__actions reveal" style="--reveal-delay:200ms">
+            <a href="/contact" class="btn">
+              Join the pilot programme
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/platform" class="hero__link">
+              See the platform
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <p class="hero__note mono reveal" style="--reveal-delay:260ms">
+            Built and run by the search team at Growth Minded Marketing.
+          </p>
+        </div>
+
+        <div class="hero__visual reveal" style="--reveal-delay:160ms">
+          <AppFrame ticks label="searchscope.app/demand" tab="Demand & Trends">
+            <ScatterHero />
+          </AppFrame>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY NOW ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why SEO got harder</span>
+        <h2>Modern search is a system. Most SEO tooling still isn't.</h2>
+        <p class="lede">
+          Search engines and AI systems now read your whole site as a system: what connects, what is
+          duplicated, what they can trust. Rank trackers and one-off audits look at pages in
+          isolation, so they miss the patterns that actually move traffic.
+        </p>
+      </div>
+      <WaveTimeline />
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT CATCHES ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="section-head reveal">
+        <span class="eyebrow">What it catches</span>
+        <h2>Great content, stuck rankings? It is usually one of these.</h2>
+        <p class="lede">
+          You can have strong pages and still stall, because your site isn't clear enough for
+          search engines and AI systems to read at scale. Three patterns quietly cap performance, and all three
+          are hard to spot by eye.
+        </p>
+      </div>
+      <ol class="decisions grid" role="list">
+        {
+          problems.map((d, i) => (
+            <li class="decision card reveal" style={`--reveal-delay:${i * 70}ms`}>
+              <span class="decision__no mono">{d.no}</span>
+              <h3 class="decision__label">{d.label}</h3>
+              <p class="decision__line">{d.line}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="decisions__cta reveal">
+        <a href="/search-systems" class="link">See all three, with the data → The Future of SEO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PLATFORM ============ -->
+  <section class="section theme-dark copilot">
+    <div class="container container--wide">
+      <div class="section-head reveal">
+        <span class="eyebrow">The platform</span>
+        <h2>Your whole search picture, in one place.</h2>
+        <p class="lede">
+          Six capabilities that crawl your site, surface what is wrong, score what matters and
+          draft the work, so your team spends its time acting, not assembling reports.
+        </p>
+      </div>
+
+      <div class="copilot__grid grid">
+        <CapabilityCard icon="crawl" no="01" title="The Crawler" href="/platform#crawler">
+          <Fragment slot="visual"><MockCrawler /></Fragment>
+          A full technical crawl of your site (pages, links, schema, content and entities),
+          refreshed and fed straight into the analysers, so every insight reflects how your site
+          looks right now.
+        </CapabilityCard>
+
+        <CapabilityCard icon="analyzer" no="02" title="The Analyzer Engine" href="/platform#analyzer">
+          <Fragment slot="visual"><MockAnalyzer /></Fragment>
+          Finds index bloat, content decay, cannibalisation, orphan pages and more, each one
+          scored, prioritised and explained in plain English, so you know what to fix first.
+        </CapabilityCard>
+
+        <CapabilityCard icon="scatter" no="03" title="Demand & Trends" href="/platform#demand">
+          <Fragment slot="visual"><MockGapCards /></Fragment>
+          Shows where market demand is rising and you're losing share, down to the page, with an
+          opportunity score, so you chase growth that is actually there.
+        </CapabilityCard>
+
+        <CapabilityCard icon="advisor" no="04" title="The Strategic Advisor" href="/platform#advisor">
+          <Fragment slot="visual"><MockAdvisor /></Fragment>
+          An AI co-pilot you can ask. It answers from your live data, finds the non-obvious and
+          drafts the brief, so the team can move in minutes, not meetings.
+        </CapabilityCard>
+
+        <CapabilityCard icon="studio" no="05" title="Content Studio" href="/platform#studio">
+          <Fragment slot="visual"><MockContentStudio /></Fragment>
+          Turns an opportunity into a brief (or a full draft) in one step: it reads the live
+          results, finds the gaps, and hands your writers something ready to publish.
+        </CapabilityCard>
+
+        <CapabilityCard icon="pulse" no="06" title="Weekly Intelligence" href="/platform#reporting">
+          <Fragment slot="visual"><MockWeekly /></Fragment>
+          A clear weekly read on what moved and what to do about it, shareable across the team,
+          so nothing important slips by.
+        </CapabilityCard>
+      </div>
+
+      <div class="copilot__cta reveal">
+        <a href="/platform" class="link">Explore the platform in full →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE CO-PILOT MODEL (cream interlude) ============ -->
+  <section class="section theme-cream hm">
+    <div class="container container--wide">
+      <div class="section-head reveal" style="margin-inline:auto;text-align:center;max-width:60ch">
+        <span class="eyebrow" style="justify-content:center">The co-pilot model</span>
+        <h2>A co-pilot doesn't replace the pilot.</h2>
+      </div>
+      <div class="hm__grid">
+        <div class="hm__col reveal">
+          <span class="hm__tag mono">The machine</span>
+          <p class="hm__line">
+            Searchscope does hours of analysis in <strong>seconds</strong>, reading your search
+            data against demand, your site and AI search to surface what you'd never catch by
+            hand.
+          </p>
+        </div>
+        <div class="hm__divider" aria-hidden="true"><span>×</span></div>
+        <div class="hm__col reveal" style="--reveal-delay:90ms">
+          <span class="hm__tag mono">The humans</span>
+          <p class="hm__line">
+            Our strategists bring the judgement, context and craft software can't fake, then
+            <strong>execute</strong>. Software finds it; people act on it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILT BY PRACTITIONERS ============ -->
+  <section class="section theme-dark bbp">
+    <div class="container container--wide">
+      <div class="bbp__inner reveal">
+        <span class="eyebrow">Built by practitioners</span>
+        <h2 class="bbp__title">
+          Built and run by a working search team, not a lab.
+        </h2>
+        <p class="bbp__sub">
+          We're a search team first. Searchscope is the co-pilot we built to do our own client
+          work better, sharpened on real sites every day. Work with us and you get both: the
+          intelligence, and the people who wield it.
+        </p>
+        <a href={GMM.url} class="btn btn--ghost btn--lg" target="_blank" rel="noopener">
+          Meet the team at Growth Minded Marketing ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <CTABand
+    title="Be part of our pilot programme"
+    secondaryLabel="See the platform"
+    secondaryHref="/platform"
+  />
+</BaseLayout>
+
+<style>
+  /* ---------- HERO ---------- */
+  .hero {
+    padding-top: clamp(3rem, 2rem + 5vw, 6rem);
+    overflow: clip;
+  }
+  .hero__glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 50% at 78% 30%, var(--accent-soft), transparent 70%),
+      radial-gradient(40% 40% at 10% 80%, color-mix(in oklab, var(--ink) 4%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .hero__title {
+    font-size: clamp(2.3rem, 1.7rem + 3vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    margin-top: var(--space-s);
+  }
+  .hero__sub {
+    margin-top: var(--space-l);
+    /* Inter for the multi-line deck (reads calmer than mono at this length);
+       the mono spine stays on the eyebrow, note and buttons. */
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink-dim);
+    max-width: 44ch;
+  }
+  .hero__visual {
+    position: relative;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+  }
+  /* secondary CTA: plain mono text link with a sliding arrow */
+  .hero__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-mono);
+    font-size: var(--step-0);
+    letter-spacing: 0;
+    color: var(--ink);
+    transition: color var(--dur) var(--ease-out);
+  }
+  .hero__link .btn__arrow {
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .hero__link:hover {
+    color: var(--ink-dim);
+  }
+  .hero__link:hover .btn__arrow {
+    transform: translateX(3px);
+  }
+  .hero__note {
+    margin-top: var(--space-l);
+    font-size: var(--step--1);
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 980px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__visual {
+      order: -1;
+    }
+  }
+
+  /* ---------- PROBLEM / CLARITY FAILURES ---------- */
+  .decisions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .decision {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .decision__no {
+    color: var(--accent);
+    font-size: var(--step-1);
+  }
+  .decision__label {
+    font-size: var(--step-1);
+  }
+  .decision__line {
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.5;
+  }
+  .decisions__cta {
+    margin-top: var(--space-l);
+  }
+  @media (max-width: 760px) {
+    .decisions {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- CO-PILOT GRID ---------- */
+  .copilot__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-l);
+  }
+  /* Cap the mock previews so the cards read like screenshots */
+  .copilot :global(.cap__visual) {
+    position: relative;
+    max-height: 230px;
+    overflow: hidden;
+    padding: var(--space-m);
+  }
+  .copilot :global(.cap__visual)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    background: linear-gradient(transparent, var(--surface-panel));
+    pointer-events: none;
+  }
+  .copilot__cta {
+    margin-top: var(--space-l);
+  }
+  @media (max-width: 760px) {
+    .copilot__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- HUMANS + MACHINE ---------- */
+  .hm__grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    margin-top: var(--space-xl);
+  }
+  .hm__tag {
+    display: block;
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: var(--space-s);
+  }
+  .hm__line {
+    font-family: var(--font-accent);
+    font-size: var(--step-2);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  /* Mono skin: code-style, not serif, smaller + airier for readability */
+  :global(html[data-skin='mono']) .hm__line {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .hm__line strong {
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+  .hm__divider {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+  }
+  .hm__divider span {
+    font-family: var(--font-mono);
+    font-size: var(--step-2);
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+  }
+  @media (max-width: 760px) {
+    .hm__grid {
+      grid-template-columns: 1fr;
+    }
+    .hm__divider {
+      transform: rotate(90deg);
+      margin: var(--space-xs) 0;
+    }
+  }
+
+  /* ---------- BUILT BY PRACTITIONERS ---------- */
+  .bbp__inner {
+    max-width: 60ch;
+  }
+  .bbp__title {
+    font-size: var(--step-4);
+    margin-top: var(--space-s);
+  }
+  .bbp__sub {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+  .bbp__inner .btn {
+    margin-top: var(--space-l);
+  }
+</style>

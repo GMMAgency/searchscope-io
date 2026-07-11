@@ -1,0 +1,60 @@
+---
+/**
+ * Decorative viewfinder corner-ticks, echoing the logomark. Drop inside any
+ * position:relative container to frame it like a scope. Purely decorative
+ * (aria-hidden, no pointer events), so it never affects layout or a11y.
+ */
+interface Props {
+  /** leg length of each corner bracket, px */
+  size?: number;
+  /** how far the bracket sits outside the parent box (CSS length) */
+  inset?: string;
+  class?: string;
+}
+const { size = 14, inset = '-8px', class: cls = '' } = Astro.props;
+---
+
+<span class={`ticks ${cls}`} aria-hidden="true">
+  <span class="ticks__c ticks__tl"></span>
+  <span class="ticks__c ticks__tr"></span>
+  <span class="ticks__c ticks__br"></span>
+  <span class="ticks__c ticks__bl"></span>
+</span>
+
+<style define:vars={{ tsize: `${size}px`, tinset: inset }}>
+  .ticks {
+    position: absolute;
+    inset: var(--tinset);
+    pointer-events: none;
+    color: color-mix(in oklab, var(--ink) 30%, transparent);
+  }
+  .ticks__c {
+    position: absolute;
+    width: var(--tsize);
+    height: var(--tsize);
+  }
+  .ticks__tl {
+    top: 0;
+    left: 0;
+    border-top: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+  }
+  .ticks__tr {
+    top: 0;
+    right: 0;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+  }
+  .ticks__br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+  }
+  .ticks__bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+  }
+</style>

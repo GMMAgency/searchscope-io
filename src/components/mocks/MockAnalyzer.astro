@@ -1,0 +1,137 @@
+---
+/**
+ * Mock of the Analyzer Engine — the real app's analyzer suite as rows:
+ * each analyser with an AI badge, findings count, critical count and a
+ * toggle. Matched to the real "Settings → Analyzers" screen.
+ */
+const analyzers = [
+  { name: 'Indexation', findings: '16 findings', critical: 0, on: true },
+  { name: 'Internal Links', findings: '28 findings', critical: 1, on: true },
+  { name: 'Cannibalization', findings: '8 findings', critical: 2, on: true },
+  { name: 'Content Decay', findings: '86 findings', critical: 0, on: true },
+  { name: 'Schema', findings: '70 findings', critical: 0, on: true },
+  { name: 'Opportunities', findings: '5 opportunities', critical: 5, on: true },
+];
+---
+
+<div class="manz" role="img" aria-label="Analyzer Engine: the analyser suite as rows, each with an AI badge, findings count, critical count and an on toggle.">
+  <div class="manz__head">
+    <span class="mono manz__title">Analyzers · 7 active</span>
+    <span class="mono manz__all">all on <span class="manz__sw manz__sw--on" aria-hidden="true"></span></span>
+  </div>
+  <span class="manz__section mono">Workspaces</span>
+  <ul class="manz__list" role="list">
+    {
+      analyzers.map((a) => (
+        <li class="manz__row">
+          <span class="manz__name">
+            {a.name} <span class="manz__ai mono">AI</span>
+          </span>
+          <span class="manz__right mono">
+            <span class="manz__count">{a.findings}</span>
+            {a.critical > 0 && <span class="manz__crit">{a.critical} critical</span>}
+            <span class={`manz__sw manz__sw--${a.on ? 'on' : 'off'}`} aria-hidden="true" />
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .manz {
+    font-size: var(--step--1);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .manz__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .manz__title {
+    font-size: var(--step--1);
+    color: var(--ink);
+  }
+  .manz__all {
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+  }
+  .manz__section {
+    font-size: var(--step--2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .manz__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .manz__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+  }
+  .manz__name {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .manz__ai {
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-xs);
+    background: var(--surface-panel);
+    border: 1px solid var(--hairline);
+  }
+  .manz__right {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    font-size: var(--step--2);
+  }
+  .manz__count {
+    color: var(--ink-dim);
+  }
+  .manz__crit {
+    color: var(--sev-rose);
+  }
+  .manz__sw {
+    width: 26px;
+    height: 15px;
+    border-radius: 999px;
+    position: relative;
+    flex: none;
+    background: var(--hairline);
+  }
+  .manz__sw::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--surface);
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .manz__sw--on {
+    background: var(--ink);
+  }
+  .manz__sw--on::after {
+    transform: translateX(11px);
+  }
+</style>

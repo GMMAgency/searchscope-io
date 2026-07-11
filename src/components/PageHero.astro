@@ -1,0 +1,52 @@
+---
+/**
+ * Compact hero for inner pages (Platform, Future of SEO, Blog, Contact).
+ * The home page has its own bespoke hero.
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  theme?: 'dark' | 'cream';
+  class?: string;
+}
+const { eyebrow, title, lede, theme = 'dark', class: cls = '' } = Astro.props;
+---
+
+<section class={`section page-hero theme-${theme} bg-grid ${cls}`}>
+  <div class="container">
+    <div class="page-hero__inner">
+      <span class="eyebrow reveal">{eyebrow}</span>
+      <h1 class="page-hero__title reveal" style="--reveal-delay:60ms">{title}</h1>
+      {lede && <p class="lede page-hero__lede reveal" style="--reveal-delay:120ms" set:html={lede} />}
+      {Astro.slots.has('default') && (
+        <div class="page-hero__extra reveal" style="--reveal-delay:180ms"><slot /></div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-top: clamp(4.5rem, 3rem + 7vw, 8rem);
+    padding-bottom: clamp(2.5rem, 2rem + 3vw, 4rem);
+  }
+  .page-hero__inner {
+    max-width: 24ch;
+  }
+  .page-hero__title {
+    font-size: var(--step-6);
+    margin-top: var(--space-s);
+  }
+  .page-hero__lede {
+    margin-top: var(--space-m);
+    max-width: 52ch;
+    font-size: var(--step-2);
+  }
+  .page-hero__inner {
+    max-width: 56ch;
+  }
+  .page-hero__extra {
+    margin-top: var(--space-l);
+  }
+</style>

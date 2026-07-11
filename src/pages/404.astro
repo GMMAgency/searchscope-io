@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="That page has moved on, like the search results page does." noindex>
+  <section class="section theme-dark nf">
+    <div class="container nf__inner">
+      <span class="eyebrow">404 · off the map</span>
+      <h1 class="nf__title">This page isn't ranking.</h1>
+      <p class="nf__sub">
+        The page you're after has moved, been consolidated, or never existed. The search
+        picture changes fast, let's get you back to something solid.
+      </p>
+      <div class="nf__actions">
+        <a href="/" class="btn btn--lg">Back to home <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a href="/blog" class="btn btn--ghost btn--lg">Read the blog</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  .nf__inner {
+    max-width: 50ch;
+  }
+  .nf__title {
+    font-size: var(--step-6);
+    margin-top: var(--space-s);
+  }
+  .nf__sub {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+  .nf__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+  }
+</style>

@@ -1,0 +1,422 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FeatureSplit from '../components/FeatureSplit.astro';
+import AppFrame from '../components/AppFrame.astro';
+import ScatterHero from '../components/ScatterHero.astro';
+import CTABand from '../components/CTABand.astro';
+import Icon from '../components/Icon.astro';
+
+import MockGapCards from '../components/mocks/MockGapCards.astro';
+import MockAnalyzer from '../components/mocks/MockAnalyzer.astro';
+import MockAdvisor from '../components/mocks/MockAdvisor.astro';
+import MockWeekly from '../components/mocks/MockWeekly.astro';
+import MockCrawler from '../components/mocks/MockCrawler.astro';
+import MockContentStudio from '../components/mocks/MockContentStudio.astro';
+
+const steps = [
+  { no: '01', icon: 'connect', title: 'Connect your search data', line: 'Read-only. Searchscope ingests your real query, page and click reality.' },
+  { no: '02', icon: 'analyzer', title: 'Searchscope analyses', line: 'Your data is read against market demand, your site and AI search, continuously.' },
+  { no: '03', icon: 'prioritise', title: 'Opportunities prioritised', line: 'Every finding scored by opportunity and revenue risk, not vanity volume.' },
+  { no: '04', icon: 'recommend', title: 'Recommendations generated', line: 'The specific move, explained, with the brief drafted and ready.' },
+  { no: '05', icon: 'execute', title: 'Your team, or ours, executes', line: 'Ship it yourself, or let our team run it for you.' },
+];
+
+const analyzerSuite = [
+  'Index bloat', 'Internal links', 'Cannibalisation', 'Content decay',
+  'Opportunities', 'Schema', 'Cluster volatility',
+];
+---
+
+<BaseLayout
+  title="The Co-Pilot"
+  description="See what Searchscope does: a full site crawl, seven analysers, Demand & Trends, an AI Strategic Advisor and Content Studio, so your SEO team knows what to fix and ships it faster."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="The co-pilot"
+    title="What the co-pilot actually does."
+    lede="Searchscope reads your whole search picture, finds what is costing you traffic, and hands your team the specific move, with the brief already drafted. Here is every part of the co-pilot, and what it does for you."
+  />
+
+  <!-- ===== OVERVIEW: the intelligence layer ===== -->
+  <section class="section section--tight theme-dark">
+    <div class="container container--wide">
+      <div class="layer reveal" role="img" aria-label="Diagram: your site and signals flow into Searchscope, which feeds prioritised moves to your growth team.">
+        <div class="layer__node">
+          <span class="layer__lbl mono">Your inputs</span>
+          <span class="layer__items mono">search data · your site · market demand · AI search</span>
+        </div>
+        <div class="layer__flow" aria-hidden="true"><Icon name="arrow" size={22} /></div>
+        <div class="layer__node layer__node--core">
+          <span class="layer__lbl mono">Searchscope</span>
+          <span class="layer__items mono">synthesis · scoring · recommendations</span>
+        </div>
+        <div class="layer__flow" aria-hidden="true"><Icon name="arrow" size={22} /></div>
+        <div class="layer__node">
+          <span class="layer__lbl mono">Your growth team</span>
+          <span class="layer__items mono">decisions · execution · growth</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE CRAWLER ===== -->
+  <section id="crawler" class="section theme-dark">
+    <div class="container container--wide">
+      <FeatureSplit
+        eyebrow="The Crawler"
+        title="We read your whole site, first."
+        flip
+        points={[
+          'Up to 10,000 pages, configurable depth and user-agent',
+          'Pages, links, images, schema, content chunks and entities',
+          'Refreshed and fed straight into every analyser',
+        ]}
+      >
+        <p>
+          Everything starts with a full technical crawl. Searchscope reads your site the way
+          search engines and AI systems do, then turns it into structured signal the rest of the co-pilot
+          works from. No tag to install, no sampling.
+        </p>
+        <AppFrame slot="visual" label="searchscope.app/crawl" tab="Crawler">
+          <MockCrawler />
+        </AppFrame>
+      </FeatureSplit>
+    </div>
+  </section>
+
+  <!-- ===== DEMAND & TRENDS (lead) ===== -->
+  <section id="demand" class="section theme-dark">
+    <div class="container container--wide">
+      <div class="dt">
+        <div class="dt__copy reveal">
+          <span class="eyebrow">Demand &amp; Trends</span>
+          <h2 class="dt__title">See exactly where you're losing share.</h2>
+          <p class="dt__body">
+            Market demand × your visibility × your ranking pages × cannibalisation, plotted
+            as one picture. Every bubble is a page; size is the opportunity; colour is the
+            signal. High-demand, low-share pages light up red: that's share you're leaving
+            on the table.
+          </p>
+          <ul class="dt__points" role="list">
+            <li><Icon name="check" size={18} class="dt__check" /> An opportunity score per page, not a wall of keywords</li>
+            <li><Icon name="check" size={18} class="dt__check" /> A clear "losing share" signal where demand is rising and you're not</li>
+            <li><Icon name="check" size={18} class="dt__check" /> Cannibalisation surfaced where two pages split one intent</li>
+          </ul>
+        </div>
+        <div class="dt__visual reveal" style="--reveal-delay:100ms">
+          <AppFrame label="searchscope.app/demand" tab="Demand & Trends">
+            <ScatterHero />
+          </AppFrame>
+        </div>
+      </div>
+
+      <div class="dt__gaps reveal">
+        <p class="dt__gaps-lbl mono">The opportunity read, the standout gaps, scored and ready to action</p>
+        <MockGapCards />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANALYZER ENGINE ===== -->
+  <section id="analyzer" class="section theme-dark">
+    <div class="container container--wide">
+      <FeatureSplit
+        eyebrow="The Analyzer Engine"
+        title="The whole suite, scored, prioritised, explained."
+        flip
+        points={[
+          'Each module produces prioritised findings, never a raw export',
+          'Every finding is AI-explained in plain English, with the why',
+          'Severity scored so you act on what moves revenue first',
+        ]}
+      >
+        <p>
+          Seven analysers run continuously across your site. Index bloat, content decay,
+          cannibalisation, orphan pages, opportunities, schema and cluster volatility, each one
+          turning raw signals into a ranked list of decisions.
+        </p>
+        <div class="suite" slot="cta">
+          {analyzerSuite.map((s) => <span class="suite__chip mono">{s}</span>)}
+        </div>
+        <AppFrame slot="visual" label="searchscope.app/analyzer" tab="Analyzer Engine">
+          <MockAnalyzer />
+        </AppFrame>
+      </FeatureSplit>
+    </div>
+  </section>
+
+  <!-- ===== STRATEGIC ADVISOR ===== -->
+  <section id="advisor" class="section theme-dark">
+    <div class="container container--wide">
+      <FeatureSplit
+        eyebrow="The Strategic Advisor"
+        title="The co-pilot you can just ask."
+        points={[
+          'Answers from your live search data, crawl, competitor and demand signals',
+          'Finds the non-obvious, the connection across datasets you would miss',
+          'Drafts the brief, so the recommendation is ready to ship',
+        ]}
+      >
+        <p>
+          Not a generic chatbot. The Strategic Advisor is grounded in <em>your</em> search
+          reality. Ask it where you're losing ground, what's behind a drop, or what to brief
+          next, and it answers with the data and the move.
+        </p>
+        <AppFrame slot="visual" label="searchscope.app/advisor" tab="Strategic Advisor">
+          <MockAdvisor />
+        </AppFrame>
+      </FeatureSplit>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT STUDIO ===== -->
+  <section id="studio" class="section theme-dark">
+    <div class="container container--wide">
+      <FeatureSplit
+        eyebrow="Content Studio"
+        title="From opportunity to brief in one step."
+        flip
+        points={[
+          'Scrapes the live top-SERP competitors and finds the gap',
+          'Drafts the brief: outline, entities and target keywords',
+          'Generate the full draft or export Markdown, ready to ship',
+        ]}
+      >
+        <p>
+          This is where insight becomes work. Point Content Studio at a page or a keyword and it
+          reads what's already ranking, finds what you're missing, and writes the brief so the
+          team can publish, not research.
+        </p>
+        <AppFrame slot="visual" label="searchscope.app/studio" tab="Content Studio">
+          <MockContentStudio />
+        </AppFrame>
+      </FeatureSplit>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS (cream) ===== -->
+  <section class="section theme-cream">
+    <div class="container container--wide">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>From search data to shipped, in five steps.</h2>
+      </div>
+      <ol class="steps" role="list">
+        {
+          steps.map((s, i) => (
+            <li class="step reveal" style={`--reveal-delay:${i * 60}ms`}>
+              <span class="step__icon"><Icon name={s.icon as any} size={22} /></span>
+              <span class="step__no mono">{s.no}</span>
+              <h3 class="step__title">{s.title}</h3>
+              <p class="step__line">{s.line}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== REPORTING & RHYTHM ===== -->
+  <section id="reporting" class="section theme-dark">
+    <div class="container container--wide">
+      <FeatureSplit
+        eyebrow="Reporting &amp; rhythm"
+        title="A continuous read, not a quarterly scramble."
+        flip
+        points={[
+          'Weekly Intelligence: what moved and what to do, every Monday',
+          'Shareable with stakeholders, no logins, no noise',
+          'The signal stays warm, so nothing important slips by',
+        ]}
+      >
+        <p>
+          Search never stops moving, so neither does the read. Searchscope keeps a continuous
+          pulse on your search picture and surfaces the handful of things that actually changed
+          this week.
+        </p>
+        <AppFrame slot="visual" label="searchscope.app/weekly" tab="Weekly Intelligence">
+          <MockWeekly />
+        </AppFrame>
+      </FeatureSplit>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="See it on your site"
+    title="See the co-pilot read your search picture."
+    sub="The fastest way to understand Searchscope is to point it at your own site. Join the pilot programme and we'll show you what it surfaces."
+  />
+</BaseLayout>
+
+<style>
+  /* intelligence-layer diagram */
+  .layer {
+    display: grid;
+    grid-template-columns: 1fr auto 1.15fr auto 1fr;
+    align-items: stretch;
+    gap: var(--space-s);
+  }
+  .layer__node {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: var(--space-m);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-m);
+    background: var(--surface-panel);
+  }
+  .layer__node--core {
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--hairline));
+    background: var(--accent-soft);
+  }
+  .layer__lbl {
+    font-size: var(--step--1);
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .layer__node--core .layer__lbl {
+    color: var(--accent);
+  }
+  .layer__items {
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    line-height: 1.5;
+  }
+  .layer__flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  @media (max-width: 860px) {
+    .layer {
+      grid-template-columns: 1fr;
+    }
+    .layer__flow {
+      transform: rotate(90deg);
+      padding: var(--space-2xs) 0;
+    }
+  }
+
+  /* Demand & Trends custom split */
+  .dt {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .dt__title {
+    font-size: var(--step-3);
+    margin-top: var(--space-s);
+  }
+  .dt__body {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    max-width: 46ch;
+  }
+  .dt__points {
+    margin-top: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .dt__points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7em;
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+  }
+  .dt__check {
+    color: var(--accent);
+    margin-top: 0.15em;
+    flex: none;
+  }
+  .dt__gaps {
+    margin-top: var(--space-2xl);
+  }
+  .dt__gaps-lbl {
+    font-size: var(--step--1);
+    color: var(--ink-faint);
+    margin-bottom: var(--space-m);
+    letter-spacing: 0.02em;
+  }
+  .dt__gaps :global(.gaps) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 860px) {
+    .dt {
+      grid-template-columns: 1fr;
+    }
+    .dt__gaps :global(.gaps) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* analyzer suite chips */
+  .suite {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .suite__chip {
+    font-size: var(--step--2);
+    padding: 0.4em 0.75em;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    color: var(--ink-dim);
+  }
+
+  /* steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-l);
+    counter-reset: step;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: var(--space-m);
+    border-top: 2px solid var(--hairline);
+  }
+  .step__icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-s);
+    background: color-mix(in oklab, var(--accent) 16%, transparent);
+    color: var(--accent-deep);
+    margin-bottom: var(--space-2xs);
+  }
+  .step__no {
+    color: var(--accent-deep);
+    font-size: var(--step--1);
+  }
+  .step__title {
+    font-size: var(--step-1);
+    line-height: 1.1;
+  }
+  .step__line {
+    color: var(--ink-dim);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  @media (max-width: 980px) {
+    .steps {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

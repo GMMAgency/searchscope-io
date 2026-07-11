@@ -1,0 +1,141 @@
+---
+/**
+ * Mock of the Crawler — a crawl-stats dashboard. The "we read your whole
+ * site" proof that feeds every other analyser.
+ */
+const stats = [
+  { label: 'Internal links', value: '1,802' },
+  { label: 'Images', value: '1,783' },
+  { label: 'External links', value: '275' },
+  { label: 'Sitemap URLs', value: '107' },
+  { label: 'Content chunks', value: '221' },
+  { label: 'Entities', value: '10,580' },
+];
+const issues = ['Broken links', 'Redirect chains', 'Missing canonicals', 'Noindex conflicts', 'Slow templates'];
+---
+
+<div class="crawl" role="img" aria-label="Crawler dashboard: 3,000 pages crawled with counts for links, images, content chunks, entities and technical issues.">
+  <div class="crawl__head">
+    <span class="mono crawl__title"><span class="crawl__live"></span> Crawl complete</span>
+    <span class="mono crawl__count">3,000 / 3,000 pages</span>
+  </div>
+
+  <div class="crawl__bar" aria-hidden="true"><span style="width:100%"></span></div>
+
+  <div class="crawl__grid">
+    {
+      stats.map((s) => (
+        <div class="crawl__stat">
+          <span class="mono crawl__val">{s.value}</span>
+          <span class="mono crawl__lbl">{s.label}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="crawl__issues">
+    <span class="mono crawl__issues-lbl">Technical issues <strong>122</strong></span>
+    <div class="crawl__chips">
+      {issues.map((i) => <span class="mono crawl__chip">{i}</span>)}
+    </div>
+  </div>
+</div>
+
+<style>
+  .crawl {
+    font-size: var(--step--1);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+  .crawl__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--step--2);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  /* a completed crawl = success (green), per the real app's run checks */
+  .crawl__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--sev-emerald);
+  }
+  .crawl__live {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sev-emerald);
+  }
+  .crawl__count {
+    color: var(--ink-faint);
+  }
+  .crawl__bar {
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-panel-2);
+    overflow: hidden;
+  }
+  .crawl__bar span {
+    display: block;
+    height: 100%;
+    background: var(--sev-emerald);
+    border-radius: inherit;
+  }
+  .crawl__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .crawl__stat {
+    background: var(--surface-panel);
+    padding: 0.6rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .crawl__val {
+    font-size: var(--step-1);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .crawl__lbl {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .crawl__issues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .crawl__issues-lbl {
+    font-size: var(--step--2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-dim);
+  }
+  .crawl__issues-lbl strong {
+    color: var(--sev-amber);
+  }
+  .crawl__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .crawl__chip {
+    font-size: var(--step--2);
+    padding: 0.3em 0.6em;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    color: var(--ink-dim);
+  }
+</style>

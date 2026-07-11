@@ -1,0 +1,516 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PullQuote from '../components/PullQuote.astro';
+import CTABand from '../components/CTABand.astro';
+
+const sections = [
+  { id: 'three-waves', label: 'The three waves' },
+  { id: 'falls-short', label: 'Where advice falls short' },
+  { id: 'ai-discovery', label: 'The results page changed' },
+  { id: 'systems-based', label: 'Search Systems SEO' },
+  { id: 'clearly-structured', label: 'What “clear” means' },
+  { id: 'humans-systems', label: 'Humans vs systems' },
+];
+---
+
+<BaseLayout
+  title="The Future of SEO"
+  description="The Search Systems thesis: the third wave of SEO is structural. Search engines and AI systems now read your whole website as a system, and the sites they can confidently understand, extract and trust are the ones that win."
+  headerTheme="cream"
+  type="article"
+>
+  <PageHero
+    eyebrow="The future of SEO"
+    title="Welcome to the third wave of search."
+    lede="First we optimised for the algorithm. Then we learned to write for users. The third wave is different in kind: search engines and AI systems now read your whole website as a system, and the sites they can confidently understand, extract and trust are the ones that win."
+    theme="cream"
+  />
+
+  <article class="manifesto theme-cream">
+    <div class="container manifesto__layout">
+      <!-- contents rail -->
+      <aside class="toc" aria-label="On this page">
+        <p class="toc__title mono">On this page</p>
+        <ol class="toc__list" role="list">
+          {sections.map((s) => <li><a href={`#${s.id}`} class="toc__link">{s.label}</a></li>)}
+        </ol>
+      </aside>
+
+      <div class="prose">
+        <section id="three-waves" class="prose__section">
+          <h2>Three waves of SEO, and the third is structural.</h2>
+          <p>
+            In the early days, search engines weren't very good at understanding what a page
+            actually meant. They needed simple signals they could measure, so we optimised for
+            those: keywords in the right places, lots of links, lots of near-duplicate pages
+            targeting tiny variations. It worked because the system was basic. If it measured
+            something, you could improve it. It also produced a lot of low-quality results, so
+            the engines had to get smarter. That was <strong>the first wave: the algorithm</strong>.
+          </p>
+          <p>
+            The second wave is the one most marketing teams know, and it's still correct. Engines
+            got much better at rewarding pages that genuinely help people: content that answers
+            the question, pages that match intent, sites that feel trustworthy, better mobile
+            experiences. Write useful content, build authority, fix technical issues. That was
+            <strong>the second wave: write for users</strong>, and in general it works.
+          </p>
+          <p>
+            But here's what we keep seeing. You can do all of that and still get stuck. Not
+            because the content isn't good, but because the website isn't <em>clear</em> enough
+            for the system to understand at scale.
+          </p>
+        </section>
+
+        <section id="falls-short" class="prose__section">
+          <h2>Where the usual advice starts to fall short.</h2>
+          <p>
+            This is where a lot of teams get frustrated, because nothing is obviously broken.
+            It's more like a slow loss of clarity. Three patterns show up again and again.
+          </p>
+
+          <h3>You create internal competition.</h3>
+          <p>
+            A category page, a product page, a buying guide and a few supporting blogs all circle
+            the same topic. Each is fine on its own, but the engine can't always tell which one is
+            meant to be the main answer. Instead of reinforcing each other, they compete. Rankings
+            swap between pages and performance feels unstable.
+          </p>
+          <div class="case">
+            <span class="case__label mono">In practice</span>
+            <p>
+              An outdoor-furniture client had four solid pages about garden chairs: a category
+              page, a buying guide, a how-to and seasonal collections. Over six months the ranking
+              for "garden chairs" bounced between all four URLs. Traffic fell
+              <strong>23%</strong> while the average position barely moved, from 3.2 to 3.8. The
+              page Google showed most often had a 40% lower click-through than the category page.
+            </p>
+          </div>
+
+          <h3>Your site looks repetitive at scale.</h3>
+          <p>
+            Templates are normal. But when thousands of pages look almost identical in the
+            results, you lose the thing that makes someone choose your listing. Rankings can hold
+            while clicks quietly fall.
+          </p>
+          <div class="case">
+            <span class="case__label mono">In practice</span>
+            <p>
+              A SaaS client had 180 location pages: "Appointment Booking Software in Manchester",
+              "in Leeds", and so on. Most ranked in positions 4 to 8. But the titles and
+              descriptions were identical except for the city, so click-through sat at
+              <strong>1.8%</strong> where 4 to 5% was expected. They weren't losing rankings. They
+              were losing clicks, because nobody could tell the pages apart.
+            </p>
+          </div>
+
+          <h3>Great content gets buried.</h3>
+          <p>
+            Publish a brilliant guide, but leave it three clicks deep with a couple of internal
+            links, and the system reads it as "not that important", however strong the writing is.
+          </p>
+          <div class="case">
+            <span class="case__label mono">In practice</span>
+            <p>
+              A B2B client's 4,000-word compliance guide, genuinely useful, sat three clicks from
+              the homepage with two internal links. After twelve weeks it ranked on page 3. We
+              added it to the main navigation, linked it from five service pages and featured it on
+              the blog. Within four months it hit <strong>position 2</strong>. Same content,
+              different signals about importance.
+            </p>
+          </div>
+        </section>
+
+        <section id="ai-discovery" class="prose__section">
+          <h2>And the results page stopped being a list of links.</h2>
+          <p>
+            At the same time, the SERP changed shape. Featured Snippets, People Also Ask and AI
+            Overviews answer questions directly. Bing has Chat. ChatGPT searches the web. So even
+            when you rank well, you can get less traffic than you would have a few years ago.
+          </p>
+          <div class="case">
+            <span class="case__label mono">The data we're seeing</span>
+            <p>
+              Across twelve of our clients, pages holding positions 1 to 3 are seeing
+              <strong>15 to 30% less traffic</strong> than they did in 2022, with rankings
+              unchanged. The traffic hasn't disappeared. It's being answered in the results page
+              itself, or extracted into an AI summary.
+            </p>
+          </div>
+          <p>
+            So it isn't only about ranking a page. It's about whether your site is easy for the
+            system to confidently pull from and understand at scale.
+          </p>
+          <p class="prose__aside">
+            We go deeper on this in the blog:
+            <a href="/blog/seo-is-now-an-operating-system" class="link">SEO is now an operating system →</a>
+          </p>
+        </section>
+
+        <section id="systems-based" class="prose__section">
+          <h2>This is what we mean by Search Systems SEO.</h2>
+          <PullQuote cite="The Search Systems thesis">
+            Designing your website so search engines and AI systems can confidently <em>understand, extract and
+            trust</em> your content at scale, not just optimising individual pages to rank.
+          </PullQuote>
+          <p>
+            Search engines and AI systems are getting better at understanding entities and the relationships
+            between them. They know "garden chairs" connects to "outdoor furniture" and "patio
+            seating". They can see when several pages target the same concept. They're building a
+            map of your site's expertise and authority.
+          </p>
+
+          <div class="os-compare" role="img" aria-label="Comparison: a messy site map drops the engine's confidence; a clear site map raises it.">
+            <div class="os-compare__col">
+              <span class="os-compare__tag mono">A messy map</span>
+              <span class="os-compare__h">Confidence drops</span>
+              <ul role="list">
+                <li>Several URLs competing for one intent</li>
+                <li>Near-identical template pages</li>
+                <li>Strong pages buried with no links</li>
+                <li>Old campaign pages still indexed</li>
+              </ul>
+            </div>
+            <div class="os-compare__col os-compare__col--accent">
+              <span class="os-compare__tag mono">A clear map</span>
+              <span class="os-compare__h">Confidence rises</span>
+              <ul role="list">
+                <li>One obvious main page per topic</li>
+                <li>Distinct, extractable pages</li>
+                <li>Important pages linked like it</li>
+                <li>A clean, current hierarchy</li>
+              </ul>
+            </div>
+          </div>
+
+          <p>
+            When the map is clear and consistent, the system has confidence. When it's messy or
+            contradictory, confidence drops, and when confidence drops, performance gets
+            unpredictable.
+          </p>
+          <div class="case">
+            <span class="case__label mono">In practice</span>
+            <p>
+              A financial-services client had 340 indexed pages about mortgage advice: service
+              pages, blog posts and old campaign landing pages. The engine couldn't work out which
+              to rank for high-value terms like "mortgage advice UK". We consolidated to 12 core
+              pages, canonicalised the rest and rebuilt the internal linking to signal a clear
+              hierarchy. Within three months the main page moved from position 12 to
+              <strong>position 4</strong>, and it stayed there. The volatility stopped.
+            </p>
+          </div>
+        </section>
+
+        <section id="clearly-structured" class="prose__section">
+          <h2>What "clearly structured" actually means.</h2>
+          <p>
+            When we talk about structure, we mean the system can quickly answer five questions
+            about any page:
+          </p>
+          <ol class="questions" role="list">
+            <li>
+              <div class="q__body">
+                <strong>What is this page about?</strong>
+                <span>Topic clarity through headings, schema and a single, clear H1.</span>
+              </div>
+            </li>
+            <li>
+              <div class="q__body">
+                <strong>Which page is the main answer?</strong>
+                <span>No competing URLs with overlapping intent.</span>
+              </div>
+            </li>
+            <li>
+              <div class="q__body">
+                <strong>How does it relate to the rest?</strong>
+                <span>A logical hierarchy and internal linking that makes sense.</span>
+              </div>
+            </li>
+            <li>
+              <div class="q__body">
+                <strong>Can it be extracted reliably?</strong>
+                <span>Structured data, clean formatting, scannable content.</span>
+              </div>
+            </li>
+            <li>
+              <div class="q__body">
+                <strong>Is this page important?</strong>
+                <span>Internal link equity, and where it sits in the architecture.</span>
+              </div>
+            </li>
+          </ol>
+          <p>
+            Those are exactly the questions Searchscope answers for you. It crawls the whole site,
+            finds the competing URLs, the orphaned pages, the index bloat and the missing schema,
+            and shows you precisely where the system loses confidence, scored by what it costs you.
+          </p>
+        </section>
+
+        <section id="humans-systems" class="prose__section">
+          <h2>People read pages like humans. Search engines and LLMs read websites like systems.</h2>
+          <p>
+            A person judges a page on one thing: is it helpful and trustworthy? A search engine or AI system
+            has to work out what the page is about, how it relates to everything else, which page
+            should win for a topic, and whether the whole site is consistent and reliable.
+          </p>
+          <p>
+            When your site is clear, the system has confidence. When it's messy or overlapping,
+            confidence drops, and performance gets unpredictable. The third wave is the work of
+            making your site a system the engines can trust, so rankings get stable, traffic gets
+            predictable, and you can finally explain why performance changed instead of guessing.
+          </p>
+          <p>
+            That's the work we do every day: reading a site the way the system reads it, finding
+            where clarity breaks, and rebuilding it so the engine trusts what it sees. Searchscope
+            does the reading; our strategists make the calls and do the work.
+          </p>
+          <p class="prose__aside">
+            More in the blog:
+            <a href="/blog/the-co-pilot-model-for-search-teams" class="link">The co-pilot model for search teams →</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <CTABand
+    theme="dark"
+    eyebrow="This is how we work"
+    title="Read your site like a system."
+    sub="If this is how you think search works now, it's how we work too. Join the pilot programme and we'll read your site the way the engines do, then show you where it's losing their confidence."
+  />
+</BaseLayout>
+
+<style>
+  .manifesto {
+    background: var(--surface);
+    color: var(--ink);
+    padding-block: clamp(2rem, 1.5rem + 3vw, 4rem) clamp(3rem, 2rem + 5vw, 6rem);
+  }
+  .manifesto__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .toc {
+    display: none;
+  }
+
+  .prose {
+    max-width: 68ch;
+    margin-inline: auto;
+  }
+  .prose__section {
+    padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+  .prose h2 {
+    font-size: var(--step-3);
+    line-height: 1.08;
+    margin-bottom: var(--space-m);
+    scroll-margin-top: 6rem;
+  }
+  .prose h3 {
+    font-size: var(--step-1);
+    margin: var(--space-l) 0 var(--space-xs);
+    color: var(--ink);
+  }
+  .prose p {
+    font-size: var(--step-1);
+    line-height: 1.65;
+    color: var(--ink-dim);
+    margin-bottom: var(--space-m);
+    max-width: 64ch;
+  }
+  .prose p strong {
+    color: var(--ink);
+  }
+  .prose p em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  /* editorial drop-cap on the opening paragraph */
+  .prose__section:first-of-type > p:first-of-type::first-letter {
+    font-family: var(--font-heading);
+    float: left;
+    font-size: 3.3em;
+    line-height: 0.74;
+    font-weight: 600;
+    padding: 0.04em 0.1em 0 0;
+    color: var(--ink);
+  }
+  .prose__aside {
+    font-size: var(--step-0) !important;
+    padding: var(--space-m);
+    border-left: 2px solid var(--accent);
+    background: var(--surface-panel);
+    border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  }
+
+  /* Example callouts */
+  .case {
+    margin: var(--space-m) 0 var(--space-l);
+    padding: var(--space-m) var(--space-l);
+    border: 1px solid var(--hairline);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    background: var(--surface-panel);
+  }
+  .case__label {
+    display: block;
+    font-size: var(--step--2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 0.5rem;
+  }
+  .case p {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .case strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Five questions */
+  .questions {
+    list-style: none;
+    counter-reset: q;
+    margin: var(--space-l) 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .questions li {
+    counter-increment: q;
+    display: flex;
+    gap: var(--space-m);
+    padding: var(--space-s) 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .questions li::before {
+    content: counter(q, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: var(--step-0);
+    color: var(--accent-deep);
+    flex: none;
+  }
+  .q__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .q__body strong {
+    color: var(--ink);
+    font-size: var(--step-0);
+  }
+  .q__body span {
+    color: var(--ink-dim);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+
+  /* messy vs clear comparison */
+  .os-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-m);
+    margin: var(--space-l) 0 var(--space-xl);
+  }
+  .os-compare__col {
+    padding: var(--space-l);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-m);
+    background: var(--surface-panel);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .os-compare__col--accent {
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--hairline));
+    background: var(--accent-soft);
+  }
+  .os-compare__tag {
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .os-compare__col--accent .os-compare__tag {
+    color: var(--accent-deep);
+  }
+  .os-compare__h {
+    font-family: var(--font-heading);
+    font-weight: var(--wt-heading);
+    font-size: var(--step-1);
+    margin-bottom: var(--space-xs);
+  }
+  .os-compare__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .os-compare__col li {
+    font-size: var(--step-0);
+    color: var(--ink-dim);
+    padding-left: 1.2em;
+    position: relative;
+  }
+  .os-compare__col li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
+  .os-compare__col--accent li::before {
+    content: '→';
+    color: var(--accent-deep);
+  }
+
+  /* Desktop: sticky contents rail */
+  @media (min-width: 1024px) {
+    .manifesto__layout {
+      grid-template-columns: 220px 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+    }
+    .toc {
+      display: block;
+      position: sticky;
+      top: 6rem;
+    }
+    .prose {
+      margin-inline: 0;
+    }
+  }
+  .toc__title {
+    font-size: var(--step--2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: var(--space-s);
+  }
+  .toc__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-left: 1px solid var(--hairline);
+    padding-left: var(--space-s);
+  }
+  .toc__link {
+    font-size: var(--step--1);
+    color: var(--ink-dim);
+    transition: color var(--dur) var(--ease-out);
+  }
+  .toc__link:hover {
+    color: var(--accent-deep);
+  }
+
+  @media (max-width: 560px) {
+    .os-compare {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

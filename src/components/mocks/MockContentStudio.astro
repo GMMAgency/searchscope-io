@@ -1,0 +1,213 @@
+---
+/**
+ * Mock of Content Studio / the opportunity detail — matched to the real app:
+ * page header, stat tiles, AI Recommendations (Quick Win, suggested title,
+ * a drafted content improvement), and a "Rebuild full page" action.
+ */
+const stats = [
+  { l: 'POSITION', v: '#15.8', tone: 'flat' },
+  { l: 'IMPRESSIONS', v: '21.5K', tone: 'flat' },
+  { l: 'CLICKS', v: '27', tone: 'flat' },
+  { l: 'POTENTIAL', v: '+2.3K', tone: 'up' },
+];
+---
+
+<div class="studio" role="img" aria-label="Content Studio opportunity detail: stat tiles, an AI Quick Win, a suggested title and a drafted content improvement, with a Rebuild full page action.">
+  <div class="studio__head">
+    <span class="studio__title">Google Ads Match Types: The 2026 Guide</span>
+    <span class="studio__path mono">/blog/keyword-match-types <span class="studio__view">View ↗</span></span>
+  </div>
+
+  <dl class="studio__stats">
+    {
+      stats.map((s) => (
+        <div class="studio__stat">
+          <dt class={`studio__stat-v mono ${s.tone === 'up' ? 'studio__up' : ''}`}>{s.v}</dt>
+          <dd class="studio__stat-l mono">{s.l}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <span class="studio__section mono">AI Recommendations</span>
+
+  <div class="studio__rec">
+    <div class="studio__rec-head">
+      <span class="studio__rec-t">⚡ Quick Win</span>
+      <span class="studio__badge mono">+2 clicks</span>
+    </div>
+    <p class="studio__rec-d">
+      Optimise the title, intro and first H2 around "keywords match type", the closest striking-distance
+      query at position 10.4. Prioritise over broader terms.
+    </p>
+  </div>
+
+  <div class="studio__field">
+    <span class="studio__field-l mono">SUGGESTED TITLE</span>
+    <span class="studio__field-v">Google Ads Keyword Match Types: 2026 Guide</span>
+  </div>
+
+  <div class="studio__imp">
+    <span class="studio__imp-tag mono">RESTRUCTURE</span>
+    <span class="studio__imp-t">Keyword match types definition & quick comparison</span>
+    <span class="studio__drafted mono">✓ Drafted</span>
+  </div>
+
+  <div class="studio__actions">
+    <button class="studio__btn" type="button">Copy</button>
+    <button class="studio__btn studio__btn--primary" type="button">Rebuild full page</button>
+  </div>
+</div>
+
+<style>
+  .studio {
+    font-size: var(--step--1);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+  .studio__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .studio__title {
+    font-weight: 600;
+    font-size: var(--step-0);
+    letter-spacing: -0.01em;
+  }
+  .studio__path {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+    display: flex;
+    gap: 0.5em;
+  }
+  .studio__view { color: var(--ink-dim); }
+
+  .studio__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .studio__stat {
+    background: var(--surface);
+    padding: 0.5rem 0.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+  }
+  .studio__stat-v {
+    font-size: var(--step-1);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .studio__up { color: var(--sev-emerald); }
+  .studio__stat-l {
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+
+  .studio__section {
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .studio__rec {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    padding: 0.6rem 0.7rem;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .studio__rec-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .studio__rec-t {
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  .studio__badge {
+    font-size: var(--step--2);
+    color: var(--sev-emerald);
+    background: color-mix(in oklab, var(--sev-emerald) 14%, transparent);
+    padding: 0.15em 0.5em;
+    border-radius: var(--radius-pill);
+  }
+  .studio__rec-d {
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    line-height: 1.45;
+  }
+  .studio__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface-panel);
+  }
+  .studio__field-l {
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+  }
+  .studio__field-v {
+    font-size: var(--step--1);
+    color: var(--ink);
+  }
+  .studio__imp {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+    font-size: var(--step--2);
+  }
+  .studio__imp-tag {
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+  .studio__imp-t {
+    flex: 1;
+    color: var(--ink);
+    min-width: 0;
+  }
+  .studio__drafted {
+    color: var(--sev-emerald);
+    white-space: nowrap;
+  }
+  .studio__actions {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+  }
+  .studio__btn {
+    font-size: var(--step--2);
+    padding: 0.5em 0.9em;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--hairline);
+    color: var(--ink-dim);
+  }
+  .studio__btn--primary {
+    background: var(--ink);
+    color: var(--surface);
+    border-color: transparent;
+    font-weight: 500;
+  }
+</style>

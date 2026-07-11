@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CTABand from '../../components/CTABand.astro';
+import { BLOG_TAGS } from '../../consts';
+import { readingTime } from '../../utils/reading-time';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const items = posts.map((p) => ({
+  slug: p.id,
+  rt: readingTime(p.body ?? ''),
+  ...p.data,
+}));
+
+// Only show tags that actually have posts
+const usedTags = BLOG_TAGS.filter((t) => items.some((i) => i.tags.includes(t)));
+---
+
+<BaseLayout
+  title="Blog"
+  description="Free-form writing on SEO, search systems, algorithm updates, AI search and experiments, from the team that builds Searchscope."
+  headerTheme="cream"
+>
+  <PageHero
+    eyebrow="Blog"
+    title="Notes from the third wave."
+    lede="Search systems, algorithm updates, AI search, GSC teardowns and experiments, written by the team that builds Searchscope and runs it on real client sites."
+    theme="cream"
+  />
+
+  <section class="section theme-cream blog">
+    <div class="container container--wide">
+      <!-- filter rail -->
+      <div class="filter" role="group" aria-label="Filter posts by topic">
+        <button class="filter__btn is-active mono" data-filter="all" type="button">All</button>
+        {
+          usedTags.map((t) => (
+            <button class="filter__btn mono" data-filter={t} type="button">{t}</button>
+          ))
+        }
+      </div>
+
+      <div class="blog__grid grid" data-post-grid>
+        {
+          items.map((post, i) => (
+            <BlogCard
+              href={`/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              tags={post.tags}
+              date={post.pubDate}
+              readingTime={post.rt}
+              featured={i === 0}
+            />
+          ))
+        }
+      </div>
+
+      <p class="blog__empty mono" data-empty hidden>No notes under that topic yet. Try another.</p>
+
+      <p class="blog__sub mono">
+        Prefer it in your reader? <a href="/rss.xml" class="link">Subscribe via RSS →</a>
+      </p>
+    </div>
+  </section>
+
+  <CTABand
+    theme="dark"
+    eyebrow="Work with us"
+    title="Like how we think? Work with the team."
+    sub="The writing is the appetiser. The work is reading your search picture and turning it into growth. Join the pilot programme when you're ready."
+  />
+</BaseLayout>
+
+<style>
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-l);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .filter__btn {
+    font-size: var(--step--1);
+    padding: 0.5em 1em;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline);
+    color: var(--ink-dim);
+    background: var(--surface-panel);
+    transition:
+      color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out),
+      border-color var(--dur) var(--ease-out);
+  }
+  .filter__btn:hover {
+    color: var(--ink);
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--hairline));
+  }
+  .filter__btn.is-active {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: transparent;
+  }
+
+  .blog__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+    align-items: stretch;
+  }
+  .blog__empty {
+    color: var(--ink-dim);
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+  .blog__sub {
+    margin-top: var(--space-2xl);
+    color: var(--ink-faint);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 900px) {
+    .blog__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .blog__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Client-side tag filter (static site → no reload).
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter__btn');
+  const cards = document.querySelectorAll<HTMLElement>('[data-post-grid] .bcard');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'all';
+      buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      let shown = 0;
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags || '').split('|');
+        const match = filter === 'all' || tags.includes(filter);
+        card.hidden = !match;
+        // a filtered view shouldn't keep the wide "featured" span
+        card.classList.toggle('bcard--unfeature', filter !== 'all');
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    });
+  });
+</script>

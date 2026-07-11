@@ -1,0 +1,183 @@
+---
+/**
+ * Mock of the Strategic Advisor — matched to the real app: grounding tabs,
+ * "Surfaced for you" insight cards (coloured by type), quick-prompt chips,
+ * a chat input and the model/grounding footer.
+ */
+const grounds = ['GSC', 'Analyzers', 'Competitors', 'Objectives', 'Web'];
+const surfaced = [
+  { tone: 'flat', icon: '◎', title: '1,695 keyword opportunities found', detail: "Competitors rank for 1,695 keywords you don't target." },
+  { tone: 'amber', icon: '⚠', title: '10 keywords need improvement', detail: 'Competitors outrank you. Focus on "website migration seo".' },
+  { tone: 'up', icon: '↗', title: 'Leading on 2 keywords', detail: 'Maintain these positions with fresh content and links.' },
+];
+const prompts = ['Give me a strategy snapshot', 'Where am I losing to competitors?'];
+---
+
+<div class="adv" role="img" aria-label="Strategic Advisor: grounding sources, surfaced insight cards, quick prompts and a chat input with live access to your data.">
+  <div class="adv__head">
+    <span class="adv__avatar" aria-hidden="true">✦</span>
+    <span class="adv__name">Strategic Advisor</span>
+    <span class="adv__grounds mono">{grounds.map((g) => <span class="adv__g">{g}</span>)}</span>
+  </div>
+
+  <span class="adv__section mono">Surfaced for you</span>
+  <div class="adv__cards">
+    {
+      surfaced.map((s) => (
+        <div class="adv__card">
+          <span class={`adv__icon adv__icon--${s.tone}`} aria-hidden="true">{s.icon}</span>
+          <span class="adv__card-body">
+            <span class="adv__card-t">{s.title}</span>
+            <span class="adv__card-d">{s.detail}</span>
+            <span class="adv__dig mono">Dig into this →</span>
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="adv__prompts">
+    {prompts.map((p) => <span class="adv__chip mono">{p}</span>)}
+  </div>
+
+  <div class="adv__input">
+    <span class="adv__input-ph mono">Ask about strategy, competitors, or opportunities…</span>
+    <span class="adv__send" aria-hidden="true">➤</span>
+  </div>
+  <span class="adv__foot mono">GPT-5.1 · Balanced · live access to GSC, analyzers, competitors & web</span>
+</div>
+
+<style>
+  .adv {
+    font-size: var(--step--1);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+  .adv__head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .adv__avatar {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    background: var(--ink);
+    color: var(--surface);
+    font-size: 0.8rem;
+  }
+  .adv__name {
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  .adv__grounds {
+    margin-left: auto;
+    display: flex;
+    gap: 0.3rem;
+    font-size: var(--step--2);
+  }
+  .adv__g {
+    color: var(--ink-faint);
+  }
+  .adv__section {
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .adv__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .adv__card {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+  }
+  .adv__icon {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    font-size: 0.75rem;
+  }
+  .adv__icon--flat { background: var(--surface-panel); color: var(--ink-dim); }
+  .adv__icon--amber { background: color-mix(in oklab, var(--sev-amber) 16%, transparent); color: var(--sev-amber); }
+  .adv__icon--up { background: color-mix(in oklab, var(--sev-emerald) 16%, transparent); color: var(--sev-emerald); }
+  .adv__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .adv__card-t {
+    font-weight: 500;
+    font-size: var(--step--1);
+  }
+  .adv__card-d {
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    line-height: 1.4;
+  }
+  .adv__dig {
+    font-size: var(--step--2);
+    color: var(--ink);
+    margin-top: 0.1rem;
+  }
+  .adv__prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .adv__chip {
+    font-size: var(--step--2);
+    padding: 0.35em 0.7em;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline);
+    color: var(--ink-dim);
+  }
+  .adv__input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+  }
+  .adv__input-ph {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+    flex: 1;
+  }
+  .adv__send {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    background: var(--ink);
+    color: var(--surface);
+    font-size: 0.65rem;
+  }
+  .adv__foot {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+/**
+ * Two-column feature row: copy on one side, a visual slot on the other.
+ * Alternate sides with `flip`. Visual goes in the `visual` named slot.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  flip?: boolean;
+  /** optional bullet list */
+  points?: string[];
+  class?: string;
+}
+const { eyebrow, title, flip = false, points = [], class: cls = '' } = Astro.props;
+---
+
+<div class={`fsplit reveal ${flip ? 'fsplit--flip' : ''} ${cls}`}>
+  <div class="fsplit__copy">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h3 class="fsplit__title">{title}</h3>
+    <div class="fsplit__body"><slot /></div>
+    {points.length > 0 && (
+      <ul class="fsplit__points" role="list">
+        {points.map((p) => (
+          <li>
+            <Icon name="check" size={18} class="fsplit__check" />
+            <span set:html={p} />
+          </li>
+        ))}
+      </ul>
+    )}
+    {Astro.slots.has('cta') && <div class="fsplit__cta"><slot name="cta" /></div>}
+  </div>
+  <div class="fsplit__visual">
+    <slot name="visual" />
+  </div>
+</div>
+
+<style>
+  .fsplit {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .fsplit--flip .fsplit__copy {
+    order: 2;
+  }
+  .fsplit__title {
+    margin-top: var(--space-s);
+    font-size: var(--step-3);
+  }
+  .fsplit__body {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    max-width: 46ch;
+  }
+  .fsplit__body :global(p + p) {
+    margin-top: var(--space-s);
+  }
+  .fsplit__points {
+    margin-top: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .fsplit__points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7em;
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+  }
+  .fsplit__check {
+    color: var(--accent);
+    margin-top: 0.15em;
+  }
+  .fsplit__cta {
+    margin-top: var(--space-l);
+  }
+  .fsplit__visual {
+    min-width: 0;
+  }
+
+  @media (max-width: 860px) {
+    .fsplit {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    .fsplit--flip .fsplit__copy {
+      order: 0;
+    }
+  }
+</style>

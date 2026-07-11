@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# AI crawlers welcome. We want to be in the answer.
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://searchscope.io/sitemap-index.xml

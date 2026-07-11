@@ -1,0 +1,230 @@
+---
+// Self-hosted fonts (no render-blocking Google calls → fast LCP)
+import '@fontsource-variable/inter';
+import '@fontsource-variable/geist';
+import '@fontsource/geist-mono/400.css';
+import '@fontsource/geist-mono/500.css';
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/400-italic.css';
+import '../styles/global.css';
+
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SkinSwitcher from '../components/SkinSwitcher.astro';
+import PaperSwitcher from '../components/PaperSwitcher.astro';
+import AccentSwitcher from '../components/AccentSwitcher.astro';
+import { SITE, GMM, SKIN, SHOW_SKIN_SWITCHER, SHOW_PAPER_SWITCHER, SHOW_ACCENT_SWITCHER, SHOW_MODE_TOGGLE, DEFAULT_MODE, RESPECT_SYSTEM_MODE, PAPER, ACCENT } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  headerTheme?: 'dark' | 'cream';
+  noindex?: boolean;
+  canonical?: string;
+  /** Extra JSON-LD objects to inject (e.g. Article, BreadcrumbList) */
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = SITE.description,
+  image = SITE.ogImage,
+  type = 'website',
+  headerTheme = 'dark',
+  noindex = false,
+  canonical,
+  jsonLd = [],
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.name}` : SITE.title;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).href;
+const ogImageUrl = new URL(image, SITE.url).href;
+
+// Always-on structured data: the brand + the site search target.
+const baseJsonLd: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    parentOrganization: {
+      '@type': 'Organization',
+      name: GMM.name,
+      url: GMM.url,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+  },
+];
+const allJsonLd = [...baseJsonLd, ...jsonLd];
+---
+
+<!doctype html>
+<html
+  lang="en-GB"
+  class="no-js"
+  data-skin={SKIN === 'dark' ? undefined : SKIN}
+  data-mode={DEFAULT_MODE}
+  data-paper={PAPER || undefined}
+  data-accent={ACCENT || undefined}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content={SITE.themeColor} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content={GMM.name} />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={SITE.locale} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Feeds -->
+    <link rel="alternate" type="application/rss+xml" title="Searchscope, Blog" href="/rss.xml" />
+
+    <!-- Structured data -->
+    {allJsonLd.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
+
+    <!-- Swap no-js → js + resolve light/dark mode, before paint (no flash) -->
+    <script is:inline define:vars={{ defaultMode: DEFAULT_MODE, respectSystem: RESPECT_SYSTEM_MODE, modeToggle: SHOW_MODE_TOGGLE }}>
+      document.documentElement.classList.remove('no-js');
+      try {
+        var mode = defaultMode;
+        if (modeToggle) {
+          // Dark mode enabled: saved choice wins, else optionally follow the OS.
+          var saved = localStorage.getItem('ss-mode');
+          if (saved === 'light' || saved === 'dark') {
+            mode = saved;
+          } else if (
+            respectSystem &&
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          ) {
+            mode = 'dark';
+          }
+        } else {
+          // Dark mode removed: lock to DEFAULT_MODE and clear any saved choice
+          // so an old toggle value can't bring dark back.
+          localStorage.removeItem('ss-mode');
+        }
+        document.documentElement.dataset.mode = mode;
+        // Retired switchers: clear stale saved choices so they can't override.
+        localStorage.removeItem('ss-paper');
+        localStorage.removeItem('ss-accent');
+        localStorage.removeItem('ss-skin');
+      } catch (e) {}
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav theme={headerTheme} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    {SHOW_SKIN_SWITCHER && <SkinSwitcher />}
+    {SHOW_PAPER_SWITCHER && <PaperSwitcher />}
+    {SHOW_ACCENT_SWITCHER && <AccentSwitcher />}
+
+    <!-- Scroll-reveal (IntersectionObserver, respects reduced-motion) -->
+    <script is:inline>
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const els = document.querySelectorAll('.reveal');
+        if (reduce || !('IntersectionObserver' in window)) {
+          els.forEach((el) => el.classList.add('is-in'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
+
+    <!-- Count-up on stat numbers (.cnt[data-n]); respects reduced-motion -->
+    <script is:inline>
+      (() => {
+        const nums = document.querySelectorAll('.cnt[data-n]');
+        if (!nums.length) return;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const fmt = (n) => n.toLocaleString('en-GB');
+        const render = (el, val) => {
+          const suf = el.dataset.suf || '';
+          const pre = el.dataset.pre || '';
+          el.textContent = pre + fmt(val) + suf;
+        };
+        if (reduce || !('IntersectionObserver' in window)) {
+          nums.forEach((el) => render(el, parseInt(el.dataset.n, 10) || 0));
+          return;
+        }
+        const run = (el) => {
+          const target = parseInt(el.dataset.n, 10) || 0;
+          const dur = 1100;
+          const start = performance.now();
+          const tick = (now) => {
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            render(el, Math.round(target * eased));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                run(entry.target);
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.2 }
+        );
+        nums.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

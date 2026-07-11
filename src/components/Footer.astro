@@ -1,0 +1,168 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { NAV_LINKS, GMM, SOCIALS, FORM } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer theme-dark">
+  <div class="container container--wide">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <Logo />
+        <p class="footer__blurb">
+          The search intelligence co-pilot from {GMM.name}. Searchscope reads your
+          whole search picture and surfaces the moves that matter. Our team turns
+          them into growth.
+        </p>
+        <a href="/contact" class="btn footer__cta">
+          Join the pilot programme
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div class="footer__col">
+          <p class="footer__heading">Explore</p>
+          <ul role="list">
+            {NAV_LINKS.map((l) => <li><a href={l.href} class="footer__link">{l.label}</a></li>)}
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__heading">The agency</p>
+          <ul role="list">
+            <li>
+              <a href={GMM.url} class="footer__link footer__link--out" target="_blank" rel="noopener">
+                {GMM.name} ↗
+              </a>
+            </li>
+            <li><a href="/contact" class="footer__link">Work with us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__heading">Connect</p>
+          <ul role="list">
+            <li>
+              <a href={`mailto:${FORM.inbox}`} class="footer__link footer__link--icon" aria-label={`Email ${GMM.name}`}>
+                <Icon name="mail" size={16} /> Email
+              </a>
+            </li>
+            {SOCIALS.map((s) => (
+              <li><a href={s.href} class="footer__link" target="_blank" rel="noopener">{s.label} ↗</a></li>
+            ))}
+            <li><a href="/rss.xml" class="footer__link">RSS feed</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__fine">© {year} Searchscope. Built by practitioners.</p>
+      <p class="footer__fine footer__fine--muted">
+        Searchscope is the intelligence layer behind our work, not a product you buy.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--surface);
+    color: var(--ink);
+    border-top: 1px solid var(--hairline);
+    padding-block: clamp(3rem, 2rem + 4vw, 5rem) var(--space-xl);
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .footer__blurb {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    max-width: 42ch;
+    line-height: 1.55;
+  }
+  .footer__cta {
+    margin-top: var(--space-l);
+  }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+  }
+  .footer__heading {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: var(--space-s);
+  }
+  .footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .footer__link {
+    font-family: var(--font-mono);
+    letter-spacing: 0;
+    color: var(--ink-dim);
+    font-size: var(--step--1);
+    transition: color var(--dur) var(--ease-out);
+  }
+  .footer__link--icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .footer__link:hover {
+    color: var(--ink);
+  }
+  .footer__link--out {
+    color: var(--accent);
+  }
+  .footer__link--out:hover {
+    color: var(--accent-deep);
+  }
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding-top: var(--space-l);
+  }
+  .footer__fine {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+    letter-spacing: 0.01em;
+  }
+  .footer__fine--muted {
+    text-align: right;
+  }
+
+  @media (max-width: 860px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+  @media (max-width: 560px) {
+    .footer__cols {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl) var(--space-l);
+    }
+    .footer__bottom {
+      flex-direction: column;
+    }
+    .footer__fine--muted {
+      text-align: left;
+    }
+  }
+</style>
