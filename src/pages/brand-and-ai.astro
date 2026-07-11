@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+import Ticks from '../components/Ticks.astro';
+import BrandAnswers from '../components/product/BrandAnswers.astro';
+
+const citations = [
+  { q: 'what is a 4-season tent', cited: true, note: 'source 2 of 5' },
+  { q: 'best waterproof hiking boots', cited: false, note: '3 rivals are' },
+  { q: 'northwind outfitters reviews', cited: true, note: 'source 1 of 4' },
+  { q: 'are northwind boots waterproof', cited: false, note: 'answer names no one' },
+];
+---
+
+<BaseLayout
+  title="Brand & AI visibility"
+  description="You can rank first and still lose the answer. Searchscope tracks how AI systems and the press describe your brand, and pairs it with a PR strategist to move the numbers."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Brand & AI visibility"
+    title="You can rank first and still lose the answer."
+    lede="A growing share of buying decisions are settled inside one AI answer or one piece of coverage, on surfaces where your rankings don't exist. And those answers favour brands that get talked about, cited and trusted. Searchscope treats brand as a first-class visibility channel: measured weekly, argued over, and worked on, with a PR strategist attached."
+  />
+
+  <!-- ===== The tracking ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">The tracking</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2 class="big">See how AI assistants describe your brand.</h2>
+          <p>
+            Searchscope interviews the AI engines every week with the questions your buyers actually
+            ask: how they describe you, whether the description is accurate and current, whether
+            you're cited as a source, and who wins the answers you should own. Changes are flagged the
+            week they happen, the way rank trackers used to flag position drops.
+          </p>
+        </div>
+        <div class="finding-wrap ticked" style="margin-top:var(--space-xl)">
+          <Ticks size={16} inset="-13px" />
+          <BrandAnswers
+            sub="12 buyer questions · interviewed weekly"
+            citations={citations}
+            everyoneElse={true}
+            mentions={false}
+            note=""
+          />
+        </div>
+        <div class="points">
+          <span class="lchip">the actual answers AI gives about you</span>
+          <span class="lchip">which sources the AI engines trust and cite</span>
+          <span class="lchip">a prompt library seeded from your clusters</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The PR layer ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">The PR layer</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2 class="big">A PR strategist on the same data.</h2>
+          <p>
+            Seeing the problem isn't the same as moving it, and brand plays a big role in visibility,
+            so the module hands off to a dedicated PR strategist working from the full Brand & AI
+            visibility toolset. It investigates campaigns, drafts the pitches and the embargo lists,
+            and tracks every placement's effect on the answers it was meant to change. Digital PR, run
+            against the same numbers as your SEO, because coverage is how the answers change.
+          </p>
+        </div>
+        <div class="pair">
+          <div>
+            <p class="pairlbl">Campaign investigation</p>
+            <div class="appwin">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">app.searchscope.io/intelligence/advisor</span>
+                <span class="awtab">PR strategist</span>
+              </div>
+              <div class="awbody lchat">
+                <div class="cq">we're launching the 2026 winter range in September. where should the story land?</div>
+                <div class="cpull"><span class="ok">✓</span> audited the 12 AI answers that name the brand</div>
+                <div class="cpull"><span class="ok">✓</span> read 41 press mentions · 90 days</div>
+                <div class="ca">
+                  <b>The answers lean on two outlets you're not in.</b> trailhaven and thehikingguide
+                  sit behind six of the twelve answers, and neither mentions the new range. Land an
+                  exclusive with one of them and the answer to "best waterproof hiking boots" shifts
+                  within weeks. I've drafted the pitch angle, the embargo list, and follow-ups for the
+                  three writers who covered you last year.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="pairlbl">PR activity, followed to the answer</p>
+            <div class="appwin">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">app.searchscope.io/intelligence/brand-ai</span>
+                <span class="awtab">PR &amp; mentions</span>
+              </div>
+              <div class="awbody">
+                <div class="awhead">
+                  <div>
+                    <span class="awtitle">Winter range campaign</span>
+                    <span class="awsub">every placement, followed to the answer</span>
+                  </div>
+                </div>
+                <div class="lprow">
+                  <div class="p-top">
+                    <span class="o">trailhaven.com · exclusive: 2026 winter range first look</span>
+                    <span class="lpst sec">Secured</span>
+                  </div>
+                  <div class="pnote">embargoed to 14 September · target: 6 uncited answers</div>
+                </div>
+                <div class="lprow">
+                  <div class="p-top">
+                    <span class="o">thehikingguide.com · expert comment, choosing a 4-season tent</span>
+                    <span class="lpst pit">Pitched</span>
+                  </div>
+                  <div class="pnote">follow-up due Friday · this writer covered us in 2024</div>
+                </div>
+                <div class="lprow">
+                  <div class="p-top">
+                    <span class="o">outdoorpursuits.co.uk · founder interview</span>
+                    <span class="lpst dec">Declined</span>
+                  </div>
+                  <div class="pnote">re-pitch in October with the range data attached</div>
+                </div>
+                <div class="lml">
+                  <div class="lbl">
+                    <span>Brand mentions · 12 weeks</span>
+                    <span>placements in green</span>
+                  </div>
+                  <div class="lcols">
+                    <i style="height:18px"></i><i style="height:22px"></i><i style="height:14px"></i>
+                    <i style="height:20px"></i><i style="height:16px"></i><i style="height:24px"></i>
+                    <i style="height:20px"></i><i style="height:28px"></i><i class="hit" style="height:44px"></i>
+                    <i style="height:34px"></i><i class="hit" style="height:52px"></i><i style="height:46px"></i>
+                  </div>
+                </div>
+                <p class="awnote">Every placement tracked to the answer it changed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="The other half"
+    title="Find out what the answers say about you."
+    sub="Join the pilot programme and the first interview of the AI engines is on us: your brand, your buyers' questions, the real answers."
+  />
+</BaseLayout>
+
+<style>
+  .finding-wrap {
+    max-width: 760px;
+  }
+</style>
