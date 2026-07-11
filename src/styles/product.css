@@ -230,6 +230,21 @@
 .awcall .p { font-size: 12px; color: var(--ink); }
 .awcall .m { font-size: 8.5px; color: var(--ink-dim); }
 
+/* ── finding badge (static callout for the analyser rows cards) ── */
+.fbadge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.45rem 0.7rem;
+  margin: 0.2rem 0 0.8rem;
+  border: 1px solid color-mix(in oklab, var(--sev-rose-ink) 40%, transparent);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+}
+.fbadge .t { font-size: 8.5px; letter-spacing: 0.1em; color: var(--sev-rose-ink); }
+.fbadge .p { font-size: 12px; color: var(--ink); }
+.fbadge .m { font-size: 8.5px; color: var(--ink-dim); }
+
 /* ── viz: decay trend line ────────────────────────────────── */
 .tr-grid { stroke: rgba(22, 20, 15, 0.08); stroke-width: 1; }
 .tr-demand { fill: none; stroke: rgba(22, 20, 15, 0.32); stroke-width: 1.6; stroke-dasharray: 3 5; }

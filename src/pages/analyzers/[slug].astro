@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABand from '../../components/CTABand.astro';
+import Ticks from '../../components/Ticks.astro';
+import DecayTrend from '../../components/product/DecayTrend.astro';
+import { analyzers } from '../../data/analyzers';
+import { ANALYZERS } from '../../consts';
+
+export function getStaticPaths() {
+  return analyzers.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props;
+---
+
+<BaseLayout
+  title={`${a.name} · The analysers`}
+  description={a.heroLede}
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow={`The analysers · ${a.name.toLowerCase()}`}
+    title={a.heroTitle}
+    lede={a.heroLede}
+  />
+
+  <!-- ===== How Searchscope catches it ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">How Searchscope catches it</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>{a.catchTitle}</h2>
+          <p>{a.catchBody}</p>
+        </div>
+
+        <div class="finding-wrap ticked" style="margin-top:var(--space-xl)">
+          <Ticks size={16} inset="-13px" />
+          {a.viz === 'decay' ? (
+            <DecayTrend
+              url="app.searchscope.io/workspaces/content-decay"
+              sub={a.decaySub}
+              note={a.decayNote}
+            />
+          ) : (
+            <div class="appwin">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">{`app.searchscope.io/workspaces/${a.slug}`}</span>
+                <span class="awtab">{a.cardTab}</span>
+              </div>
+              <div class="awbody">
+                <div class="awhead">
+                  <div>
+                    <span class="awtitle">{a.cardTitle}</span>
+                    <span class="awsub">{a.cardSub}</span>
+                  </div>
+                </div>
+                <div class="fbadge">
+                  <span class="t">{a.badge?.t}</span>
+                  <span class="p">{a.badge?.p}</span>
+                  <span class="m">{a.badge?.m}</span>
+                </div>
+                <div class="findrows">
+                  {a.rows?.map((r) => (
+                    <div class="miniline">
+                      <span class="l">{r.l}</span>
+                      <span class="r" set:html={r.r} />
+                    </div>
+                  ))}
+                </div>
+                <p class="awnote">{a.note}</p>
+                <div class="awstats c3">
+                  {a.stats?.map((s) => (
+                    <div class="awstat">
+                      {s.n ? (
+                        <span class="v cnt" data-n={s.n} data-pre={s.v.startsWith('+') ? '+' : undefined}>{s.v}</span>
+                      ) : (
+                        <span class="v">{s.v}</span>
+                      )}
+                      <span class="l">{s.l}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What the fix looks like ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">What the fix looks like</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>A playbook, not a symptom report.</h2>
+        </div>
+        <ul class="play" role="list">
+          {a.play.map((p, i) => (
+            <li>
+              <span class="pn2">{String(i + 1).padStart(2, '0')}</span>
+              <span><b>{p.b}</b> {p.rest}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div style="margin-top:var(--space-l)">
+          <a href={a.related.href} class="golink">{a.related.label}</a>
+        </div>
+
+        <nav class="points" aria-label="The seven analysers" style="margin-top:var(--space-xl)">
+          {ANALYZERS.map((x) => (
+            <a class={`lchip ${x.slug === a.slug ? 'on' : ''}`} href={`/analyzers/${x.slug}`}>{x.name}</a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="See it on your site"
+    title="Point it at your own pages."
+    sub="Join the pilot programme and we'll show you what the analysers surface on your site, scored and with the fix drafted."
+  />
+</BaseLayout>
+
+<style>
+  .finding-wrap {
+    max-width: 760px;
+  }
+  .findrows {
+    margin-top: 0.2rem;
+  }
+</style>
