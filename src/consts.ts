@@ -110,7 +110,7 @@ export const BLOG_TAGS = [
   'Algorithm Updates',
   'Search Systems',
   'AI Search',
-  'GSC / Data',
+  'Search data',
   'Experiments',
   'Agency',
 ] as const;

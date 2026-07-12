@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { BLOG_TAGS } from './consts';
 
 /**
- * Field Notes — the blog. Markdown files in src/content/blog/.
+ * Field Notes - the blog. Markdown files in src/content/blog/.
  * Add a post = drop in a new .md file with this frontmatter.
  */
 const blog = defineCollection({

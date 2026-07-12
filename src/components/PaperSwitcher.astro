@@ -1,6 +1,6 @@
 ---
 /**
- * Light-mode "paper" tester — flips <html data-paper> live so you can
+ * Light-mode "paper" tester - flips <html data-paper> live so you can
  * compare background options. Only relevant in light mode (hidden in dark).
  * Remove by setting SHOW_PAPER_SWITCHER = false in src/consts.ts.
  */
@@ -40,7 +40,7 @@ const options = [
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     font-family: var(--font-mono);
   }
-  /* paper only affects light mode — hide the control in dark */
+  /* paper only affects light mode - hide the control in dark */
   :global(html[data-mode='dark']) .paper-sw {
     display: none;
   }

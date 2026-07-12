@@ -1,5 +1,5 @@
 /* ============================================================
-   Searchscope — Product-card layer
+   Searchscope - Product-card layer
    Every product moment reuses the live hero card's anatomy:
    browser chrome, a light surface, severity colours ONLY in the
    data (emerald / rose / amber / flat grey), mono captions and
@@ -493,7 +493,7 @@
 .pq .cite { display: block; margin-top: 1rem; font-family: var(--font-mono); font-size: var(--step--2); font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); }
 
 /* ══════════════════════════════════════════════════════════
-   THE ONE DARK OBJECT PER PAGE — telemetry terminal.
+   THE ONE DARK OBJECT PER PAGE - telemetry terminal.
    Hardcoded warm-near-black so it stays dark in any mode.
    ══════════════════════════════════════════════════════════ */
 .obj {

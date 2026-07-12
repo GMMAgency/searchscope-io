@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
-import { NAV_LINKS, GMM, SOCIALS, FORM } from '../consts';
+import { NAV_LINKS, GMM, SOCIALS, FORM, ANALYZERS } from '../consts';
 const year = new Date().getFullYear();
 ---
 
@@ -26,6 +26,14 @@ const year = new Date().getFullYear();
           <p class="footer__heading">Explore</p>
           <ul role="list">
             {NAV_LINKS.map((l) => <li><a href={l.href} class="footer__link">{l.label}</a></li>)}
+            <li><a href="/brand-and-ai" class="footer__link">Brand &amp; AI visibility</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__heading">The analysers</p>
+          <ul role="list">
+            {ANALYZERS.map((a) => <li><a href={`/analyzers/${a.slug}`} class="footer__link">{a.name}</a></li>)}
           </ul>
         </div>
 
@@ -79,8 +87,8 @@ const year = new Date().getFullYear();
   }
   .footer__top {
     display: grid;
-    grid-template-columns: 1.3fr 2fr;
-    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: 1fr 2.6fr;
+    gap: clamp(2rem, 4vw, 4rem);
     padding-bottom: var(--space-2xl);
     border-bottom: 1px solid var(--hairline);
   }
@@ -96,7 +104,7 @@ const year = new Date().getFullYear();
   }
   .footer__cols {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-l);
   }
   .footer__heading {

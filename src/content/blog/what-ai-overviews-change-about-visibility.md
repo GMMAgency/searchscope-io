@@ -4,7 +4,7 @@ description: You can rank #1 and lose the click. You can be absent from the ten 
 pubDate: 2026-06-12
 author: Ray
 tags: ['AI Search']
-draft: true
+draft: false
 ---
 
 For as long as anyone reading this has done SEO, the scoreboard was rankings. Position one was the prize. Everything (audits, content, links) pointed at moving up the page.
@@ -47,3 +47,5 @@ A few practical moves we're making on client sites right now:
 The uncomfortable part is that none of this is a one-off. The results page is being rewritten continuously, which means visibility has to be *read* continuously, exactly the kind of always-on synthesis the [search-operating-system model](/blog/seo-is-now-an-operating-system) is built for.
 
 Rankings aren't dead. They're just no longer the scoreboard. The scoreboard is the answer, and whether you're in it.
+
+This is the whole of [Brand & AI visibility](/brand-and-ai): tracking how the answers describe you, and the PR to move them.

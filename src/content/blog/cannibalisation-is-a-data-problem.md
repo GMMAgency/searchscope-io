@@ -3,8 +3,8 @@ title: Cannibalisation is a data problem
 description: Most cannibalisation advice is just vibes (merge the pages that feel similar). But it's visible in the data, page by page, query by query. Here's how to actually find it.
 pubDate: 2026-06-04
 author: Ray
-tags: ['GSC / Data']
-draft: true
+tags: ['Search data']
+draft: false
 ---
 
 Keyword cannibalisation gets talked about like a content-strategy opinion: these two pages *feel* similar, so maybe merge them. That's how you end up consolidating pages that were fine and missing the ones quietly bleeding you.
@@ -21,7 +21,7 @@ The tell isn't "these pages are about the same topic." It's:
 - positions that wobble as Google alternates between them, and
 - a combined CTR lower than a single consolidated page would earn.
 
-## Reading it from GSC
+## Reading it from your search data
 
 You can see this in the Search Console performance export if you pull query **and** page together. Group by query, then look for queries mapping to more than one URL with meaningful impressions on each:
 
@@ -52,3 +52,5 @@ Once you've found a real instance, you have three options, and the right one dep
 - **Leave it** when both URLs legitimately deserve to rank (brand queries, for example).
 
 Cannibalisation is a data problem with a decision at the end. Find it in the data, then decide with your head, not by eyeballing which pages *feel* like duplicates.
+
+See it in the product: [how Searchscope catches cannibalisation](/analyzers/cannibalisation), scored, with the consolidation drafted.

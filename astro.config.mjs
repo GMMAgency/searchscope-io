@@ -10,8 +10,8 @@ export default defineConfig({
   site: SITE,
   integrations: [
     sitemap({
-      // 404 is the only non-content route to keep out of the sitemap
-      filter: (page) => !page.includes('/404'),
+      // Keep non-content and noindex routes out of the sitemap
+      filter: (page) => !page.includes('/404') && !page.includes('/privacy'),
     }),
   ],
   build: {

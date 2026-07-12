@@ -1,5 +1,5 @@
 /* ============================================================
-   Searchscope — Design Tokens
+   Searchscope - Design Tokens
    Locked decisions (Instrument, light-mode primary):
    - Accent: MONOCHROME. Near-black ink on paper; CTAs invert
      (white-on-dark / black-on-light). Colour lives only in
@@ -11,7 +11,7 @@
    ============================================================ */
 
 :root {
-  /* ---- Brand accent — MONOCHROME. This (dark-mode) value is the light ink;
+  /* ---- Brand accent - MONOCHROME. This (dark-mode) value is the light ink;
      light mode overrides to near-black below. CTAs invert (white-on-dark /
      black-on-light). Colour lives only in product data (rose/amber/emerald
      severity). ---- */
@@ -39,7 +39,7 @@
   --cream-ink-dim: rgba(22, 20, 15, 0.66);
   --cream-ink-faint: rgba(22, 20, 15, 0.42);
 
-  /* ---- Data colours — the ONLY colour on the site, matched to the real
+  /* ---- Data colours - the ONLY colour on the site, matched to the real
      app: green = rising / up / good, rose = falling / down / critical,
      amber = weak / warning, blue = brand / impressions, grey = flat. ---- */
   --sev-rose: #fb7185;
@@ -48,7 +48,7 @@
   --sev-blue: #60a5fa;
   --sev-flat: #9aa0a6;
 
-  /* Light-legible severity inks — the same signals tuned to read on the
+  /* Light-legible severity inks - the same signals tuned to read on the
      white product cards (the bright --sev-* above are for the dark
      telemetry object). Used across the product-card layer. */
   --sev-rose-ink: #e11d48;
@@ -66,7 +66,7 @@
      them globally (light/lighter weights, or the monospace "code" look). */
   --font-heading: var(--font-display);
   --wt-heading: 600;
-  --wt-heading-strong: 600; /* airier than 700 — refined Mistral-like display */
+  --wt-heading-strong: 600; /* airier than 700 - refined Mistral-like display */
   /* editorial accent (pull-quotes, decks). Mono skin remaps it to the
      code font so nothing reverts to a serif that breaks the look. */
   --font-accent: var(--font-serif);
@@ -127,7 +127,7 @@
 }
 
 /* ============================================================
-   Theme contexts — set per <section>. Components read the
+   Theme contexts - set per <section>. Components read the
    neutral aliases below (--surface / --ink / …) so the same
    markup adapts to warm-dark or warm-cream automatically.
    ============================================================ */
@@ -167,7 +167,7 @@
    compose freely: mono headings work on either palette.
    ============================================================ */
 
-/* Page backdrop (overscroll areas) — matches the active mode */
+/* Page backdrop (overscroll areas) - matches the active mode */
 html {
   background: #f7f6f2;
 }
@@ -176,8 +176,8 @@ html[data-mode='dark'] {
 }
 
 /* ============================================================
-   LIGHT MODE — the whole site goes light.
-   DEFAULT light "paper" = soft off-white (clean, barely warm —
+   LIGHT MODE - the whole site goes light.
+   DEFAULT light "paper" = soft off-white (clean, barely warm -
    moved away from the old beige cream). Alternative papers are
    testable via <html data-paper="white|warm|cream"> (set PAPER
    in src/consts.ts). Accent + ink are shared across papers.
@@ -281,7 +281,7 @@ html[data-mode='light'][data-paper='cream'] .theme-cream {
   --ink: #16140f;
 }
 
-/* ---- DARK MODE — the whole site goes dark (editorial too) ---- */
+/* ---- DARK MODE - the whole site goes dark (editorial too) ---- */
 /* .theme-dark already resolves to warm near-black via the root defaults;
    only the former-cream editorial sections need a dark surface. */
 html[data-mode='dark'] .theme-cream {
@@ -298,7 +298,7 @@ html[data-mode='dark'] .theme-cream {
 /* dark mode keeps the bright mint accent (root default #40DE9E) */
 
 /* ============================================================
-   ACCENT presets — testable via <html data-accent="…"> (set
+   ACCENT presets - testable via <html data-accent="…"> (set
    ACCENT in src/consts.ts). Default (no attribute) = signal-green.
    Each preset defines a bright dark-mode value and a deeper,
    text-legible light-mode value. Severity (rose/amber/emerald)
@@ -355,7 +355,7 @@ html[data-mode='light'][data-accent='coral'] {
 }
 
 /* ============================================================
-   SKIN: mono — the "code" heading look (palette-independent)
+   SKIN: mono - the "code" heading look (palette-independent)
    ============================================================ */
 html[data-skin='mono'] {
   --font-heading: var(--font-mono);
@@ -363,7 +363,7 @@ html[data-skin='mono'] {
   --wt-heading: 500;
   --wt-heading-strong: 500;
   --ls-heading: -0.03em;
-  /* monospace is wider — trim the big display sizes */
+  /* monospace is wider - trim the big display sizes */
   --step-6: clamp(2.3rem, 1.7rem + 3vw, 3.9rem);
   --step-5: clamp(2rem, 1.6rem + 2.2vw, 3.15rem);
   --step-4: clamp(1.7rem, 1.4rem + 1.5vw, 2.6rem);
@@ -371,12 +371,12 @@ html[data-skin='mono'] {
 html[data-skin='mono'] h1 {
   letter-spacing: -0.04em;
 }
-/* the home hero title uses a literal clamp — trim it for monospace */
+/* the home hero title uses a literal clamp - trim it for monospace */
 html[data-skin='mono'] .hero__title {
   font-size: clamp(2rem, 1.5rem + 3vw, 3.5rem) !important;
 }
 
-/* ---- SKIN: paper — light grotesque (optional, non-default) ---- */
+/* ---- SKIN: paper - light grotesque (optional, non-default) ---- */
 html[data-skin='paper'] {
   --wt-heading: 500;
   --wt-heading-strong: 600;
