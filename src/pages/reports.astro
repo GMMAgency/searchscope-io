@@ -1,0 +1,681 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// /reports · the reporting layer, ported from the approved interactive
+// composer concept. Repo BaseLayout (nav, footer, fonts, count-up),
+// repo tokens; the composer is the interactive centrepiece.
+---
+
+<BaseLayout
+  title="Reports"
+  description="One report from your live search data, composed for whoever opens it: the board gets the decision, the marketing team gets the levers, the technical team gets the detail. Send it as a PDF, a slide deck or a workbook."
+  headerTheme="dark"
+>
+  <div class="reports">
+    <div class="wrap">
+      <!-- hero + composer, on the grid field -->
+      <div class="rp-field">
+        <div class="rp-hero">
+          <span class="eb">Reporting</span>
+          <h1>The report writes itself. You just decide who reads it.</h1>
+          <div class="rp-alts">
+            <span class="rp-alt"><span class="k">or ·</span> Every finding, told the way each stakeholder needs to hear it.</span>
+            <span class="rp-alt"><span class="k">or ·</span> The read, reshaped for whoever opens it.</span>
+          </div>
+          <p class="hsub">Compose a report from your live search data whenever you need one. Pick who's reading and it reshapes itself: <strong>the board gets the headline and the decision, the marketing team gets the levers, the technical team gets the issue detail.</strong> One click sends it as a PDF, a slide deck or a workbook.</p>
+          <div class="ctas">
+            <a class="cta solid" href="/contact">Join the pilot programme →</a>
+            <a class="cta ghost" href="#composer">Try the composer ↓</a>
+          </div>
+        </div>
+
+        <div class="rp-stagewrap" id="composer">
+          <div class="ticked">
+            <span class="tks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <div class="appwin" id="rpApp">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">app.searchscope.io/reporting</span>
+                <span class="awtab">Report composer</span>
+              </div>
+              <div class="rp-comp">
+                <!-- control rail -->
+                <div class="rp-rail">
+                  <div class="rp-lbl">Audience</div>
+                  <div class="rp-aud" id="rpAud">
+                    <button type="button" data-aud="client">Your client</button>
+                    <button type="button" data-aud="exec">Executives</button>
+                    <button type="button" data-aud="marketing">Marketing</button>
+                    <button type="button" data-aud="technical">Technical</button>
+                  </div>
+
+                  <div class="rp-lbl mt">Sections <span id="rpCount"></span></div>
+                  <div class="rp-secs" id="rpTogs"></div>
+
+                  <div class="rp-lbl mt">Export</div>
+                  <div class="rp-ex" id="rpEx">
+                    <button type="button" data-ex="pdf">PDF <span class="k">.pdf</span></button>
+                    <button type="button" data-ex="deck">Slide deck <span class="k">.pptx</span></button>
+                    <button type="button" data-ex="book">Workbook <span class="k">.xlsx</span></button>
+                  </div>
+                  <div class="rp-exmsg" id="rpExMsg"></div>
+
+                  <button type="button" class="rp-regen" id="rpRegen">↻ Regenerate</button>
+
+                  <div class="rp-lbl mt">Recent reports</div>
+                  <div class="rp-rec"><span>Weekly intelligence</span><span class="rt">w/c 30 Jun</span></div>
+                  <div class="rp-rec"><span>Weekly intelligence</span><span class="rt">w/c 23 Jun</span></div>
+                  <div class="rp-rec"><span>Monthly review</span><span class="rt">w/c 02 Jun</span></div>
+                </div>
+
+                <!-- paper preview -->
+                <div class="rp-stage">
+                  <div class="rp-paper">
+                    <div class="rp-mast">
+                      <div class="ml">
+                        <span class="tt">Weekly intelligence</span>
+                        <span class="ts">Northwind Outfitters · w/c 6 July 2026</span>
+                      </div>
+                      <div class="mr">Prepared for<br /><b id="rpFor">Your client</b><br />by Searchscope</div>
+                    </div>
+                    <div class="rp-status" id="rpStatus"><span class="d"></span><span class="t">ready to compose</span></div>
+                    <div class="rp-strap" id="rpStrap"></div>
+                    <div class="rp-secwrap" id="rpSecs"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="objcap">Client-ready reports that write themselves. Choose the reader; the page rewrites, section by section.</p>
+
+          <div class="statrow">
+            <div class="stat"><span class="sv cnt" data-n="4">4</span><span class="sl">readers, one report</span></div>
+            <div class="stat"><span class="sv cnt" data-n="3">3</span><span class="sl">export formats</span></div>
+            <div class="stat"><span class="sv cnt" data-n="8">8</span><span class="sl">composable sections</span></div>
+            <div class="stat"><span class="sv cnt" data-n="0">0</span><span class="sl">logins to read it</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- who it's for -->
+      <div class="creamsec rv">
+        <div class="sechead center">
+          <span class="eb">Who it's for</span>
+          <h2>The person who signs off never logs in.</h2>
+          <p style="margin-inline:auto;max-width:58ch">One composed report, forwarded cold, still lands. Each reader gets the version written for them, and nothing about it looks generated.</p>
+        </div>
+        <div class="probs">
+          <div class="prob">
+            <span class="pn">Your client</span>
+            <h3>The wins, in plain English</h3>
+            <p>What moved, what you shipped and what's next. No jargon, and no dashboard to learn before the good news lands.</p>
+          </div>
+          <div class="prob">
+            <span class="pn">The board</span>
+            <h3>Two numbers and a decision</h3>
+            <p>The summary is tight enough to read in the meeting it's forwarded to, with the one risk that actually needs a call.</p>
+          </div>
+          <div class="prob">
+            <span class="pn">The team</span>
+            <h3>Issue-level detail, logged</h3>
+            <p>Every fix applied, every opportunity ranked, the briefs attached. Enough to act on before the next standup.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pq rv">
+        Proof the work moved the needle, in the language your stakeholders already speak.
+        <span class="cite">The read, on demand</span>
+      </div>
+
+      <!-- export / formats -->
+      <div class="mv rv">
+        <div class="two">
+          <div class="sechead">
+            <span class="eb">One click out</span>
+            <h2>One report, three ways to send it.</h2>
+            <p>The same composed report leaves as whatever the moment needs. A doc to forward, a slide deck to present, a workbook with every finding to sort and filter. One click, no copy-paste and no reformatting.</p>
+          </div>
+          <div class="ticked">
+            <span class="tks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <div class="rp-formats">
+              <div class="rp-fmt"><span class="ext">.pdf</span><div><span class="fn">Portable document</span><span class="fd">The report, ready to forward</span></div><span class="fc">1 click →</span></div>
+              <div class="rp-fmt"><span class="ext">.pptx</span><div><span class="fn">Slide deck</span><span class="fd">The five slides that matter</span></div><span class="fc">1 click →</span></div>
+              <div class="rp-fmt"><span class="ext">.xlsx</span><div><span class="fn">Workbook</span><span class="fd">Every finding, filterable</span></div><span class="fc">1 click →</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="objcap" style="text-align:left;margin-top:22px">One click to PDF or a slide deck. The workbook carries every finding the report summarises.</p>
+      </div>
+
+      <!-- cta band -->
+      <div class="ctaband rv">
+        <span class="eb">Work with us</span>
+        <h2>See what your next report could look like.</h2>
+        <p>A real strategist points Searchscope at your own site and shows you the first report it composes. No pitch deck, no obligation, just the page your stakeholders would actually read.</p>
+        <div class="ctas">
+          <a class="cta solid" href="/contact">Join the pilot programme</a>
+          <a class="cta ghost" href="/platform">See the platform</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* ══════════════════════════════════════════════════════════════
+     /reports · a member of the site's light Instrument system.
+     Ported from the approved composer concept; namespaced under
+     .reports so its generic class names (.appwin, .two, .prob, .pq,
+     .sechead …) never collide with the site's globals, and so the
+     JS-built composer nodes are styled too. Fonts route to the repo
+     tokens; colours are the same light Instrument palette.
+     ══════════════════════════════════════════════════════════════ */
+  .reports {
+    --bg: #fbfbfb; --surface: #ffffff; --surface-2: #f1f1f0;
+    --border: rgba(22, 20, 15, 0.11); --ink: #16150f;
+    --dim: rgba(22, 20, 15, 0.62); --faint: rgba(22, 20, 15, 0.42);
+    --tick: rgba(22, 20, 15, 0.34);
+    --cream: #f7f4ee; --cream-2: #efeadf; --paper: #fdfcf8;
+    --emerald: #15937A; --rose: #E11D48; --amber: #B45309; --blue: #2563eb;
+    /* fonts routed to the repo tokens (no inlined base64 webfonts) */
+    --font-ui: var(--font-display);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    padding: 8px 24px 72px;
+  }
+  .reports .wrap { max-width: 1060px; margin: 0 auto; }
+  /* never leave content hidden if JS is off */
+  html.no-js .reports .rv { opacity: 1; transform: none; }
+
+  .reports .eb { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); display: inline-flex; align-items: center; gap: 10px; }
+  .reports .eb::before { content: ''; width: 22px; height: 1px; background: currentColor; opacity: 0.6; }
+  .reports .rp-field { position: relative; }
+  .reports .rp-field::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(to right, rgba(22,20,15,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(22,20,15,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(118% 74% at 50% 2%, #000 52%, transparent 92%);
+  mask-image: radial-gradient(118% 74% at 50% 2%, #000 52%, transparent 92%); }
+  .reports .rp-field > * { position: relative; z-index: 1; }
+  .reports .ticked { position: relative; }
+  .reports .tks { position: absolute; inset: -13px; pointer-events: none; color: var(--tick); }
+  .reports .tks i { position: absolute; width: 16px; height: 16px; border: 0 solid currentColor; }
+  .reports .tks i:nth-child(1) { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
+  .reports .tks i:nth-child(2) { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
+  .reports .tks i:nth-child(3) { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+  .reports .tks i:nth-child(4) { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+  .reports .rp-hero { text-align: center; padding: 64px 24px 38px; }
+  .reports .rp-hero .eb { justify-content: center; }
+  .reports .rp-hero h1 { font-size: 41px; line-height: 1.06; letter-spacing: -0.032em; font-weight: 580; margin: 16px auto 0; max-width: 19ch; }
+  .reports .rp-alts { margin: 16px auto 0; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .reports .rp-alt { font-family: var(--font-mono); font-size: 11px; color: var(--faint); letter-spacing: 0.005em; }
+  .reports .rp-alt .k { color: var(--tick); }
+  .reports .rp-hero .hsub { color: var(--dim); font-size: 15px; line-height: 1.64; max-width: 58ch; margin: 22px auto 24px; }
+  .reports .rp-hero .hsub strong { color: var(--ink); font-weight: 560; }
+  .reports .ctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .reports .cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; text-decoration: none; cursor: pointer; border: 1px solid transparent; }
+  .reports .cta.solid { background: var(--ink); color: #fff; }
+  .reports .cta.ghost { border-color: var(--border); color: var(--ink); }
+  .reports .rp-stagewrap { padding: 8px 0 6px; }
+  .reports .appwin { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); overflow: hidden; box-shadow: 0 1px 2px rgba(22,20,15,0.04), 0 22px 60px -30px rgba(22,20,15,0.28); }
+  .reports .awbar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: #f7f7f5; }
+  .reports .awdots { display: inline-flex; gap: 6px; }
+  .reports .awdots i { width: 8px; height: 8px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); display: block; }
+  .reports .awurl { font-family: var(--font-mono); font-size: 10.5px; color: var(--faint); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .reports .awtab { margin-left: auto; font-family: var(--font-mono); font-size: 10px; color: var(--ink); padding: 3px 10px; border-radius: 999px; background: var(--surface-2); white-space: nowrap; }
+  .reports .rp-comp { display: grid; grid-template-columns: 246px minmax(0, 1fr); }
+  .reports .rp-rail { padding: 18px 18px 22px; border-right: 1px solid var(--border); background: var(--surface); }
+  .reports .rp-stage { padding: 22px; background: var(--surface-2); }
+  .reports .rp-lbl { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin: 0 0 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .reports .rp-lbl.mt { margin-top: 22px; }
+  .reports .rp-aud { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .reports .rp-aud button { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.01em; text-align: left; padding: 9px 11px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); color: var(--dim); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .reports .rp-aud button:hover { border-color: rgba(22,20,15,0.28); color: var(--ink); }
+  .reports .rp-aud button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .reports .rp-secs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .reports .rp-tog { font-family: var(--font-mono); font-size: 10px; padding: 5px 10px 5px 9px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); color: var(--faint); cursor: pointer; user-select: none; transition: color 0.2s, border-color 0.2s, background 0.2s; display: inline-flex; align-items: center; }
+  .reports .rp-tog::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; display: inline-block; margin-right: 6px; opacity: 0.45; }
+  .reports .rp-tog:hover { color: var(--ink); border-color: rgba(22,20,15,0.24); }
+  .reports .rp-tog.on { color: var(--ink); border-color: rgba(22,20,15,0.32); background: var(--surface); }
+  .reports .rp-tog.on::before { background: var(--emerald); opacity: 1; }
+  .reports .rp-ex { display: flex; flex-direction: column; gap: 6px; }
+  .reports .rp-ex button { font-family: var(--font-mono); font-size: 10.5px; text-align: left; padding: 9px 11px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; transition: border-color 0.2s, color 0.2s; }
+  .reports .rp-ex button:hover { border-color: rgba(22,20,15,0.3); }
+  .reports .rp-ex button .k { color: var(--faint); font-size: 9px; letter-spacing: 0.04em; }
+  .reports .rp-ex button.done { border-color: var(--emerald); color: var(--emerald); }
+  .reports .rp-ex button.done .k { color: var(--emerald); }
+  .reports .rp-exmsg { margin-top: 10px; font-family: var(--font-mono); font-size: 10px; line-height: 1.4; color: var(--emerald); min-height: 14px; opacity: 0; transform: translateY(3px); transition: opacity 0.35s, transform 0.35s; }
+  .reports .rp-exmsg.show { opacity: 1; transform: none; }
+  .reports .rp-regen { margin-top: 16px; width: 100%; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.05em; padding: 10px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); color: var(--ink); cursor: pointer; transition: border-color 0.2s; }
+  .reports .rp-regen:hover { border-color: rgba(22,20,15,0.3); }
+  .reports .rp-rec { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 10.5px; color: var(--dim); }
+  .reports .rp-rec:last-child { border-bottom: none; }
+  .reports .rp-rec .rt { color: var(--faint); font-size: 9px; white-space: nowrap; }
+  .reports .rp-paper { background: var(--paper); border: 1px solid rgba(22,20,15,0.1); border-radius: 6px; padding: 26px 30px 30px; max-width: 620px; margin: 0 auto; box-shadow: 0 1px 2px rgba(22,20,15,0.05), 0 14px 34px -18px rgba(22,20,15,0.22); }
+  .reports .rp-mast { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 13px; }
+  .reports .rp-mast .ml .tt { font-size: 17px; font-weight: 575; letter-spacing: -0.02em; }
+  .reports .rp-mast .ml .ts { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin-top: 4px; display: block; }
+  .reports .rp-mast .mr { text-align: right; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); line-height: 1.7; }
+  .reports .rp-mast .mr b { color: var(--ink); font-weight: 500; }
+  .reports .rp-status { display: flex; align-items: center; gap: 8px; margin: 14px 0 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; color: var(--dim); }
+  .reports .rp-status .d { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); flex: none; }
+  .reports .rp-status.busy .d { background: var(--blue); animation: rp-pulse 1s ease-in-out infinite; }
+  @keyframes rp-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+  .reports .rp-strap { font-size: 12.8px; line-height: 1.55; color: var(--ink); font-weight: 500; border-left: 2px solid var(--ink); padding-left: 13px; margin: 13px 0 2px; }
+  .reports .rp-secwrap {  }
+  .reports .rp-sec { border-top: 1px solid var(--border); padding-top: 15px; margin-top: 17px; opacity: 0; transform: translateY(11px); transition: opacity 0.5s cubic-bezier(0.2,0.7,0.2,1), transform 0.5s cubic-bezier(0.2,0.7,0.2,1), margin 0.35s ease, padding 0.35s ease; overflow: hidden; }
+  .reports .rp-sec.in { opacity: 1; transform: none; }
+  .reports .rp-sec.out { opacity: 0; transform: translateY(-4px); margin-top: 0; padding-top: 0; max-height: 0; }
+  .reports .rp-sec-h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .reports .rp-kick { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+  .reports .rp-flag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; color: var(--emerald); opacity: 0; }
+  .reports .rp-flag.done { animation: rp-flag 1.5s 0.1s forwards; }
+  @keyframes rp-flag { 0% { opacity: 0; } 22% { opacity: 1; } 72% { opacity: 1; } 100% { opacity: 0; } }
+  .reports .rp-p { font-size: 12.4px; line-height: 1.62; color: var(--dim); margin: 0; }
+  .reports .rp-p b { color: var(--ink); font-weight: 560; }
+  .reports .rp-note { font-family: var(--font-mono); font-size: 9.5px; color: var(--faint); margin: 9px 0 0; line-height: 1.5; }
+  .reports .rp-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 2px 0 10px; }
+  .reports .rp-kpi { border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; background: #fff; }
+  .reports .rp-kpi .kl { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
+  .reports .rp-kpi .kv { font-family: var(--font-mono); font-size: 16px; letter-spacing: -0.02em; margin-top: 5px; font-variant-numeric: tabular-nums; }
+  .reports .rp-kpi .kd { font-family: var(--font-mono); font-size: 9.5px; margin-top: 3px; }
+  .reports .rp-kpi .kd.up { color: var(--emerald); }
+  .reports .rp-kpi .kd.down { color: var(--rose); }
+  .reports .rp-list { margin: 2px 0 0; padding: 0; list-style: none; }
+  .reports .rp-list li { display: flex; gap: 9px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12.2px; color: var(--dim); line-height: 1.5; }
+  .reports .rp-list li:last-child { border-bottom: none; }
+  .reports .rp-list .ok { color: var(--emerald); font-family: var(--font-mono); font-size: 11px; flex: none; }
+  .reports .rp-list.mono li { font-family: var(--font-mono); font-size: 11px; }
+  .reports .rp-list .dd { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex: none; }
+  .reports .rp-list .dd.rose { background: var(--rose); }
+  .reports .rp-list .dd.amber { background: var(--amber); }
+  .reports .rp-list b { color: var(--ink); font-weight: 555; }
+  .reports .rp-share { margin: 2px 0 0; }
+  .reports .rp-shrow { display: grid; grid-template-columns: 110px minmax(0, 1fr) 34px; gap: 10px; align-items: center; padding: 5px 0; }
+  .reports .rp-shrow .n { font-family: var(--font-mono); font-size: 10.5px; color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .reports .rp-shrow .n.you { color: var(--ink); font-weight: 500; }
+  .reports .rp-track { height: 7px; border-radius: 4px; background: var(--surface-2); position: relative; overflow: hidden; }
+  .reports .rp-track i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: rgba(22,20,15,0.26); display: block; }
+  .reports .rp-track i.you { background: var(--ink); }
+  .reports .rp-shrow .v { font-family: var(--font-mono); font-size: 10.5px; color: var(--dim); text-align: right; font-variant-numeric: tabular-nums; }
+  .reports .rp-quote { margin-top: 11px; border: 1px solid var(--border); border-radius: 9px; background: #fff; padding: 11px 13px; }
+  .reports .rp-quote .src { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); }
+  .reports .rp-quote p { margin: 7px 0 0; font-size: 12px; line-height: 1.6; color: var(--dim); }
+  .reports .rp-quote p b { color: var(--ink); font-weight: 560; }
+  .reports .rp-quote .verdict { margin-top: 9px; font-family: var(--font-mono); font-size: 10px; color: var(--amber); line-height: 1.5; }
+  .reports .rp-opp { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--border); }
+  .reports .rp-opp:last-of-type { border-bottom: none; }
+  .reports .rp-opp .q { font-size: 12.2px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .reports .rp-opp .pos { font-family: var(--font-mono); font-size: 10.5px; color: var(--dim); white-space: nowrap; }
+  .reports .rp-opp .gain { font-family: var(--font-mono); font-size: 10.5px; color: var(--emerald); white-space: nowrap; }
+  .reports .rp-plan { margin: 2px 0 0; padding: 0; list-style: none; }
+  .reports .rp-plan li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 12.2px; color: var(--dim); line-height: 1.5; }
+  .reports .rp-plan li:last-child { border-bottom: none; }
+  .reports .rp-plan .pn { font-family: var(--font-mono); font-size: 10px; color: var(--tick); padding-top: 2px; }
+  .reports .rp-plan b { color: var(--ink); font-weight: 555; }
+  .reports .objcap { margin: 16px 0 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; color: var(--faint); text-align: center; }
+  .reports .statrow { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 46px; margin: 34px 0 0; }
+  .reports .stat { text-align: center; }
+  .reports .stat .sv { font-family: var(--font-mono); font-size: 24px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; display: block; }
+  .reports .stat .sl { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--faint); margin-top: 6px; display: block; }
+  .reports .mv { margin-top: 96px; }
+  .reports .sechead { max-width: 62ch; }
+  .reports .sechead.center { margin-inline: auto; text-align: center; }
+  .reports .sechead.center .eb { justify-content: center; }
+  .reports .sechead h2 { font-size: 26px; font-weight: 570; letter-spacing: -0.022em; line-height: 1.16; margin: 14px 0 10px; }
+  .reports .sechead p { color: var(--dim); font-size: 14px; line-height: 1.68; margin: 0; }
+  .reports .creamsec { background: var(--cream); border-radius: 18px; padding: 54px 44px; margin-top: 96px; }
+  .reports .probs { margin-top: 34px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .reports .prob { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 18px 18px 16px; }
+  .reports .prob .pn { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--faint); }
+  .reports .prob h3 { margin: 9px 0 6px; font-size: 15.5px; font-weight: 565; letter-spacing: -0.015em; }
+  .reports .prob p { margin: 0; font-size: 12.8px; line-height: 1.6; color: var(--dim); }
+  .reports .pq { margin: 84px auto 0; max-width: 42ch; text-align: center; font-size: 23px; line-height: 1.42; letter-spacing: -0.02em; font-weight: 545; }
+  .reports .pq .cite { display: block; margin-top: 16px; font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--faint); }
+  .reports .two { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 46px; align-items: center; margin-top: 30px; }
+  .reports .two .sechead h2 { font-size: 23px; }
+  .reports .rp-formats { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; }
+  .reports .rp-fmt { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 17px 18px; border-bottom: 1px solid var(--border); }
+  .reports .rp-fmt:last-child { border-bottom: none; }
+  .reports .rp-fmt .ext { font-family: var(--font-mono); font-size: 10px; color: var(--ink); border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; white-space: nowrap; }
+  .reports .rp-fmt .fn { font-size: 14px; font-weight: 560; letter-spacing: -0.012em; }
+  .reports .rp-fmt .fd { font-family: var(--font-mono); font-size: 10px; color: var(--faint); margin-top: 2px; display: block; }
+  .reports .rp-fmt .fc { font-family: var(--font-mono); font-size: 10px; color: var(--tick); white-space: nowrap; }
+  .reports .ctaband { background: var(--ink); color: #fff; border-radius: 18px; padding: 50px 46px; margin-top: 96px; }
+  .reports .ctaband .eb { color: rgba(255,255,255,0.5); }
+  .reports .ctaband h2 { font-size: 27px; font-weight: 570; letter-spacing: -0.024em; margin: 14px 0 8px; }
+  .reports .ctaband p { color: rgba(255,255,255,0.66); font-size: 13.5px; line-height: 1.6; max-width: 54ch; margin: 0 0 22px; }
+  .reports .ctaband .cta.solid { background: #fff; color: var(--ink); }
+  .reports .ctaband .cta.ghost { border-color: rgba(255,255,255,0.28); color: #fff; }
+  .reports .ctaband .ctas { justify-content: flex-start; }
+  .reports .rv { opacity: 0; transform: translateY(18px); transition: opacity 0.75s cubic-bezier(0.2,0.7,0.2,1), transform 0.75s cubic-bezier(0.2,0.7,0.2,1); }
+  .reports .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reports .rv { opacity: 1; transform: none; transition: none; }
+    .reports .rp-sec { transition: none; }
+    .reports .rp-status.busy .d { animation: none; }
+    .reports .rp-flag.done { animation: none; opacity: 1; }
+  }
+  @media (max-width: 860px) {
+    .reports .probs { grid-template-columns: 1fr; }
+    .reports .two { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 760px) {
+    .reports .rp-comp { grid-template-columns: 1fr; }
+    .reports .rp-rail { border-right: none; border-bottom: 1px solid var(--border); }
+    .reports .rp-paper { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    .reports { padding: 8px 14px 56px; }
+    .reports .rp-hero { padding: 44px 8px 30px; }
+    .reports .rp-hero h1 { font-size: 29px; }
+    .reports .rp-hero .hsub { font-size: 14px; }
+    .reports .creamsec { padding: 40px 22px; }
+    .reports .ctaband { padding: 40px 24px; }
+    .reports .ctaband h2 { font-size: 22px; }
+    .reports .sechead h2 { font-size: 21px; }
+    .reports .pq { font-size: 19px; margin-top: 64px; }
+    .reports .mv { margin-top: 72px; }
+  }
+  @media (max-width: 520px) {
+    .reports .rp-stage { padding: 14px; }
+    .reports .rp-paper { padding: 18px 17px 22px; }
+    .reports .rp-kpis { gap: 6px; }
+    .reports .statrow { gap: 14px 30px; }
+    .reports .stat .sv { font-size: 20px; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── scroll reveals (.rv → .in); count-up on .cnt is handled by BaseLayout ── */
+    var rvs = [].slice.call(document.querySelectorAll('.reports .rv'));
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+      rvs.forEach(function (el) { io.observe(el); });
+    } else { rvs.forEach(function (el) { el.classList.add('in'); }); }
+
+    /* ══════════════ the report composer ══════════════ */
+    var ORDER = ['summary','performance','wins','risks','brand','workspace','actions','plan'];
+    var NAMES = {
+      summary: 'Executive summary', performance: 'Performance', wins: 'Wins shipped',
+      risks: 'Risks & watch-list', brand: 'Brand & AI visibility', workspace: 'Workspace detail',
+      actions: 'Actions done', plan: 'Action plan'
+    };
+    var DRAFT = {
+      summary: 'drafting executive summary…', performance: 'pulling performance…',
+      wins: 'listing the wins shipped…', risks: 'flagging risks…',
+      brand: 'auditing brand & AI visibility…', workspace: 'expanding workspace detail…',
+      actions: 'logging actions done…', plan: 'writing the action plan…'
+    };
+
+    var AUD = {
+      client:    { label: 'Your client',    strap: "Written for your client. Plain English, the wins first, and exactly what happens next.", sections: ['summary','performance','wins','brand','plan'] },
+      exec:      { label: 'The board',       strap: "Written for the board. The headline numbers, the one risk that matters, and the decision in front of you.", sections: ['summary','performance','risks','plan'] },
+      marketing: { label: 'Marketing team',  strap: "Written for the marketing team. Every lever pulled, with the detail to move on.", sections: ['summary','performance','wins','brand','workspace','plan'] },
+      technical: { label: 'Technical team',  strap: "Written for the technical team. Issue-level detail, every fix logged, nothing hand-waved.", sections: ['performance','risks','workspace','actions','plan'] }
+    };
+
+    var READS = {
+      summary: {
+        client: "Good week. Clicks are up <b>6.2%</b>, and the winter-layering guide we rebuilt last month is back on page one, so that traffic is coming home. One thing to keep half an eye on: people are searching for 4-season tents more than ever right now, but your buyer's guide has slipped and a competitor took the top spot. We've already written the fix. It's ready whenever you give the word.",
+        exec: "Traffic up <b>6.2%</b> to <b>48,210 clicks</b>. The number that matters: about <b>9,000 clicks a month</b> in tent and boot searches you don't rank for yet. The work to win them is written and waiting. The only call to make is whether we ship it this week or next.",
+        marketing: "Clicks <b>+6.2%</b>, impressions <b>+4.1%</b>, average position up <b>1.4 places</b>. Most of that is the winter-layering rebuild paying off. Two levers are open right now: the 4-season tent guide is decaying and needs a refresh, and ‘merino base layers’ is stuck at position 8 on a thin page. Both are briefed below.",
+        technical: "Crawl came back clean across <b>412 pages</b>. The position gains line up with last week's canonical fixes on the boot filters. Two live issues worth your time: the tent buyer's guide is down <b>31%</b> over 90 days, and /guides/winter-layering is earning links but still renders slowly on mobile. Specifics below."
+      }
+    };
+
+    function kpi(l, v, dir, d) {
+      return '<div class="rp-kpi"><div class="kl">' + l + '</div><div class="kv">' + v + '</div><div class="kd ' + dir + '">' + d + '</div></div>';
+    }
+
+    var BUILD = {
+      summary: function (a) {
+        return '<p class="rp-p">' + (READS.summary[a] || READS.summary.client) + '</p>';
+      },
+      performance: function () {
+        return '<div class="rp-kpis">' +
+          kpi('Clicks', '48,210', 'up', '▲ 6.2%') +
+          kpi('Impressions', '1.42M', 'up', '▲ 4.1%') +
+          kpi('Avg position', '12.8', 'up', '▲ 1.4') +
+          '</div><p class="rp-p">The growth is spread out, not one lucky page. <b>61 pages up</b>, 14 down since last week.</p>';
+      },
+      wins: function () {
+        return '<ul class="rp-list">' +
+          '<li><span class="ok">✓</span>Rebuilt the winter-layering guide. Back on page one for ‘how to layer for winter hiking’ after slipping to page three.</li>' +
+          '<li><span class="ok">✓</span>Merged the men\'s and women\'s waterproof boot pages into /boots/waterproof, so they stop splitting clicks.</li>' +
+          '<li><span class="ok">✓</span>Fixed structured data on 14 product pages. Prices and review stars show in results again.</li>' +
+          '<li><span class="ok">✓</span>Wrote two new briefs: a 4-season tent guide and a merino base-layer explainer.</li>' +
+          '</ul>';
+      },
+      risks: function () {
+        return '<ul class="rp-list">' +
+          '<li><span class="dd rose"></span><span><b>4-season tents:</b> searches are up 18% for the season, but your buyer\'s guide has dropped to page two and cotswoldoutdoor.com took the top spot. Around <b>5,600 clicks a month</b> at stake.</span></li>' +
+          '<li><span class="dd amber"></span><span><b>/guides/tent-buying</b> is decaying. Clicks down 31% over 90 days.</span></li>' +
+          '<li><span class="dd amber"></span><span>‘merino base layers’ has stalled at position 8. The page is thin, with no sizing or care guidance.</span></li>' +
+          '</ul>';
+      },
+      brand: function () {
+        return '<div class="rp-share">' +
+          '<div class="rp-shrow"><span class="n you">Northwind</span><span class="rp-track"><i class="you" style="width:44%"></i></span><span class="v">14%</span></div>' +
+          '<div class="rp-shrow"><span class="n">Cotswold Outdoor</span><span class="rp-track"><i style="width:82%"></i></span><span class="v">26%</span></div>' +
+          '<div class="rp-shrow"><span class="n">Alpkit</span><span class="rp-track"><i style="width:54%"></i></span><span class="v">17%</span></div>' +
+          '</div>' +
+          '<div class="rp-note">Your share of AI answers for gear questions, up from 9% last month.</div>' +
+          '<div class="rp-quote"><span class="src">AI answer · ‘best waterproof hiking boots for the UK’</span>' +
+          '<p>The assistants list you as a <b>place to buy</b>, but the recommendations point to brand sites and Cotswold Outdoor. You get mentioned. You rarely get named as the source.</p>' +
+          '<div class="verdict">Stocked, not recommended. Two gear round-ups drafted to earn the citation.</div></div>';
+      },
+      workspace: function () {
+        return '<div class="rp-opps">' +
+          '<div class="rp-opp"><span class="q">waterproof hiking boots</span><span class="pos">pos 6</span><span class="gain">+3,200</span></div>' +
+          '<div class="rp-opp"><span class="q">4-season tent</span><span class="pos">pos 11</span><span class="gain">+5,600</span></div>' +
+          '<div class="rp-opp"><span class="q">merino base layers</span><span class="pos">pos 8</span><span class="gain">+2,100</span></div>' +
+          '</div><p class="rp-note">3 of 41 open opportunities. The missing subheads and drafted briefs are in the workbook.</p>';
+      },
+      actions: function () {
+        return '<ul class="rp-list mono">' +
+          '<li><span class="ok">✓</span>merged /boots/waterproof-mens + -womens → /boots/waterproof · redirects live</li>' +
+          '<li><span class="ok">✓</span>canonical fixed · 6 faceted boot-filter URLs</li>' +
+          '<li><span class="ok">✓</span>product schema patched · 14 pages · price + rating</li>' +
+          '<li><span class="ok">✓</span>flagged /guides/tent-buying · lost 9 internal links since May</li>' +
+          '</ul>';
+      },
+      plan: function () {
+        return '<ul class="rp-plan">' +
+          '<li><span class="pn">01</span><span><b>Refresh the 4-season tent guide this week.</b> Brief\'s written, target ‘best 4-season tent’.</span></li>' +
+          '<li><span class="pn">02</span><span><b>Publish the merino base-layer guide</b> with proper sizing and care sections.</span></li>' +
+          '<li><span class="pn">03</span><span><b>Chase two gear round-ups</b> so the AI answers cite you as a source instead of just listing you as a shop.</span></li>' +
+          '<li><span class="pn">04</span><span>Point internal links from the boot pages back into the tent guide.</span></li>' +
+          '</ul>';
+      }
+    };
+
+    var app = document.getElementById('rpApp');
+    var audWrap = document.getElementById('rpAud');
+    var togWrap = document.getElementById('rpTogs');
+    var exWrap = document.getElementById('rpEx');
+    var secs = document.getElementById('rpSecs');
+    var statusEl = document.getElementById('rpStatus');
+    var statusT = statusEl.querySelector('.t');
+    var strapEl = document.getElementById('rpStrap');
+    var forEl = document.getElementById('rpFor');
+    var countEl = document.getElementById('rpCount');
+    var exMsg = document.getElementById('rpExMsg');
+
+    var current = 'client';
+    var enabled = {};
+    var composing = false;
+    var seq = 0; // guards against overlapping compositions
+
+    /* build the section toggle chips once */
+    ORDER.forEach(function (k) {
+      var b = document.createElement('span');
+      b.className = 'rp-tog';
+      b.dataset.key = k;
+      b.textContent = NAMES[k];
+      b.addEventListener('click', function () { toggleSection(k); });
+      togWrap.appendChild(b);
+    });
+
+    function orderedKeys() { return ORDER.filter(function (k) { return enabled[k]; }); }
+
+    function setStatus(text, busy) {
+      statusT.textContent = text;
+      statusEl.classList.toggle('busy', !!busy);
+    }
+
+    function syncChrome() {
+      var keys = orderedKeys();
+      forEl.textContent = AUD[current].label;
+      strapEl.innerHTML = AUD[current].strap;
+      countEl.textContent = '· ' + keys.length + ' on';
+      [].forEach.call(audWrap.children, function (b) { b.classList.toggle('on', b.dataset.aud === current); });
+      [].forEach.call(togWrap.children, function (b) { b.classList.toggle('on', !!enabled[b.dataset.key]); });
+    }
+
+    function buildSection(k) {
+      var el = document.createElement('div');
+      el.className = 'rp-sec';
+      el.dataset.key = k;
+      el.innerHTML = '<div class="rp-sec-h"><span class="rp-kick"></span><span class="rp-flag">drafted ✓</span></div>' +
+        '<div class="rp-body">' + BUILD[k](current) + '</div>';
+      return el;
+    }
+
+    function renumber() {
+      [].forEach.call(secs.querySelectorAll('.rp-sec'), function (el, i) {
+        var kk = el.querySelector('.rp-kick');
+        if (kk) kk.textContent = String(i + 1).padStart(2, '0') + ' · ' + NAMES[el.dataset.key];
+      });
+    }
+
+    function compose() {
+      var mySeq = ++seq;
+      composing = true;
+      syncChrome();
+      secs.innerHTML = '';
+      var keys = orderedKeys();
+
+      if (reduced) {
+        keys.forEach(function (k) { var el = buildSection(k); el.classList.add('in'); secs.appendChild(el); });
+        renumber();
+        setStatus('composed · ' + keys.length + ' sections · ready to export', false);
+        composing = false;
+        return;
+      }
+
+      var i = 0;
+      (function step() {
+        if (mySeq !== seq) return; // superseded
+        if (i >= keys.length) {
+          setStatus('composed · ' + keys.length + ' sections · ready to export', false);
+          composing = false;
+          return;
+        }
+        var k = keys[i];
+        setStatus(DRAFT[k], true);
+        var el = buildSection(k);
+        secs.appendChild(el);
+        renumber();
+        requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('in'); }); });
+        setTimeout(function () { var f = el.querySelector('.rp-flag'); if (f) f.classList.add('done'); }, 250);
+        i++;
+        setTimeout(step, 320);
+      })();
+    }
+
+    function setAudience(key) {
+      current = key;
+      enabled = {};
+      AUD[key].sections.forEach(function (k) { enabled[k] = true; });
+      clearExports();
+      compose();
+    }
+
+    function toggleSection(key) {
+      if (composing && !reduced) return; // let a composition finish first
+      var wasOn = !!enabled[key];
+      enabled[key] = !wasOn;
+      clearExports();
+
+      if (!enabled[key]) {
+        var elOff = secs.querySelector('.rp-sec[data-key="' + key + '"]');
+        syncChrome();
+        if (elOff) {
+          if (reduced) { elOff.remove(); renumber(); }
+          else { elOff.classList.add('out'); setTimeout(function () { elOff.remove(); renumber(); }, 400); }
+        }
+        setStatus('composed · ' + orderedKeys().length + ' sections · ready to export', false);
+        return;
+      }
+
+      // adding: insert at canonical position
+      syncChrome();
+      var el = buildSection(key);
+      var existing = [].slice.call(secs.querySelectorAll('.rp-sec'));
+      var after = null;
+      for (var j = 0; j < existing.length; j++) {
+        if (ORDER.indexOf(existing[j].dataset.key) > ORDER.indexOf(key)) { after = existing[j]; break; }
+      }
+      secs.insertBefore(el, after);
+      renumber();
+      if (reduced) { el.classList.add('in'); setStatus('composed · ' + orderedKeys().length + ' sections · ready to export', false); return; }
+      setStatus(DRAFT[key], true);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('in'); }); });
+      setTimeout(function () {
+        var f = el.querySelector('.rp-flag'); if (f) f.classList.add('done');
+        setStatus('composed · ' + orderedKeys().length + ' sections · ready to export', false);
+      }, 460);
+    }
+
+    function clearExports() {
+      [].forEach.call(exWrap.children, function (b) { b.classList.remove('done'); });
+      exMsg.classList.remove('show');
+    }
+
+    function doExport(kind) {
+      var n = orderedKeys().length || 1;
+      var map = {
+        pdf: 'PDF prepared · ' + n + ' pages · ready to forward',
+        deck: 'Slide deck prepared · ' + n + ' slides',
+        book: 'Workbook prepared · 214 rows · every finding'
+      };
+      [].forEach.call(exWrap.children, function (b) { b.classList.toggle('done', b.dataset.ex === kind); });
+      exMsg.textContent = '✓ ' + map[kind];
+      exMsg.classList.remove('show');
+      void exMsg.offsetWidth; // restart transition
+      exMsg.classList.add('show');
+    }
+
+    /* wire controls */
+    [].forEach.call(audWrap.children, function (b) {
+      b.addEventListener('click', function () { if (b.dataset.aud !== current || !composing) setAudience(b.dataset.aud); });
+    });
+    [].forEach.call(exWrap.children, function (b) {
+      b.addEventListener('click', function () { doExport(b.dataset.ex); });
+    });
+    document.getElementById('rpRegen').addEventListener('click', function () { clearExports(); compose(); });
+
+    /* prime state, then compose when the composer scrolls into view */
+    enabled = {};
+    AUD.client.sections.forEach(function (k) { enabled[k] = true; });
+    syncChrome();
+
+    var started = false;
+    function kickoff() { if (started) return; started = true; compose(); }
+    if ('IntersectionObserver' in window) {
+      var aio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { kickoff(); aio.disconnect(); } });
+      }, { threshold: 0.25 });
+      aio.observe(app);
+    } else { kickoff(); }
+    /* safety net if it starts in view or observer never fires */
+    setTimeout(kickoff, 1200);
+  })();
+</script>
