@@ -147,11 +147,11 @@ strong {
   position: relative;
   background: var(--surface);
   color: var(--ink);
-  padding-block: clamp(3.5rem, 2.2rem + 6vw, 7rem);
+  padding-block: clamp(3rem, 2.1rem + 4.5vw, 5.75rem);
   isolation: isolate;
 }
 .section--tight {
-  padding-block: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+  padding-block: clamp(2.25rem, 1.7rem + 3vw, 4rem);
 }
 
 /* Warm grain texture so surfaces never feel flat. */
