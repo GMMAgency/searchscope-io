@@ -538,3 +538,10 @@ const steps = [
     sub="The fastest way to understand Searchscope is to point it at your own site. Join the pilot programme and we'll show you what it surfaces."
   />
 </BaseLayout>
+
+<style>
+  /* The hero carries a four-up stat row; give the copy column enough room
+     for all four to sit on one line without crowding the headline/lede. */
+  :global(.page-hero .page-hero__inner) { max-width: 74ch; }
+  :global(.page-hero .page-hero__lede) { max-width: 54ch; }
+</style>

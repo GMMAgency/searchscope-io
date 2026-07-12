@@ -112,11 +112,12 @@
 }
 .pairlbl::before { content: ''; width: 16px; height: 1px; background: currentColor; opacity: 0.6; }
 
-/* stat row on paper (count-up numbers) */
-.mstatrow { display: flex; flex-wrap: wrap; gap: 1.1rem 3rem; margin-top: var(--space-l); }
+/* stat row on paper (count-up numbers) — a 4-up grid so every stat sits on
+   one row; collapses to 2-up on small screens (no horizontal scroll). */
+.mstatrow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem 2rem; margin-top: var(--space-l); }
 .mstat .sv {
   font-family: var(--font-mono);
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   display: block;
@@ -555,6 +556,7 @@
   .hm-x { transform: rotate(90deg); justify-self: center; }
 }
 @media (max-width: 640px) {
+  .mstatrow { grid-template-columns: 1fr 1fr; gap: 1.1rem 1.5rem; }
   .awstats { grid-template-columns: repeat(2, 1fr); }
   .awcall { display: none; }
   .awleg { display: none; }
