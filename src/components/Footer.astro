@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
-import { NAV_LINKS, GMM, SOCIALS, FORM, ANALYZERS } from '../consts';
+import { NAV_LINKS, GMM, SOCIALS, FORM, FEATURES } from '../consts';
 const year = new Date().getFullYear();
 ---
 
@@ -11,9 +11,7 @@ const year = new Date().getFullYear();
       <div class="footer__brand">
         <Logo />
         <p class="footer__blurb">
-          The search intelligence co-pilot from {GMM.name}. Searchscope reads your
-          whole search picture and surfaces the moves that matter. Our team turns
-          them into growth.
+          Searchscope helps search teams see what matters and act on it.
         </p>
         <a href="/contact" class="btn footer__cta">
           Join the pilot programme
@@ -23,18 +21,17 @@ const year = new Date().getFullYear();
 
       <nav class="footer__cols" aria-label="Footer">
         <div class="footer__col">
-          <p class="footer__heading">Explore</p>
+          <p class="footer__heading">Platform</p>
           <ul role="list">
-            {NAV_LINKS.map((l) => <li><a href={l.href} class="footer__link">{l.label}</a></li>)}
-            <li><a href="/reports" class="footer__link">Reports</a></li>
-            <li><a href="/brand-and-ai" class="footer__link">Brand &amp; AI visibility</a></li>
+            {FEATURES.map((f) => <li><a href={f.href} class="footer__link">{f.name}</a></li>)}
           </ul>
         </div>
 
         <div class="footer__col">
-          <p class="footer__heading">The analysers</p>
+          <p class="footer__heading">Learn</p>
           <ul role="list">
-            {ANALYZERS.map((a) => <li><a href={`/analyzers/${a.slug}`} class="footer__link">{a.name}</a></li>)}
+            {NAV_LINKS.map((l) => <li><a href={l.href} class="footer__link">{l.label}</a></li>)}
+            <li><a href="/how-it-works" class="footer__link">How it works</a></li>
           </ul>
         </div>
 

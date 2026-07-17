@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABand from '../../components/CTABand.astro';
+import Ticks from '../../components/Ticks.astro';
+
+// Chapter 03 · Data Pipeline. Mirrors the real Settings · Data Pipeline
+// tab: three stat tiles, the sync/crawl/run overview with receipts, the
+// dark Telemetry Bay with a live feed, and the seven-analyser fleet.
+const fleet = [
+  { a: 'Index bloat', reads: 'crawl + search data', catches: 'Thin, zero-traffic, orphaned and duplicate pages worth pruning or merging.', eff: '18 findings', cls: '' },
+  { a: 'Internal links', reads: 'crawl', catches: 'Where to add internal links, with the anchor text and the page to point at.', eff: '34 placements', cls: '' },
+  { a: 'Cannibalisation', reads: 'search data', catches: 'Pages competing for the same queries: merge, redirect or differentiate.', eff: '1 critical', cls: 'low' },
+  { a: 'Content decay', reads: 'search data', catches: 'Pages losing impressions and clicks over time, with a refresh playbook.', eff: '41 findings', cls: '' },
+  { a: 'Opportunities', reads: 'search data', catches: 'Striking-distance keywords and the content gaps between you and page one.', eff: '58 findings', cls: '' },
+  { a: 'Schema', reads: 'crawl', catches: 'Structured-data errors and missing types, with the fix written in JSON-LD.', eff: '27 findings', cls: '' },
+  { a: 'Cluster volatility', reads: 'search data', catches: 'Topic clusters going volatile or declining, and which ones lack an anchor page.', eff: '15 findings', cls: '' },
+];
+---
+
+<BaseLayout
+  title="Data Pipeline"
+  description="Every insight is only as current as your data. Connect once, then sync your search data, crawl your site and run the analysers in order, and watch the engine work in a live terminal."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Data Pipeline"
+    title="See the engine before the analysis."
+    lede="Searchscope pulls in Search Console, crawler data, and site changes, then processes the site in a clear pipeline."
+  />
+
+  <!-- ===== Pipeline overview ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Pipeline overview</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Every run follows the same steps.</h2>
+          <p>Resolve → Sitemap → Crawl → Process → Intelligence → Index. Each step shows what loaded, what changed, what was reused, and what needs a fresh read.</p>
+        </div>
+        <div class="stiles">
+          <div class="stile ink"><span class="sl">Search data</span><span class="sv"><span class="cnt" data-n="486">486</span></span><span class="ss">days · 12.4M rows · synced 2h ago</span></div>
+          <div class="stile"><span class="sl">Site crawl</span><span class="sv"><span class="cnt" data-n="1240">1,240</span></span><span class="ss">pages · crawled 2h ago · 6m 12s</span></div>
+          <div class="stile"><span class="sl">Findings</span><span class="sv"><span class="cnt" data-n="169">169</span></span><span class="ss">open · 7 analysers · last run 2h ago</span></div>
+          <div class="stile"><span class="sl">Critical</span><span class="sv em" style="color:var(--sev-rose-ink)"><span class="cnt" data-n="5">5</span></span><span class="ss">need action this run</span></div>
+          <div class="stile"><span class="sl">This run's triage</span><span class="sv"><span class="cnt" data-n="38">38</span><span style="font-size:12px;color:var(--ink-faint)">%</span></span><div class="trmeter"><i style="width:38%"></i></div><span class="ss">64 of 169 handled</span></div>
+        </div>
+
+        <div class="appwin push">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/settings?tab=data</span>
+            <span class="awtab">Data Pipeline</span>
+          </div>
+          <div class="awbody">
+            <div class="awhead">
+              <div><span class="awtitle">Data pipeline</span><span class="awsub">runs in order · sync → crawl → analyse</span></div>
+              <span class="lchip on">Run all analysers ▶</span>
+            </div>
+            <div style="margin-top:var(--space-2xs)">
+              <div class="wqrow prow" style="border-top:none">
+                <div><span class="tt">01 · Search data</span><span class="sub">synced 2h ago · 486 days of coverage</span></div>
+                <div class="wqmet"><span class="em">fresh</span></div>
+                <span class="lchip">Sync</span>
+              </div>
+              <div class="wqrow prow">
+                <div><span class="tt">02 · Site crawl</span><span class="sub">crawled 2h ago · 1,240 pages · 3 changes since</span></div>
+                <div class="wqmet"><span class="am">3 new</span></div>
+                <span class="lchip">Crawl</span>
+              </div>
+              <div class="wqrow prow open">
+                <div><span class="tt">03 · Analysers</span><span class="sub" style="color:var(--sev-blue-ink)">running · reading the crawl from 2h ago</span></div>
+                <div class="wqmet"><span style="color:var(--sev-blue-ink)">4 / 7</span></div>
+                <span class="lchip ink">Stop</span>
+              </div>
+            </div>
+            <p class="awnote"><span style="color:var(--sev-emerald-ink)">●</span> Everything is fresh. The analysers are reading current data.</p>
+          </div>
+        </div>
+        <p class="objcap">Three inputs, one order. The sync, the crawl and the run each carry their own receipts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Telemetry bay (the one dark object) ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <div class="two flip top">
+          <div class="ticked" style="align-self:start">
+            <Ticks size={16} inset="-13px" />
+            <div class="obj telem">
+              <div class="ohead">
+                <span>Telemetry bay · live</span>
+                <span class="mono tcount">1,081 / 1,240 pages</span>
+              </div>
+              <div class="stgstrip">
+                <span class="stg done">crawling</span>
+                <span class="stg live">processing</span>
+                <span class="stg">intelligence</span>
+                <span class="stg">indexing</span>
+              </div>
+              <div class="tlines"></div>
+            </div>
+          </div>
+          <div class="sechead">
+            <span class="eyebrow">Telemetry bay</span>
+            <h2 style="margin-top:var(--space-s)">Watch the crawl happen.</h2>
+            <p>The run screen shows what is happening, how far it has got, and what was reused.</p>
+            <span class="golink">This is the signature moment of the pipeline</span>
+          </div>
+        </div>
+        <p class="objcap">The page's one dark object: real engine telemetry, not a fake spinner.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The analysers fleet ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">The analysers</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>One engine. Seven analysers.</h2>
+          <p>Index bloat, internal links, cannibalisation, content decay, opportunities, schema, cluster volatility.</p>
+        </div>
+        <div class="fleet">
+          <div class="fh">The fleet · 169 findings this run</div>
+          <div class="fleet-wrap">
+            <table class="ft">
+              <thead>
+                <tr><th>Analyser</th><th>Reads</th><th>Catches</th><th class="eff">This run</th></tr>
+              </thead>
+              <tbody>
+                {fleet.map((f) => (
+                  <tr>
+                    <td>{f.a}</td>
+                    <td>{f.reads}</td>
+                    <td>{f.catches}</td>
+                    <td class={`eff ${f.cls}`}>{f.eff}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="foot-note">Mirrors the real Settings · Data Pipeline tab: the three inputs and their receipts, the live Telemetry Bay, and the seven-analyser fleet. Model names in the config drawers are deliberately not shown.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="See it read your site"
+    title="Run the engine."
+    sub="Join the pilot programme and we will sync your search data, crawl your site and run the engine in the first session, live, on your numbers."
+    secondaryLabel="See the analyser workspaces"
+    secondaryHref="/workspaces"
+  />
+</BaseLayout>
+
+<!-- Live telemetry feed (Northwind Outfitters). Respects reduced motion; static if JS is off. -->
+<script is:inline>
+  (function () {
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var tData = [
+      ['/collections/waterproof-jackets', '200', '318ms · 42 products · CollectionPage'],
+      ['/guides/how-to-layer-for-hiking', '200', '291ms · 1,640 words · Article'],
+      ['/collections/hiking-boots', '200', '355ms · 68 products · schema ok'],
+      ['/products/summit-3-season-tent', '200', '402ms · 5 new entities'],
+      ['/guides/waterproof-ratings-explained', '200', '288ms · schema none ⚠'],
+      ['/collections/base-layers', '200', '271ms · re-indexed ✓'],
+      ['/blog/best-uk-hiking-trails', '200', '461ms · low inlinks ⚠'],
+      ['/products/merino-crew-190', '200', '333ms · 3 new entities'],
+    ];
+    document.querySelectorAll('.telem').forEach(function (tm) {
+      var host = tm.querySelector('.tlines');
+      var count = tm.querySelector('.tcount');
+      if (!host) return;
+      var VISIBLE = 5, head = 0, fetched = 1080;
+      function render() {
+        var html = '';
+        for (var i = 0; i < VISIBLE; i++) {
+          var d = tData[(head + i) % tData.length];
+          var warn = d[2].indexOf('⚠') >= 0;
+          html += '<div class="tline' + (i === VISIBLE - 1 ? ' dimq' : '') + '">' +
+            '<span class="pth">GET ' + d[0] + '</span>' +
+            '<span class="code' + (warn ? ' warn' : '') + '">' + d[1] + '</span>' +
+            '<span class="meta">' + d[2] + '</span></div>';
+        }
+        host.innerHTML = html;
+      }
+      render();
+      if (reduced) return;
+      setInterval(function () {
+        head = (head + 1) % tData.length;
+        fetched = fetched >= 1240 ? 1080 : fetched + 1;
+        if (count) count.textContent = fetched.toLocaleString('en-GB') + ' / 1,240 pages';
+        render();
+      }, 1700);
+    });
+  })();
+</script>

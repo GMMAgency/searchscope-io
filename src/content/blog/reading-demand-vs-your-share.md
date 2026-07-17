@@ -40,4 +40,4 @@ This is the heart of what Searchscope's [Demand & Trends](/platform#demand) view
 
 Stop asking "where do we rank?" Start asking "where is demand rising faster than our share?" The answer is your growth plan.
 
-See it in the product: [how Searchscope surfaces the opportunities](/analyzers/opportunities) where demand outruns your share.
+See it in the product: [how Searchscope surfaces the opportunities](/workspaces) where demand outruns your share.

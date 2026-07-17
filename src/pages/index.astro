@@ -4,35 +4,25 @@ import CTABand from '../components/CTABand.astro';
 import Ticks from '../components/Ticks.astro';
 import DemandScatter from '../components/product/DemandScatter.astro';
 import DecayTrend from '../components/product/DecayTrend.astro';
-import BrandAnswers from '../components/product/BrandAnswers.astro';
-import { SITE, GMM } from '../consts';
+import { SITE, GMM, FEATURES } from '../consts';
 
 const problems = [
   { no: '01', label: 'Internal competition', line: "Several pages target one topic, so engines can't tell which is the answer. Rankings swap between URLs and traffic turns unstable." },
-  { no: '02', label: 'Repetitive at scale', line: 'Thousands of near-identical template pages blur together in the results. Rankings hold; clicks quietly fall.' },
+  { no: '02', label: 'Repetitive at scale', line: 'Hundreds of near-identical product or filter pages blur together in the results. Rankings hold; clicks quietly fall.' },
   { no: '03', label: 'Buried content', line: 'Strong pages sit deep with few internal links, so the system reads them as unimportant, however good they are.' },
 ];
 
-// The Monday run: seven analysers, one coherent read of a 239-page site.
-// Findings reconcile with the stat row (160 total, 4 critical).
+// The on-demand run: seven analysers reading a 1,240-page site. Findings
+// reconcile with the stat row (169 total, 5 critical). data-t is the second
+// at which each row completes; the run strip animates on scroll.
 const run = [
-  { no: '01', nm: 'Index health', st: 'reading index coverage · canonicals · sitemap membership', res: '3 findings · <span class="ok">1 fixed since last week</span>' },
-  { no: '02', nm: 'Internal links', st: 'graphing 9,812 internal links · orphan detection', res: '25 findings · <span class="c">1 critical</span>' },
-  { no: '03', nm: 'Cannibalisation', st: 'shared-query page pairs · click splits', res: '6 findings · <span class="c">2 critical</span>' },
-  { no: '04', nm: 'Content decay', st: '90-day trends across 212 pages with traffic', res: '41 findings · <span class="c">1 critical</span> · 12,400 clicks at risk' },
-  { no: '05', nm: 'Opportunities', st: 'positions 4-15 vs heading coverage', res: '49 findings · +8,900 clicks in reach' },
-  { no: '06', nm: 'Schema', st: 'structured data vs rich-result eligibility', res: '24 findings · 11 pages fixable today' },
-  { no: '07', nm: 'Cluster volatility', st: '214 semantic clusters · trend + coverage', res: '12 findings · 3 clusters need a home' },
-];
-
-const capabilities = [
-  { no: '01', title: 'The Crawler', href: '/how-it-works', line: 'A full technical crawl of your site (pages, links, schema, content and entities), refreshed and fed straight into the analysers, so every insight reflects how your site looks right now.' },
-  { no: '02', title: 'The Analyzer Engine', href: '/analyzers/content-decay', line: 'Finds index bloat, content decay, cannibalisation, orphan pages and more, each one scored, prioritised and explained in plain English, so you know what to fix first.' },
-  { no: '03', title: 'Demand & Trends', href: '/platform', line: "Shows where market demand is rising and you're losing share, down to the page, with an opportunity score, so you chase growth that is actually there." },
-  { no: '04', title: 'Brand & AI visibility', href: '/brand-and-ai', neu: true, line: 'Brand plays a big role in visibility: AI answers favour brands that get talked about, cited and trusted. Searchscope tracks how the answers and the press describe you, and pairs it with a PR strategist to move the numbers.' },
-  { no: '05', title: 'The Strategic Advisor', href: '/platform', line: 'An AI co-pilot you can ask. It answers from your live data, finds the non-obvious and drafts the brief, so the team can move in minutes, not meetings.' },
-  { no: '06', title: 'Content Studio', href: '/platform', line: 'Turns an opportunity into a brief (or a full draft) in one step: it reads the live results, finds the gaps, and hands your writers something ready to publish.' },
-  { no: '07', title: 'Weekly Intelligence', href: '/how-it-works', line: 'A clear weekly read on what moved and what to do about it, shareable across the team, so nothing important slips by.' },
+  { no: '01', nm: 'Index bloat', st: 'index coverage · canonicals · thin and orphaned pages', res: "18 findings · <span class='ok'>2 fixed since last run</span>", t: 14 },
+  { no: '02', nm: 'Internal links', st: 'graphing 14,600 internal links · starving targets', res: '34 placements · 12 source pages', t: 38 },
+  { no: '03', nm: 'Cannibalisation', st: 'shared-query page pairs · click splits', res: "6 conflicts · <span class='c'>1 critical</span>", t: 61 },
+  { no: '04', nm: 'Content decay', st: '90-day trends across 412 pages with traffic', res: '41 findings · 12,400 clicks at risk', t: 96 },
+  { no: '05', nm: 'Opportunities', st: 'positions 4 to 20 vs heading coverage', res: '58 findings · +8,900 clicks in reach', t: 132 },
+  { no: '06', nm: 'Schema', st: 'structured data vs rich-result eligibility', res: '27 findings · 11 fixable today', t: 158 },
+  { no: '07', nm: 'Cluster volatility', st: '142 semantic clusters · trend + coverage', res: '15 findings · 4 need an anchor page', t: 183 },
 ];
 
 const metaDescription =
@@ -51,7 +41,7 @@ const softwareLd = {
 ---
 
 <BaseLayout description={metaDescription} headerTheme="dark" jsonLd={[softwareLd]}>
-  <!-- ============ HERO (live copy, unchanged) ============ -->
+  <!-- ============ HERO ============ -->
   <section class="section hero theme-dark bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container container--wide">
@@ -62,9 +52,8 @@ const softwareLd = {
             The AI co-pilot for modern<br />search&nbsp;teams.
           </h1>
           <p class="hero__sub reveal" style="--reveal-delay:130ms">
-            Searchscope reads your whole search picture (your site, your search data, market
-            demand and AI search), pinpoints what is costing you traffic, and
-            <strong>our strategists turn it into work that ships.</strong>
+            Searchscope reads your site, search data, market demand, and AI visibility, then shows you
+            what is costing traffic and what to do next.
           </p>
           <div class="hero__actions reveal" style="--reveal-delay:200ms">
             <a href="/contact" class="btn">
@@ -91,39 +80,38 @@ const softwareLd = {
     </div>
   </section>
 
-  <!-- ============ THE WORKING WEEK (additive) ============ -->
+  <!-- ============ A ROOM YOU RUN SEARCH FROM ============ -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
-        <span class="eyebrow">The working week</span>
+        <span class="eyebrow">How you use it</span>
         <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">Know what's costing you traffic. Ship the fix. Every week.</h2>
+          <h2 class="big">Not a weekly email. A room you run search from.</h2>
           <p>
-            Every Monday the whole suite reads your site against your search data: seven analysers,
-            every page, every query. By the time you open your laptop the findings are scored,
-            explained, and the fixes are drafted.
+            Run Searchscope when you need a fresh read. Ask a question. Get an answer grounded in your
+            data. Turn findings into briefs and drafts.
           </p>
         </div>
         <div class="mstatrow">
-          <div class="mstat"><span class="sv cnt" data-n="239">239</span><span class="sl">pages read</span></div>
-          <div class="mstat"><span class="sv cnt" data-n="41300">41,300</span><span class="sl">queries cross-checked</span></div>
-          <div class="mstat"><span class="sv cnt" data-n="160">160</span><span class="sl">findings scored</span></div>
-          <div class="mstat"><span class="sv cnt" data-n="4">4</span><span class="sl">critical this week</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="1240">1,240</span><span class="sl">pages read per run</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="86000">86,000</span><span class="sl">queries cross-checked</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="169">169</span><span class="sl">findings scored</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="5">5</span><span class="sl">critical to act on</span></div>
         </div>
       </div>
 
       <div class="obj runstrip reveal" style="margin-top:var(--space-l)">
         <div class="rs-head">
-          <span>Analyzer engine · weekly run</span>
-          <span class="mono">02:14</span>
+          <span>Analyser engine · on-demand run</span>
+          <span class="mono rsclock">00:00</span>
         </div>
         <div class="rows">
           {run.map((r) => (
-            <div class="arow done">
+            <div class="arow" data-st={r.st} data-res={r.res} data-t={r.t}>
               <span class="n">{r.no}</span>
               <span class="nm">{r.nm}</span>
-              <span class="st">{r.st}</span>
-              <span class="res" set:html={r.res} />
+              <span class="st"></span>
+              <span class="res"></span>
             </div>
           ))}
         </div>
@@ -132,17 +120,16 @@ const softwareLd = {
     </div>
   </section>
 
-  <!-- ============ WHY SEO GOT HARDER (live copy) ============ -->
+  <!-- ============ WHY SEARCH GOT HARDER ============ -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
-        <span class="eyebrow">Why SEO got harder</span>
+        <span class="eyebrow">Why it matters</span>
         <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">Modern search is a system. Most SEO tooling still isn't.</h2>
+          <h2 class="big">Modern search is a system. Most SEO tools still are not.</h2>
           <p>
-            Search engines and AI systems now read your whole site as a system: what connects, what
-            is duplicated, what they can trust. Rank trackers and one-off audits look at pages in
-            isolation, so they miss the patterns that actually move traffic.
+            Search is no longer just pages and rankings. It is demand, content, entities, AI answers,
+            competitors, and trust.
           </p>
         </div>
         <div class="waves">
@@ -159,13 +146,13 @@ const softwareLd = {
           <div class="wave now">
             <span class="wn">The third wave · now</span>
             <h4>Search systems</h4>
-            <p>Build a site search engines and AI systems can confidently understand, extract and trust at scale.</p>
+            <p>Build a site search engines and AI answers can confidently understand, extract and trust at scale.</p>
           </div>
         </div>
         <p class="pq">
-          Designing your website so search engines and AI systems can confidently <em>understand,
+          Designing your site so search engines and AI answers can confidently <em>understand,
           extract and trust</em> your content at scale, not just optimising individual pages to rank.
-          <span class="cite">The Search Systems thesis</span>
+          <span class="cite">The search systems thesis</span>
         </p>
         <div style="text-align:center;margin-top:var(--space-m)">
           <a href="/search-systems" class="golink">Read the full thesis → The future of SEO</a>
@@ -174,17 +161,16 @@ const softwareLd = {
     </div>
   </section>
 
-  <!-- ============ WHAT IT CATCHES (+ a live catch) ============ -->
+  <!-- ============ WHAT IT CATCHES ============ -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
-        <span class="eyebrow">What it catches</span>
+        <span class="eyebrow">What Searchscope finds</span>
         <div class="sechead" style="margin-top:var(--space-s)">
           <h2>Great content, stuck rankings? It is usually one of these.</h2>
           <p>
-            You can have strong pages and still stall, because your site isn't clear enough for
-            search engines and AI systems to read at scale. Three patterns quietly cap performance,
-            and all three are hard to spot by eye.
+            Internal competition. Repetitive templates. Buried content. Searchscope shows the pattern,
+            then points to the fix.
           </p>
         </div>
         <div class="probs">
@@ -204,7 +190,7 @@ const softwareLd = {
     </div>
   </section>
 
-  <!-- ============ THE PLATFORM (seven capabilities) ============ -->
+  <!-- ============ THE PLATFORM: ONE PLACE, SIX WAYS TO WORK ============ -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
@@ -212,19 +198,22 @@ const softwareLd = {
         <div class="sechead" style="margin-top:var(--space-s)">
           <h2>Your whole search picture, in one place.</h2>
           <p>
-            Seven capabilities that crawl your site, surface what is wrong, score what matters and
-            draft the work, so your team spends its time acting, not assembling reports.
+            One crawl. One set of data. One place to see what matters, decide what to do, and move to
+            action.
           </p>
         </div>
         <ul class="capsix" role="list">
-          {capabilities.map((c) => (
+          {FEATURES.map((f) => (
             <li>
-              <span class="no">{c.no}</span>
+              <span class="no">{f.no}</span>
               <div>
-                <h4>{c.title}{c.neu && <span class="newchip">New</span>}</h4>
-                <p>{c.line}</p>
+                <h4>
+                  <a href={f.href}>{f.name}</a>
+                  {'neu' in f && f.neu && <span class="newchip">New</span>}
+                </h4>
+                <p>{f.line}</p>
               </div>
-              <a class="go" href={c.href} aria-label={`More on ${c.title}`}>→</a>
+              <a class="go" href={f.href} aria-label={`Open ${f.name}`}>→</a>
             </li>
           ))}
         </ul>
@@ -235,107 +224,54 @@ const softwareLd = {
     </div>
   </section>
 
-  <!-- ============ THE STRATEGIC ADVISOR (additive) ============ -->
+  <!-- ============ THE STRATEGIC ADVISOR ============ -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="two reveal">
         <div class="sechead">
-          <span class="eyebrow">The Strategic Advisor</span>
-          <h2 style="margin-top:var(--space-s)">Ask it what you'd ask an analyst.</h2>
+          <span class="eyebrow">The advisor</span>
+          <h2 style="margin-top:var(--space-s)">Ask what you should do, not what the data says.</h2>
           <p>
-            Not a generic chatbot. The Strategic Advisor is grounded in your search reality. Ask it
-            where you're losing ground, what's behind a drop, or what to brief next, and it answers
-            with the data and the move.
+            The Strategic Advisor reads your live data and writes the brief, so you can move faster.
           </p>
-          <a href="/platform" class="golink">Meet the advisor → the platform</a>
+          <a href="/intelligence" class="golink">Meet the advisor → Intelligence Hub</a>
         </div>
         <div class="appwin">
           <div class="awbar">
             <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="awurl">app.searchscope.io/intelligence/advisor</span>
+            <span class="awurl">app.searchscope.io/intelligence/strategic-advisor</span>
             <span class="awtab">Strategic Advisor</span>
           </div>
           <div class="awbody lchat">
-            <div class="cq">which of our pages are quietly losing traffic? nothing's jumped out at me</div>
-            <div class="cpull"><span class="ok">✓</span> read 90 days of search data · 239 pages</div>
-            <div class="cpull"><span class="ok">✓</span> checked this week's decay run</div>
+            <div class="cq">Which pages are quietly losing traffic that I haven't noticed?</div>
+            <div class="cpull"><span class="ok">✓</span> read 90 days of search performance · 1,240 pages</div>
+            <div class="cpull"><span class="ok">✓</span> cross-checked the decay analyser's latest run</div>
             <div class="ca">
-              <b>Three are sliding while the top-line holds steady, so they're easy to miss:</b>
+              <b>Three pages are sliding behind a stable overall number:</b>
               <table>
-                <tr><td>/journal/winter-layering</td><td class="tx-rose">−34% clicks</td><td class="xtra">demand up 12%</td></tr>
-                <tr><td>/boots/waterproof-care</td><td class="tx-rose">−28% clicks</td><td class="xtra">position 5.1 → 8.3</td></tr>
-                <tr><td>/tents/4-season</td><td class="tx-rose">−19% clicks</td><td class="xtra">lost 6 brand queries</td></tr>
+                <tr><td>/guides/how-to-choose-a-waterproof-jacket</td><td class="tx-rose">−28%</td></tr>
+                <tr><td>/collections/down-jackets</td><td class="tx-rose">−17%</td></tr>
+                <tr><td>/guides/best-hiking-trails-uk</td><td class="tx-rose">−12%</td></tr>
               </table>
-              The shop homepage is growing and masking all three, so your total looks flat. The first
-              two already have a refresh playbook from Monday. Want me to open briefs for all three?
+              The waterproof jacket guide is the one to act on first: demand is up 14% while you
+              slipped from 4.2 to 7.8. I have drafted the refresh.
             </div>
+            <div class="lplace"><span class="lchip on">Create brief</span><span class="lchip">Open decay workspace</span><span class="lchip">Add objective</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ BRAND & AI VISIBILITY (reputation) ============ -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <span class="eyebrow">Brand & AI visibility</span>
-        <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">Rankings are half the battle. Reputation is the other half.</h2>
-          <p>
-            Brand plays a big role in visibility. More of your buyers never see a results page: they
-            ask an assistant and read one answer, or they read the coverage, and those answers favour
-            brands that get talked about, cited and trusted. Searchscope tracks how AI systems and
-            the press describe you (your share of the answers, who gets cited, mentions over time)
-            and layers digital PR on top, with a PR strategist to move the numbers. It isn't a
-            bolt-on. It's how you win visibility now.
-          </p>
-        </div>
-        <div class="appwin-wrap push"><BrandAnswers /></div>
-        <div style="margin-top:var(--space-m)">
-          <a href="/brand-and-ai" class="golink">The full argument → Brand &amp; AI visibility</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE CO-PILOT MODEL (cream) ============ -->
-  <section class="section theme-cream">
-    <div class="container container--wide">
-      <div class="sechead center reveal">
-        <span class="eyebrow">The co-pilot model</span>
-        <h2 style="margin-top:var(--space-s)">A co-pilot doesn't replace the pilot.</h2>
-      </div>
-      <div class="hm-grid reveal">
-        <div>
-          <span class="hm-tag">The machine</span>
-          <p class="hm-line">
-            Searchscope does hours of analysis in <strong>seconds</strong>, reading your search data
-            against demand, your site and AI search to surface what you'd never catch by hand.
-          </p>
-        </div>
-        <span class="hm-x" aria-hidden="true">×</span>
-        <div>
-          <span class="hm-tag">The humans</span>
-          <p class="hm-line">
-            Our strategists bring the judgement, context and craft software can't fake, then
-            <strong>execute</strong>. Software finds it; people act on it.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BUILT BY PRACTITIONERS (live copy) ============ -->
+  <!-- ============ BUILT BY PRACTITIONERS ============ -->
   <section class="section theme-dark bbp">
     <div class="container container--wide">
       <div class="bbp__inner reveal">
         <span class="eyebrow">Built by practitioners</span>
-        <h2 class="bbp__title">Built and run by a working search team, not a lab.</h2>
+        <h2 class="bbp__title">A working search team, not a lab.</h2>
         <p class="bbp__sub">
-          We're a search team first. Searchscope is the co-pilot we built to do our own client work
-          better, sharpened on real sites every day. Work with us and you get both: the intelligence,
-          and the people who wield it.
+          Searchscope is built by people who do this work every day. It is made for real sites, real
+          deadlines, and real teams.
         </p>
         <a href={GMM.url} class="btn btn--ghost btn--lg" target="_blank" rel="noopener">
           Meet the team at Growth Minded Marketing ↗
@@ -346,7 +282,9 @@ const softwareLd = {
 
   <!-- ============ FINAL CTA ============ -->
   <CTABand
-    title="Be part of our pilot programme"
+    eyebrow="Join the pilot"
+    title="See the co-pilot read your search picture."
+    sub="Join the pilot programme and we will show you what it finds."
     secondaryLabel="See the platform"
     secondaryHref="/platform"
   />
@@ -384,7 +322,7 @@ const softwareLd = {
     font-size: var(--step-1);
     line-height: 1.5;
     color: var(--ink-dim);
-    max-width: 44ch;
+    max-width: 46ch;
   }
   .hero__visual {
     position: relative;
@@ -454,5 +392,60 @@ const softwareLd = {
   }
   .bbp__inner .btn {
     margin-top: var(--space-l);
+    /* long label: allow it to wrap rather than force horizontal scroll on mobile */
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
   }
 </style>
+
+<!-- On-demand run strip: staged completion loop, mirrors the analyser engine. -->
+<script is:inline>
+  (function () {
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmtClock(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+    document.querySelectorAll('.runstrip').forEach(function (rs) {
+      var rows = [].slice.call(rs.querySelectorAll('.arow'));
+      var clock = rs.querySelector('.rsclock');
+      if (!rows.length) return;
+      function reset() {
+        rows.forEach(function (r) {
+          r.classList.add('pend'); r.classList.remove('live', 'done');
+          r.querySelector('.st').textContent = 'queued';
+          r.querySelector('.res').innerHTML = '';
+        });
+      }
+      function play() {
+        reset();
+        var t = 0;
+        var iv = setInterval(function () {
+          t += 2;
+          if (clock) clock.textContent = fmtClock(Math.min(t * 6, 199));
+          rows.forEach(function (r) {
+            var done = Number(r.dataset.t);
+            var start = done - 22;
+            if (t * 6 >= done) {
+              r.classList.remove('pend', 'live'); r.classList.add('done');
+              r.querySelector('.st').textContent = 'complete';
+              r.querySelector('.res').innerHTML = r.dataset.res;
+            } else if (t * 6 >= start) {
+              r.classList.remove('pend'); r.classList.add('live');
+              r.querySelector('.st').textContent = r.dataset.st;
+            }
+          });
+          if (t * 6 > 210) { clearInterval(iv); setTimeout(play, 2600); }
+        }, reduced ? 400 : 130);
+      }
+      if (reduced) {
+        rows.forEach(function (r) {
+          r.classList.add('done');
+          r.querySelector('.st').textContent = 'complete';
+          r.querySelector('.res').innerHTML = r.dataset.res;
+        });
+        if (clock) clock.textContent = '00:33';
+        return;
+      }
+      play();
+    });
+  })();
+</script>

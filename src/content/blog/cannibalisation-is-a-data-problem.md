@@ -53,4 +53,4 @@ Once you've found a real instance, you have three options, and the right one dep
 
 Cannibalisation is a data problem with a decision at the end. Find it in the data, then decide with your head, not by eyeballing which pages *feel* like duplicates.
 
-See it in the product: [how Searchscope catches cannibalisation](/analyzers/cannibalisation), scored, with the consolidation drafted.
+See it in the product: [how Searchscope catches cannibalisation](/workspaces), scored, with the consolidation drafted.

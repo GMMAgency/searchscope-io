@@ -85,18 +85,62 @@ export const SOCIALS = [
   { label: 'X', href: 'https://x.com/olaibi_ray' },
 ] as const;
 
+/** Lean top nav. The six feature pages are reached from the Platform
+ *  overview and the footer, so the top bar stays calm (concept IA). */
 export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
   { label: 'Platform', href: '/platform' },
-  { label: 'How it works', href: '/how-it-works' },
   { label: 'Future of SEO', href: '/search-systems' },
   { label: 'Blog', href: '/blog' },
 ] as const;
 
-/** The canonical seven analysers, in order. Powers the /analyzers/* story
- *  pages, the footer column and the capability set across the site. */
+/** The six feature areas, in product order. One page each, reached from
+ *  the Platform overview index, the homepage feature index and the footer.
+ *  This replaces the old seven near-identical analyser story pages. */
+export const FEATURES = [
+  {
+    no: '01',
+    name: 'Data Pipeline',
+    href: '/platform/data-pipeline',
+    line: 'Sync your search data, crawl your site, run the analysers. Watch the engine work in a live terminal. This is what feeds everything else.',
+  },
+  {
+    no: '02',
+    name: 'Analyser Workspaces',
+    href: '/workspaces',
+    line: 'Seven analysers hand you a queue of findings, each one scored, judged and with the fix drafted. Work top to bottom and clear the week.',
+  },
+  {
+    no: '03',
+    name: 'Intelligence Hub',
+    href: '/intelligence',
+    line: 'Your performance, the competitive gap, rising demand and an AI strategist that has already read your data. The command centre.',
+  },
+  {
+    no: '04',
+    name: 'Brand and AI Visibility',
+    href: '/brand-and-ai',
+    neu: true,
+    line: 'See how AI answers describe you, who they recommend instead, and which sources they trust. Then move the numbers with digital PR and a dedicated strategist.',
+  },
+  {
+    no: '05',
+    name: 'Content Studio',
+    href: '/content-studio',
+    line: 'Turn a finding into research, a brief and a draft, with the exact spot on the page it belongs. The execution layer.',
+  },
+  {
+    no: '06',
+    name: 'Reports',
+    href: '/reports',
+    line: 'A client-ready report that writes itself, in the voice of whoever is reading it. Export to PDF, a slide deck or a workbook.',
+  },
+] as const;
+
+/** The canonical seven analysers, in order. Named as a set on the Data
+ *  Pipeline fleet table and the Analyser Workspaces page (no longer a
+ *  page each). */
 export const ANALYZERS = [
-  { slug: 'index-bloat', name: 'Index health' },
+  { slug: 'index-bloat', name: 'Index bloat' },
   { slug: 'internal-links', name: 'Internal links' },
   { slug: 'cannibalisation', name: 'Cannibalisation' },
   { slug: 'content-decay', name: 'Content decay' },

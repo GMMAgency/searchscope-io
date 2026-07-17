@@ -2,600 +2,82 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CTABand from '../components/CTABand.astro';
-import Ticks from '../components/Ticks.astro';
-import DemandScatter from '../components/product/DemandScatter.astro';
-import BrandAnswers from '../components/product/BrandAnswers.astro';
+import { FEATURES } from '../consts';
 
-// Q1 findings queue - one coherent read of the Northwind site.
-const findings = [
-  { sev: 'crit', h: '/boots/waterproof and /shop/waterproof-boots split one intent 61/39', m: 'Cannibalisation · positions swapping ×9 · consolidation plan drafted', ct: '214 shared queries', ctClass: '' },
-  { sev: 'crit', h: '/journal/winter-layering decaying against rising demand', m: 'Content decay · position 4.2 → 7.8 · refresh playbook drafted', ct: '4,120 clicks at risk', ctClass: 'tx-rose' },
-  { sev: 'high', h: '12 strong pages carry fewer than 3 internal links', m: 'Internal links · anchors suggested per link', ct: '9,812 links graphed', ctClass: '' },
-  { sev: 'med', h: "'winter hiking gear' cluster has no dominant page", m: 'Cluster volatility · demand up 18% this quarter', ct: '18 queries adrift', ctClass: '' },
-  { sev: 'win', h: '/tents/4-season: one H2 covers 9 buying-intent queries', m: 'Opportunities · brief ready in Content Studio', ct: '+8,900 clicks in reach', ctClass: 'tx-em' },
+// Chapter 02 · Platform. The overview and the hub: one engine, six
+// surfaces, each earning its place and linking to its own page.
+const pipeline = [
+  'Data Pipeline',
+  'Analyser Workspaces',
+  'Intelligence Hub',
+  'Brand and AI',
+  'Content Studio',
+  'Reports',
 ];
 
-// Telemetry bay (the one dark object) - a live crawl of Northwind's site.
-const crawlLines = [
-  { pth: '/boots/waterproof', code: '200', warn: false, meta: '1,840 words · 31 internal links' },
-  { pth: '/tents/4-season', code: '200', warn: false, meta: 'schema Product · 24 links' },
-  { pth: '/journal/winter-layering', code: '200', warn: false, meta: '1,840 words · 14 links' },
-  { pth: '/base-layers/merino', code: '200', warn: true, meta: 'warn: thin · 320 words' },
-  { pth: '/shop', code: '200', warn: false, meta: 'hub · 96 internal links' },
-];
-
-const citations = [
-  { q: 'best waterproof hiking boots', cited: false, note: '3 rivals are' },
-  { q: 'what is a 4-season tent', cited: true, note: 'source 2 of 5' },
-  { q: 'are northwind boots any good', cited: false, note: 'answer names no one' },
-];
-
-const gaps = [
-  { k: 'waterproof hiking boots', sub: 'trailhaven.com sits at #2', them: '#2', you: '#14', vol: '8,100', voln: '8100', opp: '92', oppn: '92', oppClass: 'hi' },
-  { k: '4 season tent', sub: 'thehikingguide.com sits at #4', them: '#4', you: '#19', vol: '5,600', voln: '5600', opp: '88', oppn: '88', oppClass: 'hi' },
-  { k: 'merino base layers', sub: 'basecampgear.com sits at #3', them: '#3', you: '#9', vol: '2,400', voln: '2400', opp: '81', oppn: '81', oppClass: 'hi' },
-  { k: 'down jacket vs synthetic', sub: 'trailhaven.com sits at #1', them: '#1', you: '#12', vol: '1,900', voln: '1900', opp: '74', oppn: '74', oppClass: 'mid' },
-  { k: 'northwind outfitters reviews', sub: 'reddit.com sits at #2', them: '#2', you: '#6', vol: '880', voln: '880', opp: '58', oppn: '58', oppClass: '' },
-];
-
-const steps = [
-  { no: '01', title: 'Connect your search data', line: 'Read-only. Searchscope ingests your real query, page and click reality.' },
-  { no: '02', title: 'Searchscope analyses', line: 'Your data is read against market demand, your site and AI search, continuously.' },
-  { no: '03', title: 'Opportunities prioritised', line: 'Every finding scored by opportunity and revenue risk, not vanity volume.' },
-  { no: '04', title: 'Recommendations generated', line: 'The specific move, explained, with the brief drafted and ready.' },
-  { no: '05', title: 'Your team, or ours, executes', line: 'Ship it yourself, or let our team run it for you.' },
+// Richer one-liners for the overview index (product-marketing voice).
+const surfaces = [
+  { ...FEATURES[0], line: 'Sync data and run the engine.' },
+  { ...FEATURES[1], line: 'Find issues and opportunities.' },
+  { ...FEATURES[2], line: 'See the bigger picture.' },
+  { ...FEATURES[3], line: 'Track how AI describes you.' },
+  { ...FEATURES[4], line: 'Turn findings into drafts.' },
+  { ...FEATURES[5], line: 'Share the story.' },
 ];
 ---
 
 <BaseLayout
-  title="The Platform"
-  description="Every question a search programme runs on, answered by the product doing the work: what's costing you traffic, where the growth is, what the AI answers say about you, what to do about it, and whether it worked."
+  title="Platform"
+  description="Your whole search picture, in one place. One crawl and one set of search data power six surfaces: Data Pipeline, Analyser Workspaces, Intelligence Hub, Brand and AI Visibility, Content Studio and Reports."
   headerTheme="dark"
 >
   <PageHero
-    eyebrow="The co-pilot"
-    title="Every question your search picture can answer."
-    lede="Five questions run a search programme. Searchscope answers all five from live data, weekly, and turns every answer into drafted work. This page is organised the way you'd ask."
+    eyebrow="The platform"
+    title="Your whole search picture, in one place."
+    lede="Searchscope crawls your site, reads your search data, and runs the analysis once. Everything else sits on top of that."
   >
-    <div class="mstatrow">
-      <div class="mstat"><span class="sv cnt" data-n="239">239</span><span class="sl">pages read weekly</span></div>
-      <div class="mstat"><span class="sv cnt" data-n="41300">41,300</span><span class="sl">queries cross-checked</span></div>
-      <div class="mstat"><span class="sv cnt" data-n="160">160</span><span class="sl">findings this week</span></div>
-      <div class="mstat"><span class="sv cnt" data-n="40">40</span><span class="sl">AI answers audited</span></div>
+    <div class="pipe">
+      {pipeline.map((n, i) => (
+        <>
+          <span class="nd">{n}</span>
+          {i < pipeline.length - 1 && <span class="ar">→</span>}
+        </>
+      ))}
     </div>
   </PageHero>
 
-  <!-- ===== Q1: what's costing us traffic ===== -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
-        <div class="when">Question 01</div>
-        <div class="sechead">
-          <h2 class="big">"What is quietly costing us traffic?"</h2>
-          <p>
-            Seven analysers run continuously across your site (index bloat, content decay,
-            cannibalisation, orphan pages, opportunities, schema and cluster volatility), each one
-            turning raw signals into a ranked list of decisions. Every finding is scored, prioritised
-            and explained in plain English, so you know what to fix first.
-          </p>
+        <span class="eyebrow">Six surfaces</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Each one solves a different part of the work.</h2>
+          <p>Use one engine to find the issue, understand it, turn it into work, and share it.</p>
         </div>
-
-        <div class="appwin push">
-          <div class="awbar">
-            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="awurl">app.searchscope.io/dashboard</span>
-            <span class="awtab">Needs attention</span>
-          </div>
-          <div class="awbody">
-            <div class="awhead">
+        <ul class="capsix" role="list">
+          {surfaces.map((s) => (
+            <li>
+              <span class="no">{s.no}</span>
               <div>
-                <span class="awtitle">This week's findings</span>
-                <span class="awsub">160 findings · ranked by impact</span>
+                <h4>
+                  <a href={s.href}>{s.name}</a>
+                  {'neu' in s && s.neu && <span class="newchip">New</span>}
+                </h4>
+                <p>{s.line}</p>
               </div>
-              <div class="awleg">
-                <span><i class="dot" style="background:var(--sev-rose-ink)"></i>critical</span>
-                <span><i class="dot" style="background:var(--sev-amber-ink)"></i>high</span>
-                <span><i class="dot" style="background:var(--sev-emerald-ink)"></i>quick win</span>
-              </div>
-            </div>
-            {findings.map((f) => (
-              <div class={`lqrow ${f.sev}`}>
-                <span class="qd"></span>
-                <div>
-                  <h4>{f.h}</h4>
-                  <span class="qm">{f.m}</span>
-                </div>
-                <span class={`qct ${f.ctClass}`}>{f.ct}</span>
-              </div>
-            ))}
-            <p class="awnote">Every row carries its fix: create brief, view queries, assign. Never a raw export.</p>
-          </div>
-        </div>
-
-        <div class="two" style="margin-top:var(--space-xl)">
-          <div class="sechead">
-            <h3>And you can watch it read.</h3>
-            <p>
-              Everything starts with a full technical crawl. Searchscope reads your site the way
-              search engines and AI systems do, then turns it into structured signal the rest of the
-              co-pilot works from. No tag to install, no sampling. The telemetry bay narrates every
-              crawl, stage by stage, page by page, in the open.
-            </p>
-            <div class="points">
-              <span class="lchip">up to 10,000 pages</span>
-              <span class="lchip">content · links · schema · entities</span>
-              <span class="lchip">re-crawls only what changed</span>
-            </div>
-          </div>
-          <div class="obj telem">
-            <div class="ohead">
-              <span>Telemetry bay · crawl</span>
-              <span>212 / 239 pages</span>
-            </div>
-            <div class="stgstrip">
-              <span class="stg done">Crawling</span>
-              <span class="stg live">Processing</span>
-              <span class="stg">Intelligence</span>
-              <span class="stg">Indexing</span>
-            </div>
-            <div class="tlines">
-              {crawlLines.map((l) => (
-                <div class="tline">
-                  <span class="pth">{l.pth}</span>
-                  <span class={`code ${l.warn ? 'warn' : ''}`}>{l.code}</span>
-                  <span class="meta">{l.meta}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <p class="objcap">The page's one dark object: the telemetry bay. Real engine telemetry, not a fake spinner.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Q2: where's the growth ===== -->
-  <section id="demand" class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <div class="when">Question 02</div>
-        <div class="two flip">
-          <div class="sechead">
-            <h2 class="big">"Where is the growth we're not collecting?"</h2>
-            <p>
-              Market demand × your visibility × your ranking pages × cannibalisation, plotted as one
-              picture. Every bubble is a page; size is the opportunity; colour is the signal.
-              High-demand, low-share pages light up red: that's share you're leaving on the table.
-            </p>
-            <div class="points">
-              <span class="lchip">an opportunity score per cluster, not a wall of keywords</span>
-              <span class="lchip">a clear losing-share signal</span>
-            </div>
-          </div>
-          <DemandScatter />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Q3: Brand & AI visibility ===== -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <div class="when">Question 03</div>
-        <span class="eyebrow">Brand &amp; AI visibility · the differentiator</span>
-        <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">"What do the answers and the press say about us?"</h2>
-          <p>
-            The question every board now asks, and the one most SEO tools can't answer. Brand plays a
-            big role in visibility: AI answers and search favour brands that get talked about, cited
-            and trusted. So Searchscope interviews the AI engines every week (your share of the
-            answers, who gets cited, mentions over time) and layers digital PR on top: a PR strategist
-            investigates campaigns, drafts the pitches, and tracks every placement's effect on the
-            answers it was meant to change. PR isn't an add-on here. It's how you win visibility.
-          </p>
-        </div>
-        <div class="pair">
-          <div>
-            <p class="pairlbl">The tracking · see how AI assistants describe your brand</p>
-            <div class="ticked">
-              <Ticks size={16} inset="-13px" />
-              <BrandAnswers
-                sub="12 buyer questions · this week"
-                citations={citations}
-                everyoneElse={false}
-                mentions={false}
-              />
-            </div>
-          </div>
-          <div>
-            <p class="pairlbl">The PR layer · the campaigns that change the answers</p>
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/intelligence/brand-ai</span>
-                <span class="awtab">PR &amp; mentions</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Q3 campaign · winter range launch</span>
-                    <span class="awsub">run by the PR strategist</span>
-                  </div>
-                </div>
-                <div class="lprow">
-                  <div class="p-top">
-                    <span class="o">trailhaven.com · exclusive: 2026 winter range first look</span>
-                    <span class="lpst sec">Secured</span>
-                  </div>
-                  <div class="pnote">embargoed to 14 September · target: 6 uncited answers</div>
-                </div>
-                <div class="lprow">
-                  <div class="p-top">
-                    <span class="o">thehikingguide.com · expert comment, choosing a 4-season tent</span>
-                    <span class="lpst pit">Pitched</span>
-                  </div>
-                  <div class="pnote">follow-up due Friday · this writer covered us in 2024</div>
-                </div>
-                <div class="lprow">
-                  <div class="p-top">
-                    <span class="o">basecampgear.com · data story: the winter layering mistakes people make</span>
-                    <span class="lpst dra">Drafting</span>
-                  </div>
-                  <div class="pnote">built on the demand gap from Monday's run</div>
-                </div>
-                <div class="lml">
-                  <div class="lbl">
-                    <span>Brand mentions · 12 weeks</span>
-                    <span>placements in green</span>
-                  </div>
-                  <div class="lcols">
-                    <i style="height:18px"></i><i style="height:22px"></i><i style="height:14px"></i>
-                    <i style="height:20px"></i><i style="height:16px"></i><i style="height:24px"></i>
-                    <i style="height:20px"></i><i style="height:28px"></i><i class="hit" style="height:44px"></i>
-                    <i style="height:34px"></i><i class="hit" style="height:52px"></i><i style="height:46px"></i>
-                  </div>
-                </div>
-                <p class="awnote">Coverage lands in week 9; by week 11 the brand is named in two more answers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top:var(--space-m)">
-          <a href="/brand-and-ai" class="golink">The full argument → Brand &amp; AI visibility</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Intelligence Hub: gaps + objectives ===== -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <span class="eyebrow">Intelligence Hub · the command centre</span>
-        <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">See the whole board: your rivals, your goals, your market.</h2>
-          <p>
-            You have seen the demand picture and the reputation layer already; the Intelligence Hub
-            adds the two views most tools skip. Competitive Landscape names the exact keywords rivals
-            rank for that you don't, scored so you know which to take first. Objectives lets you set a
-            target, then watches it against your live data every week, so a goal becomes a number you
-            see move, not a note in a deck.
-          </p>
-        </div>
-        <div class="pair">
-          <div>
-            <p class="pairlbl">The rivals · keywords they win, you don't</p>
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/intelligence/competitive-landscape</span>
-                <span class="awtab">Competitive landscape</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Keywords your rivals win, you don't</span>
-                    <span class="awsub">4 competitors monitored · sorted by opportunity</span>
-                  </div>
-                </div>
-                <div class="gaphd">
-                  <span>Keyword</span>
-                  <span class="r">Them</span>
-                  <span class="r">You</span>
-                  <span class="r hvol">Vol</span>
-                  <span class="r">Opp</span>
-                </div>
-                {gaps.map((g) => (
-                  <div class="gaprow">
-                    <div>
-                      <span class="gk">{g.k}</span>
-                      <span class="gsub">{g.sub}</span>
-                    </div>
-                    <span class="gnum them">{g.them}</span>
-                    <span class="gnum you">{g.you}</span>
-                    <span class="gnum gvol cnt" data-n={g.voln}>{g.vol}</span>
-                    <span class={`gop ${g.oppClass} cnt`} data-n={g.oppn}>{g.opp}</span>
-                  </div>
-                ))}
-                <p class="awnote">The top three are single-brief wins. Take these first.</p>
-                <div class="awstats c3">
-                  <div class="awstat"><span class="v cnt" data-n="63">63</span><span class="l">Gaps to take</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="2180">2,180</span><span class="l">Keywords watched</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="41">41</span><span class="l">They lead, high vol</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="pairlbl">The goals · set them, watch them move</p>
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/intelligence/objectives</span>
-                <span class="awtab">Objectives</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Goals for this quarter</span>
-                    <span class="awsub">3 tracked · 1 at risk</span>
-                  </div>
-                </div>
-                <div class="trkrow">
-                  <div class="trktop">
-                    <span class="trkgoal">Rank top 3 for "merino base layers"</span>
-                    <span class="lpst pit">At risk</span>
-                  </div>
-                  <div class="trkbar"><i class="risk" style="--w:45%"></i></div>
-                  <div class="trkmeta">now #9 · was #14 · target #3 by 30 Sept</div>
-                </div>
-                <div class="trkrow">
-                  <div class="trktop">
-                    <span class="trkgoal">Non-brand clicks to 60k a month</span>
-                    <span class="lpst sec">On track</span>
-                  </div>
-                  <div class="trkbar"><i class="ok" style="--w:80%"></i></div>
-                  <div class="trkmeta"><span class="cnt" data-n="48210">48,210</span> of 60,000 · +6.2% this week</div>
-                </div>
-                <div class="trkrow">
-                  <div class="trktop">
-                    <span class="trkgoal">Own the "waterproof hiking boots" cluster</span>
-                    <span class="lpst sec">On track</span>
-                  </div>
-                  <div class="trkbar"><i class="ok" style="--w:92%"></i></div>
-                  <div class="trkmeta">now #2 · held the top three for 3 weeks</div>
-                </div>
-                <div class="thist">
-                  <div class="lbl">
-                    <span>Goal health · last 12 weeks</span>
-                    <span>10 on track</span>
-                  </div>
-                  <div class="cells">
-                    <i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i>
-                    <i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i>
-                    <i class="ok"></i><i class="ok"></i><i class="risk"></i><i class="risk"></i>
-                  </div>
-                </div>
-                <p class="awnote">Set a goal, Searchscope tracks it against your live data every week.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top:var(--space-m)">
-          <a href="/platform" class="golink">The demand picture these gaps sit in → Demand &amp; Trends</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Q4: what do we do about it ===== -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <div class="when">Question 04</div>
-        <div class="sechead">
-          <h2 class="big">"So what do we do about it, today?"</h2>
-          <p>
-            Ask the Strategic Advisor, get the move; hand it to Content Studio, get the work. This is
-            where insight becomes work: the studio reads what's already ranking, finds what you're
-            missing, and writes the brief so the team can publish, not research.
-          </p>
-        </div>
-        <div class="pair">
-          <div>
-            <p class="pairlbl">The ask</p>
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/intelligence/advisor</span>
-                <span class="awtab">Strategic Advisor</span>
-              </div>
-              <div class="awbody lchat">
-                <div class="cq">we're planning a winter hub for Q3. what does the demand picture say?</div>
-                <div class="cpull"><span class="ok">✓</span> read demand across 41 winter queries · 90 days</div>
-                <div class="cpull"><span class="ok">✓</span> checked cluster volatility · 6 winter clusters, no dominant page</div>
-                <div class="ca">
-                  <b>Worth building, with one thing to watch.</b> Demand for "winter hiking gear" is up
-                  18% quarter on quarter and you hold about 3% of it. The catch: /journal/winter-layering
-                  is already decaying (<span class="tx-rose">−21% clicks</span>) and a new hub would
-                  cannibalise it. What I'd do: one hub at /winter, fold that post in, four supporting
-                  pages under it. Want the five briefs?
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p class="pairlbl">The output</p>
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/content-studio</span>
-                <span class="awtab">Content Studio</span>
-              </div>
-              <div class="awbody lout">
-                <span class="lfrom">● from finding · Opportunity · /tents/4-season</span>
-                <h4>How to choose a 4-season tent: what actually matters in winter</h4>
-                <span class="bm">primary: how to choose a 4 season tent · 31 supporting queries · target 1,600 words</span>
-                <ul class="lh2">
-                  <li><span class="hn">H2</span><span class="ht">What makes a tent "4-season"?</span><span class="hw hit">covers 9 queries</span></li>
-                  <li><span class="hn">H2</span><span class="ht">Poles, fabric and snow load, in plain terms</span><span class="hw">gap vs top 3 results</span></li>
-                  <li><span class="hn">H2</span><span class="ht">4-season vs 3-season: which do you need?</span><span class="hw hit">covers 6 queries</span></li>
-                </ul>
-                <div class="lplace">
-                  <span class="plbl">Placement</span>
-                  <span class="lchip on">insert after intro</span>
-                  <span class="lchip">replace section</span>
-                  <span class="lchip">expand H2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Content Studio full arc ===== -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <span class="eyebrow">Content Studio · the execution layer</span>
-        <div class="sechead" style="margin-top:var(--space-s)">
-          <h2 class="big">From opportunity to publish-ready, in one place.</h2>
-          <p>
-            Content Studio turns a finding into finished work. Point it at an opportunity or a decaying
-            page and it does the morning of research a brief usually takes: it reads the page as it
-            stands, pulls the results actually ranking for the query, reads those competitor pages,
-            then writes the brief and a full draft, with the exact spot on the page each change
-            belongs. Your writers publish, they don't research.
-          </p>
-        </div>
-        <div class="appwin push">
-          <div class="awbar">
-            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="awurl">app.searchscope.io/content-studio</span>
-            <span class="awtab">Content Studio</span>
-          </div>
-          <div class="awbody lout">
-            <span class="lfrom">● from finding · Content decay · /journal/winter-layering</span>
-            <div class="awhead" style="margin-top:var(--space-xs)">
-              <div>
-                <span class="awtitle">Getting up to speed</span>
-                <span class="awsub">reading the live results · 4 steps</span>
-              </div>
-            </div>
-            <div class="upto">
-              <div class="arow done"><span class="n">01</span><span class="nm">Reading the page</span><span class="st">parsing content · headings · schema · word count</span><span class="res">1,840 words · 6 H2s · thin intro</span></div>
-              <div class="arow done"><span class="n">02</span><span class="nm">Finding top competitors</span><span class="st">fetching the top results for 'winter layering'</span><span class="res">top 5 results captured</span></div>
-              <div class="arow done"><span class="n">03</span><span class="nm">Reading competitor pages</span><span class="st">reading 5 ranking pages · mapping headings</span><span class="res">214 headings · 9 gaps found</span></div>
-              <div class="arow done"><span class="n">04</span><span class="nm">Ready</span><span class="st">assembling the brief and draft</span><span class="res"><span class="ok">brief + draft ready</span></span></div>
-            </div>
-            <div class="uptodone">The result</div>
-            <h4>How to layer for winter hiking: a 2026 guide</h4>
-            <span class="bm">primary: winter layering · 27 supporting queries · refresh, keep the URL · target 2,100 words</span>
-            <div class="lplace">
-              <span class="plbl">Output</span>
-              <span class="lchip on">Brief</span>
-              <span class="lchip">Full draft · 2,140 words</span>
-            </div>
-            <ul class="lh2">
-              <li><span class="hn">H2</span><span class="ht">The three-layer system, without the jargon</span><span class="hw hit">covers 11 queries</span></li>
-              <li><span class="hn">H2</span><span class="ht">What to actually wear, base layer to shell</span><span class="hw">gap vs the top 3 results</span></li>
-              <li><span class="hn">H2</span><span class="ht">Common winter layering mistakes</span><span class="hw hit">covers 7 queries</span></li>
-            </ul>
-            <div class="lplace">
-              <span class="plbl">Placement</span>
-              <span class="lchip on">insert after H2 3</span>
-              <span class="lchip">expand the intro</span>
-              <span class="lchip">replace the 2023 kit note</span>
-            </div>
-            <p class="awnote">Placement marked on the live page, so your writer pastes into the right spot, not a blank doc.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== How it works (cream, live copy) ===== -->
-  <section class="section theme-cream">
-    <div class="container container--wide">
-      <div class="reveal">
-        <span class="eyebrow">How it works</span>
-        <div class="sechead" style="margin-top:var(--space-s)">
-          <h2>From search data to shipped, in five steps.</h2>
-        </div>
-        <div class="steps5">
-          {steps.map((s) => (
-            <div class="step5">
-              <span class="sn">{s.no}</span>
-              <h4>{s.title}</h4>
-              <p>{s.line}</p>
-            </div>
+              <a class="go" href={s.href} aria-label={`Open ${s.name}`}>open →</a>
+            </li>
           ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Q5: did it work ===== -->
-  <section class="section theme-dark">
-    <div class="container container--wide">
-      <div class="reveal">
-        <div class="when">Question 05</div>
-        <div class="two">
-          <div class="sechead">
-            <h2 class="big">"And did any of it work?"</h2>
-            <p>
-              Search never stops moving, so neither does the read. Impact tracking follows every
-              shipped fix into your search data, and the Monday memo reports what it earned, not just
-              what changed. Shareable with stakeholders, no logins, no noise.
-            </p>
-            <div class="points">
-              <span class="lchip">before and after, per shipped change</span>
-              <span class="lchip">exports: workbook, deck, doc</span>
-            </div>
-          </div>
-          <div class="memo">
-            <div class="m-head">
-              <span>Weekly intelligence · w/c 6 July 2026</span>
-              <span>northwindoutfitters.com</span>
-            </div>
-            <div class="kpis">
-              <div class="kpi">
-                <span class="kl">Clicks</span>
-                <div class="kv"><span class="cnt" data-n="48210">48,210</span></div>
-                <div class="kd up">▲ 6.2% week on week</div>
-                <div class="kp">45,390 prev</div>
-              </div>
-              <div class="kpi">
-                <span class="kl">Clicks at risk</span>
-                <div class="kv"><span class="cnt" data-n="12400">12,400</span></div>
-                <div class="kd down">41 decaying pages</div>
-                <div class="kp">13,900 prev</div>
-              </div>
-              <div class="kpi">
-                <span class="kl">In reach</span>
-                <div class="kv">+<span class="cnt" data-n="8900">8,900</span></div>
-                <div class="kd up">49 open opportunities</div>
-                <div class="kp">+7,200 prev</div>
-              </div>
-            </div>
-            <h5>Shipped, and what it earned</h5>
-            <ul class="shipped">
-              <li><span class="ok">✓</span>/boots/waterproof consolidation · now wins 92% of shared queries</li>
-              <li><span class="ok">✓</span>/journal/winter-layering refresh · position 6.1 → 5.4 in two weeks</li>
-              <li><span class="ok">✓</span>11 article pages schema fix · rich results back on Thursday</li>
-            </ul>
-          </div>
-        </div>
+        </ul>
+        <p class="foot-note">Tools also carries Page Experience (Core Web Vitals and accessibility), marked "Soon" in the app and left out of the site until it ships.</p>
       </div>
     </div>
   </section>
 
   <CTABand
-    eyebrow="Question 06 · yours"
-    title="See the co-pilot read your search picture."
-    sub="The fastest way to understand Searchscope is to point it at your own site. Join the pilot programme and we'll show you what it surfaces."
+    title="Start with the platform."
+    sub="Join the pilot programme and we will point Searchscope at your own site and search data, then walk you through all six surfaces on your numbers."
+    secondaryLabel="See how it works"
+    secondaryHref="/how-it-works"
   />
 </BaseLayout>

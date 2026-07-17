@@ -16,13 +16,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- hero + composer, on the grid field -->
       <div class="rp-field">
         <div class="rp-hero">
-          <span class="eb">Reporting</span>
-          <h1>The report writes itself. You just decide who reads it.</h1>
+          <span class="eb">Reports</span>
+          <h1>Write the report once. Edit it before you export.</h1>
           <div class="rp-alts">
             <span class="rp-alt"><span class="k">or ·</span> Every finding, told the way each stakeholder needs to hear it.</span>
             <span class="rp-alt"><span class="k">or ·</span> The read, reshaped for whoever opens it.</span>
           </div>
-          <p class="hsub">Compose a report from your live search data whenever you need one. Pick who's reading and it reshapes itself: <strong>the board gets the headline and the decision, the marketing team gets the levers, the technical team gets the issue detail.</strong> One click sends it as a PDF, a slide deck or a workbook.</p>
+          <p class="hsub">Searchscope pulls the data, writes the first draft, and lets you refine it before you send it.</p>
           <div class="ctas">
             <a class="cta solid" href="/contact">Join the pilot programme →</a>
             <a class="cta ghost" href="#composer">Try the composer ↓</a>
@@ -44,9 +44,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <div class="rp-lbl">Audience</div>
                   <div class="rp-aud" id="rpAud">
                     <button type="button" data-aud="client">Your client</button>
-                    <button type="button" data-aud="exec">Executives</button>
-                    <button type="button" data-aud="marketing">Marketing</button>
-                    <button type="button" data-aud="technical">Technical</button>
+                    <button type="button" data-aud="exec">The board</button>
+                    <button type="button" data-aud="marketing">Marketing team</button>
+                    <button type="button" data-aud="technical">Technical team</button>
                   </div>
 
                   <div class="rp-lbl mt">Sections <span id="rpCount"></span></div>
@@ -101,8 +101,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="creamsec rv">
         <div class="sechead center">
           <span class="eb">Who it's for</span>
-          <h2>The person who signs off never logs in.</h2>
-          <p style="margin-inline:auto;max-width:58ch">One composed report, forwarded cold, still lands. Each reader gets the version written for them, and nothing about it looks generated.</p>
+          <h2>One report, different readers.</h2>
+          <p style="margin-inline:auto;max-width:58ch">Use the same data for a client, a manager, or a leadership team.</p>
         </div>
         <div class="probs">
           <div class="prob">
@@ -124,7 +124,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="pq rv">
-        Proof the work moved the needle, in the language your stakeholders already speak.
+        The report should explain what matters. Not every number. Just the story, the risks, and the next move.
         <span class="cite">The read, on demand</span>
       </div>
 
@@ -133,8 +133,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="two">
           <div class="sechead">
             <span class="eb">One click out</span>
-            <h2>One report, three ways to send it.</h2>
-            <p>The same composed report leaves as whatever the moment needs. A doc to forward, a slide deck to present, a workbook with every finding to sort and filter. One click, no copy-paste and no reformatting.</p>
+            <h2>Export as Word, slides, or Excel.</h2>
+            <p>Choose the format that fits the meeting.</p>
           </div>
           <div class="ticked">
             <span class="tks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -151,7 +151,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- cta band -->
       <div class="ctaband rv">
         <span class="eb">Work with us</span>
-        <h2>See what your next report could look like.</h2>
+        <h2>Turn analysis into something people can use.</h2>
         <p>A real strategist points Searchscope at your own site and shows you the first report it composes. No pitch deck, no obligation, just the page your stakeholders would actually read.</p>
         <div class="ctas">
           <a class="cta solid" href="/contact">Join the pilot programme</a>
@@ -455,20 +455,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       },
       risks: function () {
         return '<ul class="rp-list">' +
-          '<li><span class="dd rose"></span><span><b>4-season tents:</b> searches are up 18% for the season, but your buyer\'s guide has dropped to page two and cotswoldoutdoor.com took the top spot. Around <b>5,600 clicks a month</b> at stake.</span></li>' +
+          '<li><span class="dd rose"></span><span><b>4-season tents:</b> searches are up 18% for the season, but your buyer\'s guide has dropped to page two and Alpine Trail Co took the top spot. Around <b>5,600 clicks a month</b> at stake.</span></li>' +
           '<li><span class="dd amber"></span><span><b>/guides/tent-buying</b> is decaying. Clicks down 31% over 90 days.</span></li>' +
           '<li><span class="dd amber"></span><span>‘merino base layers’ has stalled at position 8. The page is thin, with no sizing or care guidance.</span></li>' +
           '</ul>';
       },
       brand: function () {
         return '<div class="rp-share">' +
-          '<div class="rp-shrow"><span class="n you">Northwind</span><span class="rp-track"><i class="you" style="width:44%"></i></span><span class="v">14%</span></div>' +
-          '<div class="rp-shrow"><span class="n">Cotswold Outdoor</span><span class="rp-track"><i style="width:82%"></i></span><span class="v">26%</span></div>' +
-          '<div class="rp-shrow"><span class="n">Alpkit</span><span class="rp-track"><i style="width:54%"></i></span><span class="v">17%</span></div>' +
+          '<div class="rp-shrow"><span class="n you">Northwind</span><span class="rp-track"><i class="you" style="width:44%"></i></span><span class="v">22%</span></div>' +
+          '<div class="rp-shrow"><span class="n">Alpine Trail Co</span><span class="rp-track"><i style="width:82%"></i></span><span class="v">41%</span></div>' +
+          '<div class="rp-shrow"><span class="n">Summit &amp; Sky</span><span class="rp-track"><i style="width:56%"></i></span><span class="v">28%</span></div>' +
           '</div>' +
-          '<div class="rp-note">Your share of AI answers for gear questions, up from 9% last month.</div>' +
+          '<div class="rp-note">Your share of AI answers for gear questions, holding at 22% while Alpine Trail pulls ahead on the back of last month’s PR push.</div>' +
           '<div class="rp-quote"><span class="src">AI answer · ‘best waterproof hiking boots for the UK’</span>' +
-          '<p>The assistants list you as a <b>place to buy</b>, but the recommendations point to brand sites and Cotswold Outdoor. You get mentioned. You rarely get named as the source.</p>' +
+          '<p>The assistants list you as a <b>place to buy</b>, but the recommendations point to brand sites and Alpine Trail Co. You get mentioned. You rarely get named as the source.</p>' +
           '<div class="verdict">Stocked, not recommended. Two gear round-ups drafted to earn the citation.</div></div>';
       },
       workspace: function () {
