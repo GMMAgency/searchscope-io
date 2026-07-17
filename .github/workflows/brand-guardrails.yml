@@ -1,0 +1,51 @@
+# Brand guardrails for searchscope.io (cms.md section 6).
+#
+# Encodes the site's own rules as CI so the Website CMS enforces them
+# automatically: no em dashes, no buy/pricing/self-serve flows, and the site
+# still builds. Each job is a separate required check so it shows as its own
+# pass/fail row on the CMS change card. Runs on every PR into main.
+name: Brand guardrails
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  em-dash:
+    name: No em dashes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Diff the PR
+        run: git diff --unified=0 --no-color "${{ github.event.pull_request.base.sha }}...HEAD" > /tmp/pr.diff
+      - name: Check added copy for em dashes
+        run: node .github/scripts/guardrails.mjs em-dash < /tmp/pr.diff
+
+  cta:
+    name: No pricing or buy CTAs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Diff the PR
+        run: git diff --unified=0 --no-color "${{ github.event.pull_request.base.sha }}...HEAD" > /tmp/pr.diff
+      - name: Check added copy for buy / pricing CTAs
+        run: node .github/scripts/guardrails.mjs cta < /tmp/pr.diff
+
+  build:
+    name: Site builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
