@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import { GMM } from '../consts';
+
+const nextSteps = [
+  { no: '01', title: 'A real strategist reads your picture', line: 'Not a bot, not a sales rep. Someone who runs the co-pilot daily looks at your actual search reality.' },
+  { no: '02', title: 'You get a live walkthrough', line: 'We walk you through what we found: where you’re losing share, what’s recoverable, and what to do first.' },
+  { no: '03', title: 'You leave with a prioritised plan', line: 'Whether or not we work together, you leave knowing the handful of moves that matter most.' },
+];
+
+const ways = [
+  {
+    tag: 'Start here',
+    title: 'Pilot programme',
+    line: 'A hands-on read of your search picture and a prioritised plan you can action, with us or on your own.',
+    best: 'Best for: clarity, fast.',
+  },
+  {
+    tag: 'Most popular',
+    title: 'Ongoing partnership',
+    line: 'We run the co-pilot on your search continuously: weekly intelligence, strategy and execution, as one team.',
+    best: 'Best for: sustained growth.',
+    accent: true,
+  },
+  {
+    tag: 'All-in',
+    title: 'Embedded',
+    line: 'We become your embedded search team, with Searchscope powering the work end to end.',
+    best: 'Best for: no in-house search function.',
+  },
+];
+
+const reassurance = ['UK-based', 'Real client work', 'Built by practitioners', 'No lock-in pitch'];
+---
+
+<BaseLayout
+  title="Work With Us"
+  description="Work with the team behind Searchscope. Join the pilot programme: a strategist reads your search picture, shows you where the opportunity is, and gives you a prioritised plan."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Work with us"
+    title="Searchscope finds it. We help you capture it."
+    lede="Tell us what you're trying to grow. A strategist reads your search picture, shows you where the opportunity is, and hands you a prioritised plan. Then it's your call."
+  />
+
+  <!-- ===== FORM + WHAT HAPPENS NEXT ===== -->
+  <section class="section section--tight theme-dark">
+    <div class="container container--wide">
+      <div class="contact">
+        <div class="contact__form-wrap reveal">
+          <h2 class="contact__h">Join the pilot programme</h2>
+          <p class="contact__sub">No obligation, no deck. Just a clear read on your search picture.</p>
+          <ContactForm />
+        </div>
+
+        <aside class="contact__side reveal" style="--reveal-delay:100ms">
+          <p class="contact__side-label mono">What happens next</p>
+          <ol class="next" role="list">
+            {
+              nextSteps.map((s) => (
+                <li class="next__item">
+                  <span class="next__no mono">{s.no}</span>
+                  <div>
+                    <h3 class="next__title">{s.title}</h3>
+                    <p class="next__line">{s.line}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="reassure">
+            {reassurance.map((r) => (
+              <span class="reassure__pill mono"><Icon name="check" size={14} /> {r}</span>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAYS TO WORK ===== -->
+  <section class="section theme-cream">
+    <div class="container container--wide">
+      <div class="section-head reveal">
+        <span class="eyebrow">Ways to work</span>
+        <h2>Three ways in. Every one starts with a conversation.</h2>
+        <p class="lede">
+          Pick the depth that fits and we'll take it from there. Every route begins with a strategist
+          reading your search picture, so you get a clear plan before anything else.
+        </p>
+      </div>
+      <div class="ways">
+        {
+          ways.map((w, i) => (
+            <article class={`way reveal ${w.accent ? 'way--accent' : ''}`} style={`--reveal-delay:${i * 70}ms`}>
+              <span class="way__tag mono">{w.tag}</span>
+              <h3 class="way__title">{w.title}</h3>
+              <p class="way__line">{w.line}</p>
+              <span class="way__best mono">{w.best}</span>
+              <a href="#main" class="way__cta link">Join the pilot programme →</a>
+            </article>
+          ))
+        }
+      </div>
+      <p class="tierline reveal">
+        There's no card to swipe and no self-serve signup.
+        <b>Searchscope is currently available through our pilot programme.</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== GMM BAND ===== -->
+  <section class="section theme-dark gmm">
+    <div class="container container--wide">
+      <div class="gmm__inner reveal">
+        <div>
+          <span class="eyebrow">The agency behind Searchscope</span>
+          <h2 class="gmm__title">Growth Minded Marketing.</h2>
+          <p class="gmm__sub">
+            Searchscope is built and run by a search team that's been in the work for years.
+            The co-pilot is how we see; the team is how it gets done.
+          </p>
+        </div>
+        <a href={GMM.url} class="btn btn--lg gmm__cta" target="_blank" rel="noopener">
+          Visit Growth Minded Marketing
+          <span class="btn__arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  .contact__form-wrap {
+    padding: var(--space-xl);
+    background: var(--surface-panel);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-l);
+  }
+  .contact__h {
+    font-size: var(--step-2);
+  }
+  .contact__sub {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-l);
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+  }
+
+  .contact__side-label {
+    font-size: var(--step--2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: var(--space-m);
+  }
+  .next {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+  .next__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-s);
+  }
+  .next__no {
+    color: var(--accent);
+    font-size: var(--step-0);
+  }
+  .next__title {
+    font-size: var(--step-1);
+    line-height: 1.15;
+  }
+  .next__line {
+    margin-top: 0.3rem;
+    color: var(--ink-dim);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  .reassure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--hairline);
+  }
+  .reassure__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: var(--step--2);
+    color: var(--ink-dim);
+    padding: 0.4em 0.7em;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+  }
+  .reassure__pill :global(svg) {
+    color: var(--accent);
+  }
+
+  @media (max-width: 860px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ways to work */
+  .ways {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+  }
+  .way {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: var(--space-l);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-m);
+    background: var(--surface-panel);
+  }
+  .way--accent {
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--hairline));
+    background: var(--accent-soft);
+  }
+  .way__tag {
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .way--accent .way__tag {
+    color: var(--accent-deep);
+  }
+  .way__title {
+    font-size: var(--step-2);
+    line-height: 1.1;
+  }
+  .way__line {
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .way__best {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+  }
+  .way__cta {
+    margin-top: var(--space-2xs);
+    align-self: flex-start;
+  }
+  @media (max-width: 860px) {
+    .ways {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* GMM band */
+  .gmm__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+  .gmm__title {
+    font-size: var(--step-4);
+    margin-top: var(--space-s);
+  }
+  .gmm__sub {
+    margin-top: var(--space-s);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+  .gmm__cta {
+    flex: none;
+  }
+</style>

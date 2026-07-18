@@ -1,0 +1,451 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import Ticks from '../components/Ticks.astro';
+import DemandScatter from '../components/product/DemandScatter.astro';
+import DecayTrend from '../components/product/DecayTrend.astro';
+import { SITE, GMM, FEATURES } from '../consts';
+
+const problems = [
+  { no: '01', label: 'Internal competition', line: "Several pages target one topic, so engines can't tell which is the answer. Rankings swap between URLs and traffic turns unstable." },
+  { no: '02', label: 'Repetitive at scale', line: 'Hundreds of near-identical product or filter pages blur together in the results. Rankings hold; clicks quietly fall.' },
+  { no: '03', label: 'Buried content', line: 'Strong pages sit deep with few internal links, so the system reads them as unimportant, however good they are.' },
+];
+
+// The on-demand run: seven analysers reading a 1,240-page site. Findings
+// reconcile with the stat row (169 total, 5 critical). data-t is the second
+// at which each row completes; the run strip animates on scroll.
+const run = [
+  { no: '01', nm: 'Index bloat', st: 'index coverage · canonicals · thin and orphaned pages', res: "18 findings · <span class='ok'>2 fixed since last run</span>", t: 14 },
+  { no: '02', nm: 'Internal links', st: 'graphing 14,600 internal links · starving targets', res: '34 placements · 12 source pages', t: 38 },
+  { no: '03', nm: 'Cannibalisation', st: 'shared-query page pairs · click splits', res: "6 conflicts · <span class='c'>1 critical</span>", t: 61 },
+  { no: '04', nm: 'Content decay', st: '90-day trends across 412 pages with traffic', res: '41 findings · 12,400 clicks at risk', t: 96 },
+  { no: '05', nm: 'Opportunities', st: 'positions 4 to 20 vs heading coverage', res: '58 findings · +8,900 clicks in reach', t: 132 },
+  { no: '06', nm: 'Schema', st: 'structured data vs rich-result eligibility', res: '27 findings · 11 fixable today', t: 158 },
+  { no: '07', nm: 'Cluster volatility', st: '142 semantic clusters · trend + coverage', res: '15 findings · 4 need an anchor page', t: 183 },
+];
+
+const metaDescription =
+  'Searchscope is an AI search intelligence co-pilot for SEO and growth teams. It reads your whole search picture, tells you what to fix and why, and our strategists turn it into growth.';
+
+const softwareLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: SITE.name,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: SITE.url,
+  description: metaDescription,
+  publisher: { '@type': 'Organization', name: GMM.name, url: GMM.url },
+};
+---
+
+<BaseLayout description={metaDescription} headerTheme="dark" jsonLd={[softwareLd]}>
+  <!-- ============ HERO ============ -->
+  <section class="section hero theme-dark bg-grid">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container container--wide">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Search intelligence</span>
+          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+            The AI co-pilot for modern<br />search&nbsp;teams.
+          </h1>
+          <p class="hero__sub reveal" style="--reveal-delay:130ms">
+            Searchscope reads your site, search data, market demand, and AI visibility, then shows you
+            what is costing traffic and what to do next.
+          </p>
+          <div class="hero__actions reveal" style="--reveal-delay:200ms">
+            <a href="/contact" class="btn">
+              Join the pilot programme
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/platform" class="hero__link">
+              See the platform
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <p class="hero__note mono reveal" style="--reveal-delay:260ms">
+            Built and run by the search team at Growth Minded Marketing.
+          </p>
+        </div>
+
+        <div class="hero__visual reveal" style="--reveal-delay:160ms">
+          <div class="ticked">
+            <Ticks size={16} inset="-13px" />
+            <DemandScatter />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A ROOM YOU RUN SEARCH FROM ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">How you use it</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2 class="big">Not a weekly email. A room you run search from.</h2>
+          <p>
+            Run Searchscope when you need a fresh read. Ask a question. Get an answer grounded in your
+            data. Turn findings into briefs and drafts.
+          </p>
+        </div>
+        <div class="mstatrow">
+          <div class="mstat"><span class="sv cnt" data-n="1240">1,240</span><span class="sl">pages read per run</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="86000">86,000</span><span class="sl">queries cross-checked</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="169">169</span><span class="sl">findings scored</span></div>
+          <div class="mstat"><span class="sv cnt" data-n="5">5</span><span class="sl">critical to act on</span></div>
+        </div>
+      </div>
+
+      <div class="obj runstrip reveal" style="margin-top:var(--space-l)">
+        <div class="rs-head">
+          <span>Analyser engine · on-demand run</span>
+          <span class="mono rsclock">00:00</span>
+        </div>
+        <div class="rows">
+          {run.map((r) => (
+            <div class="arow" data-st={r.st} data-res={r.res} data-t={r.t}>
+              <span class="n">{r.no}</span>
+              <span class="nm">{r.nm}</span>
+              <span class="st"></span>
+              <span class="res"></span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p class="objcap">The page's one dark object: real engine telemetry, not a fake spinner.</p>
+    </div>
+  </section>
+
+  <!-- ============ WHY SEARCH GOT HARDER ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Why it matters</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2 class="big">Modern search is a system. Most SEO tools still are not.</h2>
+          <p>
+            Search is no longer just pages and rankings. It is demand, content, entities, AI answers,
+            competitors, and trust.
+          </p>
+        </div>
+        <div class="waves">
+          <div class="wave">
+            <span class="wn">The first wave</span>
+            <h4>The algorithm</h4>
+            <p>Optimise for what the engine could measure: keyword placement, links, endless page variations.</p>
+          </div>
+          <div class="wave">
+            <span class="wn">The second wave</span>
+            <h4>Write for users</h4>
+            <p>Useful content, clear intent, authority and trust. Still right, but no longer enough on its own.</p>
+          </div>
+          <div class="wave now">
+            <span class="wn">The third wave · now</span>
+            <h4>Search systems</h4>
+            <p>Build a site search engines and AI answers can confidently understand, extract and trust at scale.</p>
+          </div>
+        </div>
+        <p class="pq">
+          Designing your site so search engines and AI answers can confidently <em>understand,
+          extract and trust</em> your content at scale, not just optimising individual pages to rank.
+          <span class="cite">The search systems thesis</span>
+        </p>
+        <div style="text-align:center;margin-top:var(--space-m)">
+          <a href="/search-systems" class="golink">Read the full thesis → The future of SEO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT CATCHES ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">What Searchscope finds</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Great content, stuck rankings? It is usually one of these.</h2>
+          <p>
+            Internal competition. Repetitive templates. Buried content. Searchscope shows the pattern,
+            then points to the fix.
+          </p>
+        </div>
+        <div class="probs">
+          {problems.map((d) => (
+            <div class="prob">
+              <span class="pn mono">{d.no}</span>
+              <h4>{d.label}</h4>
+              <p>{d.line}</p>
+            </div>
+          ))}
+        </div>
+        <div class="appwin-wrap push"><DecayTrend /></div>
+        <div style="margin-top:var(--space-m)">
+          <a href="/search-systems" class="golink">See all three, with the data → The future of SEO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PLATFORM: ONE PLACE, SIX WAYS TO WORK ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">The platform</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Your whole search picture, in one place.</h2>
+          <p>
+            One crawl. One set of data. One place to see what matters, decide what to do, and move to
+            action.
+          </p>
+        </div>
+        <ul class="capsix" role="list">
+          {FEATURES.map((f) => (
+            <li>
+              <span class="no">{f.no}</span>
+              <div>
+                <h4>
+                  <a href={f.href}>{f.name}</a>
+                  {'neu' in f && f.neu && <span class="newchip">New</span>}
+                </h4>
+                <p>{f.line}</p>
+              </div>
+              <a class="go" href={f.href} aria-label={`Open ${f.name}`}>→</a>
+            </li>
+          ))}
+        </ul>
+        <div style="margin-top:var(--space-l)">
+          <a href="/platform" class="golink">Explore the platform in full →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE STRATEGIC ADVISOR ============ -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="two reveal">
+        <div class="sechead">
+          <span class="eyebrow">The advisor</span>
+          <h2 style="margin-top:var(--space-s)">Ask what you should do, not what the data says.</h2>
+          <p>
+            The Strategic Advisor reads your live data and writes the brief, so you can move faster.
+          </p>
+          <a href="/intelligence" class="golink">Meet the advisor → Intelligence Hub</a>
+        </div>
+        <div class="appwin">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/intelligence/strategic-advisor</span>
+            <span class="awtab">Strategic Advisor</span>
+          </div>
+          <div class="awbody lchat">
+            <div class="cq">Which pages are quietly losing traffic that I haven't noticed?</div>
+            <div class="cpull"><span class="ok">✓</span> read 90 days of search performance · 1,240 pages</div>
+            <div class="cpull"><span class="ok">✓</span> cross-checked the decay analyser's latest run</div>
+            <div class="ca">
+              <b>Three pages are sliding behind a stable overall number:</b>
+              <table>
+                <tr><td>/guides/how-to-choose-a-waterproof-jacket</td><td class="tx-rose">−28%</td></tr>
+                <tr><td>/collections/down-jackets</td><td class="tx-rose">−17%</td></tr>
+                <tr><td>/guides/best-hiking-trails-uk</td><td class="tx-rose">−12%</td></tr>
+              </table>
+              The waterproof jacket guide is the one to act on first: demand is up 14% while you
+              slipped from 4.2 to 7.8. I have drafted the refresh.
+            </div>
+            <div class="lplace"><span class="lchip on">Create brief</span><span class="lchip">Open decay workspace</span><span class="lchip">Add objective</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILT BY PRACTITIONERS ============ -->
+  <section class="section theme-dark bbp">
+    <div class="container container--wide">
+      <div class="bbp__inner reveal">
+        <span class="eyebrow">Built by practitioners</span>
+        <h2 class="bbp__title">A working search team, not a lab.</h2>
+        <p class="bbp__sub">
+          Searchscope is built by people who do this work every day. It is made for real sites, real
+          deadlines, and real teams.
+        </p>
+        <a href={GMM.url} class="btn btn--ghost btn--lg" target="_blank" rel="noopener">
+          Meet the team at Growth Minded Marketing ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <CTABand
+    eyebrow="Join the pilot"
+    title="See the co-pilot read your search picture."
+    sub="Join the pilot programme and we will show you what it finds."
+    secondaryLabel="See the platform"
+    secondaryHref="/platform"
+  />
+</BaseLayout>
+
+<style>
+  /* ---------- HERO ---------- */
+  .hero {
+    padding-top: clamp(2.5rem, 1.9rem + 3.5vw, 4.5rem);
+    overflow: clip;
+  }
+  .hero__glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 50% at 78% 30%, var(--accent-soft), transparent 70%),
+      radial-gradient(40% 40% at 10% 80%, color-mix(in oklab, var(--ink) 4%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .hero__title {
+    font-size: clamp(2rem, 1.55rem + 2.4vw, 3.15rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-top: var(--space-s);
+  }
+  .hero__sub {
+    margin-top: var(--space-l);
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--ink-dim);
+    max-width: 46ch;
+  }
+  .hero__visual {
+    position: relative;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+  }
+  .hero__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-mono);
+    font-size: var(--step-0);
+    letter-spacing: 0;
+    color: var(--ink);
+    transition: color var(--dur) var(--ease-out);
+  }
+  .hero__link .btn__arrow {
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .hero__link:hover {
+    color: var(--ink-dim);
+  }
+  .hero__link:hover .btn__arrow {
+    transform: translateX(3px);
+  }
+  .hero__note {
+    margin-top: var(--space-l);
+    font-size: var(--step--1);
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 980px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__visual {
+      order: -1;
+    }
+  }
+
+  /* the shared product cards sit centred in their sections */
+  .appwin-wrap {
+    max-width: 760px;
+    margin-inline: auto;
+    margin-top: var(--space-l);
+  }
+
+  /* ---------- BUILT BY PRACTITIONERS ---------- */
+  .bbp__inner {
+    max-width: 60ch;
+  }
+  .bbp__title {
+    font-size: var(--step-4);
+    margin-top: var(--space-s);
+  }
+  .bbp__sub {
+    margin-top: var(--space-m);
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+  .bbp__inner .btn {
+    margin-top: var(--space-l);
+    /* long label: allow it to wrap rather than force horizontal scroll on mobile */
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+</style>
+
+<!-- On-demand run strip: staged completion loop, mirrors the analyser engine. -->
+<script is:inline>
+  (function () {
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmtClock(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+    document.querySelectorAll('.runstrip').forEach(function (rs) {
+      var rows = [].slice.call(rs.querySelectorAll('.arow'));
+      var clock = rs.querySelector('.rsclock');
+      if (!rows.length) return;
+      function reset() {
+        rows.forEach(function (r) {
+          r.classList.add('pend'); r.classList.remove('live', 'done');
+          r.querySelector('.st').textContent = 'queued';
+          r.querySelector('.res').innerHTML = '';
+        });
+      }
+      function play() {
+        reset();
+        var t = 0;
+        var iv = setInterval(function () {
+          t += 2;
+          if (clock) clock.textContent = fmtClock(Math.min(t * 6, 199));
+          rows.forEach(function (r) {
+            var done = Number(r.dataset.t);
+            var start = done - 22;
+            if (t * 6 >= done) {
+              r.classList.remove('pend', 'live'); r.classList.add('done');
+              r.querySelector('.st').textContent = 'complete';
+              r.querySelector('.res').innerHTML = r.dataset.res;
+            } else if (t * 6 >= start) {
+              r.classList.remove('pend'); r.classList.add('live');
+              r.querySelector('.st').textContent = r.dataset.st;
+            }
+          });
+          if (t * 6 > 210) { clearInterval(iv); setTimeout(play, 2600); }
+        }, reduced ? 400 : 130);
+      }
+      if (reduced) {
+        rows.forEach(function (r) {
+          r.classList.add('done');
+          r.querySelector('.st').textContent = 'complete';
+          r.querySelector('.res').innerHTML = r.dataset.res;
+        });
+        if (clock) clock.textContent = '00:33';
+        return;
+      }
+      play();
+    });
+  })();
+</script>

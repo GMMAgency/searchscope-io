@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+
+// Every panel is the product doing that step. Receipt lines carry inline
+// severity spans, so `r` is rendered as HTML.
+const walk = [
+  {
+    wn: 'Step 01',
+    title: 'Connect your search data',
+    line: 'Read-only. Searchscope ingests your real query, page and click reality.',
+    url: 'app.searchscope.io/settings',
+    lines: [
+      { l: 'northwindoutfitters.com', r: '<span class="ok">connected</span> · read-only · 4m 12s' },
+      { l: 'history imported', r: '16 months · 239 pages · 41,300 queries' },
+    ],
+  },
+  {
+    wn: 'Step 02',
+    title: 'We crawl and read your site',
+    line: 'Content, links, structure, schema and entities, read the way engines read them.',
+    url: 'app.searchscope.io/crawl',
+    lines: [
+      { l: '/journal/winter-layering', r: '<span class="ok">200</span> · 1,840 words · 14 internal links' },
+      { l: '/boots/waterproof', r: '<span class="ok">200</span> · schema: <span class="wn2">none</span> · 31 internal links' },
+      { l: '/tents/4-season', r: '<span class="ok">200</span> · 2,210 words · schema: Product' },
+    ],
+  },
+  {
+    wn: 'Step 03',
+    title: 'The Monday run',
+    line: 'Seven analysers cross-examine the crawl against your search data. Findings arrive scored, with the fix drafted.',
+    url: 'app.searchscope.io/dashboard',
+    lines: [
+      { l: 'Content decay', r: '41 findings · <span class="bad">12,400 clicks at risk</span>' },
+      { l: 'Cannibalisation', r: '6 findings · <span class="bad">2 critical</span>' },
+      { l: 'Opportunities', r: '49 findings · <span class="ok">+8,900 clicks in reach</span>' },
+    ],
+  },
+  {
+    wn: 'Step 04',
+    title: 'Findings become briefs',
+    line: 'Every finding carries a create-brief action. Content Studio researches the live results, finds the gap, and drafts the outline and the placement.',
+    url: 'app.searchscope.io/content-studio',
+    lines: [
+      { l: 'from finding · /tents/4-season', r: 'Opportunity · quick win' },
+      { l: '"How to choose a 4-season tent"', r: '5 H2s · <span class="ok">covers 15 queries</span>' },
+    ],
+  },
+  {
+    wn: 'Step 05',
+    title: 'Impact tracked weekly',
+    line: 'Every shipped fix is followed. The Monday memo reports what it earned, not just what changed.',
+    url: 'app.searchscope.io/intelligence/impact',
+    lines: [
+      { l: '/journal/winter-layering', r: 'refreshed 12 May · clicks <span class="ok">+38%</span> in six weeks' },
+      { l: '/boots/waterproof', r: 'consolidated · wins <span class="ok">92%</span> of shared queries' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="How it works"
+  description="From first access to first shipped fix, the whole Searchscope loop in five steps: connect your search data, we crawl your site, the Monday run, findings become briefs, and impact tracked weekly."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="How it works"
+    title="What happens after you connect."
+    lede="From first access to first shipped fix, this is the whole loop. Nothing here is a stock illustration: every panel is the product doing that step."
+  />
+
+  <section class="section section--tight theme-dark">
+    <div class="container container--wide">
+      <div class="walk">
+        {walk.map((s) => (
+          <div class="wstep reveal">
+            <div>
+              <span class="wn">{s.wn}</span>
+              <h2>{s.title}</h2>
+              <p class="wl">{s.line}</p>
+            </div>
+            <div class="appwin">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">{s.url}</span>
+              </div>
+              <div class="mini-pad">
+                {s.lines.map((ln) => (
+                  <div class="miniline">
+                    <span class="l">{ln.l}</span>
+                    <span class="r" set:html={ln.r} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="The loop, on your site"
+    title="Step one takes five minutes."
+    sub="Join the pilot programme and the first Monday run is on us."
+  />
+</BaseLayout>
+
+<style>
+  /* the walkthrough step headings sit at h2 for hierarchy, sized as a step */
+  .wstep h2 {
+    margin: 0.4rem 0 0.4rem;
+    font-size: var(--step-1);
+    letter-spacing: -0.014em;
+    line-height: 1.25;
+  }
+</style>

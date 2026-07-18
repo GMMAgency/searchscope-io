@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import Ticks from '../components/Ticks.astro';
+
+// Chapter 06 · Brand and AI Visibility. The reputation layer, and the PR
+// to move it. Thesis: brand plays a big role in AI visibility, content
+// alone is not enough. Includes the Campaign Radar beat.
+const citations = [
+  { d: 'outdoorsmagic.com', kind: 'publisher', n: '14 cites', you: false },
+  { d: 'reddit.com', kind: 'platform', n: '11 cites', you: false },
+  { d: 'trailrunning.co.uk', kind: 'publisher', n: '7 cites', you: true },
+  { d: 'alpinetrail.co.uk', kind: 'competitor', n: '6 cites', you: false },
+  { d: 'walkhighlands.co.uk', kind: 'publisher', n: '5 cites', you: false },
+];
+---
+
+<BaseLayout
+  title="Brand and AI Visibility"
+  description="Brand is now a ranking factor, and ours is the tool that measures it. AI answers favour brands that are talked about, cited and trusted, so Searchscope tracks your share of the answers and pairs it with a PR strategist to grow it."
+  headerTheme="dark"
+>
+  <!-- ===== Dark hero (the reputation layer) ===== -->
+  <section class="section dhero bg-grid gf-dk">
+    <div class="container">
+      <div class="dhero__inner">
+        <span class="eyebrow reveal">Brand and AI Visibility</span>
+        <h1 class="dhero__title reveal" style="--reveal-delay:60ms">See how AI answers talk about you.</h1>
+        <p class="lede dhero__lede reveal" style="--reveal-delay:120ms">Track mentions, citations, and the prompts where your brand should appear.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Overview: the inverted scoreboard ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Overview</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Start with one score.</h2>
+          <p>How often are you mentioned? How often are you cited? What do AI answers say?</p>
+        </div>
+        <div class="obj" style="margin-top:var(--space-l);padding:1.4rem 1.6rem 1.5rem">
+          <div class="ohead"><span>AI visibility benchmark · geo UK</span><span class="mono">24 answers · 3 engines · sampled twice per prompt</span></div>
+          <div class="gauges">
+            <div class="gauge"><span class="gl">AI visibility</span><span class="gv"><span class="cnt" data-n="34">34</span><small>/100</small></span><div class="gt"><i style="width:34%"></i></div><span class="gh">mentioned in 8 of 24 topics</span></div>
+            <div class="gauge win"><span class="gl">Brand strength</span><span class="gv"><span class="cnt" data-n="58">58</span><small>/100</small></span><div class="gt"><i style="width:58%"></i></div><span class="gh">vs 4 AI-named competitors</span></div>
+          </div>
+          <p style="font-size:var(--step-0);line-height:1.65;color:rgba(244,241,236,0.64);margin:1rem 0 0">AI engines answered <b style="color:#f4f1ec">24</b> buyer questions in your market. You appeared in <b style="color:#f4f1ec">8</b>. Meanwhile they already cite <b style="color:#f4f1ec">19</b> other domains as sources in your space. That is your PR target list.</p>
+          <div class="kpid c4">
+            <div class="k"><span class="kl">Share of voice</span><span class="kv"><span class="cnt" data-n="22" data-suf="%">22%</span></span><span class="kp">of brands named in non-brand answers</span></div>
+            <div class="k"><span class="kl">Cited by AI</span><span class="kv">6</span><span class="kp">answers citing your site</span></div>
+            <div class="k"><span class="kl">Prompts won</span><span class="kv">8/24</span><span class="kp">topics where you appear</span></div>
+            <div class="k"><span class="kl">PR targets</span><span class="kv"><span class="cnt" data-n="19">19</span></span><span class="kp">pitchable AI-trusted domains</span></div>
+          </div>
+        </div>
+        <p class="objcap">The one dark object on this page: the AI-visibility scoreboard, the module's flagship read.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Share of voice + the actual answer ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <div class="two top">
+          <div class="appwin">
+            <div class="awbar"><span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span><span class="awtab">Share of voice</span></div>
+            <div class="awbody">
+              <div class="awhead"><div><span class="awtitle">Share of voice by engine</span><span class="awsub">questions that don't name your brand</span></div></div>
+              <div class="lshhead">who the engines name · non-brand answers</div>
+              <div class="lshrow"><span class="n you">Northwind Outfitters</span><span class="lshtrack"><i style="width:22%;background:var(--sev-emerald-ink)"></i></span><span class="v">22%</span></div>
+              <div class="lshrow"><span class="n">Alpine Trail Co</span><span class="lshtrack"><i style="width:41%;background:rgba(22,20,15,0.62)"></i></span><span class="v">41%</span></div>
+              <div class="lshrow"><span class="n">Summit &amp; Sky</span><span class="lshtrack"><i style="width:28%;background:rgba(22,20,15,0.42)"></i></span><span class="v">28%</span></div>
+              <div class="lshrow"><span class="n">Ridgeline Gear</span><span class="lshtrack"><i style="width:18%;background:rgba(22,20,15,0.3)"></i></span><span class="v">18%</span></div>
+              <div class="lshrow"><span class="n">Basecamp Supply</span><span class="lshtrack"><i style="width:11%;background:rgba(22,20,15,0.3)"></i></span><span class="v">11%</span></div>
+            </div>
+          </div>
+          <div class="sechead">
+            <span class="eyebrow">The actual answer</span>
+            <h2 style="margin-top:var(--space-s)">See the answer and the source.</h2>
+            <p>Searchscope shows how the model describes the brand and where it pulled the answer from.</p>
+            <div class="ansq">
+              <div class="ah"><span class="eng">AI Overview</span><span class="verd">doesn't mention you</span></div>
+              <p class="q">"Best waterproof jackets for UK hiking?"</p>
+              <p class="body">For wet British hills, most guides point to <mark>Alpine Trail Co</mark> and <mark>Summit &amp; Sky</mark> for their Gore-Tex range, with <b>OutdoorsMagic</b> rating both highly for breathability [1][2].</p>
+              <div class="srcs"><span class="srcchip">outdoorsmagic.com</span><span class="srcchip">alpinetrail.co.uk</span><span class="srcchip">reddit.com</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== The thesis, plotted ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">The thesis, plotted</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Brand strength and AI visibility are linked.</h2>
+          <p>If people talk about you, and trusted sources cover you, AI is more likely to mention you.</p>
+        </div>
+        <div class="appwin push">
+          <div class="awbar"><span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span><span class="awtab">Brand strength vs AI</span></div>
+          <div class="awbody">
+            <div class="awhead"><div><span class="awtitle">Brand strength vs AI visibility</span><span class="awsub">bubble = branded searches / month</span></div><div class="awleg"><span><i class="dot" style="background:var(--sev-emerald-ink)"></i>you</span><span><i class="dot" style="background:rgba(22,20,15,0.4)"></i>rivals</span></div></div>
+            <div class="awviz">
+              <svg viewBox="0 0 724 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Brand strength against AI mention rate; rivals with stronger brands are mentioned more; an amber zone marks unclaimed territory.">
+                <rect x="120" y="150" width="220" height="120" fill="rgba(180,83,9,0.10)" stroke="rgba(180,83,9,0.35)" stroke-width="1" stroke-dasharray="3 4"></rect>
+                <line x1="60" y1="30" x2="704" y2="30" class="sc-grid"></line>
+                <line x1="60" y1="150" x2="704" y2="150" class="sc-grid"></line>
+                <line x1="60" y1="270" x2="704" y2="270" class="sc-grid"></line>
+                <circle cx="560" cy="70" r="18" fill="rgba(22,20,15,0.3)"></circle>
+                <circle cx="470" cy="120" r="13" fill="rgba(22,20,15,0.3)"></circle>
+                <circle cx="600" cy="120" r="10" fill="rgba(22,20,15,0.3)"></circle>
+                <circle cx="230" cy="210" r="15" fill="var(--sev-emerald-ink)"></circle>
+                <circle cx="360" cy="230" r="8" fill="rgba(22,20,15,0.3)"></circle>
+                <text x="230" y="245" class="sc-tick" text-anchor="middle" style="fill:var(--sev-emerald-ink)">you</text>
+                <text x="60" y="292" class="sc-tick">weak brand ←</text>
+                <text x="704" y="292" class="sc-tick end">→ strong brand</text>
+                <text x="60" y="24" class="sc-tick">AI mentions ↑</text>
+              </svg>
+              <div class="awcall" style="left:20%;top:44%;border-color:rgba(180,83,9,0.45)"><span class="t" style="color:var(--sev-amber-ink)">UNCLAIMED</span><span class="p">Northwind Outfitters</span><span class="m">strong demand · low AI mentions</span></div>
+            </div>
+            <p class="awnote">You have the searches. The engines have not caught up. That gap is exactly what PR closes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Citations + PR activity ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Citations and PR</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Use PR to change the answer.</h2>
+          <p>Track citations, coverage, and placements that can move visibility.</p>
+        </div>
+        <div class="pair" style="margin-top:var(--space-l)">
+          <div class="appwin">
+            <div class="awbar"><span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span><span class="awtab">Citations</span></div>
+            <div class="awbody">
+              <div class="awhead"><div><span class="awtitle">The sources AI trusts in your space</span><span class="awsub">24 answers · you appear on 6</span></div></div>
+              <div class="lcit">
+                {citations.map((c) => (
+                  <div class="lcitrow"><span class="qy">{c.d} <span style="color:var(--ink-faint)">· {c.kind}</span></span><span class="r">{c.n} · <span class={c.you ? 'yes' : 'no'}>{c.you ? 'cites you' : 'not you'}</span></span></div>
+                ))}
+              </div>
+              <p class="awnote">19 high-frequency sources do not reference you yet. Each one is a pitch.</p>
+            </div>
+          </div>
+          <div class="appwin">
+            <div class="awbar"><span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span><span class="awtab">PR &amp; Mentions</span></div>
+            <div class="awbody">
+              <div class="awhead"><div><span class="awtitle">PR activity</span><span class="awsub">new referring domains per month</span></div></div>
+              <div class="lml">
+                <div class="lbl"><span>mentions · last 12 months</span><span>◆ = campaign burst</span></div>
+                <div class="lcols">
+                  <i style="height:24%"></i><i style="height:30%"></i><i style="height:22%"></i><i style="height:38%"></i><i style="height:34%"></i><i style="height:46%"></i><i style="height:40%"></i><i class="hit" style="height:82%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:58%"></i><i style="height:50%"></i>
+                </div>
+              </div>
+              <div class="lprow" style="margin-top:0.8rem"><div class="p-top"><span class="o">Alpine Trail Co is running a PR campaign right now</span><span class="lpst pit">burst</span></div><span class="pnote">+12 referring domains this month vs a baseline of 4 · digital PR</span></div>
+              <div class="lprow"><div class="p-top"><span class="o">Northwind cited by Trail Running UK</span><span class="lpst sec">secured</span></div><span class="pnote">gear round-up · now feeding the AI answers</span></div>
+              <div class="lprow"><div class="p-top"><span class="o">Waterproofs explainer pitched to OutdoorsMagic</span><span class="lpst dra">drafted</span></div><span class="pnote">by the PR strategist · awaiting send</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Campaign radar: investigate the burst ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Campaign radar · the proof</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Find the next target.</h2>
+          <p>Searchscope surfaces the topics and prompts worth chasing next.</p>
+        </div>
+        <div class="appwin push crx" id="crxApp">
+          <div class="awbar"><span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span><span class="awtab">Campaign radar</span></div>
+          <div class="awbody">
+            <div class="awhead"><div><span class="awtitle">Campaign radar</span><span class="awsub">what each burst actually was: the asset, who linked, and how to counter it</span></div></div>
+
+            <div class="crx-pending" id="crxPending">
+              <div class="pl">
+                <span class="o">Alpine Trail Co · burst in June 2026</span>
+                <span class="pnote">+12 new referring domains vs a baseline of 4 · someone ran a campaign</span>
+              </div>
+              <button class="crx-inv" id="crxBtn" type="button">Investigate</button>
+            </div>
+
+            <div class="crx-card" id="crxCard">
+              <div class="crx-chead">
+                <div style="min-width:0">
+                  <span class="crx-brand">Alpine Trail Co · June 2026</span>
+                  <p class="crx-label">Winter jackets round-up, pitched to the outdoor press</p>
+                  <p class="crx-meta">12 new domains · 3 assets · earned links only</p>
+                </div>
+                <span class="crx-type">Digital PR</span>
+              </div>
+              <p class="crx-sum">Alpine Trail published one strong seasonal round-up and pitched it hard. It earned <b>12 new editorial domains in four weeks</b>, nearly all pointing at that single guide. This is why they now lead the AI answers you are missing from: the exact publishers feeding those answers were freshly linked to them, not you.</p>
+
+              <div class="crx-albl">The content that earned the links</div>
+              <div class="crx-asset">
+                <div class="at"><span class="au">alpinetrail.co.uk/guides/best-winter-jackets-2026</span><span class="ac">8 earned · 2 boilerplate</span></div>
+                <div class="crx-srcs">
+                  <div class="crx-src"><span class="st">The best winter jackets we tested this year</span><span class="sd">outdoorsmagic.com · linked as <b>"Alpine Trail's guide"</b></span></div>
+                  <div class="crx-src"><span class="st">Winter kit list 2026</span><span class="sd">walkhighlands.co.uk · linked as <b>"the full round-up"</b></span></div>
+                  <div class="crx-src"><span class="st">Cold-weather layering, explained</span><span class="sd">trailrunning.co.uk · linked as <b>"Alpine Trail Co"</b></span></div>
+                </div>
+                <p class="crx-bp">2 boilerplate or product links not shown (privacy pages, footers, naked-URL anchors)</p>
+              </div>
+              <div class="crx-asset"><div class="at"><span class="au">alpinetrail.co.uk/blog/gore-tex-explained</span><span class="ac">3 earned</span></div></div>
+              <div class="crx-asset"><div class="at"><span class="au">alpinetrail.co.uk/tents/4-season-guide</span><span class="ac">1 earned · 4 boilerplate</span></div></div>
+
+              <div class="crx-counter">
+                <span class="cl">Counter angle</span>
+                <p><b>You already rank for these queries on thinner pages.</b> Rebuild your winter-layering guide into the better-tested version, then pitch the same three publishers who covered Alpine Trail. The citation follows the stronger asset, and the AI answer follows the citation.</p>
+                <span class="crx-cbtn">✦ Counter this campaign → PR strategist</span>
+              </div>
+            </div>
+
+            <p class="awnote">Fifteen brands publish this guide every year. The one AI names is the one the press linked to. That is a PR outcome, not a content one, and it is the play this module hands you.</p>
+          </div>
+        </div>
+        <p class="objcap">The radar turns a spike in a rival's backlinks into a named campaign, its winning asset and a counter-pitch, so brand PR becomes a measured, repeatable move rather than a guess.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PR strategist ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="two flip reveal">
+        <div class="ticked" style="align-self:start">
+          <Ticks size={16} inset="-13px" />
+          <div class="obj adv">
+            <div class="ohead"><span>PR Strategist · grounded in your AI visibility</span><span class="mono">AI Visibility · Brand · PR · Web</span></div>
+            <div class="q">Why does AI recommend my competitors instead of me?</div>
+            <div class="pull"><span class="ok">✓</span> read 24 answers across 3 engines · scored share of voice</div>
+            <div class="pull"><span class="ok">✓</span> cross-checked the 19 sources AI cites in your space</div>
+            <div class="a"><b>Because the sources feeding the answers do not mention you yet.</b> Alpine Trail is cited by OutdoorsMagic and Walkhighlands; you are on neither. They also ran a digital-PR burst last month (+12 referring domains). Three moves, in order:
+              <table>
+                <tr><td>Pitch OutdoorsMagic waterproofs explainer</td><td class="up">14 cites</td></tr>
+                <tr><td>Get listed on Walkhighlands gear guide</td><td class="up">5 cites</td></tr>
+                <tr><td>Reddit r/CampingUK founder AMA</td><td class="up">11 cites</td></tr>
+              </table>
+              Land these and your share of voice should move from 22% toward the mid-thirties by the next benchmark.
+            </div>
+            <div class="points"><span class="chip act">Build the pitch list</span><span class="chip">Draft the explainer</span><span class="chip">Set a brand objective</span></div>
+          </div>
+        </div>
+        <div class="sechead">
+          <span class="eyebrow">The PR strategist</span>
+          <h2 style="margin-top:var(--space-s)">Turn the findings into outreach.</h2>
+          <p>The strategist helps you move from insight to pitch.</p>
+          <span class="golink">PR starters: diagnose my AI visibility · who should I pitch this month?</span>
+        </div>
+      </div>
+      <p class="foot-note">Reproduces the real Brand and AI views: the inverted score-gauge overview, share of voice by engine, the actual AI answer with highlighted rivals and cited sources, the brand-strength-vs-AI-visibility scatter with its unclaimed-territory zone, citations with a PR-target read, the monthly PR-activity timeline with a burst call-out, the Campaign Radar, and the PR Strategist handoff. The answer engines are shown without model names.</p>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="The other half of visibility"
+    title="See how AI sees you."
+    sub="Join the pilot programme and the first interview of the AI engines is on us: your brand, your buyers' questions, the real answers, and the PR targets that move them."
+    secondaryLabel="See the Intelligence Hub"
+    secondaryHref="/intelligence"
+  />
+</BaseLayout>
+
+<style>
+  .dhero__inner { max-width: 56ch; }
+  .dhero__title { font-size: var(--step-6); margin-top: var(--space-s); }
+  .dhero__lede { margin-top: var(--space-m); max-width: 52ch; font-size: var(--step-2); }
+</style>
+
+<!-- Campaign radar: investigate the burst (reveals the campaign). Static if JS is off. -->
+<script is:inline>
+  (function () {
+    var app = document.getElementById('crxApp');
+    if (!app) return;
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var btn = document.getElementById('crxBtn');
+    var card = document.getElementById('crxCard');
+    var done = false;
+    function reveal() { done = true; btn.classList.remove('busy'); btn.classList.add('done'); btn.textContent = 'Investigated ✓'; card.classList.add('in'); }
+    function run() {
+      if (done) return;
+      if (reduced) { reveal(); return; }
+      btn.classList.add('busy'); btn.textContent = 'Investigating…';
+      setTimeout(reveal, 1500);
+    }
+    btn.addEventListener('click', run);
+    var started = false;
+    function kickoff() { if (started) return; started = true; run(); }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { kickoff(); io.disconnect(); } });
+      }, { threshold: 0.3 });
+      io.observe(app);
+    } else { kickoff(); }
+    setTimeout(kickoff, 1800);
+  })();
+</script>

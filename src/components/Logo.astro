@@ -1,0 +1,59 @@
+---
+/**
+ * Searchscope logomark, a "scope" ring (search/target) with a rising
+ * signal that breaks the ring (growth/data). CurrentColor for the ring,
+ * accent for the signal.
+ */
+interface Props {
+  withWordmark?: boolean;
+  size?: number;
+  class?: string;
+}
+const { withWordmark = true, size = 26, class: cls = '' } = Astro.props;
+---
+
+<a href="/" class={`logo ${cls}`} aria-label="Searchscope, home">
+  <svg
+    class="logo__mark"
+    width={size}
+    height={size}
+    viewBox="0 0 28 28"
+    fill="none"
+    aria-hidden="true"
+  >
+    <!-- viewfinder corners (geometric scope frame) -->
+    <g stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity="0.9">
+      <path d="M5 10 V5 H10" />
+      <path d="M18 5 H23 V10" />
+      <path d="M23 18 V23 H18" />
+      <path d="M10 23 H5 V18" />
+    </g>
+    <!-- the detected signal -->
+    <rect x="15" y="8" width="4.6" height="4.6" fill="currentColor" />
+    <!-- a fainter point in the field -->
+    <rect x="8.6" y="15" width="2.6" height="2.6" fill="currentColor" opacity="0.45" />
+  </svg>
+  {withWordmark && <span class="logo__word">searchscope</span>}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    color: var(--ink);
+    transition: opacity var(--dur) var(--ease-out);
+  }
+  .logo:hover {
+    opacity: 0.82;
+  }
+  .logo__mark {
+    flex: none;
+  }
+  .logo__word {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 1.02rem;
+    letter-spacing: -0.04em;
+  }
+</style>

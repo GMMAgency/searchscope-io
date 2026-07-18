@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none" role="img" aria-label="searchscope mark">
+    <g stroke="#F4F1EC" stroke-width="1.7" stroke-linecap="round" fill="none">
+      <path d="M5 10 V5 H10"/><path d="M18 5 H23 V10"/><path d="M23 18 V23 H18"/><path d="M10 23 H5 V18"/>
+    </g>
+    <rect x="15" y="8" width="4.6" height="4.6" fill="#F4F1EC"/>
+    <rect x="8.6" y="15" width="2.6" height="2.6" fill="#F4F1EC" opacity="0.45"/>
+</svg>

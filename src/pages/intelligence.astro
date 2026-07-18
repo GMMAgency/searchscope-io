@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+
+// Chapter 05 · Intelligence Hub. The command centre: KPI band with
+// period comparison, competitor keyword gaps, and the Strategic Advisor
+// with objectives. Mirrors the real Command Centre tab set.
+const gaps = [
+  { k: 'gore-tex jacket womens', vol: '4,400', you: '-', c1: '#4', c2: '#9', score: '88', gap: 'Missing', gapCls: 'ro' },
+  { k: 'waterproof hiking boots', vol: '8,100', you: '#14', c1: '#3', c2: '#7', score: '79', gap: 'Weak', gapCls: 'am' },
+  { k: '3 season tent', vol: '3,300', you: '-', c1: '-', c2: '-', score: '71', gap: 'Untapped', gapCls: 'blue' },
+  { k: 'insulated flask', vol: '5,400', you: '#9', c1: '#6', c2: '#12', score: '66', gap: 'Weak', gapCls: 'am' },
+  { k: 'merino base layer', vol: '6,600', you: '#5', c1: '#11', c2: '#8', score: '41', gap: 'Strong', gapCls: 'em', youWin: true },
+];
+---
+
+<BaseLayout
+  title="Intelligence Hub"
+  description="Your performance, your rivals and your next move, on one screen. Executive-grade reporting, competitor gaps and an AI strategist that has already read your data."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Intelligence Hub"
+    title="See the whole board, not just one page."
+    lede="Track your site, your competitors, your demand, and your goals in one place."
+  />
+
+  <!-- ===== Command centre ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Command centre</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Your main numbers in one view.</h2>
+          <p>Clicks, impressions, CTR, position, and the trend line.</p>
+        </div>
+        <div class="segrow">
+          <span class="segpill on">Overview</span>
+          <span class="segpill">Queries</span>
+          <span class="segpill">Pages</span>
+          <span class="segpill">Page + Queries</span>
+          <span class="segpill">Impact Tracking</span>
+          <span class="kbds"><b>Last 28 days</b><b>vs previous</b></span>
+        </div>
+        <div class="appwin push">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/intelligence/command-centre</span>
+            <span class="awtab">Overview</span>
+          </div>
+          <div class="awbody">
+            <div class="tickwrap">
+              <div class="kpis c4">
+                <div class="kpi ink"><span class="kl">Total clicks</span><span class="kv"><span class="cnt" data-n="128400">128,400</span></span><span class="kd up">↗ +9,200 (7.7%)</span><span class="kp">119,200 vs previous period</span></div>
+                <div class="kpi"><span class="kl">Impressions</span><span class="kv">3.10M</span><span class="kd up">↗ +214K (7.4%)</span><span class="kp">2.89M vs previous</span></div>
+                <div class="kpi"><span class="kl">Avg CTR</span><span class="kv">4.1%</span><span class="kd flat">±0.0pt</span><span class="kp">4.1% vs previous</span></div>
+                <div class="kpi"><span class="kl">Avg position</span><span class="kv">18.6</span><span class="kd up">↗ improved 0.8</span><span class="kp">19.4 vs previous</span></div>
+              </div>
+            </div>
+            <div class="awhead" style="margin-top:1rem">
+              <div><span class="awtitle">Performance over time</span><span class="awsub">clicks · last 28 days vs previous</span></div>
+              <div class="awleg"><span><i class="dot" style="background:var(--ink)"></i>this period</span><span><i class="dot" style="background:rgba(22,20,15,0.3)"></i>previous</span></div>
+            </div>
+            <div class="awviz">
+              <svg viewBox="0 0 724 220" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Weekly clicks rising over 28 days, above the previous period's dashed line.">
+                <line x1="46" y1="40" x2="704" y2="40" class="perf-grid"></line>
+                <line x1="46" y1="110" x2="704" y2="110" class="perf-grid"></line>
+                <line x1="46" y1="180" x2="704" y2="180" class="perf-grid"></line>
+                <path class="perf-area" d="M46,150 L156,142 L266,148 L376,120 L486,108 L596,92 L704,74 L704,180 L46,180 Z"></path>
+                <path class="perf-cmp" d="M46,162 L156,158 L266,150 L376,146 L486,140 L596,132 L704,124"></path>
+                <path class="perf-line" d="M46,150 L156,142 L266,148 L376,120 L486,108 L596,92 L704,74"></path>
+                <circle cx="704" cy="74" r="4.5" class="perf-dot"></circle>
+                <text x="46" y="205" class="sc-tick">28 days ago</text>
+                <text x="704" y="205" class="sc-tick end">today</text>
+              </svg>
+            </div>
+            <p class="awnote">Change markers sit on the timeline so you can see traffic move after each fix ships. Queries, Pages and Page + Queries tabs drill the same period.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Competitive landscape ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Competitive landscape</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Know who is winning the gaps.</h2>
+          <p>See where competitors rank, where you are missing, and which keywords matter most.</p>
+        </div>
+        <div class="stiles c4">
+          <div class="stile"><span class="sl">Your keywords</span><span class="sv"><span class="cnt" data-n="9840">9,840</span></span><span class="ss">est. · UK market</span></div>
+          <div class="stile"><span class="sl">Your est. traffic</span><span class="sv"><span class="cnt" data-n="128" data-suf="k">128k</span></span><span class="ss">organic / month</span></div>
+          <div class="stile"><span class="sl">Competitors tracked</span><span class="sv">3</span><span class="ss">ranking data synced monthly</span></div>
+          <div class="stile"><span class="sl">Keyword coverage</span><span class="sv"><span class="cnt" data-n="61" data-suf="%">61%</span></span><span class="ss">vs best competitor</span></div>
+        </div>
+        <div class="appwin push">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/intelligence/competitive-landscape</span>
+            <span class="awtab">Keyword Gap</span>
+          </div>
+          <div class="awbody">
+            <div class="awhead">
+              <div><span class="awtitle">Keyword gap analysis</span><span class="awsub">3 competitors · 1,180 keywords</span></div>
+              <div class="segrow tight" style="margin-top:0"><span class="segpill on">Keywords</span><span class="segpill">Clusters</span></div>
+            </div>
+            <div class="segrow tight">
+              <span class="segpill crit"><span class="dot"></span>Missing <span class="ct">214</span></span>
+              <span class="segpill high"><span class="dot"></span>Weak <span class="ct">388</span></span>
+              <span class="segpill win"><span class="dot"></span>Strong <span class="ct">512</span></span>
+              <span class="segpill blue"><span class="dot"></span>Untapped <span class="ct">96</span></span>
+            </div>
+            <div class="dtbl-wrap">
+              <table class="dtbl" style="margin-top:0.75rem">
+                <thead><tr><th>Keyword</th><th class="r">Volume</th><th class="r">Your pos</th><th class="r">alpinetrail</th><th class="r">summitandsky</th><th class="r">Score</th><th class="r">Gap</th></tr></thead>
+                <tbody>
+                  {gaps.map((g) => (
+                    <tr>
+                      <td class="k">{g.k}</td>
+                      <td class="r">{g.vol}</td>
+                      <td class="r">{g.youWin ? <span class="em">{g.you}</span> : g.you}</td>
+                      <td class="r">{g.c1}</td>
+                      <td class="r">{g.c2}</td>
+                      <td class="r">{g.score}</td>
+                      <td class="r"><span class={g.gapCls === 'blue' ? '' : g.gapCls} style={g.gapCls === 'blue' ? 'color:var(--sev-blue-ink)' : undefined}>{g.gap}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="awnote">Open a row for the ranking pages on both sides, then send it straight to the advisor or Content Studio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Strategic Advisor + objectives ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="two reveal">
+        <div class="sechead">
+          <span class="eyebrow">Strategic Advisor · objectives</span>
+          <h2 style="margin-top:var(--space-s)">Ask what to do next.</h2>
+          <p>The Strategic Advisor turns the data into a move. Objectives keep the team focused.</p>
+          <span class="golink">Context: search data · analysers · competitors · brand and AI</span>
+        </div>
+        <div class="appwin">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/intelligence/strategic-advisor</span>
+            <span class="awtab">Advisor</span>
+          </div>
+          <div class="awbody lchat">
+            <div class="cpull" style="margin-bottom:0.1rem"><span style="color:var(--ink-faint)">Connected to</span> <span class="lchip" style="padding:2px 8px"><span class="tx-em">●</span> Search data</span> <span class="lchip" style="padding:2px 8px">Analysers</span> <span class="lchip" style="padding:2px 8px">Competitors</span></div>
+            <div class="cq">Where am I losing to competitors this month?</div>
+            <div class="cpull"><span class="ok">✓</span> compared your gap table across 1,180 keywords</div>
+            <div class="ca"><b>Alpine Trail is taking two clusters you should own:</b> "gore-tex jacket womens" (they are #4, you do not rank) and "waterproof hiking boots" (they are #3, you are #14). Both have rising demand. Fastest route: one strong buying guide plus the collection fixes from the opportunity queue. Estimated reach, <b>+2,600 clicks a month</b>.
+              <div class="lplace"><span class="plbl">Objectives</span><span class="lchip on">Own "waterproof boots" top 5 · 42%</span></div>
+            </div>
+            <div class="lplace"><span class="lchip on">Create brief</span><span class="lchip">Open gap analysis</span><span class="lchip">Trace</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="foot-note">Uses the real Command Centre tab set (Overview, Queries, Pages, Page + Queries, Impact Tracking), the four-KPI band with Total Clicks as the inverted tile, the Competitive Landscape keyword-gap table with Missing / Weak / Strong / Untapped badges, and the Strategic Advisor with its context chips, objectives and a reasoning trace.</p>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="Your command centre"
+    title="Move from data to action."
+    sub="Join the pilot programme and we will load your search data and competitors into the Intelligence Hub, then ask the advisor your first real question, live."
+    secondaryLabel="See Brand and AI Visibility"
+    secondaryHref="/brand-and-ai"
+  />
+</BaseLayout>

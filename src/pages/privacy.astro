@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { GMM, FORM } from '../consts';
+
+const updated = 'July 2026';
+---
+
+<BaseLayout
+  title="Privacy"
+  description="How Searchscope and Growth Minded Marketing handle the details you share through this site."
+  headerTheme="dark"
+  noindex={true}
+>
+  <PageHero
+    eyebrow="Privacy"
+    title="What we do with your details."
+    lede="Short version: we only use what you send us to reply, and we don't sell or share it."
+  />
+
+  <section class="section section--tight theme-dark">
+    <div class="container container--narrow">
+      <div class="prose reveal">
+        <p class="prose__meta mono">Last updated {updated}</p>
+
+        <h2>Who we are</h2>
+        <p>
+          Searchscope is the search intelligence co-pilot from {GMM.name}. This site is a marketing
+          site. When we say "we" below, we mean {GMM.name}, the team that builds and runs Searchscope.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          Only what you type into the contact form: your name, email, company, website and a note
+          about what you're trying to grow. Nothing more, and nothing hidden. We don't run
+          advertising trackers or sell profiles.
+        </p>
+
+        <h2>Why we collect it</h2>
+        <p>
+          To read your search picture and reply. A strategist uses your note to prepare for the
+          conversation. That's the only reason we ask.
+        </p>
+
+        <h2>Who sees it</h2>
+        <p>
+          Our team, and the tools we use to run the form and our inbox. We don't share your details
+          with anyone else, and we don't add you to a marketing list without asking.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          For as long as we're in touch, and a reasonable window after, in case you come back. Ask us
+          to delete your details any time and we will.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>
+          You can ask to see, correct or delete anything you've sent us. Email
+          <a href={`mailto:${FORM.inbox}`}>{FORM.inbox}</a> and we'll sort it.
+        </p>
+
+        <h2>Analytics and cookies</h2>
+        <p>
+          This site is deliberately light. If we add privacy-friendly, aggregate analytics later,
+          we'll update this page. We don't use cookies to follow you around the web.
+        </p>
+
+        <p class="prose__foot">
+          Questions about any of this? Email <a href={`mailto:${FORM.inbox}`}>{FORM.inbox}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 68ch;
+  }
+  .prose__meta {
+    font-size: var(--step--2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: var(--space-l);
+  }
+  .prose h2 {
+    font-size: var(--step-2);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xs);
+  }
+  .prose h2:first-of-type {
+    margin-top: 0;
+  }
+  .prose p {
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    margin-bottom: var(--space-s);
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose__foot {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--hairline);
+  }
+</style>

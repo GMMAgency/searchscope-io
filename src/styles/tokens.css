@@ -1,0 +1,386 @@
+/* ============================================================
+   Searchscope - Design Tokens
+   Locked decisions (Instrument, light-mode primary):
+   - Accent: MONOCHROME. Near-black ink on paper; CTAs invert
+     (white-on-dark / black-on-light). Colour lives only in
+     product data (rose/amber/emerald/blue severity).
+   - Mode: light-led (warm off-white paper). Dark tokens kept
+     for the one reserved dark object per page (telemetry).
+   - Type: Geist (display) · Inter (body) · Geist Mono (data,
+            eyebrows, labels) · Fraunces (editorial serif accent).
+   ============================================================ */
+
+:root {
+  /* ---- Brand accent - MONOCHROME. This (dark-mode) value is the light ink;
+     light mode overrides to near-black below. CTAs invert (white-on-dark /
+     black-on-light). Colour lives only in product data (rose/amber/emerald
+     severity). ---- */
+  --accent: #f4f1ec;
+  --accent-deep: #ffffff;
+  --accent-ink: #16140f; /* dark text that sits ON a light accent fill */
+  --accent-soft: rgba(244, 241, 236, 0.1);
+  --accent-glow: rgba(244, 241, 236, 0.16);
+
+  /* ---- Warm-dark (hero + product sections) ---- */
+  --dark-base: #121113;
+  --dark-panel: #1c1a1b;
+  --dark-panel-2: #232021;
+  --dark-hairline: #2e2b2c;
+  --dark-text: #f4f1ec;
+  --dark-text-dim: rgba(244, 241, 236, 0.64);
+  --dark-text-faint: rgba(244, 241, 236, 0.40);
+
+  /* ---- Warm-cream / paper (manifesto + blog) ---- */
+  --cream-base: #f7f4ee;
+  --cream-panel: #efebe3;
+  --cream-panel-2: #e7e2d7;
+  --cream-hairline: rgba(22, 20, 15, 0.12);
+  --cream-ink: #16140f;
+  --cream-ink-dim: rgba(22, 20, 15, 0.66);
+  --cream-ink-faint: rgba(22, 20, 15, 0.42);
+
+  /* ---- Data colours - the ONLY colour on the site, matched to the real
+     app: green = rising / up / good, rose = falling / down / critical,
+     amber = weak / warning, blue = brand / impressions, grey = flat. ---- */
+  --sev-rose: #fb7185;
+  --sev-amber: #fbbf24;
+  --sev-emerald: #34d399;
+  --sev-blue: #60a5fa;
+  --sev-flat: #9aa0a6;
+
+  /* Light-legible severity inks - the same signals tuned to read on the
+     white product cards (the bright --sev-* above are for the dark
+     telemetry object). Used across the product-card layer. */
+  --sev-rose-ink: #e11d48;
+  --sev-amber-ink: #b45309;
+  --sev-emerald-ink: #15937a;
+  --sev-blue-ink: #2563eb;
+
+  /* ---- Type families ---- */
+  --font-display: 'Geist Variable', 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', 'JetBrains Mono', monospace;
+  --font-serif: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+
+  /* Heading font + weight routed through variables so a skin can remap
+     them globally (light/lighter weights, or the monospace "code" look). */
+  --font-heading: var(--font-display);
+  --wt-heading: 600;
+  --wt-heading-strong: 600; /* airier than 700 - refined Mistral-like display */
+  /* editorial accent (pull-quotes, decks). Mono skin remaps it to the
+     code font so nothing reverts to a serif that breaks the look. */
+  --font-accent: var(--font-serif);
+
+  /* ---- Fluid type scale (clamp: min @360px → max @~1180px) ----
+     Tightened 2026-06-28: graduated trim (gentle on body, firmer at the
+     display end) so headlines read calmer/more precise, less "shouty".
+     Retuned 2026-07-12: display end pulled down ~20-26% (hero H1s were
+     filling the viewport at 100%); body nudged a touch. Hierarchy and
+     ~65ch line lengths preserved. */
+  --step--2: clamp(0.69rem, 0.66rem + 0.16vw, 0.78rem);
+  --step--1: clamp(0.82rem, 0.78rem + 0.22vw, 0.92rem);
+  --step-0: clamp(0.96rem, 0.92rem + 0.24vw, 1.02rem);
+  --step-1: clamp(1.1rem, 1.02rem + 0.38vw, 1.25rem);
+  --step-2: clamp(1.28rem, 1.15rem + 0.6vw, 1.55rem);
+  --step-3: clamp(1.5rem, 1.3rem + 0.9vw, 1.9rem);
+  --step-4: clamp(1.7rem, 1.45rem + 1.25vw, 2.3rem);
+  --step-5: clamp(1.95rem, 1.6rem + 1.7vw, 2.8rem);
+  --step-6: clamp(2.3rem, 1.75rem + 2.8vw, 3.6rem);
+
+  /* ---- Spacing scale ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 9rem;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --container-narrow: 760px;
+  --container-wide: 1320px;
+  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+
+  /* ---- Radii ---- */
+  --radius-xs: 6px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+  --dur-slow: 600ms;
+
+  /* ---- Elevation ---- */
+  --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --shadow-m: 0 18px 40px -24px rgba(0, 0, 0, 0.55);
+  --shadow-l: 0 40px 90px -40px rgba(0, 0, 0, 0.7);
+
+  /* ---- Z-index ---- */
+  --z-nav: 100;
+  --z-overlay: 200;
+}
+
+/* ============================================================
+   Theme contexts - set per <section>. Components read the
+   neutral aliases below (--surface / --ink / …) so the same
+   markup adapts to warm-dark or warm-cream automatically.
+   ============================================================ */
+
+.theme-dark {
+  --surface: var(--dark-base);
+  --surface-panel: var(--dark-panel);
+  --surface-panel-2: var(--dark-panel-2);
+  --hairline: var(--dark-hairline);
+  --ink: var(--dark-text);
+  --ink-dim: var(--dark-text-dim);
+  --ink-faint: var(--dark-text-faint);
+  --grain-opacity: 0.05;
+  color-scheme: dark;
+}
+
+.theme-cream {
+  --surface: var(--cream-base);
+  --surface-panel: var(--cream-panel);
+  --surface-panel-2: var(--cream-panel-2);
+  --hairline: var(--cream-hairline);
+  --ink: var(--cream-ink);
+  --ink-dim: var(--cream-ink-dim);
+  --ink-faint: var(--cream-ink-faint);
+  --grain-opacity: 0.035;
+  color-scheme: light;
+}
+
+/* ============================================================
+   TWO INDEPENDENT AXES:
+
+   • MODE (palette)      <html data-mode="light|dark">  ← user toggle
+   • SKIN (typography)   <html data-skin="mono">        ← fixed template
+
+   Mode controls light vs dark for the WHOLE site (including the
+   editorial sections). Skin controls the heading typography. They
+   compose freely: mono headings work on either palette.
+   ============================================================ */
+
+/* Page backdrop (overscroll areas) - matches the active mode */
+html {
+  background: #f7f6f2;
+}
+html[data-mode='dark'] {
+  background: var(--dark-base);
+}
+
+/* ============================================================
+   LIGHT MODE - the whole site goes light.
+   DEFAULT light "paper" = soft off-white (clean, barely warm -
+   moved away from the old beige cream). Alternative papers are
+   testable via <html data-paper="white|warm|cream"> (set PAPER
+   in src/consts.ts). Accent + ink are shared across papers.
+   ============================================================ */
+html[data-mode='light'] {
+  /* monochrome: near-black accent, white text on the (black) button fill */
+  --accent: #1b1a17;
+  --accent-deep: #000000;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(22, 20, 15, 0.07);
+  --accent-glow: rgba(22, 20, 15, 0.14);
+}
+
+/* ---- DEFAULT: soft off-white ---- */
+html[data-mode='light'] .theme-dark {
+  --surface: #f4f3ee;
+  --surface-panel: #ffffff; /* cards lift clean-white off the paper */
+  --surface-panel-2: #eceae3;
+  --hairline: rgba(22, 20, 15, 0.11);
+  --ink: #16150f;
+  --ink-dim: rgba(22, 20, 15, 0.62);
+  --ink-faint: rgba(22, 20, 15, 0.42);
+  --grain-opacity: 0.014;
+  color-scheme: light;
+}
+html[data-mode='light'] .theme-cream {
+  --surface: #ffffff;
+  --surface-panel: #f5f4ef;
+  --surface-panel-2: #eceae3;
+  --hairline: rgba(22, 20, 15, 0.09);
+  --ink: #16150f;
+  --ink-dim: rgba(22, 20, 15, 0.62);
+  --ink-faint: rgba(22, 20, 15, 0.4);
+  --grain-opacity: 0.012;
+  color-scheme: light;
+}
+
+/* ---- PAPER: clean white (white cards on near-white; warm-ish ink so it
+   stays cohesive with the warm dark mode) ---- */
+html[data-mode='light'][data-paper='white'] {
+  background: #fbfbfb;
+}
+html[data-mode='light'][data-paper='white'] .theme-dark {
+  --surface: #fbfbfb; /* near-white section */
+  --surface-panel: #ffffff; /* cards pop white */
+  --surface-panel-2: #f1f1f0;
+  --hairline: rgba(0, 0, 0, 0.09);
+  --ink: #17160f;
+  --ink-dim: rgba(22, 21, 16, 0.6);
+  --ink-faint: rgba(22, 21, 16, 0.42);
+}
+html[data-mode='light'][data-paper='white'] .theme-cream {
+  --surface: #ffffff; /* pure white editorial */
+  --surface-panel: #f7f7f6;
+  --surface-panel-2: #efefee;
+  --hairline: rgba(0, 0, 0, 0.08);
+  --ink: #17160f;
+  --ink-dim: rgba(22, 21, 16, 0.6);
+  --ink-faint: rgba(22, 21, 16, 0.42);
+}
+
+/* ---- PAPER: warm white (a faint peach hint, Mistral-ish, far from cream) ---- */
+html[data-mode='light'][data-paper='warm'] {
+  background: #fcfaf6;
+}
+html[data-mode='light'][data-paper='warm'] .theme-dark {
+  --surface: #faf7f1;
+  --surface-panel: #ffffff;
+  --surface-panel-2: #f1ece3;
+  --hairline: rgba(40, 24, 10, 0.11);
+  --ink: #171410;
+  --ink-dim: rgba(28, 20, 12, 0.62);
+  --ink-faint: rgba(28, 20, 12, 0.42);
+}
+html[data-mode='light'][data-paper='warm'] .theme-cream {
+  --surface: #ffffff;
+  --surface-panel: #faf7f1;
+  --surface-panel-2: #f1ece3;
+  --hairline: rgba(40, 24, 10, 0.09);
+  --ink: #171410;
+  --ink-dim: rgba(28, 20, 12, 0.62);
+  --ink-faint: rgba(28, 20, 12, 0.4);
+}
+
+/* ---- PAPER: original warm cream (kept for comparison) ---- */
+html[data-mode='light'][data-paper='cream'] {
+  background: #f4f1ea;
+}
+html[data-mode='light'][data-paper='cream'] .theme-dark {
+  --surface: #f5f2ec;
+  --surface-panel: #fffefb;
+  --surface-panel-2: #efebe2;
+  --hairline: rgba(20, 18, 12, 0.13);
+  --ink: #16140f;
+}
+html[data-mode='light'][data-paper='cream'] .theme-cream {
+  --surface: #ffffff;
+  --surface-panel: #f6f3ec;
+  --surface-panel-2: #eee9df;
+  --hairline: rgba(20, 18, 12, 0.1);
+  --ink: #16140f;
+}
+
+/* ---- DARK MODE - the whole site goes dark (editorial too) ---- */
+/* .theme-dark already resolves to warm near-black via the root defaults;
+   only the former-cream editorial sections need a dark surface. */
+html[data-mode='dark'] .theme-cream {
+  --surface: #171516;
+  --surface-panel: #201d1e;
+  --surface-panel-2: #272324;
+  --hairline: #322f30;
+  --ink: var(--dark-text);
+  --ink-dim: var(--dark-text-dim);
+  --ink-faint: var(--dark-text-faint);
+  --grain-opacity: 0.05;
+  color-scheme: dark;
+}
+/* dark mode keeps the bright mint accent (root default #40DE9E) */
+
+/* ============================================================
+   ACCENT presets - testable via <html data-accent="…"> (set
+   ACCENT in src/consts.ts). Default (no attribute) = signal-green.
+   Each preset defines a bright dark-mode value and a deeper,
+   text-legible light-mode value. Severity (rose/amber/emerald)
+   is unaffected, so "winning" data stays green even with an
+   orange brand accent.
+   ============================================================ */
+
+/* ORANGE (Mistral-style red-orange) */
+html[data-mode='dark'][data-accent='orange'] {
+  --accent: #ff6a3d;
+  --accent-deep: #f2511c;
+  --accent-ink: #2a0f04;
+  --accent-soft: rgba(255, 106, 61, 0.14);
+  --accent-glow: rgba(255, 106, 61, 0.32);
+}
+html[data-mode='light'][data-accent='orange'] {
+  --accent: #db4a12;
+  --accent-deep: #b83c0c;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(219, 74, 18, 0.1);
+  --accent-glow: rgba(219, 74, 18, 0.28);
+}
+
+/* TANGERINE (brighter, sunnier orange) */
+html[data-mode='dark'][data-accent='tangerine'] {
+  --accent: #ff8a2b;
+  --accent-deep: #f2700a;
+  --accent-ink: #2a1500;
+  --accent-soft: rgba(255, 138, 43, 0.14);
+  --accent-glow: rgba(255, 138, 43, 0.3);
+}
+html[data-mode='light'][data-accent='tangerine'] {
+  --accent: #c25e06;
+  --accent-deep: #a34e04;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(194, 94, 6, 0.1);
+  --accent-glow: rgba(194, 94, 6, 0.28);
+}
+
+/* CORAL (warm pink-orange) */
+html[data-mode='dark'][data-accent='coral'] {
+  --accent: #ff6f61;
+  --accent-deep: #f2503f;
+  --accent-ink: #2a0a06;
+  --accent-soft: rgba(255, 111, 97, 0.14);
+  --accent-glow: rgba(255, 111, 97, 0.3);
+}
+html[data-mode='light'][data-accent='coral'] {
+  --accent: #d9483b;
+  --accent-deep: #bc3a2e;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(217, 72, 59, 0.1);
+  --accent-glow: rgba(217, 72, 59, 0.28);
+}
+
+/* ============================================================
+   SKIN: mono - the "code" heading look (palette-independent)
+   ============================================================ */
+html[data-skin='mono'] {
+  --font-heading: var(--font-mono);
+  --font-accent: var(--font-mono);
+  --wt-heading: 500;
+  --wt-heading-strong: 500;
+  --ls-heading: -0.03em;
+  /* monospace is wider - trim the big display sizes */
+  --step-6: clamp(2.3rem, 1.7rem + 3vw, 3.9rem);
+  --step-5: clamp(2rem, 1.6rem + 2.2vw, 3.15rem);
+  --step-4: clamp(1.7rem, 1.4rem + 1.5vw, 2.6rem);
+}
+html[data-skin='mono'] h1 {
+  letter-spacing: -0.04em;
+}
+/* the home hero title uses a literal clamp - trim it for monospace */
+html[data-skin='mono'] .hero__title {
+  font-size: clamp(2rem, 1.5rem + 3vw, 3.5rem) !important;
+}
+
+/* ---- SKIN: paper - light grotesque (optional, non-default) ---- */
+html[data-skin='paper'] {
+  --wt-heading: 500;
+  --wt-heading-strong: 600;
+}

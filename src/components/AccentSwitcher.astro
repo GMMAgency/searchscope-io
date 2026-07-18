@@ -1,0 +1,126 @@
+---
+/**
+ * Live accent-colour tester - flips <html data-accent> so you can compare
+ * brand accents. Remove by setting SHOW_ACCENT_SWITCHER = false in consts.
+ */
+import { ACCENT } from '../consts';
+const options = [
+  { id: '', label: 'Green', swatch: '#40de9e' },
+  { id: 'orange', label: 'Orange', swatch: '#ff6a3d' },
+  { id: 'tangerine', label: 'Tangerine', swatch: '#ff8a2b' },
+  { id: 'coral', label: 'Coral', swatch: '#ff6f61' },
+];
+---
+
+<div class="accent-sw" data-accent-sw data-default={ACCENT} aria-label="Try a brand accent">
+  <span class="accent-sw__label">Accent</span>
+  <div class="accent-sw__btns" role="group">
+    {options.map((o) => (
+      <button type="button" class="accent-sw__btn" data-accent-set={o.id} title={o.label}>
+        <span class="accent-sw__dot" style={`background:${o.swatch}`}></span>
+        {o.label}
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .accent-sw {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.4rem 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(18, 17, 19, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+  }
+  .accent-sw__label {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 241, 236, 0.5);
+  }
+  .accent-sw__btns {
+    display: flex;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+  }
+  .accent-sw__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(244, 241, 236, 0.7);
+    padding: 0.35em 0.6em;
+    border-radius: var(--radius-pill);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .accent-sw__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex: none;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+  }
+  .accent-sw__btn:hover {
+    color: #f4f1ec;
+  }
+  .accent-sw__btn[aria-pressed='true'] {
+    background: rgba(255, 255, 255, 0.14);
+    color: #f4f1ec;
+    font-weight: 500;
+  }
+  @media (max-width: 640px) {
+    .accent-sw__label {
+      display: none;
+    }
+    .accent-sw__btn {
+      font-size: 0;
+      padding: 0.4em;
+    }
+    .accent-sw__btn .accent-sw__dot {
+      width: 12px;
+      height: 12px;
+    }
+    .accent-sw {
+      bottom: 12px;
+      right: 12px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const KEY = 'ss-accent';
+    const root = document.documentElement;
+    const sw = document.querySelector<HTMLElement>('[data-accent-sw]');
+    if (!sw) return;
+    const buttons = sw.querySelectorAll<HTMLButtonElement>('[data-accent-set]');
+    const current = () => root.dataset.accent || '';
+    const sync = () => {
+      const c = current();
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.accentSet || '') === c)));
+    };
+    const apply = (accent: string) => {
+      if (accent) root.dataset.accent = accent;
+      else delete root.dataset.accent;
+      try {
+        localStorage.setItem(KEY, accent);
+      } catch {}
+      sync();
+    };
+    buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.accentSet || '')));
+    sync();
+  })();
+</script>

@@ -1,0 +1,13 @@
+{
+  "name": "Searchscope",
+  "short_name": "Searchscope",
+  "description": "The search intelligence co-pilot from Growth Minded Marketing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121113",
+  "theme_color": "#121113",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

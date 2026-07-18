@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+import { ANALYZERS } from '../consts';
+---
+
+<BaseLayout
+  title="Analyser Workspaces"
+  description="Stop auditing. Start clearing a queue. Every analyser hands you findings that arrive scored, judged and with the fix already drafted, so you work top to bottom and ship."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Workspaces"
+    title="Each workspace gives you one clear job to do."
+    lede="Find the issue. Read the evidence. Decide what to do next."
+  >
+    <nav class="points" aria-label="The seven analysers" style="margin-top:var(--space-l)">
+      {ANALYZERS.map((a) => <span class="lchip">{a.name}</span>)}
+    </nav>
+  </PageHero>
+
+  <!-- ===== Opportunities workspace ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Opportunities workspace</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Queue, evidence, verdict.</h2>
+          <p>One place to review an issue, check the evidence, and decide the next move.</p>
+        </div>
+
+        <div class="stiles">
+          <div class="stile ink"><span class="sl">Clicks within reach</span><span class="sv">+<span class="cnt" data-n="8900">8,900</span></span><span class="ss">est. if opportunities land</span></div>
+          <div class="stile"><span class="sl">Opportunities</span><span class="sv"><span class="cnt" data-n="58">58</span></span><span class="ss">positions 4 to 20</span></div>
+          <div class="stile"><span class="sl">Striking distance</span><span class="sv"><span class="cnt" data-n="23">23</span></span><span class="ss">page one within a push</span></div>
+          <div class="stile"><span class="sl">Avg position</span><span class="sv">9.1</span><span class="ss">across the queue</span></div>
+          <div class="stile"><span class="sl">This week's triage</span><span class="sv"><span class="cnt" data-n="41">41</span><span style="font-size:12px;color:var(--ink-faint)">%</span></span><div class="trmeter"><i style="width:41%"></i></div><span class="ss">24 of 58 handled</span></div>
+        </div>
+
+        <div class="segrow">
+          <span class="segpill on">All <span class="ct">58</span></span>
+          <span class="segpill">Quick win <span class="ct">14</span></span>
+          <span class="segpill">Striking distance <span class="ct">23</span></span>
+          <span class="segpill">Content gap <span class="ct">12</span></span>
+          <span class="segpill">Low CTR <span class="ct">9</span></span>
+          <span class="segpill blue"><span class="dot"></span>AI only <span class="ct">21</span></span>
+          <span class="kbds"><b>J</b><b>K</b><b>E</b></span>
+        </div>
+
+        <div class="wq">
+          <div class="wqhd"><span>Page</span><div class="wqmet"><span>Pos</span><span>Impr</span><span>Est. clicks</span></div><span></span></div>
+          <div class="wqband high"><span class="d"></span> High priority · 3</div>
+          <div class="wqrow open">
+            <div><span class="tt">Down jackets</span><span class="sub">Striking distance · cannibalisation conflict · /collections/down-jackets</span></div>
+            <div class="wqmet"><span>6.2</span><span>41.2K</span><span class="em">+1,300</span></div>
+            <span class="chev">▾</span>
+          </div>
+          <div class="wqexp">
+            <div class="exeyebrow"><span>AI optimisation plan</span><span>focus · fill-power depth and comparison</span></div>
+            <div class="exgrid">
+              <div>
+                <div class="evtile"><span class="el">Quick win · +1,300 clicks</span><p style="margin:0.4rem 0 0;font-size:var(--step--1);line-height:1.55;color:var(--ink-dim)">Answer "fill power" and "down vs synthetic" on the page and you move the head term from <b style="color:var(--ink)">#6.2 → #3</b> for "down jackets".</p></div>
+                <div class="exactions">
+                  <span class="lchip ink">Rebuild in Studio →</span>
+                  <span class="lchip">View page</span>
+                  <span class="lchip">Copy queries</span>
+                </div>
+              </div>
+              <div>
+                <div class="exeyebrow" style="margin-bottom:0.25rem"><span>Position</span><span>page one boundary · 10</span></div>
+                <div class="posscale"><span class="p1" style="left:50%"></span><span class="you" style="left:31%"></span></div>
+                <div class="posnote"><span>better · 1</span><span>you · 6.2</span><span>20</span></div>
+                <div class="exeyebrow" style="margin:0.9rem 0 0"><span>Top queries</span><span>4 intent clusters</span></div>
+                <table class="dtbl">
+                  <thead><tr><th>Query</th><th class="r">Impr</th><th class="r">Clicks</th><th class="r">Pos</th></tr></thead>
+                  <tbody>
+                    <tr><td class="k">down jackets</td><td class="r">18,400</td><td class="r">610</td><td class="r"><span class="am">6.1</span></td></tr>
+                    <tr><td class="k">lightweight down jacket</td><td class="r">9,900</td><td class="r">280</td><td class="r"><span class="am">7.4</span></td></tr>
+                    <tr><td class="k">packable down jacket</td><td class="r">6,200</td><td class="r">150</td><td class="r">9.0</td></tr>
+                    <tr><td class="k">down vs synthetic jacket</td><td class="r">4,100</td><td class="r">40</td><td class="r"><span class="ro">14.2</span></td></tr>
+                  </tbody>
+                </table>
+                <div class="exeyebrow" style="margin:0.9rem 0 0.5rem"><span>Missing H2 topics the top results cover</span><span>coverage 62%</span></div>
+                <div class="points">
+                  <span class="lchip">Fill power explained</span>
+                  <span class="lchip">Down vs synthetic</span>
+                  <span class="lchip">Care and washing</span>
+                  <span class="lchip">Packability and weight</span>
+                  <span class="lchip">Ethical down (RDS)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wqrow"><div><span class="tt">3-season tents</span><span class="sub">Content gap · /collections/3-season-tents</span></div><div class="wqmet"><span>8.4</span><span>22.6K</span><span class="em">+740</span></div><span class="chev">▸</span></div>
+          <div class="wqrow"><div><span class="tt">Merino base layers</span><span class="sub">Low CTR · title and meta · /collections/base-layers</span></div><div class="wqmet"><span>4.9</span><span>33.1K</span><span class="em">+680</span></div><span class="chev">▸</span></div>
+          <div class="wqband med"><span class="d"></span> Medium · 12</div>
+          <div class="wqrow"><div><span class="tt">Insulated flasks</span><span class="sub">Striking distance · /collections/flasks</span></div><div class="wqmet"><span>11.2</span><span>18.4K</span><span class="em">+420</span></div><span class="chev">▸</span></div>
+          <div class="wqrow"><div><span class="tt">Walking poles buying guide</span><span class="sub">Quick win · /guides/walking-poles</span></div><div class="wqmet"><span>7.8</span><span>9.7K</span><span class="em">+260</span></div><span class="chev">▸</span></div>
+        </div>
+        <p class="foot-note">Showing 5 of 58 opportunities · positions 4 to 20 over the last 28 days · the ink primary action opens the fix in Content Studio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Cannibalisation workspace ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Cannibalisation workspace</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>See when pages compete.</h2>
+          <p>Find overlap. Show the competing URLs. Pick the fix.</p>
+        </div>
+        <div class="appwin push">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/workspaces/cannibalization</span>
+            <span class="awtab">Cannibalization</span>
+          </div>
+          <div class="awbody">
+            <div class="awhead">
+              <div><span class="awtitle">Hiking boots · a duel over 64% shared queries</span><span class="awsub">strategy · differentiate · +1,180 clicks in reach</span></div>
+              <span class="lchip on">Create brief</span>
+            </div>
+            <div class="duel">
+              <div class="dcard win">
+                <span class="keep">Keep</span>
+                <span class="dt">Hiking boots</span>
+                <span class="dp">/collections/hiking-boots</span>
+                <span class="dm">1,240 clicks · 96K impr · #4.1</span>
+              </div>
+              <span class="vs">vs</span>
+              <div class="dcard">
+                <span class="dt">Best hiking boots UK</span>
+                <span class="dp">/guides/best-hiking-boots-uk</span>
+                <span class="dm">380 clicks · 44K impr · #9.6</span>
+              </div>
+            </div>
+            <div class="dtbl-wrap">
+              <table class="dtbl" style="margin-top:1rem">
+                <thead><tr><th>Shared query</th><th class="r">Collection</th><th class="r">Guide</th><th class="r">Verdict</th></tr></thead>
+                <tbody>
+                  <tr><td class="k">hiking boots</td><td class="r"><span class="em">#4</span></td><td class="r"><span class="ro">#11</span></td><td class="r">keep collection</td></tr>
+                  <tr><td class="k">waterproof hiking boots</td><td class="r"><span class="em">#5</span></td><td class="r"><span class="ro">#12</span></td><td class="r">keep collection</td></tr>
+                  <tr><td class="k">best hiking boots uk</td><td class="r"><span class="ro">#14</span></td><td class="r"><span class="em">#7</span></td><td class="r">keep guide</td></tr>
+                  <tr><td class="k">womens hiking boots</td><td class="r"><span class="em">#6</span></td><td class="r"><span class="ro">#13</span></td><td class="r">keep collection</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="awnote">The plan: keep both, but point the guide at buying advice and hand the transactional queries to the collection. Internal links and canonicals drafted.</p>
+          </div>
+        </div>
+        <p class="foot-note">Reproduces the real workspace shell: five stat tiles with one inverted focal tile and a triage meter, a severity-banded ledger with type and "AI only" filter pills and a J K E keyboard legend, the expanded finding with its plan, position scale, top-queries table and missing-H2 chips, and the cannibalisation duel with a per-query verdict. The analysers are named as a set; none gets its own page.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="Clear your own queue"
+    title="Use one pattern across every workspace."
+    sub="Join the pilot programme and we will run the seven analysers on your own pages, scored and with the fixes drafted, in the first session."
+    secondaryLabel="See the platform"
+    secondaryHref="/platform"
+  />
+</BaseLayout>

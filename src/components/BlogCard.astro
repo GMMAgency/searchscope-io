@@ -1,0 +1,130 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  tags: string[];
+  date: Date;
+  readingTime: number;
+  featured?: boolean;
+  class?: string;
+}
+const { href, title, description, tags, date, readingTime, featured = false, class: cls = '' } =
+  Astro.props;
+const dateStr = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+}).format(date);
+const isoDate = date.toISOString();
+---
+
+<article
+  class={`bcard reveal ${featured ? 'bcard--featured' : ''} ${cls}`}
+  data-tags={tags.join('|')}
+>
+  <a href={href} class="bcard__link" aria-label={title}></a>
+  <div class="bcard__top">
+    <span class="pill pill--accent">{tags[0]}</span>
+    <span class="bcard__rt mono">{readingTime} min read</span>
+  </div>
+  <h3 class="bcard__title">{title}</h3>
+  <p class="bcard__desc">{description}</p>
+  <div class="bcard__foot">
+    <time class="mono" datetime={isoDate}>{dateStr}</time>
+    <span class="bcard__more">Read <span class="btn__arrow" aria-hidden="true">→</span></span>
+  </div>
+</article>
+
+<style>
+  .bcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: var(--space-l);
+    background: var(--surface-panel);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-m);
+    transition:
+      border-color var(--dur) var(--ease-out),
+      transform var(--dur) var(--ease-out);
+  }
+  .bcard:hover {
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--hairline));
+    transform: translateY(-3px);
+  }
+  .bcard__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+  }
+  .bcard__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-s);
+  }
+  .bcard__rt {
+    font-size: var(--step--2);
+    color: var(--ink-faint);
+  }
+  .bcard__title {
+    font-size: var(--step-2);
+    line-height: 1.12;
+  }
+  .bcard--featured .bcard__title {
+    font-size: var(--step-3);
+  }
+  .bcard__desc {
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .bcard__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--hairline);
+    font-size: var(--step--1);
+    color: var(--ink-dim);
+  }
+  .bcard__more {
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .bcard:hover .bcard__more .btn__arrow {
+    transform: translateX(3px);
+  }
+  .btn__arrow {
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  @media (min-width: 760px) {
+    .bcard--featured:not(.bcard--unfeature) {
+      grid-column: span 2;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: var(--space-s) var(--space-l);
+    }
+    .bcard--featured:not(.bcard--unfeature) .bcard__top {
+      width: 100%;
+    }
+    .bcard--featured:not(.bcard--unfeature) .bcard__title {
+      flex: 1 1 18ch;
+    }
+    .bcard--featured:not(.bcard--unfeature) .bcard__desc {
+      flex: 1 1 30ch;
+      align-self: center;
+    }
+    .bcard--featured:not(.bcard--unfeature) .bcard__foot {
+      width: 100%;
+    }
+  }
+</style>

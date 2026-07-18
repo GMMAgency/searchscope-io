@@ -1,0 +1,55 @@
+---
+/**
+ * Editorial pull-quote in Fraunces serif, the "studio" accent.
+ */
+interface Props {
+  cite?: string;
+  class?: string;
+}
+const { cite, class: cls = '' } = Astro.props;
+---
+
+<figure class={`pquote reveal ${cls}`}>
+  <span class="pquote__mark" aria-hidden="true">&#8220;</span>
+  <blockquote class="pquote__text">
+    <slot />
+  </blockquote>
+  {cite && <figcaption class="pquote__cite mono">{cite}</figcaption>}
+</figure>
+
+<style>
+  .pquote {
+    max-width: 24ch;
+    margin: var(--space-xl) auto;
+    text-align: center;
+    position: relative;
+  }
+  .pquote__mark {
+    display: block;
+    font-family: var(--font-accent);
+    font-size: 4.5rem;
+    line-height: 0.4;
+    height: 0.5em;
+    color: var(--ink-faint);
+    opacity: 0.45;
+  }
+  .pquote__text {
+    font-family: var(--font-accent);
+    font-weight: 400;
+    font-size: var(--step-4);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .pquote__text :global(em) {
+    font-style: italic;
+  }
+  .pquote__cite {
+    margin-top: var(--space-l);
+    font-size: var(--step--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+/**
+ * Closing CTA band, repeated at the foot of every marketing page.
+ * Always routes to /contact (Join the pilot programme). Dark by default.
+ */
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  sub?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  theme?: 'dark' | 'cream';
+}
+import Ticks from './Ticks.astro';
+const {
+  eyebrow = 'Work with us',
+  title = 'Be part of our pilot programme',
+  sub = 'A real strategist reads your search picture and shows you the moves that matter. No pitch deck, no obligation, just clarity on where your growth is hiding.',
+  primaryLabel = 'Join the pilot programme',
+  primaryHref = '/contact',
+  secondaryLabel,
+  secondaryHref,
+  theme = 'dark',
+} = Astro.props;
+---
+
+<section class={`section cta-band theme-${theme} bg-grid`}>
+  <div class="container">
+    <div class="cta-band__inner reveal">
+      <Ticks size={18} inset="clamp(-2.5rem, -4vw, -1.25rem)" />
+      <span class="eyebrow">{eyebrow}</span>
+      <h2 class="cta-band__title">{title}</h2>
+      <p class="cta-band__sub">{sub}</p>
+      <div class="cta-band__actions">
+        <a href={primaryHref} class="btn btn--lg">
+          {primaryLabel}
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        {secondaryLabel && secondaryHref && (
+          <a href={secondaryHref} class="btn btn--ghost btn--lg">{secondaryLabel}</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-s);
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+  }
+  .cta-band__title {
+    font-size: var(--step-5);
+    max-width: 18ch;
+  }
+  .cta-band__sub {
+    color: var(--ink-dim);
+    font-size: var(--step-1);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: center;
+    margin-top: var(--space-m);
+  }
+</style>

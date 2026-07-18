@@ -1,0 +1,22 @@
+# Netlify build config for searchscope.io.
+#
+# During the pilot, production serves the hand-coded holding page (holding/),
+# which is what searchscope.io runs today. No build step: the holding page is
+# static HTML. Connecting this repo to the existing Netlify site with this file
+# keeps production identical to the current drag-and-drop deploy, now automated
+# from git, and gives every pull request a deploy preview.
+#
+# The full Astro site (src/ builds to dist/) is staged for launch. Preview it
+# without touching production by pushing the `launch` branch: Netlify builds the
+# full site there. At launch, flip production to that build. See cms.md.
+
+[build]
+  publish = "holding"
+  command = ""
+
+# Full launch site, staged. Push to `launch` to build and preview the Astro
+# site at its own URL without changing what searchscope.io serves. The staging
+# build writes a noindex header file so the preview URL never gets indexed.
+[context.launch]
+  command = "npm run build && printf '/*\\n  X-Robots-Tag: noindex\\n' > dist/_headers"
+  publish = "dist"

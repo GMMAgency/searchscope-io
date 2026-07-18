@@ -1,0 +1,111 @@
+---
+/**
+ * Light-mode "paper" tester - flips <html data-paper> live so you can
+ * compare background options. Only relevant in light mode (hidden in dark).
+ * Remove by setting SHOW_PAPER_SWITCHER = false in src/consts.ts.
+ */
+import { PAPER } from '../consts';
+const options = [
+  { id: 'white', label: 'White' },
+  { id: '', label: 'Soft' },
+  { id: 'warm', label: 'Warm' },
+  { id: 'cream', label: 'Cream' },
+];
+---
+
+<div class="paper-sw" data-paper-sw data-default={PAPER} aria-label="Try a light background">
+  <span class="paper-sw__label">Paper</span>
+  <div class="paper-sw__btns" role="group">
+    {options.map((o) => (
+      <button type="button" class="paper-sw__btn" data-paper-set={o.id}>{o.label}</button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .paper-sw {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.4rem 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(18, 17, 19, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+  }
+  /* paper only affects light mode - hide the control in dark */
+  :global(html[data-mode='dark']) .paper-sw {
+    display: none;
+  }
+  .paper-sw__label {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 241, 236, 0.5);
+  }
+  .paper-sw__btns {
+    display: flex;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+  }
+  .paper-sw__btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(244, 241, 236, 0.7);
+    padding: 0.35em 0.65em;
+    border-radius: var(--radius-pill);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .paper-sw__btn:hover {
+    color: #f4f1ec;
+  }
+  .paper-sw__btn[aria-pressed='true'] {
+    background: #40de9e;
+    color: #06231a;
+    font-weight: 500;
+  }
+  @media (max-width: 560px) {
+    .paper-sw__label {
+      display: none;
+    }
+    .paper-sw {
+      bottom: 12px;
+      right: 12px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const KEY = 'ss-paper';
+    const root = document.documentElement;
+    const sw = document.querySelector<HTMLElement>('[data-paper-sw]');
+    if (!sw) return;
+    const buttons = sw.querySelectorAll<HTMLButtonElement>('[data-paper-set]');
+
+    const current = () => root.dataset.paper || '';
+    const sync = () => {
+      const c = current();
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.paperSet || '') === c)));
+    };
+    const apply = (paper: string) => {
+      if (paper) root.dataset.paper = paper;
+      else delete root.dataset.paper;
+      try {
+        localStorage.setItem(KEY, paper);
+      } catch {}
+      sync();
+    };
+    buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.paperSet || '')));
+    sync();
+  })();
+</script>

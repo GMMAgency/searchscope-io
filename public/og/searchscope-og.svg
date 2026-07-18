@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="78%" cy="32%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#121113"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- hairline grid bottom-right (scatter field hint) -->
+  <g stroke="#2E2B2C" stroke-width="1" opacity="0.7">
+    <line x1="760" y1="120" x2="760" y2="470"/>
+    <line x1="900" y1="120" x2="900" y2="470"/>
+    <line x1="1040" y1="120" x2="1040" y2="470"/>
+    <line x1="700" y1="190" x2="1120" y2="190"/>
+    <line x1="700" y1="300" x2="1120" y2="300"/>
+    <line x1="700" y1="410" x2="1120" y2="410"/>
+  </g>
+  <!-- scatter points (monochrome) -->
+  <g fill="#F4F1EC">
+    <circle cx="1040" cy="240" r="26" opacity="0.14"/>
+    <circle cx="1040" cy="240" r="9" opacity="0.95"/>
+    <circle cx="930" cy="300" r="16" opacity="0.12"/>
+    <circle cx="930" cy="300" r="6" opacity="0.7"/>
+    <circle cx="840" cy="380" r="14" opacity="0.12"/>
+    <circle cx="840" cy="380" r="6" opacity="0.55"/>
+    <circle cx="990" cy="350" r="11" opacity="0.12"/>
+    <circle cx="990" cy="350" r="5" opacity="0.55"/>
+    <circle cx="880" cy="230" r="12" opacity="0.12"/>
+    <circle cx="880" cy="230" r="5" opacity="0.7"/>
+  </g>
+
+  <!-- logomark (geometric viewfinder scope + signal node) -->
+  <g transform="translate(90, 96)">
+    <g stroke="#F4F1EC" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+      <path d="M4 15 V4 H15"/>
+      <path d="M29 4 H40 V15"/>
+      <path d="M40 29 V40 H29"/>
+      <path d="M15 40 H4 V29"/>
+    </g>
+    <rect x="26" y="12" width="9" height="9" fill="#F4F1EC"/>
+    <rect x="12" y="25" width="6" height="6" fill="#F4F1EC" opacity="0.45"/>
+    <text x="58" y="34" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="30" font-weight="500" fill="#F4F1EC" letter-spacing="-1">searchscope</text>
+  </g>
+
+  <!-- eyebrow -->
+  <text x="92" y="300" font-family="monospace" font-size="22" letter-spacing="4" fill="#9B968E">SEARCH INTELLIGENCE</text>
+
+  <!-- headline -->
+  <text x="90" y="372" font-size="74" font-weight="600" fill="#F4F1EC" letter-spacing="-2">The AI co-pilot for</text>
+  <text x="90" y="452" font-size="74" font-weight="600" fill="#F4F1EC" letter-spacing="-2">modern search teams.</text>
+
+  <!-- footer line -->
+  <text x="92" y="556" font-family="monospace" font-size="22" fill="#9B968E">searchscope.io</text>
+</svg>

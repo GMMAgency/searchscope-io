@@ -1,0 +1,110 @@
+---
+/**
+ * Floating version switcher, preview tool only.
+ * Flips <html data-skin> live and remembers the choice (localStorage).
+ * Hide it by setting SHOW_SKIN_SWITCHER = false in src/consts.ts.
+ */
+import { SKIN } from '../consts';
+const options = [
+  { id: 'dark', label: 'Dark' },
+  { id: 'paper', label: 'Paper' },
+  { id: 'mono', label: 'Mono' },
+];
+---
+
+<div class="skinsw" data-skinsw data-default={SKIN} aria-label="Preview a different version">
+  <span class="skinsw__label">Version</span>
+  <div class="skinsw__btns" role="group">
+    {options.map((o) => (
+      <button type="button" class="skinsw__btn" data-skin-set={o.id}>{o.label}</button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skinsw {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.4rem 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(18, 17, 19, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+  }
+  .skinsw__label {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 241, 236, 0.5);
+  }
+  .skinsw__btns {
+    display: flex;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+  }
+  .skinsw__btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(244, 241, 236, 0.7);
+    padding: 0.35em 0.7em;
+    border-radius: var(--radius-pill);
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .skinsw__btn:hover {
+    color: #f4f1ec;
+  }
+  .skinsw__btn[aria-pressed='true'] {
+    background: #40de9e;
+    color: #06231a;
+    font-weight: 500;
+  }
+  @media (max-width: 560px) {
+    .skinsw__label {
+      display: none;
+    }
+    .skinsw {
+      bottom: 12px;
+      right: 12px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const KEY = 'ss-skin';
+    const sw = document.querySelector<HTMLElement>('[data-skinsw]');
+    if (!sw) return;
+    const fallback = sw.dataset.default || 'dark';
+    const buttons = sw.querySelectorAll<HTMLButtonElement>('[data-skin-set]');
+
+    const current = () => document.documentElement.dataset.skin || 'dark';
+    const sync = () => {
+      const c = current();
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.skinSet === c)));
+    };
+
+    const apply = (skin: string) => {
+      if (skin === 'dark') delete document.documentElement.dataset.skin;
+      else document.documentElement.dataset.skin = skin;
+      try {
+        localStorage.setItem(KEY, skin);
+      } catch {}
+      sync();
+    };
+
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => apply(b.dataset.skinSet || fallback))
+    );
+    sync();
+  })();
+</script>

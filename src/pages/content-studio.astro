@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+---
+
+<BaseLayout
+  title="Content Studio"
+  description="Every finding ends here, as something ready to ship. Describe the piece and the studio researches the live results, writes the brief and the draft, and shows exactly where the new section goes on the page."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Content Studio"
+    title="Turn a finding into a brief."
+    lede="Pick an opportunity, and Searchscope writes the outline for the content team."
+  />
+
+  <!-- ===== Studio landing ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Studio landing</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Start with the issue, not a blank page.</h2>
+          <p>The studio opens with the relevant finding already in view.</p>
+        </div>
+        <div class="cbar">
+          <div class="awbar" style="margin:-1rem -1.1rem 0;border-radius:0">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/content-studio</span>
+            <span class="awtab">Content Studio</span>
+          </div>
+          <div style="height:0.9rem"></div>
+          <div class="cin"><span class="ph">Paste a URL to improve it, or describe the piece…</span><span class="go">Start</span></div>
+          <div class="chips">
+            <span class="lchip">Fix: waterproof jacket guide is decaying</span>
+            <span class="lchip">New: base layers +18% demand</span>
+            <span class="lchip on">Start from a finding</span>
+          </div>
+        </div>
+        <p class="objcap">The preset chips are live: the top unresolved finding, the hottest rising cluster, and a jump into the findings list.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== It researches before it writes ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <div class="two top">
+          <div class="appwin">
+            <div class="awbar">
+              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="awurl">app.searchscope.io/content-studio/session</span>
+              <span class="awtab">Getting up to speed</span>
+            </div>
+            <div class="awbody">
+              <div class="awhead"><div><span class="awtitle">Getting up to speed on this page</span><span class="awsub">/guides/how-to-choose-a-waterproof-jacket</span></div><span class="awsub">about 0:40 left</span></div>
+              <div class="upto">
+                <div class="arow done"><span class="n">01</span><span class="nm">Reading the page</span><span class="st" style="color:var(--sev-emerald-ink)">1,640 words read</span><span class="res"><span class="ok">✓</span></span></div>
+                <div class="arow done"><span class="n">02</span><span class="nm">Finding top-ranking competitors</span><span class="st" style="color:var(--sev-emerald-ink)">5 results found</span><span class="res"><span class="ok">✓</span></span></div>
+                <div class="arow live"><span class="n">03</span><span class="nm">Reading the competitor pages</span><span class="st" style="color:var(--sev-blue-ink)">reading 3 of 5…</span><span class="res"></span></div>
+                <div class="arow pend"><span class="n">04</span><span class="nm">Ready</span><span class="st">queued</span><span class="res"></span></div>
+              </div>
+              <div class="mini-pad" style="padding-left:0;padding-right:0">
+                <div class="miniline"><span class="l">14:22:07</span><span class="r">✓ scraped target · 1,640 words</span></div>
+                <div class="miniline"><span class="l">14:22:12</span><span class="r">✓ SERP top 5 · alpinetrail, summitandsky, outdoorsmagic…</span></div>
+                <div class="miniline"><span class="l">14:22:19</span><span class="r"><span class="wn2">· reading competitor 3 of 5…</span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="sechead">
+            <span class="eyebrow">It researches before it writes</span>
+            <h2 style="margin-top:var(--space-s)">The studio reads first.</h2>
+            <p>It checks the live page, reads the competitors, and pulls the gaps before drafting.</p>
+            <span class="golink">Prefilled from the decay workspace: page, target queries, the gap</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Compose: brief + placement ===== -->
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Compose</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>One brief, one placement.</h2>
+          <p>Choose where the content should live and what the piece needs to do.</p>
+        </div>
+        <div class="appwin push">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awurl">app.searchscope.io/content-studio/session</span>
+            <span class="awtab">Brief</span>
+          </div>
+          <div class="awbody">
+            <span class="lfrom">from · Content decay · /guides/how-to-choose-a-waterproof-jacket</span>
+            <div class="lout">
+              <h4>How to choose a waterproof jacket for UK hiking</h4>
+              <span class="bm">refresh brief · target "waterproof jacket" · #7.8 → #3 in reach</span>
+              <ul class="lh2">
+                <li><span class="hn">H2</span><span class="ht">Waterproof ratings explained: what the numbers mean</span><span class="hw hit">covers gap</span></li>
+                <li><span class="hn">H2</span><span class="ht">Breathability vs waterproofing: the trade-off</span><span class="hw hit">covers gap</span></li>
+                <li><span class="hn">H2</span><span class="ht">2 layer vs 3 layer construction</span><span class="hw">new</span></li>
+                <li><span class="hn">H2</span><span class="ht">How to care for a waterproof jacket</span><span class="hw">new</span></li>
+                <li><span class="hn">H2</span><span class="ht">Our pick by activity and budget</span><span class="hw">keep</span></li>
+              </ul>
+              <div class="lplace">
+                <span class="plbl">Placement</span>
+                <span class="lchip on">Insert after "Breathability" section</span>
+                <span class="lchip">Show on page</span>
+              </div>
+              <div class="lplace" style="margin-top:0.7rem">
+                <span class="lchip ink">Write the draft</span>
+                <span class="lchip">Copy brief</span>
+                <span class="lchip">Export .md</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="foot-note">The placement picker mirrors the improvement it came from: insert, expand or replace, drawn on the page's real heading outline so a writer knows precisely where the section lands. Matches the real Content Studio: the command bar with live preset chips, the four-step "getting up to speed" checklist with a streaming run-log, and the compose view's brief-to-draft document.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="From finding to shipped"
+    title="Go from finding to draft."
+    sub="Join the pilot programme and we will take a live finding from your site through research, brief and placement, so you see the whole arc on your own page."
+    secondaryLabel="See Reports"
+    secondaryHref="/reports"
+  />
+</BaseLayout>

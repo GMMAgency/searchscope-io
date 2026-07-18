@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+import { FEATURES } from '../consts';
+
+// Chapter 02 · Platform. The overview and the hub: one engine, six
+// surfaces, each earning its place and linking to its own page.
+const pipeline = [
+  'Data Pipeline',
+  'Analyser Workspaces',
+  'Intelligence Hub',
+  'Brand and AI',
+  'Content Studio',
+  'Reports',
+];
+
+// Richer one-liners for the overview index (product-marketing voice).
+const surfaces = [
+  { ...FEATURES[0], line: 'Sync data and run the engine.' },
+  { ...FEATURES[1], line: 'Find issues and opportunities.' },
+  { ...FEATURES[2], line: 'See the bigger picture.' },
+  { ...FEATURES[3], line: 'Track how AI describes you.' },
+  { ...FEATURES[4], line: 'Turn findings into drafts.' },
+  { ...FEATURES[5], line: 'Share the story.' },
+];
+---
+
+<BaseLayout
+  title="Platform"
+  description="Your whole search picture, in one place. One crawl and one set of search data power six surfaces: Data Pipeline, Analyser Workspaces, Intelligence Hub, Brand and AI Visibility, Content Studio and Reports."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="The platform"
+    title="Your whole search picture, in one place."
+    lede="Searchscope crawls your site, reads your search data, and runs the analysis once. Everything else sits on top of that."
+  >
+    <div class="pipe">
+      {pipeline.map((n, i) => (
+        <>
+          <span class="nd">{n}</span>
+          {i < pipeline.length - 1 && <span class="ar">→</span>}
+        </>
+      ))}
+    </div>
+  </PageHero>
+
+  <section class="section theme-dark">
+    <div class="container container--wide">
+      <div class="reveal">
+        <span class="eyebrow">Six surfaces</span>
+        <div class="sechead" style="margin-top:var(--space-s)">
+          <h2>Each one solves a different part of the work.</h2>
+          <p>Use one engine to find the issue, understand it, turn it into work, and share it.</p>
+        </div>
+        <ul class="capsix" role="list">
+          {surfaces.map((s) => (
+            <li>
+              <span class="no">{s.no}</span>
+              <div>
+                <h4>
+                  <a href={s.href}>{s.name}</a>
+                  {'neu' in s && s.neu && <span class="newchip">New</span>}
+                </h4>
+                <p>{s.line}</p>
+              </div>
+              <a class="go" href={s.href} aria-label={`Open ${s.name}`}>open →</a>
+            </li>
+          ))}
+        </ul>
+        <p class="foot-note">Tools also carries Page Experience (Core Web Vitals and accessibility), marked "Soon" in the app and left out of the site until it ships.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    title="Start with the platform."
+    sub="Join the pilot programme and we will point Searchscope at your own site and search data, then walk you through all six surfaces on your numbers."
+    secondaryLabel="See how it works"
+    secondaryHref="/how-it-works"
+  />
+</BaseLayout>

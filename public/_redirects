@@ -1,0 +1,12 @@
+# IA repass 2026-07-12: the seven analyser story pages became one
+# Analyser Workspaces page. Send old /analyzers/* URLs there.
+/analyzers/*    /workspaces   301
+
+# Unpublished 2026-07-02: send the old posts to the blog index.
+# Non-forced (no !), so removing draft:true republishes the post and it wins over these rules.
+/blog/what-ai-overviews-change-about-visibility     /blog   301
+/blog/what-ai-overviews-change-about-visibility/    /blog   301
+/blog/cannibalisation-is-a-data-problem             /blog   301
+/blog/cannibalisation-is-a-data-problem/            /blog   301
+/blog/reading-demand-vs-your-share                  /blog   301
+/blog/reading-demand-vs-your-share/                 /blog   301
