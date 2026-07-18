@@ -10,6 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#121113">
 <title>Searchscope · Operating System for Modern Search Teams</title>
 <meta name="description" content="Searchscope is the operating system for modern search teams: one platform for your search data, seven analysers, competitive intelligence, AI visibility and client-ready reports.">
 <meta name="robots" content="index,follow">
@@ -64,7 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ============================================================ */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
   /* ---- type ---- */
   --font-display: 'Geist', 'Geist Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -111,38 +112,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --dur-slow: 600ms;
 
   /* ---- elevation ---- */
-  --shadow-m: 0 18px 40px -24px rgba(0, 0, 0, 0.28);
-  --shadow-l: 0 40px 90px -40px rgba(0, 0, 0, 0.4);
+  --shadow-m: 0 18px 40px -24px rgba(0, 0, 0, 0.55);
+  --shadow-l: 0 40px 90px -40px rgba(0, 0, 0, 0.7);
 
-  /* ---- LIGHT / paper (clean white) ---- */
-  --surface: #fbfbfb;
-  --surface-panel: #ffffff;
-  --surface-panel-2: #f1f1f0;
-  --hairline: rgba(0, 0, 0, 0.09);
-  --ink: #16150f;
-  --ink-dim: rgba(22, 21, 16, 0.62);
-  --ink-faint: rgba(22, 21, 16, 0.42);
-  --grain-opacity: 0.014;
+  /* ---- DARK / warm near-black ---- */
+  --surface: #121113;
+  --surface-panel: #1c1a1b;
+  --surface-panel-2: #232021;
+  --hairline: rgba(244, 241, 236, 0.12);
+  --ink: #f4f1ec;
+  --ink-dim: rgba(244, 241, 236, 0.64);
+  --ink-faint: rgba(244, 241, 236, 0.42);
+  --grain-opacity: 0.03;
 
-  /* accent IS ink; the pill inverts to paper text */
-  --accent: #1b1a17;
-  --accent-deep: #000000;
-  --accent-ink: #ffffff;
-  --accent-soft: rgba(22, 20, 15, 0.07);
-  --accent-glow: rgba(22, 20, 15, 0.14);
+  /* accent inverts to paper; the pill reads dark-on-light */
+  --accent: #f4f1ec;
+  --accent-deep: #ffffff;
+  --accent-ink: #16140f;
+  --accent-soft: rgba(244, 241, 236, 0.1);
+  --accent-glow: rgba(244, 241, 236, 0.16);
 
-  /* data palette: light-legible inks */
-  --sev-rose-ink: #e11d48;
-  --sev-amber-ink: #b45309;
-  --sev-emerald-ink: #15937a;
-  --sev-blue-ink: #2563eb;
+  /* data palette: bright inks legible on dark */
+  --sev-rose-ink: #fb7185;
+  --sev-amber-ink: #fbbf24;
+  --sev-emerald-ink: #34d399;
+  --sev-blue-ink: #60a5fa;
 
   --emerald: var(--sev-emerald-ink);
   --rose: var(--sev-rose-ink);
   --amber: var(--sev-amber-ink);
   --blue: var(--sev-blue-ink);
-  --flat: rgba(22, 20, 15, 0.3);
-  --grid-ink: rgba(22, 20, 15, 0.08);
+  --flat: rgba(244, 241, 236, 0.3);
+  --grid-ink: rgba(244, 241, 236, 0.08);
 }
 
 /* WARM-DARK system variant removed: the holding page is white-locked for all
@@ -685,7 +686,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </h1>
           <p class="hero__sub reveal" style="--reveal-delay:130ms">
             Searchscope reads your entire search system, surfaces what matters, and helps you
-            decides <b>what to do next.</b>
+            decide <b>what to do next.</b>
           </p>
           <div class="hero__actions reveal" style="--reveal-delay:200ms">
             <a href="#" class="btn">
