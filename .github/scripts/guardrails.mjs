@@ -6,7 +6,7 @@
 // card:
 //
 //   node .github/scripts/guardrails.mjs em-dash < pr.diff
-//   node .github/scripts/guardrails.mjs cta     < pr.diff
+//   node .github/scripts/guardrails.mjs cta     < pr.diff   (price / term claims)
 //
 // Exit 0 = pass, exit 1 = the change breaks a rule (with the offending lines).
 
@@ -43,12 +43,15 @@ function addedLines(diff) {
 // An em dash (U+2014). The site uses commas, colons, semicolons or parentheses.
 const EM_DASH = /—/;
 
-// A buy / pricing / self-serve flow: Searchscope has no checkout, and every CTA
-// ends at /contact. Match forbidden link targets and explicit purchase CTAs.
-const CTA_LINK =
-  /(?:href|to|url|path|action)\s*[=:]\s*["'`][^"'`]*\/(?:pricing|buy|checkout|sign-?up|register|cart|subscribe|billing|trial)\b/i;
-const CTA_PHRASE =
-  /\b(?:buy now|add to cart|start (?:your )?(?:free )?trial|sign up|create an account|subscribe now|start free|get started free)\b/i;
+// Searchscope is a subscription product, so sign-up, pricing and checkout flows
+// are allowed. What is NOT allowed is stating commercial terms that have not
+// been confirmed: a specific price, a named plan, or a billing period. Those
+// are the claims that cause real damage if they ship wrong, so they are what
+// CI checks. Link targets are no longer restricted.
+const PRICE_CLAIM =
+  /(?:[$£€]\s?\d|\b\d+(?:\.\d{2})?\s*(?:USD|GBP|EUR)\b)\s*(?:\/|\bper\b|\ba\b)?\s*(?:mo|month|monthly|yr|year|annually|seat|user)?/i;
+const TERM_CLAIM =
+  /\b(?:\d+[- ]day free trial|free forever|cancel anytime|no credit card required)\b/i;
 
 const CHECKS = {
   "em-dash": {
@@ -57,10 +60,10 @@ const CHECKS = {
     pass: "No em dashes added.",
   },
   cta: {
-    test: (t) => CTA_LINK.test(t) || CTA_PHRASE.test(t),
+    test: (t) => PRICE_CLAIM.test(t) || TERM_CLAIM.test(t),
     fail:
-      "This looks like a buy, pricing or self-serve flow. Searchscope is not a product you can buy; every CTA ends at /contact.",
-    pass: "No pricing or purchase CTAs added.",
+      "This states a price or a commercial term. Sign-up and checkout flows are fine, but a specific price, plan or billing promise must be confirmed by a human before it ships. Remove it, or approve it and re-run.",
+    pass: "No unconfirmed prices or commercial terms added.",
   },
 };
 
@@ -72,7 +75,14 @@ async function main() {
   }
 
   const diff = await readStdin();
-  const offenders = addedLines(diff).filter((l) => check.test(l.text));
+
+  // The guardrail script states the forbidden patterns verbatim, so it would
+  // always flag itself. Exempt it; changes to the rules get human review.
+  const SELF = ".github/scripts/guardrails.mjs";
+
+  const offenders = addedLines(diff)
+    .filter((l) => l.file !== SELF)
+    .filter((l) => check.test(l.text));
 
   if (offenders.length > 0) {
     console.error(check.fail);
