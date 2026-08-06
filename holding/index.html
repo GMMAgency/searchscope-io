@@ -331,12 +331,6 @@ strong, b { font-weight: 600; color: var(--ink); }
   gap: var(--space-m);
   margin-top: var(--space-l);
 }
-.hero__note {
-  margin-top: var(--space-l);
-  font-size: var(--step--1);
-  color: var(--ink-faint);
-  letter-spacing: 0.02em;
-}
 .hero__visual { position: relative; }
 
 /* faint coordinate grid behind the hero (masked, fades out) */
@@ -671,6 +665,19 @@ strong, b { font-weight: 600; color: var(--ink); }
     }
     .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
 
+    /* ---- footer ---- */
+    .site-foot {
+      border-top: 1px solid var(--hairline);
+      padding-block: var(--space-l);
+      text-align: center;
+    }
+    .site-foot__note {
+      margin: 0;
+      font-size: var(--step--1);
+      color: var(--ink-faint);
+      letter-spacing: 0.02em;
+    }
+
     /* ---- mobile: the same call to action, pinned to the bottom ---- */
     .stickycta {
       display: none;
@@ -744,9 +751,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="btn__arrow" aria-hidden="true">→</span>
             </a>
           </div>
-          <p class="hero__note mono reveal" style="--reveal-delay:260ms">
-            Built and run by the search team at Growth Minded Marketing.
-          </p>
         </div>
 
         <div class="hero__visual reveal" style="--reveal-delay:160ms">
@@ -979,6 +983,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 </main>
+
+<footer class="site-foot">
+  <div class="container">
+    <p class="site-foot__note mono">Built and run by the search team at Growth Minded Marketing.</p>
+  </div>
+</footer>
 
 <noscript>
   <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
