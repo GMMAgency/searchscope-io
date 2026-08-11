@@ -12,11 +12,10 @@ You are editing the marketing website for Searchscope. This file is the rulebook
 ## Hard brand rules: never break these
 
 1. **No em dashes anywhere** in site copy. Use commas, colons, semicolons, or parentheses.
-2. **Positioning:** Searchscope is not a product you can buy. No sign-up, trial, pricing, or checkout anywhere. Every call to action ends at `/contact`. This applies to forms and embeds as much as copy.
-3. **Voice:** British English, practitioner, no hype, no emoji in product copy. Brand name is "Searchscope" (one word); the logotype is lowercase mono `searchscope`. Say "search data", not "GSC" or "Search Console" (except literal Google product names in technical posts). Position for organic AND AI/LLM search.
-4. **Monochrome brand:** white, black, grey, warm near-black in dark mode. No brand colour; colour appears only in product data. Calls to action invert.
-5. **Type:** Geist superfamily plus an Inter mono-spine (mono for labels and numbers, Inter for sentences, Fraunces rarely). Reuse the tokens in `src/styles/tokens.css`; never invent new styles.
-6. **Forms** (static site, no backend), in order of preference: Netlify Forms (`data-netlify="true"`) > a Typeform/Tally embed snippet > the existing Web3Forms contact pattern. Forms are for contact and pilot enquiries only.
+2. **Voice:** British English, practitioner, no hype, no emoji in product copy. Brand name is "Searchscope" (one word); the logotype is lowercase mono `searchscope`. Say "search data", not "GSC" or "Search Console" (except literal Google product names in technical posts). Position for organic AND AI/LLM search.
+3. **Monochrome brand:** white, black, grey, warm near-black in dark mode. No brand colour; colour appears only in product data. Calls to action invert.
+4. **Type:** Geist superfamily plus an Inter mono-spine (mono for labels and numbers, Inter for sentences, Fraunces rarely). Reuse the tokens in `src/styles/tokens.css`; never invent new styles.
+5. **Forms** (static site, no backend), in order of preference: Netlify Forms (`data-netlify="true"`) > a Typeform/Tally embed snippet > the existing Web3Forms contact pattern. Forms are for contact and pilot enquiries only.
 
 ## Workflow: every change, no exceptions
 
