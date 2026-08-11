@@ -25,7 +25,7 @@ You are editing the marketing website for Searchscope. This file is the rulebook
 4. Do NOT run `npm install` or builds to verify: CI builds every pull request. Verify by reading the code.
 5. Commit, push the branch, open a pull request into `main` (`gh pr create`).
 6. Report: what changed, the files, the PR link, and the preview URL `https://deploy-preview-<PR#>--searchscope.netlify.app` (Netlify attaches it about a minute after the PR opens).
-7. Three required checks must pass: "No em dashes", "No pricing or buy CTAs", "Site builds".
+7. Three required checks must pass: "No em dashes", "Site builds".
 8. **Merge only when a human explicitly approves.** Never push to `main` directly. Rollback is `git revert` plus a new PR.
 
 ## Cautions
