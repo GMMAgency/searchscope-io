@@ -10,11 +10,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign up for the Searchscope beta</title>
-<meta name="description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
+<title>Free AI visibility check · Searchscope</title>
+<meta name="description" content="We ask the questions your buyers ask across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews and Google AI Mode, keep every answer word for word, and read the results with you on a 15 minute call.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Sign up for the Searchscope beta">
-<meta property="og:description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
+<meta property="og:title" content="Free AI visibility check · Searchscope">
+<meta property="og:description" content="We ask the questions your buyers ask across ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews and Google AI Mode, keep every answer word for word, and read the results with you on a 15 minute call.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <style>
@@ -646,60 +646,112 @@ strong, b { font-weight: 600; color: var(--ink); }
       .fgrid { grid-template-columns: 1fr; }
     }
 
-</style>
+    /* ============================================================
+       Agency use case page
+       ============================================================ */
+    .btn { text-decoration: none; }
+    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
 
-<style>
-  /* Beta sign-up form. Reuses the page tokens; no new colours or type. */
-  .signup { width: 100%; max-width: 30rem; margin-inline: auto; text-align: left; display: flex; flex-direction: column; gap: var(--space-s); }
-  .field { display: flex; flex-direction: column; gap: var(--space-3xs); }
-  .field__label { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
-  .field__input {
-    font-family: var(--font-body);
-    font-size: var(--step-0);
-    color: var(--ink);
-    background: var(--surface-panel);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-s);
-    padding: 0.85em 1em;
-    width: 100%;
-    transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-  }
-  .field__input:focus-visible {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
-  }
-  .signup .btn { width: 100%; margin-top: var(--space-2xs); }
-  .signup__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-    /* ---- sticky header ---- */
-    .site-head {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: var(--space-s);
-      padding-bottom: var(--space-s);
-      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    /* ---- mobile: the same call to action, pinned to the bottom ---- */
+    .stickycta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: var(--space-2xs) var(--gutter);
+      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in oklab, var(--surface) 93%, transparent);
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+      border-top: 1px solid var(--hairline);
     }
-    .site-head.is-stuck {
-      background: color-mix(in oklab, var(--surface) 95%, transparent);
-      border-bottom-color: var(--hairline);
+    .stickycta .btn { width: 100%; }
+    @media (max-width: 720px) {
+      .stickycta { display: block; }
+      .site-head__cta { display: none; }
+      body { padding-bottom: 5.5rem; }
     }
-    .site-head .container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--space-m);
-    }
-    .site-head__cta { margin-left: auto; }
+    .lede { font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }
+    .lede + .lede { margin-top: var(--space-s); }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .sec__head { max-width: 62ch; }
+    .sec__title { font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }
 
-    /* ---- header navigation ---- */
-    .nav { display: flex; align-items: center; gap: var(--space-m); }
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+    .ucard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }
+    .ucard__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .ucard__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .ucard__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- two-up cards ---- */
+    .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+
+    /* ---- numbered steps ---- */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+    .steps li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .steps b { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.14em; }
+    .steps h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .steps p { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- engine tiles ---- */
+    .engrid { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-s); }
+    .engrid li { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); padding: var(--space-m) var(--space-xs); display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); text-align: center; }
+    .engrid img, .engrid svg { width: auto; height: 34px; max-width: 100%; object-fit: contain; display: block; }
+    .engrid svg { color: var(--ink); }
+    .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
+
+    /* ---- hero form, two stage ---- */
+    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .hero__form .btn { width: 100%; }
+    .stage2[hidden], .stage1[hidden] { display: none; }
+    .hero__form .formnote { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.55; margin: 0 0 var(--space-m); }
+    .stage__site { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); border: 1px dashed var(--hairline); border-radius: var(--radius-s); padding: 0.45em 0.7em; margin: 0 0 var(--space-m); }
+    .stage__site b { color: var(--ink); font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage__site .stage__back { width: auto; flex: none; margin: 0; text-align: right; }
+    .hero__form .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); text-align: center; margin: var(--space-xs) 0 0; }
+    .stage__back { display: block; width: 100%; margin-top: var(--space-xs); background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; text-align: center; }
+    .stage__back:hover { color: var(--ink); }
+
+    @media (max-width: 1000px) { .engrid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
+
+    .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
+    .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+    .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+
+
+    /* ---- form ---- */
+    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
+    .field { display: block; margin-bottom: var(--space-m); }
+    .field:last-of-type { margin-bottom: var(--space-l); }
+    .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    .field input, .field select, .field textarea {
+      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
+      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
+      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    }
+    .field textarea { min-height: 6.5rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .formcard .btn { width: 100%; }
+    .hp { position: absolute; left: -9999px; }
+    .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
+    .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .secondary a:hover { color: var(--ink); border-color: var(--ink); }
+
     /* ---- footer ---- */
     .site-foot {
       border-top: 1px solid var(--hairline);
@@ -739,6 +791,41 @@ strong, b { font-weight: 600; color: var(--ink); }
       letter-spacing: 0.02em;
     }
 
+    @media (max-width: 900px) {
+      .cols3 { grid-template-columns: 1fr; }
+      .formwrap { grid-template-columns: 1fr; }
+      .modules li { grid-template-columns: 1fr; gap: var(--space-3xs); }
+    }
+
+
+    /* ---- sticky header ---- */
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: var(--space-s);
+      padding-bottom: var(--space-s);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+    }
+    .site-head.is-stuck {
+      background: color-mix(in oklab, var(--surface) 95%, transparent);
+      border-bottom-color: var(--hairline);
+    }
+    .site-head .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-m);
+    }
+    .site-head__cta { margin-left: auto; }
+
+    /* ---- header navigation ---- */
+    .nav { display: flex; align-items: center; gap: var(--space-m); }
     .navmenu { position: static; }
     .navmenu__btn {
       display: inline-flex;
@@ -955,7 +1042,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div>
               <p class="navmenu__h">Free resources</p>
-              <a href="/resources/ai-visibility-checker">AI visibility checker</a>
+              <a href="/resources/ai-visibility-checker" aria-current="page">AI visibility checker</a>
             </div>
             <div>
               <p class="navmenu__h">About Searchscope</p>
@@ -971,62 +1058,264 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </nav>
+    <a href="/beta" class="btn btn--sm site-head__cta">
+      Sign up for beta
+      <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+    </a>
   </div>
 </header>
 
 <main>
-  <!-- ============ BETA SIGN-UP ============ -->
-  <section class="section cta bg-grid" style="border-top:0">
+  <!-- ============ HERO + FORM ============ -->
+  <section class="section hero bg-grid" id="report">
+    <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="cta__frame ticked">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Free AI visibility check</span>
+          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+            Find out what AI actually says about you.
+          </h1>
+          <p class="lede reveal" style="--reveal-delay:130ms">
+            We ask the questions your buyers ask across ChatGPT, Claude, Gemini, Perplexity, Google AI
+            Overviews and Google AI Mode, keep every answer word for word, and read the results with you on a
+            <b>15 minute call.</b>
+          </p>
+          <p class="hero__note mono reveal" style="--reveal-delay:200ms">
+            No score out of 100. The actual answers, and what to do about them.
+          </p>
+        </div>
+
+        <div class="hero__form reveal" style="--reveal-delay:160ms">
+          <form name="ai-visibility-check" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/resources/ai-visibility-checker/thanks/">
+            <input type="hidden" name="form-name" value="ai-visibility-check">
+            <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
+
+            <div class="stage1" id="stage1">
+              <h2>Start with your website.</h2>
+              <label class="field">
+                <span>Your website</span>
+                <input type="text" name="website" id="site-url" placeholder="example.co.uk" required>
+              </label>
+              <button type="button" class="btn" id="stage-go">
+                Continue
+                <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+              </button>
+            </div>
+
+            <div class="stage2" id="stage2" hidden>
+              <h2>Tell us who you are and we'll go and ask.</h2>
+              <p class="formnote">
+                We run the check before we speak, so the call is spent on what the assistants said
+                rather than on setting anything up.
+              </p>
+              <p class="stage__site" id="stage-site" hidden>
+                <b id="stage-site-value"></b>
+                <button type="button" class="stage__back" id="stage-change">Change</button>
+              </p>
+              <label class="field">
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+              <label class="field">
+                <span>Work email</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label class="field">
+                <span>Brand name</span>
+                <input type="text" name="brand" autocomplete="organization" required>
+              </label>
+              <button type="submit" class="btn">
+                Get your free report
+                <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+              </button>
+              <p class="formfoot">Expect your report within two business days.</p>
+            </div>
+          </form>
+          <p class="secondary">
+            Prefer to see the platform first? <a href="/beta">Join the beta.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1. WHAT IS IN IT ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">01 · What's in it</span>
+        <h2 class="sec__title">Four things you'll have by the end of the call.</h2>
+        <p class="lede">
+          Scores aren't strategies. This is a grounded read of where you stand, with the evidence
+          attached, and what we'd do about it first.
+        </p>
+      </div>
+      <div class="cols2">
+        <article class="ucard reveal">
+          <p class="ucard__k">01</p>
+          <h3 class="ucard__t">Where you stand, engine by engine</h3>
+          <p class="ucard__d">Recommended, mentioned or missing, across all six assistants, on the questions that matter in your category.</p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:80ms">
+          <p class="ucard__k">02</p>
+          <h3 class="ucard__t">The answers, word for word</h3>
+          <p class="ucard__d">Every response kept verbatim, so you read what was actually said rather than taking our word for it.</p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:160ms">
+          <p class="ucard__k">03</p>
+          <h3 class="ucard__t">Who gets cited instead of you</h3>
+          <p class="ucard__d">The sources each assistant leaned on to answer, and whether they're yours or somebody else's.</p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:240ms">
+          <p class="ucard__k">04</p>
+          <h3 class="ucard__t">Three moves, ranked</h3>
+          <p class="ucard__d">Where to start, ordered by what it's worth against what it costs. A short list you can finish, not a checklist.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. THE ENGINES ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">02 · Where we ask</span>
+        <h2 class="sec__title">Six assistants, one set of questions.</h2>
+        <p class="lede">
+          The same buyer-intent prompts put to each one, so the differences you see are the assistants
+          disagreeing about you, not us asking them different things.
+        </p>
+      </div>
+      <ul class="engrid reveal">
+        <li>
+          <img src="/brand/engines/chatgpt.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>ChatGPT</span>
+        </li>
+        <li>
+          <img src="/brand/engines/claude.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Claude</span>
+        </li>
+        <li>
+          <img src="/brand/engines/gemini.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Gemini</span>
+        </li>
+        <li>
+          <img src="/brand/engines/perplexity.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Perplexity</span>
+        </li>
+        <li>
+          <img src="/brand/engines/google-ai-overviews.svg" alt="" loading="lazy" decoding="async">
+          <span>Google AI Overviews</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8.4 3.6c0 2.6-2.2 4.8-4.8 4.8 2.6 0 4.8 2.2 4.8 4.8 0-2.6 2.2-4.8 4.8-4.8-2.6 0-4.8-2.2-4.8-4.8Z"/><path d="M16.8 12.4c0 1.9-1.5 3.4-3.4 3.4 1.9 0 3.4 1.5 3.4 3.4 0-1.9 1.5-3.4 3.4-3.4-1.9 0-3.4-1.5-3.4-3.4Z"/>
+          </svg>
+          <span>Google AI Mode</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 3. HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">03 · How it works</span>
+        <h2 class="sec__title">Three steps and a 15 minute call.</h2>
+        <p class="lede">
+          No onboarding, no data connection, nothing to install. We only need to know who you are and
+          who you're measured against.
+        </p>
+      </div>
+      <ol class="steps reveal">
+        <li>
+          <b>Step 01</b>
+          <h3>Tell us your website</h3>
+          <p>Your site, your name and a work email. Thirty seconds in the form at the top of this page.</p>
+        </li>
+        <li>
+          <b>Step 02</b>
+          <h3>We go and ask</h3>
+          <p>Buyer-intent questions put to all six assistants, with every answer captured exactly as it came back.</p>
+        </li>
+        <li>
+          <b>Step 03</b>
+          <h3>We read it with you</h3>
+          <p>Fifteen minutes, live. We walk through what we found and answer questions as they come up.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="section cta bg-grid">
+    <div class="container">
+      <div class="cta__frame ticked reveal">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <span class="eyebrow">Join the beta programme</span>
-        <h1 class="cta__title">Sign up for the Searchscope beta.</h1>
-        <p class="cta__sub">
-          Beta places open in small cohorts. Leave your details and we will get in touch
-          when the next one opens. The first session is a walkthrough of your own search
-          data, not a demo account.
-        </p>
-
-        <form
-          name="beta"
-          method="POST"
-          action="/beta/thanks/"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="signup"
-        >
-          <input type="hidden" name="form-name" value="beta" />
-          <p class="signup__hp">
-            <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-name">Name</label>
-            <input class="field__input" id="beta-name" name="name" type="text" autocomplete="name" required />
-          </div>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-email">Email</label>
-            <input class="field__input" id="beta-email" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <button class="btn btn--lg" type="submit">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
-        </form>
-
-        <p class="cta__note">We will only use your details to talk to you about the beta.</p>
+        <span class="eyebrow">Free AI visibility check</span>
+        <h2 class="cta__title">Find out what AI actually says about you.</h2>
+        <div class="cta__actions">
+          <a href="#report" class="btn btn--lg">
+            Get your free report
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 </main>
+
+<noscript>
+  <style>.stage2[hidden] { display: block !important; } #stage-go, .stage2 h2, .stage2 .formnote { display: none; }</style>
+</noscript>
+
+<script>
+  (function () {
+    var go = document.getElementById('stage-go');
+    var two = document.getElementById('stage2');
+    var url = document.getElementById('site-url');
+    if (!go || !two || !url) return;
+    var one = document.getElementById('stage1');
+    var echo = document.getElementById('stage-site');
+    var echoValue = document.getElementById('stage-site-value');
+    var change = document.getElementById('stage-change');
+
+    go.addEventListener('click', function () {
+      if (!url.value.trim()) { url.focus(); url.reportValidity && url.reportValidity(); return; }
+      if (echoValue) { echoValue.textContent = url.value.trim(); }
+      if (echo) { echo.hidden = false; }
+      one.hidden = true;
+      two.hidden = false;
+      var first = two.querySelector('input');
+      if (first) first.focus();
+    });
+
+    if (change) {
+      change.addEventListener('click', function () {
+        two.hidden = true;
+        one.hidden = false;
+        url.focus();
+      });
+    }
+    url.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); go.click(); }
+    });
+  })();
+</script>
+
+<div class="stickycta">
+  <a href="#report" class="btn">
+    Get your free report
+    <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+</div>
 
 <footer class="site-foot">
   <div class="container">
