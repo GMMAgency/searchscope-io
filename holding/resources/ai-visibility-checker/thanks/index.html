@@ -213,13 +213,7 @@ strong, b { font-weight: 600; color: var(--ink); }
   align-items: center;
   gap: 0.6em;
 }
-.eyebrow::before {
-  content: '';
-  width: 1.4em;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-}
+
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* ============================================================
@@ -760,7 +754,7 @@ strong, b { font-weight: 600; color: var(--ink); }
       padding: 0;
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-l);
+      gap: var(--space-3xs) var(--space-l);
       font-size: var(--step--1);
       color: var(--ink-faint);
       letter-spacing: 0.02em;
@@ -910,6 +904,10 @@ strong, b { font-weight: 600; color: var(--ink); }
       border-radius: var(--radius-pill);
       padding: 0.25em 0.5em;
     }
+    @media (max-width: 640px) {
+      .site-foot__copy { flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
+    }
+
     /* ---- mobile: burger menu ---- */
     .navtoggle {
       display: none;

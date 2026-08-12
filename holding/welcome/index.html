@@ -81,7 +81,7 @@ body { background:var(--surface); color:var(--ink); font-family:var(--font-body)
 .container { max-width:var(--container); margin:0 auto; padding:0 var(--gutter); }
 .mono { font-family:var(--font-mono); }
 .eyebrow { font-family:var(--font-mono); font-size:var(--step--2); letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); display:flex; align-items:center; gap:0.6rem; }
-.eyebrow::before { content:""; width:1.6rem; height:1px; background:var(--ink); opacity:0.35; }
+
 .bg-grid { background-image:linear-gradient(var(--grid-ink) 1px,transparent 1px),linear-gradient(90deg,var(--grid-ink) 1px,transparent 1px); background-size:56px 56px; }
 /* header */
 .site-head { border-bottom:1px solid var(--hairline); background:rgba(251,251,251,0.9); backdrop-filter:blur(8px); position:sticky; top:0; z-index:9; }
@@ -129,7 +129,7 @@ section.block { padding:clamp(3.2rem,6.5vw,5.5rem) 0; border-bottom:1px solid va
 /* feedback band */
 .band { background:var(--accent); color:var(--accent-ink); border-radius:var(--r-m); padding:clamp(2rem,4.5vw,3.4rem); display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(1.6rem,4vw,3rem); align-items:center; }
 .band .eyebrow { color:rgba(255,255,255,0.55); }
-.band .eyebrow::before { background:rgba(255,255,255,0.5); }
+.band 
 .band h2 { font-family:var(--font-display); font-size:var(--step-3); letter-spacing:-0.02em; margin:0.8rem 0 0.7rem; }
 .band h2 em { font-family:var(--font-serif); font-style:italic; font-weight:480; }
 .band p { color:rgba(255,255,255,0.72); font-size:var(--step--1); }
@@ -154,7 +154,7 @@ section.block { padding:clamp(3.2rem,6.5vw,5.5rem) 0; border-bottom:1px solid va
 .cta-frame h2 em { font-family:var(--font-serif); font-style:italic; font-weight:480; }
 .cta-frame p { color:var(--ink-dim); max-width:52ch; margin:0 auto; }
 .cta-frame .eyebrow { justify-content:center; }
-.cta-frame .eyebrow::before { display:none; }
+.cta-frame 
 .cta-actions { display:flex; justify-content:center; gap:0.8rem; margin-top:1.8rem; flex-wrap:wrap; }
 .cta-note { margin-top:1.2rem; font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint); }
 .cta-note a { color:var(--ink-dim); }
