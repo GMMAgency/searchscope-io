@@ -10,11 +10,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keyword cannibalization tool · Searchscope</title>
-<meta name="description" content="Find keyword cannibalization in your own Search Console data: the same query splitting impressions across two of your URLs. Searchscope names the pages, calls the winner and tells you whether to consolidate, differentiate or keep both.">
+<title>Internal linking tool: authority routing as tickets · Searchscope</title>
+<meta name="description" content="An internal linking tool that hands you tickets rather than diagrams: a source page, a target page and the anchor text to use, with underlinked pages flagged.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Keyword cannibalization tool · Searchscope">
-<meta property="og:description" content="Find keyword cannibalization in your own Search Console data: the same query splitting impressions across two of your URLs. Searchscope names the pages, calls the winner and tells you whether to consolidate, differentiate or keep both.">
+<meta property="og:title" content="Internal linking tool: authority routing as tickets · Searchscope">
+<meta property="og:description" content="An internal linking tool that hands you tickets rather than diagrams: a source page, a target page and the anchor text to use, with underlinked pages flagged.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -723,6 +723,8 @@ strong, b { font-weight: 600; color: var(--ink); }
     .crumb a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
     .crumb a:hover { color: var(--ink); border-color: var(--ink); }
     .calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); margin-top: var(--space-xl); }
+    .calls--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1080px) { .calls--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .call { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
     .call__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.12em; word-spacing: -0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
     .call__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-3xs) 0 0; }
@@ -1168,24 +1170,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- ============ HERO ============ -->
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Cannibalization</p>
-        <h1 class="hero__title reveal">
-          Keyword cannibalization, found in your own data.
-        </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">
-          Most cannibalization advice is guesswork. These two pages feel similar, so merge them. That's
-          how good pages get consolidated and the ones actually costing you clicks get missed.
-        </p>
-        <p class="lede reveal" style="--reveal-delay:140ms">
-          <b>It isn't a judgement call, it's a pattern in your search data.</b> The same query splitting
-          impressions across two of your URLs, with the click-through depressed on both.
-        </p>
+        <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Internal links</p>
+        <h1 class="hero__title reveal">Internal links, as a list of jobs.</h1>
+        <p class="lede reveal" style="--reveal-delay:100ms">Most internal linking tools give you a diagram of the problem and leave the work with you.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>Searchscope gives you the job instead.</b> Source page, target page, and the anchor to use, with the pages nothing points at flagged separately.</p>
         <div class="hero__actions reveal" style="--reveal-delay:190ms">
           <a href="/beta" class="btn">
             Join the beta
@@ -1195,121 +1188,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hero__visual reveal" style="--reveal-delay:170ms">
-        <img class="hero__shot" src="/brand/analyzers/cannibalization.webp"
-             alt="The cannibalization workspace in Searchscope, showing competing pages and shared keywords"
+        <img class="hero__shot" src="/brand/analyzers/internal-links.webp" alt="The internal links workspace in Searchscope, showing source to target link tickets"
              width="1400" height="788" loading="eager" decoding="async">
       </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE SIGNAL ============ -->
   <section class="section">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">01 · The signal</span>
-        <h2 class="sec__title">What real cannibalization looks like.</h2>
-        <p class="lede">
-          Two pages covering a similar topic isn't the problem. Two pages dividing one intent is.
-          The fingerprint shows up three ways at once.
-        </p>
-      </div>
-      <div class="cols3">
-        <article class="ucard reveal">
-          <p class="ucard__k">Signal 01</p>
-          <h3 class="ucard__t">One query, two URLs</h3>
-          <p class="ucard__d">The same search term returning impressions against more than one of your pages, with meaningful volume on each.</p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:80ms">
-          <p class="ucard__k">Signal 02</p>
-          <h3 class="ucard__t">Positions that wobble</h3>
-          <p class="ucard__d">Google alternating which of your pages it shows, so neither settles. Searchscope flags this separately as URL dancing.</p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:160ms">
-          <p class="ucard__k">Signal 03</p>
-          <h3 class="ucard__t">Click-through below par</h3>
-          <p class="ucard__d">A combined click-through rate lower than a single consolidated page would have earned. That gap is the recoverable clicks.</p>
-        </article>
-      </div>
-
-      <div class="snip reveal">
-        <span>query:</span> <b>"best hiking boots"</b>&nbsp;&nbsp;<span>returning two of your URLs</span><br>
-        &nbsp;&nbsp;/guides/best-hiking-boots&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>pos</span> 6.2&nbsp;&nbsp;&nbsp;<span>impr</span> 28,400&nbsp;&nbsp;&nbsp;<span>clicks</span> 402<br>
-        &nbsp;&nbsp;/blog/hiking-boots-review&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>pos</span> 9.8&nbsp;&nbsp;&nbsp;<span>impr</span> 22,800&nbsp;&nbsp;&nbsp;<span>clicks</span> 183<br>
-        <br>
-        &nbsp;&nbsp;<span>overlap</span> 64%&nbsp;&nbsp;&nbsp;<span>potential clicks</span> +170&nbsp;&nbsp;&nbsp;<em>URL dancing</em><br>
-        &nbsp;&nbsp;<span>shared keywords</span> best hiking boots, hiking boots review, waterproof hiking boots<br>
-        <br>
-        <em>Two URLs, one intent, positions wobbling, click-through split.</em>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE CALL ============ -->
-  <section class="section bg-grid">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">02 · The call</span>
-        <h2 class="sec__title">The fix is a decision, not a merge.</h2>
-        <p class="lede">
-          Every conflict comes with the winner named and one of three strategies attached, because the
-          right answer depends on intent rather than on similarity.
-        </p>
+        <span class="eyebrow">01 · The ticket</span>
+        <h2 class="sec__title">Not a diagram. A job.</h2>
+        <p class="lede">Internal linking usually arrives as a crawl visualisation: a link graph that proves something is wrong without telling anybody what to do on Monday.</p>
+        <p class="lede"><b>Every finding here is a ticket.</b> A source page, a target page, and the anchor text to use, so the work can be handed to someone who has never seen the site.</p>
       </div>
       <div class="calls reveal">
         <article class="call">
-          <p class="call__k">Strategy 01</p>
-          <h3 class="call__t">Consolidate</h3>
-          <p class="call__d">Both pages chase the same intent. Redirect the weaker into the stronger and fold the useful content across.</p>
+          <p class="call__k">Part 01</p>
+          <h3 class="call__t">The source</h3>
+          <p class="call__d">A page with authority to spare and a natural place to put the link.</p>
         </article>
         <article class="call">
-          <p class="call__k">Strategy 02</p>
-          <h3 class="call__t">Differentiate</h3>
-          <p class="call__d">The intents are genuinely different but the pages have blurred. Sharpen each one so the results page can tell them apart.</p>
+          <p class="call__k">Part 02</p>
+          <h3 class="call__t">The target</h3>
+          <p class="call__d">The page that needs it, chosen because it's underlinked rather than because it's new.</p>
         </article>
         <article class="call">
-          <p class="call__k">Strategy 03</p>
-          <h3 class="call__t">Keep both</h3>
-          <p class="call__d">Sometimes the honest answer is to leave it alone. Searchscope will say so rather than manufacture a job.</p>
+          <p class="call__k">Part 03</p>
+          <h3 class="call__t">The anchor</h3>
+          <p class="call__d">The wording to use, drawn from what the target actually ranks for.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ FALSE POSITIVES ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">02 · How it matches</span>
+        <h2 class="sec__title">Three ways to find the placement.</h2>
+        <p class="lede">A link is only worth adding where the sentence would carry it anyway, so placements are found by matching the target against the language already on the source page.</p>
+      </div>
+      <div class="calls reveal">
+        <article class="call">
+          <p class="call__k">Match 01</p>
+          <h3 class="call__t">Exact</h3>
+          <p class="call__d">The target term appears on the source page as it stands.</p>
+        </article>
+        <article class="call">
+          <p class="call__k">Match 02</p>
+          <h3 class="call__t">Partial</h3>
+          <p class="call__d">A close variant is present, and a light edit makes the link read naturally.</p>
+        </article>
+        <article class="call">
+          <p class="call__k">Match 03</p>
+          <h3 class="call__t">Semantic</h3>
+          <p class="call__d">The passage is about the target topic without using its words. Found by meaning rather than by string matching.</p>
+        </article>
+      </div>
+      <div class="snip reveal">
+        <span>source</span> <b>/blog/best-campsites-uk</b><br>
+        <span>target</span> <b>/guides/camping-checklist</b>&nbsp;&nbsp;<em>starving</em><br>
+        &nbsp;&nbsp;<span>anchor</span> "what to pack for camping"&nbsp;&nbsp;&nbsp;<span>match</span> partial<br>
+        &nbsp;&nbsp;<span>inlinks to target</span> 1
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">03 · What it ignores</span>
-        <h2 class="sec__title">Your brand name isn't a conflict.</h2>
-        <p class="lede">
-          Search your company name and Google will reasonably show your homepage and a product page
-          together. That's navigation working, not cannibalization, and a tool that flags it burns
-          your trust in the first five minutes.
-        </p>
-        <p class="lede">
-          <b>Brand navigation is detected and set aside</b>, and conflicts are counted on non-branded
-          queries. What reaches your queue is the split intent that actually costs you clicks.
-        </p>
+        <span class="eyebrow">03 · Starving targets</span>
+        <h2 class="sec__title">The pages nothing points at.</h2>
+        <p class="lede">A page can be well written, well researched and effectively invisible to your own site, because nothing links to it.</p>
+        <p class="lede"><b>Targets below the inlink threshold are flagged as starving</b>, and grouped so you can see how many sit behind a single source page. Fixing one page often clears several tickets at once.</p>
       </div>
+
     </div>
   </section>
 
-  <!-- ============ NEXT ============ -->
   <section class="section bg-grid">
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">04 · Then what</span>
-        <h2 class="sec__title">From conflict to published fix.</h2>
+        <h2 class="sec__title">From ticket to published link.</h2>
         <p class="lede">
-          Every row carries its evidence: the competing pages, the shared queries, the overlap and the
-          clicks in play. Open the <b>Strategic Advisor</b> on it to ask why the split happened and
-          whether the rewrite is worth the hours, or send it to <b>Content Studio</b>, where the brief
-          arrives with the SERP and the ranking competitors already alongside it.
-        </p>
-        <p class="lede">
-          Mark it applied and the Impact Tracker takes a baseline that day, so you find out whether the
-          consolidation earned anything.
+          Ask the <b>Strategic Advisor</b> whether it's worth doing against everything else in the
+          queue. Send it to <b>Content Studio</b> when the fix is a writing job. Mark it applied and
+          the Impact Tracker takes a baseline, then reports what followed.
         </p>
       </div>
       <p class="backlink reveal">
@@ -1321,7 +1288,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============ CTA ============ -->
   <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
@@ -1332,7 +1298,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Find out which of your pages are competing.</h2>
+        <h2 class="cta__title">Find out which pages nothing points at.</h2>
         <p class="cta__sub">
           Connect a site and the analyzers read it end to end, then hand back the short list.
         </p>

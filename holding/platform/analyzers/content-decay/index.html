@@ -733,9 +733,9 @@ strong, b { font-weight: 600; color: var(--ink); }
     .snip b { color: var(--ink); font-weight: 500; }
     .snip span { color: var(--ink-faint); }
     .snip em { font-style: normal; color: var(--sev-rose-ink); }
-    .backlink { margin: var(--space-xl) 0 0; font-family: var(--font-mono); font-size: var(--step--1); }
-    .backlink a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
-    .backlink a:hover { color: var(--ink); border-color: var(--ink); }
+    .backlink { margin: var(--space-xl) 0 0; }
+    .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+    .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
     @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } }
     @media (max-width: 900px) { .calls { grid-template-columns: 1fr; } }
 
@@ -1286,9 +1286,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">03 · The recovery</span>
         <h2 class="sec__title">A playbook per page, not a warning per page.</h2>
         <p class="lede">
-          Knowing a page is decaying is the easy half. Every decaying page worth saving comes with a
-          written recovery playbook and an estimate of what recovery would be worth, so the argument
-          about whether to spend the hours is a short one.
+          Knowing that a page is decaying is the easy part. Every decaying page worth saving comes
+          with a written recovery playbook and an estimate of what recovery would be worth.
         </p>
         <p class="lede">
           The keywords that carried the loss are listed underneath, so a rewrite starts from what the
@@ -1313,7 +1312,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           rewrite recovered anything. Including when it didn't.
         </p>
       </div>
-      <p class="backlink reveal"><a href="/platform/analyzers/">All seven analyzers</a></p>
+      <p class="backlink reveal">
+        <a href="/platform/analyzers/" class="btn btn--sm btn--ghost">
+          All seven analyzers
+          <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+      </p>
     </div>
   </section>
 
