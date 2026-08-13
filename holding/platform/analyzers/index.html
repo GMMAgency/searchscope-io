@@ -10,11 +10,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign up for the Searchscope beta</title>
-<meta name="description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
+<title>SEO analyzers · Searchscope</title>
+<meta name="description" content="Seven analyzers read your crawl and your search data every week and hand back a judged, ranked queue: cannibalization, content decay, index bloat, internal links, opportunities, cluster volatility and schema.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Sign up for the Searchscope beta">
-<meta property="og:description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
+<meta property="og:title" content="SEO analyzers · Searchscope">
+<meta property="og:description" content="Seven analyzers read your crawl and your search data every week and hand back a judged, ranked queue: cannibalization, content decay, index bloat, internal links, opportunities, cluster volatility and schema.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -643,60 +643,175 @@ strong, b { font-weight: 600; color: var(--ink); }
       .fgrid { grid-template-columns: 1fr; }
     }
 
-</style>
+    /* ============================================================
+       Agency use case page
+       ============================================================ */
+    .btn { text-decoration: none; }
+    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
 
-<style>
-  /* Beta sign-up form. Reuses the page tokens; no new colours or type. */
-  .signup { width: 100%; max-width: 30rem; margin-inline: auto; text-align: left; display: flex; flex-direction: column; gap: var(--space-s); }
-  .field { display: flex; flex-direction: column; gap: var(--space-3xs); }
-  .field__label { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
-  .field__input {
-    font-family: var(--font-body);
-    font-size: var(--step-0);
-    color: var(--ink);
-    background: var(--surface-panel);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-s);
-    padding: 0.85em 1em;
-    width: 100%;
-    transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-  }
-  .field__input:focus-visible {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
-  }
-  .signup .btn { width: 100%; margin-top: var(--space-2xs); }
-  .signup__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-    /* ---- sticky header ---- */
-    .site-head {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: var(--space-s);
-      padding-bottom: var(--space-s);
-      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    /* ---- mobile: the same call to action, pinned to the bottom ---- */
+    .stickycta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: var(--space-2xs) var(--gutter);
+      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in oklab, var(--surface) 93%, transparent);
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+      border-top: 1px solid var(--hairline);
     }
-    .site-head.is-stuck {
-      background: color-mix(in oklab, var(--surface) 95%, transparent);
-      border-bottom-color: var(--hairline);
+    .stickycta .btn { width: 100%; }
+    @media (max-width: 720px) {
+      .stickycta { display: block; }
+      .site-head__cta { display: none; }
+      body { padding-bottom: 5.5rem; }
     }
-    .site-head .container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--space-m);
-    }
-    .site-head__cta { margin-left: auto; }
+    .lede { font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }
+    .lede + .lede { margin-top: var(--space-s); }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .sec__head { max-width: 62ch; }
+    .sec__title { font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }
 
-    /* ---- header navigation ---- */
-    .nav { display: flex; align-items: center; gap: var(--space-m); }
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+    .ucard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }
+    .ucard__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .ucard__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .ucard__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- two-up cards ---- */
+    .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+
+    /* ---- numbered steps ---- */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+    .steps li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .steps b { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.14em; }
+    .steps h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .steps p { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- engine tiles ---- */
+    .engrid { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-s); }
+    .engrid li { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); padding: var(--space-m) var(--space-xs); display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); text-align: center; }
+    .engrid img, .engrid svg { width: auto; height: 34px; max-width: 100%; object-fit: contain; display: block; }
+    .engrid svg { color: var(--ink); }
+    .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
+
+    /* ---- hero form, two stage ---- */
+    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .hero__form .btn { width: 100%; }
+    .stage2[hidden], .stage1[hidden] { display: none; }
+    .hero__form .formnote { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.55; margin: 0 0 var(--space-m); }
+    .stage__site { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); border: 1px dashed var(--hairline); border-radius: var(--radius-s); padding: 0.45em 0.7em; margin: 0 0 var(--space-m); }
+    .stage__site b { color: var(--ink); font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage__site .stage__back { width: auto; flex: none; margin: 0; text-align: right; }
+    .hero__form .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); text-align: center; margin: var(--space-xs) 0 0; }
+    .stage__back { display: block; width: 100%; margin-top: var(--space-xs); background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; text-align: center; }
+    .stage__back:hover { color: var(--ink); }
+
+    @media (max-width: 1000px) { .engrid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ---- hero mock: the judge at work ---- */
+    .jq { list-style: none; margin: var(--space-s) 0 0; padding: 0; }
+    .jrow { display: grid; grid-template-columns: 10px 1fr auto; gap: 0.7rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--hairline); opacity: 0; }
+    .jrow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .jrow .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); display: inline-block; position: relative; top: -1px; }
+    .jrow.crit .d { background: var(--sev-rose-ink); }
+    .jrow.warn .d { background: var(--sev-amber-ink); }
+    .jrow.win .d { background: var(--sev-emerald-ink); }
+    .jrow h4 { margin: 0 0 1px; font-size: var(--step--1); font-weight: 560; letter-spacing: -0.01em; line-height: 1.3; }
+    .jrow .m { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .jrow .v { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .jrow--cut .v { color: var(--ink-faint); }
+    .jq__foot { display: flex; justify-content: space-between; gap: 0.8rem; margin: var(--space-s) 0 0; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+
+    @keyframes jrow-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes jrow-cut { to { opacity: 0.3; } }
+    .is-in .jrow { animation: jrow-in 0.45s var(--ease-out) forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s); }
+    .is-in .jrow--cut { animation: jrow-in 0.45s var(--ease-out) forwards, jrow-cut 0.5s ease forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s), calc(1.6s + var(--i, 0) * 0.06s); }
+    @media (prefers-reduced-motion: reduce) {
+      .jrow { opacity: 1; animation: none !important; }
+      .is-in .jrow--cut { opacity: 0.3; }
+    }
+
+    /* ---- analyzer hub ---- */
+    .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } .hero .hero__visual { order: 0; } }
+
+    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+    .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }
+    .tablist { display: flex; flex-direction: column; border-left: 1px solid var(--hairline); }
+    .tab { display: flex; align-items: baseline; gap: 0.8rem; text-align: left; width: 100%; background: none; border: 0; border-left: 2px solid transparent; margin-left: -1px; padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+    .tab i { font-style: normal; font-size: var(--step--2); color: var(--ink-faint); }
+    .tab:hover { color: var(--ink-dim); }
+    .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
+    .tab[aria-selected="true"] i { color: var(--ink-dim); }
+    .tabpanel[hidden] { display: none; }
+    .tabpanel__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
+    .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
+    .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
+    .btn--soon { color: var(--ink-faint); border-color: var(--hairline); cursor: default; }
+    .btn--soon:hover { background: transparent; border-color: var(--hairline); box-shadow: none; transform: none; }
+    .btn--soon b { margin-left: 0.15rem; font-weight: 500; font-size: 0.62em; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.25em 0.55em; }
+    .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+    .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
+
+    @media (max-width: 1080px) {
+      .anat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .tabs { grid-template-columns: 1fr; gap: var(--space-m); }
+      .tablist { flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--hairline); }
+      .tab { width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; margin-left: 0; }
+      .tab[aria-selected="true"] { border-left-color: transparent; border-bottom-color: var(--ink); }
+      .tab i { display: none; }
+    }
+    @media (max-width: 640px) { .anat { grid-template-columns: 1fr; } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
+
+    .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
+    .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+    .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+
+
+    /* ---- form ---- */
+    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
+    .field { display: block; margin-bottom: var(--space-m); }
+    .field:last-of-type { margin-bottom: var(--space-l); }
+    .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    .field input, .field select, .field textarea {
+      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
+      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
+      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    }
+    .field textarea { min-height: 6.5rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .formcard .btn { width: 100%; }
+    .hp { position: absolute; left: -9999px; }
+    .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
+    .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .secondary a:hover { color: var(--ink); border-color: var(--ink); }
+
     /* ---- footer ---- */
     .site-foot {
       border-top: 1px solid var(--hairline);
@@ -736,6 +851,41 @@ strong, b { font-weight: 600; color: var(--ink); }
       letter-spacing: 0.02em;
     }
 
+    @media (max-width: 900px) {
+      .cols3 { grid-template-columns: 1fr; }
+      .formwrap { grid-template-columns: 1fr; }
+      .modules li { grid-template-columns: 1fr; gap: var(--space-3xs); }
+    }
+
+
+    /* ---- sticky header ---- */
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: var(--space-s);
+      padding-bottom: var(--space-s);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+    }
+    .site-head.is-stuck {
+      background: color-mix(in oklab, var(--surface) 95%, transparent);
+      border-bottom-color: var(--hairline);
+    }
+    .site-head .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-m);
+    }
+    .site-head__cta { margin-left: auto; }
+
+    /* ---- header navigation ---- */
+    .nav { display: flex; align-items: center; gap: var(--space-m); }
     .navmenu { position: static; }
     .navmenu__btn {
       display: inline-flex;
@@ -971,7 +1121,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div>
               <p class="navmenu__h">Product</p>
-              <a class="navmenu__sublink" href="/platform/analyzers/">
+              <a class="navmenu__sublink" href="/platform/analyzers/" aria-current="page">
                 <span class="navmenu__label">Workspace Analyzers</span>
                 <span class="navmenu__sub">Cannibalization, Content Decay, Cluster Volatility and more</span>
               </a>
@@ -1047,6 +1197,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </nav>
+    <a href="/beta" class="btn btn--sm site-head__cta">
+      Sign up for beta
+      <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+    </a>
     <button type="button" class="navtoggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
       <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
@@ -1054,10 +1208,250 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- ============ BETA SIGN-UP ============ -->
-  <section class="section cta bg-grid" style="border-top:0">
+  <section class="section hero bg-grid">
+    <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="cta__frame ticked">
+      <div class="hero__grid">
+      <div class="sec__head">
+        <span class="eyebrow reveal">Platform</span>
+        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+          Seven analyzers. One queue you can finish.
+        </h1>
+        <p class="lede reveal" style="--reveal-delay:130ms">
+          Most audit tools hand you hundreds of issues and leave you to work out which ones matter.
+        </p>
+        <p class="lede reveal" style="--reveal-delay:170ms">
+          <b>Searchscope judges its own findings before you see them</b>, then ranks what's left by the
+          clicks it's worth. They run on a schedule, so you're informed on a shift in performance
+          before it becomes a bigger issue.
+        </p>
+        <div class="hero__actions reveal" style="--reveal-delay:220ms">
+          <a href="/beta" class="btn">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" style="--reveal-delay:200ms">
+        <div class="ticked">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span>
+            <span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span>
+            <span class="ticks__c ticks__bl"></span>
+          </span>
+          <div class="appwin">
+            <div class="awbar">
+              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="awurl">app.searchscope.io/workspaces</span>
+              <span class="awtab">This week</span>
+            </div>
+            <div class="awbody">
+              <div class="awhead">
+                <span>
+                  <span class="awtitle">Analyzer run</span>
+                  <span class="awsub">Seven analyzers, judged before you see them</span>
+                </span>
+              </div>
+              <div class="awstats c3">
+                <div class="awstat"><span class="v cnt" data-n="412">412</span><span class="l">Found</span></div>
+                <div class="awstat"><span class="v cnt" data-n="389">389</span><span class="l">Suppressed</span></div>
+                <div class="awstat"><span class="v cnt" data-n="23">23</span><span class="l">Shown</span></div>
+              </div>
+              <ul class="jq">
+          <li class="jrow crit" style="--i:0">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Cannibalization</h4><span class="m">/guides/best-hiking-boots vs /blog/hiking-boots-review</span></span>
+            <span class="v">+170 clicks</span>
+          </li>
+          <li class="jrow warn" style="--i:1">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Content decay</h4><span class="m">/blog/best-campsites-uk</span></span>
+            <span class="v">382 clicks lost</span>
+          </li>
+          <li class="jrow  jrow--cut" style="--i:2">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Thin page</h4><span class="m">/tags/waterproof</span></span>
+            <span class="v">suppressed</span>
+          </li>
+          <li class="jrow win" style="--i:3">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Schema</h4><span class="m">FAQ missing on /guides/camping-checklist</span></span>
+            <span class="v">+94 clicks</span>
+          </li>
+          <li class="jrow  jrow--cut" style="--i:4">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Duplicate title</h4><span class="m">/blog/page/7</span></span>
+            <span class="v">suppressed</span>
+          </li>
+              </ul>
+              <p class="jq__foot"><span>Ranked by potential clicks</span><span>23 of 412</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">What every analyzer gives you</span>
+        <h2 class="sec__title">Seven analyzers, one anatomy.</h2>
+        <p class="lede">
+          Each one reads the same three things: a full crawl of your site, your Search Console
+          history, and the business context you set up front. They look for different things and hand
+          them over the same way, so nobody has to learn seven interfaces.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>Ranked queue</b><span>Findings scored against your objectives and the pages that make you money, worst first.</span></li>
+        <li><b>Evidence lens</b><span>Expand any row for the pages, the queries and the numbers behind the call.</span></li>
+        <li><b>A recommended move</b><span>Not just what's wrong, but what to do about it.</span></li>
+        <li><b>Create brief</b><span>Sends the finding into Content Studio pre-filled, with the SERP and the ranking competitors pulled in beside it.</span></li>
+        <li><b>Ask the Strategic Advisor</b><span>Opens the advisor on that finding, already holding your crawl data and analyzer findings, your search data, competitive landscape and unique business context.</span></li>
+        <li><b>The upside, in clicks</b><span>Findings carry potential clicks and an impact grade, so the queue is ordered by what it's worth rather than by how loud it is.</span></li>
+        <li><b>Seasonality, separated</b><span>A pattern that repeats every year is labelled seasonal and can be hidden, so a normal dip isn't treated as a problem.</span></li>
+        <li><b>Applied or ignored</b><span>Mark it done and it leaves the queue. The archive keeps what you fixed and when.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">The seven</span>
+        <h2 class="sec__title">What each one looks for.</h2>
+      </div>
+      <div class="tabs reveal">
+        <div class="tablist" role="tablist" aria-orientation="vertical" aria-label="The seven analyzers">
+          <button type="button" class="tab" role="tab" id="tab-cannibalization" aria-controls="panel-cannibalization" aria-selected="false" tabindex="-1"><i>01</i>Cannibalization</button>
+          <button type="button" class="tab" role="tab" id="tab-content-decay" aria-controls="panel-content-decay" aria-selected="false" tabindex="-1"><i>02</i>Content decay</button>
+          <button type="button" class="tab" role="tab" id="tab-opportunities" aria-controls="panel-opportunities" aria-selected="false" tabindex="-1"><i>03</i>Opportunities</button>
+          <button type="button" class="tab" role="tab" id="tab-cluster-volatility" aria-controls="panel-cluster-volatility" aria-selected="false" tabindex="-1"><i>04</i>Cluster volatility</button>
+          <button type="button" class="tab" role="tab" id="tab-index-bloat" aria-controls="panel-index-bloat" aria-selected="false" tabindex="-1"><i>05</i>Index bloat</button>
+          <button type="button" class="tab" role="tab" id="tab-internal-links" aria-controls="panel-internal-links" aria-selected="false" tabindex="-1"><i>06</i>Internal links</button>
+          <button type="button" class="tab" role="tab" id="tab-schema" aria-controls="panel-schema" aria-selected="false" tabindex="-1"><i>07</i>Schema</button>
+        </div>
+        <div class="tabpanels">
+        <div class="tabpanel" role="tabpanel" id="panel-cannibalization" aria-labelledby="tab-cannibalization" hidden>
+          <h3 class="tabpanel__t">Cannibalization</h3>
+          <p class="tabpanel__d">Two of your pages competing for the same query, with the impressions split between them. Searchscope pairs them up, shows the shared queries, the overlap and the clicks in play, then calls it: consolidate, differentiate, or keep both. URL dancing, where the results page keeps swapping which of your pages it shows, is flagged on its own.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Cannibalization
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/cannibalization.webp" alt="The cannibalization analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-content-decay" aria-labelledby="tab-content-decay" hidden>
+          <h3 class="tabpanel__t">Content decay</h3>
+          <p class="tabpanel__d">Pages losing clicks against their own past, not against a competitor. Filter by decay type, see the keywords carrying the loss, and read each page by trajectory: worsening, improving or accelerating. Genuine seasonality is flagged rather than raised as a decline. Ask the <b>Strategic Advisor</b> why a page turned when it did, then rewrite it in <b>Content Studio</b> with the gaps already named.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Content Decay
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/content-decay.webp" alt="The content decay analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-opportunities" aria-labelledby="tab-opportunities" hidden>
+          <h3 class="tabpanel__t">Opportunities</h3>
+          <p class="tabpanel__d">More than striking distance. Position opportunities just off page one, low click-through on rankings you already hold, intent mismatches and content gaps. Each one names the SERP feature worth going after, from featured snippet to FAQ to AI Overview, and the structural change that would win it.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Opportunities
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/opportunities.webp" alt="The opportunities analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-cluster-volatility" aria-labelledby="tab-cluster-volatility" hidden>
+          <h3 class="tabpanel__t">Cluster volatility</h3>
+          <p class="tabpanel__d">Whole topics moving underneath you, rather than single pages. Cluster cards show which page carries each topic and where coverage is thinning. Query the shift with the <b>Strategic Advisor</b>, then close the gaps in <b>Content Studio</b>.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Cluster Volatility
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/cluster-volatility.webp" alt="The cluster volatility analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-index-bloat" aria-labelledby="tab-index-bloat" hidden>
+          <h3 class="tabpanel__t">Index bloat</h3>
+          <p class="tabpanel__d">Thin, duplicate and zero-traffic pages spending crawl budget you would rather spend elsewhere. Every row carries a verdict and a word count, so the call is quick.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Index Bloat
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/index-bloat.webp" alt="The index bloat analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-internal-links" aria-labelledby="tab-internal-links" hidden>
+          <h3 class="tabpanel__t">Internal links</h3>
+          <p class="tabpanel__d">Authority routing, as tickets. Source to target with the anchor text suggested, match type flagged, and a panel for the targets that are starving.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Internal Links
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/internal-links.webp" alt="The internal links analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-schema" aria-labelledby="tab-schema" hidden>
+          <h3 class="tabpanel__t">Schema</h3>
+          <p class="tabpanel__d">Missing and broken structured data, with copy-paste JSON-LD and a diff of what you have against what it should be.</p>
+          <p class="tabpanel__go">
+            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+              Explore Schema
+              <b>Coming soon</b>
+            </span>
+          </p>
+          <img class="tabpanel__shot" src="/brand/analyzers/schema.webp" alt="The schema analyzer in Searchscope"
+               width="1400" height="788" loading="lazy" decoding="async">
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">After you apply it</span>
+        <h2 class="sec__title">Mark it applied. Then find out whether it worked.</h2>
+        <p class="lede">
+          The moment you mark a finding applied, the Impact Tracker snapshots that page's numbers and
+          starts measuring against them. Not against a guess at what things looked like beforehand, and
+          not against a round number somebody remembered.
+        </p>
+        <p class="lede">
+          <b>Including when the answer is no.</b> A fix that moved nothing is recorded as a fix that
+          moved nothing, which is the part that makes the wins believable.
+        </p>
+      </div>
+      <ul class="anat anat--two reveal">
+        <li><b>A real baseline</b><span>Clicks, impressions and position captured at the moment of applying, stored against that change.</span></li>
+        <li><b>Marked on the chart</b><span>The date the work landed, drawn onto the trend, so a movement can be read against the change rather than assumed.</span></li>
+        <li><b>An applied archive</b><span>Per analyzer: what was fixed, when, and by whom. Applied rows leave the queue but not the record.</span></li>
+        <li><b>Carried into the report</b><span>Applied changes and what followed them go into the weekly report, so the client sees the work and what it earned.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta bg-grid">
+    <div class="container">
+      <div class="cta__frame ticked reveal">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
@@ -1065,47 +1459,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h1 class="cta__title">Sign up for the Searchscope beta.</h1>
+        <h2 class="cta__title">Fewer findings, on purpose.</h2>
         <p class="cta__sub">
-          Beta places open in small cohorts. Leave your details and we will get in touch
-          when the next one opens. The first session is a walkthrough of your own search
-          data, not a demo account.
+          Connect a site and the analyzers read it end to end, then hand back the short list.
         </p>
-
-        <form
-          name="beta"
-          method="POST"
-          action="/beta/thanks/"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="signup"
-        >
-          <input type="hidden" name="form-name" value="beta" />
-          <p class="signup__hp">
-            <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-name">Name</label>
-            <input class="field__input" id="beta-name" name="name" type="text" autocomplete="name" required />
-          </div>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-email">Email</label>
-            <input class="field__input" id="beta-email" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <button class="btn btn--lg" type="submit">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
-        </form>
-
-        <p class="cta__note">We will only use your details to talk to you about the beta.</p>
+        <div class="cta__actions">
+          <a href="/beta" class="btn btn--lg">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 </main>
+
+<div class="stickycta">
+  <a href="/beta" class="btn">
+    Join the beta
+    <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+</div>
 
 <footer class="site-foot">
   <div class="container">
@@ -1241,6 +1615,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { closeNav(); toggle.focus(); }
     });
+  })();
+</script>
+
+<noscript>
+  <style>.tabpanel[hidden] { display: block !important; } .tablist { display: none; } .jrow { opacity: 1 !important; animation: none !important; } .tabpanel + .tabpanel { margin-top: var(--space-xl); }</style>
+</noscript>
+
+<script>
+  (function () {
+    var list = document.querySelector('.tablist');
+    if (!list) return;
+    var tabs = [].slice.call(list.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.tabpanel'));
+    if (tabs.length !== panels.length) return;
+
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.hidden = j !== i; });
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1
+              : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = (i + d + tabs.length) % tabs.length;
+        select(n);
+        tabs[n].focus();
+      });
+    });
+    select(0);
   })();
 </script>
 
