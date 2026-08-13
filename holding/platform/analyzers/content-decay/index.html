@@ -10,11 +10,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Searchscope · Operating System for Modern Search Teams</title>
-<meta name="description" content="Searchscope is the operating system for modern search teams: one platform for your search data, seven analyzers, competitive intelligence, AI visibility and client-ready reports.">
+<title>Content decay analysis · Searchscope</title>
+<meta name="description" content="Find content decay in your own Search Console history: which pages are losing clicks, which keywords carried the loss and when it started. Seasonality is separated out, and every decaying page comes with a recovery playbook.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Searchscope · Operating System for Modern Search Teams">
-<meta property="og:description" content="One platform for search data, analyzers, competitive intelligence, AI visibility and client-ready reports. Join the pilot program.">
+<meta property="og:title" content="Content decay analysis · Searchscope">
+<meta property="og:description" content="Find content decay in your own Search Console history: which pages are losing clicks, which keywords carried the loss and when it started. Seasonality is separated out, and every decaying page comes with a recovery playbook.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -236,7 +236,6 @@ strong, b { font-weight: 600; color: var(--ink); }
   background: var(--accent);
   color: var(--accent-ink);
   border: 1px solid transparent;
-  text-decoration: none;
   transition: transform var(--dur-fast) var(--ease-out), background var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   white-space: nowrap;
   cursor: pointer;
@@ -327,6 +326,12 @@ strong, b { font-weight: 600; color: var(--ink); }
   align-items: center;
   gap: var(--space-m);
   margin-top: var(--space-l);
+}
+.hero__note {
+  margin-top: var(--space-l);
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
 }
 .hero__visual { position: relative; }
 
@@ -594,6 +599,7 @@ strong, b { font-weight: 600; color: var(--ink); }
    ============================================================ */
 @media (max-width: 980px) {
   .hero__grid { grid-template-columns: 1fr; }
+  .hero__visual { order: -1; }
 }
 @media (max-width: 640px) {
   .awstats { grid-template-columns: repeat(2, 1fr); }
@@ -637,32 +643,134 @@ strong, b { font-weight: 600; color: var(--ink); }
       .fgrid { grid-template-columns: 1fr; }
     }
 
-    /* ---- sticky header with a beta call to action ---- */
-    .site-head {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: var(--space-s);
-      padding-bottom: var(--space-s);
-      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    /* ============================================================
+       Agency use case page
+       ============================================================ */
+    .btn { text-decoration: none; }
+    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
+
+    /* ---- mobile: the same call to action, pinned to the bottom ---- */
+    .stickycta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: var(--space-2xs) var(--gutter);
+      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in oklab, var(--surface) 93%, transparent);
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+      border-top: 1px solid var(--hairline);
     }
-    .site-head.is-stuck {
-      background: color-mix(in oklab, var(--surface) 95%, transparent);
-      border-bottom-color: var(--hairline);
+    .stickycta .btn { width: 100%; }
+    @media (max-width: 720px) {
+      .stickycta { display: block; }
+      .site-head__cta { display: none; }
+      body { padding-bottom: 5.5rem; }
     }
-    .site-head .container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--space-m);
+    .lede { font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }
+    .lede + .lede { margin-top: var(--space-s); }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .sec__head { max-width: 62ch; }
+    .sec__title { font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }
+
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+    .ucard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }
+    .ucard__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .ucard__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .ucard__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- two-up cards ---- */
+    .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+
+    /* ---- numbered steps ---- */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+    .steps li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .steps b { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.14em; }
+    .steps h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .steps p { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- engine tiles ---- */
+    .engrid { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-s); }
+    .engrid li { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); padding: var(--space-m) var(--space-xs); display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); text-align: center; }
+    .engrid img, .engrid svg { width: auto; height: 34px; max-width: 100%; object-fit: contain; display: block; }
+    .engrid svg { color: var(--ink); }
+    .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
+
+    /* ---- hero form, two stage ---- */
+    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .hero__form .btn { width: 100%; }
+    .stage2[hidden], .stage1[hidden] { display: none; }
+    .hero__form .formnote { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.55; margin: 0 0 var(--space-m); }
+    .stage__site { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); border: 1px dashed var(--hairline); border-radius: var(--radius-s); padding: 0.45em 0.7em; margin: 0 0 var(--space-m); }
+    .stage__site b { color: var(--ink); font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage__site .stage__back { width: auto; flex: none; margin: 0; text-align: right; }
+    .hero__form .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); text-align: center; margin: var(--space-xs) 0 0; }
+    .stage__back { display: block; width: 100%; margin-top: var(--space-xs); background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; text-align: center; }
+    .stage__back:hover { color: var(--ink); }
+
+    @media (max-width: 1000px) { .engrid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ---- analyzer child page ---- */
+    .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+    .hero__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .crumb { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); margin: 0 0 var(--space-s); }
+    .crumb a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .crumb a:hover { color: var(--ink); border-color: var(--ink); }
+    .calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); margin-top: var(--space-xl); }
+    .calls--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1080px) { .calls--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .call { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .call__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.12em; word-spacing: -0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+    .call__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-3xs) 0 0; }
+    .call__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+    .snip { font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.75; background: var(--surface-panel); border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); margin: var(--space-l) 0 0; overflow-x: auto; }
+    .snip b { color: var(--ink); font-weight: 500; }
+    .snip span { color: var(--ink-faint); }
+    .snip em { font-style: normal; color: var(--sev-rose-ink); }
+    .backlink { margin: var(--space-xl) 0 0; font-family: var(--font-mono); font-size: var(--step--1); }
+    .backlink a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .backlink a:hover { color: var(--ink); border-color: var(--ink); }
+    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .calls { grid-template-columns: 1fr; } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
+
+    .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
+    .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+    .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+
+
+    /* ---- form ---- */
+    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
+    .field { display: block; margin-bottom: var(--space-m); }
+    .field:last-of-type { margin-bottom: var(--space-l); }
+    .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    .field input, .field select, .field textarea {
+      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
+      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
+      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
     }
-    .site-head__cta { margin-left: auto; }
-    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
+    .field textarea { min-height: 6.5rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .formcard .btn { width: 100%; }
+    .hp { position: absolute; left: -9999px; }
+    .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
+    .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .secondary a:hover { color: var(--ink); border-color: var(--ink); }
 
     /* ---- footer ---- */
     .site-foot {
@@ -703,28 +811,38 @@ strong, b { font-weight: 600; color: var(--ink); }
       letter-spacing: 0.02em;
     }
 
-    /* ---- mobile: the same call to action, pinned to the bottom ---- */
-    .stickycta {
-      display: none;
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 60;
-      padding: var(--space-2xs) var(--gutter);
-      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
-      background: color-mix(in oklab, var(--surface) 93%, transparent);
-      backdrop-filter: saturate(1.4) blur(10px);
-      -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-top: 1px solid var(--hairline);
-    }
-    .stickycta .btn { width: 100%; }
-    @media (max-width: 720px) {
-      .stickycta { display: block; }
-      .site-head__cta { display: none; }
-      body { padding-bottom: 5.5rem; }
+    @media (max-width: 900px) {
+      .cols3 { grid-template-columns: 1fr; }
+      .formwrap { grid-template-columns: 1fr; }
+      .modules li { grid-template-columns: 1fr; gap: var(--space-3xs); }
     }
 
+
+    /* ---- sticky header ---- */
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: var(--space-s);
+      padding-bottom: var(--space-s);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+    }
+    .site-head.is-stuck {
+      background: color-mix(in oklab, var(--surface) 95%, transparent);
+      border-bottom-color: var(--hairline);
+    }
+    .site-head .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-m);
+    }
+    .site-head__cta { margin-left: auto; }
 
     /* ---- header navigation ---- */
     .nav { display: flex; align-items: center; gap: var(--space-m); }
@@ -1043,7 +1161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
     <a href="/beta" class="btn btn--sm site-head__cta">
       Sign up for beta
-      <span class="btn__arrow" aria-hidden="true">→</span>
+      <span class="btn__arrow" aria-hidden="true">&#8594;</span>
     </a>
     <button type="button" class="navtoggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
       <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -1052,233 +1170,153 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- ============ HERO ============ -->
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="eyebrow reveal">Operating system for modern search teams</span>
-          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-            Your search data is spread across multiple tools. The answer's in none of them.
-          </h1>
-          <p class="hero__sub reveal" style="--reveal-delay:130ms">
-            Searchscope reads your website and search data, your AI visibility and your competitor
-            landscape as one system, and helps you decide <b>what to do next to improve your search
-            visibility.</b>
-          </p>
-          <div class="hero__actions reveal" style="--reveal-delay:200ms">
-            <a href="/beta" class="btn">
-              Sign up for beta
-              <span class="btn__arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
+      <div class="sec__head">
+        <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Content decay</p>
+        <h1 class="hero__title reveal">
+          Content decay, named page by page.
+        </h1>
+        <p class="lede reveal" style="--reveal-delay:100ms">
+          Traffic's down and everyone has a theory. The agency says algorithm update or seasonality,
+          the developer says it's the CMS, and three weeks later nobody has named a single page.
+        </p>
+        <p class="lede reveal" style="--reveal-delay:140ms">
+          <b>Searchscope reads your own search history and names them.</b> Which pages are sliding,
+          which keywords carried the loss, when it started, and a roadmap to recovery.
+        </p>
+        <div class="hero__actions reveal" style="--reveal-delay:190ms">
+          <a href="/beta" class="btn">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
         </div>
+      </div>
 
-        <div class="hero__visual reveal" style="--reveal-delay:160ms">
-          <div class="ticked">
-            <span class="ticks" aria-hidden="true">
-              <span class="ticks__c ticks__tl"></span>
-              <span class="ticks__c ticks__tr"></span>
-              <span class="ticks__c ticks__br"></span>
-              <span class="ticks__c ticks__bl"></span>
-            </span>
-            <!-- Demand vs your position: the signature scatter -->
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/demand</span>
-                <span class="awtab">Demand &amp; Trends</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Demand vs your position</span>
-                    <span class="awsub">geo UK · 142 clusters</span>
-                  </div>
-                  <div class="awleg">
-                    <span><i class="dot" style="background:var(--sev-emerald-ink)"></i>rising</span>
-                    <span><i class="dot" style="background:var(--flat)"></i>flat</span>
-                    <span><i class="dot" style="background:var(--sev-rose-ink)"></i>falling</span>
-                  </div>
-                </div>
-                <div class="awviz">
-                  <svg viewBox="0 0 724 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monthly demand against your search position; bubbles coloured by trend; a shaded band marks rising demand you rank weakly for.">
-                    <rect x="159.2" y="26" width="542.8" height="150.1" class="sc-zone"></rect>
-                    <line x1="62" y1="372" x2="702" y2="372" class="sc-grid"></line>
-                    <text x="54" y="375" class="sc-tick end">10</text>
-                    <line x1="62" y1="256.7" x2="702" y2="256.7" class="sc-grid"></line>
-                    <text x="54" y="259.7" class="sc-tick end">100</text>
-                    <line x1="62" y1="141.3" x2="702" y2="141.3" class="sc-grid"></line>
-                    <text x="54" y="144.3" class="sc-tick end">1k</text>
-                    <line x1="62" y1="26" x2="702" y2="26" class="sc-grid"></line>
-                    <text x="54" y="29" class="sc-tick end">10k</text>
-                    <g>
-                      <circle cx="199.7" cy="177.0" r="5.8" class="pt ptf" style="--i:0"></circle>
-                      <circle cx="143.0" cy="83.8" r="10.0" class="pt ptr" style="--i:1"></circle>
-                      <circle cx="677.7" cy="355.1" r="3.5" class="pt ptf" style="--i:2"></circle>
-                      <circle cx="386.1" cy="118.1" r="8.0" class="pt ptf" style="--i:3"></circle>
-                      <circle cx="143.0" cy="28.4" r="15" class="pt ptf" style="--i:4"></circle>
-                      <circle cx="523.8" cy="119.9" r="7.9" class="pt ptd" style="--i:5"></circle>
-                      <circle cx="507.6" cy="322.2" r="3.6" class="pt ptf" style="--i:6"></circle>
-                      <circle cx="353.6" cy="302.6" r="3.8" class="pt ptf" style="--i:7"></circle>
-                      <circle cx="118.7" cy="201.0" r="5.2" class="pt ptr" style="--i:8"></circle>
-                      <circle cx="321.2" cy="342.6" r="3.5" class="pt ptf" style="--i:9"></circle>
-                      <circle cx="410.4" cy="285.7" r="3.9" class="pt ptr" style="--i:10"></circle>
-                      <circle cx="661.5" cy="94.3" r="9.3" class="pt ptd" style="--i:11"></circle>
-                      <circle cx="442.8" cy="131.0" r="7.4" class="pt ptd" style="--i:12"></circle>
-                      <circle cx="207.8" cy="358.9" r="3.5" class="pt ptr" style="--i:13"></circle>
-                      <circle cx="369.8" cy="252.4" r="4.3" class="pt ptr" style="--i:14"></circle>
-                      <circle cx="402.3" cy="251.4" r="4.3" class="pt ptr" style="--i:15"></circle>
-                      <circle cx="402.3" cy="355.1" r="3.5" class="pt ptd" style="--i:16"></circle>
-                      <circle cx="369.8" cy="312.2" r="3.7" class="pt ptr" style="--i:17"></circle>
-                      <circle cx="386.1" cy="312.2" r="3.7" class="pt ptr" style="--i:18"></circle>
-                      <circle cx="167.3" cy="50.4" r="12.8" class="pt ptf" style="--i:19"></circle>
-                      <circle cx="499.5" cy="342.6" r="3.5" class="pt ptr" style="--i:20"></circle>
-                      <circle cx="337.4" cy="86.0" r="9.9" class="pt ptr" style="--i:21"></circle>
-                      <circle cx="272.6" cy="297.8" r="3.8" class="pt ptf" style="--i:22"></circle>
-                      <circle cx="232.1" cy="235.0" r="4.6" class="pt ptr" style="--i:23"></circle>
-                      <circle cx="377.9" cy="302.6" r="3.8" class="pt ptr" style="--i:24"></circle>
-                      <circle cx="645.3" cy="209.4" r="5.0" class="pt ptr" style="--i:25"></circle>
-                      <circle cx="402.3" cy="81.9" r="10.2" class="pt ptd" style="--i:26"></circle>
-                      <circle cx="329.3" cy="189.8" r="5.4" class="pt ptr" style="--i:27"></circle>
-                      <circle cx="572.4" cy="176.4" r="5.8" class="pt ptd" style="--i:28"></circle>
-                      <circle cx="70.1" cy="279.0" r="4.0" class="pt ptr" style="--i:29"></circle>
-                      <circle cx="118.7" cy="87.9" r="9.7" class="pt ptf" style="--i:30"></circle>
-                      <circle cx="353.6" cy="98.0" r="9.1" class="pt ptr" style="--i:31"></circle>
-                      <circle cx="596.7" cy="332.5" r="3.6" class="pt ptd" style="--i:32"></circle>
-                      <circle cx="386.1" cy="195.1" r="5.3" class="pt ptf" style="--i:33"></circle>
-                      <circle cx="507.6" cy="345.4" r="3.5" class="pt ptd" style="--i:34"></circle>
-                      <circle cx="523.8" cy="334.8" r="3.6" class="pt ptr" style="--i:35"></circle>
-                      <circle cx="580.5" cy="302.6" r="3.8" class="pt ptr" style="--i:36"></circle>
-                      <circle cx="426.6" cy="351.7" r="3.5" class="pt ptr" style="--i:37"></circle>
-                      <circle cx="540.0" cy="75.2" r="10.7" class="pt ptf" style="--i:38"></circle>
-                      <circle cx="224.0" cy="197.0" r="5.3" class="pt ptf" style="--i:39"></circle>
-                    </g>
-                    <circle cx="296.9" cy="117.8" r="9" class="pt-standout"></circle>
-                    <circle cx="296.9" cy="117.8" r="15" class="sc-ring"></circle>
-                    <text x="62" y="398" class="sc-tick">better ←</text>
-                    <text x="702" y="398" class="sc-tick end">→ worse · your position</text>
-                  </svg>
-                  <div class="awcall" style="left:44%; top:24%">
-                    <span class="t">LOSING SHARE</span>
-                    <span class="p">/tents/4-season</span>
-                    <span class="m">demand ↑ · impr ↓ · 2 competing</span>
-                  </div>
-                </div>
-                <p class="awnote">Shaded = rising demand you rank weakly for, your biggest openings.</p>
-                <div class="awstats">
-                  <div class="awstat"><span class="v cnt" data-n="142">142</span><span class="l">Clusters</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="77">77</span><span class="l">Rising demand</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="72">72</span><span class="l">Losing share</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="104" data-suf="k">104k</span><span class="l">Addr. demand</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hero__visual reveal" style="--reveal-delay:170ms">
+        <img class="hero__shot" src="/brand/analyzers/content-decay.webp"
+             alt="The content decay workspace in Searchscope, showing decaying pages and the keywords behind the loss"
+             width="1400" height="788" loading="eager" decoding="async">
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ FEATURE STRIP ============ -->
-  <section class="section strip" id="platform">
+  <section class="section">
     <div class="container">
-      <div class="strip__head reveal">
-        <span class="eyebrow">Inside the platform</span>
-        <h2 class="strip__title">One platform for your whole search picture.</h2>
-        <p class="strip__sub">
-          Classic search, AI answers, and the brand signals behind both, read together with the
-          fix already drafted. Here are six of the places you'll work; there's a lot more once you're in.
+      <div class="sec__head reveal">
+        <span class="eyebrow">01 · Four ways a page slides</span>
+        <h2 class="sec__title">Not every decline is the same decline.</h2>
+        <p class="lede">
+          A page can lose rankings while holding traffic, or bleed clicks while its positions look
+          fine. The type tells you what to do about it, so the queue separates them.
         </p>
       </div>
-
-      <div class="fgrid">
-        <article class="fcard reveal" style="--reveal-delay:0ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/01-data-pipeline-sync.jpg" alt="Searchscope Data Pipeline: sync search data, crawl the site and run the analyzers in order" width="1100" height="673" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">01</span>
-              <h3 class="fcard__title">Data Pipeline</h3>
-            </div>
-            <p class="fcard__desc">Your search data, your crawl and the analyzers in one live pipeline: the single source of truth everything else reads from.</p>
-          </div>
+      <div class="calls calls--four reveal">
+        <article class="call">
+          <p class="call__k">Type 01</p>
+          <h3 class="call__t">Ranking decline</h3>
+          <p class="call__d">Positions falling on the queries the page was built for.</p>
         </article>
-
-        <article class="fcard reveal" style="--reveal-delay:60ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/02-analyzer-workspaces-a.jpg" alt="Searchscope Analyzer Workspaces: a scored queue of findings with the fix drafted" width="1100" height="837" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">02</span>
-              <h3 class="fcard__title">Analyzer Workspaces</h3>
-            </div>
-            <p class="fcard__desc">Seven analyzers watch your site around the clock and hand you a ranked, judged queue of fixes: cannibalization, cluster volatility, content decay, index bloat and more, each one already drafted.</p>
-          </div>
+        <article class="call">
+          <p class="call__k">Type 02</p>
+          <h3 class="call__t">Traffic decline</h3>
+          <p class="call__d">Clicks dropping away, whatever the positions are doing.</p>
         </article>
-
-        <article class="fcard reveal" style="--reveal-delay:120ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="Searchscope Intelligence Hub: performance command center with KPIs and trend" width="1100" height="759" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">03</span>
-              <h3 class="fcard__title">Intelligence Hub</h3>
-            </div>
-            <p class="fcard__desc">Performance data, the competitive gap and rising demand in one command center, with an AI strategist that's connected to your data and knows your search visibility position.</p>
-          </div>
+        <article class="call">
+          <p class="call__k">Type 03</p>
+          <h3 class="call__t">Visibility decline</h3>
+          <p class="call__d">Impressions thinning out as the page appears for fewer searches.</p>
         </article>
-
-        <article class="fcard reveal" style="--reveal-delay:180ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/04-brand-and-ai.jpg" alt="Searchscope Brand and AI Visibility: the PR Campaign Radar pulling a rival's digital-PR burst apart, showing the asset, who linked and how to counter it" width="1100" height="688" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">04</span>
-              <h3 class="fcard__title">Brand and AI Visibility</h3>
-            </div>
-            <p class="fcard__desc">See how AI answer engines describe you, who they recommend instead and which sources they trust. Then close the gap with a digital PR plan and a dedicated strategist.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:240ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/05-content-studio-a.jpg" alt="Searchscope Content Studio: a content brief with H2 outline and placement" width="1100" height="664" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">05</span>
-              <h3 class="fcard__title">Content Studio</h3>
-            </div>
-            <p class="fcard__desc">Turn any finding into research, a brief and a publish-ready draft, placed on the exact page and section it belongs. Strategy to shipped without leaving the platform.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:300ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/06-reports-a-client.jpg" alt="Searchscope Reports: a client-ready weekly intelligence report with PDF, deck and workbook export" width="1100" height="678" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">06</span>
-              <h3 class="fcard__title">Reports</h3>
-            </div>
-            <p class="fcard__desc">Client-ready reporting that writes itself in the voice of whoever's reading: exec, practitioner or board. Export to PDF, deck or workbook in a click.</p>
-          </div>
+        <article class="call">
+          <p class="call__k">Type 04</p>
+          <h3 class="call__t">Multi-metric decline</h3>
+          <p class="call__d">All of it at once. The ones to look at first.</p>
         </article>
       </div>
-      <p class="fgrid__more reveal">
-        Six of many. <a href="/beta" class="fgrid__morelink">Join the waiting list to explore the rest <span aria-hidden="true">&rarr;</span></a>
-      </p>
+
+      <div class="snip reveal">
+        <b>/blog/best-campsites-uk</b> &nbsp;<span>ranking decline</span> &nbsp;<em>worsening</em><br>
+        &nbsp;&nbsp;<span>impressions lost</span> 20,600&nbsp;&nbsp;&nbsp;<span>clicks lost</span> 382&nbsp;&nbsp;&nbsp;<span>impact</span> A 88<br>
+        &nbsp;&nbsp;<span>keywords</span> 92 total&nbsp;&nbsp;&nbsp;89 declining&nbsp;&nbsp;&nbsp;34 dropped out of the top 10<br>
+        &nbsp;&nbsp;<span>top loss</span> "best campsites uk" &nbsp;<em>-6.8K impressions</em>
+      </div>
     </div>
   </section>
 
-  <!-- ============ CLOSING CTA ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">02 · What it refuses to panic about</span>
+        <h2 class="sec__title">Seasonality isn't decay.</h2>
+        <p class="lede">
+          Campsite traffic falls every October. A tool that raises that as a decline every October is
+          a tool your team learns to ignore, and then misses the real one in March.
+        </p>
+        <p class="lede">
+          <b>A pattern that repeats every year is labelled seasonal and can be hidden from the queue.</b>
+          What's left is decline that needs a decision, sorted by the clicks it has already cost you.
+        </p>
+      </div>
+      <div class="calls reveal">
+        <article class="call">
+          <p class="call__k">Trajectory</p>
+          <h3 class="call__t">Worsening or improving</h3>
+          <p class="call__d">Every page carries its direction of travel, so a recovery in progress isn't treated like a fresh problem.</p>
+        </article>
+        <article class="call">
+          <p class="call__k">Trajectory</p>
+          <h3 class="call__t">Accelerating</h3>
+          <p class="call__d">Losses getting steeper rather than levelling off. These move up the queue on their own.</p>
+        </article>
+        <article class="call">
+          <p class="call__k">Trajectory</p>
+          <h3 class="call__t">Dropped out of search</h3>
+          <p class="call__d">Pages that have gone from ranking to absent, flagged separately from those merely slipping.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">03 · The recovery</span>
+        <h2 class="sec__title">A playbook per page, not a warning per page.</h2>
+        <p class="lede">
+          Knowing a page is decaying is the easy half. Every decaying page worth saving comes with a
+          written recovery playbook and an estimate of what recovery would be worth, so the argument
+          about whether to spend the hours is a short one.
+        </p>
+        <p class="lede">
+          The keywords that carried the loss are listed underneath, so a rewrite starts from what the
+          page stopped ranking for rather than from a guess.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">04 · Then what</span>
+        <h2 class="sec__title">From decline to published rewrite.</h2>
+        <p class="lede">
+          Ask the <b>Strategic Advisor</b> why the page turned when it did, and whether the rewrite is
+          worth it against everything else in the queue. Send it to <b>Content Studio</b> and the brief
+          arrives with the lost keywords, the SERP and the ranking competitors already attached.
+        </p>
+        <p class="lede">
+          Mark it applied and the Impact Tracker takes a baseline that day, then tells you whether the
+          rewrite recovered anything. Including when it didn't.
+        </p>
+      </div>
+      <p class="backlink reveal"><a href="/platform/analyzers/">All seven analyzers</a></p>
+    </div>
+  </section>
+
   <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
@@ -1289,22 +1327,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Ready for improved search visibility?</h2>
+        <h2 class="cta__title">Find out which pages are sliding.</h2>
         <p class="cta__sub">
-          One crawl, one set of data, and every room working from it. Set up for your site,
-          with our search team alongside you. We onboard the pilot in small cohorts.
+          Connect a site and the analyzers read it end to end, then hand back the short list.
         </p>
         <div class="cta__actions">
           <a href="/beta" class="btn btn--lg">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">→</span>
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
           </a>
         </div>
-        <p class="cta__note">No card, no obligation. Just early access as places open up.</p>
       </div>
     </div>
   </section>
 </main>
+
+<div class="stickycta">
+  <a href="/beta" class="btn">
+    Join the beta
+    <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+</div>
 
 <footer class="site-foot">
   <div class="container">
@@ -1385,14 +1428,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     setTimeout(function () { revealEls.forEach(function (el) { if (!el.classList.contains('is-in')) activate(el); }); }, 2600);
   })();
 </script>
-
-<div class="stickycta">
-  <a href="/beta" class="btn">
-    Sign up for beta
-    <span class="btn__arrow" aria-hidden="true">→</span>
-  </a>
-</div>
-
 
 
 <script>
