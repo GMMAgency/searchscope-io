@@ -988,6 +988,8 @@ strong, b { font-weight: 600; color: var(--ink); }
     .navmenu__sublink:hover .navmenu__label::before,
     .navmenu__sublink:focus-visible .navmenu__label::before { color: var(--ink); transform: translateX(2px); }
     .navmenu__sublink .navmenu__sub { color: var(--ink-faint); }
+    .navmenu__panel a.navmenu__sublink .navmenu__label { color: var(--ink); font-weight: 500; }
+    .navmenu__panel a.navmenu__sublink .navmenu__label::before { color: var(--ink-dim); }
     .navmenu__label { display: flex; align-items: center; }
     .navmenu__sub { font-size: 0.76em; line-height: 1.4; color: var(--ink-faint); opacity: 0.85; white-space: normal; padding-left: calc(var(--nav-arrow-w) + var(--nav-arrow-gap)); }
     .navmenu__soon b {
@@ -1340,10 +1342,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3 class="tabpanel__t">Cannibalization</h3>
           <p class="tabpanel__d">Two of your pages competing for the same query, with the impressions split between them. Searchscope pairs them up, shows the shared queries, the overlap and the clicks in play, then calls it: consolidate, differentiate, or keep both. URL dancing, where the results page keeps swapping which of your pages it shows, is flagged on its own.</p>
           <p class="tabpanel__go">
-            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+            <a href="/platform/analyzers/cannibalization/" class="btn btn--sm btn--ghost">
               Explore Cannibalization
-              <b>Coming soon</b>
-            </span>
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/cannibalization.webp" alt="The cannibalization analyzer in Searchscope"
                width="1400" height="788" loading="lazy" decoding="async">
@@ -1352,10 +1354,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3 class="tabpanel__t">Content decay</h3>
           <p class="tabpanel__d">Pages losing clicks against their own past, not against a competitor. Filter by decay type, see the keywords carrying the loss, and read each page by trajectory: worsening, improving or accelerating. Genuine seasonality is flagged rather than raised as a decline. Ask the <b>Strategic Advisor</b> why a page turned when it did, then rewrite it in <b>Content Studio</b> with the gaps already named.</p>
           <p class="tabpanel__go">
-            <span class="btn btn--sm btn--ghost btn--soon" aria-disabled="true">
+            <a href="/platform/analyzers/content-decay/" class="btn btn--sm btn--ghost">
               Explore Content Decay
-              <b>Coming soon</b>
-            </span>
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/content-decay.webp" alt="The content decay analyzer in Searchscope"
                width="1400" height="788" loading="lazy" decoding="async">
