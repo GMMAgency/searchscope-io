@@ -11,10 +11,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Searchscope for agencies · Know every account, prove the work, keep the client</title>
-<meta name="description" content="Searchscope reads every client account you run, every week, and names what's slipping before your client does: cannibalization, content decay, index bloat and schema, with the fix drafted. Book a demo.">
+<meta name="description" content="Searchscope reads every client account you run on a schedule, and names what's slipping before your client does: cannibalization, content decay, index bloat and schema, with the fix drafted. Book a demo.">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="Searchscope for agencies · Know every account, prove the work, keep the client">
-<meta property="og:description" content="Searchscope reads every client account you run, every week, and names what's slipping before your client does: cannibalization, content decay, index bloat and schema, with the fix drafted. Book a demo.">
+<meta property="og:description" content="Searchscope reads every client account you run on a schedule, and names what's slipping before your client does: cannibalization, content decay, index bloat and schema, with the fix drafted. Book a demo.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -687,6 +687,8 @@ strong, b { font-weight: 600; color: var(--ink); }
 
     .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
     .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hairline); transition: border-color var(--dur-fast) var(--ease-out); }
+    .modules dfn a:hover { border-color: var(--ink); }
     .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
     .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
 
@@ -709,6 +711,13 @@ strong, b { font-weight: 600; color: var(--ink); }
       outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
     }
     .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .field:has(input[required], textarea[required], select[required]) > span::after,
+    .field:has(input[required], textarea[required], select[required]) > .field__label::after {
+      content: '*';
+      margin-left: 0.25em;
+      color: var(--ink-faint);
+    }
+    .formreq { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin: 0 0 var(--space-m); }
     .formcard .btn { width: 100%; }
     .hp { position: absolute; left: -9999px; }
     .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
@@ -1123,7 +1132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Your competitors are auditing your clients' sites right now.
         </h1>
         <p class="lede reveal" style="--reveal-delay:130ms">
-          Searchscope reads every account you run, every week, and names what's slipping before your
+          Searchscope reads every account you run on a schedule, and names what's slipping before your
           client does. <b>Know every account. Prove the work. Keep the client.</b>
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:200ms">
@@ -1167,7 +1176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Step 02</p>
-          <h3 class="ucard__t">Every week, unprompted</h3>
+          <h3 class="ucard__t">On a schedule, unprompted</h3>
           <p class="ucard__d">The account nobody flagged gets the same analysis as the one that's shouting at you.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
@@ -1184,7 +1193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">02 · Deliver across every account</span>
-        <h2 class="sec__title">One pipeline. Every account. Every week.</h2>
+        <h2 class="sec__title">One pipeline. Every account. Every run.</h2>
         <p class="lede">
           Most agencies run deep analysis on the account that's complaining, and a monthly rankings
           export on everything else. Not because anyone thinks that's right, but because reading forty
@@ -1204,6 +1213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Index bloat</li>
         <li>Internal links</li>
         <li>Schema and structure</li>
+        <li>Opportunities</li>
       </ul>
     </div>
   </section>
@@ -1239,8 +1249,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           client you're looking at. No re-orientating, no second tab, no separate login per site.
         </p>
         <p class="lede">
-          Reports go out under your brand, on a schedule you set, written from the same live numbers
-          the platform runs on. The client sees your agency, not ours.
+          Reports go out on a schedule you set, written from the same live numbers the platform
+          runs on.
         </p>
       </div>
     </div>
@@ -1254,13 +1264,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="sec__title">The modules, plainly.</h2>
       </div>
       <ul class="modules reveal">
-        <li><dfn>Cannibalization</dfn><span>Two pages competing for one query, scored by what it's costing you.</span></li>
-        <li><dfn>Content decay</dfn><span>Pages losing ground before the drop shows up in a monthly report.</span></li>
-        <li><dfn>Cluster volatility</dfn><span>Topics moving underneath you, across the whole book at once.</span></li>
-        <li><dfn>Index bloat</dfn><span>What Google's spending its crawl on that you'd rather it didn't.</span></li>
-        <li><dfn>Internal links</dfn><span>The links that would actually move the pages that matter.</span></li>
-        <li><dfn>Schema and structure</dfn><span>Machine readability, checked rather than assumed.</span></li>
-        <li><dfn>Competitive gap</dfn><span>Demand you should own and currently don't.</span></li>
+        <li><dfn><a href="/platform/analyzers/cannibalization/">Cannibalization</a></dfn><span>Two pages competing for one query, scored by what it's costing you.</span></li>
+        <li><dfn><a href="/platform/analyzers/content-decay/">Content decay</a></dfn><span>Pages losing ground before the drop shows up in a monthly report.</span></li>
+        <li><dfn><a href="/platform/analyzers/cluster-volatility/">Cluster volatility</a></dfn><span>Whole topics moving underneath you, across every account at once.</span></li>
+        <li><dfn><a href="/platform/analyzers/index-bloat/">Index bloat</a></dfn><span>What Google's spending its crawl on that you'd rather it didn't.</span></li>
+        <li><dfn><a href="/platform/analyzers/internal-links/">Internal links</a></dfn><span>The links that would actually move the pages that matter.</span></li>
+        <li><dfn><a href="/platform/analyzers/schema/">Schema and structure</a></dfn><span>Machine readability, checked rather than assumed.</span></li>
+        <li><dfn><a href="/platform/analyzers/opportunities/">Opportunities</a></dfn><span>Striking distance positions, low click-through and content gaps, with the change that would win them.</span></li>
         <li><dfn>Brand and AI visibility</dfn><span>Whether AI answers mention you, or cite someone else.</span></li>
         <li><dfn>Reporting</dfn><span>Client-ready, exportable, on your schedule.</span></li>
       </ul>
@@ -1287,6 +1297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input type="hidden" name="form-name" value="agency-demo">
             <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
 
+            <p class="formreq"><span aria-hidden="true">*</span> Required</p>
             <label class="field">
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" required>
@@ -1296,17 +1307,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="email" name="email" autocomplete="email" required>
             </label>
             <label class="field">
-              <span>Agency name</span>
-              <input type="text" name="agency" autocomplete="organization" required>
-            </label>
-            <label class="field">
-              <span>An account you'd like to look at</span>
-              <input type="text" name="domain" placeholder="example.co.uk">
-              <small>Optional. Bring it to the call and we'll connect it together.</small>
-            </label>
-            <label class="field">
               <span>Number of sites you manage</span>
-              <select name="portfolio" required>
+              <select name="portfolio">
                 <option value="">Choose one</option>
                 <option>1 to 5</option>
                 <option>6 to 15</option>
@@ -1317,7 +1319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </label>
             <label class="field">
               <span>Your biggest search problem right now</span>
-              <textarea name="problem" required></textarea>
+              <textarea name="problem"></textarea>
             </label>
 
             <button type="submit" class="btn">

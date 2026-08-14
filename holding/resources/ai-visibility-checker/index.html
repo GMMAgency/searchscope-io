@@ -743,6 +743,13 @@ strong, b { font-weight: 600; color: var(--ink); }
       outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
     }
     .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .field:has(input[required], textarea[required], select[required]) > span::after,
+    .field:has(input[required], textarea[required], select[required]) > .field__label::after {
+      content: '*';
+      margin-left: 0.25em;
+      color: var(--ink-faint);
+    }
+    .formreq { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin: 0 0 var(--space-m); }
     .formcard .btn { width: 100%; }
     .hp { position: absolute; left: -9999px; }
     .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
@@ -1176,7 +1183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <h2>Start with your website.</h2>
               <label class="field">
                 <span>Your website</span>
-                <input type="text" name="website" id="site-url" placeholder="example.co.uk" required>
+                <input type="text" name="website" id="site-url" placeholder="example.co.uk">
               </label>
               <button type="button" class="btn" id="stage-go">
                 Continue
@@ -1194,6 +1201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <b id="stage-site-value"></b>
                 <button type="button" class="stage__back" id="stage-change">Change</button>
               </p>
+              <p class="formreq"><span aria-hidden="true">*</span> Required</p>
               <label class="field">
                 <span>Name</span>
                 <input type="text" name="name" autocomplete="name" required>
@@ -1204,7 +1212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </label>
               <label class="field">
                 <span>Brand name</span>
-                <input type="text" name="brand" autocomplete="organization" required>
+                <input type="text" name="brand" autocomplete="organization">
               </label>
               <button type="submit" class="btn">
                 Get your free report
