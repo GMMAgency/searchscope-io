@@ -2,18 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://searchscope.io/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/beta/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
-    <loc>https://searchscope.io/use-cases/agencies/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <loc>https://searchscope.io/platform/analyzers/</loc>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/resources/ai-visibility-checker/</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/use-cases/agencies/</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/cannibalization/</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/cluster-volatility/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/content-decay/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/index-bloat/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/internal-links/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/opportunities/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/platform/analyzers/schema/</loc>
+    <lastmod>2026-08-13</lastmod>
   </url>
 </urlset>
