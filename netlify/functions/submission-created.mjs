@@ -78,7 +78,14 @@ export default async (req) => {
     const attributes = {};
     for (const f of SAFE_FIELDS) if (data[f]) attributes[f] = String(data[f]);
 
-    const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+    /*
+     * The REST API takes snake_case. Only the Node SDK accepts firstName and
+     * lastName and converts them internally; sending camelCase to the raw
+     * endpoint is accepted with a 200 and the names are silently dropped.
+     * Custom values go in `properties`, and segment membership is an array in
+     * the body rather than a path parameter.
+     */
+    const res = await fetch('https://api.resend.com/contacts', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -86,15 +93,17 @@ export default async (req) => {
       },
       body: JSON.stringify({
         email,
-        firstName,
-        lastName,
+        first_name: firstName,
+        last_name: lastName,
         unsubscribed: !consented,
-        ...(Object.keys(attributes).length ? { attributes } : {}),
+        segments: [{ id: audienceId }],
+        ...(Object.keys(attributes).length ? { properties: attributes } : {}),
       }),
     });
 
     if (!res.ok) {
-      console.error(`submission-created: Resend returned ${res.status} for "${form}"`);
+      const detail = await res.text().catch(() => '');
+      console.error(`submission-created: Resend returned ${res.status} for "${form}" :: ${detail.slice(0, 300)}`);
     } else {
       console.log(`submission-created: added a contact to ${form} (marketing consent: ${consented})`);
     }
