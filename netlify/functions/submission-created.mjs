@@ -67,14 +67,36 @@ export default async (req) => {
       return new Response('ok', { status: 200 });
     }
 
-    const email = String(data.email || '').trim().toLowerCase();
+    const email = String(data.email || payload.email || '').trim().toLowerCase();
     if (!email) {
       console.error(`submission-created: no email on a "${form}" submission`);
       return new Response('ok', { status: 200 });
     }
 
+    /*
+     * Netlify promotes some field names (name, email, subject and friends) to
+     * the top level of the payload, and a field literally called "name" can
+     * end up there rather than in data. Read every plausible location instead
+     * of assuming one: a curl against Resend proved the API and the field
+     * names are correct, and the Netlify submission record proved the name was
+     * captured, so the only thing left in between was where we looked for it.
+     */
+    const rawName =
+      data.name ||
+      payload.name ||
+      [data.first_name, data.last_name].filter(Boolean).join(' ') ||
+      '';
+
+    /* Keys only, never values: these logs must not carry personal data. */
+    console.log(
+      `submission-created: form=${form} ` +
+      `payloadKeys=[${Object.keys(payload).join(',')}] ` +
+      `dataKeys=[${Object.keys(data).join(',')}] ` +
+      `nameResolved=${Boolean(rawName)}`
+    );
+
     const consented = marketingConsent(form, data);
-    const { firstName, lastName } = splitName(data.name);
+    const { firstName, lastName } = splitName(rawName);
     const attributes = {};
     for (const f of SAFE_FIELDS) if (data[f]) attributes[f] = String(data[f]);
 
