@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'analyzer',page_name:'index-bloat'});</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -1484,5 +1485,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
+
+<script>
+  /* Data layer: named events so the container never depends on CSS class names.
+     No personal data is pushed. Name, email, website, brand and the free-text
+     problem field are deliberately excluded; only the banded portfolio select
+     is safe to capture. */
+  (function () {
+    var dl = (window.dataLayer = window.dataLayer || []);
+
+    function ctaId(href) {
+      if (!href) return null;
+      if (href.indexOf('/beta') === 0) return 'beta';
+      if (href.indexOf('/use-cases/agencies') === 0) return 'demo';
+      if (href.indexOf('/resources/ai-visibility-checker') === 0) return 'checker';
+      if (href.indexOf('/platform/analyzers') === 0) return 'analyzers';
+      return null;
+    }
+
+    function ctaLocation(el) {
+      if (el.closest('.site-head')) return 'nav';
+      if (el.closest('.hero')) return 'hero';
+      if (el.closest('.cta')) return 'cta_block';
+      if (el.closest('.site-foot')) return 'footer';
+      return 'section';
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a.btn, a.navmenu__cta, a.site-head__cta');
+      if (a) {
+        var id = ctaId(a.getAttribute('href'));
+        if (id) dl.push({ event: 'cta_click', cta_id: id, cta_location: ctaLocation(a) });
+        return;
+      }
+      var go = e.target.closest && e.target.closest('#stage-go');
+      if (go) dl.push({ event: 'checker_step', step: 1, step_status: 'complete' });
+      var back = e.target.closest && e.target.closest('#stage-change');
+      if (back) dl.push({ event: 'checker_step', step: 1, step_status: 'changed' });
+    }, true);
+
+    /* Fires just before the POST. The thank-you pageview stays the conversion of
+       record: this push carries the segment, not the count. */
+    document.addEventListener('submit', function (e) {
+      var f = e.target;
+      if (!f || f.tagName !== 'FORM' || !f.getAttribute('name')) return;
+      var payload = { event: 'form_submit', form_name: f.getAttribute('name') };
+      var sel = f.querySelector('select[name="portfolio"]');
+      if (sel && sel.value) payload.sites_managed = sel.value;
+      dl.push(payload);
+    }, true);
+  })();
+</script>
 </body>
 </html>
