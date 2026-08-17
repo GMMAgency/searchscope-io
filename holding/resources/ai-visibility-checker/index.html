@@ -1215,6 +1215,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span>Brand name</span>
                 <input type="text" name="brand" autocomplete="organization">
               </label>
+              <label class="optin">
+                <input type="checkbox" name="marketing_optin" value="yes">
+                <span>Send me occasional notes on AI visibility. Unsubscribe any time.</span>
+              </label>
               <button type="submit" class="btn">
                 Get your free report
                 <span class="btn__arrow" aria-hidden="true">&#8594;</span>
@@ -1432,7 +1436,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  <style>.reveal { opacity: 1 !important; transform: none !important; }    .optin { display: flex; gap: 0.65rem; align-items: flex-start; margin: 0 0 var(--space-s); cursor: pointer; }
+    .optin input { flex: none; margin: 0.15rem 0 0; width: 1rem; height: 1rem; accent-color: var(--ink); }
+    .optin span { font-size: var(--step--1); line-height: 1.55; color: var(--ink-dim); }
+</style>
 </noscript>
 
 <script>

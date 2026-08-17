@@ -1,0 +1,106 @@
+/**
+ * Netlify fires this automatically on every verified form submission.
+ * It adds the person to a Resend audience; a Resend Automation enrols them
+ * from there.
+ *
+ * Two rules this file must never break:
+ *
+ * 1. NEVER FAIL THE SUBMISSION. Netlify has already stored the submission by
+ *    the time this runs, and the visitor has already seen the thank-you page.
+ *    If Resend is down, the lead is still safe in the Netlify dashboard, so we
+ *    log and return 200 rather than throwing.
+ *
+ * 2. NEVER SEND MORE THAN THE PERSON EXPECTS. Only the fields listed in
+ *    SAFE_FIELDS travel. The free-text problem field and the visitor's own
+ *    domain stay in Netlify.
+ *
+ * Environment variables required (set in Netlify, not in this repo):
+ *   RESEND_API_KEY
+ *   RESEND_AUDIENCE_BETA
+ *   RESEND_AUDIENCE_DEMO
+ *   RESEND_AUDIENCE_CHECKER
+ */
+
+const AUDIENCE_BY_FORM = {
+  'beta': 'RESEND_AUDIENCE_BETA',
+  'agency-demo': 'RESEND_AUDIENCE_DEMO',
+  'ai-visibility-check': 'RESEND_AUDIENCE_CHECKER',
+};
+
+/* Everything else in the payload is deliberately dropped. */
+const SAFE_FIELDS = ['portfolio'];
+
+/*
+ * The checker asks for one report. A nurture sequence is not what that person
+ * requested, so it is gated on an explicit unticked checkbox. Absent box means
+ * absent consent: the contact is created unsubscribed, so Resend will deliver
+ * the report and nothing else.
+ */
+function marketingConsent(form, data) {
+  if (form !== 'ai-visibility-check') return true;
+  return data.marketing_optin === 'yes';
+}
+
+function splitName(full) {
+  const parts = String(full || '').trim().split(/\s+/);
+  if (!parts[0]) return { firstName: '', lastName: '' };
+  return { firstName: parts[0], lastName: parts.slice(1).join(' ') };
+}
+
+export default async (req) => {
+  try {
+    const body = await req.json();
+    const payload = body?.payload || {};
+    const form = payload.form_name;
+    const data = payload.data || {};
+
+    const audienceEnv = AUDIENCE_BY_FORM[form];
+    if (!audienceEnv) {
+      console.log(`submission-created: no audience mapped for form "${form}", skipping`);
+      return new Response('ok', { status: 200 });
+    }
+
+    const apiKey = process.env.RESEND_API_KEY;
+    const audienceId = process.env[audienceEnv];
+    if (!apiKey || !audienceId) {
+      console.error(`submission-created: missing RESEND_API_KEY or ${audienceEnv}`);
+      return new Response('ok', { status: 200 });
+    }
+
+    const email = String(data.email || '').trim().toLowerCase();
+    if (!email) {
+      console.error(`submission-created: no email on a "${form}" submission`);
+      return new Response('ok', { status: 200 });
+    }
+
+    const consented = marketingConsent(form, data);
+    const { firstName, lastName } = splitName(data.name);
+    const attributes = {};
+    for (const f of SAFE_FIELDS) if (data[f]) attributes[f] = String(data[f]);
+
+    const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        firstName,
+        lastName,
+        unsubscribed: !consented,
+        ...(Object.keys(attributes).length ? { attributes } : {}),
+      }),
+    });
+
+    if (!res.ok) {
+      console.error(`submission-created: Resend returned ${res.status} for "${form}"`);
+    } else {
+      console.log(`submission-created: added a contact to ${form} (marketing consent: ${consented})`);
+    }
+  } catch (err) {
+    console.error('submission-created failed:', err?.message || err);
+  }
+
+  return new Response('ok', { status: 200 });
+};
