@@ -758,7 +758,7 @@ strong, b { font-weight: 600; color: var(--ink); }
     .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
     .tab[aria-selected="true"] i { color: var(--ink-dim); }
     .tabpanel[hidden] { display: none; }
-    .tabpanel__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__shot { display: block; width: 100%; max-width: 64ch; margin: var(--space-l) 0 0; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
     .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
     .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
     .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
@@ -1128,10 +1128,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Workspace Analyzers</span>
                 <span class="navmenu__sub">Cannibalization, Content Decay, Cluster Volatility and more</span>
               </a>
-              <span class="navmenu__soon navmenu__soon--sub">
-                <span class="navmenu__label">Search Intelligence <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/platform/search-intelligence/">
+                <span class="navmenu__label">Search Intelligence</span>
                 <span class="navmenu__sub">Competitive Landscape, Demand and Trends, Strategic Advisor and more</span>
-              </span>
+              </a>
               <span class="navmenu__soon navmenu__soon--sub">
                 <span class="navmenu__label">AI and Brand Intelligence <b>Coming soon</b></span>
                 <span class="navmenu__sub">AI Visibility, Citations, PR &amp; Mentions, the PR Strategist and more</span>
@@ -1216,7 +1216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <span class="eyebrow reveal">Platform</span>
+        <span class="eyebrow reveal">Platform &middot; Workspace Analyzers</span>
         <h1 class="hero__title reveal" style="--reveal-delay:60ms">
           Seven analyzers. One queue you can finish.
         </h1>
@@ -1316,7 +1316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><b>Create brief</b><span>Sends the finding into Content Studio pre-filled, with the SERP and the ranking competitors pulled in beside it.</span></li>
         <li><b>Ask the Strategic Advisor</b><span>Opens the advisor on that finding, already holding your crawl data and analyzer findings, your search data, competitive landscape and unique business context.</span></li>
         <li><b>The upside, in clicks</b><span>Findings carry potential clicks and an impact grade, so the queue is ordered by what it's worth rather than by how loud it is.</span></li>
-        <li><b>Seasonality, separated</b><span>A pattern that repeats every year is labelled seasonal and can be hidden, so a normal dip isn't treated as a problem.</span></li>
+        <li><b>Seasonality, separated</b><span>A pattern that repeats every year is labeled seasonal and can be hidden, so a normal dip isn't treated as a problem.</span></li>
         <li><b>Applied or ignored</b><span>Mark it done and it leaves the queue. The archive keeps what you fixed and when.</span></li>
       </ul>
     </div>
@@ -1349,7 +1349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/cannibalization.webp" alt="The cannibalization analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-content-decay" aria-labelledby="tab-content-decay" hidden>
           <h3 class="tabpanel__t">Content decay</h3>
@@ -1361,7 +1361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/content-decay.webp" alt="The content decay analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-opportunities" aria-labelledby="tab-opportunities" hidden>
           <h3 class="tabpanel__t">Opportunities</h3>
@@ -1373,7 +1373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/opportunities.webp" alt="The opportunities analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-cluster-volatility" aria-labelledby="tab-cluster-volatility" hidden>
           <h3 class="tabpanel__t">Cluster volatility</h3>
@@ -1385,7 +1385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/cluster-volatility.webp" alt="The cluster volatility analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-index-bloat" aria-labelledby="tab-index-bloat" hidden>
           <h3 class="tabpanel__t">Index bloat</h3>
@@ -1397,7 +1397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/index-bloat.webp" alt="The index bloat analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-internal-links" aria-labelledby="tab-internal-links" hidden>
           <h3 class="tabpanel__t">Internal links</h3>
@@ -1409,7 +1409,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/internal-links.webp" alt="The internal links analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-schema" aria-labelledby="tab-schema" hidden>
           <h3 class="tabpanel__t">Schema</h3>
@@ -1421,7 +1421,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </p>
           <img class="tabpanel__shot" src="/brand/analyzers/schema.webp" alt="The schema analyzer in Searchscope"
-               width="1400" height="788" loading="lazy" decoding="async">
+               width="1400" height="877" loading="lazy" decoding="async">
         </div>
         </div>
       </div>
