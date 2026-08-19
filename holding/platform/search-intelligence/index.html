@@ -758,7 +758,7 @@ strong, b { font-weight: 600; color: var(--ink); }
     .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
     .tab[aria-selected="true"] i { color: var(--ink-dim); }
     .tabpanel[hidden] { display: none; }
-    .tabpanel__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__shot { display: block; width: 100%; max-width: 64ch; margin: var(--space-l) 0 0; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
     .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
     .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
     .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
@@ -1334,7 +1334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tabpanels">
         <div class="tabpanel" role="tabpanel" id="panel-command-center" aria-labelledby="tab-command-center" hidden>
           <h3 class="tabpanel__t">Command Center</h3>
-          <p class="tabpanel__d">All of your search data in one report, rather than four exports and a spreadsheet. Trend lines and headline numbers, the queries and pages tables, and a drilldown from any landing page into the queries that reached it. Brand and non-brand are split, device and country filter, and every view compares against the period before it. The Impact Tracking tab draws the changes you have applied onto the traffic curve, so you can see whether the work moved anything.</p>
+          <p class="tabpanel__d">All of your search data in one report, rather than four exports and a spreadsheet. Trend lines and headline numbers, the queries and pages tables, and a drilldown from any landing page into the queries that reached it.</p><p class="tabpanel__d">Brand and non-brand are split, device and country filter, and every view compares against the period before it.</p><p class="tabpanel__d">The Impact Tracking tab draws the changes you have applied onto the traffic curve, so you can see whether the work moved anything.</p>
           <img class="tabpanel__shot" src="/brand/intelligence/command-center.webp" alt="The Command Center in Searchscope: clicks, impressions, CTR and average position against the previous period, with a performance trend and a brand versus non-brand split" width="1400" height="788" loading="lazy" decoding="async">
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-competitive-landscape" aria-labelledby="tab-competitive-landscape" hidden>
