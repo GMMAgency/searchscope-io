@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'alpha',page_name:'alpha'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'platform_hub',page_name:'search_intelligence'});</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,11 +11,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Searchscope · Alpha program overview</title>
-<meta name="description" content="What Searchscope is, what it does with your search data, and what joining the alpha involves.">
-<meta name="robots" content="noindex,nofollow">
-<meta property="og:title" content="Searchscope · Alpha program overview">
-<meta property="og:description" content="What Searchscope is, what it does with your search data, and what joining the alpha involves.">
+<title>Search Intelligence · Searchscope</title>
+<meta name="description" content="Command Centre, Competitive Landscape, Demand and Trends and the Strategic Advisor: your search history next to the competitors ranking beside you and the demand moving underneath you.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Search Intelligence &middot; Searchscope">
+<meta property="og:description" content="Command Centre, Competitive Landscape, Demand and Trends and the Strategic Advisor: your search history next to the competitors ranking beside you and the demand moving underneath you.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -717,28 +717,68 @@ strong, b { font-weight: 600; color: var(--ink); }
     @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
     @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
 
-    /* ---- analyzer child page ---- */
+    /* ---- hero mock: the judge at work ---- */
+    .jq { list-style: none; margin: var(--space-s) 0 0; padding: 0; }
+    .jrow { display: grid; grid-template-columns: 10px 1fr auto; gap: 0.7rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--hairline); opacity: 0; }
+    .jrow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .jrow .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); display: inline-block; position: relative; top: -1px; }
+    .jrow.crit .d { background: var(--sev-rose-ink); }
+    .jrow.warn .d { background: var(--sev-amber-ink); }
+    .jrow.win .d { background: var(--sev-emerald-ink); }
+    .jrow h4 { margin: 0 0 1px; font-size: var(--step--1); font-weight: 560; letter-spacing: -0.01em; line-height: 1.3; }
+    .jrow .m { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .jrow .v { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .jrow--cut .v { color: var(--ink-faint); }
+    .jq__foot { display: flex; justify-content: space-between; gap: 0.8rem; margin: var(--space-s) 0 0; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+
+    @keyframes jrow-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes jrow-cut { to { opacity: 0.3; } }
+    .is-in .jrow { animation: jrow-in 0.45s var(--ease-out) forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s); }
+    .is-in .jrow--cut { animation: jrow-in 0.45s var(--ease-out) forwards, jrow-cut 0.5s ease forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s), calc(1.6s + var(--i, 0) * 0.06s); }
+    @media (prefers-reduced-motion: reduce) {
+      .jrow { opacity: 1; animation: none !important; }
+      .is-in .jrow--cut { opacity: 0.3; }
+    }
+
+    /* ---- analyzer hub ---- */
     .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
-    .hero__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
-    .crumb { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); margin: 0 0 var(--space-s); }
-    .crumb a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
-    .crumb a:hover { color: var(--ink); border-color: var(--ink); }
-    .calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); margin-top: var(--space-xl); }
-    .calls--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    @media (max-width: 1080px) { .calls--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    .call { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
-    .call__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.12em; word-spacing: -0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
-    .call__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-3xs) 0 0; }
-    .call__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
-    .snip { font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.75; background: var(--surface-panel); border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); margin: var(--space-l) 0 0; overflow-x: auto; }
-    .snip b { color: var(--ink); font-weight: 500; }
-    .snip span { color: var(--ink-faint); }
-    .snip em { font-style: normal; color: var(--sev-rose-ink); }
-    .backlink { margin: var(--space-xl) 0 0; }
+    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } .hero .hero__visual { order: 0; } }
+
+    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+    .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }
+    .tablist { display: flex; flex-direction: column; border-left: 1px solid var(--hairline); }
+    .tab { display: flex; align-items: baseline; gap: 0.8rem; text-align: left; width: 100%; background: none; border: 0; border-left: 2px solid transparent; margin-left: -1px; padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+    .tab i { font-style: normal; font-size: var(--step--2); color: var(--ink-faint); }
+    .tab:hover { color: var(--ink-dim); }
+    .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
+    .tab[aria-selected="true"] i { color: var(--ink-dim); }
+    .tabpanel[hidden] { display: none; }
+    .tabpanel__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
+    .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
+    .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
+    .btn--soon { color: var(--ink-faint); border-color: var(--hairline); cursor: default; }
+    .btn--soon:hover { background: transparent; border-color: var(--hairline); box-shadow: none; transform: none; }
+    .btn--soon b { margin-left: 0.15rem; font-weight: 500; font-size: 0.62em; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.25em 0.55em; }
     .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
     .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
-    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } }
-    @media (max-width: 900px) { .calls { grid-template-columns: 1fr; } }
+
+    @media (max-width: 1080px) {
+      .anat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .tabs { grid-template-columns: 1fr; gap: var(--space-m); }
+      .tablist { flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--hairline); }
+      .tab { width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; margin-left: 0; }
+      .tab[aria-selected="true"] { border-left-color: transparent; border-bottom-color: var(--ink); }
+      .tab i { display: none; }
+    }
+    @media (max-width: 640px) { .anat { grid-template-columns: 1fr; } }
 
     .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
     .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
@@ -1088,7 +1128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Workspace Analyzers</span>
                 <span class="navmenu__sub">Cannibalization, Content Decay, Cluster Volatility and more</span>
               </a>
-              <a class="navmenu__sublink" href="/platform/search-intelligence/">
+              <a class="navmenu__sublink" href="/platform/search-intelligence/" aria-current="page">
                 <span class="navmenu__label">Search Intelligence</span>
                 <span class="navmenu__sub">Competitive Landscape, Demand and Trends, Strategic Advisor and more</span>
               </a>
@@ -1171,26 +1211,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <p class="crumb">Alpha program</p>
-        <h1 class="hero__title reveal">
-          Your whole search operation, reading from one source.
+        <span class="eyebrow reveal">Platform</span>
+        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+          Four tools. One view of the market you sit in.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">
-          Searchscope joins your Search Console history to a full crawl of your site, then runs seven
-          analyzers, AI visibility across six engines, competitor and demand data, and PR monitoring
-          over the same dataset.
+        <p class="lede reveal" style="--reveal-delay:130ms">
+          Your own numbers can only tell you what happened. They cannot tell you what a competitor is
+          taking, what the market started asking for, or which of the two matters more this quarter.
         </p>
-        <p class="lede reveal" style="--reveal-delay:140ms">
-          <b>Most search teams spend more time interpreting data than fixing anything.</b> This is built
-          for in-house teams, SEO specialists and agencies who want the decision made faster, with the
-          evidence still attached.
+        <p class="lede reveal" style="--reveal-delay:170ms">
+          <b>Search Intelligence puts your search data next to the market around it.</b> Your full
+          history, the domains ranking beside you, the demand moving underneath you, and an advisor
+          that can read all three when you ask it something.
         </p>
+        <div class="hero__actions reveal" style="--reveal-delay:220ms">
+          <a href="/beta" class="btn">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
       </div>
 
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
@@ -1204,49 +1248,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="appwin">
             <div class="awbar">
               <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="awurl">app.searchscope.io/workspaces</span>
-              <span class="awtab">This week</span>
+              <span class="awurl">app.searchscope.io/intelligence</span>
+              <span class="awtab">Last 3 months</span>
             </div>
             <div class="awbody">
               <div class="awhead">
                 <span>
-                  <span class="awtitle">Analyzer run</span>
-                  <span class="awsub">Seven analyzers, judged before you see them</span>
+                  <span class="awtitle">Demand and capture</span>
+                  <span class="awsub">Your clusters against what the market is asking for</span>
                 </span>
               </div>
               <div class="awstats c3">
-                <div class="awstat"><span class="v cnt" data-n="412">412</span><span class="l">Found</span></div>
-                <div class="awstat"><span class="v cnt" data-n="389">389</span><span class="l">Suppressed</span></div>
-                <div class="awstat"><span class="v cnt" data-n="23">23</span><span class="l">Shown</span></div>
+                <div class="awstat"><span class="v cnt" data-n="42">42</span><span class="l">Clusters</span></div>
+                <div class="awstat"><span class="v cnt" data-n="12">12</span><span class="l">Losing share</span></div>
+                <div class="awstat"><span class="v cnt" data-n="5">5</span><span class="l">Competitors</span></div>
               </div>
               <ul class="jq">
           <li class="jrow crit" style="--i:0">
             <span class="d" aria-hidden="true"></span>
-            <span><h4>Cannibalization</h4><span class="m">/guides/best-hiking-boots vs /blog/hiking-boots-review</span></span>
-            <span class="v">+170 clicks</span>
+            <span><h4>Losing share</h4><span class="m">demand rising, your impressions falling</span></span>
+            <span class="v">+31% demand</span>
           </li>
           <li class="jrow warn" style="--i:1">
             <span class="d" aria-hidden="true"></span>
-            <span><h4>Content decay</h4><span class="m">/blog/best-campsites-uk</span></span>
-            <span class="v">382 clicks lost</span>
+            <span><h4>Keyword gap</h4><span class="m">competitor ranks, you do not</span></span>
+            <span class="v">24 missing</span>
           </li>
-          <li class="jrow  jrow--cut" style="--i:2">
+          <li class="jrow win" style="--i:2">
             <span class="d" aria-hidden="true"></span>
-            <span><h4>Thin page</h4><span class="m">/tags/waterproof</span></span>
-            <span class="v">suppressed</span>
+            <span><h4>Capture rate</h4><span class="m">after school clubs</span></span>
+            <span class="v">38% captured</span>
           </li>
-          <li class="jrow win" style="--i:3">
+          <li class="jrow warn" style="--i:3">
             <span class="d" aria-hidden="true"></span>
-            <span><h4>Schema</h4><span class="m">FAQ missing on /guides/camping-checklist</span></span>
-            <span class="v">+94 clicks</span>
+            <span><h4>Two pages competing</h4><span class="m">/nanny-costs and /how-much-is-a-nanny</span></span>
+            <span class="v">20 queries</span>
           </li>
           <li class="jrow  jrow--cut" style="--i:4">
             <span class="d" aria-hidden="true"></span>
-            <span><h4>Duplicate title</h4><span class="m">/blog/page/7</span></span>
-            <span class="v">suppressed</span>
+            <span><h4>Already strong</h4><span class="m">childminder vs nanny</span></span>
+            <span class="v">hold</span>
           </li>
               </ul>
-              <p class="jq__foot"><span>Ranked by potential clicks</span><span>23 of 412</span></p>
+              <p class="jq__foot"><span>Ranked by opportunity</span><span>12 of 42</span></p>
             </div>
           </div>
         </div>
@@ -1258,60 +1302,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">01 &#183; Your onboarding</span>
-        <h2 class="sec__title">Roughly twenty minutes, most of it unattended.</h2>
+        <span class="eyebrow">What runs underneath</span>
+        <h2 class="sec__title">Four tools, one dataset.</h2>
+        <p class="lede">
+          They all read the same place: your search history warehoused from the day you connect, the
+          query clusters the analyzers already built, your crawl, and the business context you set up
+          front. Nothing here asks you to paste in a keyword list.
+        </p>
       </div>
-      <div class="calls calls--four reveal">
-        <article class="call">
-          <p class="call__k">Step 01</p>
-          <h3 class="call__t">Connect Search Console</h3>
-          <p class="call__d">Read-only access to the property you want analyzed. Nothing is written back to your account, ever.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Step 02</p>
-          <h3 class="call__t">Set up the workspace</h3>
-          <p class="call__d">A short pass through the initial settings. None of it is final, and all of it can be changed later.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Step 03</p>
-          <h3 class="call__t">The crawl runs</h3>
-          <p class="call__d">The crawl and the analyzers work in the background while you take the guided tour, add competitors, or set up your AI visibility prompts.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Step 04</p>
-          <h3 class="call__t">Workspaces fill up</h3>
-          <p class="call__d">Findings appear as each analyzer finishes, usually inside twenty minutes. Come back and the queue is waiting.</p>
-        </article>
-      </div>
+      <ul class="anat reveal">
+        <li><b>History past the cut-off</b><span>Search Console keeps sixteen months and then deletes. Searchscope warehouses from the day you connect, so once your own archive outruns that window, year on year keeps working after Google has dropped it.</span></li>
+        <li><b>Clusters, not keyword lists</b><span>Queries arrive grouped into the same topic clusters the analyzers work from, so a finding and a demand shift are talking about the same thing.</span></li>
+        <li><b>Brand split out</b><span>Brand and non-brand separated, so a good month for brand search does not read as growth you earned.</span></li>
+        <li><b>Comparison built in</b><span>In the Command Centre, any period against the one before it or the same period last year, rather than a single number with no context.</span></li>
+        <li><b>Estimates kept apart</b><span>We do not put an estimated competitor traffic figure next to your real clicks. Keyword coverage and search volumes come from third parties and are labelled that way.</span></li>
+        <li><b>Filters you can keep</b><span>Device, country and query filters save, so the view you actually use is one click away rather than rebuilt every time.</span></li>
+        <li><b>Every view hands off</b><span>Anything worth acting on goes straight to the Strategic Advisor for a second read, or into Content Studio as a brief.</span></li>
+        <li><b>Applied work, drawn on</b><span>Changes you have marked applied appear on the traffic curve, so a movement can be read against the work rather than assumed.</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="section bg-grid">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">02 &#183; The pipeline</span>
-        <h2 class="sec__title">One dataset, read seven ways.</h2>
-        <p class="lede">
-          Searchscope pulls your Search Console history and crawls your site. Seven analyzers read both
-          and return findings that say what is wrong, why it matters, and what to do about it.
-        </p>
+        <span class="eyebrow">The four</span>
+        <h2 class="sec__title">What each one does.</h2>
       </div>
-      <div class="cols3">
-        <article class="ucard reveal">
-          <p class="ucard__k">Input 01</p>
-          <h3 class="ucard__t">Your search history</h3>
-          <p class="ucard__d">Your Search Console property, connected read-only. Every query, page, click and position, day by day, so the analyzers read your actual history rather than a sample of it.</p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:80ms">
-          <p class="ucard__k">Input 02</p>
-          <h3 class="ucard__t">A full crawl</h3>
-          <p class="ucard__d">Pages, links, images, schema and content, captured on our own crawler rather than bought from a third party.</p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:160ms">
-          <p class="ucard__k">Input 03</p>
-          <h3 class="ucard__t">Your business context</h3>
-          <p class="ucard__d">Optional, and worth the ten minutes: product, audience, locations, tone of voice and naming conventions all feed the outputs.</p>
-        </article>
+      <div class="tabs reveal">
+        <div class="tablist" role="tablist" aria-orientation="vertical" aria-label="The four Search Intelligence tools">
+          <button type="button" class="tab" role="tab" id="tab-command-centre" aria-controls="panel-command-centre" aria-selected="false" tabindex="-1"><i>01</i>Command Centre</button>
+          <button type="button" class="tab" role="tab" id="tab-competitive-landscape" aria-controls="panel-competitive-landscape" aria-selected="false" tabindex="-1"><i>02</i>Competitive Landscape</button>
+          <button type="button" class="tab" role="tab" id="tab-demand-trends" aria-controls="panel-demand-trends" aria-selected="false" tabindex="-1"><i>03</i>Demand and Trends</button>
+          <button type="button" class="tab" role="tab" id="tab-strategic-advisor" aria-controls="panel-strategic-advisor" aria-selected="false" tabindex="-1"><i>04</i>Strategic Advisor</button>
+        </div>
+        <div class="tabpanels">
+        <div class="tabpanel" role="tabpanel" id="panel-command-centre" aria-labelledby="tab-command-centre" hidden>
+          <h3 class="tabpanel__t">Command Centre</h3>
+          <p class="tabpanel__d">All of your search data in one report, rather than four exports and a spreadsheet. Trend lines and headline numbers, the queries and pages tables, and a drilldown from any landing page into the queries that reached it. Brand and non-brand are split, device and country filter, and every view compares against the period before it. The impact tracking tab draws the changes you have applied onto the traffic curve, so you can see whether the work moved anything.</p>
+          <img class="tabpanel__shot" src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="The Command Centre in Searchscope: headline search numbers with a trend chart"
+               width="1100" height="759" loading="lazy" decoding="async">
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-competitive-landscape" aria-labelledby="tab-competitive-landscape" hidden>
+          <h3 class="tabpanel__t">Competitive Landscape</h3>
+          <p class="tabpanel__d">Track the domains ranking beside you, then see the keywords they hold and you do not. Every keyword is sorted into missing, weak, strong and untapped, grouped by topic and scored for opportunity, with a CSV out and a handoff into <b>Content Studio</b> or the <b>Strategic Advisor</b>. Refreshes are yours to run when you want them, or you can arm a monthly sync. Competitor figures are third-party estimates and are labelled as such, and estimated traffic is deliberately kept away from your own numbers, because an estimate sitting next to a real click count gets read as one.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-demand-trends" aria-labelledby="tab-demand-trends" hidden>
+          <h3 class="tabpanel__t">Demand and Trends</h3>
+          <p class="tabpanel__d">Search volume from outside your account, rolled onto the clusters you already rank for. Each cluster carries its monthly demand, the direction of travel across the last quarter, and your capture rate: how much of that demand actually turns into your clicks. The gap between those two is the ranking. It also names the page carrying the cluster, the pages competing with it, and the queries you are cannibalising. Demand data is monthly, so this reads quarter by quarter rather than day by day, and it switches on once your first analysis has built your clusters.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="panel-strategic-advisor" aria-labelledby="tab-strategic-advisor" hidden>
+          <h3 class="tabpanel__t">Strategic Advisor</h3>
+          <p class="tabpanel__d">An advisor that already holds your data. Ask it why a cluster turned, what a rival is doing differently, or what to do first next quarter, and it can pull your search history, your analyzer findings, the competitive gap, demand, AI visibility and PR activity, showing you the steps it took to get there. It can search the open web when the answer is not in your data. Set objectives and it tracks progress against them, and anything worth writing goes into <b>Content Studio</b> as a brief.</p>
+        </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1319,136 +1363,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">03 &#183; Inside the platform</span>
-        <h2 class="sec__title">What you'll find when you log in.</h2>
+        <span class="eyebrow">Where the numbers come from</span>
+        <h2 class="sec__title">Two kinds of data, and we never mix them up.</h2>
         <p class="lede">
-          Four areas. The first is where the work gets done, the middle two are where you decide what
-          the work should be, and the last is how it leaves the building.
+          Half of this is measured and half of it is bought in. Tools that blur the two produce
+          confident charts nobody can act on, so Searchscope keeps them apart and says which is which.
         </p>
       </div>
-      <div class="calls calls--two reveal">
-        <article class="call">
-          <h3 class="call__t">Workspaces</h3>
-          <p class="call__d">
-            Seven analyzers, each with its own workspace and its own queue. Every finding carries the
-            evidence behind it, an estimate of what it's worth, and a recommendation you can generate
-            on the ones you care about rather than paying to write up all of them.
-          </p>
-        </article>
-        <article class="call">
-          <h3 class="call__t">Search Intelligence</h3>
-          <p class="call__d">
-            Your own performance, the market around it, and somewhere to think out loud. The Command
-            Center shows what moved and what needs attention. Competitive Landscape shows what rivals
-            rank for that you don't. Demand and Trends shows real volume per topic and whether it's
-            climbing. The Strategic Advisor answers with your numbers and shows every data pull it made.
-          </p>
-        </article>
-        <article class="call">
-          <h3 class="call__t">AI brand visibility</h3>
-          <p class="call__d">
-            Whether the answer engines mention you, cite you, or name someone else, tracked over time
-            with every answer stored word for word rather than reduced to a score. Campaign Radar
-            watches competitors for the backlink bursts that mark a PR campaign, shows what asset
-            earned them and who linked, and the PR Strategist works out the counter.
-          </p>
-        </article>
-        <article class="call">
-          <h3 class="call__t">Instruments</h3>
-          <p class="call__d">
-            Where a decision turns into something you can send. Content Studio takes a finding or a
-            plain description, reads the live results page for your country, and returns a brief or a
-            draft. Reporting builds from the same numbers the platform runs on, shaped for whoever is
-            reading. Worksheets can be shared straight with a client.
-          </p>
-        </article>
-      </div>
+      <ul class="anat anat--two reveal">
+        <li><b>Yours, measured</b><span>Clicks, impressions, position and the pages and queries behind them. Straight from Search Console, daily, stored from the day you connect.</span></li>
+        <li><b>Theirs, estimated</b><span>Competitor keyword coverage and search volumes come from third-party sources. Useful for direction and scale, wrong if you read them as counts.</span></li>
+        <li><b>Refreshed, not streamed</b><span>Market data is pulled on a schedule rather than continuously, and every view shows when it was last refreshed instead of implying it is live.</span></li>
+        <li><b>Read together</b><span>The value is in the join: your measured position against their estimated coverage, and both against demand that neither of you controls.</span></li>
+      </ul>
     </div>
   </section>
 
-  <section class="section bg-grid">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">04 &#183; Follow-through</span>
-        <h2 class="sec__title">It tells you whether the fix worked.</h2>
-        <p class="lede">
-          Mark a finding as applied and Searchscope stores the numbers as they were that day. It
-          checks them again later and tells you what moved, including when nothing did. Most tools
-          stop at the finding. This is the half that tells you whether any of it was worth doing.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">05 &#183; The judge</span>
-        <h2 class="sec__title">Fewer findings, on purpose.</h2>
-        <p class="lede">
-          Every audit tool you've used returns hundreds of issues. Nobody finishes the list. When
-          everything is critical, nothing is.
-        </p>
-        <p class="lede">
-          <b>A judge reviews every finding before you see one of them.</b> It reads the evidence behind
-          each one and decides whether it has earned your attention. What's left is short enough to
-          finish.
-        </p>
-      </div>
-
-      <div class="snip reveal">
-        <span>cannibalization</span> <b>one run</b><br>
-        <br>
-        &nbsp;&nbsp;<span>found</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>412</b>&nbsp;&nbsp;&nbsp;<span>query and page pairs worth checking</span><br>
-        &nbsp;&nbsp;<span>suppressed</span>&nbsp;<b>389</b><br>
-        &nbsp;&nbsp;<span>shown</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>23</b><br>
-        <br>
-        &nbsp;&nbsp;/shop/boots&nbsp;&#183;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>set aside</em>&nbsp;&nbsp;<span>brand navigation, not a conflict</span><br>
-        &nbsp;&nbsp;/blog/sock-guide&nbsp;&#183;&nbsp;/blog/socks&nbsp;&nbsp;&nbsp;<em>set aside</em>&nbsp;&nbsp;<span>42 impressions, below the floor</span><br>
-        &nbsp;&nbsp;/guides/boot-care&nbsp;&#183;&nbsp;/shop/care&nbsp;&nbsp;&nbsp;&nbsp;<em>set aside</em>&nbsp;&nbsp;<span>intents differ, no overlap in clicks</span><br>
-        &nbsp;&nbsp;/guides/hiking-boots&nbsp;&#183;&nbsp;/blog/boots&nbsp;&nbsp;<b>shown</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>64% overlap, 170 clicks in play</span><br>
-        <br>
-        <em>Illustrative. The ones that did not survive are still on file, with the reason.</em>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-grid">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">06 &#183; What we're trying to learn</span>
-        <h2 class="sec__title">Four questions the alpha has to answer.</h2>
-        <p class="lede">
-          We are not looking for polite. These are the things we genuinely don't know yet, and your
-          use of it is the only way to find out.
-        </p>
-      </div>
-      <div class="calls calls--four reveal">
-        <article class="call">
-          <p class="call__k">Question 01</p>
-          <h3 class="call__t">Is it useful?</h3>
-          <p class="call__d">Does the analysis tell you something about your search data, your site or your competitors that you did not already know.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Question 02</p>
-          <h3 class="call__t">Is it right?</h3>
-          <p class="call__d">Are the findings accurate, and are the recommendations specific enough that you would actually act on them.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Question 03</p>
-          <h3 class="call__t">Does it move anything?</h3>
-          <p class="call__d">When you apply a change it suggested, does the number move. This is the one we care about most, and the one nobody in this category measures.</p>
-        </article>
-        <article class="call">
-          <p class="call__k">Question 04</p>
-          <h3 class="call__t">Where is it thin?</h3>
-          <p class="call__d">Which parts you keep going back to, and which you tried once and never opened again. The second list is more useful to us than the first.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section cta bg-grid" style="border-top:0">
+  <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
         <span class="ticks" aria-hidden="true">
@@ -1457,21 +1388,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <span class="eyebrow">How to tell us</span>
-        <h2 class="cta__title">There's a feedback button on every screen.</h2>
+        <span class="eyebrow">Join the beta program</span>
+        <h2 class="cta__title">Find out where you actually stand.</h2>
         <p class="cta__sub">
-          Tag it as a bug, confusing, an idea or something else, say what happened, and add a severity
-          if it helps. You can grab the screen you are looking at or upload your own shot. Your current
-          view and account attach on their own, so you never have to explain where you were.
+          Connect a site and Searchscope reads your history, the domains beside you and the demand
+          around you, then puts the three in one place.
         </p>
-        <p class="cta__sub">
-          Things will be rough in places. If something is broken, confusing, missing or simply annoying,
-          please let us know! Your feedback at this point is critical in Searchscope's future success.
-        </p>
+        <div class="cta__actions">
+          <a href="/beta" class="btn btn--lg">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
-
 </main>
 
 <div class="stickycta">
@@ -1506,32 +1437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }    /* ---- hero mock: the judge at work ---- */
-    .jq { list-style: none; margin: var(--space-s) 0 0; padding: 0; }
-    .jrow { display: grid; grid-template-columns: 10px 1fr auto; gap: 0.7rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--hairline); opacity: 0; }
-    .jrow:last-child { border-bottom: 0; padding-bottom: 0; }
-    .jrow .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); display: inline-block; position: relative; top: -1px; }
-    .jrow.crit .d { background: var(--sev-rose-ink); }
-    .jrow.warn .d { background: var(--sev-amber-ink); }
-    .jrow.win .d { background: var(--sev-emerald-ink); }
-    .jrow h4 { margin: 0 0 1px; font-size: var(--step--1); font-weight: 560; letter-spacing: -0.01em; line-height: 1.3; }
-    .jrow .m { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
-    .jrow .v { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .jrow--cut .v { color: var(--ink-faint); }
-    .jq__foot { display: flex; justify-content: space-between; gap: 0.8rem; margin: var(--space-s) 0 0; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
-
-    @keyframes jrow-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    @keyframes jrow-cut { to { opacity: 0.3; } }
-    .is-in .jrow { animation: jrow-in 0.45s var(--ease-out) forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s); }
-    .is-in .jrow--cut { animation: jrow-in 0.45s var(--ease-out) forwards, jrow-cut 0.5s ease forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s), calc(1.6s + var(--i, 0) * 0.06s); }
-    @media (prefers-reduced-motion: reduce) {
-      .jrow { opacity: 1; animation: none !important; }
-      .is-in .jrow--cut { opacity: 0.3; }
-    }
-
-    .calls--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    @media (max-width: 760px) { .calls--two { grid-template-columns: 1fr; } }
-</style>
+  <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
 </noscript>
 
 <script>
@@ -1640,6 +1546,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { closeNav(); toggle.focus(); }
     });
+  })();
+</script>
+
+<noscript>
+  <style>.tabpanel[hidden] { display: block !important; } .tablist { display: none; } .jrow { opacity: 1 !important; animation: none !important; } .tabpanel + .tabpanel { margin-top: var(--space-xl); }</style>
+</noscript>
+
+<script>
+  (function () {
+    var list = document.querySelector('.tablist');
+    if (!list) return;
+    var tabs = [].slice.call(list.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.tabpanel'));
+    if (tabs.length !== panels.length) return;
+
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.hidden = j !== i; });
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1
+              : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = (i + d + tabs.length) % tabs.length;
+        select(n);
+        tabs[n].focus();
+      });
+    });
+    select(0);
   })();
 </script>
 
