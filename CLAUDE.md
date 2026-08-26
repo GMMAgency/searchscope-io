@@ -14,8 +14,16 @@ You are editing the marketing website for Searchscope. This file is the rulebook
 1. **No em dashes anywhere** in site copy. Use commas, colons, semicolons, or parentheses.
 2. **Voice:** **US English** (Stu, 2026-08-19: was British, changed so the site matches the app UI
    and the email program). So: color, center, analyze, cannibalization, labeled, judgment.
-   Practitioner, no hype, no emoji in product copy. Brand name is "Searchscope" (one word); the logotype is lowercase mono `searchscope`. Say "search data", not "GSC" or "Search Console" (except literal Google product names in technical posts). Position for organic AND AI/LLM search.
-3. **Monochrome brand:** white, black, grey, warm near-black in dark mode. No brand colour; colour appears only in product data. Calls to action invert.
+   Practitioner, no hype, no emoji in product copy.
+   **Use contractions.** Write don't, can't, you're, it's, we'll, isn't, doesn't. Never do not,
+   cannot, you are, it is, will not, is not, does not. This is how the brand sounds: a person
+   talking, not a policy document. The only exception is deliberate emphasis, and it should be
+   rare enough that you notice it.
+   **Workspace names are proper nouns:** Index Bloat, Links, Cannibalization, Content Decay,
+   Opportunities, Cluster Volatility, Schema. Lowercase only when the words are used normally,
+   as in "six pages have no internal links in".
+   Brand name is "Searchscope" (one word); the logotype is lowercase mono `searchscope`. Say "search data", not "GSC" or "Search Console" (except literal Google product names in technical posts). Position for organic AND AI/LLM search.
+3. **Monochrome brand:** white, black, grey, warm near-black in dark mode. No brand color; color appears only in product data. Calls to action invert.
 4. **Type:** Geist superfamily plus an Inter mono-spine (mono for labels and numbers, Inter for sentences, Fraunces rarely). Reuse the tokens in `src/styles/tokens.css`; never invent new styles.
 5. **Forms** (static site, no backend), in order of preference: Netlify Forms (`data-netlify="true"`) > a Typeform/Tally embed snippet > the existing Web3Forms contact pattern. Forms are for contact and pilot enquiries only.
 
