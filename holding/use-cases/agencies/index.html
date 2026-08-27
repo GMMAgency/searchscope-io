@@ -717,6 +717,11 @@ strong, b { font-weight: 600; color: var(--ink); }
     .field { display: block; margin-bottom: var(--space-m); }
     .field:last-of-type { margin-bottom: var(--space-l); }
     .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    /* Required marker. The palette is monochrome, so this uses dim ink
+    rather than the red an asterisk usually implies. aria-hidden because
+    the required attribute already announces it to screen readers, and
+    without it they read out "asterisk" on every required field. */
+    .req { color: var(--ink-dim); margin-left: 0.2em; font-weight: 400; }
     .field input, .field select, .field textarea { width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step--1); color: var(--ink); background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-s); padding: 0.75em 0.95em; line-height: 1.4; transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
     .field textarea { min-height: 6.5rem; resize: vertical; }
     .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -1358,15 +1363,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
 
             <label class="field">
-              <span>Name</span>
+              <span>Name<span class="req" aria-hidden="true">*</span></span>
               <input type="text" name="name" autocomplete="name" required>
             </label>
             <label class="field">
-              <span>Work email</span>
+              <span>Work email<span class="req" aria-hidden="true">*</span></span>
               <input type="email" name="email" autocomplete="email" required>
             </label>
             <label class="field">
-              <span>Agency name</span>
+              <span>Agency name<span class="req" aria-hidden="true">*</span></span>
               <input type="text" name="agency" autocomplete="organization" required>
             </label>
             <label class="field">
@@ -1374,7 +1379,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="text" name="website" inputmode="url" autocomplete="url" placeholder="youragency.co.uk">
             </label>
             <label class="field">
-              <span>Your role</span>
+              <span>Your role<span class="req" aria-hidden="true">*</span></span>
               <select name="role" required>
                 <option value="">Choose one</option>
                 <option>Founder or Owner</option>
@@ -1386,7 +1391,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </select>
             </label>
             <label class="field">
-              <span>How many client sites do you currently manage?</span>
+              <span>How many client sites do you currently manage?<span class="req" aria-hidden="true">*</span></span>
               <select name="portfolio" required>
                 <option value="">Choose one</option>
                 <option>1 to 4</option>
