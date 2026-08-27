@@ -701,7 +701,7 @@ strong, b { font-weight: 600; color: var(--ink); }
     .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
 
     /* ---- hero form, two stage ---- */
-    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form { position: relative; border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
     .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
     .hero__form .btn { width: 100%; }
     .stage2[hidden], .stage1[hidden] { display: none; }
@@ -728,31 +728,20 @@ strong, b { font-weight: 600; color: var(--ink); }
 
 
     /* ---- form ---- */
-    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
     .field { display: block; margin-bottom: var(--space-m); }
     .field:last-of-type { margin-bottom: var(--space-l); }
     .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
-    .field input, .field select, .field textarea {
-      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
-      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
-      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
-      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-    }
+    .field input, .field select, .field textarea { width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step--1); color: var(--ink); background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-s); padding: 0.75em 0.95em; line-height: 1.4; transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
     .field textarea { min-height: 6.5rem; resize: vertical; }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
-    .field:has(input[required], textarea[required], select[required]) > span::after,
-    .field:has(input[required], textarea[required], select[required]) > .field__label::after {
-      content: '*';
-      margin-left: 0.25em;
-      color: var(--ink-faint);
-    }
-    .formreq { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin: 0 0 var(--space-m); }
-    .formcard .btn { width: 100%; }
-    .hp { position: absolute; left: -9999px; }
+    .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft); }
+    /* iOS Safari zooms the page when a focused input is under 16px. Phones keep 16px. */
+    @media (max-width: 767px) { .field input, .field select, .field textarea { font-size: 16px; } }
+    .formfoot { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.02em; line-height: 1.6; text-align: center; margin: var(--space-s) 0 0; }
+    .formfoot--last { margin-top: var(--space-m); }
+    .optin { display: flex; gap: 0.65rem; align-items: flex-start; margin: 0 0 var(--space-s); cursor: pointer; }
+    .optin input { flex: none; margin: 0.15rem 0 0; width: 1rem; height: 1rem; accent-color: var(--ink); }
+    .optin span { font-size: var(--step--1); line-height: 1.55; color: var(--ink-dim); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
     .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
     .secondary a:hover { color: var(--ink); border-color: var(--ink); }
@@ -1175,7 +1164,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </p>
         </div>
 
-        <div class="hero__form reveal" style="--reveal-delay:160ms">
+        <div class="hero__form ticked reveal" style="--reveal-delay:160ms">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span>
+            <span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span>
+            <span class="ticks__c ticks__bl"></span>
+          </span>
           <form name="ai-visibility-check" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/resources/ai-visibility-checker/thanks/">
             <input type="hidden" name="form-name" value="ai-visibility-check">
             <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
@@ -1202,7 +1197,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <b id="stage-site-value"></b>
                 <button type="button" class="stage__back" id="stage-change">Change</button>
               </p>
-              <p class="formreq"><span aria-hidden="true">*</span> Required</p>
               <label class="field">
                 <span>Name</span>
                 <input type="text" name="name" autocomplete="name" required>
@@ -1436,9 +1430,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }    .optin { display: flex; gap: 0.65rem; align-items: flex-start; margin: 0 0 var(--space-s); cursor: pointer; }
-    .optin input { flex: none; margin: 0.15rem 0 0; width: 1rem; height: 1rem; accent-color: var(--ink); }
-    .optin span { font-size: var(--step--1); line-height: 1.55; color: var(--ink-dim); }
+  <style>.reveal { opacity: 1 !important; transform: none !important; }
 </style>
 </noscript>
 
