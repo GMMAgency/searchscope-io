@@ -27,8 +27,10 @@ const AUDIENCE_BY_FORM = {
   'ai-visibility-check': 'RESEND_AUDIENCE_CHECKER',
 };
 
-/* Everything else in the payload is deliberately dropped. */
-const SAFE_FIELDS = ['portfolio'];
+/* Everything else in the payload is deliberately dropped. The visitor's own
+ * website stays in Netlify with the free-text fields: only banded, categorical
+ * answers travel, because those are what segments are built from. */
+const SAFE_FIELDS = ['portfolio', 'role'];
 
 /*
  * The checker asks for one report. A nurture sequence is not what that person
