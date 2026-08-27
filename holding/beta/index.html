@@ -651,6 +651,11 @@ strong, b { font-weight: 600; color: var(--ink); }
   .signup { width: 100%; max-width: 30rem; margin-inline: auto; text-align: left; display: flex; flex-direction: column; gap: var(--space-s); }
   .field { display: flex; flex-direction: column; gap: var(--space-3xs); }
   .field__label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+  /* Required marker. The palette is monochrome, so this uses dim ink
+  rather than the red an asterisk usually implies. aria-hidden because
+  the required attribute already announces it to screen readers, and
+  without it they read out "asterisk" on every required field. */
+  .req { color: var(--ink-dim); margin-left: 0.2em; font-weight: 400; }
   .field__input {
     font-family: var(--font-body);
     font-size: var(--step--1);
@@ -1100,17 +1105,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </p>
 
           <div class="field">
-            <label class="field__label mono" for="beta-name">Name</label>
+            <label class="field__label mono" for="beta-name">Name<span class="req" aria-hidden="true">*</span></label>
             <input class="field__input" id="beta-name" name="name" type="text" autocomplete="name" required />
           </div>
 
           <div class="field">
-            <label class="field__label mono" for="beta-email">Email</label>
+            <label class="field__label mono" for="beta-email">Email<span class="req" aria-hidden="true">*</span></label>
             <input class="field__input" id="beta-email" name="email" type="email" autocomplete="email" required />
           </div>
 
           <div class="field">
-            <label class="field__label mono" for="beta-role">Your role</label>
+            <label class="field__label mono" for="beta-role">Your role<span class="req" aria-hidden="true">*</span></label>
             <select class="field__input" id="beta-role" name="role" required>
               <option value="">Choose one</option>
               <option>Agency</option>
