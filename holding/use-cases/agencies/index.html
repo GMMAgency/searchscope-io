@@ -650,6 +650,22 @@ strong, b { font-weight: 600; color: var(--ink); }
     .btn { text-decoration: none; }
     .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
 
+    /* Submit button runs the full width of the card, per the form rulebook. */
+    .formcard .btn { width: 100%; }
+
+    /* Product shot under the hero. Reuses the .fcard__shot frame from the
+       shared base so it matches the cards further down the page. */
+    /* No padding of its own: the hero's bottom padding sits above it and the
+       programme section's top padding sits below, so adding more doubles the gap.
+       aspect-ratio is released because the shot is 1100x759 and the 16/10 frame
+       would crop the bottom ninth of the screenshot off. */
+    .heroshot .fcard__shot {
+      max-width: 62rem;
+      margin-inline: auto;
+      aspect-ratio: auto;
+    }
+    .heroshot .fcard__shot img { height: auto; object-fit: fill; }
+
     /* ---- mobile: the same call to action, pinned to the bottom ---- */
     .stickycta {
       display: none;
@@ -1123,7 +1139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <b>Know every account. Prove the work. Keep the client.</b>
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:200ms">
-          <a href="#programme" class="btn">
+          <a href="#apply" class="btn">
             Apply for the Founding Agency Programme
             <span class="btn__arrow" aria-hidden="true">&#8594;</span>
           </a>
@@ -1131,6 +1147,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="hero__note mono reveal" style="--reveal-delay:260ms">
           Paid founding programme &middot; &pound;199/month &middot; Up to 5 client sites &middot; Cancel anytime
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERO SHOT ============ -->
+  <section class="heroshot">
+    <div class="container">
+      <div class="fcard__shot reveal" style="--reveal-delay:320ms">
+        <img src="/brand/screenshots/03-intelligence-hub-performance.jpg"
+             alt="The Intelligence Hub in Searchscope: headline performance numbers for a client account against the period before, with a trend line and the queries and pages behind it"
+             width="1100" height="759" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
