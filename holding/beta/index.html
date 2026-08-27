@@ -650,29 +650,23 @@ strong, b { font-weight: 600; color: var(--ink); }
   /* Beta sign-up form. Reuses the page tokens; no new colors or type. */
   .signup { width: 100%; max-width: 30rem; margin-inline: auto; text-align: left; display: flex; flex-direction: column; gap: var(--space-s); }
   .field { display: flex; flex-direction: column; gap: var(--space-3xs); }
-  .field__label { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
-  .field:has(input[required], textarea[required], select[required]) > .field__label::after,
-  .field:has(input[required], textarea[required], select[required]) > span::after {
-    content: '*';
-    margin-left: 0.25em;
-    color: var(--ink-faint);
-  }
-  .formreq { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin: 0 0 var(--space-s); }
+  .field__label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
   .field__input {
     font-family: var(--font-body);
-    font-size: var(--step-0);
+    font-size: var(--step--1);
+    line-height: 1.4;
     color: var(--ink);
-    background: var(--surface-panel);
+    background: var(--surface);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-s);
-    padding: 0.85em 1em;
+    padding: 0.75em 0.95em;
     width: 100%;
     transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   }
   .field__input:focus-visible {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+      border-color: var(--ink);
+      box-shadow: 0 0 0 3px var(--accent-soft);
   }
   /* Match the select to the text inputs: native controls size themselves. */
   select.field__input {
@@ -683,6 +677,8 @@ strong, b { font-weight: 600; color: var(--ink); }
     padding-right: 2.75em;
   }
   .signup .btn { width: 100%; margin-top: var(--space-2xs); }
+  .formfoot { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.02em; line-height: 1.6; text-align: center; margin: var(--space-s) 0 0; }
+  @media (max-width: 767px) { .field__input { font-size: 16px; } }
   .signup__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
     /* ---- sticky header ---- */
@@ -1103,7 +1099,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </p>
 
-          <p class="formreq"><span aria-hidden="true">*</span> Required</p>
           <div class="field">
             <label class="field__label mono" for="beta-name">Name</label>
             <input class="field__input" id="beta-name" name="name" type="text" autocomplete="name" required />
@@ -1130,13 +1125,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input class="field__input" id="beta-website" name="website" type="text" autocomplete="url" placeholder="example.co.uk" />
           </div>
 
-          <button class="btn btn--lg" type="submit">
+          <button class="btn" type="submit">
             Sign up for beta
             <span class="btn__arrow" aria-hidden="true">&rarr;</span>
           </button>
         </form>
 
-        <p class="cta__note">We'll email you about your beta place and a short series on getting set up. Unsubscribe any time.</p>
+        <p class="formfoot">We'll email you about your beta place and a short series on getting set up. Unsubscribe any time.</p>
       </div>
     </div>
   </section>
