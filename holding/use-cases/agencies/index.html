@@ -718,7 +718,8 @@ strong, b { font-weight: 600; color: var(--ink); }
       margin-left: 0.25em;
       color: var(--ink-faint);
     }
-    .formreq { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin: 0 0 var(--space-m); }
+    .formfoot { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.02em; line-height: 1.6; margin: var(--space-s) 0 0; }
+    .formfoot--last { margin-top: var(--space-m); }
     .formcard .btn { width: 100%; }
     .hp { position: absolute; left: -9999px; }
     .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
@@ -1130,11 +1131,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <span class="eyebrow reveal">For agencies</span>
         <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-          Your competitors are auditing your clients' sites right now.
+          Every SEO client monitored. Not just the ones making noise.
         </h1>
         <p class="lede reveal" style="--reveal-delay:130ms">
-          Searchscope reads every account you run on a schedule, and names what's slipping before your
-          client does. <b>Know every account. Prove the work. Keep the client.</b>
+          Searchscope monitors every client account, surfaces what's changed and tells your team
+          where to focus next - before it becomes a client conversation.
+          <b>Know every account. Prove the work. Keep the client.</b>
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:200ms">
           <a href="#programme" class="btn">
@@ -1166,10 +1168,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="lede"><b>&pound;199/month &middot; Up to 5 client sites &middot; Cancel anytime</b></p>
       </div>
       <ul class="modules reveal" style="--reveal-delay:80ms">
-        <li><dfn>Full access</dfn><span>Every workspace and every module, the same build we run on our own client accounts.</span></li>
+        <li><dfn>Full access</dfn><span>Every workspace and module across the platform, with extended credits.</span></li>
         <li><dfn>Personal onboarding</dfn><span>We connect and configure your first client accounts with you, rather than sending you a guide.</span></li>
         <li><dfn>Direct founder access</dfn><span>Ask us things and get an answer from the people building it.</span></li>
-        <li><dfn>Roadmap input</dfn><span>Tell us what's missing while it's still cheap for us to change.</span></li>
+        <li><dfn>Roadmap input</dfn><span>Tell us what's missing while it's still early enough for us to change it.</span></li>
         <li><dfn>Early access</dfn><span>New features that fit how you work, before general release.</span></li>
         <li><dfn>Price protected</dfn><span>Your founding price holds while you stay on the programme.</span></li>
       </ul>
@@ -1212,7 +1214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Step 03</p>
           <h3 class="ucard__t">Before the client asks</h3>
-          <p class="ucard__d">What changed, why it matters and the move, while it's still cheap to fix.</p>
+          <p class="ucard__d">What changed, why it matters and the move, while it's still early enough to fix.</p>
         </article>
       </div>
     </div>
@@ -1253,7 +1255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">03 · Prove the work</span>
-        <h2 class="sec__title">The report that gets the retainer renewed.</h2>
+        <h2 class="sec__title">Show clients what their retainer actually produced.</h2>
         <p class="lede">
           The reporting problem in an agency isn't making a chart. It's that the person reading the
           report is a marketing manager who has to justify your invoice to a finance director who has
@@ -1262,7 +1264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="lede">
           Searchscope reports say what changed, what was done about it and what it was worth, in that
           order, in language your client can forward without translating first. Export as a PDF or a
-          link, on your schedule.
+          shareable Worksheet link, on your schedule.
         </p>
       </div>
     </div>
@@ -1275,8 +1277,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">04 · Running the agency</span>
         <h2 class="sec__title">Client to client, in one click.</h2>
         <p class="lede">
-          Move between accounts from one login, with the advisor already in context for whichever
-          client you're looking at. No re-orientating, no second tab, no separate login per site.
+          Move between accounts without re-orientating yourself every time. Each client's data,
+          findings and recommendations are already in context, so your team can see where attention
+          is needed across the portfolio.
         </p>
         <p class="lede">
           Reports go out on a schedule you set, written from the same live numbers the platform
@@ -1291,7 +1294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">05 · What's included</span>
-        <h2 class="sec__title">The modules, plainly.</h2>
+        <h2 class="sec__title">Everything Searchscope checks for you.</h2>
       </div>
       <ul class="modules reveal">
         <li><dfn><a href="/platform/analyzers/cannibalization/">Cannibalization</a></dfn><span>Two pages competing for one query, scored by what it's costing you.</span></li>
@@ -1325,9 +1328,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </p>
           <p class="lede"><b>&pound;199/month</b>, including up to <b>5 client sites</b>.</p>
           <ul class="modules" style="margin-top:var(--space-m)">
-            <li><dfn>1. Apply</dfn><span>Tell us a little about your agency and how many SEO clients you manage.</span></li>
+            <li><dfn>1. Apply</dfn><span>Tell us a little about your agency and how many clients you manage.</span></li>
             <li><dfn>2. Talk to us</dfn><span>A short conversation about your current workflow, and how Searchscope could fit into it.</span></li>
-            <li><dfn>3. Join the programme</dfn><span>If it looks useful, we'll send the subscription link and personally onboard your first client accounts.</span></li>
+            <li><dfn>3. Join the programme</dfn><span>If it looks useful, we'll personally onboard your first client accounts.</span></li>
             <li><dfn>4. Use it for real</dfn><span>Run it against live client accounts and tell us what's genuinely useful, what isn't, and what would make it indispensable.</span></li>
           </ul>
         </div>
@@ -1337,7 +1340,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input type="hidden" name="form-name" value="agency-demo">
             <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
 
-            <p class="formreq"><span aria-hidden="true">*</span> Required</p>
             <label class="field">
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" required>
@@ -1347,16 +1349,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="email" name="email" autocomplete="email" required>
             </label>
             <label class="field">
-              <span>Agency name <span aria-hidden="true">*</span></span>
+              <span>Agency name</span>
               <input type="text" name="agency" autocomplete="organization" required>
             </label>
             <label class="field">
-              <span>Agency website <span aria-hidden="true">*</span></span>
-              <input type="text" name="website" inputmode="url" autocomplete="url" placeholder="youragency.co.uk" required>
+              <span>Agency website</span>
+              <input type="text" name="website" inputmode="url" autocomplete="url" placeholder="youragency.co.uk">
             </label>
             <label class="field">
               <span>Your role</span>
-              <select name="role">
+              <select name="role" required>
                 <option value="">Choose one</option>
                 <option>Founder or Owner</option>
                 <option>Managing Director</option>
@@ -1367,7 +1369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </select>
             </label>
             <label class="field">
-              <span>How many SEO client sites do you currently manage? <span aria-hidden="true">*</span></span>
+              <span>How many client sites do you currently manage?</span>
               <select name="portfolio" required>
                 <option value="">Choose one</option>
                 <option>1 to 4</option>
@@ -1399,7 +1401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="btn__arrow" aria-hidden="true">&#8594;</span>
             </button>
             <p class="formfoot">Paid programme. No long-term contract. Cancel anytime.</p>
-            <p class="formfoot">We'll only use this to arrange your conversation and follow up afterwards. Unsubscribe any time.</p>
+            <p class="formfoot formfoot--last">We'll only use this to arrange your conversation and follow up afterwards. Unsubscribe any time.</p>
           </form>
         </div>
       </div>
@@ -1439,7 +1441,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }    .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); line-height: 1.6; margin: var(--space-s) 0 0; }
+  <style>.reveal { opacity: 1 !important; transform: none !important; }
 </style>
 </noscript>
 
