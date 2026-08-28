@@ -653,18 +653,67 @@ strong, b { font-weight: 600; color: var(--ink); }
     /* Submit button runs the full width of the card, per the form rulebook. */
     .formcard .btn { width: 100%; }
 
-    /* Product shot under the hero. Reuses the .fcard__shot frame from the
-       shared base so it matches the cards further down the page. */
-    /* No padding of its own: the hero's bottom padding sits above it and the
-       programme section's top padding sits below, so adding more doubles the gap.
-       aspect-ratio is released because the shot is 1100x759 and the 16/10 frame
-       would crop the bottom ninth of the screenshot off. */
-    .heroshot .fcard__shot {
-      max-width: 62rem;
-      margin-inline: auto;
-      aspect-ratio: auto;
+    /* ---- hero: copy on the left, the portfolio panel on the right ---- */
+    .hero__grid { display: grid; gap: var(--space-l); align-items: center; }
+    @media (min-width: 980px) {
+      .hero__grid {
+        grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+        gap: var(--space-2xl);
+      }
+      .hero .sec__head { max-width: none; }
+      .hero .lede { max-width: 46ch; }
     }
-    .heroshot .fcard__shot img { height: auto; object-fit: fill; }
+
+    /* ---- the animated portfolio panel ----
+       Five client rows: four steady, one sliding quietly and flagged. That is
+       the page's own headline, so the flagged row is deliberately not the
+       loudest looking one. Trend lines draw with the shared tr-draw keyframe
+       and the dots reuse .pt, both already in the base. */
+    .pviz {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-m);
+      background: var(--surface-panel);
+      box-shadow: var(--shadow-m);
+      padding: var(--space-s) var(--space-xs);
+    }
+    .pviz svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .pv-head { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; fill: var(--ink-faint); }
+    .pv-label { font-family: var(--font-mono); font-size: 13.5px; letter-spacing: 0.02em; fill: var(--ink-dim); }
+    .pv-find { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; fill: var(--ink-faint); }
+    .pv-val { font-family: var(--font-mono); font-size: 13.5px; letter-spacing: 0.02em; }
+    .pv-end { text-anchor: end; }
+    .pv-note { fill: var(--ink-faint); }
+    .pv-rule { stroke: var(--grid-ink); stroke-width: 1; }
+
+    .pv-line {
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+    }
+    .is-in .pv-line {
+      animation: tr-draw 1.4s cubic-bezier(0.3, 0.6, 0.2, 1) forwards;
+      animation-delay: calc(0.3s + var(--i, 0) * 0.15s);
+    }
+
+    /* the flagged row: a quiet wash and a ring, both arriving after the
+       lines have drawn, so the eye reads the portfolio first and the
+       exception second */
+    .pv-flagbg { fill: var(--sev-rose-ink); opacity: 0; }
+    .is-in .pv-flagbg { animation: pv-wash 0.6s 1.5s ease-out forwards; }
+    .pv-ring { fill: none; stroke: var(--sev-rose-ink); stroke-width: 1.5; opacity: 0; }
+    .is-in .pv-ring { animation: pv-ring 0.5s 1.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+    @keyframes pv-wash { to { opacity: 0.05; } }
+    @keyframes pv-ring { from { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.4); } to { opacity: 0.85; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pv-line { animation: none; stroke-dashoffset: 0; }
+      .pv-flagbg { opacity: 0.05; animation: none; }
+      .pv-ring { opacity: 0.85; animation: none; }
+    }
 
     /* ---- mobile: the same call to action, pinned to the bottom ---- */
     .stickycta {
@@ -722,6 +771,27 @@ strong, b { font-weight: 600; color: var(--ink); }
     the required attribute already announces it to screen readers, and
     without it they read out "asterisk" on every required field. */
     .req { color: var(--ink-dim); margin-left: 0.2em; font-weight: 400; }
+
+    /* ---- inline success state ----
+       On success everything inside the form's own container is hidden except the
+       corner ticks and the panel. That covers all three shapes: beta's container
+       also holds its heading and standfirst, so hiding only the form would leave
+       "Sign up for the Searchscope beta" sitting above "You're on the list".
+
+       The /thanks/ pages stay. They are the no-JS fallback the form still posts
+       to, and what someone reaching the URL directly sees. */
+    .is-done > *:not(.formdone):not(.ticks) { display: none; }
+    .formdone { display: none; text-align: left; }
+    .is-done .formdone { display: block; }
+    .formdone:focus { outline: none; }
+    .formdone__t {
+      font-size: var(--step-1);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin: var(--space-2xs) 0 var(--space-s);
+    }
+    .formdone p { color: var(--ink-dim); line-height: 1.6; margin: 0 0 var(--space-s); }
+    .formdone p:last-child { margin-bottom: 0; }
     .field input, .field select, .field textarea { width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step--1); color: var(--ink); background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-s); padding: 0.75em 0.95em; line-height: 1.4; transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
     .field textarea { min-height: 6.5rem; resize: vertical; }
     .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -1133,6 +1203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
+      <div class="hero__grid">
       <div class="sec__head">
         <span class="eyebrow reveal">For agencies</span>
         <h1 class="hero__title reveal" style="--reveal-delay:60ms">
@@ -1153,16 +1224,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Paid founding programme &middot; &pound;199/month &middot; Up to 5 client sites &middot; Cancel anytime
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ HERO SHOT ============ -->
-  <section class="heroshot">
-    <div class="container">
-      <div class="fcard__shot reveal" style="--reveal-delay:320ms">
-        <img src="/brand/screenshots/03-intelligence-hub-performance.jpg"
-             alt="The Intelligence Hub in Searchscope: headline performance numbers for a client account against the period before, with a trend line and the queries and pages behind it"
-             width="1100" height="759" loading="lazy" decoding="async">
+      <div class="pviz reveal" style="--reveal-delay:200ms">
+        <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid meet" role="img"
+             aria-label="Five client accounts, each with its top open analyzer finding and a trend line. Four are steady. One is sliding and has been flagged.">
+          <text x="24" y="30" class="pv-head">PORTFOLIO</text>
+          <text x="496" y="30" class="pv-head pv-end">5 ACCOUNTS &middot; 16 OPEN FINDINGS</text>
+          <line x1="24" y1="46" x2="496" y2="46" class="pv-rule"></line>
+          <text x="30" y="74.0" class="pv-label">Client 01</text>
+          <text x="30" y="92.0" class="pv-find">Opportunities &#215;4</text>
+          <path d="M 296.0 78.0 C 306.1 78.0 306.1 73.0 316.3 73.0 C 326.4 73.0 326.4 78.0 336.6 78.0 C 346.7 78.0 346.7 68.0 356.9 68.0 C 367.0 68.0 367.0 73.0 377.1 73.0 C 387.3 73.0 387.3 63.0 397.4 63.0 C 407.6 63.0 407.6 68.0 417.7 68.0 C 427.9 68.0 427.9 63.0 438.0 63.0" class="pv-line" style="--i:0; stroke:var(--sev-emerald-ink)"></path>
+          <text x="496" y="83.0" class="pv-val pv-end" style="fill:var(--sev-emerald-ink)">+8%</text>
+          <text x="30" y="136.0" class="pv-label">Client 02</text>
+          <text x="30" y="154.0" class="pv-find">Schema &#215;1</text>
+          <path d="M 296.0 130.0 C 306.1 130.0 306.1 130.0 316.3 130.0 C 326.4 130.0 326.4 135.0 336.6 135.0 C 346.7 135.0 346.7 130.0 356.9 130.0 C 367.0 130.0 367.0 130.0 377.1 130.0 C 387.3 130.0 387.3 135.0 397.4 135.0 C 407.6 135.0 407.6 130.0 417.7 130.0 C 427.9 130.0 427.9 130.0 438.0 130.0" class="pv-line" style="--i:1; stroke:var(--flat)"></path>
+          <text x="496" y="145.0" class="pv-val pv-end" style="fill:var(--ink-faint)">+1%</text>
+          <rect x="14" y="178.0" width="492" height="48" rx="10" class="pv-flagbg" style="--i:2"></rect>
+          <text x="30" y="198.0" class="pv-label">Client 03</text>
+          <text x="30" y="216.0" class="pv-find">Content Decay &#215;6</text>
+          <path d="M 296.0 187.0 C 306.1 187.0 306.1 187.0 316.3 187.0 C 326.4 187.0 326.4 192.0 336.6 192.0 C 346.7 192.0 346.7 192.0 356.9 192.0 C 367.0 192.0 367.0 197.0 377.1 197.0 C 387.3 197.0 387.3 202.0 397.4 202.0 C 407.6 202.0 407.6 207.0 417.7 207.0 C 427.9 207.0 427.9 212.0 438.0 212.0" class="pv-line" style="--i:2; stroke:var(--sev-rose-ink)"></path>
+          <text x="496" y="207.0" class="pv-val pv-end" style="fill:var(--sev-rose-ink)">-14%</text>
+          <circle cx="270" cy="202.0" r="4" class="pt" style="--i:4; fill:var(--sev-rose-ink)"></circle>
+          <circle cx="270" cy="202.0" r="9" class="pv-ring" style="--i:2"></circle>
+          <text x="30" y="260.0" class="pv-label">Client 04</text>
+          <text x="30" y="278.0" class="pv-find">Internal Links &#215;2</text>
+          <path d="M 296.0 259.0 C 306.1 259.0 306.1 264.0 316.3 264.0 C 326.4 264.0 326.4 259.0 336.6 259.0 C 346.7 259.0 346.7 259.0 356.9 259.0 C 367.0 259.0 367.0 254.0 377.1 254.0 C 387.3 254.0 387.3 254.0 397.4 254.0 C 407.6 254.0 407.6 249.0 417.7 249.0 C 427.9 249.0 427.9 249.0 438.0 249.0" class="pv-line" style="--i:3; stroke:var(--sev-emerald-ink)"></path>
+          <text x="496" y="269.0" class="pv-val pv-end" style="fill:var(--sev-emerald-ink)">+5%</text>
+          <text x="30" y="322.0" class="pv-label">Client 05</text>
+          <text x="30" y="340.0" class="pv-find">Cannibalization &#215;3</text>
+          <path d="M 296.0 316.0 C 306.1 316.0 306.1 321.0 316.3 321.0 C 326.4 321.0 326.4 316.0 336.6 316.0 C 346.7 316.0 346.7 316.0 356.9 316.0 C 367.0 316.0 367.0 316.0 377.1 316.0 C 387.3 316.0 387.3 311.0 397.4 311.0 C 407.6 311.0 407.6 316.0 417.7 316.0 C 427.9 316.0 427.9 316.0 438.0 316.0" class="pv-line" style="--i:4; stroke:var(--flat)"></path>
+          <text x="496" y="331.0" class="pv-val pv-end" style="fill:var(--ink-faint)">+2%</text>
+        </svg>
+      </div>
       </div>
     </div>
   </section>
@@ -1425,6 +1518,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="formfoot">Paid programme. No long-term contract. Cancel anytime.</p>
             <p class="formfoot formfoot--last">We'll only use this to arrange your conversation and follow up afterwards. Unsubscribe any time.</p>
           </form>
+
+          <div class="formdone">
+            <span class="eyebrow">Thanks</span>
+            <h2 class="formdone__t">That&rsquo;s with us. We&rsquo;ll be in touch shortly.</h2>
+            <p>We&rsquo;ll email you at the address you gave us to find a time. Expect a working session rather than a pitch: bring the accounts that are giving you trouble.</p>
+            <p>If you gave us a client domain, we&rsquo;ll run Searchscope over it first, so we can open the call with what it found rather than a tour of the interface.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1627,6 +1727,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       dl.push(payload);
     }, true);
   })();
+
+    /* ---- submit in place ----
+       Posts to the same /thanks/ URL the form already targets, so Netlify sees
+       an identical submission, then swaps in the success panel instead of
+       navigating.
+
+       form_submit already fires on every attempt, including ones that fail, so
+       it cannot be a conversion. form_success fires only once Netlify has
+       accepted the submission. Build the conversion on that.
+
+       On any failure it falls back to a normal navigating submit rather than
+       stranding someone on a form that looks broken. form.submit() does not
+       re-fire this handler, so there is no loop. */
+    (function () {
+      if (!window.fetch || !window.FormData || !window.URLSearchParams) return;
+      var forms = document.querySelectorAll('form[action*="/thanks/"]');
+      Array.prototype.forEach.call(forms, function (form) {
+        form.addEventListener('submit', function (e) {
+          if (form.dataset.sending) { e.preventDefault(); return; }
+          if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+          e.preventDefault();
+          form.dataset.sending = '1';
+
+          var btn = form.querySelector('[type="submit"]');
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+          var settled = false;
+          var giveUp = setTimeout(function () {
+            if (!settled) { settled = true; form.submit(); }
+          }, 15000);
+
+          fetch(form.getAttribute('action'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+          }).then(function (r) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(giveUp);
+            if (!r.ok) throw new Error(r.status);
+            var wrap = form.parentNode;
+            var done = wrap.querySelector('.formdone');
+            wrap.classList.add('is-done');
+            if (done) { done.setAttribute('tabindex', '-1'); done.focus(); }
+            (window.dataLayer = window.dataLayer || []).push({
+              event: 'form_success', form_name: form.getAttribute('name')
+            });
+          }).catch(function () {
+            if (settled) return;
+            settled = true;
+            clearTimeout(giveUp);
+            form.submit();
+          });
+        });
+      });
+    })();
 </script>
 </body>
 </html>
