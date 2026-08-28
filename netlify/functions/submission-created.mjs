@@ -29,18 +29,47 @@ const AUDIENCE_BY_FORM = {
 
 /* Everything else in the payload is deliberately dropped. The visitor's own
  * website stays in Netlify with the free-text fields: only banded, categorical
- * answers travel, because those are what segments are built from. */
-const SAFE_FIELDS = ['portfolio', 'role'];
+ * answers travel, because those are what segments are built from.
+ *
+ * Every key here must exist as a contact property in Resend BEFORE the form
+ * goes live. Resend fails the whole create-contact call on an unknown property
+ * key, so a missing one loses the contact rather than just the field, and it
+ * only fails when somebody actually answers that question. */
+const SAFE_FIELDS = ['portfolio', 'role', 'job_title', 'priority'];
+
+const TOPIC_GETTING_STARTED = '0fd9a6b1-0aae-4d77-a673-ae2bdaea2173';
+const TOPIC_PRODUCT_NEWS = '6243d4a4-4670-4253-80a1-7a7cda0521f7';
 
 /*
- * The checker asks for one report. A nurture sequence is not what that person
- * requested, so it is gated on an explicit unticked checkbox. Absent box means
- * absent consent: the contact is created unsubscribed, so Resend will deliver
- * the report and nothing else.
+ * WHAT EACH FORM ACTUALLY PROMISED, expressed as explicit topic subscriptions.
+ *
+ * Never leave a topic out and let its default decide. "Getting started" is
+ * opt_in by default, so an omission SUBSCRIBES people: an agency applying to
+ * the paid programme was landing on a workspace setup drip it never asked for.
+ * Every form states both topics, in both directions.
+ *
+ *   beta          the page promises a beta place and the setup series.
+ *   agency-demo   the note under the form is narrow: "We'll only use this to
+ *                 arrange your conversation and follow up afterwards." That is
+ *                 not a drip and not a newsletter.
+ *   checker       one report, plus product news only if the box is ticked.
+ *
+ * Global `unsubscribed` is never used for consent. It suppresses the address
+ * for everything, permanently, with no route back, and it belongs to
+ * complaints and bounces.
  */
-function marketingConsent(form, data) {
-  if (form !== 'ai-visibility-check') return true;
-  return data.marketing_optin === 'yes';
+function topicsFor(form, data) {
+  const optedIn = data.marketing_optin === 'yes';
+  const subs = {
+    'beta': { started: 'opt_in', news: 'opt_out' },
+    'agency-demo': { started: 'opt_out', news: 'opt_out' },
+    'ai-visibility-check': { started: 'opt_out', news: optedIn ? 'opt_in' : 'opt_out' },
+  }[form];
+  if (!subs) return null;
+  return [
+    { id: TOPIC_GETTING_STARTED, subscription: subs.started },
+    { id: TOPIC_PRODUCT_NEWS, subscription: subs.news },
+  ];
 }
 
 function splitName(full) {
@@ -97,7 +126,7 @@ export default async (req) => {
       `nameResolved=${Boolean(rawName)}`
     );
 
-    const consented = marketingConsent(form, data);
+    const topics = topicsFor(form, data);
     const { firstName, lastName } = splitName(rawName);
     const attributes = {};
     for (const f of SAFE_FIELDS) if (data[f]) attributes[f] = String(data[f]);
@@ -119,8 +148,9 @@ export default async (req) => {
         email,
         first_name: firstName,
         last_name: lastName,
-        unsubscribed: !consented,
+        unsubscribed: false,
         segments: [{ id: audienceId }],
+        ...(topics ? { topics } : {}),
         ...(Object.keys(attributes).length ? { properties: attributes } : {}),
       }),
     });
@@ -129,7 +159,8 @@ export default async (req) => {
       const detail = await res.text().catch(() => '');
       console.error(`submission-created: Resend returned ${res.status} for "${form}" :: ${detail.slice(0, 300)}`);
     } else {
-      console.log(`submission-created: added a contact to ${form} (marketing consent: ${consented})`);
+      const summary = (topics || []).map((t) => `${t.id.slice(0, 8)}=${t.subscription}`).join(' ');
+      console.log(`submission-created: added a contact to ${form} (topics: ${summary})`);
     }
   } catch (err) {
     console.error('submission-created failed:', err?.message || err);
