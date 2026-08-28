@@ -1224,9 +1224,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Most audit tools hand you hundreds of issues and leave you to work out which ones matter.
         </p>
         <p class="lede reveal" style="--reveal-delay:170ms">
-          <b>Searchscope judges its own findings before you see them</b>, then ranks what's left by the
-          clicks it's worth. They run on a schedule, so you're informed on a shift in performance
-          before it becomes a bigger issue.
+          <b>Searchscope filters and prioritizes findings before they reach your queue, using your
+          search performance and business context to focus attention on what&rsquo;s most likely to
+          matter.</b> The analyzers run automatically on a schedule, so you can spot important
+          changes without repeatedly running the same checks yourself.
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
@@ -1254,7 +1255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="awhead">
                 <span>
                   <span class="awtitle">Analyzer run</span>
-                  <span class="awsub">Seven analyzers, judged before you see them</span>
+                  <span class="awsub">Seven analyzers, filtered and prioritized for you</span>
                 </span>
               </div>
               <div class="awstats c3">
@@ -1289,7 +1290,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="v">suppressed</span>
           </li>
               </ul>
-              <p class="jq__foot"><span>Ranked by potential clicks</span><span>23 of 412</span></p>
+              <p class="jq__foot"><span>Prioritized by potential impact</span><span>23 of 412</span></p>
             </div>
           </div>
         </div>
@@ -1302,22 +1303,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">What every analyzer gives you</span>
-        <h2 class="sec__title">Seven analyzers, one anatomy.</h2>
+        <h2 class="sec__title">Seven analyzers. One consistent workflow.</h2>
         <p class="lede">
-          Each one reads the same three things: a full crawl of your site, your Search Console
-          history, and the business context you set up front. They look for different things and hand
-          them over the same way, so nobody has to learn seven interfaces.
+          Every analyzer works from the same core inputs: a full site crawl, your Search Console history and the business context you provide. They look for different problems and opportunities, but present the findings the same way, so your team always knows what to review and what to do next.
         </p>
       </div>
       <ul class="anat reveal">
-        <li><b>Ranked queue</b><span>Findings scored against your objectives and the pages that make you money, worst first.</span></li>
-        <li><b>Evidence lens</b><span>Expand any row for the pages, the queries and the numbers behind the call.</span></li>
-        <li><b>A recommended move</b><span>Not just what's wrong, but what to do about it.</span></li>
-        <li><b>Create brief</b><span>Sends the finding into Content Studio pre-filled, with the SERP and the ranking competitors pulled in beside it.</span></li>
-        <li><b>Ask the Strategic Advisor</b><span>Opens the advisor on that finding, already holding your crawl data and analyzer findings, your search data, competitive landscape and unique business context.</span></li>
-        <li><b>The upside, in clicks</b><span>Findings carry potential clicks and an impact grade, so the queue is ordered by what it's worth rather than by how loud it is.</span></li>
-        <li><b>Seasonality, separated</b><span>A pattern that repeats every year is labeled seasonal and can be hidden, so a normal dip isn't treated as a problem.</span></li>
-        <li><b>Applied or ignored</b><span>Mark it done and it leaves the queue. The archive keeps what you fixed and when.</span></li>
+        <li><b>Prioritized findings</b><span>Findings are scored against your objectives, search performance and important pages, so the issues most worth reviewing appear first.</span></li>
+        <li><b>Evidence</b><span>See the pages, queries and performance data behind each finding, so you can understand why it's been flagged.</span></li>
+        <li><b>Recommended action</b><span>See what Searchscope recommends doing next, not just what it found.</span></li>
+        <li><b>Create a brief</b><span>Send a finding into Content Studio with the relevant SERP data and ranking competitors already included.</span></li>
+        <li><b>Ask the Strategic Advisor</b><span>Open the Strategic Advisor on any finding with your crawl data, search performance, competitive landscape, analyzer findings and business context already available.</span></li>
+        <li><b>Potential impact</b><span>Where available, findings carry a potential click opportunity and an impact grade, helping you focus on the work most likely to make a meaningful difference.</span></li>
+        <li><b>Seasonality detection</b><span>Searchscope identifies patterns that repeat each year, helping you separate normal seasonal movement from a genuine decline. Seasonal findings can also be hidden from the active queue.</span></li>
+        <li><b>Apply or ignore</b><span>Mark a finding as applied or ignored to keep the active queue focused. Searchscope keeps a record of what changed and when.</span></li>
       </ul>
     </div>
   </section>
@@ -1341,7 +1340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tabpanels">
         <div class="tabpanel" role="tabpanel" id="panel-cannibalization" aria-labelledby="tab-cannibalization" hidden>
           <h3 class="tabpanel__t">Cannibalization</h3>
-          <p class="tabpanel__d">Two of your pages competing for the same query, with the impressions split between them. Searchscope pairs them up, shows the shared queries, the overlap and the clicks in play, then calls it: consolidate, differentiate, or keep both. URL dancing, where the results page keeps swapping which of your pages it shows, is flagged on its own.</p>
+          <p class="tabpanel__d">Find pages competing for the same search demand. Searchscope shows the overlapping queries, the pages involved and the clicks in play, then recommends whether to consolidate the pages, differentiate them or keep both. URL switching is flagged separately, so you can see when Google repeatedly changes which of your pages it ranks for the same query.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/cannibalization/" class="btn btn--sm btn--ghost">
               Explore Cannibalization
@@ -1353,7 +1352,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-content-decay" aria-labelledby="tab-content-decay" hidden>
           <h3 class="tabpanel__t">Content decay</h3>
-          <p class="tabpanel__d">Pages losing clicks against their own past, not against a competitor. Filter by decay type, see the keywords carrying the loss, and read each page by trajectory: worsening, improving or accelerating. Genuine seasonality is flagged rather than raised as a decline. Ask the <b>Strategic Advisor</b> why a page turned when it did, then rewrite it in <b>Content Studio</b> with the gaps already named.</p>
+          <p class="tabpanel__d">Find pages that are losing organic clicks against their own historical performance. Searchscope shows which queries are driving the decline and whether performance is worsening, recovering or following a seasonal pattern. From the finding, you can investigate the decline with the <b>Strategic Advisor</b> or take it into <b>Content Studio</b> to work on the content gaps.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/content-decay/" class="btn btn--sm btn--ghost">
               Explore Content Decay
@@ -1365,7 +1364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-opportunities" aria-labelledby="tab-opportunities" hidden>
           <h3 class="tabpanel__t">Opportunities</h3>
-          <p class="tabpanel__d">More than striking distance. Position opportunities just off page one, low click-through on rankings you already hold, intent mismatches and content gaps. Each one names the SERP feature worth going after, from featured snippet to FAQ to AI Overview, and the structural change that would win it.</p>
+          <p class="tabpanel__d">Find more than simple striking distance keywords. Searchscope identifies pages sitting close to stronger positions, low click-through rates on rankings you already hold, intent mismatches and content gaps. Where relevant, it also highlights SERP features worth targeting and recommends the change most likely to improve the opportunity.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/opportunities/" class="btn btn--sm btn--ghost">
               Explore Opportunities
@@ -1377,7 +1376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-cluster-volatility" aria-labelledby="tab-cluster-volatility" hidden>
           <h3 class="tabpanel__t">Cluster volatility</h3>
-          <p class="tabpanel__d">Whole topics moving underneath you, rather than single pages. Cluster cards show which page carries each topic and where coverage is thinning. Query the shift with the <b>Strategic Advisor</b>, then close the gaps in <b>Content Studio</b>.</p>
+          <p class="tabpanel__d">Spot when search visibility changes across an entire topic, not just a single page. Cluster cards show which pages are carrying each topic and where coverage or performance is weakening. You can investigate the change with the <b>Strategic Advisor</b> and use <b>Content Studio</b> where new or improved content is needed.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/cluster-volatility/" class="btn btn--sm btn--ghost">
               Explore Cluster Volatility
@@ -1389,7 +1388,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-index-bloat" aria-labelledby="tab-index-bloat" hidden>
           <h3 class="tabpanel__t">Index bloat</h3>
-          <p class="tabpanel__d">Thin, duplicate and zero-traffic pages spending crawl budget you would rather spend elsewhere. Every row carries a verdict and a word count, so the call is quick.</p>
+          <p class="tabpanel__d">Find thin, duplicate and zero-traffic pages that may be contributing to index bloat. Each finding includes the relevant page data and Searchscope's recommendation, so you can quickly decide what deserves action.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/index-bloat/" class="btn btn--sm btn--ghost">
               Explore Index Bloat
@@ -1401,7 +1400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-internal-links" aria-labelledby="tab-internal-links" hidden>
           <h3 class="tabpanel__t">Internal links</h3>
-          <p class="tabpanel__d">Authority routing, as tickets. Source to target with the anchor text suggested, match type flagged, and a panel for the targets that are starving.</p>
+          <p class="tabpanel__d">Find internal linking opportunities with the source page, target page and suggested anchor text already identified. Searchscope also shows the match type and highlights important pages that are receiving too few internal links.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/internal-links/" class="btn btn--sm btn--ghost">
               Explore Internal Links
@@ -1413,7 +1412,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-schema" aria-labelledby="tab-schema" hidden>
           <h3 class="tabpanel__t">Schema</h3>
-          <p class="tabpanel__d">Missing and broken structured data, with copy-paste JSON-LD and a diff of what you have against what it should be.</p>
+          <p class="tabpanel__d">Find missing or broken structured data and see what needs to change. Where supported, Searchscope provides ready-to-use JSON-LD and shows the difference between the current implementation and the recommended version.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/schema/" class="btn btn--sm btn--ghost">
               Explore Schema
@@ -1434,20 +1433,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">After you apply it</span>
         <h2 class="sec__title">Mark it applied. Then find out whether it worked.</h2>
         <p class="lede">
-          The moment you mark a finding applied, the Impact Tracker snapshots that page's numbers and
-          starts measuring against them. Not against a guess at what things looked like beforehand, and
-          not against a round number somebody remembered.
+          When you mark a finding as applied, the Impact Tracker captures that page&rsquo;s current
+          performance as a baseline and measures what happens next. That gives you a recorded
+          before-and-after point, rather than relying on memory or a comparison date chosen after
+          the fact.
         </p>
         <p class="lede">
-          <b>Including when the answer&rsquo;s &lsquo;no&rsquo;.</b> A fix that moved nothing is recorded as a fix that
-          moved nothing, which is the part that makes the wins believable.
+          <b>Including when the answer&rsquo;s &lsquo;no&rsquo;.</b> It records the changes that work and the
+          ones that don&rsquo;t. A fix that moved nothing stays in the record as a fix that moved
+          nothing, which is what makes the improvements you can demonstrate credible.
         </p>
       </div>
       <ul class="anat anat--two reveal">
-        <li><b>A real baseline</b><span>Clicks, impressions and position captured at the moment of applying, stored against that change.</span></li>
-        <li><b>Marked on the chart</b><span>The date the work landed, drawn onto the trend, so a movement can be read against the change rather than assumed.</span></li>
-        <li><b>An applied archive</b><span>Per analyzer: what was fixed, when, and by whom. Applied rows leave the queue but not the record.</span></li>
-        <li><b>Carried into the report</b><span>Applied changes and what followed them go into the weekly report, so the client sees the work and what it earned.</span></li>
+        <li><b>A recorded baseline</b><span>Clicks, impressions and position are captured when the change is marked as applied, and stored against that piece of work.</span></li>
+        <li><b>Changes marked on the timeline</b><span>See when the work was applied, drawn onto the performance trend, so you can read what happened afterwards.</span></li>
+        <li><b>Applied changes archive</b><span>A record of what was changed, when it was applied and who applied it. Completed findings leave the active queue without disappearing from the history.</span></li>
+        <li><b>Included in reporting</b><span>Applied changes and the performance that followed can be included in the weekly report, making the work and the results that followed easier to show.</span></li>
       </ul>
     </div>
   </section>
@@ -1464,7 +1465,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Fewer findings, on purpose.</h2>
         <p class="cta__sub">
-          Connect a site and the analyzers read it end to end, then hand back the short list.
+          Connect a site and Searchscope runs the analyzers automatically, filters out low-value findings and gives you a focused list of issues and opportunities worth reviewing.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
