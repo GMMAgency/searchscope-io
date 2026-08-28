@@ -656,6 +656,27 @@ strong, b { font-weight: 600; color: var(--ink); }
   the required attribute already announces it to screen readers, and
   without it they read out "asterisk" on every required field. */
   .req { color: var(--ink-dim); margin-left: 0.2em; font-weight: 400; }
+
+  /* ---- inline success state ----
+     On success everything inside the form's own container is hidden except the
+     corner ticks and the panel. That covers all three shapes: beta's container
+     also holds its heading and standfirst, so hiding only the form would leave
+     "Sign up for the Searchscope beta" sitting above "You're on the list".
+
+     The /thanks/ pages stay. They are the no-JS fallback the form still posts
+     to, and what someone reaching the URL directly sees. */
+  .is-done > *:not(.formdone):not(.ticks) { display: none; }
+  .formdone { display: none; text-align: left; }
+  .is-done .formdone { display: block; }
+  .formdone:focus { outline: none; }
+  .formdone__t {
+    font-size: var(--step-1);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin: var(--space-2xs) 0 var(--space-s);
+  }
+  .formdone p { color: var(--ink-dim); line-height: 1.6; margin: 0 0 var(--space-s); }
+  .formdone p:last-child { margin-bottom: 0; }
   .field__input {
     font-family: var(--font-body);
     font-size: var(--step--1);
@@ -1136,6 +1157,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </button>
         </form>
 
+        <div class="formdone">
+          <span class="eyebrow">Welcome onboard</span>
+          <h2 class="formdone__t">You&rsquo;re on the list.</h2>
+          <p>We onboard the beta in small cohorts, and we&rsquo;ll be in touch with next steps as places open up.</p>
+        </div>
+
         <p class="formfoot">We'll email you about your beta place and a short series on getting set up. Unsubscribe any time.</p>
       </div>
     </div>
@@ -1329,6 +1356,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       dl.push(payload);
     }, true);
   })();
+
+    /* ---- submit in place ----
+       Posts to the same /thanks/ URL the form already targets, so Netlify sees
+       an identical submission, then swaps in the success panel instead of
+       navigating.
+
+       form_submit already fires on every attempt, including ones that fail, so
+       it cannot be a conversion. form_success fires only once Netlify has
+       accepted the submission. Build the conversion on that.
+
+       On any failure it falls back to a normal navigating submit rather than
+       stranding someone on a form that looks broken. form.submit() does not
+       re-fire this handler, so there is no loop. */
+    (function () {
+      if (!window.fetch || !window.FormData || !window.URLSearchParams) return;
+      var forms = document.querySelectorAll('form[action*="/thanks/"]');
+      Array.prototype.forEach.call(forms, function (form) {
+        form.addEventListener('submit', function (e) {
+          if (form.dataset.sending) { e.preventDefault(); return; }
+          if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+          e.preventDefault();
+          form.dataset.sending = '1';
+
+          var btn = form.querySelector('[type="submit"]');
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+          var settled = false;
+          var giveUp = setTimeout(function () {
+            if (!settled) { settled = true; form.submit(); }
+          }, 15000);
+
+          fetch(form.getAttribute('action'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+          }).then(function (r) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(giveUp);
+            if (!r.ok) throw new Error(r.status);
+            var wrap = form.parentNode;
+            var done = wrap.querySelector('.formdone');
+            wrap.classList.add('is-done');
+            if (done) { done.setAttribute('tabindex', '-1'); done.focus(); }
+            (window.dataLayer = window.dataLayer || []).push({
+              event: 'form_success', form_name: form.getAttribute('name')
+            });
+          }).catch(function () {
+            if (settled) return;
+            settled = true;
+            clearTimeout(giveUp);
+            form.submit();
+          });
+        });
+      });
+    })();
 </script>
 </body>
 </html>
