@@ -630,9 +630,13 @@ strong, b { font-weight: 600; color: var(--ink); }
     .fcard__k { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
     .fcard__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; line-height: 1.2; margin: 0; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
     .fcard__desc { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: 0; max-width: 48ch; }
-    .fgrid__more { margin: var(--space-l) 0 0; text-align: center; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.01em; color: var(--ink-faint); }
-    .fgrid__morelink { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); padding-bottom: 1px; transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
-    .fgrid__morelink:hover { color: var(--ink); border-color: var(--ink); }
+    /* Three-up list, ported verbatim from the analyzers page so the new
+       section uses a pattern the site already has rather than a new one. */
+    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+    @media (max-width: 860px) { .anat { grid-template-columns: 1fr; } }
     .tag { font-family: var(--font-mono); font-size: 0.62em; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.28em 0.72em; line-height: 1; }
     @media (max-width: 720px) {
       .fgrid { grid-template-columns: 1fr; }
@@ -1061,12 +1065,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hero__copy">
           <span class="eyebrow reveal">Operating system for modern search teams</span>
           <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-            Your search data is spread across multiple tools. The answer's in none of them.
+            Your search data is spread across multiple tools. The hard part is knowing what to do with it.
           </h1>
           <p class="hero__sub reveal" style="--reveal-delay:130ms">
-            Searchscope reads your website and search data, your AI visibility and your competitor
-            landscape as one system, and helps you decide <b>what to do next to improve your search
-            visibility.</b>
+            Searchscope brings together your search performance, website, competitors and AI visibility, then identifies <b>what&rsquo;s changing, what matters and where to focus next.</b>
           </p>
           <div class="hero__actions reveal" style="--reveal-delay:200ms">
             <a href="/beta/" class="btn">
@@ -1187,10 +1189,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="strip__head reveal">
         <span class="eyebrow">Inside the platform</span>
-        <h2 class="strip__title">One platform for your whole search picture.</h2>
+        <h2 class="strip__title">See the whole search picture in one place.</h2>
         <p class="strip__sub">
-          Classic search, AI answers, and the brand signals behind both, read together with the
-          fix already drafted. Here are six of the places you'll work; there's a lot more once you're in.
+          Bring together organic search performance, competitors, market demand, AI visibility and the work you&rsquo;re doing to improve them. Every part of Searchscope works from the same underlying context. Here&rsquo;s what you can do inside Searchscope.
         </p>
       </div>
 
@@ -1204,7 +1205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="fcard__k">01</span>
               <h3 class="fcard__title">Data Pipeline</h3>
             </div>
-            <p class="fcard__desc">Your search data, your crawl and the analyzers in one live pipeline: the single source of truth everything else reads from.</p>
+            <p class="fcard__desc">Bring your search data, site crawl and analyzer findings into one shared dataset that powers the rest of Searchscope. Connect it once, then Searchscope keeps the data and analysis up to date on a schedule.</p>
           </div>
         </article>
 
@@ -1217,20 +1218,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="fcard__k">02</span>
               <h3 class="fcard__title">Analyzer Workspaces</h3>
             </div>
-            <p class="fcard__desc">Seven analyzers watch your site around the clock and hand you a ranked, judged queue of fixes: cannibalization, cluster volatility, content decay, index bloat and more, each one already drafted.</p>
+            <p class="fcard__desc">Seven analyzers continuously check for issues and opportunities, including cannibalization, content decay, cluster volatility and index bloat. Findings are filtered and prioritized, so your team starts with the work most worth reviewing.</p>
           </div>
         </article>
 
         <article class="fcard reveal" style="--reveal-delay:120ms">
           <div class="fcard__shot">
-            <img src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="Searchscope Intelligence Hub: performance command center with KPIs and trend" width="1100" height="759" loading="lazy" decoding="async">
+            <img src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="Searchscope Search Intelligence: performance command center with KPIs and trend" width="1100" height="759" loading="lazy" decoding="async">
           </div>
           <div class="fcard__body">
             <div class="fcard__head">
               <span class="fcard__k">03</span>
-              <h3 class="fcard__title">Intelligence Hub</h3>
+              <h3 class="fcard__title">Search Intelligence</h3>
             </div>
-            <p class="fcard__desc">Performance data, the competitive gap and rising demand in one command center, with an AI strategist that's connected to your data and knows your search visibility position.</p>
+            <p class="fcard__desc">See your search performance alongside competitor visibility and changing market demand. Use the <b>Strategic Advisor</b> to analyze the data and help decide where to focus next.</p>
           </div>
         </article>
 
@@ -1243,7 +1244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="fcard__k">04</span>
               <h3 class="fcard__title">Brand and AI Visibility</h3>
             </div>
-            <p class="fcard__desc">See how AI answer engines describe you, who they recommend instead and which sources they trust. Then close the gap with a digital PR plan and a dedicated strategist.</p>
+            <p class="fcard__desc">See how AI answer engines describe your brand, which competitors they recommend and which sources influence their answers. Identify the visibility gaps and build a digital PR plan to address them.</p>
           </div>
         </article>
 
@@ -1256,7 +1257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="fcard__k">05</span>
               <h3 class="fcard__title">Content Studio</h3>
             </div>
-            <p class="fcard__desc">Turn any finding into research, a brief and a publish-ready draft, placed on the exact page and section it belongs. Strategy to shipped without leaving the platform.</p>
+            <p class="fcard__desc">Turn a finding into research, a content brief and a draft, with recommendations tied to the page and section that needs the work. Move from identifying the opportunity to creating the content without leaving Searchscope.</p>
           </div>
         </article>
 
@@ -1269,13 +1270,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="fcard__k">06</span>
               <h3 class="fcard__title">Reports</h3>
             </div>
-            <p class="fcard__desc">Client-ready reporting that writes itself in the voice of whoever's reading: exec, practitioner or board. Export to PDF, deck or workbook in a click.</p>
+            <p class="fcard__desc">Create reports for different audiences, from practitioners to executives and boards, using the same underlying search data and findings. Choose the audience and Searchscope adjusts the level of detail and commentary. Export to PDF, presentation or workbook.</p>
           </div>
         </article>
       </div>
-      <p class="fgrid__more reveal">
-        Six of many. <a href="/beta/" class="fgrid__morelink">Join the waiting list to explore the rest <span aria-hidden="true">&rarr;</span></a>
-      </p>
+    </div>
+  </section>
+
+  <!-- ============ WHY SEARCHSCOPE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">Why Searchscope</span>
+        <h2 class="sec__title">More data isn&rsquo;t the answer. Better prioritization is.</h2>
+        <p class="lede">
+          Most search tools are very good at finding things. The problem is that search teams are
+          already surrounded by data, alerts, exports and recommendations. Searchscope connects the
+          signals, filters out what doesn&rsquo;t deserve attention and helps you focus on the work
+          most likely to matter.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>One shared context</b><span>Your search performance, crawl data, competitors, demand and findings all work from the same underlying dataset.</span></li>
+        <li><b>Fewer findings</b><span>Searchscope filters and prioritizes issues instead of handing you another enormous audit list.</span></li>
+        <li><b>See what happened next</b><span>Mark work as applied and track the performance that followed, rather than losing the change in a spreadsheet or a project board.</span></li>
+      </ul>
     </div>
   </section>
 
@@ -1290,10 +1309,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Ready for improved search visibility?</h2>
+        <h2 class="cta__title">Know what&rsquo;s changing. Know what to do next.</h2>
         <p class="cta__sub">
-          One crawl, one set of data, and every room working from it. Set up for your site,
-          with our search team alongside you. We onboard the pilot in small cohorts.
+          Connect your site and Searchscope brings your search data, analysis and recommendations into one platform. We&rsquo;ll help you get set up, and we onboard beta users in small cohorts.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">

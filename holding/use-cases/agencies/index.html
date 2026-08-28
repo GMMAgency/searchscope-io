@@ -670,6 +670,10 @@ strong, b { font-weight: 600; color: var(--ink); }
        loudest looking one. Trend lines draw with the shared tr-draw keyframe
        and the dots reuse .pt, both already in the base. */
     .pviz {
+      /* .ticks is inset -13px, so the panel has to be a positioning context.
+         .ticked supplies this on the forms; stated here too so the panel does
+         not depend on class order. */
+      position: relative;
       border: 1px solid var(--hairline);
       border-radius: var(--radius-m);
       background: var(--surface-panel);
@@ -1225,7 +1229,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
       </div>
 
-      <div class="pviz reveal" style="--reveal-delay:200ms">
+      <div class="pviz ticked reveal" style="--reveal-delay:200ms">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
         <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid meet" role="img"
              aria-label="Five client accounts, each with its top open analyzer finding and a trend line. Four are steady. One is sliding and has been flagged.">
           <text x="24" y="30" class="pv-head">PORTFOLIO</text>
