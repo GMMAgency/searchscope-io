@@ -173,6 +173,11 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
   .reveal { animation:rise 600ms cubic-bezier(0.22,1,0.36,1) both; }
   @keyframes rise { from { opacity:0; transform:translateY(14px); } }
 }
+
+  /* Nothing may create a horizontal scrollbar. See MOBILE.md in the workspace:
+     a nowrap label wider than the screen dragged /use-cases/agencies/ sideways
+     on a phone. This page has no .btn rule, so it only needs the guard. */
+  html, body { overflow-x: hidden; }
 </style>
 
 <header class="site-head"><div class="container">

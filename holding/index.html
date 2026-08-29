@@ -239,9 +239,22 @@ strong, b { font-weight: 600; color: var(--ink); }
   border: 1px solid transparent;
   text-decoration: none;
   transition: transform var(--dur-fast) var(--ease-out), background var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  /* Buttons hold one line on desktop, where there is room. Below 560px a long
+     label would otherwise force the page wider than the screen: nowrap makes the
+     button's min-content width its whole label, and a grid or flex parent
+     (min-width:auto by default) grows to fit it. That is what put a gap down the
+     right of /use-cases/agencies/ on a phone. */
   white-space: nowrap;
   cursor: pointer;
 }
+@media (max-width: 560px) {
+  .btn { white-space: normal; }
+}
+/* Grid and flex children default to min-width:auto, so a child that cannot
+   shrink drags its parent past the viewport. Zero it on the layout wrappers. */
+.sec__head, .hero__grid, .hero__actions { min-width: 0; }
+/* Last line of defence: nothing may create a horizontal scrollbar. */
+html, body { overflow-x: hidden; }
 .btn:hover {
   background: var(--accent-deep);
   transform: translateY(-1px);
