@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'home',page_name:'home'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'platform_hub',page_name:'ai_brand_intelligence'});</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,11 +11,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Searchscope · Operating System for Modern Search Teams</title>
-<meta name="description" content="Searchscope brings together your search performance, competitors, market demand and AI visibility, then prioritizes the work most worth doing.">
+<title>AI visibility tracking and brand monitoring · Searchscope</title>
+<meta name="description" content="Track what ChatGPT, Claude, Gemini, Perplexity and Google's AI results say about your brand. Every answer kept word for word, with the sources behind it.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Searchscope · Operating System for Modern Search Teams">
-<meta property="og:description" content="Searchscope brings together your search performance, competitors, market demand and AI visibility, then prioritizes the work most worth doing.">
+<meta property="og:title" content="AI visibility tracking and brand monitoring · Searchscope">
+<meta property="og:description" content="Track what ChatGPT, Claude, Gemini, Perplexity and Google's AI results say about your brand. Every answer kept word for word, with the sources behind it.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -237,7 +237,6 @@ strong, b { font-weight: 600; color: var(--ink); }
   background: var(--accent);
   color: var(--accent-ink);
   border: 1px solid transparent;
-  text-decoration: none;
   transition: transform var(--dur-fast) var(--ease-out), background var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   /* Buttons hold one line on desktop, where there is room. Below 560px a long
      label would otherwise force the page wider than the screen: nowrap makes the
@@ -341,6 +340,12 @@ html, body { overflow-x: hidden; }
   align-items: center;
   gap: var(--space-m);
   margin-top: var(--space-l);
+}
+.hero__note {
+  margin-top: var(--space-l);
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
 }
 .hero__visual { position: relative; }
 
@@ -608,6 +613,7 @@ html, body { overflow-x: hidden; }
    ============================================================ */
 @media (max-width: 980px) {
   .hero__grid { grid-template-columns: 1fr; }
+  .hero__visual { order: -1; }
 }
 @media (max-width: 640px) {
   .awstats { grid-template-columns: repeat(2, 1fr); }
@@ -643,44 +649,217 @@ html, body { overflow-x: hidden; }
     .fcard__k { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
     .fcard__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; line-height: 1.2; margin: 0; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
     .fcard__desc { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: 0; max-width: 48ch; }
-    /* Three-up list, ported verbatim from the analyzers page so the new
-       section uses a pattern the site already has rather than a new one. */
-    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
-    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
-    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
-    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
-    @media (max-width: 860px) { .anat { grid-template-columns: 1fr; } }
+    .fgrid__more { margin: var(--space-l) 0 0; text-align: center; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.01em; color: var(--ink-faint); }
+    .fgrid__morelink { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); padding-bottom: 1px; transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
+    .fgrid__morelink:hover { color: var(--ink); border-color: var(--ink); }
     .tag { font-family: var(--font-mono); font-size: 0.62em; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.28em 0.72em; line-height: 1; }
     @media (max-width: 720px) {
       .fgrid { grid-template-columns: 1fr; }
     }
 
-    /* ---- sticky header with a beta call to action ---- */
-    .site-head {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: var(--space-s);
-      padding-bottom: var(--space-s);
-      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    /* ============================================================
+       Agency use case page
+       ============================================================ */
+    .btn { text-decoration: none; }
+    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
+
+    /* ---- mobile: the same call to action, pinned to the bottom ---- */
+    .stickycta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: var(--space-2xs) var(--gutter);
+      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in oklab, var(--surface) 93%, transparent);
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+      border-top: 1px solid var(--hairline);
     }
-    .site-head.is-stuck {
-      background: color-mix(in oklab, var(--surface) 95%, transparent);
-      border-bottom-color: var(--hairline);
+    .stickycta .btn { width: 100%; }
+    @media (max-width: 720px) {
+      .stickycta { display: block; }
+      .site-head__cta { display: none; }
+      body { padding-bottom: 5.5rem; }
     }
-    .site-head .container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--space-m);
+    .lede { font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }
+    .lede + .lede { margin-top: var(--space-s); }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .sec__head { max-width: 62ch; }
+    .sec__title { font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }
+
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+    .ucard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }
+    .ucard__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .ucard__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .ucard__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- two-up cards ---- */
+    .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+
+    /* ---- numbered steps ---- */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+    .steps li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .steps b { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.14em; }
+    .steps h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .steps p { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- engine tiles ---- */
+    .engrid { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-s); }
+    .engrid li { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); padding: var(--space-m) var(--space-xs); display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); text-align: center; }
+    .engrid img, .engrid svg { width: auto; height: 34px; max-width: 100%; object-fit: contain; display: block; }
+    .engrid svg { color: var(--ink); }
+    .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
+
+    /* ---- hero form, two stage ---- */
+    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .hero__form .btn { width: 100%; }
+    .stage2[hidden], .stage1[hidden] { display: none; }
+    .hero__form .formnote { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.55; margin: 0 0 var(--space-m); }
+    .stage__site { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); border: 1px dashed var(--hairline); border-radius: var(--radius-s); padding: 0.45em 0.7em; margin: 0 0 var(--space-m); }
+    .stage__site b { color: var(--ink); font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage__site .stage__back { width: auto; flex: none; margin: 0; text-align: right; }
+    .hero__form .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); text-align: center; margin: var(--space-xs) 0 0; }
+    .stage__back { display: block; width: 100%; margin-top: var(--space-xs); background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; text-align: center; }
+    .stage__back:hover { color: var(--ink); }
+
+    @media (max-width: 1000px) { .engrid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ---- hero mock: the judge at work ---- */
+    .jq { list-style: none; margin: var(--space-s) 0 0; padding: 0; }
+    .jrow { display: grid; grid-template-columns: 10px 1fr auto; gap: 0.7rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--hairline); opacity: 0; }
+    .jrow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .jrow .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); display: inline-block; position: relative; top: -1px; }
+    .jrow.crit .d { background: var(--sev-rose-ink); }
+    .jrow.warn .d { background: var(--sev-amber-ink); }
+    .jrow.win .d { background: var(--sev-emerald-ink); }
+    .jrow h4 { margin: 0 0 1px; font-size: var(--step--1); font-weight: 560; letter-spacing: -0.01em; line-height: 1.3; }
+    .jrow .m { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .jrow .v { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .jrow--cut .v { color: var(--ink-faint); }
+    .jq__foot { display: flex; justify-content: space-between; gap: 0.8rem; margin: var(--space-s) 0 0; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+
+    @keyframes jrow-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes jrow-cut { to { opacity: 0.3; } }
+    .is-in .jrow { animation: jrow-in 0.45s var(--ease-out) forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s); }
+    .is-in .jrow--cut { animation: jrow-in 0.45s var(--ease-out) forwards, jrow-cut 0.5s ease forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s), calc(1.6s + var(--i, 0) * 0.06s); }
+    @media (prefers-reduced-motion: reduce) {
+      .jrow { opacity: 1; animation: none !important; }
+      .is-in .jrow--cut { opacity: 0.3; }
     }
-    .site-head__cta { margin-left: auto; }
-    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
+
+    /* ---- analyzer hub ---- */
+    .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } .hero .hero__visual { order: 0; } }
+
+    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+    .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }
+    .tablist { display: flex; flex-direction: column; border-left: 1px solid var(--hairline); }
+    .tab { display: flex; align-items: baseline; gap: 0.8rem; text-align: left; width: 100%; background: none; border: 0; border-left: 2px solid transparent; margin-left: -1px; padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+    .tab i { font-style: normal; font-size: var(--step--2); color: var(--ink-faint); }
+    .tab:hover { color: var(--ink-dim); }
+    .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
+    .tab[aria-selected="true"] i { color: var(--ink-dim); }
+    .tabpanel[hidden] { display: none; }
+    .tabpanel__shot { display: block; width: 100%; max-width: 64ch; margin: var(--space-l) 0 0; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
+    .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
+    .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
+    .btn--soon { color: var(--ink-faint); border-color: var(--hairline); cursor: default; }
+    .btn--soon:hover { background: transparent; border-color: var(--hairline); box-shadow: none; transform: none; }
+    .btn--soon b { margin-left: 0.15rem; font-weight: 500; font-size: 0.62em; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.25em 0.55em; }
+    .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+    .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
+
+    @media (max-width: 1080px) {
+      .anat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .tabs { grid-template-columns: 1fr; gap: var(--space-m); }
+      .tablist { flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--hairline); }
+      .tab { width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; margin-left: 0; }
+      .tab[aria-selected="true"] { border-left-color: transparent; border-bottom-color: var(--ink); }
+      .tab i { display: none; }
+    }
+    @media (max-width: 640px) { .anat { grid-template-columns: 1fr; } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
+
+    .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
+    .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+    .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+
+
+    /* ---- mobile: nothing in the hero may set the grid's minimum width ----
+       .awbar is a flex row holding a nowrap URL, so its min-content is the whole
+       string. Without min-width:0 the hero grid column inherits that as its floor
+       and the page runs wide. See MOBILE.md. */
+    .hero__visual, .hero .appwin, .awbar { min-width: 0; }
+
+    /* ---- verbatim answer demo ---- */
+    .ansdemo { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); margin: var(--space-xl) 0 0; max-width: 72ch; min-width: 0; }
+    .ansdemo__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-xs); border-bottom: 1px solid var(--hairline); padding-bottom: var(--space-s); }
+    .ansdemo__q { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); min-width: 0; }
+    .ansdemo__meta { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .ansdemo__body { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.7; margin: var(--space-s) 0 0; }
+    .ansdemo__cmp { font-weight: 500; color: var(--ink); box-shadow: inset 0 -0.35em 0 var(--hairline); }
+    .ansdemo__you { font-weight: 600; color: var(--ink); box-shadow: inset 0 -0.35em 0 var(--accent-glow); }
+    .ansdemo__rows { list-style: none; padding: 0; margin: var(--space-m) 0 0; border-top: 1px solid var(--hairline); }
+    .ansdemo__rows li { display: grid; grid-template-columns: 12rem 1fr; gap: var(--space-s); padding: var(--space-2xs) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .ansdemo__rows .k { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .ansdemo__rows .v { font-size: var(--step--1); color: var(--ink-dim); min-width: 0; overflow-wrap: anywhere; }
+    @media (max-width: 560px) { .ansdemo__rows li { grid-template-columns: 1fr; gap: 0; } }
+
+    /* ---- score weights table ---- */
+    .wt { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0 0; text-align: left; }
+    .wt__cap { caption-side: top; text-align: left; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); padding-bottom: var(--space-xs); }
+    .wt th, .wt td { border-bottom: 1px solid var(--hairline); padding: var(--space-s) var(--space-s) var(--space-s) 0; vertical-align: baseline; }
+    .wt thead th { font-family: var(--font-mono); font-size: var(--step--2); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); border-bottom-color: var(--ink); }
+    .wt tbody th { font-family: var(--font-mono); font-size: var(--step--1); font-weight: 500; color: var(--ink); width: 14rem; }
+    .wt tbody td:first-of-type { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); width: 6rem; font-variant-numeric: tabular-nums; }
+    .wt td:last-child { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+    @media (max-width: 720px) {
+      .wt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .wt tr { display: block; border-bottom: 1px solid var(--hairline); padding: var(--space-s) 0; }
+      .wt th, .wt td { display: block; width: auto !important; border-bottom: 0; padding: 0; }
+      .wt tbody td:first-of-type { margin-top: var(--space-3xs); color: var(--ink-dim); }
+      .wt td:last-child { margin-top: var(--space-2xs); }
+    }
+    /* ---- form ---- */
+    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
+    .field { display: block; margin-bottom: var(--space-m); }
+    .field:last-of-type { margin-bottom: var(--space-l); }
+    .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    .field input, .field select, .field textarea {
+      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
+      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
+      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    }
+    .field textarea { min-height: 6.5rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .formcard .btn { width: 100%; }
+    .hp { position: absolute; left: -9999px; }
+    .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
+    .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .secondary a:hover { color: var(--ink); border-color: var(--ink); }
 
     /* ---- footer ---- */
     .site-foot {
@@ -721,28 +900,38 @@ html, body { overflow-x: hidden; }
       letter-spacing: 0.02em;
     }
 
-    /* ---- mobile: the same call to action, pinned to the bottom ---- */
-    .stickycta {
-      display: none;
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 60;
-      padding: var(--space-2xs) var(--gutter);
-      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
-      background: color-mix(in oklab, var(--surface) 93%, transparent);
-      backdrop-filter: saturate(1.4) blur(10px);
-      -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-top: 1px solid var(--hairline);
-    }
-    .stickycta .btn { width: 100%; }
-    @media (max-width: 720px) {
-      .stickycta { display: block; }
-      .site-head__cta { display: none; }
-      body { padding-bottom: 5.5rem; }
+    @media (max-width: 900px) {
+      .cols3 { grid-template-columns: 1fr; }
+      .formwrap { grid-template-columns: 1fr; }
+      .modules li { grid-template-columns: 1fr; gap: var(--space-3xs); }
     }
 
+
+    /* ---- sticky header ---- */
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: var(--space-s);
+      padding-bottom: var(--space-s);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+    }
+    .site-head.is-stuck {
+      background: color-mix(in oklab, var(--surface) 95%, transparent);
+      border-bottom-color: var(--hairline);
+    }
+    .site-head .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-m);
+    }
+    .site-head__cta { margin-left: auto; }
 
     /* ---- header navigation ---- */
     .nav { display: flex; align-items: center; gap: var(--space-m); }
@@ -991,7 +1180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Search Intelligence</span>
                 <span class="navmenu__sub">Competitive Landscape, Demand and Trends, Strategic Advisor and more</span>
               </a>
-              <a class="navmenu__sublink" href="/platform/ai-brand-intelligence/">
+              <a class="navmenu__sublink" href="/platform/ai-brand-intelligence/" aria-current="page">
                 <span class="navmenu__label">AI and Brand Intelligence</span>
                 <span class="navmenu__sub">AI Visibility, Citations, Campaign Radar, the PR Strategist and more</span>
               </a>
@@ -1061,257 +1250,336 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
     <a href="/beta/" class="btn btn--sm site-head__cta">
       Sign up for beta
-      <span class="btn__arrow" aria-hidden="true">→</span>
+      <span class="btn__arrow" aria-hidden="true">&#8594;</span>
     </a>
     <button type="button" class="navtoggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
       <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
   </div>
 </header>
-
 <main>
-  <!-- ============ HERO ============ -->
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="eyebrow reveal">Operating system for modern search teams</span>
-          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-            Your search data is spread across multiple tools. The hard part is knowing what to do with it.
-          </h1>
-          <p class="hero__sub reveal" style="--reveal-delay:130ms">
-            Searchscope brings together your search performance, website, competitors and AI visibility, then identifies <b>what&rsquo;s changing, what matters and where to focus next.</b>
-          </p>
-          <div class="hero__actions reveal" style="--reveal-delay:200ms">
-            <a href="/beta/" class="btn">
-              Sign up for beta
-              <span class="btn__arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero__visual reveal" style="--reveal-delay:160ms">
-          <div class="ticked">
-            <span class="ticks" aria-hidden="true">
-              <span class="ticks__c ticks__tl"></span>
-              <span class="ticks__c ticks__tr"></span>
-              <span class="ticks__c ticks__br"></span>
-              <span class="ticks__c ticks__bl"></span>
-            </span>
-            <!-- Demand vs your position: the signature scatter -->
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/demand</span>
-                <span class="awtab">Demand &amp; Trends</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Demand vs your position</span>
-                    <span class="awsub">geo UK · 142 clusters</span>
-                  </div>
-                  <div class="awleg">
-                    <span><i class="dot" style="background:var(--sev-emerald-ink)"></i>rising</span>
-                    <span><i class="dot" style="background:var(--flat)"></i>flat</span>
-                    <span><i class="dot" style="background:var(--sev-rose-ink)"></i>falling</span>
-                  </div>
-                </div>
-                <div class="awviz">
-                  <svg viewBox="0 0 724 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monthly demand against your search position; bubbles colored by trend; a shaded band marks rising demand you rank weakly for.">
-                    <rect x="159.2" y="26" width="542.8" height="150.1" class="sc-zone"></rect>
-                    <line x1="62" y1="372" x2="702" y2="372" class="sc-grid"></line>
-                    <text x="54" y="375" class="sc-tick end">10</text>
-                    <line x1="62" y1="256.7" x2="702" y2="256.7" class="sc-grid"></line>
-                    <text x="54" y="259.7" class="sc-tick end">100</text>
-                    <line x1="62" y1="141.3" x2="702" y2="141.3" class="sc-grid"></line>
-                    <text x="54" y="144.3" class="sc-tick end">1k</text>
-                    <line x1="62" y1="26" x2="702" y2="26" class="sc-grid"></line>
-                    <text x="54" y="29" class="sc-tick end">10k</text>
-                    <g>
-                      <circle cx="199.7" cy="177.0" r="5.8" class="pt ptf" style="--i:0"></circle>
-                      <circle cx="143.0" cy="83.8" r="10.0" class="pt ptr" style="--i:1"></circle>
-                      <circle cx="677.7" cy="355.1" r="3.5" class="pt ptf" style="--i:2"></circle>
-                      <circle cx="386.1" cy="118.1" r="8.0" class="pt ptf" style="--i:3"></circle>
-                      <circle cx="143.0" cy="28.4" r="15" class="pt ptf" style="--i:4"></circle>
-                      <circle cx="523.8" cy="119.9" r="7.9" class="pt ptd" style="--i:5"></circle>
-                      <circle cx="507.6" cy="322.2" r="3.6" class="pt ptf" style="--i:6"></circle>
-                      <circle cx="353.6" cy="302.6" r="3.8" class="pt ptf" style="--i:7"></circle>
-                      <circle cx="118.7" cy="201.0" r="5.2" class="pt ptr" style="--i:8"></circle>
-                      <circle cx="321.2" cy="342.6" r="3.5" class="pt ptf" style="--i:9"></circle>
-                      <circle cx="410.4" cy="285.7" r="3.9" class="pt ptr" style="--i:10"></circle>
-                      <circle cx="661.5" cy="94.3" r="9.3" class="pt ptd" style="--i:11"></circle>
-                      <circle cx="442.8" cy="131.0" r="7.4" class="pt ptd" style="--i:12"></circle>
-                      <circle cx="207.8" cy="358.9" r="3.5" class="pt ptr" style="--i:13"></circle>
-                      <circle cx="369.8" cy="252.4" r="4.3" class="pt ptr" style="--i:14"></circle>
-                      <circle cx="402.3" cy="251.4" r="4.3" class="pt ptr" style="--i:15"></circle>
-                      <circle cx="402.3" cy="355.1" r="3.5" class="pt ptd" style="--i:16"></circle>
-                      <circle cx="369.8" cy="312.2" r="3.7" class="pt ptr" style="--i:17"></circle>
-                      <circle cx="386.1" cy="312.2" r="3.7" class="pt ptr" style="--i:18"></circle>
-                      <circle cx="167.3" cy="50.4" r="12.8" class="pt ptf" style="--i:19"></circle>
-                      <circle cx="499.5" cy="342.6" r="3.5" class="pt ptr" style="--i:20"></circle>
-                      <circle cx="337.4" cy="86.0" r="9.9" class="pt ptr" style="--i:21"></circle>
-                      <circle cx="272.6" cy="297.8" r="3.8" class="pt ptf" style="--i:22"></circle>
-                      <circle cx="232.1" cy="235.0" r="4.6" class="pt ptr" style="--i:23"></circle>
-                      <circle cx="377.9" cy="302.6" r="3.8" class="pt ptr" style="--i:24"></circle>
-                      <circle cx="645.3" cy="209.4" r="5.0" class="pt ptr" style="--i:25"></circle>
-                      <circle cx="402.3" cy="81.9" r="10.2" class="pt ptd" style="--i:26"></circle>
-                      <circle cx="329.3" cy="189.8" r="5.4" class="pt ptr" style="--i:27"></circle>
-                      <circle cx="572.4" cy="176.4" r="5.8" class="pt ptd" style="--i:28"></circle>
-                      <circle cx="70.1" cy="279.0" r="4.0" class="pt ptr" style="--i:29"></circle>
-                      <circle cx="118.7" cy="87.9" r="9.7" class="pt ptf" style="--i:30"></circle>
-                      <circle cx="353.6" cy="98.0" r="9.1" class="pt ptr" style="--i:31"></circle>
-                      <circle cx="596.7" cy="332.5" r="3.6" class="pt ptd" style="--i:32"></circle>
-                      <circle cx="386.1" cy="195.1" r="5.3" class="pt ptf" style="--i:33"></circle>
-                      <circle cx="507.6" cy="345.4" r="3.5" class="pt ptd" style="--i:34"></circle>
-                      <circle cx="523.8" cy="334.8" r="3.6" class="pt ptr" style="--i:35"></circle>
-                      <circle cx="580.5" cy="302.6" r="3.8" class="pt ptr" style="--i:36"></circle>
-                      <circle cx="426.6" cy="351.7" r="3.5" class="pt ptr" style="--i:37"></circle>
-                      <circle cx="540.0" cy="75.2" r="10.7" class="pt ptf" style="--i:38"></circle>
-                      <circle cx="224.0" cy="197.0" r="5.3" class="pt ptf" style="--i:39"></circle>
-                    </g>
-                    <circle cx="296.9" cy="117.8" r="9" class="pt-standout"></circle>
-                    <circle cx="296.9" cy="117.8" r="15" class="sc-ring"></circle>
-                    <text x="62" y="398" class="sc-tick">better ←</text>
-                    <text x="702" y="398" class="sc-tick end">→ worse · your position</text>
-                  </svg>
-                  <div class="awcall" style="left:44%; top:24%">
-                    <span class="t">LOSING SHARE</span>
-                    <span class="p">/tents/4-season</span>
-                    <span class="m">demand ↑ · impr ↓ · 2 competing</span>
-                  </div>
-                </div>
-                <p class="awnote">Shaded = rising demand you rank weakly for, your biggest openings.</p>
-                <div class="awstats">
-                  <div class="awstat"><span class="v cnt" data-n="142">142</span><span class="l">Clusters</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="77">77</span><span class="l">Rising demand</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="72">72</span><span class="l">Losing share</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="104" data-suf="k">104k</span><span class="l">Addr. demand</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FEATURE STRIP ============ -->
-  <section class="section strip" id="platform">
-    <div class="container">
-      <div class="strip__head reveal">
-        <span class="eyebrow">Inside the platform</span>
-        <h2 class="strip__title">See the whole search picture in one place.</h2>
-        <p class="strip__sub">
-          Bring together organic search performance, competitors, market demand, AI visibility and the work you&rsquo;re doing to improve them. Every part of Searchscope works from the same underlying context. Here&rsquo;s what you can do inside Searchscope.
+      <div class="sec__head">
+        <span class="eyebrow reveal">Platform &middot; AI &amp; Brand Intelligence</span>
+        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+          Find out what AI assistants tell buyers about you.
+        </h1>
+        <p class="lede reveal" style="--reveal-delay:170ms">
+          <b>Searchscope asks the questions your buyers ask across six AI assistants, every week, and keeps every answer word for word.</b> You see where you were recommended, where a competitor was recommended instead, and which sources each assistant used to reach that answer.
         </p>
+        <div class="hero__actions reveal" style="--reveal-delay:220ms">
+          <a href="/beta/" class="btn">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
+          <a href="/resources/ai-visibility-checker/" class="btn btn--ghost">
+            Try the free check
+          </a>
+        </div>
       </div>
 
-      <div class="fgrid">
-        <article class="fcard reveal" style="--reveal-delay:0ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/01-data-pipeline-sync.jpg" alt="Searchscope Data Pipeline: sync search data, crawl the site and run the analyzers in order" width="1100" height="673" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">01</span>
-              <h3 class="fcard__title">Data Pipeline</h3>
+      <div class="hero__visual reveal" style="--reveal-delay:200ms">
+        <div class="ticked">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span>
+            <span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span>
+            <span class="ticks__c ticks__bl"></span>
+          </span>
+          <div class="appwin">
+            <div class="awbar">
+              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="awurl">app.searchscope.io/intelligence</span>
+              <span class="awtab">Runs weekly</span>
             </div>
-            <p class="fcard__desc">Bring your search data, site crawl and analyzer findings into one shared dataset that powers the rest of Searchscope. Connect it once, then Searchscope keeps the data and analysis up to date on a schedule.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:60ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/02-analyzer-workspaces-a.jpg" alt="Searchscope Analyzer Workspaces: a scored queue of findings with the fix drafted" width="1100" height="837" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">02</span>
-              <h3 class="fcard__title">Analyzer Workspaces</h3>
+            <div class="awbody">
+              <div class="awhead">
+                <span>
+                  <span class="awtitle">AI visibility</span>
+                  <span class="awsub">Across six assistants, on the questions you track</span>
+                </span>
+              </div>
+              <div class="awstats c3">
+                <div class="awstat"><span class="v cnt" data-n="41">41</span><span class="l">Visibility score</span></div>
+                <div class="awstat"><span class="v cnt" data-n="24">24</span><span class="l">Questions tracked</span></div>
+                <div class="awstat"><span class="v cnt" data-n="6">6</span><span class="l">Assistants</span></div>
+              </div>
+              <ul class="jq">
+          <li class="jrow win" style="--i:0">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>ChatGPT</h4><span class="m">named you in 18 of 48 answers, cited you in 8</span></span>
+            <span class="v">38%</span>
+          </li>
+          <li class="jrow win" style="--i:1">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Perplexity</h4><span class="m">named you in 22 of 48 answers, cited you in 16</span></span>
+            <span class="v">46%</span>
+          </li>
+          <li class="jrow warn" style="--i:2">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Claude</h4><span class="m">named you in 10 of 48 answers, cited you in 2</span></span>
+            <span class="v">21%</span>
+          </li>
+          <li class="jrow crit" style="--i:3">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Google AI Overviews</h4><span class="m">no mention on 24 answers this run</span></span>
+            <span class="v">0%</span>
+          </li>
+          <li class="jrow  jrow--cut" style="--i:4">
+            <span class="d" aria-hidden="true"></span>
+            <span><h4>Gemini</h4><span class="m">named you in 14 of 48 answers, cited you in 4</span></span>
+            <span class="v">29%</span>
+          </li>
+              </ul>
+              <p class="jq__foot"><span>Mention rate, this run</span><span>5 of 6</span></p>
             </div>
-            <p class="fcard__desc">Seven analyzers continuously check for issues and opportunities, including cannibalization, content decay, cluster volatility and index bloat. Findings are filtered and prioritized, so your team starts with the work most worth reviewing.</p>
           </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:120ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="Searchscope Search Intelligence: performance command center with KPIs and trend" width="1100" height="759" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">03</span>
-              <h3 class="fcard__title">Search Intelligence</h3>
-            </div>
-            <p class="fcard__desc">See your search performance alongside competitor visibility and changing market demand. Use the <b>Strategic Advisor</b> to analyze the data and help decide where to focus next.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:180ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/04-brand-and-ai.jpg" alt="Searchscope Brand and AI Visibility: the PR Campaign Radar pulling a rival's digital-PR burst apart, showing the asset, who linked and how to counter it" width="1100" height="688" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">04</span>
-              <h3 class="fcard__title">Brand and AI Visibility</h3>
-            </div>
-            <p class="fcard__desc">See how AI answer engines describe your brand, which competitors they recommend and which sources influence their answers. Identify the visibility gaps and build a digital PR plan to address them.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:240ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/05-content-studio-a.jpg" alt="Searchscope Content Studio: a content brief with H2 outline and placement" width="1100" height="664" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">05</span>
-              <h3 class="fcard__title">Content Studio</h3>
-            </div>
-            <p class="fcard__desc">Turn a finding into research, a content brief and a draft, with recommendations tied to the page and section that needs the work. Move from identifying the opportunity to creating the content without leaving Searchscope.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:300ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/06-reports-a-client.jpg" alt="Searchscope Reports: a client-ready weekly intelligence report with PDF, deck and workbook export" width="1100" height="678" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">06</span>
-              <h3 class="fcard__title">Reports</h3>
-            </div>
-            <p class="fcard__desc">Create reports for different audiences, from practitioners to executives and boards, using the same underlying search data and findings. Choose the audience and Searchscope adjusts the level of detail and commentary. Export to PDF, presentation or workbook.</p>
-          </div>
-        </article>
+        </div>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ WHY SEARCHSCOPE ============ -->
   <section class="section">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">Why Searchscope</span>
-        <h2 class="sec__title">More data isn&rsquo;t the answer. Better prioritization is.</h2>
+        <span class="eyebrow">Where we ask</span>
+        <h2 class="sec__title">Six assistants, the same questions, every week.</h2>
         <p class="lede">
-          Most search tools are very good at finding things. The problem is that search teams are
-          already surrounded by data, alerts, exports and recommendations. Searchscope connects the
-          signals, filters out what doesn&rsquo;t deserve attention and helps you focus on the work
-          most likely to matter.
+          A one-off check tells you where you stood on a single day. Answers move as assistants update, as competitors publish and as the sources those assistants lean on change. Searchscope runs the same set of questions on a weekly schedule, so you&rsquo;re reading a trend rather than a snapshot.
         </p>
       </div>
+      <ul class="engrid reveal">
+        <li>
+          <img src="/brand/engines/chatgpt.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>ChatGPT</span>
+        </li>
+        <li>
+          <img src="/brand/engines/claude.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Claude</span>
+        </li>
+        <li>
+          <img src="/brand/engines/gemini.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Gemini</span>
+        </li>
+        <li>
+          <img src="/brand/engines/perplexity.webp" alt="" width="192" height="192" loading="lazy" decoding="async">
+          <span>Perplexity</span>
+        </li>
+        <li>
+          <img src="/brand/engines/google-ai-overviews.svg" alt="" loading="lazy" decoding="async">
+          <span>Google AI Overviews</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8.4 3.6c0 2.6-2.2 4.8-4.8 4.8 2.6 0 4.8 2.2 4.8 4.8 0-2.6 2.2-4.8 4.8-4.8-2.6 0-4.8-2.2-4.8-4.8Z"/><path d="M16.8 12.4c0 1.9-1.5 3.4-3.4 3.4 1.9 0 3.4 1.5 3.4 3.4 0-1.9 1.5-3.4 3.4-3.4-1.9 0-3.4-1.5-3.4-3.4Z"/>
+          </svg>
+          <span>Google AI Mode</span>
+        </li>
+      </ul>
       <ul class="anat reveal">
-        <li><b>One shared context</b><span>Your search performance, crawl data, competitors, demand and findings all work from the same underlying dataset.</span></li>
-        <li><b>Fewer findings</b><span>Searchscope filters and prioritizes issues instead of handing you another enormous audit list.</span></li>
-        <li><b>See what happened next</b><span>Mark work as applied and track the performance that followed, rather than losing the change in a spreadsheet or a project board.</span></li>
+        <li><b>The same questions to each one</b><span>Every assistant gets an identical set of prompts, so a difference you see is the assistants disagreeing about you rather than the questions changing between them.</span></li>
+        <li><b>Asked twice, where the answer can move</b><span>ChatGPT, Claude, Gemini and Perplexity answer the same question differently on different days, so each question goes to them twice per run and both answers are kept. Google AI Overviews and AI Mode are read once, because they return a result page rather than a fresh answer.</span></li>
+        <li><b>History survives the list changing</b><span>When an assistant is added, it starts appearing in your runs. When one is retired, the runs it took part in stay in your history, so a trend line never loses its past because a list changed.</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- ============ CLOSING CTA ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">The questions</span>
+        <h2 class="sec__title">Asking about you isn&rsquo;t the same as asking about the problem you solve.</h2>
+        <p class="lede">
+          Those two questions measure different things, so Searchscope keeps them in separate libraries and reports them separately.
+        </p>
+      </div>
+      <ul class="modules reveal">
+        <li>
+          <dfn>Brand questions</dfn>
+          <span>Questions that name you. These measure recall: when somebody asks an assistant about you directly, does it know who you are and describe you accurately? Useful, but it&rsquo;s the easiest test to pass.</span>
+        </li>
+        <li>
+          <dfn>Non-brand questions</dfn>
+          <span>Questions that name nobody, of the &ldquo;best tool for&rdquo; kind your buyers actually type. This is where you find out whether you get recommended when nothing prompts the assistant to think of you.</span>
+        </li>
+        <li>
+          <dfn>Product questions</dfn>
+          <span>Questions about one product line, tracked as their own library so a strong line doesn&rsquo;t hide a weak one behind an average.</span>
+        </li>
+      </ul>
+      <div class="sec__head reveal" style="margin-top: var(--space-2xl)">
+        <h3 class="sec__title">Group your questions the way you sell.</h3>
+        <p class="lede">
+          Put your questions into groups of your own naming, by product line, service or market, and assign them in bulk rather than one at a time. Every view respects the grouping, so you can read the overview, the answers and the citations for one part of the business on its own.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>An average hides the thing you needed to see</b><span>A brand doing well across most of its range can be losing badly in one line. Grouped, that shows up as its own row instead of disappearing into a single number.</span></li>
+        <li><b>Put a bell on the groups that matter</b><span>Turn alerts on for a group and Searchscope emails you when it drops sharply between runs, so you don&rsquo;t have to keep checking the ones that are steady.</span></li>
+        <li><b>Small groups don&rsquo;t trigger false alarms</b><span>A group needs at least three questions asked in both runs before it can raise an alert, so a couple of questions moving can&rsquo;t page you.</span></li>
+      </ul>
+
+      <div class="sec__head reveal" style="margin-top: var(--space-2xl)">
+        <h3 class="sec__title">Suggested questions arrive with their reason attached.</h3>
+        <p class="lede">
+          Searchscope proposes questions to track and labels each one with where it came from, so you can judge whether it belongs in your set before you add it.
+        </p>
+      </div>
+      <ul class="chips reveal">
+        <li>Already cited you</li>
+        <li>You rank for it</li>
+        <li>Competitor gap</li>
+        <li>Generated</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">The evidence</span>
+        <h2 class="sec__title">The answers, word for word.</h2>
+        <p class="lede">
+          Searchscope keeps the full text of every answer, not a summary of it. For each one you can see which brands were named, how early yours appeared, and whether the assistant linked to you or to somebody else.
+        </p>
+      </div>
+
+      <div class="ansdemo reveal">
+        <div class="ansdemo__head">
+          <span class="ansdemo__q">&ldquo;best rank tracking tool for a small agency&rdquo;</span>
+          <span class="ansdemo__meta">Perplexity &middot; non-brand &middot; run of 24 Aug</span>
+        </div>
+        <p class="ansdemo__body">
+          &ldquo;For a small agency, most people land on one of three. <b class="ansdemo__cmp">Competitor A</b> is the usual recommendation for its reporting, <b class="ansdemo__cmp">Competitor B</b> is cheaper per project, and <b class="ansdemo__you">your brand</b> is worth a look if you want the analysis rather than just the numbers&hellip;&rdquo;
+        </p>
+        <ul class="ansdemo__rows">
+          <li><span class="k">Named</span><span class="v">Competitor A, Competitor B, you</span></li>
+          <li><span class="k">Your first mention</span><span class="v">third of three</span></li>
+          <li><span class="k">Linked to you</span><span class="v">no</span></li>
+          <li><span class="k">Sources used</span><span class="v">g2.com, reddit.com, competitor-a.com</span></li>
+        </ul>
+      </div>
+
+      <div class="sec__head reveal" style="margin-top: var(--space-2xl)">
+        <h3 class="sec__title">Who gets cited instead of you.</h3>
+        <p class="lede">
+          Every domain an assistant leaned on to answer is collected across your runs, so you can see which sources shape the answers in your category. Domains that already cite you are listed apart from the ones that don&rsquo;t yet, because those are two different jobs.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>How much it covers</b><span>The number of your tracked questions where that domain appeared in the answer, so a source that shapes twelve answers is easy to tell from one that shaped a single answer once.</span></li>
+        <li><b>Which assistants use it</b><span>A domain leaned on by four assistants is a different opportunity from one that only Perplexity reaches for.</span></li>
+        <li><b>Whether it already mentions you</b><span>Each domain is marked according to whether it currently cites you, cites a competitor you track, or neither.</span></li>
+        <li><b>How long it&rsquo;s been there</b><span>When the domain first appeared and how many runs it&rsquo;s shown up in, which separates a durable source from a one-week result.</span></li>
+        <li><b>The pages doing the work</b><span>The specific URLs on that domain that assistants cited, rather than the domain on its own.</span></li>
+        <li><b>Name variants, caught</b><span>When an answer refers to you by a spelling or variant you haven&rsquo;t registered, it&rsquo;s raised for you to accept or dismiss, so those mentions aren&rsquo;t quietly scored as misses.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">The score</span>
+        <h2 class="sec__title">One score, and the five things inside it.</h2>
+        <p class="lede">
+          Most AI visibility scores don&rsquo;t say what they measure. This one does, and the weights don&rsquo;t change between your dashboard, your reports and your history.
+        </p>
+      </div>
+      <table class="wt reveal">
+        <caption class="wt__cap">What the AI visibility score is made of</caption>
+        <thead>
+          <tr><th scope="col">Component</th><th scope="col">Weight</th><th scope="col">What it measures</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Share of voice</th><td>35%</td><td>Your share of the brand mentions across answers, measured against the competitors you track.</td></tr>
+          <tr><th scope="row">Citation rate</th><td>20%</td><td>How often an assistant links to you in the answer, not just names you.</td></tr>
+          <tr><th scope="row">Mention rate</th><td>15%</td><td>How often you&rsquo;re named at all.</td></tr>
+          <tr><th scope="row">Breadth</th><td>10%</td><td>How many of the assistants mention you, so strength on one doesn&rsquo;t read as strength everywhere.</td></tr>
+          <tr><th scope="row">Branded recall</th><td>20%</td><td>On questions that name you, how often the assistant knows who you are.</td></tr>
+        </tbody>
+      </table>
+      <ul class="anat anat--two reveal">
+        <li><b>Branded recall is measured on its own</b><span>Answers to questions that name you are scored separately as recall, so you can see how much of your standing comes from people who were already looking for you.</span></li>
+        <li><b>Not asking never reads as not being known</b><span>If you track no brand questions, that 20% is shared out across the other four components rather than counted as a zero, so the score reflects what you actually measured.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">Beyond the answers</span>
+        <h2 class="sec__title">Your brand against the brands you&rsquo;re measured against.</h2>
+        <p class="lede">
+          AI answers are one signal. Alongside them, Searchscope benchmarks you and each tracked competitor on the things that tend to feed those answers in the first place.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>Mentions in AI answers, run by run</b><span>Every run records how many answers named you, how many cited you, and the same for each competitor, so you can watch a gap widen or close instead of comparing two screenshots.</span></li>
+        <li><b>Links and authority</b><span>Referring domains, total backlinks and domain rank for every brand in the set, side by side.</span></li>
+        <li><b>Media coverage</b><span>Total mentions and news mentions, the domains carrying them, and the split between positive, negative and neutral coverage.</span></li>
+        <li><b>Branded search demand</b><span>How many people search for each brand by name, month by month, which is the closest thing to a direct read on brand awareness.</span></li>
+      </ul>
+
+      <div class="sec__head reveal" style="margin-top: var(--space-2xl)">
+        <span class="eyebrow">Campaign Radar</span>
+        <h3 class="sec__title">See a competitor&rsquo;s PR campaign while it&rsquo;s still running.</h3>
+        <p class="lede">
+          New and lost linking domains are tracked month by month for every brand you benchmark. When a month runs well above that brand&rsquo;s normal rate, it&rsquo;s flagged as a burst.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>A burst says somebody ran something</b><span>The monthly view shows you when. Investigating the burst shows you what.</span></li>
+        <li><b>The campaign asset, identified</b><span>Searchscope pulls the new links from that window and groups them by the page they point at, which is usually the thing the campaign was built around.</span></li>
+        <li><b>Coverage separated from plumbing</b><span>Footer links, legal pages and naked-URL anchors are counted apart from earned coverage, so the number you read is the coverage rather than the boilerplate.</span></li>
+        <li><b>A counter angle to consider</b><span>Each investigation is labeled with the kind of campaign it looks like, alongside a suggested angle of your own.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">PR Strategist</span>
+        <h2 class="sec__title">A second advisor, pointed at your brand rather than your rankings.</h2>
+        <p class="lede">
+          The <b>PR Strategist</b> reads your AI visibility runs, your brand benchmark, your PR activity and your citation gaps together, then works through what to do about them with you.
+        </p>
+      </div>
+      <ul class="anat anat--two reveal">
+        <li><b>Why the answers favor somebody else</b><span>Ask why assistants recommend a competitor over you and get an answer grounded in your own runs, rather than a general theory about how AI search works.</span></li>
+        <li><b>Who&rsquo;s worth approaching</b><span>Turn the citation gaps into a ranked list of sources: the domains shaping answers in your category that don&rsquo;t mention you yet, and what each one already cites.</span></li>
+        <li><b>How to answer a campaign</b><span>Take an investigated burst from Campaign Radar into the Strategist and work up your response to it.</span></li>
+        <li><b>Which signals to build first</b><span>Your benchmark shows where you&rsquo;re behind on links, coverage and branded search. The Strategist helps you pick which one to work on rather than trying to move all three.</span></li>
+      </ul>
+      <p class="lede reveal" style="margin-top: var(--space-l)">
+        It plans and drafts with you. Approaching people, and the relationships that come out of it, stay yours.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">From finding to action</span>
+        <h2 class="sec__title">What to do with a gap once you can see it.</h2>
+      </div>
+      <ul class="anat reveal">
+        <li><b>Ask the Strategic Advisor</b><span>Bring a visibility gap into the <b>Strategic Advisor</b> to work out why it&rsquo;s happening and whether it&rsquo;s worth doing before the other work in your queue. It reads your AI runs alongside your search performance rather than in isolation.</span></li>
+        <li><b>Brief it in Content Studio</b><span>Send a finding to <b>Content Studio</b> with the questions, the answers and the competing sources already attached, so the brief starts from the evidence.</span></li>
+        <li><b>Track what happened next</b><span>Mark the work as applied and <b>Impact Tracker</b> records the baseline from that date, so you can see what happens to mentions, citations and visibility afterwards.</span></li>
+      </ul>
+      <p class="lede reveal" style="margin-top: var(--space-xl)">
+        Not connected yet? The <a href="/resources/ai-visibility-checker/">free AI visibility check</a> puts the same six assistants to work on your brand and we read the results with you.
+      </p>
+    </div>
+  </section>
+
   <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
@@ -1322,21 +1590,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Know what&rsquo;s changing. Know what to do next.</h2>
+        <h2 class="cta__title">Find out what AI is telling your buyers.</h2>
         <p class="cta__sub">
-          Connect your site and Searchscope brings your search data, analysis and recommendations into one platform. We&rsquo;ll help you get set up, and we onboard beta users in small cohorts.
+          Connect your site and Searchscope tracks the questions that matter in your category across six assistants, week after week, and keeps every answer so you can read what was actually said.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">→</span>
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
           </a>
         </div>
-        <p class="cta__note">No card, no obligation. Just early access as places open up.</p>
       </div>
     </div>
   </section>
 </main>
+
+<div class="stickycta">
+  <a href="/beta/" class="btn">
+    Join the beta
+    <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+</div>
 
 <footer class="site-foot">
   <div class="container">
@@ -1418,14 +1692,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
-<div class="stickycta">
-  <a href="/beta/" class="btn">
-    Sign up for beta
-    <span class="btn__arrow" aria-hidden="true">→</span>
-  </a>
-</div>
-
-
 
 <script>
   (function () {
@@ -1480,6 +1746,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { closeNav(); toggle.focus(); }
     });
+  })();
+</script>
+
+<noscript>
+  <style>.tabpanel[hidden] { display: block !important; } .tablist { display: none; } .jrow { opacity: 1 !important; animation: none !important; } .tabpanel + .tabpanel { margin-top: var(--space-xl); }</style>
+</noscript>
+
+<script>
+  (function () {
+    var list = document.querySelector('.tablist');
+    if (!list) return;
+    var tabs = [].slice.call(list.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.tabpanel'));
+    if (tabs.length !== panels.length) return;
+
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.hidden = j !== i; });
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1
+              : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = (i + d + tabs.length) % tabs.length;
+        select(n);
+        tabs[n].focus();
+      });
+    });
+    select(0);
   })();
 </script>
 
