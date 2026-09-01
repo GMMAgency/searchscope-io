@@ -1192,7 +1192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Schema</p>
         <h1 class="hero__title reveal">A schema markup checker that writes the fix.</h1>
         <p class="lede reveal" style="--reveal-delay:100ms">Validators are good at telling you something is broken and bad at telling you what to do about it.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>Searchscope checks every crawled page, then generates the markup.</b> Copy-paste JSON-LD, and a view of what you have against what you should have.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>Searchscope checks every crawled page, identifies missing or invalid structured data and generates the recommended markup.</b> Where markup can be generated, the finding includes copy-paste JSON-LD and a comparison between the current and recommended implementation.</p>
         <div class="hero__actions reveal" style="--reveal-delay:190ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -1214,14 +1214,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">01 · What it checks</span>
         <h2 class="sec__title">Structured data, page by page.</h2>
-        <p class="lede">Every crawled page is checked for the structured data its type calls for, and for whether what is already there is valid.</p>
-        <p class="lede">The types that change how a page is understood and displayed, rather than every type in the specification.</p>
+        <p class="lede">Searchscope checks each crawled page for relevant structured data and validates any markup that&rsquo;s already present.</p>
+        <p class="lede">The focus is on structured data types relevant to search and the content on the page, rather than every type in the specification.</p>
       </div>
       <div class="calls reveal">
         <article class="call">
           <p class="call__k">Type</p>
           <h3 class="call__t">Organization</h3>
-          <p class="call__d">Who you are, checked once and referenced everywhere.</p>
+          <p class="call__d">Organization details used across the site, such as your name, logo and business information.</p>
         </article>
         <article class="call">
           <p class="call__k">Type</p>
@@ -1231,17 +1231,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="call">
           <p class="call__k">Type</p>
           <h3 class="call__t">FAQPage</h3>
-          <p class="call__d">Question and answer blocks, where they genuinely exist on the page.</p>
+          <p class="call__d">Question and answer content, where it genuinely exists on the page.</p>
         </article>
         <article class="call">
           <p class="call__k">Type</p>
           <h3 class="call__t">Product</h3>
-          <p class="call__d">Products, with the fields that actually get shown.</p>
+          <p class="call__d">Product information, including the properties relevant to product search features.</p>
         </article>
         <article class="call">
           <p class="call__k">Type</p>
           <h3 class="call__t">BreadcrumbList</h3>
-          <p class="call__d">Where the page sits, so the result can show the path.</p>
+          <p class="call__d">The page&rsquo;s position within the site hierarchy, used to describe its breadcrumb path.</p>
         </article>
         <article class="call">
           <p class="call__k">Type</p>
@@ -1257,8 +1257,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">02 · Missing or broken</span>
         <h2 class="sec__title">Two different problems.</h2>
-        <p class="lede">Absent structured data is a gap. Present but invalid structured data is worse, because everything looks fine until somebody checks.</p>
-        <p class="lede"><b>Both are found, and both are ranked</b> against the impressions and clicks the page already gets, so a broken block on a page that matters outranks a missing block on one that doesn't.</p>
+        <p class="lede">Missing structured data and invalid structured data need different fixes. Missing markup means an opportunity hasn&rsquo;t been implemented. Invalid markup means something is already there but may not be usable as intended.</p>
+        <p class="lede"><b>Searchscope finds both and prioritizes them</b> using the page&rsquo;s existing impressions and clicks, so issues on pages with meaningful search visibility rise above lower-impact findings.</p>
       </div>
 
     </div>
@@ -1269,8 +1269,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">03 · The fix</span>
         <h2 class="sec__title">Copy-paste JSON-LD, and a diff.</h2>
-        <p class="lede">Validators tell you what is wrong and leave you in a specification document at four in the afternoon working out what is actually wanted.</p>
-        <p class="lede"><b>Searchscope writes the block.</b> Every finding comes with the JSON-LD ready to paste, and a view of what you currently have against what it should be, so you can see exactly what changes before anything ships.</p>
+        <p class="lede">Validators can identify an error without showing you what the corrected markup should look like.</p>
+        <p class="lede"><b>Searchscope generates the recommended JSON-LD.</b> Where markup can be generated, you can compare the current implementation with the suggested version and copy it when you&rsquo;re ready, so you see exactly what changes before anything ships.</p>
       </div>
 
       <div class="snip reveal">
@@ -1289,9 +1289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">04 · Then what</span>
         <h2 class="sec__title">From missing markup to shipped markup.</h2>
         <p class="lede">
-          Ask the <b>Strategic Advisor</b> whether it's worth doing against everything else in the
-          queue. Send it to <b>Content Studio</b> when the fix is a writing job. Mark it applied and
-          the Impact Tracker takes a baseline, then reports what followed.
+          Use the <b>Strategic Advisor</b> to assess whether the schema finding should be prioritized against the other work in your queue. If the fix needs changes to the page content, send the finding to <b>Content Studio</b>. Once the structured data is live, mark it applied: the <b>Impact Tracker</b> records the baseline from that date, so you can see what happens afterwards.
         </p>
       </div>
       <p class="backlink reveal">
@@ -1315,7 +1313,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Find out what structured data you are missing.</h2>
         <p class="cta__sub">
-          Connect a site and the analyzers read it end to end, then hand back the short list.
+          Connect your site and Searchscope runs the analyzers automatically, filtering and prioritizing the findings that deserve your attention.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">

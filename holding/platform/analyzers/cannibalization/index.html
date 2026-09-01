@@ -1193,12 +1193,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Keyword cannibalization, found in your own data.
         </h1>
         <p class="lede reveal" style="--reveal-delay:100ms">
-          Most cannibalization advice is guesswork. These two pages feel similar, so merge them. That's
-          how good pages get consolidated and the ones actually costing you clicks get missed.
+          Most cannibalization analysis starts with page similarity: these two pages look alike, so merge them. But similar pages aren&rsquo;t necessarily competing.
         </p>
         <p class="lede reveal" style="--reveal-delay:140ms">
-          <b>It isn't a hunch, it's a pattern in your search data.</b> The same query splitting
-          impressions across two of your URLs, with the click-through depressed on both.
+          <b>Searchscope uses your Search Console data to identify cases where multiple URLs are genuinely competing for the same queries</b>, then shows the evidence behind each finding.
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:190ms">
           <a href="/beta/" class="btn">
@@ -1242,7 +1240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Signal 03</p>
           <h3 class="ucard__t">Click-through below par</h3>
-          <p class="ucard__d">A combined click-through rate lower than a single consolidated page would have earned. That gap is the recoverable clicks.</p>
+          <p class="ucard__d">Combined click-through is lower than the expected CTR for the position. Searchscope uses the gap to estimate the potential click opportunity.</p>
         </article>
       </div>
 
@@ -1263,28 +1261,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section bg-grid">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">02 · The call</span>
+        <span class="eyebrow">02 · The recommendation</span>
         <h2 class="sec__title">The fix is a decision, not a merge.</h2>
         <p class="lede">
-          Every conflict comes with the winner named and one of three strategies attached, because the
-          right answer depends on intent rather than on similarity.
+          Each conflict includes the competing pages, the evidence behind the finding and one of three recommended strategies, based on the search intent each page serves.
         </p>
       </div>
       <div class="calls reveal">
         <article class="call">
           <p class="call__k">Strategy 01</p>
           <h3 class="call__t">Consolidate</h3>
-          <p class="call__d">Both pages chase the same intent. Redirect the weaker into the stronger and fold the useful content across.</p>
+          <p class="call__d">Both pages serve the same intent. Consolidate the useful content into the stronger page and redirect the weaker URL.</p>
         </article>
         <article class="call">
           <p class="call__k">Strategy 02</p>
           <h3 class="call__t">Differentiate</h3>
-          <p class="call__d">The intents are genuinely different but the pages have blurred. Sharpen each one so the results page can tell them apart.</p>
+          <p class="call__d">The pages serve different intents but currently overlap too heavily. Differentiate the content and targeting so each page has a clearer search purpose.</p>
         </article>
         <article class="call">
           <p class="call__k">Strategy 03</p>
           <h3 class="call__t">Keep both</h3>
-          <p class="call__d">Sometimes the honest answer is to leave it alone. Searchscope will say so rather than manufacture a job.</p>
+          <p class="call__d">Sometimes the right answer is to leave it alone. Searchscope identifies these cases rather than creating an unnecessary recommendation.</p>
         </article>
       </div>
     </div>
@@ -1297,15 +1294,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">03 · Before you see it</span>
         <h2 class="sec__title">Most conflicts never reach you.</h2>
         <p class="lede">
-          Cannibalization tools are notorious for this. Four hundred conflicts, most of them noise,
-          and by the time you've dismissed the first thirty you've stopped believing the list.
-          Nobody ever fixes number one hundred and thirty seven, because nobody believes number one
-          hundred and thirty seven matters.
+          Cannibalization tools can surface hundreds of technically valid conflicts, leaving you to work out which ones actually matter. By the time you have dismissed the first thirty, the list has stopped being useful.
         </p>
         <p class="lede">
-          <b>A judge reviews every finding before you see one of them.</b> It reads the evidence
-          behind each conflict and decides whether it has earned your attention. The ones that don't
-          survive are set aside with the reason recorded against them.
+          <b>Searchscope filters each finding against the underlying search data before it reaches your main queue.</b> Low-value conflicts, navigational queries and pages serving genuinely different intents are set aside automatically, with the reason recorded against each finding.
         </p>
       </div>
 
@@ -1318,12 +1310,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Set aside 02</p>
           <h3 class="ucard__t">Too small to be worth it</h3>
-          <p class="ucard__d">A technically real conflict on a query with forty impressions is still a technically real conflict. It is not worth an afternoon of anyone's time, so it doesn't reach your queue.</p>
+          <p class="ucard__d">A conflict can be technically real but still have negligible potential impact. If the opportunity is too small to justify action, it doesn&rsquo;t need to reach your main queue.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Set aside 03</p>
           <h3 class="ucard__t">Intents that only look alike</h3>
-          <p class="ucard__d">Two pages can share wording and serve genuinely different needs. Where the click behavior says the searcher wanted different things, there is nothing here to fix.</p>
+          <p class="ucard__d">Two pages can share wording and serve genuinely different needs. Where the search behavior indicates different intent, Searchscope doesn&rsquo;t treat the pages as a cannibalization conflict.</p>
         </article>
       </div>
 
@@ -1335,7 +1327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         &nbsp;&nbsp;/guides/boot-care&nbsp;&nbsp;&#183;&nbsp;&nbsp;/shop/care&nbsp;&nbsp;&nbsp;&nbsp;<em>set aside</em>&nbsp;&nbsp;<span>intents differ, no overlap in clicks</span><br>
         <br>
         &nbsp;&nbsp;/guides/best-hiking-boots&nbsp;&nbsp;&#183;&nbsp;&nbsp;/blog/hiking-boots-review<br>
-        &nbsp;&nbsp;<b>shown</b>&nbsp;&nbsp;<span>64% overlap, 170 clicks in play, positions wobbling</span><br>
+        &nbsp;&nbsp;<b>shown</b>&nbsp;&nbsp;<span>64% overlap, 170 potential clicks, positions wobbling</span><br>
         <br>
         <em>The ones that didn't survive are still on file, with the reason they didn't.</em>
       </div>
@@ -1347,16 +1339,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">04 · Then what</span>
-        <h2 class="sec__title">From conflict to published fix.</h2>
+        <h2 class="sec__title">From conflict to action.</h2>
         <p class="lede">
-          Every row carries its evidence: the competing pages, the shared queries, the overlap and the
-          clicks in play. Open the <b>Strategic Advisor</b> on it to ask why the split happened and
-          whether the rewrite is worth the hours, or send it to <b>Content Studio</b>, where the brief
-          arrives with the SERP and the ranking competitors already alongside it.
+          Each finding includes the competing pages, the shared queries, the overlap and the estimated potential impact. Use the <b>Strategic Advisor</b> to analyze why the conflict is happening and whether it should be prioritized against the other opportunities in your queue. If content changes are needed, send the finding to <b>Content Studio</b> with the relevant SERP data and ranking competitors already attached.
         </p>
         <p class="lede">
-          Mark it applied and the Impact Tracker takes a baseline that day, so you find out whether the
-          consolidation earned anything.
+          Once the change is live, mark the finding as applied. The <b>Impact Tracker</b> records the baseline from that date, so you can see what happens to rankings, clicks and visibility afterwards.
         </p>
       </div>
       <p class="backlink reveal">
@@ -1381,7 +1369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Find out which of your pages are competing.</h2>
         <p class="cta__sub">
-          Connect a site and the analyzers read it end to end, then hand back the short list.
+          Connect your site and Searchscope runs the analyzers automatically, filtering and prioritizing the findings that deserve your attention.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">

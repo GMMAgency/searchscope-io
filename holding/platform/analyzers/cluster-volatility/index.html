@@ -738,7 +738,12 @@ html, body { overflow-x: hidden; }
     .crumb a:hover { color: var(--ink); border-color: var(--ink); }
     .calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); margin-top: var(--space-xl); }
     .calls--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    @media (max-width: 1080px) { .calls--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    /* Coverage has five levels, not four: Fragmented was missing from this page
+       until 2026-08-28. Three across leaves a tidy 3 + 2 rather than the 4 + 1
+       that .calls--four would give. Shared rule left alone: six other pages use it. */
+    .calls--five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 1080px) { .calls--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .calls--five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .call { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
     .call__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.12em; word-spacing: -0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
     .call__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-3xs) 0 0; }
@@ -751,7 +756,8 @@ html, body { overflow-x: hidden; }
     .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
     .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
     @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } }
-    @media (max-width: 900px) { .calls { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .calls { grid-template-columns: 1fr; }
+      .calls--five { grid-template-columns: 1fr; } }
 
     .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
     .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
@@ -1191,15 +1197,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Cluster Volatility</p>
         <h1 class="hero__title reveal">
-          A page can look fine while the whole topic slides.
+          See when visibility starts declining across an entire topic.
         </h1>
         <p class="lede reveal" style="--reveal-delay:100ms">
-          Page-level reporting shows you pages. Demand doesn't arrive a page at a time, it moves in
-          topics, and a topic can lose ground while every individual page in it still looks healthy.
+          Page-level reporting can miss changes happening across a wider topic. A page may continue to rank while visibility declines across the related queries around it.
         </p>
         <p class="lede reveal" style="--reveal-delay:140ms">
-          <b>Searchscope groups your queries into topic clusters</b>, names the page carrying each one,
-          and scores how completely you cover it. Then it watches the clusters, not just the URLs.
+          <b>Searchscope groups related queries into topic clusters</b>, identifies the page ranking most strongly for each cluster and measures how concentrated the cluster is on that page. It then tracks changes across the cluster, rather than looking at individual URLs in isolation.
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:190ms">
           <a href="/beta/" class="btn">
@@ -1224,27 +1228,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">01 · What a cluster is</span>
         <h2 class="sec__title">A topic, not a keyword list.</h2>
         <p class="lede">
-          Every run groups your queries into clusters and works out what each one is for. A cluster
-          carries its intent, the number of queries inside it and the demand behind them, so a wobble
-          in something worth twelve thousand searches a month isn't filed next to a wobble in
-          something worth thirty.
+          Searchscope groups related queries into clusters and identifies the search intent behind each one. Each cluster includes the number of queries it contains and the estimated search volume, so movement in something worth twelve thousand searches a month isn&rsquo;t filed next to movement in something worth thirty.
         </p>
       </div>
       <div class="calls reveal">
         <article class="call">
           <p class="call__k">Property 01</p>
           <h3 class="call__t">Intent</h3>
-          <p class="call__d">What the cluster is actually for. Commercial, informational, navigational. It changes what a good page looks like.</p>
+          <p class="call__d">The search intent behind the cluster: commercial, informational or navigational. This helps determine what kind of page should rank for it.</p>
         </article>
         <article class="call">
           <p class="call__k">Property 02</p>
-          <h3 class="call__t">Size and demand</h3>
-          <p class="call__d">How many queries sit in the cluster and what they are worth each month, so the queue can rank topics against each other.</p>
+          <h3 class="call__t">Size and search volume</h3>
+          <p class="call__d">How many queries are in the cluster and their estimated monthly search volume, so higher-volume topics rise in the queue.</p>
         </article>
         <article class="call">
           <p class="call__k">Property 03</p>
           <h3 class="call__t">The dominant page</h3>
-          <p class="call__d">Which of your pages currently carries the topic. Often not the one you assumed, and occasionally nothing at all.</p>
+          <p class="call__d">The page currently ranking most strongly across the cluster. It may not be the page you expected, and some clusters have no clear dominant page at all.</p>
         </article>
       </div>
     </div>
@@ -1254,32 +1255,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">02 · Coverage</span>
-        <h2 class="sec__title">How much of the topic you actually own.</h2>
+        <h2 class="sec__title">How concentrated the topic is on one page.</h2>
         <p class="lede">
-          Ranking for a handful of a cluster's queries isn't the same as owning the topic. Coverage is
-          scored on every cluster so the thin ones surface before they slide, rather than after.
+          Coverage measures how much of a cluster&rsquo;s impressions one page earns. A clear dominant page is something you can optimize; a cluster split across several pages is harder to move, and often a sign of cannibalization. Coverage is scored on every cluster, so the weak ones surface before they slide rather than after.
         </p>
       </div>
-      <div class="calls calls--four reveal">
+      <div class="calls calls--five reveal">
         <article class="call">
           <p class="call__k">Coverage</p>
           <h3 class="call__t">Full</h3>
-          <p class="call__d">The topic is yours across the cluster, not just its head term.</p>
+          <p class="call__d">One page earns at least 70% of the cluster&rsquo;s impressions. A clear dominant page to optimize.</p>
         </article>
         <article class="call">
           <p class="call__k">Coverage</p>
-          <h3 class="call__t">Strong</h3>
-          <p class="call__d">Most of the cluster, with gaps worth closing while you hold the position.</p>
+          <h3 class="call__t">Partial</h3>
+          <p class="call__d">One page leads the cluster, earning 40 to 70% of its impressions, with other pages sharing the rest.</p>
         </article>
         <article class="call">
           <p class="call__k">Coverage</p>
           <h3 class="call__t">Weak</h3>
-          <p class="call__d">A foothold on the head term and little underneath it. The most common way a topic quietly leaks.</p>
+          <p class="call__d">Pages rank for the cluster&rsquo;s keywords, but none stands out as the anchor page.</p>
         </article>
         <article class="call">
           <p class="call__k">Coverage</p>
           <h3 class="call__t">None</h3>
-          <p class="call__d">Real demand, no page carrying it. An opening rather than a problem.</p>
+          <p class="call__d">No page recorded impressions for the cluster&rsquo;s keywords in the last run. An opening rather than a problem.</p>
+        </article>
+        <article class="call">
+          <p class="call__k">Coverage</p>
+          <h3 class="call__t">Fragmented</h3>
+          <p class="call__d">Several pages split the cluster&rsquo;s impressions with no dominant page. A cannibalization risk worth consolidating into one target page.</p>
         </article>
       </div>
 
@@ -1297,15 +1302,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">03 · The movement</span>
-        <h2 class="sec__title">Wobble, before it becomes a drop.</h2>
+        <h2 class="sec__title">Spot declining topic visibility earlier.</h2>
         <p class="lede">
-          Volatility is measured across the cluster rather than the page, against a threshold, so
-          ordinary week-to-week noise stays quiet and a topic genuinely shifting under you doesn't.
+          Searchscope measures ranking movement across the queries in each cluster rather than relying on a single page or keyword. A volatility threshold filters out normal week-to-week changes, so the queue focuses on more meaningful movement.
         </p>
         <p class="lede">
-          <b>Cluster Volatility catches what page-level reporting misses.</b> A dominant page
-          holding its position while the queries around it drift away is invisible in a rankings
-          report, and obvious in a cluster.
+          <b>Cluster Volatility catches what page-level reporting misses.</b> A dominant page can hold its ranking while visibility declines across other queries in the same topic. Looking at the cluster makes that wider decline visible.
         </p>
       </div>
     </div>
@@ -1315,15 +1317,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">04 · Then what</span>
-        <h2 class="sec__title">From wobble to coverage.</h2>
+        <h2 class="sec__title">From finding to action.</h2>
         <p class="lede">
-          Ask the <b>Strategic Advisor</b> what moved and whether the cluster is worth defending, with
-          the demand and your own history already loaded. Send it to <b>Content Studio</b> and the brief
-          arrives knowing which queries in the cluster you don't cover.
+          Use the <b>Strategic Advisor</b> to analyze what changed across the cluster and whether the opportunity should be prioritized against the other work in your queue. Send the finding to <b>Content Studio</b> to create a brief using the queries you currently cover, the gaps within the cluster and the relevant search volume.
         </p>
         <p class="lede">
-          Mark it applied and the Impact Tracker takes a baseline, then reports whether coverage
-          recovered.
+          Once the work is live, mark the finding as applied. The <b>Impact Tracker</b> records the baseline from that date, so you can see what happens to coverage, rankings and visibility afterwards.
         </p>
       </div>
       <p class="backlink reveal">
@@ -1345,9 +1344,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Find out which topics are moving.</h2>
+        <h2 class="cta__title">Find the topics losing search visibility.</h2>
         <p class="cta__sub">
-          Connect a site and the analyzers read it end to end, then hand back the short list.
+          Connect your site and Searchscope runs the analyzers automatically, filtering and prioritizing the findings that deserve your attention.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
