@@ -782,6 +782,19 @@ html, body { overflow-x: hidden; }
     .formcard { position: relative; border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
     .field { display: block; margin-bottom: var(--space-m); }
     .field:last-of-type { margin-bottom: var(--space-l); }
+
+    /* Two fields on one row. The row owns the spacing, because a .field inside
+       it is :last-of-type among its own siblings and would otherwise pick up
+       the larger end-of-form margin. */
+    .fieldrow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: var(--space-m); margin-bottom: var(--space-m); }
+    .fieldrow .field, .fieldrow .field:last-of-type { margin-bottom: 0; }
+    /* "How many client sites do you currently manage?" wraps to two lines while
+       "Your role" doesn't, which pushed the two selects out of line. Letting the
+       label grow keeps both controls on the same baseline. */
+    .fieldrow .field { display: flex; flex-direction: column; }
+    .fieldrow .field > span { flex: 1 0 auto; }
+    @media (max-width: 620px) { .fieldrow { grid-template-columns: 1fr; } }
     .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
     /* Required marker. The palette is monochrome, so this uses dim ink
     rather than the red an asterisk usually implies. aria-hidden because
@@ -1242,7 +1255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
         </div>
         <p class="hero__note mono reveal" style="--reveal-delay:260ms">
-          Paid founding programme &middot; &pound;199/month &middot; Up to 5 client sites &middot; Cancel anytime
+          Paid founding program &middot; &pound;199/month &middot; Up to 5 client sites &middot; Cancel anytime
         </p>
       </div>
 
@@ -1287,7 +1300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============ 0. FOUNDING AGENCY PROGRAMME ============ -->
+  <!-- ============ 0. FOUNDING AGENCY PROGRAM ============ -->
   <section class="section" id="programme">
     <div class="container">
       <div class="sec__head reveal">
@@ -1309,7 +1322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><dfn>Direct founder access</dfn><span>Ask us things and get an answer from the people building it.</span></li>
         <li><dfn>Roadmap input</dfn><span>Tell us what's missing while it's still early enough for us to change it.</span></li>
         <li><dfn>Early access</dfn><span>New features that fit how you work, before general release.</span></li>
-        <li><dfn>Price protected</dfn><span>Your founding price holds while you stay on the programme.</span></li>
+        <li><dfn>Price protected</dfn><span>Your founding price holds while you stay on the program.</span></li>
       </ul>
       <p class="reveal" style="--reveal-delay:140ms;margin-top:var(--space-l)">
         <a href="#apply" class="btn">
@@ -1460,13 +1473,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="lede">
             We'll start with a short conversation about how your agency manages SEO accounts today, show
             you Searchscope using the problems that matter to you, and decide together whether the
-            programme is a good fit.
+            program is a good fit.
           </p>
           <p class="lede"><b>&pound;199/month</b>, including up to <b>5 client sites</b>.</p>
           <ul class="modules" style="margin-top:var(--space-m)">
             <li><dfn>1. Apply</dfn><span>Tell us a little about your agency and how many clients you manage.</span></li>
             <li><dfn>2. Talk to us</dfn><span>A short conversation about your current workflow, and how Searchscope could fit into it.</span></li>
-            <li><dfn>3. Join the programme</dfn><span>If it looks useful, we'll personally onboard your first client accounts.</span></li>
+            <li><dfn>3. Join the program</dfn><span>If it looks useful, we'll personally onboard your first client accounts.</span></li>
             <li><dfn>4. Use it for real</dfn><span>Run it against live client accounts and tell us what's genuinely useful, what isn't, and what would make it indispensable.</span></li>
           </ul>
         </div>
@@ -1490,37 +1503,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span>Work email<span class="req" aria-hidden="true">*</span></span>
               <input type="email" name="email" autocomplete="email" required>
             </label>
-            <label class="field">
-              <span>Agency name<span class="req" aria-hidden="true">*</span></span>
-              <input type="text" name="agency" autocomplete="organization" required>
-            </label>
-            <label class="field">
-              <span>Agency website</span>
-              <input type="text" name="website" inputmode="url" autocomplete="url" placeholder="youragency.co.uk">
-            </label>
-            <label class="field">
-              <span>Your role<span class="req" aria-hidden="true">*</span></span>
-              <select name="job_title" required>
+            <div class="fieldrow">
+              <label class="field">
+                <span>Agency name<span class="req" aria-hidden="true">*</span></span>
+                <input type="text" name="agency" autocomplete="organization" required>
+              </label>
+              <label class="field">
+                <span>Agency website</span>
+                <input type="text" name="website" inputmode="url" autocomplete="url" placeholder="youragency.co.uk">
+              </label>
+            </div>
+            <div class="fieldrow">
+              <label class="field">
+                <span>Your role<span class="req" aria-hidden="true">*</span></span>
+                <select name="job_title" required>
                 <option value="">Choose one</option>
                 <option>Founder or Owner</option>
                 <option>Managing Director</option>
                 <option>Head of SEO or Search</option>
                 <option>SEO Director</option>
                 <option>SEO Manager</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>How many client sites do you currently manage?<span class="req" aria-hidden="true">*</span></span>
-              <select name="portfolio" required>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>How many client sites do you currently manage?<span class="req" aria-hidden="true">*</span></span>
+                <select name="portfolio" required>
                 <option value="">Choose one</option>
                 <option>1 to 4</option>
                 <option>5 to 10</option>
                 <option>11 to 25</option>
                 <option>26 to 50</option>
-                <option>More than 50</option>
-              </select>
-            </label>
+                  <option>More than 50</option>
+                </select>
+              </label>
+            </div>
             <label class="field">
               <span>What's the biggest challenge you have managing SEO across client accounts?</span>
               <textarea name="challenge"></textarea>
@@ -1542,7 +1559,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               Apply for the Founding Agency Program
               <span class="btn__arrow" aria-hidden="true">&#8594;</span>
             </button>
-            <p class="formfoot">Paid programme. No long-term contract. Cancel anytime.</p>
+            <p class="formfoot">Paid program. No long-term contract. Cancel anytime.</p>
             <p class="formfoot formfoot--last">We'll only use this to arrange your conversation and follow up afterwards. Unsubscribe any time.</p>
           </form>
 
@@ -1558,7 +1575,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="stickycta">
   <a href="#apply" class="btn">
-    Apply to the programme
+    Apply to the program
     <span class="btn__arrow" aria-hidden="true">&#8594;</span>
   </a>
 </div>
