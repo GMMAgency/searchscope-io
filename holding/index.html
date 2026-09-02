@@ -945,6 +945,137 @@ html, body { overflow-x: hidden; }
       .navmenu__btn { font-size: var(--step--2); }
     }
 
+    /* ---- proposed homepage: the new components ---- */
+
+    /* 02 · the overview numbers */
+    .hpk { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid;
+           grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-l); }
+    .hpk__i { border-top: 1px solid var(--ink); padding-top: var(--space-s); min-width: 0; }
+    .hpk__v { display: block; font-family: var(--font-display); font-weight: 600;
+              font-size: var(--step-4); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .hpk__v--down { color: var(--sev-rose-ink); }
+    .hpk__l { display: block; margin-top: var(--space-2xs); font-family: var(--font-mono);
+              font-size: var(--step--1); color: var(--ink-dim); line-height: 1.4; }
+    @media (max-width: 900px) { .hpk { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 460px) { .hpk { grid-template-columns: 1fr; } }
+
+    /* 03 · the three pillars */
+    .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+               gap: var(--space-l); margin: var(--space-xl) 0 0; }
+    .pillar { border: 1px solid var(--hairline); border-radius: var(--radius-m);
+              background: var(--surface-panel); padding: var(--space-l); display: flex;
+              flex-direction: column; min-width: 0; }
+    .pillar__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.1em;
+                 color: var(--ink-faint); }
+    .pillar__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2);
+                 letter-spacing: -0.02em; margin: var(--space-2xs) 0 0; }
+    .pillar__lead { color: var(--ink); font-weight: 500; font-size: var(--step-0);
+                    line-height: 1.5; margin: var(--space-s) 0 0; }
+    .pillar__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65;
+                 margin: var(--space-xs) 0 0; }
+    .pillar__note { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint);
+                    margin: var(--space-s) 0 0; padding-top: var(--space-s);
+                    border-top: 1px solid var(--hairline); }
+    .pillar__go { margin: var(--space-m) 0 0; font-family: var(--font-mono); font-size: var(--step--1);
+                  color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hairline);
+                  padding-bottom: 2px; align-self: flex-start; transition: border-color var(--dur-fast) var(--ease-out); }
+    .pillar__go:hover { border-bottom-color: var(--ink); }
+    @media (max-width: 1000px) { .pillars { grid-template-columns: 1fr; } }
+
+    /* 04 · what it finds */
+    .finds { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid;
+             grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .finds li { border-top: 1px solid var(--ink); padding-top: var(--space-s); min-width: 0; }
+    .finds b { display: block; font-family: var(--font-mono); font-size: var(--step--1);
+               font-weight: 500; color: var(--ink); word-spacing: -0.12em; }
+    .finds span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim);
+                  font-size: var(--step-0); line-height: 1.6; }
+    @media (max-width: 1000px) { .finds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 620px) { .finds { grid-template-columns: 1fr; } }
+
+    /* 05 · the four steps */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid;
+             grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-l); counter-reset: s; }
+    .steps li { min-width: 0; position: relative; padding-top: var(--space-m);
+                border-top: 1px solid var(--hairline); }
+    .steps li::before { counter-increment: s; content: "0" counter(s);
+                        position: absolute; top: var(--space-2xs); left: 0;
+                        font-family: var(--font-mono); font-size: var(--step--2);
+                        color: var(--ink-faint); letter-spacing: 0.1em; }
+    .steps__k { display: block; margin-top: var(--space-m); font-family: var(--font-display);
+                font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; }
+    .steps__d { display: block; margin-top: var(--space-2xs); color: var(--ink-dim);
+                font-size: var(--step-0); line-height: 1.6; }
+    @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+
+    /* 07 · the dataset chips */
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin: var(--space-xl) 0 0;
+             padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim);
+                border: 1px solid var(--hairline); border-radius: var(--radius-pill);
+                padding: 0.5em 1em; background: var(--surface-panel); }
+
+    /* 06 + 08 · the anat list, four across on the workflow */
+    .anat--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 1080px) { .anat--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 620px) { .anat--four { grid-template-columns: 1fr; } }
+
+    /* hero: copy left, the account panel right */
+    .hero .hero__grid { grid-template-columns: 1.02fr 0.98fr; align-items: center;
+                        gap: clamp(2rem, 5vw, 4.5rem); }
+    .hero .sec__head, .hero .hero__grid, .hero .hero__actions { min-width: 0; }
+    .hero .hero__visual, .hero .hpanel { min-width: 0; }
+    .hero .hero__title { max-width: 18ch; }
+    .hero .hero__sub { max-width: 54ch; }
+    @media (max-width: 980px) {
+      .hero .hero__grid { grid-template-columns: 1fr; }
+      .hero .hero__visual { order: 0; }
+      .hero .hero__title { max-width: 22ch; }
+    }
+
+    /* the hero queue: one row per source, so the breadth is the point */
+    .appwin .hpk { grid-template-columns: repeat(4, minmax(0, 1fr));
+                   gap: var(--space-s); margin: var(--space-m) 0 0; }
+    .appwin .hpk__i { border-top-color: var(--hairline); padding-top: var(--space-2xs); }
+    .appwin .hpk__v { font-size: var(--step-2); }
+    .appwin .hpk__l { font-size: var(--step--2); }
+
+    .qq { list-style: none; padding: 0; margin: var(--space-l) 0 0;
+          border-top: 1px solid var(--hairline); }
+    .qq__r { display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+             gap: var(--space-s); padding: 0.62rem 0; border-bottom: 1px solid var(--hairline); min-width: 0; }
+    .qq__r--cut { opacity: 0.45; }
+    .qq__d { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+    .qq__m { min-width: 0; }
+    .qq__m b { display: block; font-size: var(--step--1); font-weight: 550; color: var(--ink); }
+    .qq__m span { display: block; font-family: var(--font-mono); font-size: var(--step--2);
+                  color: var(--ink-faint); margin-top: 1px; overflow: hidden;
+                  text-overflow: ellipsis; white-space: nowrap; }
+    .qq__s { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-dim);
+             border: 1px solid var(--hairline); border-radius: var(--radius-pill);
+             padding: 0.2em 0.6em; white-space: nowrap; }
+    .qq__foot { display: flex; justify-content: space-between; margin: var(--space-s) 0 0;
+                font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    /* Mobile: the panel is the same height as on desktop while the width halves,
+       so it reads as a long strip (334x724 at 375px, h/w 2.17). Trim the rows
+       and tighten the spacing to bring it back towards square. */
+    @media (max-width: 620px) {
+      .appwin .hpk { grid-template-columns: repeat(2, minmax(0, 1fr));
+                     gap: var(--space-xs) var(--space-m); margin-top: var(--space-s); }
+      .appwin .hpk__v { font-size: var(--step-1); }
+      .qq { margin-top: var(--space-m); }
+      .qq__r { padding: 0.5rem 0; gap: var(--space-xs); }
+      .qq__s { display: none; }
+      .qq__r:nth-child(n+4) { display: none; }   /* 3 rows is enough to make the point */
+      .qq__foot { margin-top: var(--space-xs); }
+      .qq__n { display: none; }   /* rows are trimmed here, so the count would lie */
+      .hero .awsub { display: none; }            /* the lede already says this */
+    }
+    @media (max-width: 400px) {
+      .qq__r:nth-child(n+3) { display: none; }
+      .appwin .hpk__l { font-size: 9px; }
+    }
 </style>
 </head>
 <body>
@@ -1070,248 +1201,220 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- ============ HERO ============ -->
+  <!-- ============ 01 · HERO ============ -->
   <section class="section hero bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="eyebrow reveal">Operating system for modern search teams</span>
-          <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-            Your search data is spread across multiple tools. The hard part is knowing what to do with it.
-          </h1>
-          <p class="hero__sub reveal" style="--reveal-delay:130ms">
-            Searchscope brings together your search performance, website, competitors and AI visibility, then identifies <b>what&rsquo;s changing, what matters and where to focus next.</b>
-          </p>
-          <div class="hero__actions reveal" style="--reveal-delay:200ms">
-            <a href="/beta/" class="btn">
-              Sign up for beta
-              <span class="btn__arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
+      <div class="sec__head">
+        <span class="eyebrow reveal">Operating system for modern search teams</span>
+        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+          The SEO &amp; AI Search Intelligence Platform.
+        </h1>
+        <p class="hero__sub reveal" style="--reveal-delay:170ms">
+          <b>Searchscope combines your search performance, site crawl, competitors, market demand and AI visibility</b> to find the issues and opportunities worth acting on, prioritize the work, and track what happens after you make a change.
+        </p>
+        <div class="hero__actions reveal" style="--reveal-delay:220ms">
+          <a href="/beta/" class="btn btn--lg">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
         </div>
+      </div>
 
-        <div class="hero__visual reveal" style="--reveal-delay:160ms">
-          <div class="ticked">
-            <span class="ticks" aria-hidden="true">
-              <span class="ticks__c ticks__tl"></span>
-              <span class="ticks__c ticks__tr"></span>
-              <span class="ticks__c ticks__br"></span>
-              <span class="ticks__c ticks__bl"></span>
-            </span>
-            <!-- Demand vs your position: the signature scatter -->
-            <div class="appwin">
-              <div class="awbar">
-                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span class="awurl">app.searchscope.io/demand</span>
-                <span class="awtab">Demand &amp; Trends</span>
-              </div>
-              <div class="awbody">
-                <div class="awhead">
-                  <div>
-                    <span class="awtitle">Demand vs your position</span>
-                    <span class="awsub">geo UK · 142 clusters</span>
-                  </div>
-                  <div class="awleg">
-                    <span><i class="dot" style="background:var(--sev-emerald-ink)"></i>rising</span>
-                    <span><i class="dot" style="background:var(--flat)"></i>flat</span>
-                    <span><i class="dot" style="background:var(--sev-rose-ink)"></i>falling</span>
-                  </div>
-                </div>
-                <div class="awviz">
-                  <svg viewBox="0 0 724 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monthly demand against your search position; bubbles colored by trend; a shaded band marks rising demand you rank weakly for.">
-                    <rect x="159.2" y="26" width="542.8" height="150.1" class="sc-zone"></rect>
-                    <line x1="62" y1="372" x2="702" y2="372" class="sc-grid"></line>
-                    <text x="54" y="375" class="sc-tick end">10</text>
-                    <line x1="62" y1="256.7" x2="702" y2="256.7" class="sc-grid"></line>
-                    <text x="54" y="259.7" class="sc-tick end">100</text>
-                    <line x1="62" y1="141.3" x2="702" y2="141.3" class="sc-grid"></line>
-                    <text x="54" y="144.3" class="sc-tick end">1k</text>
-                    <line x1="62" y1="26" x2="702" y2="26" class="sc-grid"></line>
-                    <text x="54" y="29" class="sc-tick end">10k</text>
-                    <g>
-                      <circle cx="199.7" cy="177.0" r="5.8" class="pt ptf" style="--i:0"></circle>
-                      <circle cx="143.0" cy="83.8" r="10.0" class="pt ptr" style="--i:1"></circle>
-                      <circle cx="677.7" cy="355.1" r="3.5" class="pt ptf" style="--i:2"></circle>
-                      <circle cx="386.1" cy="118.1" r="8.0" class="pt ptf" style="--i:3"></circle>
-                      <circle cx="143.0" cy="28.4" r="15" class="pt ptf" style="--i:4"></circle>
-                      <circle cx="523.8" cy="119.9" r="7.9" class="pt ptd" style="--i:5"></circle>
-                      <circle cx="507.6" cy="322.2" r="3.6" class="pt ptf" style="--i:6"></circle>
-                      <circle cx="353.6" cy="302.6" r="3.8" class="pt ptf" style="--i:7"></circle>
-                      <circle cx="118.7" cy="201.0" r="5.2" class="pt ptr" style="--i:8"></circle>
-                      <circle cx="321.2" cy="342.6" r="3.5" class="pt ptf" style="--i:9"></circle>
-                      <circle cx="410.4" cy="285.7" r="3.9" class="pt ptr" style="--i:10"></circle>
-                      <circle cx="661.5" cy="94.3" r="9.3" class="pt ptd" style="--i:11"></circle>
-                      <circle cx="442.8" cy="131.0" r="7.4" class="pt ptd" style="--i:12"></circle>
-                      <circle cx="207.8" cy="358.9" r="3.5" class="pt ptr" style="--i:13"></circle>
-                      <circle cx="369.8" cy="252.4" r="4.3" class="pt ptr" style="--i:14"></circle>
-                      <circle cx="402.3" cy="251.4" r="4.3" class="pt ptr" style="--i:15"></circle>
-                      <circle cx="402.3" cy="355.1" r="3.5" class="pt ptd" style="--i:16"></circle>
-                      <circle cx="369.8" cy="312.2" r="3.7" class="pt ptr" style="--i:17"></circle>
-                      <circle cx="386.1" cy="312.2" r="3.7" class="pt ptr" style="--i:18"></circle>
-                      <circle cx="167.3" cy="50.4" r="12.8" class="pt ptf" style="--i:19"></circle>
-                      <circle cx="499.5" cy="342.6" r="3.5" class="pt ptr" style="--i:20"></circle>
-                      <circle cx="337.4" cy="86.0" r="9.9" class="pt ptr" style="--i:21"></circle>
-                      <circle cx="272.6" cy="297.8" r="3.8" class="pt ptf" style="--i:22"></circle>
-                      <circle cx="232.1" cy="235.0" r="4.6" class="pt ptr" style="--i:23"></circle>
-                      <circle cx="377.9" cy="302.6" r="3.8" class="pt ptr" style="--i:24"></circle>
-                      <circle cx="645.3" cy="209.4" r="5.0" class="pt ptr" style="--i:25"></circle>
-                      <circle cx="402.3" cy="81.9" r="10.2" class="pt ptd" style="--i:26"></circle>
-                      <circle cx="329.3" cy="189.8" r="5.4" class="pt ptr" style="--i:27"></circle>
-                      <circle cx="572.4" cy="176.4" r="5.8" class="pt ptd" style="--i:28"></circle>
-                      <circle cx="70.1" cy="279.0" r="4.0" class="pt ptr" style="--i:29"></circle>
-                      <circle cx="118.7" cy="87.9" r="9.7" class="pt ptf" style="--i:30"></circle>
-                      <circle cx="353.6" cy="98.0" r="9.1" class="pt ptr" style="--i:31"></circle>
-                      <circle cx="596.7" cy="332.5" r="3.6" class="pt ptd" style="--i:32"></circle>
-                      <circle cx="386.1" cy="195.1" r="5.3" class="pt ptf" style="--i:33"></circle>
-                      <circle cx="507.6" cy="345.4" r="3.5" class="pt ptd" style="--i:34"></circle>
-                      <circle cx="523.8" cy="334.8" r="3.6" class="pt ptr" style="--i:35"></circle>
-                      <circle cx="580.5" cy="302.6" r="3.8" class="pt ptr" style="--i:36"></circle>
-                      <circle cx="426.6" cy="351.7" r="3.5" class="pt ptr" style="--i:37"></circle>
-                      <circle cx="540.0" cy="75.2" r="10.7" class="pt ptf" style="--i:38"></circle>
-                      <circle cx="224.0" cy="197.0" r="5.3" class="pt ptf" style="--i:39"></circle>
-                    </g>
-                    <circle cx="296.9" cy="117.8" r="9" class="pt-standout"></circle>
-                    <circle cx="296.9" cy="117.8" r="15" class="sc-ring"></circle>
-                    <text x="62" y="398" class="sc-tick">better ←</text>
-                    <text x="702" y="398" class="sc-tick end">→ worse · your position</text>
-                  </svg>
-                  <div class="awcall" style="left:44%; top:24%">
-                    <span class="t">LOSING SHARE</span>
-                    <span class="p">/tents/4-season</span>
-                    <span class="m">demand ↑ · impr ↓ · 2 competing</span>
-                  </div>
-                </div>
-                <p class="awnote">Shaded = rising demand you rank weakly for, your biggest openings.</p>
-                <div class="awstats">
-                  <div class="awstat"><span class="v cnt" data-n="142">142</span><span class="l">Clusters</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="77">77</span><span class="l">Rising demand</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="72">72</span><span class="l">Losing share</span></div>
-                  <div class="awstat"><span class="v cnt" data-n="104" data-suf="k">104k</span><span class="l">Addr. demand</span></div>
+      <div class="hero__visual reveal" style="--reveal-delay:200ms">
+        <div class="ticked">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span>
+            <span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span>
+            <span class="ticks__c ticks__bl"></span>
+          </span>
+          <div class="appwin">
+            <div class="awbar">
+              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="awurl">app.searchscope.io</span>
+              <span class="awtab">This week</span>
+            </div>
+            <div class="awbody">
+              <div class="awhead">
+                <div>
+                  <span class="awtitle">What needs your attention</span>
+                  <span class="awsub">Your site, your market, your competitors, and how AI assistants answer questions in your category</span>
                 </div>
               </div>
+
+              <div class="hpk">
+                <div class="hpk__i"><span class="hpk__v">23</span><span class="hpk__l">findings prioritized</span></div>
+                <div class="hpk__i"><span class="hpk__v">5</span><span class="hpk__l">topics losing visibility</span></div>
+                <div class="hpk__i"><span class="hpk__v hpk__v--down">&minus;7%</span><span class="hpk__l">AI visibility</span></div>
+                <div class="hpk__i"><span class="hpk__v">3</span><span class="hpk__l">competitor activity spikes</span></div>
+              </div>
+
+              <ul class="qq">
+                <li class="qq__r">
+                  <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
+                  <span class="qq__m"><b>Content decay</b><span>/blog/best-campsites-uk &middot; 412 clicks lost</span></span>
+                  <span class="qq__s">Analyzers</span>
+                </li>
+                <li class="qq__r">
+                  <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
+                  <span class="qq__m"><b>Dropped out of ChatGPT</b><span>&ldquo;best waterproof jacket&rdquo; &middot; competitor named instead</span></span>
+                  <span class="qq__s">AI &amp; Brand</span>
+                </li>
+                <li class="qq__r">
+                  <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
+                  <span class="qq__m"><b>Competitor link spike</b><span>alpinetrail.co.uk &middot; 46 new domains this month</span></span>
+                  <span class="qq__s">AI &amp; Brand</span>
+                </li>
+                <li class="qq__r">
+                  <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
+                  <span class="qq__m"><b>Losing share as demand rises</b><span>&ldquo;campsites uk&rdquo; cluster &middot; demand +15%, you capture 43%</span></span>
+                  <span class="qq__s">Search Intel</span>
+                </li>
+                <li class="qq__r qq__r--cut">
+                  <span class="qq__d" style="background:var(--emerald)" aria-hidden="true"></span>
+                  <span class="qq__m"><b>Applied change working</b><span>/blog/best-hiking-boots &middot; +18% impressions since 12 Aug</span></span>
+                  <span class="qq__s">Impact</span>
+                </li>
+              </ul>
+              <p class="qq__foot"><span>Ranked by what&rsquo;s at stake</span><span class="qq__n">5 of 23</span></p>
             </div>
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ FEATURE STRIP ============ -->
-  <section class="section strip" id="platform">
+  <!-- ============ 03 · THE THREE CORE AREAS ============ -->
+  <section class="section bg-grid" id="platform">
     <div class="container">
       <div class="strip__head reveal">
-        <span class="eyebrow">Inside the platform</span>
-        <h2 class="strip__title">See the whole search picture in one place.</h2>
-        <p class="strip__sub">
-          Bring together organic search performance, competitors, market demand, AI visibility and the work you&rsquo;re doing to improve them. Every part of Searchscope works from the same underlying context. Here&rsquo;s what you can do inside Searchscope.
-        </p>
+        <span class="eyebrow">The platform</span>
+        <h2 class="strip__title">One platform. Three ways to understand what&rsquo;s happening in search.</h2>
       </div>
-
-      <div class="fgrid">
-        <article class="fcard reveal" style="--reveal-delay:0ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/01-data-pipeline-sync.jpg" alt="Searchscope Data Pipeline: sync search data, crawl the site and run the analyzers in order" width="1100" height="673" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">01</span>
-              <h3 class="fcard__title">Data Pipeline</h3>
-            </div>
-            <p class="fcard__desc">Bring your search data, site crawl and analyzer findings into one shared dataset that powers the rest of Searchscope. Connect it once, then Searchscope keeps the data and analysis up to date on a schedule.</p>
-          </div>
+      <div class="pillars reveal">
+        <article class="pillar">
+                    <span class="pillar__k">01</span>
+          <h3 class="pillar__t">Analyzers</h3>
+          <p class="pillar__lead">Find the SEO issues and opportunities worth acting on.</p>
+          <p class="pillar__d">Seven analyzers identify cannibalization, content decay, internal linking opportunities, schema issues, cluster volatility and more. Findings are filtered and prioritized before they reach your queue.</p>
+          <p class="pillar__note">Fewer findings, on purpose.</p>
+          <a class="pillar__go" href="/platform/analyzers/">Explore Analyzers <span aria-hidden="true">&#8594;</span></a>
         </article>
-
-        <article class="fcard reveal" style="--reveal-delay:60ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/02-analyzer-workspaces-a.jpg" alt="Searchscope Analyzer Workspaces: a scored queue of findings with the fix drafted" width="1100" height="837" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">02</span>
-              <h3 class="fcard__title">Analyzer Workspaces</h3>
-            </div>
-            <p class="fcard__desc">Seven analyzers continuously check for issues and opportunities, including cannibalization, content decay, cluster volatility and index bloat. Findings are filtered and prioritized, so your team starts with the work most worth reviewing.</p>
-          </div>
+        <article class="pillar">
+                    <span class="pillar__k">02</span>
+          <h3 class="pillar__t">Search Intelligence</h3>
+          <p class="pillar__lead">See your performance alongside competitors and changing demand.</p>
+          <p class="pillar__d">Track where you&rsquo;re gaining or losing ground, compare competitors in any of 92 markets, and follow changes in search demand across the topics you already rank for.</p>
+          <p class="pillar__note">Analyze the same underlying data with the Strategic Advisor.</p>
+          <a class="pillar__go" href="/platform/search-intelligence/">Explore Search Intelligence <span aria-hidden="true">&#8594;</span></a>
         </article>
-
-        <article class="fcard reveal" style="--reveal-delay:120ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/03-intelligence-hub-performance.jpg" alt="Searchscope Search Intelligence: performance command center with KPIs and trend" width="1100" height="759" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">03</span>
-              <h3 class="fcard__title">Search Intelligence</h3>
-            </div>
-            <p class="fcard__desc">See your search performance alongside competitor visibility and changing market demand. Use the <b>Strategic Advisor</b> to analyze the data and help decide where to focus next.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:180ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/04-brand-and-ai.jpg" alt="Searchscope Brand and AI Visibility: the PR Campaign Radar pulling a rival's digital-PR burst apart, showing the asset, who linked and how to counter it" width="1100" height="688" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">04</span>
-              <h3 class="fcard__title">Brand and AI Visibility</h3>
-            </div>
-            <p class="fcard__desc">See how AI answer engines describe your brand, which competitors they recommend and which sources influence their answers. Identify the visibility gaps and build a digital PR plan to address them.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:240ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/05-content-studio-a.jpg" alt="Searchscope Content Studio: a content brief with H2 outline and placement" width="1100" height="664" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">05</span>
-              <h3 class="fcard__title">Content Studio</h3>
-            </div>
-            <p class="fcard__desc">Turn a finding into research, a content brief and a draft, with recommendations tied to the page and section that needs the work. Move from identifying the opportunity to creating the content without leaving Searchscope.</p>
-          </div>
-        </article>
-
-        <article class="fcard reveal" style="--reveal-delay:300ms">
-          <div class="fcard__shot">
-            <img src="/brand/screenshots/06-reports-a-client.jpg" alt="Searchscope Reports: a client-ready weekly intelligence report with PDF, deck and workbook export" width="1100" height="678" loading="lazy" decoding="async">
-          </div>
-          <div class="fcard__body">
-            <div class="fcard__head">
-              <span class="fcard__k">06</span>
-              <h3 class="fcard__title">Reports</h3>
-            </div>
-            <p class="fcard__desc">Create reports for different audiences, from practitioners to executives and boards, using the same underlying search data and findings. Choose the audience and Searchscope adjusts the level of detail and commentary. Export to PDF, presentation or workbook.</p>
-          </div>
+        <article class="pillar">
+                    <span class="pillar__k">03</span>
+          <h3 class="pillar__t">AI &amp; Brand Intelligence</h3>
+          <p class="pillar__lead">See what AI assistants say about you, and who they recommend instead.</p>
+          <p class="pillar__d">Ask the same questions across six assistants every week, keep every answer word for word, see the sources they cited, and compare your visibility with the competitors you&rsquo;re tracking.</p>
+          <p class="pillar__note">More than mention tracking.</p>
+          <a class="pillar__go" href="/platform/ai-brand-intelligence/">Explore AI &amp; Brand Intelligence <span aria-hidden="true">&#8594;</span></a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ WHY SEARCHSCOPE ============ -->
+  <!-- ============ 04 · WHAT IT FINDS ============ -->
   <section class="section">
     <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">Why Searchscope</span>
-        <h2 class="sec__title">More data isn&rsquo;t the answer. Better prioritization is.</h2>
-        <p class="lede">
-          Most search tools are very good at finding things. The problem is that search teams are
-          already surrounded by data, alerts, exports and recommendations. Searchscope connects the
-          signals, filters out what doesn&rsquo;t deserve attention and helps you focus on the work
-          most likely to matter.
+      <div class="strip__head reveal">
+        <span class="eyebrow">In practice</span>
+        <h2 class="strip__title">The kinds of things Searchscope finds.</h2>
+        <p class="strip__sub">
+          Not categories of data. Actual findings, each with the evidence behind it and a recommended next step.
         </p>
       </div>
-      <ul class="anat reveal">
-        <li><b>One shared context</b><span>Your search performance, crawl data, competitors, demand and findings all work from the same underlying dataset.</span></li>
-        <li><b>Fewer findings</b><span>Searchscope filters and prioritizes issues instead of handing you another enormous audit list.</span></li>
-        <li><b>See what happened next</b><span>Mark work as applied and track the performance that followed, rather than losing the change in a spreadsheet or a project board.</span></li>
+      <ul class="finds reveal">
+        <li><b>Content decay</b><span>Pages losing clicks, and the queries driving the decline.</span></li>
+        <li><b>Cannibalization</b><span>URLs competing for one intent, and whether to consolidate, differentiate or keep both.</span></li>
+        <li><b>Search opportunities</b><span>Queries where you&rsquo;re already close to winning more visibility.</span></li>
+        <li><b>Competitor gaps</b><span>Where competitors rank and you don&rsquo;t, grouped by topic.</span></li>
+        <li><b>AI visibility</b><span>Which assistants mention you, who appears instead, and which sources they cited.</span></li>
+        <li><b>Market movement</b><span>Topics where demand is changing or your visibility is weakening.</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- ============ CLOSING CTA ============ -->
+  <!-- ============ 05 · HOW IT WORKS ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="strip__head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2 class="strip__title">Understand, prioritize, act, measure.</h2>
+      </div>
+      <ol class="steps reveal">
+        <li><span class="steps__k">Understand</span><span class="steps__d">See your search performance, site, competitors, market demand and AI visibility in the same context.</span></li>
+        <li><span class="steps__k">Prioritize</span><span class="steps__d">Findings are filtered and prioritized against your search data, so the main queue focuses on higher-impact issues and opportunities.</span></li>
+        <li><span class="steps__k">Act</span><span class="steps__d">Use the Strategic Advisor to analyze a finding and decide what to do, or send it to Content Studio to brief the work.</span></li>
+        <li><span class="steps__k">Measure</span><span class="steps__d">Mark the work as applied. Impact Tracker records the baseline from that date and shows what happened next.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 06 · WHY SEARCHSCOPE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="strip__head reveal">
+        <span class="eyebrow">Why Searchscope</span>
+        <h2 class="strip__title">More data isn&rsquo;t the answer. Better prioritization is.</h2>
+      </div>
+      <ul class="anat reveal">
+        <li><b>One dataset across search</b><span>Your Search Console history, crawl, competitors, search demand, AI visibility and findings all connect to the same underlying context.</span></li>
+        <li><b>Fewer findings, on purpose</b><span>Searchscope filters and prioritizes issues and opportunities instead of handing you another audit with hundreds of rows.</span></li>
+        <li><b>From finding to measurement</b><span>Take a finding into the Strategic Advisor or Content Studio, mark the work as applied, and see what happens afterwards.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 07 · SHARED DATA LAYER ============ -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="strip__head reveal">
+        <span class="eyebrow">Shared data layer</span>
+        <h2 class="strip__title">One shared search dataset behind everything.</h2>
+        <p class="strip__sub">
+          Analyzers, advisors and workflows use the same underlying data, so the evidence behind a finding stays connected as you move from analysis to action.
+        </p>
+      </div>
+      <ul class="chips reveal">
+        <li>Search Console history</li>
+        <li>Site crawl</li>
+        <li>Query clusters</li>
+        <li>Competitor data</li>
+        <li>Search volume</li>
+        <li>AI visibility</li>
+        <li>Brand intelligence</li>
+        <li>Applied changes</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 08 · FROM INSIGHT TO ACTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="strip__head reveal">
+        <span class="eyebrow">From insight to action</span>
+        <h2 class="strip__title">Turn findings into work.</h2>
+      </div>
+      <ul class="anat anat--four reveal">
+        <li><b>Strategic Advisor</b><span>Analyze why something changed and whether it should be prioritized against the rest of your queue.</span></li>
+        <li><b>Content Studio</b><span>Create a brief using the queries, competitors and evidence behind the finding.</span></li>
+        <li><b>Impact Tracker</b><span>Mark the change as applied and record a baseline from that date.</span></li>
+        <li><b>Reporting</b><span>Scheduled reports built from the same underlying data.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 09 · CTA ============ -->
   <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
@@ -1324,15 +1427,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Know what&rsquo;s changing. Know what to do next.</h2>
         <p class="cta__sub">
-          Connect your site and Searchscope brings your search data, analysis and recommendations into one platform. We&rsquo;ll help you get set up, and we onboard beta users in small cohorts.
+          Connect your site and Searchscope brings your search performance, competitors, market demand and AI visibility into one place. Searchscope filters and prioritizes the issues and opportunities that deserve your attention first.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">→</span>
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
           </a>
         </div>
-        <p class="cta__note">No card, no obligation. Just early access as places open up.</p>
       </div>
     </div>
   </section>
