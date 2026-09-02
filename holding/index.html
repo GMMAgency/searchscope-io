@@ -647,7 +647,8 @@ html, body { overflow-x: hidden; }
        section uses a pattern the site already has rather than a new one. */
     .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
     .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
-    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat li > b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span b { font-weight: 560; color: var(--ink); }
     .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
     @media (max-width: 860px) { .anat { grid-template-columns: 1fr; } }
     .tag { font-family: var(--font-mono); font-size: 0.62em; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.28em 0.72em; line-height: 1; }
