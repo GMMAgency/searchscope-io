@@ -1044,9 +1044,23 @@ html, body { overflow-x: hidden; }
 
     .qq { list-style: none; padding: 0; margin: var(--space-l) 0 0;
           border-top: 1px solid var(--hairline); }
+
+    /* Rows arrive one after another, so the eye reads them as a queue being
+       assembled rather than a static block. Same timing as .jrow on Search
+       Intelligence, so the two pages move the same way. */
+    @keyframes qq-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes qq-cut { to { opacity: 0.45; } }
+    .qq__r { opacity: 0; }
+    .is-in .qq__r { animation: qq-in 0.45s var(--ease-out) forwards;
+                    animation-delay: calc(0.35s + var(--i, 0) * 0.11s); }
+    .is-in .qq__r--cut { animation: qq-in 0.45s var(--ease-out) forwards, qq-cut 0.5s ease forwards;
+                         animation-delay: calc(0.35s + var(--i, 0) * 0.11s), calc(1.5s + var(--i, 0) * 0.11s); }
+    @media (prefers-reduced-motion: reduce) {
+      .qq__r { opacity: 1; animation: none !important; }
+      .qq__r--cut { opacity: 0.45; }
+    }
     .qq__r { display: grid; grid-template-columns: auto 1fr auto; align-items: center;
              gap: var(--space-s); padding: 0.62rem 0; border-bottom: 1px solid var(--hairline); min-width: 0; }
-    .qq__r--cut { opacity: 0.45; }
     .qq__d { width: 7px; height: 7px; border-radius: 50%; flex: none; }
     .qq__m { min-width: 0; }
     .qq__m b { display: block; font-size: var(--step--1); font-weight: 550; color: var(--ink); }
@@ -1246,34 +1260,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
 
               <div class="hpk">
-                <div class="hpk__i"><span class="hpk__v">23</span><span class="hpk__l">findings prioritized</span></div>
-                <div class="hpk__i"><span class="hpk__v">5</span><span class="hpk__l">topics losing visibility</span></div>
-                <div class="hpk__i"><span class="hpk__v hpk__v--down">&minus;7%</span><span class="hpk__l">AI visibility</span></div>
-                <div class="hpk__i"><span class="hpk__v">3</span><span class="hpk__l">competitor activity spikes</span></div>
+                <div class="hpk__i"><span class="hpk__v cnt" data-n="23">23</span><span class="hpk__l">findings prioritized</span></div>
+                <div class="hpk__i"><span class="hpk__v cnt" data-n="5">5</span><span class="hpk__l">topics losing visibility</span></div>
+                <div class="hpk__i"><span class="hpk__v hpk__v--down cnt" data-n="-7" data-suf="%">&minus;7%</span><span class="hpk__l">AI visibility</span></div>
+                <div class="hpk__i"><span class="hpk__v cnt" data-n="3">3</span><span class="hpk__l">competitor activity spikes</span></div>
               </div>
 
               <ul class="qq">
-                <li class="qq__r">
+                <li class="qq__r" style="--i:0">
                   <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
                   <span class="qq__m"><b>Content decay</b><span>/blog/best-campsites-uk &middot; 412 clicks lost</span></span>
                   <span class="qq__s">Analyzers</span>
                 </li>
-                <li class="qq__r">
+                <li class="qq__r" style="--i:1">
                   <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
                   <span class="qq__m"><b>Dropped out of ChatGPT</b><span>&ldquo;best waterproof jacket&rdquo; &middot; competitor named instead</span></span>
                   <span class="qq__s">AI &amp; Brand</span>
                 </li>
-                <li class="qq__r">
+                <li class="qq__r" style="--i:2">
                   <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
                   <span class="qq__m"><b>Competitor link spike</b><span>alpinetrail.co.uk &middot; 46 new domains this month</span></span>
                   <span class="qq__s">AI &amp; Brand</span>
                 </li>
-                <li class="qq__r">
+                <li class="qq__r" style="--i:3">
                   <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
                   <span class="qq__m"><b>Losing share as demand rises</b><span>&ldquo;campsites uk&rdquo; cluster &middot; demand +15%, you capture 43%</span></span>
                   <span class="qq__s">Search Intel</span>
                 </li>
-                <li class="qq__r qq__r--cut">
+                <li class="qq__r qq__r--cut" style="--i:4">
                   <span class="qq__d" style="background:var(--emerald)" aria-hidden="true"></span>
                   <span class="qq__m"><b>Applied change working</b><span>/blog/best-hiking-boots &middot; +18% impressions since 12 Aug</span></span>
                   <span class="qq__s">Impact</span>
@@ -1466,7 +1480,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <noscript>
-  <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  <style>.reveal { opacity: 1 !important; transform: none !important; } .qq__r { opacity: 1 !important; animation: none !important; } .qq__r--cut { opacity: 0.45 !important; }</style>
 </noscript>
 
 <script>
