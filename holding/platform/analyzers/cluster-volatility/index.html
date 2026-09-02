@@ -969,6 +969,10 @@ html, body { overflow-x: hidden; }
     .navmenu__sublink:focus-visible .navmenu__label::before { color: var(--ink); transform: translateX(2px); }
     .navmenu__sublink .navmenu__sub { color: var(--ink-faint); }
     .navmenu__panel a.navmenu__sublink .navmenu__label { color: var(--ink); font-weight: 500; }
+    /* Agencies and AI visibility checker are plain anchors, not sublinks, so
+       they were inheriting --ink-dim at weight 400 while every other live link
+       in the panel sat at full ink and 500. Match them. */
+    .navmenu__panel a:not(.navmenu__sublink) { color: var(--ink); font-weight: 500; }
     .navmenu__panel a.navmenu__sublink .navmenu__label::before { color: var(--ink-dim); }
     .navmenu__label { display: flex; align-items: center; }
     .navmenu__sub { font-size: 0.76em; line-height: 1.4; color: var(--ink-faint); opacity: 0.85; white-space: normal; padding-left: calc(var(--nav-arrow-w) + var(--nav-arrow-gap)); }
