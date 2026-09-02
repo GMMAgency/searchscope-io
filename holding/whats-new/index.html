@@ -760,7 +760,8 @@ html, body { overflow-x: hidden; }
     .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
     .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
-    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat li > b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span b { font-weight: 560; color: var(--ink); }
     .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
 
     .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }

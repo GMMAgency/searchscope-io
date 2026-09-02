@@ -759,8 +759,13 @@ html, body { overflow-x: hidden; }
 
     .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
     .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .anat--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
-    .anat b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    /* Only the label is a block. A bold run inside the description was being
+       broken onto its own line, which is what made "Bring a visibility gap
+       into the Strategic Advisor, or the PR Strategist" read as a list. */
+    .anat li > b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span b { font-weight: 560; color: var(--ink); }
     .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
 
     .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }
@@ -810,7 +815,14 @@ html, body { overflow-x: hidden; }
     .hero__visual, .hero .appwin, .awbar { min-width: 0; }
 
     /* ---- verbatim answer demo ---- */
-    .ansdemo { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); margin: var(--space-xl) 0 0; max-width: 72ch; min-width: 0; }
+    /* The worked answer sits beside the copy that introduces it, rather than
+       pushing it down the page. */
+    .evgrid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .evgrid > * { min-width: 0; }
+    .evgrid .sec__head { margin: 0; }
+    @media (max-width: 1000px) { .evgrid { grid-template-columns: 1fr; gap: var(--space-l); } }
+
+    .ansdemo { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); margin: 0; max-width: none; min-width: 0; }
     .ansdemo__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-xs); border-bottom: 1px solid var(--hairline); padding-bottom: var(--space-s); }
     .ansdemo__q { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); min-width: 0; }
     .ansdemo__meta { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
@@ -1440,6 +1452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="section">
     <div class="container">
+      <div class="evgrid">
       <div class="sec__head reveal">
         <span class="eyebrow">The evidence</span>
         <h2 class="sec__title">The answers, word for word.</h2>
@@ -1462,6 +1475,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><span class="k">Linked to you</span><span class="v">no</span></li>
           <li><span class="k">Sources used</span><span class="v">g2.com, reddit.com, competitor-a.com</span></li>
         </ul>
+      </div>
       </div>
 
       <div class="sec__head reveal" style="margin-top: var(--space-2xl)">
@@ -1519,7 +1533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           AI visibility shows you the output. Brand Intelligence shows you the wider signals around your brand and your competitors. Compare links and authority, media coverage and branded search alongside your AI visibility, so you can see where competitors are stronger and where the gaps may be.
         </p>
       </div>
-      <ul class="anat reveal">
+      <ul class="anat anat--four reveal">
         <li><b>Mentions in AI answers, run by run</b><span>Every run records how many answers named you, how many cited you, and the same for each competitor, so you can watch a gap widen or close instead of comparing two screenshots.</span></li>
         <li><b>Links and authority</b><span>Referring domains, total backlinks and domain rank for every brand in the set, side by side.</span></li>
         <li><b>Media coverage</b><span>Total mentions and news mentions, the domains carrying them, and the split between positive, negative and neutral coverage.</span></li>
@@ -1533,7 +1547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Searchscope tracks new and lost referring domains for each brand you benchmark. When activity rises well above that brand&rsquo;s normal rate, Campaign Radar flags the period for investigation.
         </p>
       </div>
-      <ul class="anat reveal">
+      <ul class="anat anat--four reveal">
         <li><b>A burst is worth investigating</b><span>It can signal a campaign or a piece of content that earned attention. The monthly view shows you when; investigating it shows you what.</span></li>
         <li><b>Find the pages attracting the new links</b><span>Searchscope pulls the new links from that window and groups them by the page they point at, which helps identify the content or asset behind the activity.</span></li>
         <li><b>Separate earned coverage from boilerplate</b><span>Links from privacy, terms and careers pages, and links whose anchor is only &ldquo;click here&rdquo; or a bare URL, are counted separately from likely earned coverage, so a burst isn&rsquo;t inflated by boilerplate.</span></li>
@@ -1574,9 +1588,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><b>Brief it in Content Studio</b><span>Send a finding to <b>Content Studio</b> with the questions, the answers and the competing sources already attached, so the brief starts from the evidence.</span></li>
         <li><b>Track what happened next</b><span>Mark the work as applied and <b>Impact Tracker</b> records the baseline from that date, so you can see what happens to mentions, citations and visibility afterwards.</span></li>
       </ul>
-      <p class="lede reveal" style="margin-top: var(--space-xl)">
-        Not connected yet? The <a href="/resources/ai-visibility-checker/">free AI visibility check</a> puts the same six assistants to work on your brand and we read the results with you.
-      </p>
     </div>
   </section>
 
