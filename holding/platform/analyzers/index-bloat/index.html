@@ -793,6 +793,8 @@ html, body { overflow-x: hidden; }
       text-align: left;
     }
     .site-foot__social svg { width: 20px; height: 20px; color: var(--ink); display: block; }
+    .site-foot__social a { display: inline-block; color: var(--ink); line-height: 0; }
+    .site-foot__social a:hover { opacity: 0.6; }
     .site-foot__bar {
       display: flex;
       align-items: flex-start;
@@ -1196,7 +1198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Index Bloat</p>
         <h1 class="hero__title reveal">Pages that cost you crawl and earn you nothing.</h1>
         <p class="lede reveal" style="--reveal-delay:100ms">Every site accumulates pages nobody meant to publish, and the crawler doesn't know which ones you meant.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>Searchscope finds them and makes a call on each one.</b> Not a list of URLs to review. A verdict per page, with the traffic and the word count behind it.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>Searchscope finds them and recommends what to do with each one.</b> Not a list of URLs to review. A verdict per page, with the traffic and the word count behind it.</p>
         <div class="hero__actions reveal" style="--reveal-delay:190ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -1225,7 +1227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="call">
           <p class="call__k">Signal 01</p>
           <h3 class="call__t">Thin content</h3>
-          <p class="call__d">Too little on the page to answer anything, with the word count on the row so the call is quick.</p>
+          <p class="call__d">Too little on the page to answer anything, with the word count on the row so you can decide quickly.</p>
         </article>
         <article class="call">
           <p class="call__k">Signal 02</p>
@@ -1265,8 +1267,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">02 · The verdict</span>
-        <h2 class="sec__title">Four calls, not one delete button.</h2>
-        <p class="lede">Finding bloat is easy. Deciding what to do with each page is the part that takes judgment, so every row arrives with the call already made.</p>
+        <h2 class="sec__title">Four recommendations, not one delete button.</h2>
+        <p class="lede">Finding bloat is easy. Deciding what to do with each page is the part that takes judgment, so every row arrives with a recommendation already attached.</p>
         <p class="lede"><b>Nothing is deleted for you.</b> The verdict is a recommendation with the traffic and the word count attached, so you can disagree with it in a second rather than in an afternoon.</p>
       </div>
       <div class="calls calls--four reveal">
@@ -1345,7 +1347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Find out what Google is wasting its time on.</h2>
         <p class="cta__sub">
-          Connect a site and the analyzers read it end to end, then hand back the short list.
+          Connect your site and Searchscope runs the analyzers automatically, filtering and prioritizing the findings that deserve your attention.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
@@ -1368,9 +1370,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="site-foot">
   <div class="container">
     <div class="site-foot__social">
-      <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="LinkedIn">
-        <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/>
-      </svg>
+      <a href="https://www.linkedin.com/company/searchscope-ai" target="_blank" rel="noopener" aria-label="Searchscope on LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/>
+        </svg>
+      </a>
     </div>
     <div class="site-foot__bar">
       <div class="site-foot__legal">

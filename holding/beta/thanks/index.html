@@ -718,6 +718,8 @@ html, body { overflow-x: hidden; }
       text-align: left;
     }
     .site-foot__social svg { width: 20px; height: 20px; color: var(--ink); display: block; }
+    .site-foot__social a { display: inline-block; color: var(--ink); line-height: 0; }
+    .site-foot__social a:hover { opacity: 0.6; }
     .site-foot__bar {
       display: flex;
       align-items: flex-start;
@@ -1104,9 +1106,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="site-foot">
   <div class="container">
     <div class="site-foot__social">
-      <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="LinkedIn">
-        <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/>
-      </svg>
+      <a href="https://www.linkedin.com/company/searchscope-ai" target="_blank" rel="noopener" aria-label="Searchscope on LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/>
+        </svg>
+      </a>
     </div>
     <div class="site-foot__bar">
       <div class="site-foot__legal">
