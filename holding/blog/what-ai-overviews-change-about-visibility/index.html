@@ -1197,6 +1197,17 @@ html, body { overflow-x: hidden; }
     border-radius:var(--radius-m); padding:var(--space-l); min-width:0;
     display:flex; flex-direction:column; position:relative; cursor:pointer;
     transition:border-color var(--dur, .2s) ease; }
+  /* The card declares its own transition for the hover border, and that rule
+     sits after .reveal in the cascade, so it replaced the entrance transition
+     entirely: the card jumped from hidden to shown with nothing in between,
+     while the headings beside it animated correctly. Restate all three here,
+     with the stagger applied only to the two the entrance uses so hovering a
+     settled card still responds immediately. */
+  .mcard.reveal {
+    transition:opacity var(--dur-slow, .6s) var(--ease-out, ease),
+               transform var(--dur-slow, .6s) var(--ease-out, ease),
+               border-color var(--dur, .2s) ease;
+    transition-delay:var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0s; }
   .mcard__t a::after { content:""; position:absolute; inset:0; z-index:0; }
   /* Above the overlay, so the pill still goes to its category. */
   .mcard > .tagpill { position:relative; z-index:1; }
@@ -1494,20 +1505,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="posthead bg-grid">
     <div class="container">
-      <nav class="crumbs" aria-label="Breadcrumb">
+      <nav class="crumbs reveal" aria-label="Breadcrumb">
         <a href="/">Searchscope</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
         <a href="/blog/">Blog</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
         <a href="/blog/category/ai-search/">AI Search</a>
       </nav>
-      <h1 class="post__title">What AI Overviews change about visibility</h1>
-      <p class="byline">
+      <h1 class="post__title reveal" style="--reveal-delay:60ms">What AI Overviews change about visibility</h1>
+      <p class="byline reveal" style="--reveal-delay:130ms">
         <span>Author: <a href="/blog/author/ray/">Ray</a></span>
         <span class="byline__s" aria-hidden="true"></span>
         <span>2 min read</span>
         <span class="byline__s" aria-hidden="true"></span>
         <time datetime="2026-06-12">June 12, 2026</time>
       </p>
-      <p class="posthead__sub">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>
+      <p class="posthead__sub reveal" style="--reveal-delay:190ms">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>
     </div>
   </section>
 
