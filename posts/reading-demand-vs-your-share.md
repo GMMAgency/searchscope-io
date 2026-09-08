@@ -5,7 +5,7 @@ pubDate: 2026-05-22
 author: Ray
 category: Search Data
 tags: ['Search Systems']
-draft: false
+draft: true
 ---
 
 If you could keep only one view of your search performance, it shouldn't be rankings, and it shouldn't be a traffic line. It should be **demand against share**: how much the market is searching for a thing, plotted against how much of that you actually capture.
@@ -37,8 +37,8 @@ The reason most teams don't work from this view is that building it is fiddly: y
 
 But once you have it, prioritization gets easy. You work the high-demand / low-share pages in order of recoverable opportunity, and you watch the "demand up, share flat" pages like a hawk. It turns an overwhelming site into a short, ranked list of moves.
 
-This is the heart of what Searchscope's [Demand & Trends](/platform#demand) view does, and it's the most direct expression of the [operating-system model](/blog/seo-is-now-an-operating-system/): read the system continuously, act on the gap while it's still open.
+This is the heart of what Searchscope's [Demand & Trends](/platform/search-intelligence/) view does, and it's the most direct expression of the [operating-system model](/blog/seo-is-now-an-operating-system/): read the system continuously, act on the gap while it's still open.
 
 Stop asking "where do we rank?" Start asking "where is demand rising faster than our share?" The answer is your growth plan.
 
-See it in the product: [how Searchscope surfaces the opportunities](/workspaces) where demand outruns your share.
+See it in the product: [how Searchscope surfaces the opportunities](/platform/analyzers/opportunities/) where demand outruns your share.

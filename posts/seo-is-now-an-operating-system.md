@@ -3,7 +3,7 @@ title: SEO is now an operating system
 description: For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here's the shift.
 pubDate: 2026-06-20
 author: Ray
-draft: false
+draft: true
 category: Search Systems
 ---
 

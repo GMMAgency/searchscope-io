@@ -5,7 +5,7 @@ pubDate: 2026-06-04
 author: Ray
 aliases: ['cannibalisation-is-a-data-problem']
 category: Search Data
-draft: false
+draft: true
 ---
 
 Keyword cannibalization gets talked about like a content-strategy opinion: these two pages *feel* similar, so maybe merge them. That's how you end up consolidating pages that were fine and missing the ones quietly bleeding you.
@@ -54,4 +54,4 @@ Once you've found a real instance, you have three options, and the right one dep
 
 Cannibalization is a data problem with a decision at the end. Find it in the data, then decide with your head, not by eyeballing which pages *feel* like duplicates.
 
-See it in the product: [how Searchscope catches cannibalization](/workspaces), scored, with the consolidation drafted.
+See it in the product: [how Searchscope catches cannibalization](/platform/analyzers/cannibalization/), scored, with the consolidation drafted.

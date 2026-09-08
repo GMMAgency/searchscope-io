@@ -44,8 +44,8 @@ A few practical moves we're making on client sites right now:
 - **Watch the SERP shape as a signal.** When an AI Overview appears over a cluster you own, treat it like an algorithm event, because for your traffic, it is one.
 - **Measure citations, not just rankings.** Being the cited source is the new front page.
 
-The uncomfortable part is that none of this is a one-off. The results page is being rewritten continuously, which means visibility has to be *read* continuously, exactly the kind of always-on synthesis the [search-operating-system model](/blog/seo-is-now-an-operating-system/) is built for.
+The uncomfortable part is that none of this is a one-off. The results page is being rewritten continuously, which means visibility has to be *read* continuously, exactly the kind of always-on synthesis a search operating system is built for.
 
 Rankings aren't dead. They're just no longer the scoreboard. The scoreboard is the answer, and whether you're in it.
 
-This is the whole of [Brand & AI visibility](/brand-and-ai): tracking how the answers describe you, and the PR to move them.
+This is the whole of [Brand & AI visibility](/platform/ai-brand-intelligence/): tracking how the answers describe you, and the PR to move them.

@@ -6,16 +6,7 @@
     <atom:link href="https://searchscope.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Writing on search systems, algorithm updates, AI search and search data.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Sep 2026 15:06:35 +0000</lastBuildDate>
-    <item>
-      <title>SEO is now an operating system</title>
-      <link>https://searchscope.io/blog/seo-is-now-an-operating-system/</link>
-      <guid isPermaLink="true">https://searchscope.io/blog/seo-is-now-an-operating-system/</guid>
-      <description>For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</description>
-      <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
-
-    </item>
+    <lastBuildDate>Tue, 08 Sep 2026 15:16:27 +0000</lastBuildDate>
     <item>
       <title>What AI Overviews change about visibility</title>
       <link>https://searchscope.io/blog/what-ai-overviews-change-about-visibility/</link>
@@ -24,33 +15,6 @@
       <pubDate>Fri, 12 Jun 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
 
-    </item>
-    <item>
-      <title>Cannibalization is a data problem</title>
-      <link>https://searchscope.io/blog/cannibalization-is-a-data-problem/</link>
-      <guid isPermaLink="true">https://searchscope.io/blog/cannibalization-is-a-data-problem/</guid>
-      <description>Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</description>
-      <pubDate>Thu, 04 Jun 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
-
-    </item>
-    <item>
-      <title>Reading demand vs. your share</title>
-      <link>https://searchscope.io/blog/reading-demand-vs-your-share/</link>
-      <guid isPermaLink="true">https://searchscope.io/blog/reading-demand-vs-your-share/</guid>
-      <description>The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</description>
-      <pubDate>Fri, 22 May 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
-      <category>Search Systems</category>
-    </item>
-    <item>
-      <title>The co-pilot model for search teams</title>
-      <link>https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</link>
-      <guid isPermaLink="true">https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</guid>
-      <description>AI won&#x27;t replace your search team, and a search team without AI is about to be outpaced. The model that wins is neither. It&#x27;s a co-pilot. Here&#x27;s what that actually means in practice.</description>
-      <pubDate>Sun, 10 May 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
-      <category>Search Systems</category>
     </item>
   </channel>
 </rss>
