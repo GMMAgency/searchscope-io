@@ -306,6 +306,20 @@ html, body { overflow-x: hidden; }
    Hero
    ============================================================ */
 .hero { padding-top: clamp(2.5rem, 1.9rem + 3.5vw, 4.5rem); overflow: clip; }
+.pillar__pain {
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 var(--space-2xs);
+  padding-left: 0.72rem;
+  border-left: 2px solid var(--hairline);
+}
+.finds em {
+  font-style: normal;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.28rem;
+}
 .hero__glow {
   position: absolute;
   inset: 0;
@@ -1233,7 +1247,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           The SEO &amp; AI Search Intelligence Platform.
         </h1>
         <p class="hero__sub reveal" style="--reveal-delay:170ms">
-          <b>Searchscope combines your search performance, site crawl, competitors, market demand and AI visibility</b> to find the issues and opportunities worth acting on, prioritize the work, and track what happens after you make a change.
+          Search teams don&rsquo;t need another dashboard full of data.
+          <b>Searchscope brings together your search performance, site crawl, competitors, market demand and AI visibility</b>, filters out the findings that aren&rsquo;t worth your time, and shows you what deserves attention next. Then you can track what happened after the work was done.
         </p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn btn--lg">
@@ -1309,6 +1324,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- ============ 03 · THE THREE CORE AREAS ============ -->
+  <!-- ============ 02 · THE PROBLEM ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="strip__head reveal">
+        <span class="eyebrow">The problem</span>
+        <h2 class="strip__title">Search teams have more data than ever. Knowing what deserves attention is harder.</h2>
+        <p class="strip__sub">
+          Search performance, crawl data, competitors, market demand and AI visibility usually sit in separate tools and reports. Each one can tell you something changed. The harder part is understanding what matters, what to do about it, and what happened after the work was completed.
+        </p>
+      </div>
+      <ul class="anat reveal">
+        <li><b>Too many findings</b><span>Audit tools surface everything. Your team still has to decide what actually matters.</span></li>
+        <li><b>Too many separate views</b><span>SEO performance, competitors, demand and AI visibility are often analyzed in isolation.</span></li>
+        <li><b>No clear follow-through</b><span>A recommendation gets implemented, but the original finding and what happened afterwards are easily disconnected.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 03 · THE PLATFORM ============ -->
   <section class="section bg-grid" id="platform">
     <div class="container">
       <div class="strip__head reveal">
@@ -1319,6 +1353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="pillar">
                     <span class="pillar__k">01</span>
           <h3 class="pillar__t">Analyzers</h3>
+          <p class="pillar__pain">Stop working through audit lists where every finding looks equally important.</p>
           <p class="pillar__lead">Find the SEO issues and opportunities worth acting on.</p>
           <p class="pillar__d">Seven analyzers identify cannibalization, content decay, internal linking opportunities, schema issues, cluster volatility and more. Findings are filtered and prioritized before they reach your queue.</p>
           <p class="pillar__note">Fewer findings, on purpose.</p>
@@ -1327,6 +1362,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="pillar">
                     <span class="pillar__k">02</span>
           <h3 class="pillar__t">Search Intelligence</h3>
+          <p class="pillar__pain">A ranking drop rarely tells you the whole story.</p>
           <p class="pillar__lead">See your performance alongside competitors and changing demand.</p>
           <p class="pillar__d">Track where you&rsquo;re gaining or losing ground, compare competitors in any of 92 markets, and follow changes in search demand across the topics you already rank for.</p>
           <p class="pillar__note">Analyze the same underlying data with the Strategic Advisor.</p>
@@ -1335,6 +1371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="pillar">
                     <span class="pillar__k">03</span>
           <h3 class="pillar__t">AI &amp; Brand Intelligence</h3>
+          <p class="pillar__pain">Competitors can be recommended in AI answers while your traditional search visibility looks healthy.</p>
           <p class="pillar__lead">See what AI assistants say about you, and who they recommend instead.</p>
           <p class="pillar__d">Ask the same questions across six assistants every week, keep every answer word for word, see the sources they cited, and compare your visibility with the competitors you&rsquo;re tracking.</p>
           <p class="pillar__note">More than mention tracking.</p>
@@ -1355,12 +1392,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
       </div>
       <ul class="finds reveal">
-        <li><b>Content decay</b><span>Pages losing clicks, and the queries driving the decline.</span></li>
-        <li><b>Cannibalization</b><span>URLs competing for one intent, and whether to consolidate, differentiate or keep both.</span></li>
-        <li><b>Search opportunities</b><span>Queries where you&rsquo;re already close to winning more visibility.</span></li>
-        <li><b>Competitor gaps</b><span>Where competitors rank and you don&rsquo;t, grouped by topic.</span></li>
-        <li><b>AI visibility</b><span>Which assistants mention you, who appears instead, and which sources they cited.</span></li>
-        <li><b>Market movement</b><span>Topics where demand is changing or your visibility is weakening.</span></li>
+        <li><b>Content decay</b><span><em>This page was growing six months ago. Now it&rsquo;s losing clicks.</em>Searchscope shows the queries driving the decline and whether the page is getting worse or recovering.</span></li>
+        <li><b>Cannibalization</b><span><em>Two pages are competing for the same intent.</em>See the overlapping queries and whether to consolidate, differentiate or keep both.</span></li>
+        <li><b>Search opportunities</b><span><em>You rank eleventh for a query you should own.</em>Queries where you&rsquo;re already close to winning more visibility, and the change that would help.</span></li>
+        <li><b>Competitor gaps</b><span><em>Three competitors rank across this topic. You barely appear.</em>Where competitors rank and you don&rsquo;t, grouped by topic.</span></li>
+        <li><b>AI visibility</b><span><em>ChatGPT recommends three competitors. Your brand isn&rsquo;t mentioned.</em>Which assistants mention you, who appears instead, and which sources they cited.</span></li>
+        <li><b>Market movement</b><span><em>Demand for the topic is rising. Your share of it isn&rsquo;t.</em>Topics where demand is changing or your visibility is weakening.</span></li>
       </ul>
     </div>
   </section>
@@ -1371,6 +1408,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="strip__head reveal">
         <span class="eyebrow">How it works</span>
         <h2 class="strip__title">Understand, prioritize, act, measure.</h2>
+        <p class="strip__sub">
+          Most search tools stop at the finding. Searchscope keeps the finding, the work and what happened afterwards connected.
+        </p>
       </div>
       <ol class="steps reveal">
         <li><span class="steps__k">Understand</span><span class="steps__d">See your search performance, site, competitors, market demand and AI visibility in the same context.</span></li>
@@ -1391,7 +1431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="anat reveal">
         <li><b>One dataset across search</b><span>Your Search Console history, crawl, competitors, search demand, AI visibility and findings all connect to the same underlying context.</span></li>
         <li><b>Fewer findings, on purpose</b><span>Searchscope filters and prioritizes issues and opportunities instead of handing you another audit with hundreds of rows.</span></li>
-        <li><b>From finding to measurement</b><span>Take a finding into the Strategic Advisor or Content Studio, mark the work as applied, and track the impact.</span></li>
+        <li><b>From finding to measurement</b><span>Take a finding into the Strategic Advisor or Content Studio, mark the work as applied, and see what happened afterwards.</span></li>
       </ul>
     </div>
   </section>
