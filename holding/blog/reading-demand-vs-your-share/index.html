@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reading demand vs. your share · Searchscope</title>
 <meta name="description" content="The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.">
-<meta name="robots" content="noindex,follow">
+<meta name="robots" content="index,follow">
 <meta property="og:title" content="Reading demand vs. your share · Searchscope">
 <meta property="og:description" content="The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.">
 <meta property="og:type" content="article">
@@ -1117,6 +1117,7 @@ html, body { overflow-x: hidden; }
     .rel__body { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.7; margin: 0; }
 </style>
 
+<link rel="canonical" href="https://searchscope.io/blog/reading-demand-vs-your-share/">
 <link rel="alternate" type="application/rss+xml" title="Searchscope Blog" href="https://searchscope.io/blog/rss.xml">
 <style>
   /* Blog. Built on the site's existing tokens, so it inherits any theme change. */
@@ -1197,6 +1198,17 @@ html, body { overflow-x: hidden; }
     border-radius:var(--radius-m); padding:var(--space-l); min-width:0;
     display:flex; flex-direction:column; position:relative; cursor:pointer;
     transition:border-color var(--dur, .2s) ease; }
+  /* The card declares its own transition for the hover border, and that rule
+     sits after .reveal in the cascade, so it replaced the entrance transition
+     entirely: the card jumped from hidden to shown with nothing in between,
+     while the headings beside it animated correctly. Restate all three here,
+     with the stagger applied only to the two the entrance uses so hovering a
+     settled card still responds immediately. */
+  .mcard.reveal {
+    transition:opacity var(--dur-slow, .6s) var(--ease-out, ease),
+               transform var(--dur-slow, .6s) var(--ease-out, ease),
+               border-color var(--dur, .2s) ease;
+    transition-delay:var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0s; }
   .mcard__t a::after { content:""; position:absolute; inset:0; z-index:0; }
   /* Above the overlay, so the pill still goes to its category. */
   .mcard > .tagpill { position:relative; z-index:1; }
@@ -1455,7 +1467,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <p class="navmenu__h">Grow with Searchscope</p>
-              <span class="navmenu__soon">Blog <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/blog/">
+                <span class="navmenu__label">Blog</span>
+                <span class="navmenu__sub">Writing on search systems and AI search</span>
+              </a>
               <span class="navmenu__soon navmenu__soon--sub">
                 <span class="navmenu__label">Documentation <b>Coming soon</b></span>
                 <span class="navmenu__sub">Knowledge Base and more</span>
@@ -1494,20 +1509,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="posthead bg-grid">
     <div class="container">
-      <nav class="crumbs" aria-label="Breadcrumb">
+      <nav class="crumbs reveal" aria-label="Breadcrumb">
         <a href="/">Searchscope</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
         <a href="/blog/">Blog</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
         <a href="/blog/category/search-data/">Search Data</a>
       </nav>
-      <h1 class="post__title">Reading demand vs. your share</h1>
-      <p class="byline">
+      <h1 class="post__title reveal" style="--reveal-delay:60ms">Reading demand vs. your share</h1>
+      <p class="byline reveal" style="--reveal-delay:130ms">
         <span>Author: <a href="/blog/author/ray/">Ray</a></span>
         <span class="byline__s" aria-hidden="true"></span>
         <span>2 min read</span>
         <span class="byline__s" aria-hidden="true"></span>
         <time datetime="2026-05-22">May 22, 2026</time>
       </p>
-      <p class="posthead__sub">The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</p>
+      <p class="posthead__sub reveal" style="--reveal-delay:190ms">The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</p>
     </div>
   </section>
 
@@ -1538,9 +1553,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="making-it-operational">Making it operational</h2>
 <p>The reason most teams don&rsquo;t work from this view is that building it is fiddly: you need demand data, your own Search Console reality, and a way to compute share per cluster, then keep it current as both move.</p>
 <p>But once you have it, prioritization gets easy. You work the high-demand / low-share pages in order of recoverable opportunity, and you watch the &ldquo;demand up, share flat&rdquo; pages like a hawk. It turns an overwhelming site into a short, ranked list of moves.</p>
-<p>This is the heart of what Searchscope&rsquo;s <a href="/platform#demand">Demand &amp; Trends</a> view does, and it&rsquo;s the most direct expression of the <a href="/blog/seo-is-now-an-operating-system/">operating-system model</a>: read the system continuously, act on the gap while it&rsquo;s still open.</p>
+<p>This is the heart of what Searchscope&rsquo;s <a href="/platform/search-intelligence/">Demand &amp; Trends</a> view does, and it&rsquo;s the most direct expression of the <a href="/blog/seo-is-now-an-operating-system/">operating-system model</a>: read the system continuously, act on the gap while it&rsquo;s still open.</p>
 <p>Stop asking &ldquo;where do we rank?&rdquo; Start asking &ldquo;where is demand rising faster than our share?&rdquo; The answer is your growth plan.</p>
-<p>See it in the product: <a href="/workspaces">how Searchscope surfaces the opportunities</a> where demand outruns your share.</p>
+<p>See it in the product: <a href="/platform/analyzers/opportunities/">how Searchscope surfaces the opportunities</a> where demand outruns your share.</p>
         </div>
       </article>
       <aside class="railwrap" aria-label="About this post">
@@ -1581,9 +1596,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="section morewrap">
     <div class="container">
-      <h2 class="more__h">More posts</h2>
+      <h2 class="more__h reveal">More posts</h2>
       <ul class="moregrid">
-        <li class="mcard">
+        <li class="mcard reveal" style="--reveal-delay:60ms">
           <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
           <h2 class="mcard__t"><a href="/blog/cannibalization-is-a-data-problem/">Cannibalization is a data problem</a></h2>
           <p class="mcard__d">Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</p>
@@ -1593,7 +1608,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span aria-hidden="true">&#183;</span>
             <time datetime="2026-06-04">June 4, 2026</time>
           </p>
-        </li>        <li class="mcard">
+        </li>        <li class="mcard reveal" style="--reveal-delay:130ms">
           <a class="tagpill" href="/blog/category/search-systems/">Search Systems</a>
           <h2 class="mcard__t"><a href="/blog/seo-is-now-an-operating-system/">SEO is now an operating system</a></h2>
           <p class="mcard__d">For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</p>
@@ -1603,7 +1618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span aria-hidden="true">&#183;</span>
             <time datetime="2026-06-20">June 20, 2026</time>
           </p>
-        </li>        <li class="mcard">
+        </li>        <li class="mcard reveal" style="--reveal-delay:200ms">
           <a class="tagpill" href="/blog/category/ai-search/">AI Search</a>
           <h2 class="mcard__t"><a href="/blog/what-ai-overviews-change-about-visibility/">What AI Overviews change about visibility</a></h2>
           <p class="mcard__d">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>

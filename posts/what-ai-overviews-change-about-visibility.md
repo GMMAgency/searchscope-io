@@ -48,4 +48,4 @@ The uncomfortable part is that none of this is a one-off. The results page is be
 
 Rankings aren't dead. They're just no longer the scoreboard. The scoreboard is the answer, and whether you're in it.
 
-This is the whole of [Brand & AI visibility](/brand-and-ai): tracking how the answers describe you, and the PR to move them.
+This is the whole of [Brand & AI visibility](/platform/ai-brand-intelligence/): tracking how the answers describe you, and the PR to move them.
