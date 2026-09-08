@@ -5,7 +5,7 @@ pubDate: 2026-05-22
 author: Ray
 category: Search Data
 tags: ['Search Systems']
-draft: true
+draft: false
 ---
 
 If you could keep only one view of your search performance, it shouldn't be rankings, and it shouldn't be a traffic line. It should be **demand against share**: how much the market is searching for a thing, plotted against how much of that you actually capture.

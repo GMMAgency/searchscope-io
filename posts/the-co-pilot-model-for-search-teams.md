@@ -3,7 +3,7 @@ title: The co-pilot model for search teams
 description: AI won't replace your search team, and a search team without AI is about to be outpaced. The model that wins is neither. It's a co-pilot. Here's what that actually means in practice.
 pubDate: 2026-05-10
 author: Ray
-draft: true
+draft: false
 category: Agency
 tags: ['Search Systems']
 ---

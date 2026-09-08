@@ -5,7 +5,7 @@ pubDate: 2026-06-04
 author: Ray
 aliases: ['cannibalisation-is-a-data-problem']
 category: Search Data
-draft: true
+draft: false
 ---
 
 Keyword cannibalization gets talked about like a content-strategy opinion: these two pages *feel* similar, so maybe merge them. That's how you end up consolidating pages that were fine and missing the ones quietly bleeding you.

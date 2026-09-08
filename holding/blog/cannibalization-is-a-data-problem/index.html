@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'analyzer_hub',page_name:'analyzers'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'blog_post',page_name:'cannibalization_is_a_data_problem'});</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,13 +11,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEO analyzers · Searchscope</title>
-<meta name="description" content="Seven analyzers check your crawl and your search data every week, then filter and prioritize the findings so you start with what matters most.">
-<link rel="canonical" href="https://searchscope.io/platform/analyzers/">
+<title>Cannibalization is a data problem · Searchscope</title>
+<meta name="description" content="Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="SEO analyzers · Searchscope">
-<meta property="og:description" content="Seven analyzers check your crawl and your search data every week, then filter and prioritize the findings so you start with what matters most.">
-<meta property="og:type" content="website">
+<meta property="og:title" content="Cannibalization is a data problem · Searchscope">
+<meta property="og:description" content="Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.">
+<meta property="og:type" content="article">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -1107,7 +1106,278 @@ html, body { overflow-x: hidden; }
       .navmenu__btn { font-size: var(--step--2); }
     }
 
+
+    /* what's new */
+    .rels { list-style: none; margin: 0; padding: 0; max-width: 74ch; }
+    .rel { padding: var(--space-l) 0; border-top: 1px solid var(--hairline); }
+    .rel:first-child { border-top: 0; padding-top: 0; }
+    .rel__meta { display: flex; align-items: center; gap: var(--space-s); flex-wrap: wrap; margin: 0 0 var(--space-2xs); font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+    .rel__area { border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.15em 0.7em; }
+    .rel__title { font-family: var(--font-display); font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .rel__body { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.7; margin: 0; }
 </style>
+
+<link rel="canonical" href="https://searchscope.io/blog/cannibalization-is-a-data-problem/">
+<link rel="alternate" type="application/rss+xml" title="Searchscope Blog" href="https://searchscope.io/blog/rss.xml">
+<style>
+  /* Blog. Built on the site's existing tokens, so it inherits any theme change. */
+
+  /* The site sets body { overflow-x: hidden } as a sideways-scroll guard, and
+     ANY non-visible overflow on an ancestor silently disables position:sticky.
+     overflow-x: clip does the same guarding job without creating a scroll
+     container, so the rail sticks. Scoped to blog pages only; the rest of the
+     site is untouched. */
+  body { overflow-x: clip; }
+
+  /* Post: article plus a sticky rail, collapsing to one column on narrow screens. */
+  /* The grid item (.railwrap) stretches to the row height so the sticky box
+     inside it has somewhere to travel. Making .rail itself the grid item with
+     align-items:start shrinks it to its content and sticky silently does
+     nothing, which is what happened first time. */
+  .postwrap { display:grid; gap:var(--space-2xl); }
+  .railwrap { min-width:0; }
+  @media (min-width: 1040px) {
+    .postwrap { grid-template-columns: minmax(0,1fr) 268px; }
+    /* The site header is sticky and 71px tall once stuck (z-index 50), so the
+       rail has to clear it or the first heading in the rail sits underneath.
+       6rem = 96px leaves 25px of air below the header. */
+    /* Only the contents list scrolls, not the whole rail. Capping the rail
+       instead let the list scroll out of view inside it, which is the one
+       thing that has to stay put. */
+    .rail { position:sticky; top:6rem; }
+    .toc { max-height:38vh; overflow-y:auto; scrollbar-width:thin; }
+  }
+  /* 720 -> 864, a fifth wider, closing the gap to the rail. */
+  .post { max-width:864px; min-width:0; }
+  .post__head { display:flex; flex-wrap:wrap; align-items:center; gap:.55em;
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-dim);
+    margin-bottom:var(--space-s); }
+  .post__tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .tagpill { display:inline-block; font-family:var(--font-mono); font-size:var(--step--2);
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 9px; border-radius:999px;
+    border:1px solid var(--hairline); color:var(--ink-dim); text-decoration:none;
+    background:none; cursor:pointer; line-height:1.7; }
+  .tagpill:hover { border-color:var(--ink); color:var(--ink); }
+  .tagpill--on { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  /* Without this the generic :hover rule sets colour to ink, giving black text
+     on the black active pill. */
+  .tagpill--on:hover { color:var(--surface); border-color:var(--ink); opacity:.85; }
+  .crumbs { font-size:var(--step--1); color:var(--ink-dim);
+    margin-bottom:var(--space-m); display:flex; gap:.55em; flex-wrap:wrap; align-items:center; }
+  .crumbs a { color:var(--ink-dim); text-decoration:none; }
+  .crumbs a:hover { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .crumbs__s { color:var(--ink-faint); }
+
+  /* The header band: gridline background, same treatment the site's hero and
+     CTA sections use, closed with a hairline. */
+  .posthead { position:relative; border-bottom:1px solid var(--hairline);
+    padding-block: clamp(2rem, 1.4rem + 3vw, 3.5rem) clamp(2rem, 1.4rem + 3vw, 3.25rem); }
+  /* No max-width on the container: the header must line up with the article
+     below it, not sit in its own centered column. The text itself is capped. */
+  .posthead__sub { font-size:var(--step-1); line-height:1.5; color:var(--ink-dim);
+    margin:var(--space-m) 0 0; max-width:62ch; }
+  /* A fifth larger than the site's step-4, per Stu. */
+  .post__title { font-size:calc(var(--step-4) * 1.2); line-height:1.06;
+    letter-spacing:-0.025em; margin:0 0 var(--space-m); max-width:20ch; }
+  .byline { display:flex; flex-wrap:wrap; align-items:center; gap:.85em;
+    font-size:var(--step--1); color:var(--ink-dim); margin:0 0 var(--space-m); }
+  .byline a { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .byline__s { width:1px; height:1.1em; background:var(--hairline); display:inline-block; }
+
+  /* More posts: three tinted cards, as in the reference. */
+  .morewrap { border-top:1px solid var(--hairline); }
+  .more__h { font-size:var(--step-3); line-height:1.15; letter-spacing:-0.02em;
+    color:var(--ink); margin:0 0 var(--space-l); }
+  .moregrid { list-style:none; margin:0; padding:0; display:grid; gap:var(--space-l);
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  /* The whole card is clickable via a stretched link on the title, rather than
+     wrapping the card in an <a>. That keeps one real link per card, so the
+     category pill inside stays its own link and the markup stays valid: you
+     cannot nest an anchor inside an anchor. */
+  .mcard { background:var(--surface-panel); border:1px solid var(--hairline);
+    border-radius:var(--radius-m); padding:var(--space-l); min-width:0;
+    display:flex; flex-direction:column; position:relative; cursor:pointer;
+    transition:border-color var(--dur, .2s) ease; }
+  /* The card declares its own transition for the hover border, and that rule
+     sits after .reveal in the cascade, so it replaced the entrance transition
+     entirely: the card jumped from hidden to shown with nothing in between,
+     while the headings beside it animated correctly. Restate all three here,
+     with the stagger applied only to the two the entrance uses so hovering a
+     settled card still responds immediately. */
+  .mcard.reveal {
+    transition:opacity var(--dur-slow, .6s) var(--ease-out, ease),
+               transform var(--dur-slow, .6s) var(--ease-out, ease),
+               border-color var(--dur, .2s) ease;
+    transition-delay:var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0s; }
+  .mcard__t a::after { content:""; position:absolute; inset:0; z-index:0; }
+  /* Above the overlay, so the pill still goes to its category. */
+  .mcard > .tagpill { position:relative; z-index:1; }
+  /* Text stays selectable over the overlay. */
+  .mcard__d, .mcard__m { position:relative; z-index:1; pointer-events:none; }
+  .mcard__m a { pointer-events:auto; }
+  .mcard:hover { border-color:color-mix(in oklab, var(--ink) 30%, var(--hairline)); }
+  .mcard .mcard__m { margin-top:auto; padding-top:var(--space-s); }
+  /* The card is a flex column, so the pill stretches unless told not to. */
+  .mcard > .tagpill { align-self:flex-start; margin-bottom:var(--space-s); }
+  .mcard__t { font-size:var(--step-1); line-height:1.25; margin:0 0 .45em; }
+  .mcard__t a { color:var(--ink); text-decoration:none; }
+  .mcard__t a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .mcard__d { font-size:var(--step--1); line-height:1.55; color:var(--ink-dim);
+    margin:0 0 var(--space-m); }
+  .mcard__m { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint);
+    display:flex; flex-wrap:wrap; gap:.45em; align-items:center; margin:0; }
+  .mcard__m a { color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; }
+
+  .prose { margin-top:var(--space-l); }
+  .prose > * + * { margin-top:var(--space-m); }
+  .prose p, .prose li { font-size:var(--step-0); line-height:1.7; color:var(--ink-dim); }
+  .prose h2 { font-size:var(--step-2); line-height:1.2; margin-top:var(--space-xl);
+    scroll-margin-top:6rem; }
+  .prose h3 { font-size:var(--step-1); margin-top:var(--space-l); scroll-margin-top:6rem; }
+  .prose ul, .prose ol { padding-left:1.35em; }
+  .prose li + li { margin-top:.4em; }
+  .prose strong { color:var(--ink); font-weight:600; }
+  .prose a { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .prose blockquote { margin:var(--space-l) 0; padding:var(--space-xs) var(--space-m);
+    border-left:3px solid var(--hairline); color:var(--ink); }
+  .prose blockquote p { color:var(--ink); }
+  .prose code { font-family:var(--font-mono); font-size:.88em; background:var(--surface-panel);
+    border:1px solid var(--hairline); border-radius:4px; padding:.1em .38em; }
+  .prose pre { overflow-x:auto; padding:var(--space-m); border:1px solid var(--hairline);
+    border-radius:var(--radius-m); font-size:var(--step--1); }
+  .prose pre code { border:0; background:none; padding:0; }
+
+  /* The rail: author, share, contents, then the one CTA. */
+  .rail__b { padding-bottom:var(--space-l); margin-bottom:var(--space-l);
+    border-bottom:1px solid var(--hairline); }
+  .rail__b:last-child { border-bottom:0; margin-bottom:0; padding-bottom:0; }
+  .rail__h { font-family:var(--font-mono); font-size:var(--step--2); text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-faint); margin:0 0 var(--space-xs); }
+  .rail__name { font-weight:600; color:var(--ink); margin:0;
+    display:flex; align-items:center; gap:.5em; }
+  /* Author names are ink, not link blue, everywhere. */
+  .rail__name a { color:var(--ink); text-decoration:none; }
+  .rail__name a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .byauthor { display:flex; align-items:center; gap:.7rem; margin:0 0 var(--space-xs); }
+
+  /* Placeholder until there is a photo: the initial in a circle, drawn in CSS
+     so nothing 404s. Set "photo" on the author to swap in an <img>. */
+  .avatar { flex:0 0 auto; width:46px; height:46px; border-radius:50%;
+    background:var(--surface-panel); border:1px solid var(--hairline);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--font-heading); font-weight:600; font-size:var(--step-0);
+    color:var(--ink-dim); object-fit:cover; }
+  .avatar--lg { width:76px; height:76px; font-size:var(--step-2); }
+
+  .lin { display:inline-flex; align-items:center; gap:.4em; color:var(--ink-dim);
+    text-decoration:none; }
+  .lin:hover { color:var(--ink); }
+  .lin svg { width:15px; height:15px; fill:currentColor; }
+  .lin__t { font-size:var(--step--1); font-weight:400; }
+
+  .authorhead { display:flex; align-items:center; gap:var(--space-m);
+    flex-wrap:wrap; margin-bottom:var(--space-s); }
+  .authorhead .post__title { margin:0; }
+  /* Icon beside the name. Centring on the line box puts it too high, because
+     that box includes the descender in a word like "Ray" and the eye reads the
+     middle of the letterforms instead. Aligning to the baseline and lifting by
+     half the icon centres it on the lowercase body, and it scales with the
+     heading rather than needing a pixel nudge. */
+  .authorhead__name { display:flex; align-items:baseline; gap:.55em; flex-wrap:wrap; }
+  .authorhead__lin { display:inline-flex; margin:0; transform:translateY(-0.28em); }
+  /* Icon only here, and a fifth larger than the 15px used in the rail. */
+  .authorhead__lin .lin svg { width:18px; height:18px; }
+  /* The longer bio sits in the header under the one-line summary, rather than
+     in a section of its own (Stu, 8 Sep). */
+  .authorbio { margin-top:var(--space-m); }
+  .authorbio p { color:var(--ink-dim); line-height:1.7; max-width:62ch;
+    font-size:var(--step-0); margin:0 0 var(--space-s); }
+  .authorbio p:last-child { margin-bottom:0; }
+  .rail__bio { font-size:var(--step--1); line-height:1.55; color:var(--ink-dim); margin:0; }
+  .share { display:flex; gap:.45rem; }
+  .share a { display:inline-flex; align-items:center; justify-content:center; width:32px;
+    height:32px; border:1px solid var(--hairline); border-radius:8px; color:var(--ink-dim); }
+  .share a:hover { border-color:var(--ink); color:var(--ink); }
+  .share svg { width:15px; height:15px; fill:currentColor; }
+  .toc { list-style:none; margin:0; padding:0; }
+  .toc li + li { margin-top:.5em; }
+  .toc a { font-size:var(--step--1); line-height:1.45; color:var(--ink-dim);
+    text-decoration:none; display:block; padding-left:.7em;
+    border-left:2px solid var(--hairline); }
+  .toc a:hover { color:var(--ink); border-left-color:var(--ink); }
+  .toc a.is-here { color:var(--ink); border-left-color:var(--ink); font-weight:600; }
+  .toc li[hidden] { display:none; }
+  .tocmore { display:block; margin-top:var(--space-s); padding:0; border:0; background:none;
+    font-family:inherit; font-size:var(--step--1); color:var(--ink); cursor:pointer;
+    text-decoration:underline; text-underline-offset:3px; }
+  .tocmore:hover { opacity:.7; }
+
+  /* Reading progress. Sits flush under the sticky header (71px tall when
+     stuck) and only fills across the article itself, not the whole document,
+     so it reaches 100% when you finish reading rather than at the footer. */
+  .readbar { position:fixed; top:70px; left:0; right:0; height:3px; z-index:49;
+    background:color-mix(in oklab, var(--ink) 8%, transparent);
+    opacity:0; transition:opacity .2s ease; pointer-events:none; }
+  .readbar.is-on { opacity:1; }
+  .readbar span { display:block; height:100%; width:0%; background:var(--ink);
+    transition:width .08s linear; }
+  @media (prefers-reduced-motion: reduce) {
+    .readbar, .readbar span { transition:none; }
+  }
+  .railcta { border:1px solid var(--hairline); border-radius:var(--radius-m);
+    padding:var(--space-m); background:var(--surface-panel); text-align:center; }
+  .railcta__t { font-family:var(--font-heading); font-weight:700;
+    font-size:var(--step-1); line-height:1.2; letter-spacing:-0.01em; color:var(--ink);
+    margin:0 0 var(--space-xs); }
+  .railcta__d { margin:0 0 var(--space-s); font-size:var(--step--1); line-height:1.5;
+    color:var(--ink-dim); }
+  .railcta .btn { width:100%; justify-content:center; }
+
+  /* Mobile contents: a real dropdown, no JavaScript. Hidden once the rail
+     appears, so the two never both show. */
+  .mtoc { border:1px solid var(--hairline); border-radius:999px; padding:0 var(--space-m);
+    margin:0 0 var(--space-l); }
+  .mtoc[open] { border-radius:var(--radius-m); padding-bottom:var(--space-s); }
+  .mtoc summary { cursor:pointer; list-style:none; display:flex; align-items:center;
+    gap:.6em; justify-content:center; padding:.75rem 0; font-weight:600; color:var(--ink); }
+  .mtoc summary::-webkit-details-marker { display:none; }
+  .mtoc__i { width:14px; height:10px; flex:0 0 auto;
+    background:linear-gradient(currentColor 0 0) 0 0/14px 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 4px/14px 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 8px/10px 2px no-repeat; }
+  .mtoc .toc { margin-top:var(--space-xs); }
+  @media (min-width: 1040px) { .mtoc { display:none; } }
+  /* Below the rail breakpoint the rail sits under the article, so its contents
+     block would repeat at the bottom of the post. The .mtoc dropdown at the top
+     is the mobile one, so this is the copy that goes. */
+  @media (max-width: 1039px) { .rail [data-tocblock] { display:none; } }
+
+  /* Index heading, a fifth larger than the shared strip title, and the
+     category rail centered above the grid. */
+  .bloghead { font-size:calc(var(--step-3) * 1.2); line-height:1.08;
+    letter-spacing:-0.025em; margin:0 0 var(--space-m); }
+  .catrail { display:flex; flex-wrap:wrap; gap:.45rem; justify-content:center;
+    margin:var(--space-xl) 0 0; }
+
+  /* Index and category listings: the same boxed card as More posts, two up. */
+  .postgrid { list-style:none; padding:0; margin:var(--space-l) 0 0;
+    display:grid; gap:var(--space-l); }
+  @media (min-width: 760px) { .postgrid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  .postgrid > li[hidden] { display:none; }
+  .pcard__m { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint);
+    display:flex; flex-wrap:wrap; gap:.5em; align-items:center; }
+
+  /* No corner ticks on cards: tried and dropped (Stu, 8 Sep). The border and
+     the panel fill carry the box on their own. */
+  .pager { display:flex; gap:var(--space-s); align-items:center; justify-content:center;
+    margin-top:var(--space-xl); font-family:var(--font-mono); font-size:var(--step--1); }
+  .pager__n { color:var(--ink-faint); }
+  .noresults { font-family:var(--font-mono); font-size:var(--step--1); color:var(--ink-faint);
+    margin-top:var(--space-l); }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Searchscope","url":"https://searchscope.io/","description":"The SEO and AI search intelligence platform."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cannibalization is a data problem","description":"Most cannibalization advice is just vibes (merge the pages that feel similar). But it's visible in the data, page by page, query by query. Here's how to actually find it.","datePublished":"2026-06-04","dateModified":"2026-06-04","author":{"@type":"Person","name":"Ray","url":"https://searchscope.io/blog/author/ray/"},"publisher":{"@type":"Organization","name":"Searchscope","url":"https://searchscope.io/"},"keywords":"Search Data","articleSection":"Search Data","wordCount":494,"timeRequired":"PT2M","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://searchscope.io/blog/cannibalization-is-a-data-problem/"},"url":"https://searchscope.io/blog/cannibalization-is-a-data-problem/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://searchscope.io/blog/"},{"@type":"ListItem","position":2,"name":"Cannibalization is a data problem","item":"https://searchscope.io/blog/cannibalization-is-a-data-problem/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1145,7 +1415,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div>
               <p class="navmenu__h">Product</p>
-              <a class="navmenu__sublink" href="/platform/analyzers/" aria-current="page">
+              <a class="navmenu__sublink" href="/platform/analyzers/">
                 <span class="navmenu__label">Workspace Analyzers</span>
                 <span class="navmenu__sub">Cannibalization, Content Decay, Cluster Volatility and more</span>
               </a>
@@ -1215,7 +1485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="navmenu__soon">About <b>Coming soon</b></span>
               <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
               <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
-              <a class="navmenu__sublink" href="/whats-new/">
+              <a class="navmenu__sublink" href="/whats-new/" aria-current="page">
                 <span class="navmenu__label">What's new?</span>
                 <span class="navmenu__sub">Recent Searchscope product releases</span>
               </a>
@@ -1235,251 +1505,147 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <section class="section hero bg-grid">
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="hero__grid">
-      <div class="sec__head">
-        <span class="eyebrow reveal">Platform &middot; Workspace Analyzers</span>
-        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-          Seven analyzers. One queue you can finish.
-        </h1>
-        <p class="lede reveal" style="--reveal-delay:130ms">
-          Most audit tools hand you hundreds of issues and leave you to work out which ones matter.
-        </p>
-        <p class="lede reveal" style="--reveal-delay:170ms">
-          <b>Searchscope filters and prioritizes findings before they reach your queue, using your
-          search performance and business context to focus attention on what&rsquo;s most likely to
-          matter.</b> The analyzers run automatically on a schedule, so you can spot important
-          changes without repeatedly running the same checks yourself.
-        </p>
-        <div class="hero__actions reveal" style="--reveal-delay:220ms">
-          <a href="/beta/" class="btn">
-            Join the beta
-            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-          </a>
-        </div>
-      </div>
+  <div class="readbar" data-readbar aria-hidden="true"><span data-readbar-fill></span></div>
 
-      <div class="hero__visual reveal" style="--reveal-delay:200ms">
-        <div class="ticked">
-          <span class="ticks" aria-hidden="true">
-            <span class="ticks__c ticks__tl"></span>
-            <span class="ticks__c ticks__tr"></span>
-            <span class="ticks__c ticks__br"></span>
-            <span class="ticks__c ticks__bl"></span>
-          </span>
-          <div class="appwin">
-            <div class="awbar">
-              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="awurl">app.searchscope.io/workspaces</span>
-              <span class="awtab">This week</span>
-            </div>
-            <div class="awbody">
-              <div class="awhead">
-                <span>
-                  <span class="awtitle">Analyzer run</span>
-                  <span class="awsub">Seven analyzers, filtered and prioritized for you</span>
-                </span>
-              </div>
-              <div class="awstats c3">
-                <div class="awstat"><span class="v cnt" data-n="412">412</span><span class="l">Found</span></div>
-                <div class="awstat"><span class="v cnt" data-n="389">389</span><span class="l">Suppressed</span></div>
-                <div class="awstat"><span class="v cnt" data-n="23">23</span><span class="l">Shown</span></div>
-              </div>
-              <ul class="jq">
-          <li class="jrow crit" style="--i:0">
-            <span class="d" aria-hidden="true"></span>
-            <span><h4>Cannibalization</h4><span class="m">/guides/best-hiking-boots vs /blog/hiking-boots-review</span></span>
-            <span class="v">+170 clicks</span>
-          </li>
-          <li class="jrow warn" style="--i:1">
-            <span class="d" aria-hidden="true"></span>
-            <span><h4>Content Decay</h4><span class="m">/blog/best-campsites-uk</span></span>
-            <span class="v">382 clicks lost</span>
-          </li>
-          <li class="jrow  jrow--cut" style="--i:2">
-            <span class="d" aria-hidden="true"></span>
-            <span><h4>Thin page</h4><span class="m">/tags/waterproof</span></span>
-            <span class="v">suppressed</span>
-          </li>
-          <li class="jrow win" style="--i:3">
-            <span class="d" aria-hidden="true"></span>
-            <span><h4>Schema</h4><span class="m">FAQ missing on /guides/camping-checklist</span></span>
-            <span class="v">+94 clicks</span>
-          </li>
-          <li class="jrow  jrow--cut" style="--i:4">
-            <span class="d" aria-hidden="true"></span>
-            <span><h4>Duplicate title</h4><span class="m">/blog/page/7</span></span>
-            <span class="v">suppressed</span>
-          </li>
-              </ul>
-              <p class="jq__foot"><span>Prioritized by potential impact</span><span>23 of 412</span></p>
-            </div>
+  <section class="posthead bg-grid">
+    <div class="container">
+      <nav class="crumbs reveal" aria-label="Breadcrumb">
+        <a href="/">Searchscope</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
+        <a href="/blog/">Blog</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
+        <a href="/blog/category/search-data/">Search Data</a>
+      </nav>
+      <h1 class="post__title reveal" style="--reveal-delay:60ms">Cannibalization is a data problem</h1>
+      <p class="byline reveal" style="--reveal-delay:130ms">
+        <span>Author: <a href="/blog/author/ray/">Ray</a></span>
+        <span class="byline__s" aria-hidden="true"></span>
+        <span>2 min read</span>
+        <span class="byline__s" aria-hidden="true"></span>
+        <time datetime="2026-06-04">June 4, 2026</time>
+      </p>
+      <p class="posthead__sub reveal" style="--reveal-delay:190ms">Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="postwrap">
+      <article class="post">
+        <details class="mtoc">
+          <summary><span class="mtoc__i" aria-hidden="true"></span>Table of contents</summary>
+          <ul class="toc"><li><a href="#the-signal">The signal</a></li><li><a href="#reading-it-from-your-search-data">Reading it from your search data</a></li><li><a href="#why-its-hard-by-hand">Why it&rsquo;s hard by hand</a></li><li><a href="#the-fix-is-a-decision-not-a-merge">The fix is a decision, not a merge</a></li></ul>
+        </details>
+        <div class="prose">
+<p>Keyword cannibalization gets talked about like a content-strategy opinion: these two pages <em>feel</em> similar, so maybe merge them. That&rsquo;s how you end up consolidating pages that were fine and missing the ones quietly bleeding you.</p>
+<p>Cannibalization isn&rsquo;t a vibe. It&rsquo;s a measurable pattern in your Search Console data. If you read it properly, it tells you exactly which pages are competing, and which to keep.</p>
+<h2 id="the-signal">The signal</h2>
+<p>True cannibalization has a fingerprint: <strong>two or more URLs ranking for the same query, with the impressions split and the click-through depressed on all of them.</strong> Neither page wins cleanly because Google keeps swapping which one it shows, and the rotation costs you positions.</p>
+<p>The tell isn&rsquo;t &ldquo;these pages are about the same topic.&rdquo; It&rsquo;s:</p>
+<ul>
+<li>the same query showing impressions against multiple URLs,</li>
+<li>positions that wobble as Google alternates between them, and</li>
+<li>a combined CTR lower than a single consolidated page would earn.</li>
+</ul>
+<h2 id="reading-it-from-your-search-data">Reading it from your search data</h2>
+<p>You can see this in the Search Console performance export if you pull query <strong>and</strong> page together. Group by query, then look for queries mapping to more than one URL with meaningful impressions on each:</p>
+<pre><code>query: &quot;seo audit checklist&quot;
+  /blog/seo-audit-checklist      pos 8.4   impr 5,200   clicks 110
+  /guides/seo-audit              pos 11.2  impr 3,900   clicks 41
+
+→ two URLs, one intent, positions wobbling, CTR split
+</code></pre>
+<p>That&rsquo;s a cannibalization candidate you can act on, not because the titles look alike, but because the data shows two pages dividing one intent.</p>
+<h2 id="why-its-hard-by-hand">Why it&rsquo;s hard by hand</h2>
+<p>The reason cannibalization stays unfixed isn&rsquo;t that it&rsquo;s mysterious. It&rsquo;s that finding it across a real site means pivoting a large query×page export, spotting the split-intent patterns, ruling out the false positives (a brand term legitimately showing your homepage and a product page is fine), and then ranking the fixes by what actually costs you clicks.</p>
+<p>Do that for one query and it&rsquo;s a five-minute job. Do it for ten thousand queries every week and it&rsquo;s nobody&rsquo;s job, so it doesn&rsquo;t happen.</p>
+<p>This is squarely co-pilot work. Software is excellent at finding the split-intent fingerprint across the whole dataset and scoring each instance by recoverable clicks. The strategist then makes the call that needs judgment: consolidate, differentiate, or leave it alone.</p>
+<h2 id="the-fix-is-a-decision-not-a-merge">The fix is a decision, not a merge</h2>
+<p>Once you&rsquo;ve found a real instance, you have three options, and the right one depends on intent:</p>
+<ul>
+<li><strong>Consolidate</strong> when both pages chase the same intent: redirect the weaker into the stronger and merge the useful content.</li>
+<li><strong>Differentiate</strong> when the intent is subtly different: re-target each page so they stop overlapping.</li>
+<li><strong>Leave it</strong> when both URLs legitimately deserve to rank (brand queries, for example).</li>
+</ul>
+<p>Cannibalization is a data problem with a decision at the end. Find it in the data, then decide with your head, not by eyeballing which pages <em>feel</em> like duplicates.</p>
+<p>See it in the product: <a href="/platform/analyzers/cannibalization/">how Searchscope catches cannibalization</a>, scored, with the consolidation drafted.</p>
+        </div>
+      </article>
+      <aside class="railwrap" aria-label="About this post">
+        <div class="rail">
+        <div class="rail__b" data-tocblock>
+          <p class="rail__h">Table of contents</p>
+          <ul class="toc" data-toc data-count="4"><li><a href="#the-signal">The signal</a></li><li><a href="#reading-it-from-your-search-data">Reading it from your search data</a></li><li><a href="#why-its-hard-by-hand">Why it&rsquo;s hard by hand</a></li><li><a href="#the-fix-is-a-decision-not-a-merge">The fix is a decision, not a merge</a></li></ul>
+          <button class="tocmore" type="button" data-tocmore hidden>Show all table of contents</button>
+        </div>
+        <div class="rail__b">
+          <p class="rail__h">Share</p>
+          <div class="share"><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://searchscope.io/blog/cannibalization-is-a-data-problem/" target="_blank" rel="noopener" aria-label="Share on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/></svg></a><a href="https://twitter.com/intent/tweet?url=https://searchscope.io/blog/cannibalization-is-a-data-problem/&text=Cannibalization is a data problem" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.6-8.7L1.7 2h6.8l4.7 6.2L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z"/></svg></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://searchscope.io/blog/cannibalization-is-a-data-problem/" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg></a><a href="mailto:?subject=Cannibalization is a data problem&body=https://searchscope.io/blog/cannibalization-is-a-data-problem/" aria-label="Share by email" title="Share by email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.4l8 5 8-5V7H4Zm16 10V9.7l-8 5-8-5V17h16Z"/></svg></a></div>
+        </div>
+        <div class="rail__b">
+          <div class="railcta">
+            <h3 class="railcta__t">See Searchscope running on your own accounts.</h3>
+            <p class="railcta__d">Connect your site and Searchscope brings your search
+            performance, competitors, market demand and AI visibility into one place.</p>
+            <a href="/beta/" class="btn">Join the beta <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
-      </div>
+        <div class="rail__b">
+          <p class="rail__h">Written by</p>
+          <div class="byauthor">
+            <span class="avatar" aria-hidden="true">R</span>
+            <p class="rail__name">
+              <a href="/blog/author/ray/">Ray</a>
+              <a class="lin" href="https://www.linkedin.com/company/searchscope-ai" target="_blank" rel="noopener" aria-label="Ray on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/></svg></a>
+            </p>
+          </div>
+          <p class="rail__bio">Builds Searchscope and runs it on live client accounts every week. Writes here about what the data actually shows, rather than what the playbooks say it should.</p>
+        </div>
+        </div>
+      </aside>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section morewrap">
     <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">What every analyzer gives you</span>
-        <h2 class="sec__title">Seven analyzers. One consistent workflow.</h2>
-        <p class="lede">
-          Every analyzer works from the same core inputs: a full site crawl, your Search Console history and the business context you provide. They look for different problems and opportunities, but present the findings the same way, so your team always knows what to review and what to do next.
-        </p>
-      </div>
-      <ul class="anat reveal">
-        <li><b>Prioritized findings</b><span>Findings are scored against your objectives, search performance and important pages, so the issues most worth reviewing appear first.</span></li>
-        <li><b>Evidence</b><span>See the pages, queries and performance data behind each finding, so you can understand why it's been flagged.</span></li>
-        <li><b>Recommended action</b><span>See what Searchscope recommends doing next, not just what it found.</span></li>
-        <li><b>Create a brief</b><span>Send a finding into Content Studio with the relevant SERP data and ranking competitors already included.</span></li>
-        <li><b>Ask the Strategic Advisor</b><span>Open the Strategic Advisor on any finding with your crawl data, search performance, competitive landscape, analyzer findings and business context already available.</span></li>
-        <li><b>Potential impact</b><span>Where available, findings carry a potential click opportunity and an impact grade, helping you focus on the work most likely to make a meaningful difference.</span></li>
-        <li><b>Seasonality detection</b><span>Searchscope identifies patterns that repeat each year, helping you separate normal seasonal movement from a genuine decline. Seasonal findings can also be hidden from the active queue.</span></li>
-        <li><b>Apply or ignore</b><span>Mark a finding as applied or ignored to keep the active queue focused. Searchscope keeps a record of what changed and when.</span></li>
+      <h2 class="more__h reveal">More posts</h2>
+      <ul class="moregrid">
+        <li class="mcard reveal" style="--reveal-delay:60ms">
+          <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
+          <h2 class="mcard__t"><a href="/blog/reading-demand-vs-your-share/">Reading demand vs. your share</a></h2>
+          <p class="mcard__d">The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-05-22">May 22, 2026</time>
+          </p>
+        </li>        <li class="mcard reveal" style="--reveal-delay:130ms">
+          <a class="tagpill" href="/blog/category/search-systems/">Search Systems</a>
+          <h2 class="mcard__t"><a href="/blog/seo-is-now-an-operating-system/">SEO is now an operating system</a></h2>
+          <p class="mcard__d">For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>3 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-20">June 20, 2026</time>
+          </p>
+        </li>        <li class="mcard reveal" style="--reveal-delay:200ms">
+          <a class="tagpill" href="/blog/category/ai-search/">AI Search</a>
+          <h2 class="mcard__t"><a href="/blog/what-ai-overviews-change-about-visibility/">What AI Overviews change about visibility</a></h2>
+          <p class="mcard__d">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-12">June 12, 2026</time>
+          </p>
+        </li>
       </ul>
     </div>
   </section>
-
-  <section class="section bg-grid">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">The seven</span>
-        <h2 class="sec__title">What each one looks for.</h2>
-      </div>
-      <div class="tabs reveal">
-        <div class="tablist" role="tablist" aria-orientation="vertical" aria-label="The seven analyzers">
-          <button type="button" class="tab" role="tab" id="tab-cannibalization" aria-controls="panel-cannibalization" aria-selected="false" tabindex="-1"><i>01</i>Cannibalization</button>
-          <button type="button" class="tab" role="tab" id="tab-content-decay" aria-controls="panel-content-decay" aria-selected="false" tabindex="-1"><i>02</i>Content Decay</button>
-          <button type="button" class="tab" role="tab" id="tab-opportunities" aria-controls="panel-opportunities" aria-selected="false" tabindex="-1"><i>03</i>Opportunities</button>
-          <button type="button" class="tab" role="tab" id="tab-cluster-volatility" aria-controls="panel-cluster-volatility" aria-selected="false" tabindex="-1"><i>04</i>Cluster Volatility</button>
-          <button type="button" class="tab" role="tab" id="tab-index-bloat" aria-controls="panel-index-bloat" aria-selected="false" tabindex="-1"><i>05</i>Index Bloat</button>
-          <button type="button" class="tab" role="tab" id="tab-internal-links" aria-controls="panel-internal-links" aria-selected="false" tabindex="-1"><i>06</i>Internal Links</button>
-          <button type="button" class="tab" role="tab" id="tab-schema" aria-controls="panel-schema" aria-selected="false" tabindex="-1"><i>07</i>Schema</button>
-        </div>
-        <div class="tabpanels">
-        <div class="tabpanel" role="tabpanel" id="panel-cannibalization" aria-labelledby="tab-cannibalization" hidden>
-          <h3 class="tabpanel__t">Cannibalization</h3>
-          <p class="tabpanel__d">Find pages competing for the same search demand. Searchscope shows the overlapping queries, the pages involved and the clicks in play, then recommends whether to consolidate the pages, differentiate them or keep both. URL switching is flagged separately, so you can see when Google repeatedly changes which of your pages it ranks for the same query.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/cannibalization/" class="btn btn--sm btn--ghost">
-              Explore Cannibalization
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/cannibalization.webp" alt="The cannibalization analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-content-decay" aria-labelledby="tab-content-decay" hidden>
-          <h3 class="tabpanel__t">Content Decay</h3>
-          <p class="tabpanel__d">Find pages that are losing organic clicks against their own historical performance. Searchscope shows which queries are driving the decline and whether performance is worsening, recovering or following a seasonal pattern. From the finding, you can investigate the decline with the <b>Strategic Advisor</b> or take it into <b>Content Studio</b> to work on the content gaps.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/content-decay/" class="btn btn--sm btn--ghost">
-              Explore Content Decay
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/content-decay.webp" alt="The Content Decay analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-opportunities" aria-labelledby="tab-opportunities" hidden>
-          <h3 class="tabpanel__t">Opportunities</h3>
-          <p class="tabpanel__d">Find more than simple striking distance keywords. Searchscope identifies pages sitting close to stronger positions, low click-through rates on rankings you already hold, intent mismatches and content gaps. Where relevant, it also highlights SERP features worth targeting and recommends the change most likely to improve the opportunity.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/opportunities/" class="btn btn--sm btn--ghost">
-              Explore Opportunities
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/opportunities.webp" alt="The opportunities analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-cluster-volatility" aria-labelledby="tab-cluster-volatility" hidden>
-          <h3 class="tabpanel__t">Cluster Volatility</h3>
-          <p class="tabpanel__d">Spot when search visibility changes across an entire topic, not just a single page. Cluster cards show which pages are carrying each topic and where coverage or performance is weakening. You can investigate the change with the <b>Strategic Advisor</b> and use <b>Content Studio</b> where new or improved content is needed.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/cluster-volatility/" class="btn btn--sm btn--ghost">
-              Explore Cluster Volatility
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/cluster-volatility.webp" alt="The Cluster Volatility analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-index-bloat" aria-labelledby="tab-index-bloat" hidden>
-          <h3 class="tabpanel__t">Index Bloat</h3>
-          <p class="tabpanel__d">Find thin, duplicate and zero-traffic pages that may be contributing to index bloat. Each finding includes the relevant page data and Searchscope's recommendation, so you can quickly decide what deserves action.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/index-bloat/" class="btn btn--sm btn--ghost">
-              Explore Index Bloat
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/index-bloat.webp" alt="The Index Bloat analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-internal-links" aria-labelledby="tab-internal-links" hidden>
-          <h3 class="tabpanel__t">Internal Links</h3>
-          <p class="tabpanel__d">Find internal linking opportunities with the source page, target page and suggested anchor text already identified. Searchscope also shows the match type and highlights important pages that are receiving too few internal links.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/internal-links/" class="btn btn--sm btn--ghost">
-              Explore Internal Links
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/internal-links.webp" alt="The Internal Links analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        <div class="tabpanel" role="tabpanel" id="panel-schema" aria-labelledby="tab-schema" hidden>
-          <h3 class="tabpanel__t">Schema</h3>
-          <p class="tabpanel__d">Find missing or broken structured data and see what needs to change. Where supported, Searchscope provides ready-to-use JSON-LD and shows the difference between the current implementation and the recommended version.</p>
-          <p class="tabpanel__go">
-            <a href="/platform/analyzers/schema/" class="btn btn--sm btn--ghost">
-              Explore Schema
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-          <img class="tabpanel__shot" src="/brand/analyzers/schema.webp" alt="The schema analyzer in Searchscope"
-               width="1400" height="877" loading="lazy" decoding="async">
-        </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">After you apply it</span>
-        <h2 class="sec__title">Mark it applied. Then find out whether it worked.</h2>
-        <p class="lede">
-          When you mark a finding as applied, the Impact Tracker captures that page&rsquo;s current
-          performance as a baseline and measures what happens next. That gives you a recorded
-          before-and-after point, rather than relying on memory or a comparison date chosen after
-          the fact.
-        </p>
-        <p class="lede">
-          <b>Including when the answer&rsquo;s &lsquo;no&rsquo;.</b> It records the changes that work and the
-          ones that don&rsquo;t. A fix that moved nothing stays in the record as a fix that moved
-          nothing, which is what makes the improvements you can demonstrate credible.
-        </p>
-      </div>
-      <ul class="anat anat--two reveal">
-        <li><b>A recorded baseline</b><span>Clicks, impressions and position are captured when the change is marked as applied, and stored against that piece of work.</span></li>
-        <li><b>Changes marked on the timeline</b><span>See when the work was applied, drawn onto the performance trend, so you can read what happened afterwards.</span></li>
-        <li><b>Applied changes archive</b><span>A record of what was changed, when it was applied and who applied it. Completed findings leave the active queue without disappearing from the history.</span></li>
-        <li><b>Included in reporting</b><span>Applied changes and the performance that followed can be included in the weekly report, making the work and the results that followed easier to show.</span></li>
-      </ul>
-    </div>
-  </section>
-
   <section class="section cta bg-grid">
     <div class="container">
-      <div class="cta__frame ticked reveal">
+      <div class="cta__frame ticked">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
@@ -1487,9 +1653,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="cta__title">Fewer findings, on purpose.</h2>
+        <h2 class="cta__title">See Searchscope running on your own accounts.</h2>
         <p class="cta__sub">
-          Connect a site and Searchscope runs the analyzers automatically, filters out low-value findings and gives you a focused list of issues and opportunities worth reviewing.
+          Connect your site and Searchscope brings your search performance, competitors, market
+          demand and AI visibility into one place.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
@@ -1500,6 +1667,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </section>
+  <script>
+  (function () {
+    /* ---- reading progress -------------------------------------------------
+       Measured against the article, not the document, so it hits 100% when the
+       last paragraph clears the fold rather than when the footer does. */
+    var article = document.querySelector('.post');
+    var bar = document.querySelector('[data-readbar]');
+    var fill = document.querySelector('[data-readbar-fill]');
+    if (article && bar && fill) {
+      var tick = function () {
+        var r = article.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = r.height - vh + 200;
+        var done = -r.top + 200;
+        var pct = total <= 0 ? 100 : Math.min(100, Math.max(0, (done / total) * 100));
+        fill.style.width = pct + '%';
+        bar.classList.toggle('is-on', r.top < 60 && r.bottom > 120);
+      };
+      var queued = false;
+      var onScroll = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; tick(); });
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll);
+      tick();
+    }
+
+    /* ---- table of contents ------------------------------------------------
+       Collapsed to a window of three around whatever you're reading, so a long
+       post doesn't push the rest of the rail off screen. The toggle only
+       appears when there is actually something to hide. */
+    var links = [].slice.call(document.querySelectorAll('[data-toc] a'));
+    if (!links.length) return;
+    var items = links.map(function (a) { return a.parentElement; });
+    var more = document.querySelector('[data-tocmore]');
+    var WINDOW = 3;
+    var expanded = false;
+    var current = 0;
+
+    function paint() {
+      if (expanded || items.length <= WINDOW) {
+        items.forEach(function (li) { li.hidden = false; });
+      } else {
+        var start = Math.min(Math.max(0, current - 1), items.length - WINDOW);
+        items.forEach(function (li, i) { li.hidden = i < start || i >= start + WINDOW; });
+      }
+      if (more) {
+        more.hidden = items.length <= WINDOW;
+        more.textContent = expanded ? 'Hide all table of contents'
+                                    : 'Show all table of contents';
+        more.setAttribute('aria-expanded', String(expanded));
+      }
+    }
+
+    if (more) {
+      more.addEventListener('click', function () { expanded = !expanded; paint(); });
+    }
+
+    /* Which heading are you on? Computed from scroll position rather than
+       IntersectionObserver: an observer only fires when a heading crosses its
+       band, so if you land between two headings nothing fires and the
+       highlight sticks on a stale entry. That is exactly what happened. */
+    var heads = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    });
+
+    function activate() {
+      var line = 140;                    /* just under the sticky header */
+      var i = 0;
+      for (var n = 0; n < heads.length; n++) {
+        if (heads[n] && heads[n].getBoundingClientRect().top <= line) i = n;
+      }
+      if (i === current) return;
+      current = i;
+      links.forEach(function (a, n) { a.classList.toggle('is-here', n === i); });
+      paint();
+    }
+
+    var pending = false;
+    addEventListener('scroll', function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { pending = false; activate(); });
+    }, { passive: true });
+    links.forEach(function (a, n) { a.classList.toggle('is-here', n === 0); });
+    activate();
+    paint();
+  })();
+  </script>
 </main>
 
 <div class="stickycta">

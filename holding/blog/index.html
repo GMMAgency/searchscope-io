@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog · Searchscope</title>
 <meta name="description" content="Writing on search systems, algorithm updates, AI search and search data, from the team that builds Searchscope.">
-<meta name="robots" content="noindex,follow">
+<meta name="robots" content="index,follow">
 <meta property="og:title" content="Blog · Searchscope">
 <meta property="og:description" content="Writing on search systems, algorithm updates, AI search and search data, from the team that builds Searchscope.">
 <meta property="og:type" content="website">
@@ -1117,6 +1117,7 @@ html, body { overflow-x: hidden; }
     .rel__body { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.7; margin: 0; }
 </style>
 
+<link rel="canonical" href="https://searchscope.io/blog/">
 <link rel="alternate" type="application/rss+xml" title="Searchscope Blog" href="https://searchscope.io/blog/rss.xml">
 <style>
   /* Blog. Built on the site's existing tokens, so it inherits any theme change. */
@@ -1375,7 +1376,7 @@ html, body { overflow-x: hidden; }
     margin-top:var(--space-l); }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Searchscope","url":"https://searchscope.io/","description":"The SEO and AI search intelligence platform."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","@id":"https://searchscope.io/blog/","name":"Searchscope Blog","description":"Writing on search systems, algorithm updates, AI search and search data, from the team that builds Searchscope.","url":"https://searchscope.io/blog/","publisher":{"@type":"Organization","name":"Searchscope","url":"https://searchscope.io/"},"blogPost":[{"@type":"BlogPosting","headline":"What AI Overviews change about visibility","url":"https://searchscope.io/blog/what-ai-overviews-change-about-visibility/","datePublished":"2026-06-12","author":{"@type":"Person","name":"Ray"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","@id":"https://searchscope.io/blog/","name":"Searchscope Blog","description":"Writing on search systems, algorithm updates, AI search and search data, from the team that builds Searchscope.","url":"https://searchscope.io/blog/","publisher":{"@type":"Organization","name":"Searchscope","url":"https://searchscope.io/"},"blogPost":[{"@type":"BlogPosting","headline":"SEO is now an operating system","url":"https://searchscope.io/blog/seo-is-now-an-operating-system/","datePublished":"2026-06-20","author":{"@type":"Person","name":"Ray"}},{"@type":"BlogPosting","headline":"What AI Overviews change about visibility","url":"https://searchscope.io/blog/what-ai-overviews-change-about-visibility/","datePublished":"2026-06-12","author":{"@type":"Person","name":"Ray"}},{"@type":"BlogPosting","headline":"Cannibalization is a data problem","url":"https://searchscope.io/blog/cannibalization-is-a-data-problem/","datePublished":"2026-06-04","author":{"@type":"Person","name":"Ray"}},{"@type":"BlogPosting","headline":"Reading demand vs. your share","url":"https://searchscope.io/blog/reading-demand-vs-your-share/","datePublished":"2026-05-22","author":{"@type":"Person","name":"Ray"}},{"@type":"BlogPosting","headline":"The co-pilot model for search teams","url":"https://searchscope.io/blog/the-co-pilot-model-for-search-teams/","datePublished":"2026-05-10","author":{"@type":"Person","name":"Ray"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://searchscope.io/blog/"}]}</script>
 </head>
 <body>
@@ -1466,7 +1467,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <p class="navmenu__h">Grow with Searchscope</p>
-              <span class="navmenu__soon">Blog <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/blog/">
+                <span class="navmenu__label">Blog</span>
+                <span class="navmenu__sub">Writing on search systems and AI search</span>
+              </a>
               <span class="navmenu__soon navmenu__soon--sub">
                 <span class="navmenu__label">Documentation <b>Coming soon</b></span>
                 <span class="navmenu__sub">Knowledge Base and more</span>
@@ -1509,8 +1513,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="strip__sub">Writing on search systems, algorithm updates, AI search and search data, from the team that builds Searchscope.</p>
       </div>
       <div class="catrail" data-filter="true"
-           role="group" aria-label="Filter posts by category"><button class="tagpill tagpill--on" data-cat="all" type="button">All</button><a class="tagpill" data-cat="ai-search" href="/blog/category/ai-search/">AI Search</a></div>
+           role="group" aria-label="Filter posts by category"><button class="tagpill tagpill--on" data-cat="all" type="button">All</button><a class="tagpill" data-cat="search-systems" href="/blog/category/search-systems/">Search Systems</a><a class="tagpill" data-cat="ai-search" href="/blog/category/ai-search/">AI Search</a><a class="tagpill" data-cat="search-data" href="/blog/category/search-data/">Search Data</a><a class="tagpill" data-cat="agency" href="/blog/category/agency/">Agency</a></div>
       <ul class="postgrid" data-postgrid>
+        <li class="mcard" data-cats="search-systems">
+          <a class="tagpill" href="/blog/category/search-systems/">Search Systems</a>
+          <h2 class="mcard__t"><a href="/blog/seo-is-now-an-operating-system/">SEO is now an operating system</a></h2>
+          <p class="mcard__d">For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>3 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-20">June 20, 2026</time>
+          </p>
+        </li>
         <li class="mcard" data-cats="ai-search">
           <a class="tagpill" href="/blog/category/ai-search/">AI Search</a>
           <h2 class="mcard__t"><a href="/blog/what-ai-overviews-change-about-visibility/">What AI Overviews change about visibility</a></h2>
@@ -1520,6 +1535,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span aria-hidden="true">&#183;</span><span>2 min read</span>
             <span aria-hidden="true">&#183;</span>
             <time datetime="2026-06-12">June 12, 2026</time>
+          </p>
+        </li>
+        <li class="mcard" data-cats="search-data">
+          <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
+          <h2 class="mcard__t"><a href="/blog/cannibalization-is-a-data-problem/">Cannibalization is a data problem</a></h2>
+          <p class="mcard__d">Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-04">June 4, 2026</time>
+          </p>
+        </li>
+        <li class="mcard" data-cats="search-data">
+          <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
+          <h2 class="mcard__t"><a href="/blog/reading-demand-vs-your-share/">Reading demand vs. your share</a></h2>
+          <p class="mcard__d">The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-05-22">May 22, 2026</time>
+          </p>
+        </li>
+        <li class="mcard" data-cats="agency">
+          <a class="tagpill" href="/blog/category/agency/">Agency</a>
+          <h2 class="mcard__t"><a href="/blog/the-co-pilot-model-for-search-teams/">The co-pilot model for search teams</a></h2>
+          <p class="mcard__d">AI won&#x27;t replace your search team, and a search team without AI is about to be outpaced. The model that wins is neither. It&#x27;s a co-pilot. Here&#x27;s what that actually means in practice.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-05-10">May 10, 2026</time>
           </p>
         </li>
       </ul>
