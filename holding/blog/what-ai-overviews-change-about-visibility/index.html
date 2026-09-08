@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'beta',page_name:'beta'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({page_type:'blog_post',page_name:'what_ai_overviews_change_about_visibility'});</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,13 +11,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign up for the Searchscope beta</title>
-<meta name="description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
-<link rel="canonical" href="https://searchscope.io/beta/">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Sign up for the Searchscope beta">
-<meta property="og:description" content="Sign up for the Searchscope beta. Places open in small cohorts, and the first session is a walkthrough of your own search data.">
-<meta property="og:type" content="website">
+<title>What AI Overviews change about visibility · Searchscope</title>
+<meta name="description" content="You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.">
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="What AI Overviews change about visibility · Searchscope">
+<meta property="og:description" content="You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.">
+<meta property="og:type" content="article">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316150f%22/%3E%3Cg transform=%22translate(2 2)%22%3E%3Cg stroke=%22%23fbfbfb%22 stroke-width=%222%22 stroke-linecap=%22round%22 fill=%22none%22%3E%3Cpath d=%22M5 10V5h5%22/%3E%3Cpath d=%22M18 5h5v5%22/%3E%3Cpath d=%22M23 18v5h-5%22/%3E%3Cpath d=%22M10 23H5v-5%22/%3E%3C/g%3E%3Crect x=%2215%22 y=%228%22 width=%224.6%22 height=%224.6%22 fill=%22%23fbfbfb%22/%3E%3Crect x=%228.6%22 y=%2215%22 width=%222.6%22 height=%222.6%22 fill=%22%23fbfbfb%22 opacity=%220.45%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -658,97 +657,176 @@ html, body { overflow-x: hidden; }
       .fgrid { grid-template-columns: 1fr; }
     }
 
-</style>
+    /* ============================================================
+       Agency use case page
+       ============================================================ */
+    .btn { text-decoration: none; }
+    .btn--sm { font-size: var(--step--1); padding: 0.72em 1.15em; }
 
-<style>
-  /* Beta sign-up form. Reuses the page tokens; no new colors or type. */
-  .signup { width: 100%; max-width: 30rem; margin-inline: auto; text-align: left; display: flex; flex-direction: column; gap: var(--space-s); }
-  .field { display: flex; flex-direction: column; gap: var(--space-3xs); }
-  .field__label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
-  /* Required marker. The palette is monochrome, so this uses dim ink
-  rather than the red an asterisk usually implies. aria-hidden because
-  the required attribute already announces it to screen readers, and
-  without it they read out "asterisk" on every required field. */
-  .req { color: var(--ink-dim); margin-left: 0.2em; font-weight: 400; }
-
-  /* ---- inline success state ----
-     On success everything inside the form's own container is hidden except the
-     corner ticks and the panel. That covers all three shapes: beta's container
-     also holds its heading and standfirst, so hiding only the form would leave
-     "Sign up for the Searchscope beta" sitting above "You're on the list".
-
-     The /thanks/ pages stay. They are the no-JS fallback the form still posts
-     to, and what someone reaching the URL directly sees. */
-  .is-done > *:not(.formdone):not(.ticks) { display: none; }
-  .formdone { display: none; text-align: left; }
-  .is-done .formdone { display: block; }
-  .formdone:focus { outline: none; }
-  .formdone__t {
-    font-size: var(--step-1);
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    margin: var(--space-2xs) 0 var(--space-s);
-  }
-  .formdone p { color: var(--ink-dim); line-height: 1.6; margin: 0 0 var(--space-s); }
-  .formdone p:last-child { margin-bottom: 0; }
-  .field__input {
-    font-family: var(--font-body);
-    font-size: var(--step--1);
-    line-height: 1.4;
-    color: var(--ink);
-    background: var(--surface);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-s);
-    padding: 0.75em 0.95em;
-    width: 100%;
-    transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-  }
-  .field__input:focus-visible {
-    outline: none;
-      border-color: var(--ink);
-      box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-  /* Match the select to the text inputs: native controls size themselves. */
-  select.field__input {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2316150f' stroke-opacity='.55' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1em center;
-    padding-right: 2.75em;
-  }
-  .signup .btn { width: 100%; margin-top: var(--space-2xs); }
-  .formfoot { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.02em; line-height: 1.6; text-align: center; margin: var(--space-s) 0 0; }
-  @media (max-width: 767px) { .field__input { font-size: 16px; } }
-  .signup__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-    /* ---- sticky header ---- */
-    .site-head {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: var(--space-s);
-      padding-bottom: var(--space-s);
-      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    /* ---- mobile: the same call to action, pinned to the bottom ---- */
+    .stickycta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: var(--space-2xs) var(--gutter);
+      padding-bottom: calc(var(--space-2xs) + env(safe-area-inset-bottom, 0px));
+      background: color-mix(in oklab, var(--surface) 93%, transparent);
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+      border-top: 1px solid var(--hairline);
     }
-    .site-head.is-stuck {
-      background: color-mix(in oklab, var(--surface) 95%, transparent);
-      border-bottom-color: var(--hairline);
+    .stickycta .btn { width: 100%; }
+    @media (max-width: 720px) {
+      .stickycta { display: block; }
+      .site-head__cta { display: none; }
+      body { padding-bottom: 5.5rem; }
     }
-    .site-head .container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--space-m);
-    }
-    .site-head__cta { margin-left: auto; }
+    .lede { font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }
+    .lede + .lede { margin-top: var(--space-s); }
+    .lede b { color: var(--ink); font-weight: 600; }
+    .sec__head { max-width: 62ch; }
+    .sec__title { font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }
 
-    /* ---- header navigation ---- */
-    .nav { display: flex; align-items: center; gap: var(--space-m); }
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+    .ucard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }
+    .ucard__k { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+    .ucard__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .ucard__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- two-up cards ---- */
+    .cols2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }
+
+    /* ---- numbered steps ---- */
+    .steps { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+    .steps li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .steps b { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); letter-spacing: 0.14em; }
+    .steps h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }
+    .steps p { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }
+
+    /* ---- engine tiles ---- */
+    .engrid { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-s); }
+    .engrid li { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); padding: var(--space-m) var(--space-xs); display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); text-align: center; }
+    .engrid img, .engrid svg { width: auto; height: 34px; max-width: 100%; object-fit: contain; display: block; }
+    .engrid svg { color: var(--ink); }
+    .engrid span { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.04em; color: var(--ink-dim); line-height: 1.3; }
+
+    /* ---- hero form, two stage ---- */
+    .hero__form { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--surface-panel); box-shadow: var(--shadow-m); padding: var(--space-l); text-align: left; }
+    .hero__form h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .hero__form .btn { width: 100%; }
+    .stage2[hidden], .stage1[hidden] { display: none; }
+    .hero__form .formnote { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.55; margin: 0 0 var(--space-m); }
+    .stage__site { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); border: 1px dashed var(--hairline); border-radius: var(--radius-s); padding: 0.45em 0.7em; margin: 0 0 var(--space-m); }
+    .stage__site b { color: var(--ink); font-weight: 500; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage__site .stage__back { width: auto; flex: none; margin: 0; text-align: right; }
+    .hero__form .formfoot { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); text-align: center; margin: var(--space-xs) 0 0; }
+    .stage__back { display: block; width: 100%; margin-top: var(--space-xs); background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; text-align: center; }
+    .stage__back:hover { color: var(--ink); }
+
+    @media (max-width: 1000px) { .engrid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .cols2, .steps { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ---- hero mock: the judge at work ---- */
+    .jq { list-style: none; margin: var(--space-s) 0 0; padding: 0; }
+    .jrow { display: grid; grid-template-columns: 10px 1fr auto; gap: 0.7rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--hairline); opacity: 0; }
+    .jrow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .jrow .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); display: inline-block; position: relative; top: -1px; }
+    .jrow.crit .d { background: var(--sev-rose-ink); }
+    .jrow.warn .d { background: var(--sev-amber-ink); }
+    .jrow.win .d { background: var(--sev-emerald-ink); }
+    .jrow h4 { margin: 0 0 1px; font-size: var(--step--1); font-weight: 560; letter-spacing: -0.01em; line-height: 1.3; }
+    .jrow .m { display: block; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+    .jrow .v { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .jrow--cut .v { color: var(--ink-faint); }
+    .jq__foot { display: flex; justify-content: space-between; gap: 0.8rem; margin: var(--space-s) 0 0; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
+
+    @keyframes jrow-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @keyframes jrow-cut { to { opacity: 0.3; } }
+    .is-in .jrow { animation: jrow-in 0.45s var(--ease-out) forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s); }
+    .is-in .jrow--cut { animation: jrow-in 0.45s var(--ease-out) forwards, jrow-cut 0.5s ease forwards; animation-delay: calc(0.25s + var(--i, 0) * 0.11s), calc(1.6s + var(--i, 0) * 0.06s); }
+    @media (prefers-reduced-motion: reduce) {
+      .jrow { opacity: 1; animation: none !important; }
+      .is-in .jrow--cut { opacity: 0.3; }
+    }
+
+    /* ---- analyzer hub ---- */
+    .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+    @media (max-width: 980px) { .hero .hero__grid { grid-template-columns: 1fr; } .hero .hero__visual { order: 0; } }
+
+    .anat { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
+    .anat--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .anat li { border-top: 1px solid var(--ink); padding-top: var(--space-s); }
+    .anat li > b { display: block; word-spacing: -0.12em; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); font-weight: 500; }
+    .anat span b { font-weight: 560; color: var(--ink); }
+    .anat span { display: block; margin-top: var(--space-2xs); color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+    .tabs { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: var(--space-xl); }
+    .tablist { display: flex; flex-direction: column; border-left: 1px solid var(--hairline); }
+    .tab { display: flex; align-items: baseline; gap: 0.8rem; text-align: left; width: 100%; background: none; border: 0; border-left: 2px solid transparent; margin-left: -1px; padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }
+    .tab i { font-style: normal; font-size: var(--step--2); color: var(--ink-faint); }
+    .tab:hover { color: var(--ink-dim); }
+    .tab[aria-selected="true"] { color: var(--ink); border-left-color: var(--ink); }
+    .tab[aria-selected="true"] i { color: var(--ink-dim); }
+    .tabpanel[hidden] { display: none; }
+    .tabpanel__shot { display: block; width: 100%; max-width: 64ch; margin: var(--space-l) 0 0; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
+    .tabpanel__t { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; }
+    .tabpanel__d { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.65; margin: var(--space-s) 0 0; max-width: 64ch; }
+    .tabpanel__go { margin: var(--space-m) 0 var(--space-l); }
+    .btn--soon { color: var(--ink-faint); border-color: var(--hairline); cursor: default; }
+    .btn--soon:hover { background: transparent; border-color: var(--hairline); box-shadow: none; transform: none; }
+    .btn--soon b { margin-left: 0.15rem; font-weight: 500; font-size: 0.62em; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.25em 0.55em; }
+    .btn--ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+    .btn--ghost:hover { background: transparent; border-color: var(--ink); box-shadow: none; }
+
+    @media (max-width: 1080px) {
+      .anat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .tabs { grid-template-columns: 1fr; gap: var(--space-m); }
+      .tablist { flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--hairline); }
+      .tab { width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; margin-left: 0; }
+      .tab[aria-selected="true"] { border-left-color: transparent; border-bottom-color: var(--ink); }
+      .tab i { display: none; }
+    }
+    @media (max-width: 640px) { .anat { grid-template-columns: 1fr; } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-l); padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.4em 0.9em; }
+
+    .modules { list-style: none; padding: 0; margin: var(--space-l) 0 0; border-top: 1px solid var(--hairline); }
+    .modules li { display: grid; grid-template-columns: 15rem 1fr; gap: var(--space-m); padding: var(--space-s) 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+    .modules dfn { font-style: normal; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); }
+    .modules span { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
+
+
+
+    /* ---- form ---- */
+    .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+    .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
+    .field { display: block; margin-bottom: var(--space-m); }
+    .field:last-of-type { margin-bottom: var(--space-l); }
+    .field > span { display: block; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; margin-bottom: var(--space-3xs); }
+    .field input, .field select, .field textarea {
+      width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--step-0);
+      color: var(--ink); background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius-s); padding: 0.75em 0.9em; line-height: 1.4;
+      transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    }
+    .field textarea { min-height: 6.5rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field small { display: block; font-size: var(--step--1); color: var(--ink-faint); margin-top: var(--space-3xs); }
+    .formcard .btn { width: 100%; }
+    .hp { position: absolute; left: -9999px; }
+    .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
+    .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+    .secondary a:hover { color: var(--ink); border-color: var(--ink); }
+
     /* ---- footer ---- */
     .site-foot {
       border-top: 1px solid var(--hairline);
@@ -790,6 +868,41 @@ html, body { overflow-x: hidden; }
       letter-spacing: 0.02em;
     }
 
+    @media (max-width: 900px) {
+      .cols3 { grid-template-columns: 1fr; }
+      .formwrap { grid-template-columns: 1fr; }
+      .modules li { grid-template-columns: 1fr; gap: var(--space-3xs); }
+    }
+
+
+    /* ---- sticky header ---- */
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: var(--space-s);
+      padding-bottom: var(--space-s);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+    }
+    .site-head.is-stuck {
+      background: color-mix(in oklab, var(--surface) 95%, transparent);
+      border-bottom-color: var(--hairline);
+    }
+    .site-head .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-m);
+    }
+    .site-head__cta { margin-left: auto; }
+
+    /* ---- header navigation ---- */
+    .nav { display: flex; align-items: center; gap: var(--space-m); }
     .navmenu { position: static; }
     .navmenu__btn {
       display: inline-flex;
@@ -993,7 +1106,266 @@ html, body { overflow-x: hidden; }
       .navmenu__btn { font-size: var(--step--2); }
     }
 
+
+    /* what's new */
+    .rels { list-style: none; margin: 0; padding: 0; max-width: 74ch; }
+    .rel { padding: var(--space-l) 0; border-top: 1px solid var(--hairline); }
+    .rel:first-child { border-top: 0; padding-top: 0; }
+    .rel__meta { display: flex; align-items: center; gap: var(--space-s); flex-wrap: wrap; margin: 0 0 var(--space-2xs); font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+    .rel__area { border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 0.15em 0.7em; }
+    .rel__title { font-family: var(--font-display); font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 var(--space-xs); }
+    .rel__body { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.7; margin: 0; }
 </style>
+
+<link rel="alternate" type="application/rss+xml" title="Searchscope Blog" href="https://searchscope.io/blog/rss.xml">
+<style>
+  /* Blog. Built on the site's existing tokens, so it inherits any theme change. */
+
+  /* The site sets body { overflow-x: hidden } as a sideways-scroll guard, and
+     ANY non-visible overflow on an ancestor silently disables position:sticky.
+     overflow-x: clip does the same guarding job without creating a scroll
+     container, so the rail sticks. Scoped to blog pages only; the rest of the
+     site is untouched. */
+  body { overflow-x: clip; }
+
+  /* Post: article plus a sticky rail, collapsing to one column on narrow screens. */
+  /* The grid item (.railwrap) stretches to the row height so the sticky box
+     inside it has somewhere to travel. Making .rail itself the grid item with
+     align-items:start shrinks it to its content and sticky silently does
+     nothing, which is what happened first time. */
+  .postwrap { display:grid; gap:var(--space-2xl); }
+  .railwrap { min-width:0; }
+  @media (min-width: 1040px) {
+    .postwrap { grid-template-columns: minmax(0,1fr) 268px; }
+    /* The site header is sticky and 71px tall once stuck (z-index 50), so the
+       rail has to clear it or the first heading in the rail sits underneath.
+       6rem = 96px leaves 25px of air below the header. */
+    /* Only the contents list scrolls, not the whole rail. Capping the rail
+       instead let the list scroll out of view inside it, which is the one
+       thing that has to stay put. */
+    .rail { position:sticky; top:6rem; }
+    .toc { max-height:38vh; overflow-y:auto; scrollbar-width:thin; }
+  }
+  /* 720 -> 864, a fifth wider, closing the gap to the rail. */
+  .post { max-width:864px; min-width:0; }
+  .post__head { display:flex; flex-wrap:wrap; align-items:center; gap:.55em;
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-dim);
+    margin-bottom:var(--space-s); }
+  .post__tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .tagpill { display:inline-block; font-family:var(--font-mono); font-size:var(--step--2);
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 9px; border-radius:999px;
+    border:1px solid var(--hairline); color:var(--ink-dim); text-decoration:none;
+    background:none; cursor:pointer; line-height:1.7; }
+  .tagpill:hover { border-color:var(--ink); color:var(--ink); }
+  .tagpill--on { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  /* Without this the generic :hover rule sets colour to ink, giving black text
+     on the black active pill. */
+  .tagpill--on:hover { color:var(--surface); border-color:var(--ink); opacity:.85; }
+  .crumbs { font-size:var(--step--1); color:var(--ink-dim);
+    margin-bottom:var(--space-m); display:flex; gap:.55em; flex-wrap:wrap; align-items:center; }
+  .crumbs a { color:var(--ink-dim); text-decoration:none; }
+  .crumbs a:hover { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .crumbs__s { color:var(--ink-faint); }
+
+  /* The header band: gridline background, same treatment the site's hero and
+     CTA sections use, closed with a hairline. */
+  .posthead { position:relative; border-bottom:1px solid var(--hairline);
+    padding-block: clamp(2rem, 1.4rem + 3vw, 3.5rem) clamp(2rem, 1.4rem + 3vw, 3.25rem); }
+  /* No max-width on the container: the header must line up with the article
+     below it, not sit in its own centered column. The text itself is capped. */
+  .posthead__sub { font-size:var(--step-1); line-height:1.5; color:var(--ink-dim);
+    margin:var(--space-m) 0 0; max-width:62ch; }
+  /* A fifth larger than the site's step-4, per Stu. */
+  .post__title { font-size:calc(var(--step-4) * 1.2); line-height:1.06;
+    letter-spacing:-0.025em; margin:0 0 var(--space-m); max-width:20ch; }
+  .byline { display:flex; flex-wrap:wrap; align-items:center; gap:.85em;
+    font-size:var(--step--1); color:var(--ink-dim); margin:0 0 var(--space-m); }
+  .byline a { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .byline__s { width:1px; height:1.1em; background:var(--hairline); display:inline-block; }
+
+  /* More posts: three tinted cards, as in the reference. */
+  .morewrap { border-top:1px solid var(--hairline); }
+  .more__h { font-size:var(--step-3); line-height:1.15; letter-spacing:-0.02em;
+    color:var(--ink); margin:0 0 var(--space-l); }
+  .moregrid { list-style:none; margin:0; padding:0; display:grid; gap:var(--space-l);
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  /* The whole card is clickable via a stretched link on the title, rather than
+     wrapping the card in an <a>. That keeps one real link per card, so the
+     category pill inside stays its own link and the markup stays valid: you
+     cannot nest an anchor inside an anchor. */
+  .mcard { background:var(--surface-panel); border:1px solid var(--hairline);
+    border-radius:var(--radius-m); padding:var(--space-l); min-width:0;
+    display:flex; flex-direction:column; position:relative; cursor:pointer;
+    transition:border-color var(--dur, .2s) ease; }
+  .mcard__t a::after { content:""; position:absolute; inset:0; z-index:0; }
+  /* Above the overlay, so the pill still goes to its category. */
+  .mcard > .tagpill { position:relative; z-index:1; }
+  /* Text stays selectable over the overlay. */
+  .mcard__d, .mcard__m { position:relative; z-index:1; pointer-events:none; }
+  .mcard__m a { pointer-events:auto; }
+  .mcard:hover { border-color:color-mix(in oklab, var(--ink) 30%, var(--hairline)); }
+  .mcard .mcard__m { margin-top:auto; padding-top:var(--space-s); }
+  /* The card is a flex column, so the pill stretches unless told not to. */
+  .mcard > .tagpill { align-self:flex-start; margin-bottom:var(--space-s); }
+  .mcard__t { font-size:var(--step-1); line-height:1.25; margin:0 0 .45em; }
+  .mcard__t a { color:var(--ink); text-decoration:none; }
+  .mcard__t a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .mcard__d { font-size:var(--step--1); line-height:1.55; color:var(--ink-dim);
+    margin:0 0 var(--space-m); }
+  .mcard__m { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint);
+    display:flex; flex-wrap:wrap; gap:.45em; align-items:center; margin:0; }
+  .mcard__m a { color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; }
+
+  .prose { margin-top:var(--space-l); }
+  .prose > * + * { margin-top:var(--space-m); }
+  .prose p, .prose li { font-size:var(--step-0); line-height:1.7; color:var(--ink-dim); }
+  .prose h2 { font-size:var(--step-2); line-height:1.2; margin-top:var(--space-xl);
+    scroll-margin-top:6rem; }
+  .prose h3 { font-size:var(--step-1); margin-top:var(--space-l); scroll-margin-top:6rem; }
+  .prose ul, .prose ol { padding-left:1.35em; }
+  .prose li + li { margin-top:.4em; }
+  .prose strong { color:var(--ink); font-weight:600; }
+  .prose a { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .prose blockquote { margin:var(--space-l) 0; padding:var(--space-xs) var(--space-m);
+    border-left:3px solid var(--hairline); color:var(--ink); }
+  .prose blockquote p { color:var(--ink); }
+  .prose code { font-family:var(--font-mono); font-size:.88em; background:var(--surface-panel);
+    border:1px solid var(--hairline); border-radius:4px; padding:.1em .38em; }
+  .prose pre { overflow-x:auto; padding:var(--space-m); border:1px solid var(--hairline);
+    border-radius:var(--radius-m); font-size:var(--step--1); }
+  .prose pre code { border:0; background:none; padding:0; }
+
+  /* The rail: author, share, contents, then the one CTA. */
+  .rail__b { padding-bottom:var(--space-l); margin-bottom:var(--space-l);
+    border-bottom:1px solid var(--hairline); }
+  .rail__b:last-child { border-bottom:0; margin-bottom:0; padding-bottom:0; }
+  .rail__h { font-family:var(--font-mono); font-size:var(--step--2); text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-faint); margin:0 0 var(--space-xs); }
+  .rail__name { font-weight:600; color:var(--ink); margin:0;
+    display:flex; align-items:center; gap:.5em; }
+  /* Author names are ink, not link blue, everywhere. */
+  .rail__name a { color:var(--ink); text-decoration:none; }
+  .rail__name a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .byauthor { display:flex; align-items:center; gap:.7rem; margin:0 0 var(--space-xs); }
+
+  /* Placeholder until there is a photo: the initial in a circle, drawn in CSS
+     so nothing 404s. Set "photo" on the author to swap in an <img>. */
+  .avatar { flex:0 0 auto; width:46px; height:46px; border-radius:50%;
+    background:var(--surface-panel); border:1px solid var(--hairline);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--font-heading); font-weight:600; font-size:var(--step-0);
+    color:var(--ink-dim); object-fit:cover; }
+  .avatar--lg { width:76px; height:76px; font-size:var(--step-2); }
+
+  .lin { display:inline-flex; align-items:center; gap:.4em; color:var(--ink-dim);
+    text-decoration:none; }
+  .lin:hover { color:var(--ink); }
+  .lin svg { width:15px; height:15px; fill:currentColor; }
+  .lin__t { font-size:var(--step--1); font-weight:400; }
+
+  .authorhead { display:flex; align-items:center; gap:var(--space-m);
+    flex-wrap:wrap; margin-bottom:var(--space-s); }
+  .authorhead .post__title { margin:0; }
+  /* Icon beside the name. Centring on the line box puts it too high, because
+     that box includes the descender in a word like "Ray" and the eye reads the
+     middle of the letterforms instead. Aligning to the baseline and lifting by
+     half the icon centres it on the lowercase body, and it scales with the
+     heading rather than needing a pixel nudge. */
+  .authorhead__name { display:flex; align-items:baseline; gap:.55em; flex-wrap:wrap; }
+  .authorhead__lin { display:inline-flex; margin:0; transform:translateY(-0.28em); }
+  /* Icon only here, and a fifth larger than the 15px used in the rail. */
+  .authorhead__lin .lin svg { width:18px; height:18px; }
+  /* The longer bio sits in the header under the one-line summary, rather than
+     in a section of its own (Stu, 8 Sep). */
+  .authorbio { margin-top:var(--space-m); }
+  .authorbio p { color:var(--ink-dim); line-height:1.7; max-width:62ch;
+    font-size:var(--step-0); margin:0 0 var(--space-s); }
+  .authorbio p:last-child { margin-bottom:0; }
+  .rail__bio { font-size:var(--step--1); line-height:1.55; color:var(--ink-dim); margin:0; }
+  .share { display:flex; gap:.45rem; }
+  .share a { display:inline-flex; align-items:center; justify-content:center; width:32px;
+    height:32px; border:1px solid var(--hairline); border-radius:8px; color:var(--ink-dim); }
+  .share a:hover { border-color:var(--ink); color:var(--ink); }
+  .share svg { width:15px; height:15px; fill:currentColor; }
+  .toc { list-style:none; margin:0; padding:0; }
+  .toc li + li { margin-top:.5em; }
+  .toc a { font-size:var(--step--1); line-height:1.45; color:var(--ink-dim);
+    text-decoration:none; display:block; padding-left:.7em;
+    border-left:2px solid var(--hairline); }
+  .toc a:hover { color:var(--ink); border-left-color:var(--ink); }
+  .toc a.is-here { color:var(--ink); border-left-color:var(--ink); font-weight:600; }
+  .toc li[hidden] { display:none; }
+  .tocmore { display:block; margin-top:var(--space-s); padding:0; border:0; background:none;
+    font-family:inherit; font-size:var(--step--1); color:var(--ink); cursor:pointer;
+    text-decoration:underline; text-underline-offset:3px; }
+  .tocmore:hover { opacity:.7; }
+
+  /* Reading progress. Sits flush under the sticky header (71px tall when
+     stuck) and only fills across the article itself, not the whole document,
+     so it reaches 100% when you finish reading rather than at the footer. */
+  .readbar { position:fixed; top:70px; left:0; right:0; height:3px; z-index:49;
+    background:color-mix(in oklab, var(--ink) 8%, transparent);
+    opacity:0; transition:opacity .2s ease; pointer-events:none; }
+  .readbar.is-on { opacity:1; }
+  .readbar span { display:block; height:100%; width:0%; background:var(--ink);
+    transition:width .08s linear; }
+  @media (prefers-reduced-motion: reduce) {
+    .readbar, .readbar span { transition:none; }
+  }
+  .railcta { border:1px solid var(--hairline); border-radius:var(--radius-m);
+    padding:var(--space-m); background:var(--surface-panel); text-align:center; }
+  .railcta__t { font-family:var(--font-heading); font-weight:700;
+    font-size:var(--step-1); line-height:1.2; letter-spacing:-0.01em; color:var(--ink);
+    margin:0 0 var(--space-xs); }
+  .railcta__d { margin:0 0 var(--space-s); font-size:var(--step--1); line-height:1.5;
+    color:var(--ink-dim); }
+  .railcta .btn { width:100%; justify-content:center; }
+
+  /* Mobile contents: a real dropdown, no JavaScript. Hidden once the rail
+     appears, so the two never both show. */
+  .mtoc { border:1px solid var(--hairline); border-radius:999px; padding:0 var(--space-m);
+    margin:0 0 var(--space-l); }
+  .mtoc[open] { border-radius:var(--radius-m); padding-bottom:var(--space-s); }
+  .mtoc summary { cursor:pointer; list-style:none; display:flex; align-items:center;
+    gap:.6em; justify-content:center; padding:.75rem 0; font-weight:600; color:var(--ink); }
+  .mtoc summary::-webkit-details-marker { display:none; }
+  .mtoc__i { width:14px; height:10px; flex:0 0 auto;
+    background:linear-gradient(currentColor 0 0) 0 0/14px 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 4px/14px 2px no-repeat,
+               linear-gradient(currentColor 0 0) 0 8px/10px 2px no-repeat; }
+  .mtoc .toc { margin-top:var(--space-xs); }
+  @media (min-width: 1040px) { .mtoc { display:none; } }
+  /* Below the rail breakpoint the rail sits under the article, so its contents
+     block would repeat at the bottom of the post. The .mtoc dropdown at the top
+     is the mobile one, so this is the copy that goes. */
+  @media (max-width: 1039px) { .rail [data-tocblock] { display:none; } }
+
+  /* Index heading, a fifth larger than the shared strip title, and the
+     category rail centered above the grid. */
+  .bloghead { font-size:calc(var(--step-3) * 1.2); line-height:1.08;
+    letter-spacing:-0.025em; margin:0 0 var(--space-m); }
+  .catrail { display:flex; flex-wrap:wrap; gap:.45rem; justify-content:center;
+    margin:var(--space-xl) 0 0; }
+
+  /* Index and category listings: the same boxed card as More posts, two up. */
+  .postgrid { list-style:none; padding:0; margin:var(--space-l) 0 0;
+    display:grid; gap:var(--space-l); }
+  @media (min-width: 760px) { .postgrid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  .postgrid > li[hidden] { display:none; }
+  .pcard__m { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint);
+    display:flex; flex-wrap:wrap; gap:.5em; align-items:center; }
+
+  /* No corner ticks on cards: tried and dropped (Stu, 8 Sep). The border and
+     the panel fill carry the box on their own. */
+  .pager { display:flex; gap:var(--space-s); align-items:center; justify-content:center;
+    margin-top:var(--space-xl); font-family:var(--font-mono); font-size:var(--step--1); }
+  .pager__n { color:var(--ink-faint); }
+  .noresults { font-family:var(--font-mono); font-size:var(--step--1); color:var(--ink-faint);
+    margin-top:var(--space-l); }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Searchscope","url":"https://searchscope.io/","description":"The SEO and AI search intelligence platform."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What AI Overviews change about visibility","description":"You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it's a leaky one.","datePublished":"2026-06-12","dateModified":"2026-06-12","author":{"@type":"Person","name":"Ray","url":"https://searchscope.io/blog/author/ray/"},"publisher":{"@type":"Organization","name":"Searchscope","url":"https://searchscope.io/"},"keywords":"AI Search","articleSection":"AI Search","wordCount":482,"timeRequired":"PT2M","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://searchscope.io/blog/what-ai-overviews-change-about-visibility/"},"url":"https://searchscope.io/blog/what-ai-overviews-change-about-visibility/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://searchscope.io/blog/"},{"@type":"ListItem","position":2,"name":"What AI Overviews change about visibility","item":"https://searchscope.io/blog/what-ai-overviews-change-about-visibility/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1098,7 +1470,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="navmenu__soon">About <b>Coming soon</b></span>
               <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
               <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
-              <a class="navmenu__sublink" href="/whats-new/">
+              <a class="navmenu__sublink" href="/whats-new/" aria-current="page">
                 <span class="navmenu__label">What's new?</span>
                 <span class="navmenu__sub">Recent Searchscope product releases</span>
               </a>
@@ -1107,6 +1479,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </nav>
+    <a href="/beta/" class="btn btn--sm site-head__cta">
+      Sign up for beta
+      <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+    </a>
     <button type="button" class="navtoggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
       <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
@@ -1114,8 +1490,141 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <main>
-  <!-- ============ BETA SIGN-UP ============ -->
-  <section class="section cta bg-grid" style="border-top:0">
+  <div class="readbar" data-readbar aria-hidden="true"><span data-readbar-fill></span></div>
+
+  <section class="posthead bg-grid">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Searchscope</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
+        <a href="/blog/">Blog</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
+        <a href="/blog/category/ai-search/">AI Search</a>
+      </nav>
+      <h1 class="post__title">What AI Overviews change about visibility</h1>
+      <p class="byline">
+        <span>Author: <a href="/blog/author/ray/">Ray</a></span>
+        <span class="byline__s" aria-hidden="true"></span>
+        <span>2 min read</span>
+        <span class="byline__s" aria-hidden="true"></span>
+        <time datetime="2026-06-12">June 12, 2026</time>
+      </p>
+      <p class="posthead__sub">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="postwrap">
+      <article class="post">
+        <details class="mtoc">
+          <summary><span class="mtoc__i" aria-hidden="true"></span>Table of contents</summary>
+          <ul class="toc"><li><a href="#rank-and-click-have-come-apart">Rank and click have come apart</a></li><li><a href="#visibility-is-presence-in-the-answer">Visibility is presence in the answer</a></li><li><a href="#what-to-do-about-it">What to do about it</a></li></ul>
+        </details>
+        <div class="prose">
+<p>For as long as anyone reading this has done SEO, the scoreboard was rankings. Position one was the prize. Everything (audits, content, links) pointed at moving up the page.</p>
+<p>AI Overviews have quietly broken that scoreboard.</p>
+<h2 id="rank-and-click-have-come-apart">Rank and click have come apart</h2>
+<p>The old equation was simple: higher rank → more clicks → more business. It was never perfect, but it held well enough to plan around.</p>
+<p>Now an AI Overview can sit above your #1 result and answer the query outright. The user gets what they came for and never scrolls. You still &ldquo;rank first&rdquo;; your clicks just fell off a cliff. The position is real; the traffic isn&rsquo;t.</p>
+<p>The inverse is also true. You can be nowhere in the traditional ten blue links and still be the source an AI summary cites and links. Invisible on the old scoreboard, present in the answer.</p>
+<p>So &ldquo;position&rdquo; has gone from a decent proxy to a leaky one. Optimizing for it now can actively mislead you.</p>
+<h2 id="visibility-is-presence-in-the-answer">Visibility is presence in the answer</h2>
+<p>The thing that actually matters in the AI era is <strong>presence in the answer</strong>, whoever or whatever is doing the answering.</p>
+<p>A human scrolling the page: are you the result they choose?</p>
+<p>A model summarizing the topic: are you the source it pulls from and attributes?</p>
+<p>Both are &ldquo;visibility&rdquo;, and neither is captured by a rank tracker alone. To see them you have to read three things together:</p>
+<ul>
+<li><strong>Demand</strong>: what people are actually searching, and how that&rsquo;s moving.</li>
+<li><strong>The shape of the SERP</strong>: is there an AI Overview, a pack, a panel? How much real estate is left for a click?</li>
+<li><strong>Your presence</strong>: are you in the answer, in the citations, in the click-through, or just nominally &ldquo;ranking&rdquo;?</li>
+</ul>
+<h2 id="what-to-do-about-it">What to do about it</h2>
+<p>A few practical moves we&rsquo;re making on client sites right now:</p>
+<ul>
+<li><strong>Stop reporting rank in isolation.</strong> Pair every position with its click reality. A #1 that doesn&rsquo;t convert to clicks is a flag, not a win.</li>
+<li><strong>Write answer-shaped sections.</strong> Clear, extractable answers to real questions get pulled into summaries. Burying the answer three scrolls down doesn&rsquo;t.</li>
+<li><strong>Watch the SERP shape as a signal.</strong> When an AI Overview appears over a cluster you own, treat it like an algorithm event, because for your traffic, it is one.</li>
+<li><strong>Measure citations, not just rankings.</strong> Being the cited source is the new front page.</li>
+</ul>
+<p>The uncomfortable part is that none of this is a one-off. The results page is being rewritten continuously, which means visibility has to be <em>read</em> continuously, exactly the kind of always-on synthesis the <a href="/blog/seo-is-now-an-operating-system/">search-operating-system model</a> is built for.</p>
+<p>Rankings aren&rsquo;t dead. They&rsquo;re just no longer the scoreboard. The scoreboard is the answer, and whether you&rsquo;re in it.</p>
+<p>This is the whole of <a href="/brand-and-ai">Brand &amp; AI visibility</a>: tracking how the answers describe you, and the PR to move them.</p>
+        </div>
+      </article>
+      <aside class="railwrap" aria-label="About this post">
+        <div class="rail">
+        <div class="rail__b" data-tocblock>
+          <p class="rail__h">Table of contents</p>
+          <ul class="toc" data-toc data-count="3"><li><a href="#rank-and-click-have-come-apart">Rank and click have come apart</a></li><li><a href="#visibility-is-presence-in-the-answer">Visibility is presence in the answer</a></li><li><a href="#what-to-do-about-it">What to do about it</a></li></ul>
+          <button class="tocmore" type="button" data-tocmore hidden>Show all table of contents</button>
+        </div>
+        <div class="rail__b">
+          <p class="rail__h">Share</p>
+          <div class="share"><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://searchscope.io/blog/what-ai-overviews-change-about-visibility/" target="_blank" rel="noopener" aria-label="Share on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/></svg></a><a href="https://twitter.com/intent/tweet?url=https://searchscope.io/blog/what-ai-overviews-change-about-visibility/&text=What AI Overviews change about visibility" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.6-8.7L1.7 2h6.8l4.7 6.2L18.9 2Zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20Z"/></svg></a><a href="https://www.facebook.com/sharer/sharer.php?u=https://searchscope.io/blog/what-ai-overviews-change-about-visibility/" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg></a><a href="mailto:?subject=What AI Overviews change about visibility&body=https://searchscope.io/blog/what-ai-overviews-change-about-visibility/" aria-label="Share by email" title="Share by email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.4l8 5 8-5V7H4Zm16 10V9.7l-8 5-8-5V17h16Z"/></svg></a></div>
+        </div>
+        <div class="rail__b">
+          <div class="railcta">
+            <h3 class="railcta__t">See Searchscope running on your own accounts.</h3>
+            <p class="railcta__d">Connect your site and Searchscope brings your search
+            performance, competitors, market demand and AI visibility into one place.</p>
+            <a href="/beta/" class="btn">Join the beta <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+        <div class="rail__b">
+          <p class="rail__h">Written by</p>
+          <div class="byauthor">
+            <span class="avatar" aria-hidden="true">R</span>
+            <p class="rail__name">
+              <a href="/blog/author/ray/">Ray</a>
+              <a class="lin" href="https://www.linkedin.com/company/searchscope-ai" target="_blank" rel="noopener" aria-label="Ray on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21h-4V9Z"/></svg></a>
+            </p>
+          </div>
+          <p class="rail__bio">Builds Searchscope and runs it on live client accounts every week. Writes here about what the data actually shows, rather than what the playbooks say it should.</p>
+        </div>
+        </div>
+      </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section morewrap">
+    <div class="container">
+      <h2 class="more__h">More posts</h2>
+      <ul class="moregrid">
+        <li class="mcard">
+          <a class="tagpill" href="/blog/category/search-systems/">Search Systems</a>
+          <h2 class="mcard__t"><a href="/blog/seo-is-now-an-operating-system/">SEO is now an operating system</a></h2>
+          <p class="mcard__d">For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>3 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-20">June 20, 2026</time>
+          </p>
+        </li>        <li class="mcard">
+          <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
+          <h2 class="mcard__t"><a href="/blog/cannibalization-is-a-data-problem/">Cannibalization is a data problem</a></h2>
+          <p class="mcard__d">Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-06-04">June 4, 2026</time>
+          </p>
+        </li>        <li class="mcard">
+          <a class="tagpill" href="/blog/category/search-data/">Search Data</a>
+          <h2 class="mcard__t"><a href="/blog/reading-demand-vs-your-share/">Reading demand vs. your share</a></h2>
+          <p class="mcard__d">The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</p>
+          <p class="mcard__m">
+            <span>Ray</span>
+            <span aria-hidden="true">&#183;</span><span>2 min read</span>
+            <span aria-hidden="true">&#183;</span>
+            <time datetime="2026-05-22">May 22, 2026</time>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked">
         <span class="ticks" aria-hidden="true">
@@ -1125,69 +1634,119 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__bl"></span>
         </span>
         <span class="eyebrow">Join the beta program</span>
-        <h1 class="cta__title">Sign up for the Searchscope beta.</h1>
+        <h2 class="cta__title">See Searchscope running on your own accounts.</h2>
         <p class="cta__sub">
-          Beta places open in small cohorts. Leave your details and we'll get in touch
-          when the next one opens. The first session is a walkthrough of your own search
-          data, not a demo account.
+          Connect your site and Searchscope brings your search performance, competitors, market
+          demand and AI visibility into one place.
         </p>
-
-        <form
-          name="beta"
-          method="POST"
-          action="/beta/thanks/"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="signup"
-        >
-          <input type="hidden" name="form-name" value="beta" />
-          <p class="signup__hp">
-            <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-name">Name<span class="req" aria-hidden="true">*</span></label>
-            <input class="field__input" id="beta-name" name="name" type="text" autocomplete="name" required />
-          </div>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-email">Email<span class="req" aria-hidden="true">*</span></label>
-            <input class="field__input" id="beta-email" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-role">Your role<span class="req" aria-hidden="true">*</span></label>
-            <select class="field__input" id="beta-role" name="role" required>
-              <option value="">Choose one</option>
-              <option>Agency</option>
-              <option>In-house team</option>
-              <option>Freelance or consultant</option>
-              <option>Business owner</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label class="field__label mono" for="beta-website">Website</label>
-            <input class="field__input" id="beta-website" name="website" type="text" autocomplete="url" placeholder="example.co.uk" />
-          </div>
-
-          <button class="btn" type="submit">
-            Sign up for beta
-            <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-          </button>
-        </form>
-
-        <div class="formdone">
-          <span class="eyebrow">Welcome onboard!</span>
-          <h2 class="formdone__t">You&rsquo;re on the list.</h2>
-          <p>We onboard the beta in small cohorts, and we&rsquo;ll be in touch with next steps as places open up.</p>
+        <div class="cta__actions">
+          <a href="/beta/" class="btn btn--lg">
+            Join the beta
+            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+          </a>
         </div>
-
-        <p class="formfoot">We'll email you about your beta place and a short series on getting set up. Unsubscribe any time.</p>
       </div>
     </div>
   </section>
+  <script>
+  (function () {
+    /* ---- reading progress -------------------------------------------------
+       Measured against the article, not the document, so it hits 100% when the
+       last paragraph clears the fold rather than when the footer does. */
+    var article = document.querySelector('.post');
+    var bar = document.querySelector('[data-readbar]');
+    var fill = document.querySelector('[data-readbar-fill]');
+    if (article && bar && fill) {
+      var tick = function () {
+        var r = article.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = r.height - vh + 200;
+        var done = -r.top + 200;
+        var pct = total <= 0 ? 100 : Math.min(100, Math.max(0, (done / total) * 100));
+        fill.style.width = pct + '%';
+        bar.classList.toggle('is-on', r.top < 60 && r.bottom > 120);
+      };
+      var queued = false;
+      var onScroll = function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; tick(); });
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll);
+      tick();
+    }
+
+    /* ---- table of contents ------------------------------------------------
+       Collapsed to a window of three around whatever you're reading, so a long
+       post doesn't push the rest of the rail off screen. The toggle only
+       appears when there is actually something to hide. */
+    var links = [].slice.call(document.querySelectorAll('[data-toc] a'));
+    if (!links.length) return;
+    var items = links.map(function (a) { return a.parentElement; });
+    var more = document.querySelector('[data-tocmore]');
+    var WINDOW = 3;
+    var expanded = false;
+    var current = 0;
+
+    function paint() {
+      if (expanded || items.length <= WINDOW) {
+        items.forEach(function (li) { li.hidden = false; });
+      } else {
+        var start = Math.min(Math.max(0, current - 1), items.length - WINDOW);
+        items.forEach(function (li, i) { li.hidden = i < start || i >= start + WINDOW; });
+      }
+      if (more) {
+        more.hidden = items.length <= WINDOW;
+        more.textContent = expanded ? 'Hide all table of contents'
+                                    : 'Show all table of contents';
+        more.setAttribute('aria-expanded', String(expanded));
+      }
+    }
+
+    if (more) {
+      more.addEventListener('click', function () { expanded = !expanded; paint(); });
+    }
+
+    /* Which heading are you on? Computed from scroll position rather than
+       IntersectionObserver: an observer only fires when a heading crosses its
+       band, so if you land between two headings nothing fires and the
+       highlight sticks on a stale entry. That is exactly what happened. */
+    var heads = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    });
+
+    function activate() {
+      var line = 140;                    /* just under the sticky header */
+      var i = 0;
+      for (var n = 0; n < heads.length; n++) {
+        if (heads[n] && heads[n].getBoundingClientRect().top <= line) i = n;
+      }
+      if (i === current) return;
+      current = i;
+      links.forEach(function (a, n) { a.classList.toggle('is-here', n === i); });
+      paint();
+    }
+
+    var pending = false;
+    addEventListener('scroll', function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { pending = false; activate(); });
+    }, { passive: true });
+    links.forEach(function (a, n) { a.classList.toggle('is-here', n === 0); });
+    activate();
+    paint();
+  })();
+  </script>
 </main>
+
+<div class="stickycta">
+  <a href="/beta/" class="btn">
+    Join the beta
+    <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+</div>
 
 <footer class="site-foot">
   <div class="container">
@@ -1328,6 +1887,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
+<noscript>
+  <style>.tabpanel[hidden] { display: block !important; } .tablist { display: none; } .jrow { opacity: 1 !important; animation: none !important; } .tabpanel + .tabpanel { margin-top: var(--space-xl); }</style>
+</noscript>
+
+<script>
+  (function () {
+    var list = document.querySelector('.tablist');
+    if (!list) return;
+    var tabs = [].slice.call(list.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.tabpanel'));
+    if (tabs.length !== panels.length) return;
+
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      panels.forEach(function (p, j) { p.hidden = j !== i; });
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1
+              : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = (i + d + tabs.length) % tabs.length;
+        select(n);
+        tabs[n].focus();
+      });
+    });
+    select(0);
+  })();
+</script>
+
 
 <script>
   /* Data layer: named events so the container never depends on CSS class names.
@@ -1378,62 +1973,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       dl.push(payload);
     }, true);
   })();
-
-    /* ---- submit in place ----
-       Posts to the same /thanks/ URL the form already targets, so Netlify sees
-       an identical submission, then swaps in the success panel instead of
-       navigating.
-
-       form_submit already fires on every attempt, including ones that fail, so
-       it cannot be a conversion. form_success fires only once Netlify has
-       accepted the submission. Build the conversion on that.
-
-       On any failure it falls back to a normal navigating submit rather than
-       stranding someone on a form that looks broken. form.submit() does not
-       re-fire this handler, so there is no loop. */
-    (function () {
-      if (!window.fetch || !window.FormData || !window.URLSearchParams) return;
-      var forms = document.querySelectorAll('form[action*="/thanks/"]');
-      Array.prototype.forEach.call(forms, function (form) {
-        form.addEventListener('submit', function (e) {
-          if (form.dataset.sending) { e.preventDefault(); return; }
-          if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
-          e.preventDefault();
-          form.dataset.sending = '1';
-
-          var btn = form.querySelector('[type="submit"]');
-          if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
-
-          var settled = false;
-          var giveUp = setTimeout(function () {
-            if (!settled) { settled = true; form.submit(); }
-          }, 15000);
-
-          fetch(form.getAttribute('action'), {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(new FormData(form)).toString()
-          }).then(function (r) {
-            if (settled) return;
-            settled = true;
-            clearTimeout(giveUp);
-            if (!r.ok) throw new Error(r.status);
-            var wrap = form.parentNode;
-            var done = wrap.querySelector('.formdone');
-            wrap.classList.add('is-done');
-            if (done) { done.setAttribute('tabindex', '-1'); done.focus(); }
-            (window.dataLayer = window.dataLayer || []).push({
-              event: 'form_success', form_name: form.getAttribute('name')
-            });
-          }).catch(function () {
-            if (settled) return;
-            settled = true;
-            clearTimeout(giveUp);
-            form.submit();
-          });
-        });
-      });
-    })();
 </script>
 </body>
 </html>
