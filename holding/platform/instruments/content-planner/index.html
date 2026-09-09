@@ -288,7 +288,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
-}.reveal.is-in{ opacity: 1; transform: none; }@media (prefers-reduced-motion: reduce){.reveal{ opacity: 1; transform: none; }}@media (max-width: 980px){.hero__grid{ grid-template-columns: 1fr; }.hero__visual{ order: -1; }}.appwin{ overflow: hidden; }.site-head{ padding-top: var(--space-l); padding-bottom: var(--space-2xs); }.site-brand{ display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; }.site-logo{ height: 22px; width: auto; display: block; color: var(--ink); }.btn{ text-decoration: none; }.btn--sm{ font-size: var(--step--1); padding: 0.72em 1.15em; }.stickycta{
+}.reveal.is-in{ opacity: 1; transform: none; }@media (prefers-reduced-motion: reduce){.reveal{ opacity: 1; transform: none; }}@media (max-width: 980px){.hero__grid{ grid-template-columns: 1fr; }}.appwin{ overflow: hidden; }.site-head{ padding-top: var(--space-l); padding-bottom: var(--space-2xs); }.site-brand{ display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; }.site-logo{ height: 22px; width: auto; display: block; color: var(--ink); }.btn{ text-decoration: none; }.btn--sm{ font-size: var(--step--1); padding: 0.72em 1.15em; }.stickycta{
       display: none;
       position: fixed;
       left: 0;
@@ -910,6 +910,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .mockpane { border-left:0; border-top:1px solid var(--hairline); }
     .mockpane:first-child { border-top:0; }
   }
+
+  /* ---- the hero mocks ---------------------------------------------------
+     One at the top of each instrument page and of the hub, replacing the
+     mono snippet that used to sit there. DESIGN.md rule 2: the main visual
+     on a page is animated.
+
+     A hero is on screen at load, so it starts immediately and has to be
+     finished before anybody has read the first paragraph. 130ms a row rather
+     than 170, and no mock here runs past about a second and a half. */
+  .mockwin--hero { --mock-step: 130ms; }
+  /* Two panes, split per page with --mock-split. Same collapse point as the
+     three-pane session mock, for the same reason: below it the narrow pane is
+     thinner than the text inside it. */
+  .mockcols { display:grid; grid-template-columns:var(--mock-split, 40fr 60fr); }
+  .mockcols > div { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
+  .mockcols > div:first-child { border-left:0; }
+  @media (max-width: 1000px) {
+    .mockcols { grid-template-columns:1fr; }
+    .mockcols > div { border-left:0; border-top:1px solid var(--hairline); }
+    .mockcols > div:first-child { border-top:0; }
+  }
+  /* The app's own left navigation, for the hub. The grouping is the argument
+     the page is making, so it is the app's real one: the analyzers sit under
+     Workspaces, and Instruments is its own group below them. */
+  .mocknav { font-family:var(--font-mono); font-size:var(--step--2); }
+  .mocknav__g { display:flex; justify-content:space-between; gap:.5rem;
+    margin:.5rem 0 .2rem; color:var(--ink-faint); }
+  .mocknav__g:first-child { margin-top:0; }
+  .mocknav__g--on { color:var(--ink); }
+  .mocknav__i { margin:0; padding:.16rem 0 .16rem .55rem;
+    border-left:1px solid var(--hairline); color:var(--ink-dim); }
+  .mocknav__i--on { border-left-color:var(--ink); color:var(--ink); }
+  /* A labelled input, for the Content Studio session setup. */
+  .mockfield { display:flex; justify-content:space-between; gap:.5rem;
+    border:1px solid var(--hairline); border-radius:var(--radius-s);
+    padding:.34rem .5rem; margin:.5rem 0 0; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); }
+  .mockfield span { white-space:nowrap; }
+  .mockfield em { font-style:normal; color:var(--ink); overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap; }
+  .mockchips--tight { padding:.5rem 0 0; flex-wrap:wrap; }
+  .mocknote { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); line-height:1.5; margin:.7rem 0 0; }
+  /* The Page Experience rail: a score ring, then the check register. */
+  .mockdial { display:flex; align-items:center; gap:.6rem; margin:0 0 .7rem; }
+  .mockdial i { flex:none; width:46px; height:46px; border-radius:50%;
+    display:grid; place-items:center;
+    background:conic-gradient(var(--ink) 0 62%, var(--surface-panel-2) 62% 100%); }
+  .mockdial i b { font-style:normal; width:34px; height:34px; border-radius:50%; background:var(--surface);
+    display:grid; place-items:center; font-family:var(--font-display);
+    font-size:var(--step-0); color:var(--ink); }
+  .mockdial p { margin:0; font-size:var(--step--2); color:var(--ink-faint); }
+  .mockdial p b { display:block; color:var(--ink); font-weight:500; }
+  .mockledg { display:grid; grid-template-columns:1fr auto auto; gap:.55rem;
+    padding:.28rem 0; font-size:var(--step--2); color:var(--ink-dim);
+    border-top:1px solid var(--hairline); }
+  .mockledg b { font-weight:400; }
+  .mockledg span { font-family:var(--font-mono); color:var(--ink-faint); text-align:right;
+    min-width:1.6rem; }
+  .mockledg--h { border-top:0; color:var(--ink-faint); font-family:var(--font-mono);
+    letter-spacing:.04em; }
+  /* A finding: title and traffic on one line, the page and who fixes it on
+     the next, which is how the app stacks them in a narrow work area. */
+  .mockfind { display:grid; grid-template-columns:auto 1fr auto; gap:.1rem .5rem;
+    align-items:baseline; padding:.5rem 0; border-top:1px solid var(--hairline);
+    font-size:var(--step--2); }
+  .mockfind i { grid-row:1; align-self:center; width:7px; height:7px; border-radius:50%;
+    background:var(--sev-rose-ink); }
+  .mockfind--rev i { background:var(--surface-panel-2); border:1px solid var(--hairline); }
+  .mockfind b { grid-row:1; color:var(--ink); font-weight:500; }
+  .mockfind em { grid-row:1; font-style:normal; font-family:var(--font-mono);
+    color:var(--sev-rose-ink); white-space:nowrap; }
+  .mockfind--rev em { color:var(--ink-faint); }
+  .mockfind s { grid-row:2; grid-column:2; text-decoration:none;
+    font-family:var(--font-mono); color:var(--ink-faint);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mockfind u { grid-row:2; grid-column:3; text-decoration:none;
+    font-family:var(--font-mono); color:var(--ink-faint); white-space:nowrap; }
+  /* The report taking shape beside the composer. */
+  .mockpaper__m { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:0 0 .15rem; }
+  .mockpaper__t { font-family:var(--font-display); font-size:var(--step-0);
+    color:var(--ink); margin:0 0 .6rem; }
+  .mockwin--hero .mockstep i { align-self:start; margin-top:.5em; }
+  /* The ladder drops its right-hand column on a phone because its middle
+     column is a sentence. A hero checklist's rows are short enough to keep
+     the status beside them, and dropping it doubled the mock's height. */
+  @media (max-width: 560px) {
+    .mockwin--hero .mockstep { grid-template-columns:auto 1fr auto; }
+    .mockwin--hero .mockstep em { grid-column:auto; }
+  }
+  .mockstep--done i { background:var(--ink); border-color:var(--ink); }
+  .mockstep--now i { background:var(--sev-rose-ink); border-color:var(--sev-rose-ink); }
   </style>
   <script>
     (function () {
