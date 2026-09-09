@@ -748,7 +748,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3 class="ucard__t">The source context</h3>
           <p class="ucard__d">See the data and research used during the session alongside the competitor outlines. Internal link suggestions also show why they were selected, separating pages with matching search-query evidence from word-level matches.</p>
         </article>
-      </div>      <div class="ticked">
+      </div>      <div class="ticked mockframe">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
@@ -872,19 +872,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     padding:.16rem .5rem; border:1px solid var(--hairline); border-radius:999px;
     color:var(--ink-faint); }
   .mockchip--on { background:var(--ink); color:var(--surface); border-color:var(--ink); }
-  /* The ladder is deliberately squarish so it sits beside a heading rather
-     than running the width of the page. */
-  .mockladder { max-width:22rem; }
+  /* The ladder sits beside a heading, so it takes the column it is given
+     rather than the width of the page.
+
+     Its max-width used to be on the .appwin. That shrank the window but not
+     the .ticked wrapper around it, and .ticks draws at inset -13px from the
+     WRAPPER, so the four corners floated a couple of hundred pixels away
+     from the box they were supposed to be framing. Any width limit on a
+     mock belongs on the frame, not on the window inside it. */
   .mockladder .awbody { padding:.85rem .9rem; }
-  .mockstep { display:flex; align-items:baseline; gap:.6rem; padding:.28rem 0;
-    font-size:var(--step--2); color:var(--ink-dim); }
-  .mockstep i { flex:none; width:7px; height:7px; border-radius:50%;
+  .mockstep { display:grid; grid-template-columns:auto 1fr auto; align-items:baseline;
+    gap:.65rem; padding:.34rem 0; font-size:var(--step--2); color:var(--ink-dim); }
+  .mockstep + .mockstep { border-top:1px solid var(--hairline); }
+  .mockstep i { align-self:center; width:7px; height:7px; border-radius:50%;
     background:var(--surface-panel-2); border:1px solid var(--hairline); }
   .mockstep--auto i { background:var(--ink-faint); border-color:var(--ink-faint); }
   .mockstep--you i { background:var(--ink); border-color:var(--ink); }
   .mockstep b { font-weight:500; color:var(--ink); }
-  .mockstep em { font-style:normal; margin-left:auto; font-family:var(--font-mono);
-    font-size:var(--step--2); color:var(--ink-faint); }
+  .mockstep s { text-decoration:none; color:var(--ink-dim); }
+  .mockstep em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); white-space:nowrap; }
+  @media (max-width: 560px) {
+    .mockstep { grid-template-columns:auto 1fr; }
+    .mockstep em { grid-column:2; }
+  }
+  /* A mock that follows body content needs room for its own corner marks,
+     which are drawn 13px outside the frame. Without this the Content Studio
+     window sat hard against the cards above it. */
+  .mockframe { margin-top:var(--space-xl); }
   /* ---- the product mock -------------------------------------------------
      A three-pane Content Studio session, built on the site's existing .appwin
      window chrome. The panes match the real app: chat left, document middle,
