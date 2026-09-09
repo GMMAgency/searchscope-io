@@ -263,13 +263,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   inset: -13px;
   pointer-events: none;
   color: color-mix(in oklab, var(--ink) 30%, transparent);
-}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.appwin{
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-m);
+  background: var(--surface-panel);
+  overflow: hidden;
+  box-shadow: var(--shadow-m);
+  font-family: var(--font-display);
+}.awbar{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in oklab, var(--surface-panel) 75%, var(--surface));
+}.awdots{ display: inline-flex; gap: 6px; }.awdots i{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--surface-panel-2);
+  border: 1px solid var(--hairline);
+  display: block;
+}.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
-}.reveal.is-in{ opacity: 1; transform: none; }@media (prefers-reduced-motion: reduce){.reveal{ opacity: 1; transform: none; }}@media (max-width: 980px){.hero__grid{ grid-template-columns: 1fr; }.hero__visual{ order: -1; }}.site-head{ padding-top: var(--space-l); padding-bottom: var(--space-2xs); }.site-brand{ display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; }.site-logo{ height: 22px; width: auto; display: block; color: var(--ink); }.btn{ text-decoration: none; }.btn--sm{ font-size: var(--step--1); padding: 0.72em 1.15em; }.stickycta{
+}.reveal.is-in{ opacity: 1; transform: none; }@media (prefers-reduced-motion: reduce){.reveal{ opacity: 1; transform: none; }}@media (max-width: 980px){.hero__grid{ grid-template-columns: 1fr; }.hero__visual{ order: -1; }}.appwin{ overflow: hidden; }.site-head{ padding-top: var(--space-l); padding-bottom: var(--space-2xs); }.site-brand{ display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; }.site-logo{ height: 22px; width: auto; display: block; color: var(--ink); }.btn{ text-decoration: none; }.btn--sm{ font-size: var(--step--1); padding: 0.72em 1.15em; }.stickycta{
       display: none;
       position: fixed;
       left: 0;
@@ -467,9 +486,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .snipline--cursor::after { content:"_"; margin-left:.15em;
     animation:snipcaret 1.15s steps(1) infinite; }
   @keyframes snipcaret { 50% { opacity:0; } }
+
+  /* ---- the product mock -------------------------------------------------
+     A three-pane Content Studio session, built on the site's existing .appwin
+     window chrome. The panes match the real app: chat left, document middle,
+     session context right. Staged entrance, one pass, keyed off .is-in like
+     everything else, so it needs no JavaScript of its own. */
+  /* 13 rows, so the step sets how long the whole thing takes. 380ms ran for
+     five seconds, which is a long time to have something moving beside text
+     someone is trying to read. 170ms finishes in about two and a half. */
+  .mockwin { --mock-step: 170ms; }
+  .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); letter-spacing:.02em; }
+  .mockpanes { display:grid; grid-template-columns:25fr 46fr 29fr; }
+  .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
+  .mockpane:first-child { border-left:0; }
+  .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:0 0 .55rem; letter-spacing:.04em; }
+  /* Every animated row uses the same stagger, so the three panes fill in the
+     order a real session does: context first, then the chat, then the draft. */
+  .mockrow { opacity:0; transform:translateY(5px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(260ms + var(--i, 0) * var(--mock-step)); }
+  .is-in .mockrow { opacity:1; transform:none; }
+  .mockmsg { font-size:var(--step--2); line-height:1.5; margin:0 0 .45rem;
+    padding:.4rem .55rem; border-radius:var(--radius-s);
+    background:var(--surface-panel-2); color:var(--ink-dim); }
+  .mockmsg--you { background:var(--ink); color:var(--surface); }
+  .mockdoc { font-size:var(--step--2); line-height:1.55; margin:0 0 .3rem; color:var(--ink-dim); }
+  .mockdoc b { color:var(--ink); font-weight:600; }
+  /* The writing bar stands in for a line of the draft still being written. */
+  .mockbar { display:block; height:6px; border-radius:3px;
+    background:var(--surface-panel-2); margin:.42rem 0; }
+  .mocksrc { display:flex; justify-content:space-between; gap:.5rem;
+    font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); margin:0 0 .3rem; }
+  .mocksrc em { font-style:normal; color:var(--ink-faint); }
+  .mocksrc b { font-weight:500; color:var(--ink); }
+  /* Three panes need real width. At 768px the chat column came out at 177px,
+     which is narrower than the messages in it. Collapse at the same 1000px
+     breakpoint the pillar cards use. */
+  @media (max-width: 1000px) {
+    .mockpanes { grid-template-columns:1fr; }
+    .mockpane { border-left:0; border-top:1px solid var(--hairline); }
+    .mockpane:first-child { border-top:0; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
+    .mockrow { opacity:1; transform:none; transition:none; }
   }
 </style></head>
 <body>
