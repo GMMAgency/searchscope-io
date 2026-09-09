@@ -401,18 +401,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-align: left;
       color: var(--ink-faint);
       transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }.navmenu__soon--sub::before{ content: none; }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navmenu__figure{
-      display: block;
-      width: calc(100% - 1.5rem);
-      height: auto;
-      margin: 0 0.75rem;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: top center;
-      border: 1px solid var(--hairline);
-      border-radius: var(--radius-s);
-      background: var(--surface-panel-2);
-    }.navmenu__soon{
+    }.navmenu__soon--sub::before{ content: none; }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navfig{ margin: 1rem 0.75rem 0; }.navfig__b{ padding: 0.55rem 0.75rem; background: var(--surface);
+  border: 1px solid var(--hairline); border-radius: var(--radius-s); }.navfig__r{ display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem;
+  align-items: baseline; margin: 0; padding: 0.34rem 0;
+  border-top: 1px solid var(--hairline); }.navfig__r:first-child{ border-top: 0; }.navfig__r b{ font-family: var(--font-mono); font-size: var(--step--2);
+  font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--ink); }.navfig__r span{ font-size: var(--step--2); line-height: 1.35; color: var(--ink-dim); }.navmenu__panel:not([hidden]) .navfig__r{ animation: navfig-in 0.38s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms); }@media (prefers-reduced-motion: reduce){.navmenu__panel:not([hidden]) .navfig__r{ animation: none; }}.navmenu__soon{
       display: flex;
       align-items: center;
       padding: 0.55rem 0.75rem;
@@ -475,8 +470,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border: 0;
         border-radius: 0;
         box-shadow: none;
-      }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Platform","item":"https://searchscope.io/platform/"},{"@type":"ListItem","position":3,"name":"Instruments","item":"https://searchscope.io/platform/instruments/"},{"@type":"ListItem","position":4,"name":"Page Experience","item":"https://searchscope.io/platform/instruments/page-experience/"}]}</script><style>
+      }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navfig{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}@keyframes navfig-in{ from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Platform","item":"https://searchscope.io/platform/"},{"@type":"ListItem","position":2,"name":"Instruments","item":"https://searchscope.io/platform/instruments/"},{"@type":"ListItem","position":3,"name":"Page Experience","item":"https://searchscope.io/platform/instruments/page-experience/"}]}</script><style>
   .snip .snipline { display:block; opacity:0; transform:translateY(6px);
     transition:opacity var(--dur, .28s) var(--ease-out, ease),
                transform var(--dur, .28s) var(--ease-out, ease);
@@ -523,8 +517,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <a class="navmenu__h" href="/platform/">Platform overview</a>
-              <img class="navmenu__figure" src="/brand/platform-overview.jpg" alt="Searchscope Data Pipeline: sync search data, crawl the site and run the analyzers in order"
-                   width="760" height="465" loading="lazy" decoding="async">
+              <div class="ticked navfig">
+                <span class="ticks" aria-hidden="true">
+                  <span class="ticks__c ticks__tl"></span>
+                  <span class="ticks__c ticks__tr"></span>
+                  <span class="ticks__c ticks__br"></span>
+                  <span class="ticks__c ticks__bl"></span>
+                </span>
+                <div class="navfig__b">
+                <p class="navfig__r" style="--i:0"><b>Data</b><span>search performance, site crawl</span></p>
+                <p class="navfig__r" style="--i:1"><b>Understand</b><span>analyzers, competitors, AI answers</span></p>
+                <p class="navfig__r" style="--i:2"><b>Decide</b><span>Strategic Advisor, PR Strategist</span></p>
+                <p class="navfig__r" style="--i:3"><b>Work</b><span>content, planning, page health</span></p>
+                <p class="navfig__r" style="--i:4"><b>Measure</b><span>Impact Tracker, Reporting</span></p>
+                </div>
+              </div>
             </div>
             <div>
               <p class="navmenu__h">Product</p>
@@ -623,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <nav class="crumb" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/platform/">Platform</a> <span aria-hidden="true">&middot;</span> <a href="/platform/instruments/">Instruments</a> <span aria-hidden="true">&middot;</span> Page Experience</nav>
+        <nav class="crumb" aria-label="Breadcrumb"><a href="/platform/">Platform</a> <span aria-hidden="true">&middot;</span> <a href="/platform/instruments/">Instruments</a> <span aria-hidden="true">&middot;</span> Page Experience</nav>
         <h1 class="hero__title reveal">
           Find the technical issues on pages that still get search traffic.
         </h1>
