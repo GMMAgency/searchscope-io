@@ -1237,7 +1237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mockled mockled--high mockrow" style="--i:5"><i></i><span class="mockled__m"><b>Stove Guide, print view</b><u><span class="mocktag">Zero Impressions</span>/guides/stoves/print</u></span><span class="mockled__n"><em>1,240</em><em>0</em><em>0</em></span></div>
             <div class="mockled mockrow" style="--i:6"><i></i><span class="mockled__m"><b>Stoves tagged &lsquo;winter&rsquo;</b><u><span class="mocktag">Orphan Pages</span>/tag/winter-stoves &middot; 0 inlinks</u></span><span class="mockled__n"><em>96</em><em>310</em><em>2</em></span></div>
             <div class="mockled mockled--low mockrow" style="--i:7"><i></i><span class="mockled__m"><b>Compare Stoves</b><u><span class="mocktag">Duplicate Titles</span>/compare/stoves-2</u></span><span class="mockled__n"><em>540</em><em>820</em><em>11</em></span></div>
-          <p class="mockfoot mockrow" style="--i:8">128 of 402 pages &middot; impressions window: last 90 days &middot; new pages excluded from zero-impression checks</p>
+          <p class="mockfoot mockrow" style="--i:8">128 of 402 pages &middot; impressions window: last 90 days</p>
         </div>
         </div>
       </div>
@@ -1648,6 +1648,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .mockstats { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .mockstats > p:nth-child(3) { display:none; }
     .mockled__n em { min-width:2.6rem; }
+    /* The app truncates these in its narrow rail, and copying that here cut
+       a cannibalization row's chip and both page paths down to about a third
+       on a 390px screen. On a page someone is reading rather than working
+       in, two lines beats an ellipsis. */
+    .mockled__m b, .mockled__m u { white-space:normal; overflow:visible;
+      text-overflow:clip; }
   }
   </style>
   <script>

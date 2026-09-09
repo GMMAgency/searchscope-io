@@ -1215,7 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <p class="crumb">Platform</p>
+        <p class="crumb">Platform Overview</p>
         <h1 class="hero__title reveal">
           One run of your data. Four kinds of tool on top of it.
         </h1>
@@ -1255,12 +1255,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mockstep mockstep--done mockrow" style="--i:3"><i></i><b>02 &middot; Site crawl</b><em class="mockrow" style="--i:7">1,204 pages</em></p>
             <p class="mockstep mockstep--done mockrow" style="--i:4"><i></i><b>03 &middot; Analyzers</b><em class="mockrow" style="--i:8">27 findings</em></p>
             <p class="mocknote mockrow" style="--i:9">Everything is fresh.</p>
+            <p class="mockpane__h" style="margin-top:1rem">EACH ANALYZER RUNS ON</p>
+            <p class="mocksrc mockrow" style="--i:5"><b>Cannibalization</b><em>search data</em></p>
+            <p class="mocksrc mockrow" style="--i:6"><b>Content Decay</b><em>search data</em></p>
+            <p class="mocksrc mockrow" style="--i:7"><b>Internal Links</b><em>crawl</em></p>
+            <p class="mocksrc mockrow" style="--i:8"><b>Schema</b><em>crawl</em></p>
             </div>
           </div>
         </div>
       </div>
 
       </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="sec__head reveal">
+        <span class="eyebrow">The four areas</span>
+        <h2 class="sec__title">What&rsquo;s in the platform.</h2>
+        <p class="lede">Three of them are ways to understand what&rsquo;s happening. The fourth is where you act on it.</p>
+      </div>      <div class="cols2">
+        <article class="ucard reveal">
+          <p class="ucard__k">Area 01</p>
+          <h3 class="ucard__t">Workspace Analyzers</h3>
+          <p class="ucard__d">Seven analyzers over the crawl and your search data: Cannibalization, Content Decay, Opportunities, Cluster Volatility, Index Bloat, Internal Links and Schema.</p>
+          <p class="ucard__d" style="margin-top:var(--space-s)">
+            <a href="/platform/analyzers/" class="btn btn--sm btn--ghost">
+              Explore Analyzers
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:80ms">
+          <p class="ucard__k">Area 02</p>
+          <h3 class="ucard__t">Search Intelligence</h3>
+          <p class="ucard__d">Your performance beside competitor visibility and changing demand, with the Strategic Advisor using the same data.</p>
+          <p class="ucard__d" style="margin-top:var(--space-s)">
+            <a href="/platform/search-intelligence/" class="btn btn--sm btn--ghost">
+              Explore Search Intelligence
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:160ms">
+          <p class="ucard__k">Area 03</p>
+          <h3 class="ucard__t">AI and Brand Intelligence</h3>
+          <p class="ucard__d">What six assistants say about you every week, who they recommend instead, and which sources they cite.</p>
+          <p class="ucard__d" style="margin-top:var(--space-s)">
+            <a href="/platform/ai-brand-intelligence/" class="btn btn--sm btn--ghost">
+              Explore AI and Brand Intelligence
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </p>
+        </article>
+        <article class="ucard reveal" style="--reveal-delay:240ms">
+          <p class="ucard__k">Area 04</p>
+          <h3 class="ucard__t">Instruments</h3>
+          <p class="ucard__d">The four working surfaces: Content Studio, Content Planner, Page Experience and Reporting.</p>
+          <p class="ucard__d" style="margin-top:var(--space-s)">
+            <a href="/platform/instruments/" class="btn btn--sm btn--ghost">
+              Explore Instruments
+              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </p>
+        </article>
       </div>
     </div>
   </section>
@@ -1287,44 +1346,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3 class="ucard__t">Analyzers</h3>
           <p class="ucard__d">Seven analyzers run against both inputs and write their findings into your workspaces.</p>
         </article>
-      </div>      <div class="ticked">
+      </div>      <div class="ticked mockframe">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <div class="snip reveal">
-          <span class="snipline" style="--i:0"><span>pipeline</span>&nbsp;&nbsp;sync &#8594; crawl &#8594; analyze</span>
-          <span class="snipline" style="--i:1"><span>window</span>&nbsp;&nbsp;&nbsp;&nbsp;last 7, 14 or 30 days</span>
-          <span class="snipline" style="--i:2"><span>crawl</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100, 500 or 2,000 pages</span>
-          <span class="snipline" style="--i:3"><span>repeat</span>&nbsp;&nbsp;&nbsp;&nbsp;every 7 days</span>
+        <div class="appwin mockwin reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Data pipeline &middot; settings</span>
+          </div>
+          <div class="mockpane">
+          <div class="mockset mockrow" style="--i:0"><b>Sync window</b><span class="mockchips"><span class="mockchip mockchip--on">Last 7 days</span><span class="mockchip">Last 14 days</span><span class="mockchip">Last 30 days</span></span></div>
+          <div class="mockset mockrow" style="--i:1"><b>Crawl scope</b><span class="mockchips"><span class="mockchip">Quick &middot; 100</span><span class="mockchip mockchip--on">Standard &middot; 500</span><span class="mockchip">Deep &middot; 2000</span></span></div>
+          <div class="mockset mockrow" style="--i:2"><b>Run</b><em>your day and hour, then every 7 days</em></div>
+          <div class="mockset mockrow" style="--i:3"><b>Backfill</b><span class="mockchips"><span class="mockchip">30 days</span><span class="mockchip mockchip--on">90 days</span><span class="mockchip">365 days</span><span class="mockchip">Custom</span></span></div>
+          <p class="mocknote mockrow" style="--i:4">A sync re-imports the whole window. Search Console finalizes its data late, so the window ends a few days back rather than today.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="container">
+      <div class="cols2">
+        <div>
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; What the run produces</span>
         <h2 class="sec__title">A queue, not an audit list.</h2>
         <p class="lede">Every finding shows the search performance behind it. A broken link on a page nobody visits and a broken link on a page taking 1,240 impressions aren&rsquo;t the same job, and they don&rsquo;t appear in the queue looking the same.</p>
-        <p class="lede">When an account has no search data yet, the four analyzers that need it don&rsquo;t run. They turn on automatically once it arrives.</p>
-      </div>      <div class="ticked">
+        <p class="lede">When an account has no search data yet, the four analyzers that need it don&rsquo;t run. The other three work from the crawl alone.</p>
+      </div>
+        </div>
+        <div>
+      <div class="ticked">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <div class="snip reveal">
-          <span class="snipline" style="--i:0"><span>state</span>&nbsp;&nbsp;waiting for search data</span>
-          <span class="snipline" style="--i:1">&nbsp;&nbsp;cannibalization, content decay,</span>
-          <span class="snipline" style="--i:2">&nbsp;&nbsp;opportunities, cluster volatility</span>
-          <span class="snipline" style="--i:3">&nbsp;</span>
-          <span class="snipline" style="--i:4">&nbsp;&nbsp;<em>turns on once search data arrives</em></span>
+        <div class="appwin mockwin mockladder reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Analyzers &middot; crawl-only run</span>
+          </div>
+          <div class="awbody">
+            <p class="mockstep mockstep--off mockrow" style="--i:0"><i></i><b>Cannibalization</b><em>waiting</em></p>
+            <p class="mockstep mockstep--off mockrow" style="--i:1"><i></i><b>Content Decay</b><em>waiting</em></p>
+            <p class="mockstep mockstep--off mockrow" style="--i:2"><i></i><b>Opportunities</b><em>waiting</em></p>
+            <p class="mockstep mockstep--off mockrow" style="--i:3"><i></i><b>Cluster Volatility</b><em>waiting</em></p>
+            <p class="mockstep mockstep--done mockrow" style="--i:4"><i></i><b>Index Bloat</b><em>running</em></p>
+            <p class="mockstep mockstep--done mockrow" style="--i:5"><i></i><b>Internal Links</b><em>running</em></p>
+            <p class="mockstep mockstep--done mockrow" style="--i:6"><i></i><b>Schema</b><em>running</em></p>
+            <p class="mocknote mockrow" style="--i:7">The four turn on automatically once search data arrives.</p>
+          </div>
         </div>
       </div>
+        </div>
+      </div>
+
     </div>
   </section>
   <section class="section">
@@ -1360,60 +1443,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="sec__title">The instruments open on the same account.</h2>
         <p class="lede">Finding the work is only half the job. The four instruments are the surfaces where you do it: create the content, plan and track it, check technical health and page speed, and report on what changed.</p>
         <p class="lede">They use the same account data as everything else in Searchscope, so you don&rsquo;t have to set the site up again in another tool.</p>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="sec__head reveal">
-        <span class="eyebrow">The four areas</span>
-        <h2 class="sec__title">Four places to look.</h2>
-
-      </div>      <div class="cols2">
-        <article class="ucard reveal">
-          <p class="ucard__k">Category 01</p>
-          <h3 class="ucard__t">Workspace Analyzers</h3>
-          <p class="ucard__d">Seven analyzers over the crawl and your search data: Cannibalization, Content Decay, Opportunities, Cluster Volatility, Index Bloat, Internal Links and Schema.</p>
-          <p class="ucard__d" style="margin-top:var(--space-s)">
-            <a href="/platform/analyzers/" class="btn btn--sm btn--ghost">
-              Explore Analyzers
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:80ms">
-          <p class="ucard__k">Category 02</p>
-          <h3 class="ucard__t">Search Intelligence</h3>
-          <p class="ucard__d">Your performance beside competitor visibility and changing demand, with the Strategic Advisor using the same data.</p>
-          <p class="ucard__d" style="margin-top:var(--space-s)">
-            <a href="/platform/search-intelligence/" class="btn btn--sm btn--ghost">
-              Explore Search Intelligence
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:160ms">
-          <p class="ucard__k">Category 03</p>
-          <h3 class="ucard__t">AI and Brand Intelligence</h3>
-          <p class="ucard__d">What six assistants say about you every week, who they recommend instead, and which sources they cite.</p>
-          <p class="ucard__d" style="margin-top:var(--space-s)">
-            <a href="/platform/ai-brand-intelligence/" class="btn btn--sm btn--ghost">
-              Explore AI and Brand Intelligence
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-        </article>
-        <article class="ucard reveal" style="--reveal-delay:240ms">
-          <p class="ucard__k">Category 04</p>
-          <h3 class="ucard__t">Instruments</h3>
-          <p class="ucard__d">The four working surfaces: Content Studio, Content Planner, Page Experience and Reporting.</p>
-          <p class="ucard__d" style="margin-top:var(--space-s)">
-            <a href="/platform/instruments/" class="btn btn--sm btn--ghost">
-              Explore Instruments
-              <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-            </a>
-          </p>
-        </article>
       </div>
     </div>
   </section>
@@ -1635,6 +1664,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   .mockstep--done i { background:var(--ink); border-color:var(--ink); }
   .mockstep--now i { background:var(--sev-rose-ink); border-color:var(--sev-rose-ink); }
+  .mockstep--off i { background:var(--surface); border-color:var(--hairline); }
+  .mockstep--off b { color:var(--ink-dim); font-weight:400; }
+  /* A settings row: what it is on the left, the choices on the right. */
+  .mockset { display:grid; grid-template-columns:auto 1fr; gap:.4rem .9rem;
+    align-items:center; padding:.5rem 0; border-top:1px solid var(--hairline); }
+  .mockset:first-of-type { border-top:0; }
+  .mockset > b { font-size:var(--step--2); font-weight:500; color:var(--ink);
+    white-space:nowrap; }
+  .mockset .mockchips { padding:0; justify-content:flex-end; flex-wrap:wrap; }
+  .mockset > em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); text-align:right; }
+  @media (max-width: 560px) {
+    .mockset { grid-template-columns:1fr; }
+    .mockset .mockchips { justify-content:flex-start; }
+    .mockset > em { text-align:left; }
+  }
+  /* ---- one height for every hero mock -----------------------------------
+     Added 2026-09-09. The mocks were built one page at a time and came out
+     between 218px and 440px tall, so clicking between two platform pages
+     moved the whole page under the reader. The shortest ones were given more
+     to say first, which is the better half of the fix; this closes what's
+     left.
+
+     Desktop only. Below the collapse point the panes stack, and a floor
+     there would only add space under a mock that is already tall. */
+  @media (min-width: 1001px) {
+    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    .mockwin--hero .mockcols { flex:1 1 auto; }
+  }
   </style>
   <script>
     (function () {

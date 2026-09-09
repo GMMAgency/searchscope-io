@@ -657,14 +657,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div>
 <div class="mocknav">
             <p class="mocknav__g mockrow" style="--i:0">Dashboard<span></span></p>
-            <p class="mocknav__g mockrow" style="--i:1">Workspaces<span>7</span></p>
-            <p class="mocknav__g mockrow" style="--i:2">Search Intelligence<span>4</span></p>
-            <p class="mocknav__g mockrow" style="--i:3">AI &amp; Brand Intelligence<span>7</span></p>
-            <p class="mocknav__g mocknav__g--on mockrow" style="--i:4">Instruments<span>4</span></p>
-            <p class="mocknav__i mocknav__i--on mockrow" style="--i:5">Content Studio</p>
-            <p class="mocknav__i mocknav__i--on mockrow" style="--i:6">Content Planner</p>
-            <p class="mocknav__i mocknav__i--on mockrow" style="--i:7">Page Experience</p>
-            <p class="mocknav__i mocknav__i--on mockrow" style="--i:8">Reporting</p>
+            <p class="mocknav__g mockrow" style="--i:1">Foundation<span>2</span></p>
+            <p class="mocknav__g mockrow" style="--i:2">Workspaces<span>7</span></p>
+            <p class="mocknav__g mockrow" style="--i:3">Search Intelligence<span>4</span></p>
+            <p class="mocknav__g mockrow" style="--i:4">AI &amp; Brand Intelligence<span>7</span></p>
+            <p class="mocknav__g mocknav__g--on mockrow" style="--i:5">Instruments<span>4</span></p>
+            <p class="mocknav__i mocknav__i--on mockrow" style="--i:6">Content Studio</p>
+            <p class="mocknav__i mocknav__i--on mockrow" style="--i:7">Content Planner</p>
+            <p class="mocknav__i mocknav__i--on mockrow" style="--i:8">Page Experience</p>
+            <p class="mocknav__i mocknav__i--on mockrow" style="--i:9">Reporting</p>
             </div>
             </div>
             <div>
@@ -997,6 +998,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   .mockstep--done i { background:var(--ink); border-color:var(--ink); }
   .mockstep--now i { background:var(--sev-rose-ink); border-color:var(--sev-rose-ink); }
+  .mockstep--off i { background:var(--surface); border-color:var(--hairline); }
+  .mockstep--off b { color:var(--ink-dim); font-weight:400; }
+  /* A settings row: what it is on the left, the choices on the right. */
+  .mockset { display:grid; grid-template-columns:auto 1fr; gap:.4rem .9rem;
+    align-items:center; padding:.5rem 0; border-top:1px solid var(--hairline); }
+  .mockset:first-of-type { border-top:0; }
+  .mockset > b { font-size:var(--step--2); font-weight:500; color:var(--ink);
+    white-space:nowrap; }
+  .mockset .mockchips { padding:0; justify-content:flex-end; flex-wrap:wrap; }
+  .mockset > em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); text-align:right; }
+  @media (max-width: 560px) {
+    .mockset { grid-template-columns:1fr; }
+    .mockset .mockchips { justify-content:flex-start; }
+    .mockset > em { text-align:left; }
+  }
+  /* ---- one height for every hero mock -----------------------------------
+     Added 2026-09-09. The mocks were built one page at a time and came out
+     between 218px and 440px tall, so clicking between two platform pages
+     moved the whole page under the reader. The shortest ones were given more
+     to say first, which is the better half of the fix; this closes what's
+     left.
+
+     Desktop only. Below the collapse point the panes stack, and a floor
+     there would only add space under a mock that is already tall. */
+  @media (min-width: 1001px) {
+    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    .mockwin--hero .mockcols { flex:1 1 auto; }
+  }
   </style>
   <script>
     (function () {

@@ -1640,6 +1640,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .mockstats { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .mockstats > p:nth-child(3) { display:none; }
     .mockled__n em { min-width:2.6rem; }
+    /* The app truncates these in its narrow rail, and copying that here cut
+       a cannibalization row's chip and both page paths down to about a third
+       on a 390px screen. On a page someone is reading rather than working
+       in, two lines beats an ellipsis. */
+    .mockled__m b, .mockled__m u { white-space:normal; overflow:visible;
+      text-overflow:clip; }
   }
   </style>
   <script>

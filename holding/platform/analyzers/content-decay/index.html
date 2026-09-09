@@ -1243,7 +1243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mockled mockled--high mockrow" style="--i:5"><i></i><span class="mockled__m"><b>Best Tents for Winter</b><u><span class="mocktag">Ranking Decline</span>/guides/winter-tents</u></span><span class="mockled__n"><em class="dn">-6,900</em><em class="dn">-180</em><em class="dn">+5.1</em></span></div>
             <div class="mockled mockrow" style="--i:6"><i></i><span class="mockled__m"><b>Stove Fuel Explained</b><u><span class="mocktag">Visibility Decline</span>/guides/fuel-types</u></span><span class="mockled__n"><em class="dn">-3,200</em><em class="dn">-95</em><em class="dn">+1.8</em></span></div>
             <div class="mockled mockled--low mockrow" style="--i:7"><i></i><span class="mockled__m"><b>What to Pack</b><u><span class="mocktag">Seasonal dip</span>/blog/what-to-pack</u></span><span class="mockled__n"><em class="dn">-1,100</em><em class="dn">-40</em><em>+0.6</em></span></div>
-          <p class="mockfoot mockrow" style="--i:8">12 pages &middot; window: last 30 days vs the 30 before &middot; pages that dropped out of search pin to the top</p>
+          <p class="mockfoot mockrow" style="--i:8">12 of 48 pages &middot; last 30 days vs the 30 before</p>
         </div>
         </div>
       </div>
@@ -1660,6 +1660,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .mockstats { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .mockstats > p:nth-child(3) { display:none; }
     .mockled__n em { min-width:2.6rem; }
+    /* The app truncates these in its narrow rail, and copying that here cut
+       a cannibalization row's chip and both page paths down to about a third
+       on a 390px screen. On a page someone is reading rather than working
+       in, two lines beats an ellipsis. */
+    .mockled__m b, .mockled__m u { white-space:normal; overflow:visible;
+      text-overflow:clip; }
   }
   </style>
   <script>

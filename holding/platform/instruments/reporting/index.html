@@ -660,6 +660,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mockstep mockstep--now mockrow" style="--i:1"><i></i><b>Write each section</b><em>6 of 10</em></p>
             <p class="mockstep  mockrow" style="--i:2"><i></i><b>Title and executive summary</b><em>waiting</em></p>
             <p class="mocknote mockrow" style="--i:3">10 sections &middot; about a minute</p>
+            <p class="mockpane__h" style="margin-top:1.1rem">WRITTEN FOR</p>
+            <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:4">Your client</span><span class="mockchip mockrow" style="--i:5">Executives</span><span class="mockchip mockrow" style="--i:6">Marketing</span><span class="mockchip mockrow" style="--i:7">Technical</span></div>
             </div>
             <div>
 <p class="mockpaper__m mockrow" style="--i:1">Northwood Outdoors &middot; Aug 12 to Sep 8</p>
@@ -668,8 +670,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mocksrc mockrow" style="--i:4"><b>Search Performance</b><em class="mockrow" style="--i:10">written</em></p>
             <p class="mocksrc mockrow" style="--i:5"><b>Top Wins</b><em class="mockrow" style="--i:11">written</em></p>
             <p class="mocksrc mockrow" style="--i:6"><b>Top Risks</b><em>writing now</em></p>
-            <p class="mocksrc mockrow" style="--i:7"><b>Demand &amp; Trends</b><em>queued</em></p>
-            <p class="mocksrc mockrow" style="--i:8"><b>30-Day Action Plan</b><em>queued</em></p>
+            <p class="mocksrc mockrow" style="--i:7"><b>Workspace Highlights</b><em>queued</em></p>
+            <p class="mocksrc mockrow" style="--i:8"><b>Demand &amp; Trends</b><em>queued</em></p>
+            <p class="mocksrc mockrow" style="--i:9"><b>Competitive Landscape</b><em>queued</em></p>
+            <p class="mocksrc mockrow" style="--i:10"><b>30-Day Action Plan</b><em>queued</em></p>
             </div>
           </div>
         </div>
@@ -1003,6 +1007,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   .mockstep--done i { background:var(--ink); border-color:var(--ink); }
   .mockstep--now i { background:var(--sev-rose-ink); border-color:var(--sev-rose-ink); }
+  .mockstep--off i { background:var(--surface); border-color:var(--hairline); }
+  .mockstep--off b { color:var(--ink-dim); font-weight:400; }
+  /* A settings row: what it is on the left, the choices on the right. */
+  .mockset { display:grid; grid-template-columns:auto 1fr; gap:.4rem .9rem;
+    align-items:center; padding:.5rem 0; border-top:1px solid var(--hairline); }
+  .mockset:first-of-type { border-top:0; }
+  .mockset > b { font-size:var(--step--2); font-weight:500; color:var(--ink);
+    white-space:nowrap; }
+  .mockset .mockchips { padding:0; justify-content:flex-end; flex-wrap:wrap; }
+  .mockset > em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); text-align:right; }
+  @media (max-width: 560px) {
+    .mockset { grid-template-columns:1fr; }
+    .mockset .mockchips { justify-content:flex-start; }
+    .mockset > em { text-align:left; }
+  }
+  /* ---- one height for every hero mock -----------------------------------
+     Added 2026-09-09. The mocks were built one page at a time and came out
+     between 218px and 440px tall, so clicking between two platform pages
+     moved the whole page under the reader. The shortest ones were given more
+     to say first, which is the better half of the fix; this closes what's
+     left.
+
+     Desktop only. Below the collapse point the panes stack, and a floor
+     there would only add space under a mock that is already tall. */
+  @media (min-width: 1001px) {
+    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    .mockwin--hero .mockcols { flex:1 1 auto; }
+  }
   </style>
   <script>
     (function () {
