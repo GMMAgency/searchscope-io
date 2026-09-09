@@ -311,7 +311,7 @@ html, body { overflow-x: hidden; }
   font-size: var(--step--1);
   line-height: 1.45;
   color: var(--muted);
-  margin: 0 0 var(--space-2xs);
+  margin: var(--space-s) 0 var(--space-2xs);
   padding-left: 0.72rem;
   border-left: 2px solid var(--hairline);
 }
@@ -982,7 +982,7 @@ html, body { overflow-x: hidden; }
     @media (max-width: 460px) { .hpk { grid-template-columns: 1fr; } }
 
     /* 03 · the three pillars */
-    .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    .pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
                gap: var(--space-l); margin: var(--space-xl) 0 0; }
     .pillar { border: 1px solid var(--hairline); border-radius: var(--radius-m);
               background: var(--surface-panel); padding: var(--space-l); display: flex;
@@ -1002,6 +1002,7 @@ html, body { overflow-x: hidden; }
                   color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hairline);
                   padding-bottom: 2px; align-self: flex-start; transition: border-color var(--dur-fast) var(--ease-out); }
     .pillar__go:hover { border-bottom-color: var(--ink); }
+    .instruments__go { margin: var(--space-xl) 0 0; }
     @media (max-width: 1000px) { .pillars { grid-template-columns: 1fr; } }
 
     /* 04 · what it finds */
@@ -1464,18 +1465,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- ============ 08 · FROM INSIGHT TO ACTION ============ -->
-  <section class="section">
+  <section class="section" id="instruments">
     <div class="container">
       <div class="strip__head reveal">
-        <span class="eyebrow">From insight to action</span>
-        <h2 class="strip__title">Turn findings into work.</h2>
+        <span class="eyebrow">Instruments</span>
+        <h2 class="strip__title">Find the work. Then do it in the same platform.</h2>
+        <p class="strip__sub">Don&rsquo;t turn a prioritized finding into another tab, spreadsheet or disconnected workflow. Searchscope instruments use the same account data to help you create content, plan the work, check page health and build reports.</p>
       </div>
       <ul class="anat anat--four reveal">
-        <li><b>Strategic Advisor</b><span>Analyze why something changed and whether it should be prioritized against the rest of your queue.</span></li>
-        <li><b>Content Studio</b><span>Create a brief using the queries, competitors and evidence behind the finding.</span></li>
-        <li><b>Impact Tracker</b><span>Mark the change as applied and record a baseline from that date.</span></li>
-        <li><b>Reporting</b><span>Scheduled reports built from the same underlying data.</span></li>
+        <li><b>Content Studio</b><span>Turn a page, keyword or finding into a content brief or draft, with the relevant pages, competitors and evidence already available.</span></li>
+        <li><b>Content Planner</b><span>Plan SEO and PR content, track each piece through the workflow and keep the work connected to Content Studio.</span></li>
+        <li><b>Page Experience</b><span>Check technical health, index coverage, page speed and Core Web Vitals using your crawl and Google&rsquo;s own data.</span></li>
+        <li><b>Reporting</b><span>Build reports from the same account data and performance history, then export them for the people who need them.</span></li>
       </ul>
+      <p class="instruments__go reveal">
+        <a class="pillar__go" href="/platform/instruments/">Explore Instruments <span aria-hidden="true">&#8594;</span></a>
+      </p>
     </div>
   </section>
 
