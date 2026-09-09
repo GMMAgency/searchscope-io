@@ -317,7 +317,7 @@ html, body { overflow-x: hidden; }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.02fr 0.98fr;
+  grid-template-columns: 0.825fr 1.175fr;
   align-items: center;
   gap: clamp(2rem, 5vw, 4.5rem);
 }
@@ -731,7 +731,7 @@ html, body { overflow-x: hidden; }
     @media (max-width: 560px) { .engrid { grid-template-columns: repeat(2, 1fr); } }
 
     /* ---- analyzer child page ---- */
-    .hero .hero__grid { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+    .hero .hero__grid { grid-template-columns: 0.855fr 1.145fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }
     .hero__shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border: 1px solid var(--hairline); border-radius: var(--radius-m); box-shadow: var(--shadow-m); background: var(--surface-panel); }
     .crumb { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); margin: 0 0 var(--space-s); }
     .crumb a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
@@ -1217,9 +1217,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hero__visual reveal" style="--reveal-delay:170ms">
-        <img class="hero__shot" src="/brand/analyzers/opportunities.webp"
-             alt="The Opportunities workspace in Searchscope, showing striking distance queries and quick stats"
-             width="1400" height="877" loading="eager" decoding="async">
+        <div class="ticked">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span>
+            <span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span>
+            <span class="ticks__c ticks__bl"></span>
+          </span>
+        <div class="appwin mockwin mockwin--hero">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Opportunities &middot; northwoodoutdoors.com</span>
+          </div>
+          <div class="mockstats">
+            <p class="mockrow" style="--i:0"><span>Clicks within reach</span><b>+2,180</b><em>est. if these are taken</em></p>
+            <p class="mockrow" style="--i:1"><span>Opportunities</span><b>64</b><em>of 1,204 pages</em></p>
+            <p class="mockrow" style="--i:2"><span>Avg position</span><b>12.4</b><em>across the queue</em></p>
+          </div>
+            <div class="mockled mockled--h mockrow" style="--i:3"><i></i><span class="mockled__m"><b>Opportunity</b></span><span class="mockled__n"><em>Pos</em><em>Impr</em><em>Est. clicks</em></span></div>
+            <div class="mockled mockled--crit mockrow" style="--i:4"><i></i><span class="mockled__m"><b>Ultralight camping stove guide</b><u><span class="mocktag">Striking Distance</span>/blog/camping-stove-guide</u></span><span class="mockled__n"><em>12.4</em><em>1.2K</em><em class="up">+340</em></span></div>
+            <div class="mockled mockled--high mockrow" style="--i:5"><i></i><span class="mockled__m"><b>How much fuel for a weekend</b><u><span class="mocktag">Content Gap</span>/guides/fuel-planning</u></span><span class="mockled__n"><em>14.8</em><em>980</em><em class="up">+210</em></span></div>
+            <div class="mockled mockrow" style="--i:6"><i></i><span class="mockled__m"><b>Canister vs liquid stoves</b><u><span class="mocktag">Search Appearance</span>/compare/canister-liquid</u></span><span class="mockled__n"><em>8.2</em><em>3.4K</em><em class="up">+180</em></span></div>
+            <div class="mockled mockled--low mockrow" style="--i:7"><i></i><span class="mockled__m"><b>Camping stove reviews</b><u><span class="mocktag">Low CTR</span>/reviews/stoves</u></span><span class="mockled__n"><em>6.1</em><em>5.1K</em><em class="up">+95</em></span></div>
+          <p class="mockfoot mockrow" style="--i:8">24 of 64 opportunities &middot; positions 4 to 20 over the last 28 days</p>
+        </div>
+        </div>
       </div>
       </div>
     </div>
@@ -1354,6 +1376,284 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </section>
+  <style>
+  /* ---- the plan sheet, and the stage ladder beside it -------------------
+     Both reuse .mockwin so they arm and animate on the same observer. */
+  .mocktable { width:100%; border-collapse:collapse; font-size:var(--step--2); }
+  .mocktable th { text-align:left; font-family:var(--font-mono); font-weight:400;
+    font-size:var(--step--2); color:var(--ink-faint); letter-spacing:.04em;
+    padding:.35rem .55rem; border-bottom:1px solid var(--hairline); }
+  .mocktable td { padding:.42rem .55rem; border-bottom:1px solid var(--hairline);
+    color:var(--ink-dim); }
+  .mocktable tr:last-child td { border-bottom:0; }
+  .mocktable td:first-child { color:var(--ink); }
+  .mocktable .num { text-align:right; font-family:var(--font-mono); color:var(--ink-faint); }
+  .mockstage { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-dim); }
+  .mockstage--cited { color:var(--ink); }
+  .mockchips { display:flex; gap:.4rem; padding:.55rem .55rem 0; }
+  .mockchip { font-family:var(--font-mono); font-size:var(--step--2);
+    padding:.16rem .5rem; border:1px solid var(--hairline); border-radius:999px;
+    color:var(--ink-faint); }
+  .mockchip--on { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  /* The ladder sits beside a heading, so it takes the column it is given
+     rather than the width of the page.
+
+     Its max-width used to be on the .appwin. That shrank the window but not
+     the .ticked wrapper around it, and .ticks draws at inset -13px from the
+     WRAPPER, so the four corners floated a couple of hundred pixels away
+     from the box they were supposed to be framing. Any width limit on a
+     mock belongs on the frame, not on the window inside it. */
+  .mockladder .awbody { padding:.85rem .9rem; }
+  .mockstep { display:grid; grid-template-columns:auto 1fr auto; align-items:baseline;
+    gap:.65rem; padding:.34rem 0; font-size:var(--step--2); color:var(--ink-dim); }
+  .mockstep + .mockstep { border-top:1px solid var(--hairline); }
+  .mockstep i { align-self:center; width:7px; height:7px; border-radius:50%;
+    background:var(--surface-panel-2); border:1px solid var(--hairline); }
+  .mockstep--auto i { background:var(--ink-faint); border-color:var(--ink-faint); }
+  .mockstep--you i { background:var(--ink); border-color:var(--ink); }
+  .mockstep b { font-weight:500; color:var(--ink); }
+  .mockstep s { text-decoration:none; color:var(--ink-dim); }
+  .mockstep em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); white-space:nowrap; }
+  @media (max-width: 560px) {
+    .mockstep { grid-template-columns:auto 1fr; }
+    .mockstep em { grid-column:2; }
+  }
+  /* A mock that follows body content needs room for its own corner marks,
+     which are drawn 13px outside the frame. Without this the Content Studio
+     window sat hard against the cards above it. */
+  .mockframe { margin-top:var(--space-xl); }
+  /* ---- the product mock -------------------------------------------------
+     A three-pane Content Studio session, built on the site's existing .appwin
+     window chrome. The panes match the real app: chat left, document middle,
+     session context right. Staged entrance, one pass, keyed off .is-in like
+     everything else, so it needs no JavaScript of its own. */
+  /* 13 rows, so the step sets how long the whole thing takes. 380ms ran for
+     five seconds, which is a long time to have something moving beside text
+     someone is trying to read. 170ms finishes in about two and a half. */
+  .mockwin { --mock-step: 170ms; }
+  .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); letter-spacing:.02em; }
+  .mockpanes { display:grid; grid-template-columns:25fr 46fr 29fr; }
+  .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
+  .mockpane:first-child { border-left:0; }
+  .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:0 0 .55rem; letter-spacing:.04em; }
+  /* Every animated row uses the same stagger, so the three panes fill in the
+     order a real session does: context first, then the chat, then the draft. */
+  /* The rows are visible by default and only hidden once JavaScript arms
+     them. That way no JavaScript, or a script that fails, leaves a finished
+     mock rather than an empty frame, and no <noscript> override is needed.
+
+     They deliberately do NOT key off .reveal. The shell's observer carries a
+     2.6 second failsafe that reveals everything on the page whether or not it
+     is on screen, which is right for text and wrong for this: the mock sits
+     3,200px down, so the failsafe ran the whole animation before a reader
+     could possibly have scrolled to it, and they arrived at a still picture. */
+  .mockwin.is-armed .mockrow { opacity:0; transform:translateY(5px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(120ms + var(--i, 0) * var(--mock-step)); }
+  .mockwin.is-armed.is-shown .mockrow { opacity:1; transform:none; }
+  .mockmsg { font-size:var(--step--2); line-height:1.5; margin:0 0 .45rem;
+    padding:.4rem .55rem; border-radius:var(--radius-s);
+    background:var(--surface-panel-2); color:var(--ink-dim); }
+  .mockmsg--you { background:var(--ink); color:var(--surface); }
+  .mockdoc { font-size:var(--step--2); line-height:1.55; margin:0 0 .3rem; color:var(--ink-dim); }
+  .mockdoc b { color:var(--ink); font-weight:600; }
+  /* The writing bar stands in for a line of the draft still being written. */
+  .mockbar { display:block; height:6px; border-radius:3px;
+    background:var(--surface-panel-2); margin:.42rem 0; }
+  .mocksrc { display:flex; justify-content:space-between; gap:.5rem;
+    font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); margin:0 0 .3rem; }
+  .mocksrc em { font-style:normal; color:var(--ink-faint); }
+  .mocksrc b { font-weight:500; color:var(--ink); }
+  /* Three panes need real width. At 768px the chat column came out at 177px,
+     which is narrower than the messages in it. Collapse at the same 1000px
+     breakpoint the pillar cards use. */
+  @media (max-width: 1000px) {
+    .mockpanes { grid-template-columns:1fr; }
+    .mockpane { border-left:0; border-top:1px solid var(--hairline); }
+    .mockpane:first-child { border-top:0; }
+  }
+
+  /* ---- the hero mocks ---------------------------------------------------
+     One at the top of each instrument page and of the hub, replacing the
+     mono snippet that used to sit there. DESIGN.md rule 2: the main visual
+     on a page is animated.
+
+     A hero is on screen at load, so it starts immediately and has to be
+     finished before anybody has read the first paragraph. 130ms a row rather
+     than 170, and no mock here runs past about a second and a half. */
+  .mockwin--hero { --mock-step: 130ms; }
+  /* Two panes, split per page with --mock-split. Same collapse point as the
+     three-pane session mock, for the same reason: below it the narrow pane is
+     thinner than the text inside it. */
+  .mockcols { display:grid; grid-template-columns:var(--mock-split, 40fr 60fr); }
+  .mockcols > div { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
+  .mockcols > div:first-child { border-left:0; }
+  @media (max-width: 1000px) {
+    .mockcols { grid-template-columns:1fr; }
+    .mockcols > div { border-left:0; border-top:1px solid var(--hairline); }
+    .mockcols > div:first-child { border-top:0; }
+  }
+  /* The app's own left navigation, for the hub. The grouping is the argument
+     the page is making, so it is the app's real one: the analyzers sit under
+     Workspaces, and Instruments is its own group below them. */
+  .mocknav { font-family:var(--font-mono); font-size:var(--step--2); }
+  .mocknav__g { display:flex; justify-content:space-between; gap:.5rem;
+    margin:.5rem 0 .2rem; color:var(--ink-faint); }
+  .mocknav__g:first-child { margin-top:0; }
+  .mocknav__g--on { color:var(--ink); }
+  .mocknav__i { margin:0; padding:.16rem 0 .16rem .55rem;
+    border-left:1px solid var(--hairline); color:var(--ink-dim); }
+  .mocknav__i--on { border-left-color:var(--ink); color:var(--ink); }
+  /* A labelled input, for the Content Studio session setup. */
+  .mockfield { display:flex; justify-content:space-between; gap:.5rem;
+    border:1px solid var(--hairline); border-radius:var(--radius-s);
+    padding:.34rem .5rem; margin:.5rem 0 0; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); }
+  .mockfield span { white-space:nowrap; }
+  .mockfield em { font-style:normal; color:var(--ink); overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap; }
+  .mockchips--tight { padding:.5rem 0 0; flex-wrap:wrap; }
+  .mocknote { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); line-height:1.5; margin:.7rem 0 0; }
+  /* The Page Experience rail: a score ring, then the check register. */
+  .mockdial { display:flex; align-items:center; gap:.6rem; margin:0 0 .7rem; }
+  .mockdial i { flex:none; width:46px; height:46px; border-radius:50%;
+    display:grid; place-items:center;
+    background:conic-gradient(var(--ink) 0 62%, var(--surface-panel-2) 62% 100%); }
+  .mockdial i b { font-style:normal; width:34px; height:34px; border-radius:50%; background:var(--surface);
+    display:grid; place-items:center; font-family:var(--font-display);
+    font-size:var(--step-0); color:var(--ink); }
+  .mockdial p { margin:0; font-size:var(--step--2); color:var(--ink-faint); }
+  .mockdial p b { display:block; color:var(--ink); font-weight:500; }
+  .mockledg { display:grid; grid-template-columns:1fr auto auto; gap:.55rem;
+    padding:.28rem 0; font-size:var(--step--2); color:var(--ink-dim);
+    border-top:1px solid var(--hairline); }
+  .mockledg b { font-weight:400; }
+  .mockledg span { font-family:var(--font-mono); color:var(--ink-faint); text-align:right;
+    min-width:1.6rem; }
+  .mockledg--h { border-top:0; color:var(--ink-faint); font-family:var(--font-mono);
+    letter-spacing:.04em; }
+  /* A finding: title and traffic on one line, the page and who fixes it on
+     the next, which is how the app stacks them in a narrow work area. */
+  .mockfind { display:grid; grid-template-columns:auto 1fr auto; gap:.1rem .5rem;
+    align-items:baseline; padding:.5rem 0; border-top:1px solid var(--hairline);
+    font-size:var(--step--2); }
+  .mockfind i { grid-row:1; align-self:center; width:7px; height:7px; border-radius:50%;
+    background:var(--sev-rose-ink); }
+  .mockfind--rev i { background:var(--surface-panel-2); border:1px solid var(--hairline); }
+  .mockfind b { grid-row:1; color:var(--ink); font-weight:500; }
+  .mockfind em { grid-row:1; font-style:normal; font-family:var(--font-mono);
+    color:var(--sev-rose-ink); white-space:nowrap; }
+  .mockfind--rev em { color:var(--ink-faint); }
+  .mockfind s { grid-row:2; grid-column:2; text-decoration:none;
+    font-family:var(--font-mono); color:var(--ink-faint);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mockfind u { grid-row:2; grid-column:3; text-decoration:none;
+    font-family:var(--font-mono); color:var(--ink-faint); white-space:nowrap; }
+  /* The report taking shape beside the composer. */
+  .mockpaper__m { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:0 0 .15rem; }
+  .mockpaper__t { font-family:var(--font-display); font-size:var(--step-0);
+    color:var(--ink); margin:0 0 .6rem; }
+  .mockwin--hero .mockstep i { align-self:start; margin-top:.5em; }
+  /* The ladder drops its right-hand column on a phone because its middle
+     column is a sentence. A hero checklist's rows are short enough to keep
+     the status beside them, and dropping it doubled the mock's height. */
+  @media (max-width: 560px) {
+    .mockwin--hero .mockstep { grid-template-columns:auto 1fr auto; }
+    .mockwin--hero .mockstep em { grid-column:auto; }
+  }
+  .mockstep--done i { background:var(--ink); border-color:var(--ink); }
+  .mockstep--now i { background:var(--sev-rose-ink); border-color:var(--sev-rose-ink); }
+  </style>
+  <style>
+  /* ---- the analyzer workspace mock --------------------------------------
+     One component, seven sets of content, because the seven workspaces
+     really do share a shell in the app: stat tiles, then a ledger of rows.
+     Added 2026-09-09, replacing seven static screenshots. */
+  .mockstats { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr));
+    border-bottom:1px solid var(--hairline); }
+  .mockstats > p { margin:0; padding:.6rem .7rem; border-left:1px solid var(--hairline);
+    min-width:0; }
+  .mockstats > p:first-child { border-left:0; background:var(--ink); }
+  .mockstats span { display:block; font-family:var(--font-mono); font-size:var(--step--2);
+    letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mockstats b { display:block; font-family:var(--font-display); font-size:var(--step-1);
+    color:var(--ink); line-height:1.25; }
+  .mockstats em { display:block; font-style:normal; font-size:var(--step--2);
+    color:var(--ink-faint); line-height:1.35; }
+  .mockstats > p:first-child span,
+  .mockstats > p:first-child b,
+  .mockstats > p:first-child em { color:var(--surface); }
+  .mockstats > p:first-child span,
+  .mockstats > p:first-child em { opacity:.7; }
+  /* A ledger row: dot, title over path, numbers right. The app right-aligns
+     its numeric cells at fixed widths, so the header labels and the values
+     share a minimum width here and line up the same way. */
+  .mockled { display:grid; grid-template-columns:9px minmax(0, 1fr) auto;
+    gap:.55rem; align-items:center; padding:.5rem .7rem;
+    border-top:1px solid var(--hairline); }
+  .mockled:first-of-type { border-top:0; }
+  .mockled i { width:7px; height:7px; border-radius:50%; background:var(--ink-faint); }
+  .mockled--crit i { background:var(--sev-rose-ink); }
+  .mockled--high i { background:var(--sev-amber-ink); }
+  .mockled--low i { background:var(--surface-panel-2); border:1px solid var(--hairline); }
+  .mockled__m { min-width:0; }
+  .mockled__m b { display:block; font-size:var(--step--2); font-weight:500; color:var(--ink);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mockled__m b s { text-decoration:none; color:var(--ink-faint); }
+  .mockled__m u { display:block; text-decoration:none; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mockled__n { display:grid; grid-auto-flow:column; gap:.7rem; text-align:right; }
+  .mockled__n em { font-style:normal; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-dim); min-width:3.1rem;
+    white-space:nowrap; }
+  .mockled__n em.dn { color:var(--sev-rose-ink); }
+  .mockled__n em.up { color:var(--sev-emerald-ink); }
+  .mockled--h { padding-top:.45rem; padding-bottom:.45rem;
+    background:var(--surface-panel); }
+  .mockled--h .mockled__m b,
+  .mockled--h .mockled__n em { font-family:var(--font-mono); font-weight:400;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); }
+  .mocktag { display:inline-block; font-family:var(--font-mono);
+    font-size:var(--step--2); line-height:1.4; padding:0 .4em; margin-right:.35rem;
+    border:1px solid var(--hairline); border-radius:var(--radius-s);
+    color:var(--ink-dim); white-space:nowrap; }
+  .mockfoot { margin:0; padding:.5rem .7rem; border-top:1px solid var(--hairline);
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint);
+    line-height:1.45; }
+  /* Below the hero's own breakpoint the window is full width, so the third
+     stat tile has room; under 560 it doesn't, and two read better than three
+     squeezed. The numbers keep their columns either way. */
+  @media (max-width: 560px) {
+    .mockstats { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .mockstats > p:nth-child(3) { display:none; }
+    .mockled__n em { min-width:2.6rem; }
+  }
+  </style>
+  <script>
+    (function () {
+      var wins = document.querySelectorAll('.mockwin');
+      if (!wins.length || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-shown'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.3 });
+      Array.prototype.forEach.call(wins, function (w) {
+        w.classList.add('is-armed');
+        io.observe(w);
+      });
+    })();
+  </script>
 </main>
 
 <div class="stickycta">
