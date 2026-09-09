@@ -236,7 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
   mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
-}.reveal{
+}.ticked{ position: relative; }.ticks{
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink) 30%, transparent);
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -430,7 +435,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 0;
         box-shadow: none;
       }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-</head>
+<style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -564,9 +583,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <p class="crumb"><a href="/platform/instruments/">Instruments</a> &middot; Reporting</p>
         <h1 class="hero__title reveal">
-          The month, written up. Not just charted.
+          Every report comes with the commentary already written.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">A report full of charts still leaves somebody to explain what actually happened, and that&rsquo;s usually an account manager on a Friday afternoon.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">A report full of charts still leaves somebody to explain what actually happened, and that&rsquo;s usually the account manager.</p>
         <p class="lede reveal" style="--reveal-delay:140ms"><b>Reporting assembles the period&rsquo;s data with no AI involved, then writes the narrative for each section in the tone you pick.</b> The numbers are computed. Only the words are written.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
@@ -576,15 +595,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
-      <div class="snip reveal">
-        <span>report</span>&nbsp;&nbsp;for your client<br>
-        <span>period</span>&nbsp;&nbsp;28 days, vs the 28 before<br>
-        <br>
-        &nbsp;&nbsp;<span>01</span>&nbsp;&nbsp;collect the data&nbsp;&nbsp;&nbsp;<em>no AI</em><br>
-        &nbsp;&nbsp;<span>02</span>&nbsp;&nbsp;write each section&nbsp;&nbsp;6 of 10<br>
-        &nbsp;&nbsp;<span>03</span>&nbsp;&nbsp;summary and plan<br>
-        <br>
-        &nbsp;&nbsp;<span>export</span>&nbsp;&nbsp;pdf&nbsp;&middot;&nbsp;word&nbsp;&middot;&nbsp;slides&nbsp;&middot;&nbsp;xlsx
+      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>report</span>&nbsp;&nbsp;for your client</span>
+          <span class="snipline" style="--i:1"><span>period</span>&nbsp;&nbsp;28 days, vs the 28 before</span>
+          <span class="snipline" style="--i:2">&nbsp;</span>
+          <span class="snipline" style="--i:3">&nbsp;&nbsp;<span>01</span>&nbsp;&nbsp;collect the data&nbsp;&nbsp;&nbsp;<em>no AI</em></span>
+          <span class="snipline" style="--i:4">&nbsp;&nbsp;<span>02</span>&nbsp;&nbsp;write each section&nbsp;&nbsp;6 of 10</span>
+          <span class="snipline" style="--i:5">&nbsp;&nbsp;<span>03</span>&nbsp;&nbsp;summary and plan</span>
+          <span class="snipline" style="--i:6">&nbsp;</span>
+          <span class="snipline snipline--cursor" style="--i:7">&nbsp;&nbsp;<span>export</span>&nbsp;&nbsp;pdf&nbsp;&middot;&nbsp;word&nbsp;&middot;&nbsp;slides&nbsp;&middot;&nbsp;xlsx</span>
+        </div>
       </div>
       </div>
       </div>
@@ -595,22 +622,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">01 &middot; Compose it</span>
         <h2 class="sec__title">Choose who it&rsquo;s for, then what goes in.</h2>
-        <p class="lede">The audience sets the tone and a sensible default set of sections. Everything after that is a checkbox.</p>
+        <p class="lede">The audience sets the tone and preselects the sections that usually suit it. Everything after that is a checkbox.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Written for</h3>
-          <p class="ucard__d">Your client, executives, marketing or technical. The same numbers, explained at the level that audience reads at.</p>
+          <p class="ucard__d">Your client, executives, marketing or technical. Each audience gets the same numbers, with the explanation pitched at them.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
           <h3 class="ucard__t">Period and comparison</h3>
-          <p class="ucard__d">Seven, twenty-eight or ninety days, last month, or a custom range. Compare against the previous period or the same period last year.</p>
+          <p class="ucard__d">7, 28 or 90 days, last month, or a custom range. Compare against the previous period or the same period last year.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
           <h3 class="ucard__t">Ten sections</h3>
-          <p class="ucard__d">Search performance, top wins, top risks, workspace highlights, demand and trends, competitive landscape, AI and brand visibility, actions completed and a thirty-day plan. The executive summary is always in.</p>
+          <p class="ucard__d">Search performance, top wins, top risks, workspace highlights, demand and trends, competitive landscape, AI and brand visibility, actions completed and a 30-day plan. The executive summary is always in.</p>
         </article>
       </div>
     </div>
@@ -621,22 +648,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">02 &middot; How it's built</span>
         <h2 class="sec__title">Assembled first. Written second.</h2>
         <p class="lede">The order matters, and it&rsquo;s the reason the numbers in a Searchscope report can be checked. Data is gathered from Search Console, the analyzer workspaces, your tracked competitors, demand clusters, AI and brand visibility, and the changes you marked as applied. No model is involved in that step.</p>
-        <p class="lede">Only once the figures exist does the writing start: one pass per section, then one more that writes the title, the executive summary, the wins, the risks and the thirty-day plan. Every chart, table and percentage on the page was computed, not generated.</p>
+        <p class="lede">The writing only starts once the figures exist. There&rsquo;s one pass per section, then a final pass for the title, the executive summary, the wins, the risks and the 30-day plan. Every chart, table and percentage on the page was computed, not generated.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
-          <h3 class="ucard__t">It says when a section is empty</h3>
-          <p class="ucard__d">A section with no data behind it explains what&rsquo;s missing and what to run, rather than disappearing quietly or padding itself out.</p>
+          <h3 class="ucard__t">Empty sections are labeled</h3>
+          <p class="ucard__d">A section with no data behind it explains what&rsquo;s missing and what to run, rather than being dropped without explanation or filled with padding.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
-          <h3 class="ucard__t">It drops a comparison it can&rsquo;t make</h3>
+          <h3 class="ucard__t">Comparisons without enough history are dropped</h3>
           <p class="ucard__d">If Search Console history doesn&rsquo;t reach far enough back to cover the comparison window, the comparison is dropped rather than reported against a partial period.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">It fails rather than ships bare</h3>
-          <p class="ucard__d">If the writing can&rsquo;t be produced, the report is marked failed. A document of unexplained tables presented as finished is worse than no document.</p>
+          <h3 class="ucard__t">Nothing ships half-written</h3>
+          <p class="ucard__d">If the writing can&rsquo;t be produced, the report is marked failed. A document of unexplained tables, presented as finished, is worse than no report.</p>
         </article>
       </div>
     </div>
@@ -646,22 +673,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">03 &middot; Change it</span>
         <h2 class="sec__title">Rewrite the words without touching the numbers.</h2>
-        <p class="lede">A report written for a marketing manager rarely lands with a finance director. Switching the audience rewrites every narrative section in the new tone and leaves the data, tables and charts exactly as they were.</p>
+        <p class="lede">A report written for a marketing manager rarely works for a finance director. Switching the audience rewrites every narrative section in the new tone and leaves the data, tables and charts exactly as they were.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Section by section</h3>
-          <p class="ucard__d">Rewrite one section on its own, with an instruction if you have one. It works from the data already stored on the report, so nothing is re-queried and the figures can&rsquo;t move.</p>
+          <p class="ucard__d">Rewrite one section on its own, with an instruction if you have one. It works from the data already stored on the report, so nothing is queried again and the figures can&rsquo;t move.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
           <h3 class="ucard__t">Add what only you know</h3>
-          <p class="ucard__d">Notes for the context that isn&rsquo;t in any dataset: seasonality, a site migration, a change of priorities at the client.</p>
+          <p class="ucard__d">Add notes for the context that isn&rsquo;t in any dataset: seasonality, a site migration, a change of priorities at the client.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
           <h3 class="ucard__t">Hide what doesn&rsquo;t apply</h3>
-          <p class="ucard__d">A section can be hidden from the report and from every export, without regenerating anything.</p>
+          <p class="ucard__d">A section can be hidden from the report and from every export, without generating it again.</p>
         </article>
       </div>
     </div>
@@ -671,12 +698,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">04 &middot; Hand it over</span>
         <h2 class="sec__title">Four formats, from the same report.</h2>
-        <p class="lede">Nothing leaves Searchscope on its own from this page. You generate, you read it, and then you export it.</p>
+        <p class="lede">Searchscope doesn&rsquo;t send anything anywhere for you. You generate the report, read it, then export it.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">PDF</h3>
-          <p class="ucard__d">Typeset as an A4 document in the brand&rsquo;s own fonts, built on the server rather than printed from a browser.</p>
+          <p class="ucard__d">Typeset as an A4 document in Searchscope&rsquo;s own fonts, built on the server rather than printed from a browser.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>

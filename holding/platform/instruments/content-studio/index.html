@@ -236,7 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
   mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
-}.reveal{
+}.ticked{ position: relative; }.ticks{
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink) 30%, transparent);
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -430,7 +435,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 0;
         box-shadow: none;
       }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-</head>
+<style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -566,8 +585,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1 class="hero__title reveal">
           Briefs and drafts, written from your own account data.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">Most AI writing tools start from an empty prompt. They don&rsquo;t know your site, what you already rank for, or what your last audit found.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>A Content Studio session starts by reading the page you&rsquo;re improving, the pages currently ranking above it, and your open findings.</b> Then you work with it in a chat, with the document building alongside.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">Most AI writing tools start from an empty prompt. They have no access to your site, your rankings, or what your last audit found.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>A Content Studio session opens with the page you&rsquo;re improving, the pages currently ranking above it and your open findings already loaded.</b> Then you work through it in a chat with Searchscope, with the document building alongside.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -576,16 +595,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
-      <div class="snip reveal">
-        <span>session</span>&nbsp;&nbsp;improve a page&nbsp;&nbsp;&nbsp;&nbsp;<em>/guides/camping-stoves</em><br>
-        <br>
-        <span>reading</span>&nbsp;&nbsp;your page, live&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top 10 US results&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 competitor pages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 open findings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 internal link options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span><br>
-        <br>
-        &nbsp;&nbsp;<em>chat opens, brief in hand</em>
+      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>session</span>&nbsp;&nbsp;improve a page&nbsp;&nbsp;&nbsp;&nbsp;<em>/guides/camping-stoves</em></span>
+          <span class="snipline" style="--i:1">&nbsp;</span>
+          <span class="snipline" style="--i:2"><span>loaded</span>&nbsp;&nbsp;your page, live&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span></span>
+          <span class="snipline" style="--i:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top 10 US results&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span></span>
+          <span class="snipline" style="--i:4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 competitor pages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span></span>
+          <span class="snipline" style="--i:5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 open findings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span></span>
+          <span class="snipline" style="--i:6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 internal link options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>done</span></span>
+          <span class="snipline" style="--i:7">&nbsp;</span>
+          <span class="snipline snipline--cursor" style="--i:8">&nbsp;&nbsp;<em>chat opens, brief ready</em></span>
+        </div>
       </div>
       </div>
       </div>
@@ -601,28 +628,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal">
           <p class="ucard__k">Mode 01</p>
           <h3 class="ucard__t">Improve a page</h3>
-          <p class="ucard__d">Give it a URL. It reads that page, the findings against it, and the pages currently ranking above it for the target query.</p>
+          <p class="ucard__d">Paste in a URL. Searchscope pulls that page, the findings against it, and the pages currently ranking above it for the target query.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Mode 02</p>
           <h3 class="ucard__t">Write something new</h3>
-          <p class="ucard__d">Give it a topic or keywords. It checks what&rsquo;s already ranking before writing anything.</p>
+          <p class="ucard__d">Give it a topic or keywords. Searchscope checks what&rsquo;s already ranking before anything is written.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Mode 03</p>
           <h3 class="ucard__t">Start from a finding</h3>
-          <p class="ucard__d">Pick one of this week&rsquo;s open findings. The evidence behind it comes with you into the session.</p>
+          <p class="ucard__d">Pick one of this week&rsquo;s open findings. The evidence behind it is loaded into the session with it.</p>
         </article>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Mode 04</p>
           <h3 class="ucard__t">Blank canvas</h3>
-          <p class="ucard__d">Skip the setup and open the chat. Your business context is already loaded.</p>
+          <p class="ucard__d">Skip the setup and open the chat, with your business context already loaded.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
-          <p class="ucard__k">Shape</p>
+          <p class="ucard__k">Formats</p>
           <h3 class="ucard__t">Eleven content types</h3>
-          <p class="ucard__d">Blog post, landing page, product page, pillar guide, comparison, category page, press release, pitch email, guest post, data story and social post. The PR shapes skip the ranking study, because it doesn&rsquo;t apply to them.</p>
+          <p class="ucard__d">Blog post, landing page, product page, pillar guide, comparison, category page, press release, pitch email, guest post, data story and social post. The PR formats skip the competitor ranking research, because it doesn&rsquo;t apply to them.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Voice</p>
@@ -636,22 +663,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; The research</span>
-        <h2 class="sec__title">It reads before it writes.</h2>
-        <p class="lede">The gap between a generic AI draft and a useful one is what the model was given first. This is what a session collects before the chat opens.</p>
+        <h2 class="sec__title">The research runs before the writing starts.</h2>
+        <p class="lede">The difference between a generic AI draft and a useful one is what the model has to work from. This is what a session collects before the chat opens.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Source 01</p>
           <h3 class="ucard__t">Your page, live</h3>
-          <p class="ucard__d">Fetched fresh every session rather than pulled from a cache. If the site blocks the request, it falls back to Searchscope&rsquo;s own crawl and tells you which date that copy is from.</p>
+          <p class="ucard__d">Fetched fresh every session rather than pulled from a cache. If the site blocks the request, Searchscope falls back to its own crawl and shows the date of that copy.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Source 02</p>
           <h3 class="ucard__t">The pages ranking above you</h3>
-          <p class="ucard__d">The top ten results for the target query in your chosen market, then those pages themselves. You can open the outline it saw: every H1, H2 and H3, plus the schema they carry.</p>
+          <p class="ucard__d">The top ten results for the target query in your chosen market, then those pages themselves. You can open the outline Searchscope extracted from each one: every H1, H2 and H3, plus the schema on the page.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Source 03</p>
-          <h3 class="ucard__t">What you already know</h3>
+          <h3 class="ucard__t">Your own findings and context</h3>
           <p class="ucard__d">Open analyzer findings for the page, internal linking candidates drawn from your crawl and search data, and the business context from your settings.</p>
         </article>
       </div>
@@ -662,7 +689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">03 &middot; The session</span>
         <h2 class="sec__title">A chat, a document, and a record of where every line came from.</h2>
-        <p class="lede">The session is three panes. You talk on the left, the document builds in the middle, and the right-hand rail shows the working.</p>
+        <p class="lede">The session is three panes. You talk on the left, the document builds in the middle, and the right-hand panel shows where each piece of data came from.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Pane 01</p>
@@ -672,18 +699,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Pane 02</p>
           <h3 class="ucard__t">The document</h3>
-          <p class="ucard__d">The draft builds in a canvas beside the chat, not buried in the conversation. Ask for it punchier, shorter, or with an FAQ added, and it edits in place.</p>
+          <p class="ucard__d">The draft builds in a canvas beside the chat, not buried in the conversation. Ask for it punchier, shorter, or with an FAQ added, and the draft updates in place.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Pane 03</p>
-          <h3 class="ucard__t">The context rail</h3>
-          <p class="ucard__d">Every data pull with how long it took, the competitor outlines, and each suggested internal link with the reason it was chosen: whether it already earns clicks on matching queries, or is only a word-level match.</p>
+          <h3 class="ucard__t">The context panel</h3>
+          <p class="ucard__d">The panel lists every data pull and how long it took, alongside the competitor outlines. Each suggested internal link shows why it was chosen: either it already gets clicks on matching queries, or it&rsquo;s only a word-level match.</p>
         </article>
-      </div>      <div class="snip reveal">
-        <span>internal links to weave in</span><br>
-        &nbsp;&nbsp;/guides/stove-fuel-types&nbsp;&nbsp;&nbsp;&nbsp;<em>earns clicks on matching queries</em><br>
-        &nbsp;&nbsp;/reviews/pocket-rocket&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>earns clicks on matching queries</em><br>
-        &nbsp;&nbsp;/blog/winter-camping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>word-level match only, may be tangential</span>
+      </div>      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>internal links to weave in</span></span>
+          <span class="snipline" style="--i:1">&nbsp;&nbsp;/guides/stove-fuel-types&nbsp;&nbsp;&nbsp;&nbsp;<em>gets clicks on these queries</em></span>
+          <span class="snipline" style="--i:2">&nbsp;&nbsp;/reviews/pocket-rocket&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>gets clicks on these queries</em></span>
+          <span class="snipline snipline--cursor" style="--i:3">&nbsp;&nbsp;/blog/winter-camping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>word-level match only</span></span>
+        </div>
       </div>
     </div>
   </section>
@@ -691,13 +726,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">04 &middot; The checks</span>
-        <h2 class="sec__title">It flags what it can&rsquo;t support.</h2>
-        <p class="lede">A draft that invents a product name or a statistic is worse than no draft, because someone has to catch it. Three checks run on the finished document.</p>
+        <h2 class="sec__title">Three checks run before you use the draft.</h2>
+        <p class="lede">A draft that invents a product name or a statistic creates more work than it saves, because someone has to catch it first.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Check 01</p>
-          <h3 class="ucard__t">Names it couldn&rsquo;t find</h3>
-          <p class="ucard__d">Any product name, price or figure in the document that appears in none of the sources it read is listed back to you before the piece goes anywhere. Names found only on a competitor&rsquo;s page are flagged separately.</p>
+          <h3 class="ucard__t">Unsupported names and figures</h3>
+          <p class="ucard__d">If a product name, price or figure in the draft doesn&rsquo;t appear in any of the sources, it&rsquo;s listed for you to check. Names found only on a competitor&rsquo;s page are flagged separately.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Check 02</p>
@@ -707,7 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Check 03</p>
           <h3 class="ucard__t">Coverage against the recommendation</h3>
-          <p class="ucard__d">When the session came from a strategist&rsquo;s recommendation, the draft is checked against the points that recommendation said it had to cover.</p>
+          <p class="ucard__d">When the session started from a Strategic Advisor recommendation, the draft is checked against the points that recommendation listed.</p>
         </article>
       </div>
     </div>
@@ -717,8 +752,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">05 &middot; The boundary</span>
         <h2 class="sec__title">It writes. It doesn&rsquo;t publish.</h2>
-        <p class="lede">Content Studio has no connection to your CMS and no publish button. The piece leaves by you copying it or downloading the markdown, which means a person reads it before anything goes live.</p>
-        <p class="lede">The session itself appears on the Content Planner automatically, with its live status, so the plan stays current without anyone updating it.</p>
+        <p class="lede">Content Studio has no connection to your CMS and no publish button. You copy the piece out or download the markdown, so a person reads it before anything goes live.</p>
+        <p class="lede">The session appears on the Content Planner with its live status, so the plan stays current without anyone updating it.</p>
       </div>      <p class="tabpanel__go reveal" style="margin-top:var(--space-xl)">
         <a href="/platform/instruments/" class="btn btn--sm btn--ghost">
           All four instruments

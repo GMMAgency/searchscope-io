@@ -236,7 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
   mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
-}.reveal{
+}.ticked{ position: relative; }.ticks{
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink) 30%, transparent);
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -430,7 +435,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 0;
         box-shadow: none;
       }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-</head>
+<style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -564,10 +583,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <p class="crumb"><a href="/platform/instruments/">Instruments</a> &middot; Page Experience</p>
         <h1 class="hero__title reveal">
-          What&rsquo;s broken on your pages, what it still earns, and how to fix it.
+          What&rsquo;s broken on your pages, and which of it still gets search traffic.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">A 404 is a bug. A 404 still collecting 1,200 impressions a month is a different problem, and most technical crawlers report both the same way.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>Page Experience runs three boards over a site: technical health, index coverage, and page speed.</b> Findings carry what the page still earns in search, so the queue sorts by consequence rather than by severity label.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">A 404 is a bug. A 404 that still took 1,240 impressions in the last 28 days is a different problem, and most technical crawlers report both the same way.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>Page Experience runs three boards over a site: Technical Health, Index Coverage and Speed &amp; Vitals.</b> Technical Health findings carry the search traffic that page still gets, so you can sort the queue by the impressions involved rather than by a severity label.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -576,14 +595,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
-      <div class="snip reveal">
-        <span>technical health</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>open</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&Delta; run</span><br>
-        Broken internal links&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+3<br>
-        Dead pages still earning&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
-        Redirect chains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-4<br>
-        Canonical mismatches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br>
-        <br>
-        &nbsp;&nbsp;<em>/old-stoves-guide</em>&nbsp;&nbsp;<span>404</span>&nbsp;&nbsp;1,240 impressions&nbsp;&nbsp;<span>last 28 days</span>
+      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>technical health</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>open</span>&nbsp;&nbsp;<span>&Delta; run</span></span>
+          <span class="snipline" style="--i:1">Broken internal links&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+3</span>
+          <span class="snipline" style="--i:2">404s still getting traffic&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
+          <span class="snipline" style="--i:3">Redirect chains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-4</span>
+          <span class="snipline" style="--i:4">Canonical mismatches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
+          <span class="snipline" style="--i:5">&nbsp;</span>
+          <span class="snipline" style="--i:6">&nbsp;&nbsp;<em>/old-stoves-guide</em>&nbsp;&nbsp;<span>404</span></span>
+          <span class="snipline snipline--cursor" style="--i:7">&nbsp;&nbsp;1,240 impressions&nbsp;&nbsp;<span>last 28 days</span></span>
+        </div>
       </div>
       </div>
       </div>
@@ -594,7 +622,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">01 &middot; Technical Health</span>
         <h2 class="sec__title">Twelve checks, run against your crawl and Search Console together.</h2>
-        <p class="lede">Most technical audits stop at what a crawler can see. Fusing the crawl with search performance is what separates a dead page nobody visits from a dead page that&rsquo;s still being found.</p>
+        <p class="lede">Most technical audits stop at what a crawler can see. Combining the crawl with search performance separates a dead page nobody visits from a dead page people are still finding in search.</p>
+        <p class="lede">Each finding is labeled with who it&rsquo;s for, a developer or the content team, and roughly how long it takes to put right.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Check group 01</p>
@@ -603,19 +632,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Check group 02</p>
-          <h3 class="ucard__t">Signals that contradict</h3>
+          <h3 class="ucard__t">Conflicting indexing signals</h3>
           <p class="ucard__d">Canonical mismatches, indexability conflicts, duplicate URL variants, exact duplicate content, and hreflang tags with no return tag.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Check group 03</p>
-          <h3 class="ucard__t">Reach and speed</h3>
+          <h3 class="ucard__t">Reach and response time</h3>
           <p class="ucard__d">Sitemap rot, money pages with too few internal links pointing at them, and slow server response times measured during the crawl.</p>
         </article>
-      </div>      <div class="snip reveal">
-        <span>finding</span>&nbsp;&nbsp;broken internal link<br>
-        &nbsp;&nbsp;<span>on</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/guides/camping-stoves<br>
-        &nbsp;&nbsp;<span>to</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/reviews/pocket-rocket-2&nbsp;&nbsp;<em>404</em><br>
-        &nbsp;&nbsp;<span>who</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;developer&nbsp;&middot;&nbsp;copy-paste
+      </div>      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>finding</span>&nbsp;&nbsp;broken internal link</span>
+          <span class="snipline" style="--i:1">&nbsp;&nbsp;<span>on</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/guides/camping-stoves</span>
+          <span class="snipline" style="--i:2">&nbsp;&nbsp;<span>to</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/reviews/rocket-2&nbsp;&nbsp;<em>404</em></span>
+          <span class="snipline snipline--cursor" style="--i:3">&nbsp;&nbsp;<span>fix by</span>&nbsp;developer&nbsp;&middot;&nbsp;copy-paste</span>
+        </div>
       </div>
     </div>
   </section>
@@ -624,23 +661,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; Index Coverage</span>
         <h2 class="sec__title">Ask Google, rather than guess.</h2>
-        <p class="lede">Whether a page is indexed isn&rsquo;t something a crawler can work out. Searchscope asks Google directly through the URL Inspection API and records the verdict it gives back.</p>
-        <p class="lede">Twelve verdicts are distinguished, including crawled but not indexed, found but not crawled, excluded by noindex, duplicate, and unknown to Google.</p>
+        <p class="lede">Whether a page is indexed isn&rsquo;t something a crawler can work out. Searchscope asks Google directly through the URL Inspection API and records the verdict.</p>
+        <p class="lede">It distinguishes twelve verdicts, including crawled but not indexed, found but not crawled, excluded by noindex, duplicate, and unknown to Google.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
-          <h3 class="ucard__t">It starts where it matters</h3>
-          <p class="ucard__d">Pages that can be indexed but are earning no impressions are asked about first, because that&rsquo;s where an unexpected verdict changes what you do next.</p>
+          <h3 class="ucard__t">Uncertain pages are checked first</h3>
+          <p class="ucard__d">Searchscope checks those pages first: the ones that can be indexed but are getting no impressions. That&rsquo;s where an unexpected verdict changes what you do next.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
-          <h3 class="ucard__t">Inside Google&rsquo;s limit, on purpose</h3>
+          <h3 class="ucard__t">It stays under Google&rsquo;s daily limit</h3>
           <p class="ucard__d">Google allows 2,000 inspections a day on a property. The automatic run stops at 1,800 and keeps 200 back, so you can still check a page yourself when something comes up.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">It keeps checking</h3>
-          <p class="ucard__d">The first run starts by itself after a crawl finishes, then runs nightly. A page that isn&rsquo;t indexed isn&rsquo;t re-asked more than once a fortnight.</p>
+          <h3 class="ucard__t">Rechecked on a schedule</h3>
+          <p class="ucard__d">The first run starts after a crawl finishes, then runs nightly. A page that isn&rsquo;t indexed is rechecked at most once every two weeks.</p>
         </article>
       </div>
     </div>
@@ -650,22 +687,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">03 &middot; Speed &amp; Vitals</span>
         <h2 class="sec__title">Core Web Vitals, measured by Google&rsquo;s own tool.</h2>
-        <p class="lede">Point an audit at one page, a section, or the whole crawled site. Google PageSpeed Insights measures each page and the results land here: the three Core Web Vitals, the Lighthouse scores for performance, accessibility, best practices and SEO, and every failing check with what to do about it.</p>
+        <p class="lede">Point an audit at one page, a section, or the whole crawled site. Google PageSpeed Insights measures each page and the results appear here. You get the three Core Web Vitals, the four Lighthouse scores for performance, accessibility, best practices and SEO, and every failing check with what to do about it.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Lab and field, kept apart</h3>
-          <p class="ucard__d">Lighthouse numbers from Google&rsquo;s test device, and field data from real Chrome users where enough of them exist. The page says which is which rather than blending them into one score.</p>
+          <p class="ucard__d">Lighthouse numbers from Google&rsquo;s test device, and field data from real Chrome users where enough of them exist. The page shows which is which rather than blending them into one score.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
-          <h3 class="ucard__t">Down to the element</h3>
-          <p class="ucard__d">Each failing check lists the pages it affects and the elements on the page responsible, with the fix text Lighthouse itself provides.</p>
+          <h3 class="ucard__t">Which pages, and which elements</h3>
+          <p class="ucard__d">Each failing check lists the pages it affects and the elements responsible, with the fix text Lighthouse itself provides.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">Change over time</h3>
-          <p class="ucard__d">Audits are kept, so the trend is a chart rather than a memory. The days you marked a change as applied are marked on it.</p>
+          <h3 class="ucard__t">Trend across audits</h3>
+          <p class="ucard__d">Audits are kept, so you can see the trend as a chart. Days when you marked a change as applied are shown on it.</p>
         </article>
       </div>
     </div>
@@ -673,19 +710,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section bg-grid">
     <div class="container">
       <div class="sec__head reveal">
-        <span class="eyebrow">04 &middot; What it won't pretend</span>
+        <span class="eyebrow">04 &middot; The limits</span>
         <h2 class="sec__title">A check that hasn&rsquo;t run isn&rsquo;t a pass.</h2>
-        <p class="lede">The quickest way to lose trust in a technical tool is a green tick that turns out to mean nothing was measured. Four things are stated rather than smoothed over.</p>
+        <p class="lede">The quickest way to lose trust in a technical tool is a green check that turns out to mean nothing was measured. Four things are stated rather than smoothed over.</p>
       </div>      <div class="cols2">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Unmeasured isn&rsquo;t clean</h3>
-          <p class="ucard__d">A check that hasn&rsquo;t run yet says so. It never renders as a zero, and it suppresses any all-clear on the board above it.</p>
+          <p class="ucard__d">A check that hasn&rsquo;t run yet is shown as not run. It&rsquo;s never shown as a zero, and the board above it won&rsquo;t show an all-clear while it&rsquo;s outstanding.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
           <h3 class="ucard__t">External links are a sample</h3>
-          <p class="ucard__d">Links out to other sites are tested in a sample, up to 100 per crawl, and the page says so on the finding rather than in a footnote.</p>
+          <p class="ucard__d">Links out to other sites are tested in a sample, up to 100 per crawl, and that limit is shown on the finding itself, not in a footnote.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
@@ -694,8 +731,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:240ms">
           <p class="ucard__k">04</p>
-          <h3 class="ucard__t">Old data says its age</h3>
-          <p class="ucard__d">Once the crawl behind a set of findings is more than 30 days old, the board tells you how old and suggests a fresh crawl.</p>
+          <h3 class="ucard__t">Stale crawls are labeled</h3>
+          <p class="ucard__d">Once the crawl behind a set of findings is more than 30 days old, the board shows its age and suggests a fresh crawl.</p>
         </article>
       </div>      <p class="tabpanel__go reveal" style="margin-top:var(--space-xl)">
         <a href="/platform/instruments/" class="btn btn--sm btn--ghost">
@@ -709,8 +746,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="sec__title">Find the broken pages that still earn.</h2>
-        <p class="lede">Connect a site and the first technical health run starts after the crawl finishes. Index coverage begins the same night.</p>
+        <h2 class="sec__title">Find the broken pages that still get traffic.</h2>
+        <p class="lede">Connect a site and the first Technical Health run starts after the crawl finishes, and Index Coverage starts with it.</p>
         <div class="hero__actions" style="margin-top:var(--space-l)">
           <a href="/beta/" class="btn">
             Join the beta

@@ -236,7 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
   mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
-}.reveal{
+}.ticked{ position: relative; }.ticks{
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink) 30%, transparent);
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -430,7 +435,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 0;
         box-shadow: none;
       }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-</head>
+<style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -566,8 +585,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1 class="hero__title reveal">
           Every planned piece, from idea to published to cited.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">Content plans usually live in a spreadsheet nobody updates, next to a tool that doesn&rsquo;t know the spreadsheet exists.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>The Content Planner is one sheet showing every piece of content work on an account, and most of it fills itself.</b> Proposals, live drafting sessions and the rows you add by hand all land in the same place, with the same stages.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">Content plans usually live in a spreadsheet nobody updates, next to a tool that has no connection to it.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>The Content Planner is one sheet showing every piece of content work on an account, and most of the rows are created for you.</b> Proposals, live drafting sessions and the rows you add by hand all appear in the same place, with the same stages.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -576,14 +595,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
-      <div class="snip reveal">
-        <span>piece</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>stage</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>due</span><br>
-        Camping stoves&nbsp;&nbsp;&nbsp;&nbsp;drafted&nbsp;&nbsp;&nbsp;&nbsp;12 Jun<br>
-        Fuel types&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in studio&nbsp;&nbsp;18 Jun<br>
-        Winter pitch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sent<br>
-        Stove safety&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>cited in AI</em><br>
-        <br>
-        &nbsp;&nbsp;<span>4 pieces &middot; 1 sent</span>
+      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>piece</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>stage</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>due</span></span>
+          <span class="snipline" style="--i:1">Camping stoves&nbsp;&nbsp;&nbsp;&nbsp;drafted&nbsp;&nbsp;&nbsp;&nbsp;12 Jun</span>
+          <span class="snipline" style="--i:2">Fuel types&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in studio&nbsp;&nbsp;18 Jun</span>
+          <span class="snipline" style="--i:3">Winter pitch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sent</span>
+          <span class="snipline" style="--i:4">Stove safety&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>cited in AI</em></span>
+          <span class="snipline" style="--i:5">&nbsp;</span>
+          <span class="snipline snipline--cursor" style="--i:6">&nbsp;&nbsp;<span>4 pieces &middot; 1 sent</span></span>
+        </div>
       </div>
       </div>
       </div>
@@ -593,8 +620,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">01 &middot; What's on it</span>
-        <h2 class="sec__title">Three things land here, and two of them arrive on their own.</h2>
-        <p class="lede">You don&rsquo;t send anything to the planner. It reads what already exists on the account and composes the sheet.</p>
+        <h2 class="sec__title">Three sources fill the sheet, and two need nothing from you.</h2>
+        <p class="lede">You don&rsquo;t send anything to the planner. It builds the sheet from the work already on the account.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Source 01</p>
@@ -604,12 +631,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Source 02</p>
           <h3 class="ucard__t">Content Studio sessions</h3>
-          <p class="ucard__d">Anything started in Content Studio shows here with its live status, from briefed to drafted. Nobody has to remember to add it.</p>
+          <p class="ucard__d">Anything started in Content Studio appears with its live status, from briefed to drafted. Nobody has to remember to add it.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Source 03</p>
           <h3 class="ucard__t">Rows you add</h3>
-          <p class="ucard__d">Work happening outside Searchscope goes on the same sheet, so the plan is the whole plan rather than the part one tool can see.</p>
+          <p class="ucard__d">Work happening outside Searchscope goes on the same sheet, so the plan covers everything rather than only the part Searchscope can see.</p>
         </article>
       </div>
     </div>
@@ -618,19 +645,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; The journey</span>
-        <h2 class="sec__title">Seven stages, and only some of them are yours to set.</h2>
-        <p class="lede">The stages Searchscope can observe are derived, never typed. The ones only a person knows are recorded by a person. Keeping those apart is what stops a plan drifting away from reality.</p>
-      </div>      <div class="snip reveal">
-        <span>proposed</span> &rarr; <span>in studio</span> &rarr; <span>briefed</span> &rarr; <span>drafted</span> &rarr; <em>sent</em> &rarr; <em>published</em> &rarr; <span>cited in AI</span><br>
-        <br>
-        &nbsp;&nbsp;<span>observed</span>&nbsp;&nbsp;&nbsp;from the drafting session itself<br>
-        &nbsp;&nbsp;<em>recorded</em>&nbsp;&nbsp;&nbsp;marked by you: sent, and published with its URL<br>
-        &nbsp;&nbsp;<span>checked</span>&nbsp;&nbsp;&nbsp;stamped when an AI engine cites the published page
+        <h2 class="sec__title">Seven stages. Searchscope fills some, you set the rest.</h2>
+        <p class="lede">Searchscope sets the stages it can detect from the drafting session itself. You record the stages Searchscope can&rsquo;t see, like whether a piece was sent or published. Keeping those apart is what keeps the sheet accurate.</p>
+      </div>      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>proposed</span> &rarr; <span>in studio</span> &rarr; <span>briefed</span> &rarr; <span>drafted</span></span>
+          <span class="snipline" style="--i:1">&rarr; <em>sent</em> &rarr; <em>published</em> &rarr; <span>cited in AI</span></span>
+          <span class="snipline" style="--i:2">&nbsp;</span>
+          <span class="snipline" style="--i:3">&nbsp;&nbsp;<span>detected</span>&nbsp;&nbsp;from the drafting session</span>
+          <span class="snipline" style="--i:4">&nbsp;&nbsp;<em>recorded</em>&nbsp;&nbsp;by you: sent, published, the URL</span>
+          <span class="snipline snipline--cursor" style="--i:5">&nbsp;&nbsp;<span>checked</span>&nbsp;&nbsp;against the AI citation runs</span>
+        </div>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
-          <h3 class="ucard__t">What the system knows</h3>
-          <p class="ucard__d">Whether a piece has a drafting session open, whether the brief is ready and whether a draft exists. Read from the session, so it can&rsquo;t go stale.</p>
+          <h3 class="ucard__t">What Searchscope detects</h3>
+          <p class="ucard__d">Whether a piece has a drafting session open, whether the brief is ready, and whether a draft exists. These come from the session itself, so they can&rsquo;t go stale.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
@@ -639,8 +675,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">What gets checked</h3>
-          <p class="ucard__d">Once a row has a published URL it&rsquo;s watched. Press the check and any page an AI engine has started citing gets stamped.</p>
+          <h3 class="ucard__t">How citations are confirmed</h3>
+          <p class="ucard__d">Once a row has a published URL, Searchscope can check it against the AI citation runs. Run the check and any page an AI engine has started citing is marked as cited, with the date.</p>
         </article>
       </div>
     </div>
@@ -649,13 +685,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">03 &middot; Drafting a plan</span>
-        <h2 class="sec__title">Objectives from your numbers, then a piece for each one.</h2>
+        <h2 class="sec__title">Searchscope proposes objectives from your data, then a piece of content for each one.</h2>
         <p class="lede">You can fill the sheet by hand. You can also ask Searchscope to draft a plan, which is a three-step wizard rather than a single button.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Step 01</p>
-          <h3 class="ucard__t">Objectives, pinned to evidence</h3>
-          <p class="ucard__d">Searchscope proposes objectives from your own data: Search Console movement, content decay, demand clusters, opportunities and citation gaps. Any candidate whose supporting line doesn&rsquo;t quote a number that actually appears in the evidence is dropped, and it tells you how many were dropped.</p>
+          <h3 class="ucard__t">Every objective cites the data behind it</h3>
+          <p class="ucard__d">Searchscope proposes objectives from your own data: Search Console movement, content decay, demand clusters, opportunities and citation gaps. If a proposed objective quotes a number that doesn&rsquo;t appear in the underlying data, it&rsquo;s dropped, and the wizard shows how many were dropped.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Step 02</p>
@@ -664,8 +700,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Step 03</p>
-          <h3 class="ucard__t">See what landed, and what didn&rsquo;t</h3>
-          <p class="ucard__d">Every proposed piece goes through the same validation a strategist&rsquo;s proposal does. The ones that fail are listed with the reason, rather than quietly replaced with something invented.</p>
+          <h3 class="ucard__t">See what was proposed, and what wasn&rsquo;t</h3>
+          <p class="ucard__d">Every proposed piece goes through the same validation a strategist&rsquo;s proposal does. The ones that fail are listed with the reason, rather than replaced with something invented.</p>
         </article>
       </div>
     </div>
@@ -674,9 +710,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">04 &middot; Reading the sheet</span>
-        <h2 class="sec__title">SEO and PR work, side by side.</h2>
-        <p class="lede">Press releases, pitch emails, guest posts and data stories are filtered as PR. Everything else is SEO. It&rsquo;s one sheet with a filter rather than two plans that drift apart.</p>
-        <p class="lede">Group pieces into projects and each project shows its own counts and next due date. A Due column and a Next column carry the urgency: late, due today, or due in a number of days.</p>
+        <h2 class="sec__title">SEO and PR pieces sit on the same sheet.</h2>
+        <p class="lede">Press releases, pitch emails, guest posts and data stories are filtered as PR. Everything else is SEO. It&rsquo;s one sheet with a filter rather than two plans that go out of step.</p>
+        <p class="lede">Group pieces into projects and each project shows its own counts and next due date. A Due column and a Next column show whether a piece is late, due today, or due in a set number of days.</p>
       </div>      <p class="tabpanel__go reveal" style="margin-top:var(--space-xl)">
         <a href="/platform/instruments/" class="btn btn--sm btn--ghost">
           All four instruments
@@ -690,7 +726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">Join the beta program</span>
         <h2 class="sec__title">Put the whole plan in one place.</h2>
-        <p class="lede">Connect a site and the planner composes itself from the work already on the account. Add the rest by hand and the sheet is complete.</p>
+        <p class="lede">Connect a site and the planner is built from the work already on the account. Add the rest by hand and the sheet is complete.</p>
         <div class="hero__actions" style="margin-top:var(--space-l)">
           <a href="/beta/" class="btn">
             Join the beta

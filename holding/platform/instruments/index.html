@@ -236,7 +236,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
   mask-image: radial-gradient(125% 85% at 50% 0%, #000 38%, transparent 80%);
-}.reveal{
+}.ticked{ position: relative; }.ticks{
+  position: absolute;
+  inset: -13px;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink) 30%, transparent);
+}.ticks__c{ position: absolute; width: 16px; height: 16px; }.ticks__tl{ top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.ticks__tr{ top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__br{ bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }.ticks__bl{ bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -430,7 +435,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border-radius: 0;
         box-shadow: none;
       }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
-</head>
+<style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -564,10 +583,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <p class="crumb">Platform &middot; Instruments</p>
         <h1 class="hero__title reveal">
-          The analyzers find the work. The instruments are where you do it.
+          The analyzers show you what needs doing. The instruments are where you do it.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">Searchscope&rsquo;s analyzers monitor your accounts and tell you what needs attention. That&rsquo;s the diagnosis, and it&rsquo;s only half the job.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>The four instruments are the surfaces where the work happens: write the content, plan and track it, fix what&rsquo;s broken on the page, and report on what changed.</b> They read the same account data as everything else, so you&rsquo;re not explaining the site again to a separate tool.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">Searchscope&rsquo;s analyzers monitor your accounts and flag what needs attention. That&rsquo;s only half the job.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>The four instruments are where you do the work: write the content, plan and track it, fix what&rsquo;s broken on the page, and report on what changed.</b> They run on the same account data as everything else, so you&rsquo;re not setting the site up again in a separate tool.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -576,14 +595,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__visual reveal" style="--reveal-delay:200ms">
-      <div class="snip reveal">
-        <span>instruments</span><br>
-        &nbsp;&nbsp;Content Studio&nbsp;&nbsp;&nbsp;<span>briefs and drafts</span><br>
-        &nbsp;&nbsp;Content Planner&nbsp;&nbsp;<span>idea to cited</span><br>
-        &nbsp;&nbsp;Page Experience&nbsp;&nbsp;<span>broken pages that still earn</span><br>
-        &nbsp;&nbsp;Reporting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>the period, written up</span><br>
-        <br>
-        &nbsp;&nbsp;<em>all four read the same account</em>
+      <div class="ticked">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="snip reveal">
+          <span class="snipline" style="--i:0"><span>instruments</span></span>
+          <span class="snipline" style="--i:1">&nbsp;&nbsp;Content Studio&nbsp;&nbsp;&nbsp;<span>briefs and drafts</span></span>
+          <span class="snipline" style="--i:2">&nbsp;&nbsp;Content Planner&nbsp;&nbsp;<span>from idea to published</span></span>
+          <span class="snipline" style="--i:3">&nbsp;&nbsp;Page Experience&nbsp;&nbsp;<span>technical health and speed</span></span>
+          <span class="snipline" style="--i:4">&nbsp;&nbsp;Reporting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>reports for the period</span></span>
+          <span class="snipline" style="--i:5">&nbsp;</span>
+          <span class="snipline snipline--cursor" style="--i:6">&nbsp;&nbsp;<em>all four run on the same account</em></span>
+        </div>
       </div>
       </div>
       </div>
@@ -594,8 +621,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">The distinction</span>
         <h2 class="sec__title">An instrument is something you operate.</h2>
-        <p class="lede">Searchscope separates its tools into agents and instruments. An agent goes and researches something for you and comes back with an answer. An instrument is a surface you work at, with your account data already loaded.</p>
-        <p class="lede">It&rsquo;s a useful line to hold, because none of these four does the work while you&rsquo;re not looking. Each one puts the relevant data in front of you and then takes your decisions.</p>
+        <p class="lede">Searchscope separates its tools into agents and instruments. An agent runs a piece of research on its own and returns an answer. An instrument is a surface you work at, with your account data already loaded.</p>
+        <p class="lede">The distinction matters, because none of these four runs on its own. Each one puts the relevant data in front of you, and you make the decisions.</p>
       </div>
     </div>
   </section>
@@ -609,7 +636,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal">
           <p class="ucard__k">Instrument 01</p>
           <h3 class="ucard__t">Content Studio</h3>
-          <p class="ucard__d">Start from a page you want to improve, a keyword, or one of this week&rsquo;s findings. Content Studio reads your page, the pages ranking above it and your open findings, then works with you in a chat to produce a brief or a draft.</p>
+          <p class="ucard__d">Start from a page you want to improve, a keyword, or one of this week&rsquo;s findings. Searchscope loads that page, the pages ranking above it and your open findings, then you work through it in a chat to produce a brief or a draft.</p>
           <p class="ucard__d" style="margin-top:var(--space-s)">
             <a href="/platform/instruments/content-studio/" class="btn btn--sm btn--ghost">
               Explore Content Studio
@@ -620,7 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Instrument 02</p>
           <h3 class="ucard__t">Content Planner</h3>
-          <p class="ucard__d">One sheet showing every planned piece on the account and how far it has got: proposed, in Studio, drafted, sent, published, and whether AI assistants have started citing it.</p>
+          <p class="ucard__d">One sheet showing every planned piece on the account and the stage it&rsquo;s reached. The seven stages run from proposed to in studio (open in Content Studio), briefed, drafted, sent and published, and a published page is then checked for AI citations.</p>
           <p class="ucard__d" style="margin-top:var(--space-s)">
             <a href="/platform/instruments/content-planner/" class="btn btn--sm btn--ghost">
               Explore Content Planner
@@ -631,7 +658,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Instrument 03</p>
           <h3 class="ucard__t">Page Experience</h3>
-          <p class="ucard__d">Three boards over your site: technical health from your crawl and Search Console together, index coverage asked directly of Google, and page speed measured by PageSpeed Insights.</p>
+          <p class="ucard__d">Page Experience runs three boards. Technical Health combines your crawl with Search Console, Index Coverage comes from Google&rsquo;s URL Inspection API, and Speed &amp; Vitals is measured by PageSpeed Insights.</p>
           <p class="ucard__d" style="margin-top:var(--space-s)">
             <a href="/platform/instruments/page-experience/" class="btn btn--sm btn--ghost">
               Explore Page Experience
@@ -658,7 +685,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">How they connect</span>
         <h2 class="sec__title">One account, four surfaces.</h2>
-        <p class="lede">The instruments aren&rsquo;t separate products sharing a login. Work moves between them, and between them and the analyzers, without anyone copying anything across.</p>
+        <p class="lede">The instruments aren&rsquo;t separate products sharing a login. Work moves between the instruments, and between the instruments and the analyzers, so nobody has to copy anything across.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
@@ -668,12 +695,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
           <h3 class="ucard__t">Sessions become plan rows</h3>
-          <p class="ucard__d">Anything started in Content Studio appears on the Content Planner by itself, with its live status. There&rsquo;s no send-to-planner step to forget.</p>
+          <p class="ucard__d">Anything started in Content Studio appears on the Content Planner with its live status. There&rsquo;s no send-to-planner step to forget.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">The work reaches the report</h3>
-          <p class="ucard__d">Changes you mark as applied are read back into Reporting, so the report can show what was done in the period as well as what moved.</p>
+          <h3 class="ucard__t">Applied changes show up in the report</h3>
+          <p class="ucard__d">Changes you mark as applied feed into Reporting, so the report shows what the team did in the period alongside what changed in the numbers.</p>
         </article>
       </div>
     </div>
@@ -682,7 +709,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">Join the beta program</span>
-        <h2 class="sec__title">Four instruments, on your own accounts.</h2>
+        <h2 class="sec__title">Run all four on your own accounts.</h2>
         <p class="lede">Searchscope is in beta with a small number of agencies and in-house teams. Connect a site and the instruments run on your real data, not a demo account.</p>
         <div class="hero__actions" style="margin-top:var(--space-l)">
           <a href="/beta/" class="btn">
