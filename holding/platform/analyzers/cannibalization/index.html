@@ -1067,7 +1067,7 @@ html, body { overflow-x: hidden; }
     }
 
 </style>
-</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Platform","item":"https://searchscope.io/platform/"},{"@type":"ListItem","position":3,"name":"Analyzers","item":"https://searchscope.io/platform/analyzers/"},{"@type":"ListItem","position":4,"name":"Cannibalization","item":"https://searchscope.io/platform/analyzers/cannibalization/"}]}</script></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -1200,7 +1200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="hero__grid">
       <div class="sec__head">
-        <p class="crumb"><a href="/platform/analyzers/">Analyzers</a> · Cannibalization</p>
+        <nav class="crumb" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/platform/">Platform</a> <span aria-hidden="true">&middot;</span> <a href="/platform/analyzers/">Analyzers</a> <span aria-hidden="true">&middot;</span> Cannibalization</nav>
         <h1 class="hero__title reveal">
           Keyword cannibalization, found in your own data.
         </h1>
@@ -1278,15 +1278,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
       </div>
 
-      <div class="snip reveal">
-        <span>query:</span> <b>"best hiking boots"</b>&nbsp;&nbsp;<span>returning two of your URLs</span><br>
-        &nbsp;&nbsp;/guides/best-hiking-boots&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>pos</span> 6.2&nbsp;&nbsp;&nbsp;<span>impr</span> 28,400&nbsp;&nbsp;&nbsp;<span>clicks</span> 402<br>
-        &nbsp;&nbsp;/blog/hiking-boots-review&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>pos</span> 9.8&nbsp;&nbsp;&nbsp;<span>impr</span> 22,800&nbsp;&nbsp;&nbsp;<span>clicks</span> 183<br>
-        <br>
-        &nbsp;&nbsp;<span>overlap</span> 64%&nbsp;&nbsp;&nbsp;<span>potential clicks</span> +170&nbsp;&nbsp;&nbsp;<em>URL dancing</em><br>
-        &nbsp;&nbsp;<span>shared keywords</span> best hiking boots, hiking boots review, waterproof hiking boots<br>
-        <br>
-        <em>Two URLs, one intent, positions wobbling, click-through split.</em>
+      <div class="ticked mockframe">
+        <span class="ticks" aria-hidden="true">
+          <span class="ticks__c ticks__tl"></span>
+          <span class="ticks__c ticks__tr"></span>
+          <span class="ticks__c ticks__br"></span>
+          <span class="ticks__c ticks__bl"></span>
+        </span>
+        <div class="appwin mockwin reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Cannibalization &middot; &ldquo;best hiking boots&rdquo;</span>
+          </div>
+          <div class="mockduel">
+            <div class="mockduel__c mockduel__c--win">
+              <span class="mockduel__b mockrow" style="--i:0">Keep</span>
+              <p class="mockduel__t mockrow" style="--i:1">Best Hiking Boots</p>
+              <p class="mockduel__u mockrow" style="--i:2">/guides/best-hiking-boots</p>
+              <p class="mockduel__m mockrow" style="--i:3"><span>pos <b>6.2</b></span><span>impr <b>28,400</b></span><span>clicks <b>402</b></span></p>
+            </div>
+            <div class="mockduel__vs mockrow" style="--i:10">vs</div>
+            <div class="mockduel__c">
+              
+              <p class="mockduel__t mockrow" style="--i:4">Hiking Boots Review</p>
+              <p class="mockduel__u mockrow" style="--i:5">/blog/hiking-boots-review</p>
+              <p class="mockduel__m mockrow" style="--i:6"><span>pos <b>9.8</b></span><span>impr <b>22,800</b></span><span>clicks <b>183</b></span></p>
+            </div>
+          </div>
+          <div class="mockov">
+            <p class="mockov__h mockrow" style="--i:11"><span>query overlap</span>
+              <span><b>64%</b> &middot; 3 shared</span></p>
+            <span class="mockov__bar mockrow" style="--i:12" aria-hidden="true"><i style="width:64%"></i></span>
+            <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:7">best hiking boots</span><span class="mockchip mockrow" style="--i:8">hiking boots review</span><span class="mockchip mockrow" style="--i:9">waterproof hiking boots</span></div>
+          </div>
+          <p class="mockfoot mockrow" style="--i:13">Verdict &middot; consolidate,
+            keep /guides/best-hiking-boots &middot; 402 clicks against 183 &middot;
+            flagged URL switching</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1698,6 +1726,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     })();
   </script>
+  <style>
+  /* ---- the conflict view ------------------------------------------------
+     Two pages either side of a vs, which is how the app shows a
+     cannibalization conflict. Added 2026-09-09. */
+  /* The winner's ring is drawn at the card's own edge, so the grid needs
+     padding of its own or the ring sits against the window frame. */
+  .mockduel { display:grid; grid-template-columns:1fr auto 1fr; padding:.7rem; }
+  .mockduel__c { padding:.75rem .9rem; min-width:0; }
+  .mockduel__c--win { box-shadow:inset 0 0 0 1px var(--ink);
+    border-radius:var(--radius-m); background:var(--surface); }
+  .mockduel__vs { display:grid; place-items:center; padding:0 .7rem;
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint); }
+  .mockduel__b { display:inline-block; font-family:var(--font-mono);
+    font-size:var(--step--2); line-height:1.5; padding:.05em .55em;
+    border-radius:999px; background:var(--ink); color:var(--surface);
+    margin:0 0 .45rem; }
+  .mockduel__t { margin:0 0 .1rem; font-size:var(--step--1); font-weight:500;
+    color:var(--ink); }
+  .mockduel__u { margin:0 0 .55rem; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap; }
+  .mockduel__m { display:flex; gap:1.1rem; flex-wrap:wrap; margin:0;
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint); }
+  .mockduel__m b { color:var(--ink); font-weight:500; }
+  /* The overlap bar, and the shared queries under it. */
+  .mockov { padding:.85rem 1rem; border-top:1px solid var(--hairline); }
+  .mockov__h { display:flex; justify-content:space-between; gap:1rem; margin:0 0 .4rem;
+    font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-faint); }
+  .mockov__h b { color:var(--ink); font-weight:500; }
+  .mockov__bar { display:block; height:6px; border-radius:3px;
+    background:var(--surface-panel-2); overflow:hidden; }
+  .mockov__bar i { display:block; height:100%; background:var(--ink); }
+  @media (max-width: 760px) {
+    .mockduel { grid-template-columns:1fr; }
+    .mockduel__vs { padding:.4rem 0; }
+  }
+  </style>
 </main>
 
 <div class="stickycta">
