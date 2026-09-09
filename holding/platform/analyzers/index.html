@@ -948,6 +948,9 @@ html, body { overflow-x: hidden; }
       margin: 0 0 var(--space-2xs);
       padding: 0 0.75rem;
     }
+.navmenu__panel a.navmenu__h:not(.navmenu__sublink) { display: block; padding: 0 0.75rem; font-size: var(--step--2); font-weight: 600; letter-spacing: 0.14em; color: var(--ink); background: none; }
+.navmenu__panel a.navmenu__h::before { content: none; }
+.navmenu__panel a.navmenu__h:hover, .navmenu__panel a.navmenu__h:focus-visible { background: none; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
     .navmenu__panel a {
       display: block;
       padding: 0.55rem 0.75rem;
@@ -1138,11 +1141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="navmenu__panel navmenu__panel--two" id="menu-platform" hidden>
           <div class="navmenu__cols">
             <div>
-              <p class="navmenu__h">Platform overview</p>
-              <a class="navmenu__sublink" href="/platform/">
-                <span class="navmenu__label">How Searchscope fits together</span>
-                <span class="navmenu__sub">One search data sync, one crawl, and everything that works from them</span>
-              </a>
+              <a class="navmenu__h" href="/platform/">Platform overview</a>
               <img class="navmenu__figure" src="/brand/platform-overview.jpg" alt="Searchscope Data Pipeline: sync search data, crawl the site and run the analyzers in order"
                    width="760" height="465" loading="lazy" decoding="async">
             </div>
