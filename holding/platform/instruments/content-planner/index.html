@@ -282,7 +282,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   background: var(--surface-panel-2);
   border: 1px solid var(--hairline);
   display: block;
-}.reveal{
+}.awbody{ padding: 1rem 1rem 0.9rem; }.reveal{
   opacity: 0;
   transform: translateY(18px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
@@ -487,55 +487,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     animation:snipcaret 1.15s steps(1) infinite; }
   @keyframes snipcaret { 50% { opacity:0; } }
 
-  /* ---- the product mock -------------------------------------------------
-     A three-pane Content Studio session, built on the site's existing .appwin
-     window chrome. The panes match the real app: chat left, document middle,
-     session context right. Staged entrance, one pass, keyed off .is-in like
-     everything else, so it needs no JavaScript of its own. */
-  /* 13 rows, so the step sets how long the whole thing takes. 380ms ran for
-     five seconds, which is a long time to have something moving beside text
-     someone is trying to read. 170ms finishes in about two and a half. */
-  .mockwin { --mock-step: 170ms; }
-  .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-dim); letter-spacing:.02em; }
-  .mockpanes { display:grid; grid-template-columns:25fr 46fr 29fr; }
-  .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
-  .mockpane:first-child { border-left:0; }
-  .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-faint); margin:0 0 .55rem; letter-spacing:.04em; }
-  /* Every animated row uses the same stagger, so the three panes fill in the
-     order a real session does: context first, then the chat, then the draft. */
-  .mockrow { opacity:0; transform:translateY(5px);
-    transition:opacity var(--dur, .28s) var(--ease-out, ease),
-               transform var(--dur, .28s) var(--ease-out, ease);
-    transition-delay:calc(260ms + var(--i, 0) * var(--mock-step)); }
-  .is-in .mockrow { opacity:1; transform:none; }
-  .mockmsg { font-size:var(--step--2); line-height:1.5; margin:0 0 .45rem;
-    padding:.4rem .55rem; border-radius:var(--radius-s);
-    background:var(--surface-panel-2); color:var(--ink-dim); }
-  .mockmsg--you { background:var(--ink); color:var(--surface); }
-  .mockdoc { font-size:var(--step--2); line-height:1.55; margin:0 0 .3rem; color:var(--ink-dim); }
-  .mockdoc b { color:var(--ink); font-weight:600; }
-  /* The writing bar stands in for a line of the draft still being written. */
-  .mockbar { display:block; height:6px; border-radius:3px;
-    background:var(--surface-panel-2); margin:.42rem 0; }
-  .mocksrc { display:flex; justify-content:space-between; gap:.5rem;
-    font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-dim); margin:0 0 .3rem; }
-  .mocksrc em { font-style:normal; color:var(--ink-faint); }
-  .mocksrc b { font-weight:500; color:var(--ink); }
-  /* Three panes need real width. At 768px the chat column came out at 177px,
-     which is narrower than the messages in it. Collapse at the same 1000px
-     breakpoint the pillar cards use. */
-  @media (max-width: 1000px) {
-    .mockpanes { grid-template-columns:1fr; }
-    .mockpane { border-left:0; border-top:1px solid var(--hairline); }
-    .mockpane:first-child { border-top:0; }
-  }
   @media (prefers-reduced-motion: reduce) {
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
-    .mockrow { opacity:1; transform:none; transition:none; }
   }
 </style></head>
 <body>
@@ -690,14 +644,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <div class="snip reveal">
-          <span class="snipline" style="--i:0"><span>piece</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>stage</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>due</span></span>
-          <span class="snipline" style="--i:1">Camping stoves&nbsp;&nbsp;&nbsp;&nbsp;drafted&nbsp;&nbsp;&nbsp;&nbsp;12 Jun</span>
-          <span class="snipline" style="--i:2">Fuel types&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in studio&nbsp;&nbsp;18 Jun</span>
-          <span class="snipline" style="--i:3">Winter pitch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sent</span>
-          <span class="snipline" style="--i:4">Stove safety&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>cited in AI</em></span>
-          <span class="snipline" style="--i:5">&nbsp;</span>
-          <span class="snipline snipline--cursor" style="--i:6">&nbsp;&nbsp;<span>4 pieces &middot; 1 sent</span></span>
+        <div class="appwin mockwin reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Content Planner &middot; 4 pieces &middot; 1 sent</span>
+          </div>
+          <div class="mockchips"><span class="mockchip mockchip--on mockrow" style="--i:4">All</span><span class="mockchip mockrow" style="--i:5">SEO</span><span class="mockchip mockrow" style="--i:6">PR</span></div>
+          <table class="mocktable">
+            <thead><tr><th>Piece</th><th>Stage</th><th class="num">Owner</th><th class="num">Due</th></tr></thead>
+            <tbody>
+              <tr class="mockrow" style="--i:0"><td>Camping stove buying guide</td><td><span class="mockstage ">drafted</span></td><td class="num">Priya</td><td class="num">12 Jun</td></tr>
+              <tr class="mockrow" style="--i:1"><td>Fuel types explained</td><td><span class="mockstage ">in studio</span></td><td class="num">Tom</td><td class="num">18 Jun</td></tr>
+              <tr class="mockrow" style="--i:2"><td>Winter pitch to Outdoors Mag</td><td><span class="mockstage ">sent</span></td><td class="num">Priya</td><td class="num"></td></tr>
+              <tr class="mockrow" style="--i:3"><td>Stove safety data story</td><td><span class="mockstage mockstage--cited">cited in AI</span></td><td class="num">Tom</td><td class="num"></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
       </div>
@@ -731,26 +692,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
   <section class="section bg-grid">
     <div class="container">
+      <div class="cols2">
+        <div>
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; The journey</span>
         <h2 class="sec__title">Seven stages. Searchscope fills some, you set the rest.</h2>
         <p class="lede">Searchscope sets the stages it can detect from the drafting session itself. You record the stages Searchscope can&rsquo;t see, like whether a piece was sent or published. That keeps automated statuses separate from the stages only your team can confirm.</p>
-      </div>      <div class="ticked">
+      </div>
+        </div>
+        <div>
+      <div class="ticked">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <div class="snip reveal">
-          <span class="snipline" style="--i:0"><span>proposed</span> &rarr; <span>in studio</span> &rarr; <span>briefed</span> &rarr; <span>drafted</span></span>
-          <span class="snipline" style="--i:1">&rarr; <em>sent</em> &rarr; <em>published</em> &rarr; <span>cited in AI</span></span>
-          <span class="snipline" style="--i:2">&nbsp;</span>
-          <span class="snipline" style="--i:3">&nbsp;&nbsp;<span>detected</span>&nbsp;&nbsp;from the drafting session</span>
-          <span class="snipline" style="--i:4">&nbsp;&nbsp;<em>recorded</em>&nbsp;&nbsp;by you: sent, published, the URL</span>
-          <span class="snipline snipline--cursor" style="--i:5">&nbsp;&nbsp;<span>checked</span>&nbsp;&nbsp;against the AI citation runs</span>
+        <div class="appwin mockwin mockladder reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">the journey</span>
+          </div>
+          <div class="awbody">
+            <p class="mockstep mockstep--auto mockrow" style="--i:0"><i aria-hidden="true"></i><b>proposed</b><em>detected</em></p>
+            <p class="mockstep mockstep--auto mockrow" style="--i:1"><i aria-hidden="true"></i><b>in studio</b><em>detected</em></p>
+            <p class="mockstep mockstep--auto mockrow" style="--i:2"><i aria-hidden="true"></i><b>briefed</b><em>detected</em></p>
+            <p class="mockstep mockstep--auto mockrow" style="--i:3"><i aria-hidden="true"></i><b>drafted</b><em>detected</em></p>
+            <p class="mockstep mockstep--you mockrow" style="--i:4"><i aria-hidden="true"></i><b>sent</b><em>you record</em></p>
+            <p class="mockstep mockstep--you mockrow" style="--i:5"><i aria-hidden="true"></i><b>published</b><em>you record</em></p>
+            <p class="mockstep mockrow" style="--i:6"><i aria-hidden="true"></i><b>cited in AI</b><em>checked</em></p>
+          </div>
         </div>
-      </div>      <div class="cols3">
+      </div>
+        </div>
+      </div>
+      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">What Searchscope detects</h3>
@@ -832,6 +808,110 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </section>
+
+  <style>
+  /* ---- the plan sheet, and the stage ladder beside it -------------------
+     Both reuse .mockwin so they arm and animate on the same observer. */
+  .mocktable { width:100%; border-collapse:collapse; font-size:var(--step--2); }
+  .mocktable th { text-align:left; font-family:var(--font-mono); font-weight:400;
+    font-size:var(--step--2); color:var(--ink-faint); letter-spacing:.04em;
+    padding:.35rem .55rem; border-bottom:1px solid var(--hairline); }
+  .mocktable td { padding:.42rem .55rem; border-bottom:1px solid var(--hairline);
+    color:var(--ink-dim); }
+  .mocktable tr:last-child td { border-bottom:0; }
+  .mocktable td:first-child { color:var(--ink); }
+  .mocktable .num { text-align:right; font-family:var(--font-mono); color:var(--ink-faint); }
+  .mockstage { font-family:var(--font-mono); font-size:var(--step--2); color:var(--ink-dim); }
+  .mockstage--cited { color:var(--ink); }
+  .mockchips { display:flex; gap:.4rem; padding:.55rem .55rem 0; }
+  .mockchip { font-family:var(--font-mono); font-size:var(--step--2);
+    padding:.16rem .5rem; border:1px solid var(--hairline); border-radius:999px;
+    color:var(--ink-faint); }
+  .mockchip--on { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  /* The ladder is deliberately squarish so it sits beside a heading rather
+     than running the width of the page. */
+  .mockladder { max-width:22rem; }
+  .mockladder .awbody { padding:.85rem .9rem; }
+  .mockstep { display:flex; align-items:baseline; gap:.6rem; padding:.28rem 0;
+    font-size:var(--step--2); color:var(--ink-dim); }
+  .mockstep i { flex:none; width:7px; height:7px; border-radius:50%;
+    background:var(--surface-panel-2); border:1px solid var(--hairline); }
+  .mockstep--auto i { background:var(--ink-faint); border-color:var(--ink-faint); }
+  .mockstep--you i { background:var(--ink); border-color:var(--ink); }
+  .mockstep b { font-weight:500; color:var(--ink); }
+  .mockstep em { font-style:normal; margin-left:auto; font-family:var(--font-mono);
+    font-size:var(--step--2); color:var(--ink-faint); }
+  /* ---- the product mock -------------------------------------------------
+     A three-pane Content Studio session, built on the site's existing .appwin
+     window chrome. The panes match the real app: chat left, document middle,
+     session context right. Staged entrance, one pass, keyed off .is-in like
+     everything else, so it needs no JavaScript of its own. */
+  /* 13 rows, so the step sets how long the whole thing takes. 380ms ran for
+     five seconds, which is a long time to have something moving beside text
+     someone is trying to read. 170ms finishes in about two and a half. */
+  .mockwin { --mock-step: 170ms; }
+  .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); letter-spacing:.02em; }
+  .mockpanes { display:grid; grid-template-columns:25fr 46fr 29fr; }
+  .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
+  .mockpane:first-child { border-left:0; }
+  .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:0 0 .55rem; letter-spacing:.04em; }
+  /* Every animated row uses the same stagger, so the three panes fill in the
+     order a real session does: context first, then the chat, then the draft. */
+  /* The rows are visible by default and only hidden once JavaScript arms
+     them. That way no JavaScript, or a script that fails, leaves a finished
+     mock rather than an empty frame, and no <noscript> override is needed.
+
+     They deliberately do NOT key off .reveal. The shell's observer carries a
+     2.6 second failsafe that reveals everything on the page whether or not it
+     is on screen, which is right for text and wrong for this: the mock sits
+     3,200px down, so the failsafe ran the whole animation before a reader
+     could possibly have scrolled to it, and they arrived at a still picture. */
+  .mockwin.is-armed .mockrow { opacity:0; transform:translateY(5px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(120ms + var(--i, 0) * var(--mock-step)); }
+  .mockwin.is-armed.is-shown .mockrow { opacity:1; transform:none; }
+  .mockmsg { font-size:var(--step--2); line-height:1.5; margin:0 0 .45rem;
+    padding:.4rem .55rem; border-radius:var(--radius-s);
+    background:var(--surface-panel-2); color:var(--ink-dim); }
+  .mockmsg--you { background:var(--ink); color:var(--surface); }
+  .mockdoc { font-size:var(--step--2); line-height:1.55; margin:0 0 .3rem; color:var(--ink-dim); }
+  .mockdoc b { color:var(--ink); font-weight:600; }
+  /* The writing bar stands in for a line of the draft still being written. */
+  .mockbar { display:block; height:6px; border-radius:3px;
+    background:var(--surface-panel-2); margin:.42rem 0; }
+  .mocksrc { display:flex; justify-content:space-between; gap:.5rem;
+    font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-dim); margin:0 0 .3rem; }
+  .mocksrc em { font-style:normal; color:var(--ink-faint); }
+  .mocksrc b { font-weight:500; color:var(--ink); }
+  /* Three panes need real width. At 768px the chat column came out at 177px,
+     which is narrower than the messages in it. Collapse at the same 1000px
+     breakpoint the pillar cards use. */
+  @media (max-width: 1000px) {
+    .mockpanes { grid-template-columns:1fr; }
+    .mockpane { border-left:0; border-top:1px solid var(--hairline); }
+    .mockpane:first-child { border-top:0; }
+  }
+  </style>
+  <script>
+    (function () {
+      var wins = document.querySelectorAll('.mockwin');
+      if (!wins.length || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-shown'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.3 });
+      Array.prototype.forEach.call(wins, function (w) {
+        w.classList.add('is-armed');
+        io.observe(w);
+      });
+    })();
+  </script>
 </main>
 
 <div class="stickycta">
