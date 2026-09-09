@@ -605,10 +605,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head">
         <p class="crumb"><a href="/platform/instruments/">Instruments</a> &middot; Page Experience</p>
         <h1 class="hero__title reveal">
-          What&rsquo;s broken on your pages, and which of it still gets search traffic.
+          Find the technical issues on pages that still get search traffic.
         </h1>
         <p class="lede reveal" style="--reveal-delay:100ms">A 404 is a bug. A 404 that still took 1,240 impressions in the last 28 days is a different problem, and most technical crawlers report both the same way.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms"><b>Page Experience runs three boards over a site: Technical Health, Index Coverage and Speed &amp; Vitals.</b> Technical Health findings carry the search traffic that page still gets, so you can sort the queue by the impressions involved rather than by a severity label.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms"><b>Page Experience brings together three views: Technical Health, Index Coverage and Speed &amp; Vitals.</b> Technical Health findings include the page&rsquo;s recent search impressions, so you can prioritize issues on pages people are still finding in search instead of relying on a generic severity label.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -645,7 +645,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">01 &middot; Technical Health</span>
         <h2 class="sec__title">Twelve checks, run against your crawl and Search Console together.</h2>
         <p class="lede">Most technical audits stop at what a crawler can see. Combining the crawl with search performance separates a dead page nobody visits from a dead page people are still finding in search.</p>
-        <p class="lede">Each finding is labeled with who it&rsquo;s for, a developer or the content team, and roughly how long it takes to put right.</p>
+        <p class="lede">Each finding shows who should handle it, a developer or the content team, and an estimated time to fix.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Check group 01</p>
@@ -659,7 +659,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Check group 03</p>
-          <h3 class="ucard__t">Reach and response time</h3>
+          <h3 class="ucard__t">Site coverage and response time</h3>
           <p class="ucard__d">Sitemap rot, money pages with too few internal links pointing at them, and slow server response times measured during the crawl.</p>
         </article>
       </div>      <div class="ticked">
@@ -683,13 +683,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">02 &middot; Index Coverage</span>
         <h2 class="sec__title">Ask Google, rather than guess.</h2>
-        <p class="lede">Whether a page is indexed isn&rsquo;t something a crawler can work out. Searchscope asks Google directly through the URL Inspection API and records the verdict.</p>
+        <p class="lede">A crawler can tell you whether a page looks indexable. It can&rsquo;t tell you whether Google has actually indexed it. Searchscope checks Google&rsquo;s URL Inspection API and records the verdict.</p>
         <p class="lede">It distinguishes twelve verdicts, including crawled but not indexed, found but not crawled, excluded by noindex, duplicate, and unknown to Google.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Uncertain pages are checked first</h3>
-          <p class="ucard__d">Searchscope checks those pages first: the ones that can be indexed but are getting no impressions. That&rsquo;s where an unexpected verdict changes what you do next.</p>
+          <p class="ucard__d">Searchscope checks indexable pages with no impressions first, where Google&rsquo;s verdict can materially change what you investigate next.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
@@ -708,23 +708,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">03 &middot; Speed &amp; Vitals</span>
-        <h2 class="sec__title">Core Web Vitals, measured by Google&rsquo;s own tool.</h2>
-        <p class="lede">Point an audit at one page, a section, or the whole crawled site. Google PageSpeed Insights measures each page and the results appear here. You get the three Core Web Vitals, the four Lighthouse scores for performance, accessibility, best practices and SEO, and every failing check with what to do about it.</p>
+        <h2 class="sec__title">Page speed and Core Web Vitals, using PageSpeed Insights.</h2>
+        <p class="lede">Run an audit against one page, a section or the full crawled site. Searchscope brings the PageSpeed Insights results into one view, including Core Web Vitals, Lighthouse scores for performance, accessibility, best practices and SEO, and the individual checks that need attention.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
           <h3 class="ucard__t">Lab and field, kept apart</h3>
-          <p class="ucard__d">Lighthouse numbers from Google&rsquo;s test device, and field data from real Chrome users where enough of them exist. The page shows which is which rather than blending them into one score.</p>
+          <p class="ucard__d">Lighthouse lab data comes from a controlled test, while field data reflects real Chrome users where enough data is available. Searchscope shows them separately rather than blending them into one score.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">02</p>
           <h3 class="ucard__t">Which pages, and which elements</h3>
-          <p class="ucard__d">Each failing check lists the pages it affects and the elements responsible, with the fix text Lighthouse itself provides.</p>
+          <p class="ucard__d">Each failing check shows the affected pages and responsible elements, along with the guidance provided by Lighthouse.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">03</p>
-          <h3 class="ucard__t">Trend across audits</h3>
-          <p class="ucard__d">Audits are kept, so you can see the trend as a chart. Days when you marked a change as applied are shown on it.</p>
+          <h3 class="ucard__t">Trends across audits</h3>
+          <p class="ucard__d">Searchscope keeps previous audits so you can see the trend over time. Changes marked as applied are shown on the same timeline.</p>
         </article>
       </div>
     </div>
@@ -734,7 +734,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">04 &middot; The limits</span>
         <h2 class="sec__title">A check that hasn&rsquo;t run isn&rsquo;t a pass.</h2>
-        <p class="lede">The quickest way to lose trust in a technical tool is a green check that turns out to mean nothing was measured. Four things are stated rather than smoothed over.</p>
+        <p class="lede">The quickest way to lose trust in a technical tool is a green check that turns out to mean nothing was measured. Page Experience makes its limits explicit rather than treating missing data as a clean result.</p>
       </div>      <div class="cols2">
         <article class="ucard reveal">
           <p class="ucard__k">01</p>
@@ -776,7 +776,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">Find the broken pages that still get traffic.</h2>
         <p class="cta__sub">
-          Connect a site and the first Technical Health run starts after the crawl finishes, and Index Coverage starts with it.
+          Connect your site and see technical issues alongside search performance, Google&rsquo;s index status and PageSpeed data, so you can prioritize the pages that deserve attention first.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
