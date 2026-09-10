@@ -512,8 +512,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding-block: clamp(2rem, 1.4rem + 3vw, 3.5rem) clamp(2rem, 1.4rem + 3vw, 3.25rem); }
   /* No max-width on the container: the header must line up with the article
      below it, not sit in its own centered column. The text itself is capped. */
-  /* .uhero is defined once, in blog_mocks.py, so the preview and the post
-     cannot disagree about the frame width the scenes are drawn against. */
+  /* The product-update head: text left, scene right.
+     Below 1001px it stacks, and the text comes first, which is MOBILE.md
+     rule 3: the heading before the picture. That falls out of DOM order, so
+     there is nothing to remember.
+     minmax(0,1fr) rather than 1fr on both tracks: a 1fr track refuses to go
+     narrower than its widest item's min-content, which is how a long title
+     drags a grid wider than its container. */
+  .posthead__grid { display:grid; gap:var(--space-l); align-items:center; }
+  @media (min-width: 1001px) {
+    .posthead__grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      gap:var(--space-xl); }
+  }
+  /* Fills its column here rather than the 640px cap it takes when it sits on
+     its own. Two classes beats one, so this wins over the default in
+     blog_mocks.py whichever order the stylesheets land in. */
+  .posthead__grid .uhero { margin:0; max-width:none; }
+  .posthead__text { min-width:0; }
+
+  /* .uhero is otherwise defined once, in blog_mocks.py, so the preview and
+     the post cannot disagree about the frame the scenes are drawn against. */
   .posthead__sub { font-size:var(--step-1); line-height:1.5; color:var(--ink-dim);
     margin:var(--space-m) 0 0; max-width:62ch; }
   /* A fifth larger than the site's step-4, per Stu. */
@@ -1009,6 +1027,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/blog/">Blog</a><span class="crumbs__s" aria-hidden="true">&#8250;</span>
         <a href="/blog/category/ai-search/">AI Search</a>
       </nav>
+      
+      <div class="posthead__text">
       <h1 class="post__title reveal" style="--reveal-delay:60ms">What AI Overviews change about visibility</h1>
       <p class="byline reveal" style="--reveal-delay:130ms">
         <span>Author: <a href="/blog/author/ray/">Ray</a></span>
@@ -1018,6 +1038,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2026-06-12">June 12, 2026</time>
       </p>
       <p class="posthead__sub reveal" style="--reveal-delay:190ms">You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</p>
+      </div>
+      
       
     </div>
   </section>
