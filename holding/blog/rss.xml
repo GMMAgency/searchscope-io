@@ -6,7 +6,79 @@
     <atom:link href="https://searchscope.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Writing on search systems, algorithm updates, AI search and search data.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Sep 2026 16:03:01 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 13:41:03 +0000</lastBuildDate>
+    <item>
+      <title>Names you weren&#x27;t getting credit for</title>
+      <link>https://searchscope.io/blog/brand-name-variants/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/brand-name-variants/</guid>
+      <description>AI engines don&#x27;t always use your full company name. Searchscope now spots the variants your saved brand names miss, and offers them for approval with the evidence attached.</description>
+      <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>All six AI engines, live</title>
+      <link>https://searchscope.io/blog/all-six-ai-engines/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/all-six-ai-engines/</guid>
+      <description>ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini are all part of every visibility run. They disagree more than you&#x27;d expect, which is the point.</description>
+      <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>The Content Planner</title>
+      <link>https://searchscope.io/blog/content-planner/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/content-planner/</guid>
+      <description>One plan for everything you&#x27;re creating, across SEO and PR, built from the data Searchscope already holds about you. Each piece hands off to Content Studio to build.</description>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>Send any strategist reply to Content Studio</title>
+      <link>https://searchscope.io/blog/send-to-studio/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/send-to-studio/</guid>
+      <description>Every Strategic Advisor reply now carries a Send to Studio action, and the whole conversation travels with it rather than a single message.</description>
+      <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>A rebuilt AI visibility overview</title>
+      <link>https://searchscope.io/blog/ai-visibility-overview/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/ai-visibility-overview/</guid>
+      <description>Your score, how often you&#x27;re named and cited, your share of voice, and where you land inside the answer. Every number shows what it&#x27;s out of.</description>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>Worksheets</title>
+      <link>https://searchscope.io/blog/worksheets/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/worksheets/</guid>
+      <description>Any workspace can become a live sheet your team works through, with status, priority and notes. Generate recommendations for many rows at once, with a preview first.</description>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>Prompt suggestions from your own search data</title>
+      <link>https://searchscope.io/blog/prompt-suggestions/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/prompt-suggestions/</guid>
+      <description>Searchscope turns the searches that already bring people to your site into the questions buyers ask AI, then checks how often people actually ask them.</description>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
+    <item>
+      <title>A demo on every page</title>
+      <link>https://searchscope.io/blog/demo-on-every-page/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/demo-on-every-page/</guid>
+      <description>Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you&#x27;re actually looking at.</description>
+      <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+
+    </item>
     <item>
       <title>SEO is now an operating system</title>
       <link>https://searchscope.io/blog/seo-is-now-an-operating-system/</link>
