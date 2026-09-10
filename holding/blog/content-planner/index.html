@@ -512,6 +512,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding-block: clamp(2rem, 1.4rem + 3vw, 3.5rem) clamp(2rem, 1.4rem + 3vw, 3.25rem); }
   /* No max-width on the container: the header must line up with the article
      below it, not sit in its own centered column. The text itself is capped. */
+  /* .uhero is defined once, in blog_mocks.py, so the preview and the post
+     cannot disagree about the frame width the scenes are drawn against. */
   .posthead__sub { font-size:var(--step-1); line-height:1.5; color:var(--ink-dim);
     margin:var(--space-m) 0 0; max-width:62ch; }
   /* A fifth larger than the site's step-4, per Stu. */
@@ -725,6 +727,136 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .noresults { font-family:var(--font-mono); font-size:var(--step--1); color:var(--ink-faint);
     margin-top:var(--space-l); }
 </style>
+<style>
+  /* The scene is wrapped in a <figure>, which carries a browser default of
+     `margin: 1em 40px`. Unreset, that quietly ate 80px of frame: a scene asked
+     to be 390 wide rendered at 310, and because everything sizes off the frame
+     the type shrank with it. Reset here rather than in the host stylesheet, so
+     the module is self-contained wherever it is dropped. */
+  .uhero { margin: 1.6rem 0 0; max-width: 640px; }
+  .uhero .ticked { display: block; }
+
+  /* Product update scenes. Sized in em off a cqw root, so the same markup
+     serves a 390px card in the app and a 640px hero on a post. */
+  .uscene { container-type: inline-size; position: relative; width: 100%;
+    aspect-ratio: 390 / 168; border-radius: var(--radius-s, 6px);
+    background: linear-gradient(150deg, #FCFDFE, #F4F7FA);
+    border: 1px solid var(--hairline, #E2E8F0); overflow: hidden; }
+  .uscene__i { position: absolute; inset: 0; padding: 1.2em 1.4em;
+    display: flex; flex-direction: column;
+    font: 400 1em/1.4 var(--font-mono, ui-monospace, Menlo, monospace);
+    font-size: 2.56cqw; color: #64748B; }
+  .uscene__h { font-size: .8em; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .09em; color: #94A3B8; margin-bottom: .7em;
+    display: flex; align-items: center; gap: .4em; }
+  .uscene__h i { width: .5em; height: .5em; border-radius: 50%;
+    background: #15937a; font-style: normal; }
+
+  /* entrance, armed by JS */
+  .u { opacity: 1; transform: none; }
+  .uscene.is-armed .u { opacity: 0; }
+  .uscene.is-armed.is-shown .u { opacity: 1; transform: none;
+    transition: opacity .42s var(--ease-out, cubic-bezier(.2,.8,.3,1)),
+                transform .42s var(--ease-out, cubic-bezier(.2,.8,.3,1));
+    transition-delay: calc(90ms + var(--i, 0) * 90ms); }
+  .uscene.is-armed .u--up   { transform: translateY(.7em); }
+  .uscene.is-armed .u--left { transform: translateX(-.9em); }
+  .uscene.is-armed .u--pop  { transform: scale(.86); }
+  .uscene.is-armed .u--grow { transform: scaleX(0); transform-origin: left center; }
+  .uscene.is-armed.is-shown .u--grow { transform: scaleX(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .uscene.is-armed .u { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* shared furniture */
+  .u-row { display: flex; align-items: center; gap: .6em; }
+  .u-pill { display: inline-flex; align-items: center; gap: .3em;
+    border: 1px solid #E2E8F0; border-radius: 999px; padding: .15em .5em;
+    font-size: .75em; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .05em; color: #64748B; background: #fff; white-space: nowrap; }
+  .u-pill--go { border-color: #15937a; color: #15937a; }
+  .u-pill--ink { background: #1A1712; border-color: #1A1712; color: #fff; }
+  .u-bar { height: .5em; border-radius: .3em; background: #F1F5F9;
+    overflow: hidden; flex: 1; }
+  .u-bar i { display: block; height: 100%; border-radius: .3em;
+    background: #15937a; font-style: normal; }
+  .u-bar--mid i { background: #b45309; }
+  .u-bar--low i { background: #e11d48; }
+  .u-card { border: 1px solid #E2E8F0; border-radius: .5em; background: #fff;
+    padding: .5em .7em; min-width: 0; }
+  .u-lbl { font-size: .8em; font-weight: 500; color: #94A3B8;
+    text-transform: uppercase; letter-spacing: .06em; display: block; }
+  .u-num { font-size: 1.3em; font-weight: 600; color: #16150F;
+    font-family: ui-sans-serif, -apple-system, sans-serif; }
+  .u-of { font-size: .85em; color: #94A3B8; font-weight: 400; }
+  .u-tick { width: 1.1em; height: 1.1em; border-radius: .3em;
+    border: 1px solid #94A3B8; display: grid; place-items: center; flex: none;
+    background: #fff; }
+  .u-tick--on { background: #15937a; border-color: #15937a; }
+  .u-tick svg { width: .7em; height: .7em; stroke: #fff; stroke-width: 3; fill: none; }
+  .u-arrow { color: #94A3B8; font-size: 1.1em; flex: none; }
+  .u-txt { height: .4em; border-radius: .2em; background: #F1F5F9; }
+  .u-nm { flex: 1; font-size: .9em; color: #16150F; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* 1 variants */
+  .us1 .ans { display: flex; flex-direction: column; gap: .5em; flex: 1;
+    justify-content: center; }
+  .us1 .ans > div { display: flex; align-items: center; gap: .5em; }
+  .us1 em { font-style: normal; background: rgba(21,147,122,.14); color: #15937a;
+    border-radius: .2em; padding: 0 .3em; font-weight: 600; }
+  .us1 .sug { display: flex; align-items: center; gap: .6em; margin-top: .7em;
+    padding-top: .7em; border-top: 1px solid #E2E8F0; }
+  /* 2 engines */
+  .us2 .eng { display: grid; grid-template-columns: 7em 1fr 2.4em; gap: .5em .7em;
+    align-items: center; flex: 1; align-content: center; }
+  .us2 .eng span { font-size: .85em; color: #64748B; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; }
+  .us2 .eng b { font-size: .85em; font-weight: 500; color: #16150F; text-align: right; }
+  /* 3 planner */
+  .us3 .pl { display: flex; flex-direction: column; gap: .5em; flex: 1;
+    justify-content: center; }
+  .us3 .pl > div { display: flex; align-items: center; gap: .6em; }
+  /* 4 studio */
+  .us4 .body { display: flex; align-items: center; gap: .9em; flex: 1; }
+  .us4 .bub { flex: 1.1; border: 1px solid #E2E8F0; border-radius: .7em .7em .7em .2em;
+    background: #fff; padding: .7em .8em; display: flex; flex-direction: column; gap: .4em; }
+  .us4 .out { flex: 1; display: flex; flex-direction: column; gap: .5em; }
+  /* 5 overview */
+  .us5 .top { display: flex; align-items: flex-end; gap: 1em; margin-bottom: .9em; }
+  .us5 .big { font: 600 2.2em/1 ui-sans-serif, -apple-system, sans-serif; color: #16150F;
+    letter-spacing: -.02em; }
+  .us5 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7em;
+    flex: 1; align-content: center; }
+  /* 6 worksheets */
+  .us6 .sheet { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .us6 .r { display: grid; grid-template-columns: 1.1em 1fr auto auto; gap: .7em;
+    align-items: center; padding: .4em 0; border-top: 1px solid #E2E8F0; }
+  .us6 .r:first-child { border-top: 0; }
+  /* 7 prompts */
+  .us7 .cols { display: grid; grid-template-columns: 1fr 1.3em 1fr; gap: .5em .6em;
+    flex: 1; align-content: center; align-items: center; }
+  .us7 .q, .us7 .a { font-size: .85em; background: #fff; border: 1px solid #E2E8F0;
+    border-radius: .4em; padding: .3em .5em; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .us7 .q { color: #64748B; }
+  .us7 .a { color: #16150F; border-color: #15937a; }
+  /* 8 demo */
+  .us8 .pg { flex: 1; border: 1px solid #E2E8F0; border-radius: .6em; background: #fff;
+    padding: .8em; display: flex; flex-direction: column; gap: .6em; position: relative;
+    justify-content: center; }
+  .us8 .wd { position: absolute; top: .7em; right: .7em; display: inline-flex;
+    align-items: center; gap: .4em; border: 1px solid #E2E8F0; border-radius: 999px;
+    background: #fff; padding: .2em .7em .2em .5em; font-size: .75em; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .05em; color: #16150F; }
+  .us8 .wd s { position: relative; width: .8em; height: .8em; text-decoration: none; flex: none; }
+  .us8 .wd s i, .us8 .wd s u { position: absolute; inset: 0; border-radius: 50%;
+    background: #fbbf24; font-style: normal; text-decoration: none; }
+  .us8 .wd s i { animation: uping 1.7s cubic-bezier(0,0,.2,1) infinite; opacity: .6; }
+  @keyframes uping { 75%, 100% { transform: scale(2.3); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .us8 .wd s i { animation: none; } }
+  .us8 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: .5em; margin-top: .2em; }
+</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Searchscope","url":"https://searchscope.io/","description":"The SEO and AI search intelligence platform."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The Content Planner","description":"One plan for everything you're creating, across SEO and PR, built from the data Searchscope already holds about you. Each piece hands off to Content Studio to build.","datePublished":"2026-08-17","dateModified":"2026-08-17","author":{"@type":"Person","name":"Ray","url":"https://searchscope.io/blog/author/ray/"},"publisher":{"@type":"Organization","name":"Searchscope","url":"https://searchscope.io/"},"keywords":"Product Updates","articleSection":"Product Updates","wordCount":159,"timeRequired":"PT1M","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://searchscope.io/blog/content-planner/"},"url":"https://searchscope.io/blog/content-planner/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://searchscope.io/blog/"},{"@type":"ListItem","position":3,"name":"Product Updates","item":"https://searchscope.io/blog/category/product-updates/"}]}</script>
@@ -847,7 +979,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="navmenu__h">About Searchscope</p>
               <a class="navmenu__sublink" href="/blog/category/product-updates/">
                 <span class="navmenu__label">Product updates</span>
-                <span class="navmenu__sub">What&#8217;s new in Searchscope, newest first</span>
+                <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
               <span class="navmenu__soon">About <b>Coming soon</b></span>
               <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
@@ -886,6 +1018,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2026-08-17">August 17, 2026</time>
       </p>
       <p class="posthead__sub reveal" style="--reveal-delay:190ms">One plan for everything you&#x27;re creating, across SEO and PR, built from the data Searchscope already holds about you. Each piece hands off to Content Studio to build.</p>
+      <figure class="uhero reveal">
+        <div class="ticked">
+          <span class="ticks" aria-hidden="true">
+            <span class="ticks__c ticks__tl"></span><span class="ticks__c ticks__tr"></span>
+            <span class="ticks__c ticks__br"></span><span class="ticks__c ticks__bl"></span>
+          </span>
+          <div class="uscene" role="img" aria-label="A proposed plan of four pieces, three of them handing off to Content Studio">
+            <div class="uscene__i us3">
+  <div class="uscene__h"><i></i>Proposed plan</div>
+  <div class="pl">
+    <div class="u u--up" style="--i:0"><span class="u-pill">SEO</span>
+      <span class="u-nm">Rewrite the pricing page</span>
+      <span class="u-arrow">&#8594;</span><span class="u-pill u-pill--go">Studio</span></div>
+    <div class="u u--up" style="--i:1"><span class="u-pill">PR</span>
+      <span class="u-nm">Pitch the retail trade press</span>
+      <span class="u-arrow">&#8594;</span><span class="u-pill u-pill--go">Studio</span></div>
+    <div class="u u--up" style="--i:2"><span class="u-pill">SEO</span>
+      <span class="u-nm">Cluster page: winter storage</span>
+      <span class="u-arrow">&#8594;</span><span class="u-pill u-pill--go">Studio</span></div>
+    <div class="u u--up" style="--i:3"><span class="u-pill">SEO</span>
+      <span class="u-nm" style="color:#94A3B8">Glossary refresh</span>
+      <span class="u-pill">Not now</span></div>
+  </div>
+            </div>
+          </div>
+        </div>
+      </figure>
     </div>
   </section>
 
@@ -1096,7 +1255,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     activate();
     paint();
   })();
-  </script>
+  </script><script>
+(function () {
+  var s = [].slice.call(document.querySelectorAll('.uscene'));
+  if (!s.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  s.forEach(function (e) { e.classList.add('is-armed'); });
+  if (!('IntersectionObserver' in window)) {
+    s.forEach(function (e) { e.classList.add('is-shown'); }); return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-shown'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.35 });
+  s.forEach(function (e) { io.observe(e); });
+  // Failsafe: anything still armed after 2.6s plays anyway, so a scene can
+  // never be left invisible by an observer that did not fire.
+  setTimeout(function () {
+    s.forEach(function (e) { e.classList.add('is-shown'); });
+  }, 2600);
+})();
+</script>
 </main>
 
 <div class="stickycta">
