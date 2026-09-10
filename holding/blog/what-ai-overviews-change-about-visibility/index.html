@@ -270,7 +270,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       backdrop-filter: saturate(1.4) blur(10px);
       -webkit-backdrop-filter: saturate(1.4) blur(10px);
       border-top: 1px solid var(--hairline);
-    }.stickycta .btn{ width: 100%; }@media (max-width: 720px){.stickycta{ display: block; }.site-head__cta{ display: none; }body{ padding-bottom: 5.5rem; }}.tablist{ display: flex; flex-direction: column; border-left: 1px solid var(--hairline); }.tab{ display: flex; align-items: baseline; gap: 0.8rem; text-align: left; width: 100%; background: none; border: 0; border-left: 2px solid transparent; margin-left: -1px; padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); cursor: pointer; transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }.tab i{ font-style: normal; font-size: var(--step--2); color: var(--ink-faint); }.tab:hover{ color: var(--ink-dim); }.tabpanel[hidden]{ display: none; }@media (max-width: 860px){.tablist{ flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--hairline); }.tab{ width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; margin-left: 0; }.tab i{ display: none; }}.site-foot{
+    }.stickycta .btn{ width: 100%; }@media (max-width: 720px){.stickycta{ display: block; }.site-head__cta{ display: none; }body{ padding-bottom: 5.5rem; }}.site-foot{
       border-top: 1px solid var(--hairline);
       padding-block: var(--space-l);
       text-align: left;
@@ -352,10 +352,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--ink);
       margin: 0 0 var(--space-2xs);
       padding: 0 0.75rem;
-    }
-.navmenu__panel a.navmenu__h:not(.navmenu__sublink) { display: block; padding: 0 0.75rem; font-size: var(--step--2); font-weight: 600; letter-spacing: 0.14em; color: var(--ink); background: none; }
-.navmenu__panel a.navmenu__h::before { content: none; }
-.navmenu__panel a.navmenu__h:hover, .navmenu__panel a.navmenu__h:focus-visible { background: none; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }.navmenu__panel a{
+    }.navmenu__panel a.navmenu__h:not(.navmenu__sublink){ display: block; padding: 0 0.75rem; font-size: var(--step--2); font-weight: 600; letter-spacing: 0.14em; color: var(--ink); background: none; }.navmenu__panel a.navmenu__h::before{ content: none; }.navmenu__panel a.navmenu__h:hover,.navmenu__panel a.navmenu__h:focus-visible{ background: none; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }.navmenu__panel a{
       display: block;
       padding: 0.55rem 0.75rem;
       border-radius: var(--radius-s);
@@ -365,7 +362,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-decoration: none;
       white-space: nowrap;
       transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }.navmenu__panel a:hover,.navmenu__panel a:focus-visible{ background: var(--surface-panel-2); color: var(--ink); }.navmenu__panel a[aria-current="page"]{ color: var(--ink); }.navmenu__panel a::before,.navmenu__soon::before,.navmenu__soon--sub .navmenu__label::before,.navmenu__sublink .navmenu__label::before{
+    }.navmenu__panel a:hover,.navmenu__panel a:focus-visible{ background: var(--surface-panel-2); color: var(--ink); }.navmenu__panel a::before,.navmenu__soon::before,.navmenu__soon--sub .navmenu__label::before,.navmenu__sublink .navmenu__label::before{
       content: '\203A';
       display: inline-block;
       width: var(--nav-arrow-w);
@@ -373,38 +370,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-align: left;
       color: var(--ink-faint);
       transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }.navmenu__soon--sub::before{ content: none; }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navmenu__figure{
-      display: block;
-      width: calc(100% - 1.5rem);
-      height: auto;
-      margin: 0 0.75rem;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: top center;
-      border: 1px solid var(--hairline);
-      border-radius: var(--radius-s);
-      background: var(--surface-panel-2);
-    }
-.navfig { margin: 1rem 0.75rem 0; }
-.navfig__b { padding: 0.55rem 0.75rem; background: var(--surface);
-  border: 1px solid var(--hairline); border-radius: var(--radius-s); }
-.navfig__r { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem;
+    }.navmenu__soon--sub::before{ content: none; }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navfig{ margin: 1rem 0.75rem 0; }.navfig__b{ padding: 0.55rem 0.75rem; background: var(--surface);
+  border: 1px solid var(--hairline); border-radius: var(--radius-s); }.navfig__r{ display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem;
   align-items: baseline; margin: 0; padding: 0.34rem 0;
-  border-top: 1px solid var(--hairline); }
-.navfig__r:first-child { border-top: 0; }
-.navfig__r b { font-family: var(--font-mono); font-size: var(--step--2);
+  border-top: 1px solid var(--hairline); }.navfig__r:first-child{ border-top: 0; }.navfig__r b{ font-family: var(--font-mono); font-size: var(--step--2);
   font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--ink); }
-.navfig__r span { font-size: var(--step--2); line-height: 1.35; color: var(--ink-dim); }
-/* The nav script toggles the panel's hidden attribute, so this runs every
-   time the menu opens. No observer: one that fires once would be wrong here,
-   and a panel that is display:none never intersects anything. */
-.navmenu__panel:not([hidden]) .navfig__r { animation: navfig-in 0.38s var(--ease-out) both;
-  animation-delay: calc(var(--i, 0) * 70ms); }
-@keyframes navfig-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .navmenu__panel:not([hidden]) .navfig__r { animation: none; }
-}.navmenu__soon{
+  color: var(--ink); }.navfig__r span{ font-size: var(--step--2); line-height: 1.35; color: var(--ink-dim); }.navmenu__panel:not([hidden]) .navfig__r{ animation: navfig-in 0.38s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms); }@media (prefers-reduced-motion: reduce){.navmenu__panel:not([hidden]) .navfig__r{ animation: none; }}.navmenu__soon{
       display: flex;
       align-items: center;
       padding: 0.55rem 0.75rem;
@@ -467,8 +439,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         border: 0;
         border-radius: 0;
         box-shadow: none;
-      }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navmenu__figure, .navfig{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}</style>
+      }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.navfig{ display: none; }}@media (max-width: 640px){.navmenu__panel{ padding: var(--space-m); }.navmenu__cols{ grid-template-columns: 1fr; gap: var(--space-m); }.nav{ gap: var(--space-s); }.navmenu__btn{ font-size: var(--step--2); }}@keyframes navfig-in{ from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }</style><style>
+  .snip .snipline { display:block; opacity:0; transform:translateY(6px);
+    transition:opacity var(--dur, .28s) var(--ease-out, ease),
+               transform var(--dur, .28s) var(--ease-out, ease);
+    transition-delay:calc(200ms + var(--i, 0) * 85ms); }
+  .snip.is-in .snipline, .is-in .snip .snipline { opacity:1; transform:none; }
+  /* One blinking caret is the whole of the looping motion on the page. */
+  .snipline--cursor::after { content:"_"; margin-left:.15em;
+    animation:snipcaret 1.15s steps(1) infinite; }
+  @keyframes snipcaret { 50% { opacity:0; } }
 
+  @media (prefers-reduced-motion: reduce) {
+    .snip .snipline { opacity:1; transform:none; transition:none; }
+    .snipline--cursor::after { animation:none; }
+  }
+</style>
 <link rel="canonical" href="https://searchscope.io/blog/what-ai-overviews-change-about-visibility/">
 <link rel="alternate" type="application/rss+xml" title="Searchscope Blog" href="https://searchscope.io/blog/rss.xml">
 <style>
@@ -709,7 +695,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bloghead { font-size:calc(var(--step-3) * 1.2); line-height:1.08;
     letter-spacing:-0.025em; margin:0 0 var(--space-m); }
   .catrail { display:flex; flex-wrap:wrap; gap:.45rem; justify-content:center;
-    margin:var(--space-xl) 0 0; }
+    margin:var(--space-xl) 0 0; align-items:center; }
+  /* The divider and the one pill that leaves the page rather than filtering
+     it.
+     First attempt used background:var(--surface) with no border, which is
+     #fbfbfb on a #fbfbfb page: the pill rendered as bare text with no edge at
+     all. --surface is the page background, so it is never a tint. This uses
+     the full ink border instead, which reads as a stronger control than the
+     hairline category pills without taking the filled-ink treatment that
+     already means "this filter is on". */
+  .catrail__s { width:1px; height:1.5em; background:rgba(0,0,0,.18);
+    display:inline-block; margin:0 .45rem; }
+  .tagpill--out { border-color:var(--ink); color:var(--ink); }
+  .tagpill--out:hover { background:var(--ink); color:var(--surface); }
 
   /* Index and category listings: the same boxed card as More posts, two up. */
   .postgrid { list-style:none; padding:0; margin:var(--space-l) 0 0;
@@ -850,9 +848,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="navmenu__soon">About <b>Coming soon</b></span>
               <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
               <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
-              <a class="navmenu__sublink" href="/whats-new/" aria-current="page">
-                <span class="navmenu__label">What's new?</span>
-                <span class="navmenu__sub">Recent Searchscope product releases</span>
+              <a class="navmenu__sublink" href="/blog/category/product-updates/">
+                <span class="navmenu__label">Product updates</span>
+                <span class="navmenu__sub">What&#8217;s new in Searchscope, newest first</span>
               </a>
             </div>
           </div>
@@ -1264,42 +1262,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { closeNav(); toggle.focus(); }
     });
-  })();
-</script>
-
-<noscript>
-  <style>.tabpanel[hidden] { display: block !important; } .tablist { display: none; } .jrow { opacity: 1 !important; animation: none !important; } .tabpanel + .tabpanel { margin-top: var(--space-xl); }</style>
-</noscript>
-
-<script>
-  (function () {
-    var list = document.querySelector('.tablist');
-    if (!list) return;
-    var tabs = [].slice.call(list.querySelectorAll('.tab'));
-    var panels = [].slice.call(document.querySelectorAll('.tabpanel'));
-    if (tabs.length !== panels.length) return;
-
-    function select(i) {
-      tabs.forEach(function (t, j) {
-        t.setAttribute('aria-selected', j === i ? 'true' : 'false');
-        t.tabIndex = j === i ? 0 : -1;
-      });
-      panels.forEach(function (p, j) { p.hidden = j !== i; });
-    }
-
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { select(i); });
-      t.addEventListener('keydown', function (e) {
-        var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1
-              : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
-        if (!d) return;
-        e.preventDefault();
-        var n = (i + d + tabs.length) % tabs.length;
-        select(n);
-        tabs[n].focus();
-      });
-    });
-    select(0);
   })();
 </script>
 
