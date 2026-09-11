@@ -851,22 +851,51 @@ html, body { overflow-x: hidden; }
     .ansdemo__rows .v { font-size: var(--step--1); color: var(--ink-dim); min-width: 0; overflow-wrap: anywhere; }
     @media (max-width: 560px) { .ansdemo__rows li { grid-template-columns: 1fr; gap: 0; } }
 
-    /* ---- score weights table ---- */
-    .wt { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0 0; text-align: left; }
-    .wt__cap { caption-side: top; text-align: left; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); padding-bottom: var(--space-xs); }
-    .wt th, .wt td { border-bottom: 1px solid var(--hairline); padding: var(--space-s) var(--space-s) var(--space-s) 0; vertical-align: baseline; }
-    .wt thead th { font-family: var(--font-mono); font-size: var(--step--2); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); border-bottom-color: var(--ink); }
-    .wt tbody th { font-family: var(--font-mono); font-size: var(--step--1); font-weight: 500; color: var(--ink); width: 14rem; }
-    .wt tbody td:first-of-type { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); width: 6rem; font-variant-numeric: tabular-nums; }
-    .wt td:last-child { color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; }
-    @media (max-width: 720px) {
-      .wt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-      .wt tr { display: block; border-bottom: 1px solid var(--hairline); padding: var(--space-s) 0; }
-      .wt th, .wt td { display: block; width: auto !important; border-bottom: 0; padding: 0; }
-      .wt tbody td:first-of-type { margin-top: var(--space-3xs); color: var(--ink-dim); }
-      .wt td:last-child { margin-top: var(--space-2xs); }
+    /* ---- score breakdown: donut and labelled list ---- */
+    /* The five pastels are the app's own competitor palette, verbatim from
+       BrandAI.tsx, so the site borrows a palette the product already owns.
+       Five of the eight, chosen for the widest hue spread; the other three
+       sit within about 40 degrees of one already in use.
+
+       There is a gap between the slices on purpose. Pastels are
+       equal-lightness by design, so measured against each other these sit
+       between 1.02:1 and 1.20:1 and would read as one pale blur where they
+       touch. The gap lets the page draw the boundary instead. In the app they
+       colour separated lines with a legend, which is why it has never
+       mattered there. */
+    .sbreak { margin: var(--space-xl) 0 0; }
+    .sbreak__cap { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); margin-bottom: var(--space-s); }
+    .sbreak__grid { display: grid; gap: var(--space-xl); align-items: center; }
+    @media (min-width: 900px) { .sbreak__grid { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); } }
+    .sdonut { width: 100%; max-width: 290px; margin: 0 auto; display: block; }
+    .sdonut circle { fill: none; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .sd__track { stroke: rgba(0,0,0,.05); stroke-width: 26; }
+    .sd__seg { stroke-width: 26; stroke-dashoffset: var(--sd-off); }
+    /* SVG text is sized in viewBox units, not pixels: at 120 units scaled to
+       290px each unit is about 2.4px, so these are small numbers on purpose.
+       The hole is 64 units across and both labels fit inside it. */
+    .sd__n, .sd__t { text-anchor: middle; font-family: var(--font-mono); }
+    .sd__n { font-size: 26px; font-weight: 600; fill: var(--ink); font-family: ui-sans-serif, -apple-system, sans-serif; }
+    .sd__t { font-size: 6px; fill: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+    .sbreak__keys { list-style: none; padding: 0; margin: 0; }
+    .sbreak__keys li { display: grid; grid-template-columns: auto 10.5rem 3.2rem 1fr; gap: 0.75rem; align-items: baseline; padding: var(--space-s) 0; border-top: 1px solid var(--hairline); }
+    .sbreak__keys li:first-child { border-top: 0; }
+    .sbreak__keys i { width: 0.75rem; height: 0.75rem; border-radius: 3px; align-self: center; font-style: normal; }
+    .sbreak__keys b { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); }
+    .sbreak__keys em { font-family: var(--font-mono); font-style: normal; font-size: var(--step--1); color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+    .sbreak__keys span { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.5; }
+    @media (max-width: 700px) {
+      .sbreak__keys li { grid-template-columns: auto 1fr auto; row-gap: 0.3rem; }
+      .sbreak__keys span { grid-column: 2 / -1; }
     }
-    /* ---- form ---- */
+    /* Draws itself in when the section reveals, hooked to the page's existing
+       .reveal observer rather than adding a second script. */
+    .reveal .sd__seg { stroke-dashoffset: var(--sd-len); }
+    .reveal.is-in .sd__seg { stroke-dashoffset: var(--sd-off); transition: stroke-dashoffset 900ms var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal .sd__seg, .reveal.is-in .sd__seg { stroke-dashoffset: var(--sd-off); transition: none; }
+    }
+/* ---- form ---- */
     .formwrap { text-align: left; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
     .formcard { border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-l); background: var(--surface-panel); box-shadow: var(--shadow-m); }
     .field { display: block; margin-bottom: var(--space-m); }
@@ -1564,19 +1593,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           The AI visibility score is broken into five components, with the same weighting used across your dashboard, your reports and your history.
         </p>
       </div>
-      <table class="wt reveal">
-        <caption class="wt__cap">What the AI visibility score is made of</caption>
-        <thead>
-          <tr><th scope="col">Component</th><th scope="col">Weight</th><th scope="col">What it measures</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Share of voice</th><td>35%</td><td>Your share of the brand mentions across answers, measured against the competitors you track.</td></tr>
-          <tr><th scope="row">Citation rate</th><td>20%</td><td>How often an assistant links to you in the answer, not just names you.</td></tr>
-          <tr><th scope="row">Mention rate</th><td>15%</td><td>How often you&rsquo;re named at all.</td></tr>
-          <tr><th scope="row">Breadth</th><td>10%</td><td>How many of the assistants mention you, so strength on one doesn&rsquo;t read as strength everywhere.</td></tr>
-          <tr><th scope="row">Branded recall</th><td>20%</td><td>On questions that name you, how often the assistant knows who you are.</td></tr>
-        </tbody>
-      </table>
+      <figure class="sbreak reveal">
+        <figcaption class="sbreak__cap">What the AI visibility score is made of</figcaption>
+        <div class="sbreak__grid">
+          <svg class="sdonut" viewBox="0 0 120 120" role="img"
+               aria-label="How the AI visibility score is weighted: Share of voice 35 percent, Citation rate 20 percent, Branded recall 20 percent, Mention rate 15 percent, Breadth 10 percent.">
+            <circle class="sd__track" cx="60" cy="60" r="45"></circle>
+            <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#a8c3e2" stroke-dasharray="96.76 185.98" style="--sd-len:282.74px;--sd-off:-0.00px;--i:0"></circle>
+            <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#a9c6ad" stroke-dasharray="54.35 228.39" style="--sd-len:282.74px;--sd-off:-98.96px;--i:1"></circle>
+            <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#d9c69a" stroke-dasharray="54.35 228.39" style="--sd-len:282.74px;--sd-off:-155.51px;--i:2"></circle>
+            <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#c9a9cc" stroke-dasharray="40.21 242.53" style="--sd-len:282.74px;--sd-off:-212.06px;--i:3"></circle>
+            <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#dcaab4" stroke-dasharray="26.07 256.67" style="--sd-len:282.74px;--sd-off:-254.47px;--i:4"></circle>
+            <text class="sd__n" x="60" y="60">5</text>
+            <text class="sd__t" x="60" y="72">components</text>
+          </svg>
+          <ul class="sbreak__keys">
+            <li><i style="background:#a8c3e2" aria-hidden="true"></i><b>Share of voice</b><em>35%</em><span>Your share of the brand mentions across answers, measured against the competitors you track.</span></li>
+            <li><i style="background:#a9c6ad" aria-hidden="true"></i><b>Citation rate</b><em>20%</em><span>How often an assistant links to you in the answer, not just names you.</span></li>
+            <li><i style="background:#d9c69a" aria-hidden="true"></i><b>Branded recall</b><em>20%</em><span>On questions that name you, how often the assistant knows who you are.</span></li>
+            <li><i style="background:#c9a9cc" aria-hidden="true"></i><b>Mention rate</b><em>15%</em><span>How often you&rsquo;re named at all.</span></li>
+            <li><i style="background:#dcaab4" aria-hidden="true"></i><b>Breadth</b><em>10%</em><span>How many of the assistants mention you, so strength on one doesn&rsquo;t read as strength everywhere.</span></li>
+          </ul>
+        </div>
+      </figure>
       <ul class="anat anat--two reveal">
         <li><b>Branded recall is measured on its own</b><span>Answers to questions that name you are scored separately as recall, so you can see how much of your standing comes from people who were already looking for you.</span></li>
         <li><b>No brand questions, no penalty</b><span>If you don&rsquo;t track brand questions, branded recall is excluded and its weighting is redistributed across the other four components.</span></li>
