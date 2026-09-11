@@ -2,71 +2,99 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://searchscope.io/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/beta/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/ai-visibility-overview/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/all-six-ai-engines/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/brand-name-variants/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/cannibalization-is-a-data-problem/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/content-planner/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/demo-on-every-page/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/prompt-suggestions/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/reading-demand-vs-your-share/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/send-to-studio/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/seo-is-now-an-operating-system/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/what-ai-overviews-change-about-visibility/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/worksheets/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/content-planner/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/content-studio/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/dashboard/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/reporting/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/weekly-scheduler/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/worksheets/</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/ai-brand-intelligence/</loc>
@@ -74,90 +102,150 @@
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/instruments/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/search-intelligence/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/resources/ai-visibility-checker/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/use-cases/agencies/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/author/ray/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/category/agency/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/category/ai-search/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/category/product-updates/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/category/search-data/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/blog/category/search-systems/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/intelligence/brand-ai/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/intelligence/command-centre/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/intelligence/competitive-landscape/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/intelligence/demand-trends/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/intelligence/strategic-advisor/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/settings/business/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/settings/data/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/tools/page-experience/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/cannibalization/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/cluster_volatility/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/decay/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/index/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/links/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/opportunity/</loc>
+    <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://searchscope.io/knowledge-base/workspace/schema/</loc>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/cannibalization/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/cluster-volatility/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/content-decay/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/index-bloat/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/internal-links/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/opportunities/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/analyzers/schema/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/instruments/content-planner/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/instruments/content-studio/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/instruments/page-experience/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
   <url>
     <loc>https://searchscope.io/platform/instruments/reporting/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
   </url>
 </urlset>
