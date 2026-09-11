@@ -1285,10 +1285,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   }, { threshold: 0.35 });
   s.forEach(function (e) { io.observe(e); });
-  // Failsafe: anything still armed after 2.6s plays anyway, so a scene can
-  // never be left invisible by an observer that did not fire.
+  // Failsafe, for an observer that never fires. It only rescues scenes that
+  // are actually ON SCREEN: a scene the reader cannot see cannot be wrongly
+  // invisible, and playing it early means the animation is over before they
+  // scroll to it. A post hero is in view at load, so this changes nothing
+  // there and protects anything placed further down.
   setTimeout(function () {
-    s.forEach(function (e) { e.classList.add('is-shown'); });
+    s.forEach(function (e) {
+      if (e.classList.contains('is-shown')) return;
+      var r = e.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) e.classList.add('is-shown');
+    });
   }, 2600);
 })();
 </script>
@@ -1379,7 +1386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     revealEls.forEach(function (el) { io.observe(el); });
 
     // failsafe: never leave content hidden
-    setTimeout(function () { revealEls.forEach(function (el) { if (!el.classList.contains('is-in')) activate(el); }); }, 2600);
+    setTimeout(function () { revealEls.forEach(function (el) { if (el.classList.contains('is-in')) return; var r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) activate(el); }); }, 2600);
   })();
 </script>
 
