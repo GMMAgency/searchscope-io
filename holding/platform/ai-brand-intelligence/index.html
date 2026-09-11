@@ -871,17 +871,32 @@ html, body { overflow-x: hidden; }
     .sdonut circle { fill: none; transform: rotate(-90deg); transform-origin: 50% 50%; }
     .sd__track { stroke: rgba(0,0,0,.05); stroke-width: 26; }
     .sd__seg { stroke-width: 26; stroke-dashoffset: var(--sd-off); }
-    /* SVG text is sized in viewBox units, not pixels: at 120 units scaled to
-       290px each unit is about 2.4px, so these are small numbers on purpose.
-       The hole is 64 units across and both labels fit inside it. */
-    .sd__n, .sd__t { text-anchor: middle; font-family: var(--font-mono); }
-    .sd__n { font-size: 26px; font-weight: 600; fill: var(--ink); font-family: ui-sans-serif, -apple-system, sans-serif; }
-    .sd__t { font-size: 6px; fill: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+    /* The centre label is HTML over the SVG, not <text> inside it.
+       As SVG text it sat 11px above the ring's centre, because y= sets the
+       BASELINE rather than the visual middle and the second line then hangs
+       below it. Any fix in viewBox units is a guess at the font's metrics,
+       and the real Geist Mono only loads on the live site. Flexbox centres
+       whatever it is given, in any font. aria-hidden because the chart's own
+       aria-label already reads the whole breakdown. */
+    .sdonut__wrap { position: relative; }
+    .sdonut__mid { position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.15em; pointer-events: none; }
+    .sdonut__mid b { font-size: var(--step-3, 1.9rem); font-weight: 600; line-height: 1;
+      color: var(--ink); letter-spacing: -0.02em; }
+    .sdonut__mid span { font-family: var(--font-mono); font-size: var(--step--2);
+      line-height: 1; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
     .sbreak__keys { list-style: none; padding: 0; margin: 0; }
     .sbreak__keys li { display: grid; grid-template-columns: auto 10.5rem 3.2rem 1fr; gap: 0.75rem; align-items: baseline; padding: var(--space-s) 0; border-top: 1px solid var(--hairline); }
     .sbreak__keys li:first-child { border-top: 0; }
-    .sbreak__keys i { width: 0.75rem; height: 0.75rem; border-radius: 3px; align-self: center; font-style: normal; }
-    .sbreak__keys b { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); }
+    /* align-self: start, not center. Centring put the dot in the middle of
+       the whole row, so on the two rows whose description wraps to a second
+       line the dot sat 10px below its own label while single-line rows were
+       fine. The margin centres it on the FIRST line instead, computed from
+       the label's own size and line-height rather than measured, so it holds
+       at every step of the type scale. */
+    .sbreak__keys i { width: 0.75rem; height: 0.75rem; border-radius: 3px; font-style: normal;
+      align-self: start; margin-top: calc((1.5 * var(--step--1) - 0.75rem) / 2); }
+    .sbreak__keys b { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); line-height: 1.5; }
     .sbreak__keys em { font-family: var(--font-mono); font-style: normal; font-size: var(--step--1); color: var(--ink-dim); font-variant-numeric: tabular-nums; }
     .sbreak__keys span { color: var(--ink-dim); font-size: var(--step--1); line-height: 1.5; }
     @media (max-width: 700px) {
@@ -1596,6 +1611,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <figure class="sbreak reveal">
         <figcaption class="sbreak__cap">What the AI visibility score is made of</figcaption>
         <div class="sbreak__grid">
+          <div class="sdonut__wrap">
           <svg class="sdonut" viewBox="0 0 120 120" role="img"
                aria-label="How the AI visibility score is weighted: Share of voice 35 percent, Citation rate 20 percent, Branded recall 20 percent, Mention rate 15 percent, Breadth 10 percent.">
             <circle class="sd__track" cx="60" cy="60" r="45"></circle>
@@ -1604,9 +1620,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#d9c69a" stroke-dasharray="54.35 228.39" style="--sd-len:282.74px;--sd-off:-155.51px;--i:2"></circle>
             <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#c9a9cc" stroke-dasharray="40.21 242.53" style="--sd-len:282.74px;--sd-off:-212.06px;--i:3"></circle>
             <circle class="sd__seg" cx="60" cy="60" r="45" stroke="#dcaab4" stroke-dasharray="26.07 256.67" style="--sd-len:282.74px;--sd-off:-254.47px;--i:4"></circle>
-            <text class="sd__n" x="60" y="60">5</text>
-            <text class="sd__t" x="60" y="72">components</text>
           </svg>
+            <div class="sdonut__mid" aria-hidden="true">
+              <b>5</b><span>components</span>
+            </div>
+          </div>
           <ul class="sbreak__keys">
             <li><i style="background:#a8c3e2" aria-hidden="true"></i><b>Share of voice</b><em>35%</em><span>Your share of the brand mentions across answers, measured against the competitors you track.</span></li>
             <li><i style="background:#a9c6ad" aria-hidden="true"></i><b>Citation rate</b><em>20%</em><span>How often an assistant links to you in the answer, not just names you.</span></li>
