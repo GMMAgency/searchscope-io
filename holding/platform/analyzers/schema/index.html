@@ -1207,10 +1207,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Blog</span>
                 <span class="navmenu__sub">Writing on search systems and AI search</span>
               </a>
-              <span class="navmenu__soon navmenu__soon--sub">
-                <span class="navmenu__label">Documentation <b>Coming soon</b></span>
-                <span class="navmenu__sub">Knowledge Base and more</span>
-              </span>
+              <a class="navmenu__sublink" href="/knowledge-base/">
+                <span class="navmenu__label">Knowledge base</span>
+                <span class="navmenu__sub">How to use every screen in Searchscope</span>
+              </a>
             </div>
             <div>
               <p class="navmenu__h">Free resources</p>
@@ -1775,7 +1775,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     revealEls.forEach(function (el) { io.observe(el); });
 
     // failsafe: never leave content hidden
-    setTimeout(function () { revealEls.forEach(function (el) { if (!el.classList.contains('is-in')) activate(el); }); }, 2600);
+    setTimeout(function () { revealEls.forEach(function (el) { if (el.classList.contains('is-in')) return; var r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) activate(el); }); }, 2600);
   })();
 </script>
 

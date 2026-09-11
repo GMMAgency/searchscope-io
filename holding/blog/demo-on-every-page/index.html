@@ -362,7 +362,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-decoration: none;
       white-space: nowrap;
       transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }.navmenu__panel a:hover,.navmenu__panel a:focus-visible{ background: var(--surface-panel-2); color: var(--ink); }.navmenu__panel a::before,.navmenu__soon::before,.navmenu__soon--sub .navmenu__label::before,.navmenu__sublink .navmenu__label::before{
+    }.navmenu__panel a:hover,.navmenu__panel a:focus-visible{ background: var(--surface-panel-2); color: var(--ink); }.navmenu__panel a::before,.navmenu__soon::before,.navmenu__sublink .navmenu__label::before{
       content: '\203A';
       display: inline-block;
       width: var(--nav-arrow-w);
@@ -370,7 +370,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-align: left;
       color: var(--ink-faint);
       transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }.navmenu__soon--sub::before{ content: none; }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navfig{ margin: 1rem 0.75rem 0; }.navfig__b{ padding: 0.55rem 0.75rem; background: var(--surface);
+    }.navmenu__panel a:hover::before,.navmenu__panel a:focus-visible::before{ color: var(--ink); transform: translateX(2px); }.navfig{ margin: 1rem 0.75rem 0; }.navfig__b{ padding: 0.55rem 0.75rem; background: var(--surface);
   border: 1px solid var(--hairline); border-radius: var(--radius-s); }.navfig__r{ display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem;
   align-items: baseline; margin: 0; padding: 0.34rem 0;
   border-top: 1px solid var(--hairline); }.navfig__r:first-child{ border-top: 0; }.navfig__r b{ font-family: var(--font-mono); font-size: var(--step--2);
@@ -385,7 +385,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--ink-faint);
       white-space: nowrap;
       cursor: default;
-    }.navmenu__soon--sub{ flex-direction: column; align-items: flex-start; gap: 0.2rem; }.navmenu__panel a.navmenu__sublink{ display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; white-space: normal; }.navmenu__panel a.navmenu__sublink::before{ content: none; }.navmenu__sublink:hover .navmenu__label::before,.navmenu__sublink:focus-visible .navmenu__label::before{ color: var(--ink); transform: translateX(2px); }.navmenu__sublink .navmenu__sub{ color: var(--ink-faint); }.navmenu__panel a.navmenu__sublink .navmenu__label{ color: var(--ink); font-weight: 500; }.navmenu__panel a:not(.navmenu__sublink){ color: var(--ink); font-weight: 500; }.navmenu__panel a.navmenu__sublink .navmenu__label::before{ color: var(--ink-dim); }.navmenu__label{ display: flex; align-items: center; }.navmenu__sub{ font-size: 0.76em; line-height: 1.4; color: var(--ink-faint); opacity: 0.85; white-space: normal; padding-left: calc(var(--nav-arrow-w) + var(--nav-arrow-gap)); }.navmenu__soon b{
+    }.navmenu__panel a.navmenu__sublink{ display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; white-space: normal; }.navmenu__panel a.navmenu__sublink::before{ content: none; }.navmenu__sublink:hover .navmenu__label::before,.navmenu__sublink:focus-visible .navmenu__label::before{ color: var(--ink); transform: translateX(2px); }.navmenu__sublink .navmenu__sub{ color: var(--ink-faint); }.navmenu__panel a.navmenu__sublink .navmenu__label{ color: var(--ink); font-weight: 500; }.navmenu__panel a:not(.navmenu__sublink){ color: var(--ink); font-weight: 500; }.navmenu__panel a.navmenu__sublink .navmenu__label::before{ color: var(--ink-dim); }.navmenu__label{ display: flex; align-items: center; }.navmenu__sub{ font-size: 0.76em; line-height: 1.4; color: var(--ink-faint); opacity: 0.85; white-space: normal; padding-left: calc(var(--nav-arrow-w) + var(--nav-arrow-gap)); }.navmenu__soon b{
       margin-left: 0.6rem;
       font-weight: 500;
       font-size: 0.56em;
@@ -984,10 +984,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Blog</span>
                 <span class="navmenu__sub">Writing on search systems and AI search</span>
               </a>
-              <span class="navmenu__soon navmenu__soon--sub">
-                <span class="navmenu__label">Documentation <b>Coming soon</b></span>
-                <span class="navmenu__sub">Knowledge Base and more</span>
-              </span>
+              <a class="navmenu__sublink" href="/knowledge-base/">
+                <span class="navmenu__label">Knowledge base</span>
+                <span class="navmenu__sub">How to use every screen in Searchscope</span>
+              </a>
             </div>
             <div>
               <p class="navmenu__h">Free resources</p>
@@ -1289,10 +1289,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   }, { threshold: 0.35 });
   s.forEach(function (e) { io.observe(e); });
-  // Failsafe: anything still armed after 2.6s plays anyway, so a scene can
-  // never be left invisible by an observer that did not fire.
+  // Failsafe, for an observer that never fires. It only rescues scenes that
+  // are actually ON SCREEN: a scene the reader cannot see cannot be wrongly
+  // invisible, and playing it early means the animation is over before they
+  // scroll to it. A post hero is in view at load, so this changes nothing
+  // there and protects anything placed further down.
   setTimeout(function () {
-    s.forEach(function (e) { e.classList.add('is-shown'); });
+    s.forEach(function (e) {
+      if (e.classList.contains('is-shown')) return;
+      var r = e.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) e.classList.add('is-shown');
+    });
   }, 2600);
 })();
 </script>
@@ -1383,7 +1390,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     revealEls.forEach(function (el) { io.observe(el); });
 
     // failsafe: never leave content hidden
-    setTimeout(function () { revealEls.forEach(function (el) { if (!el.classList.contains('is-in')) activate(el); }); }, 2600);
+    setTimeout(function () { revealEls.forEach(function (el) { if (el.classList.contains('is-in')) return; var r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) activate(el); }); }, 2600);
   })();
 </script>
 
