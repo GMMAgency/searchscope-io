@@ -424,6 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://searchscope.io/knowledge-base/settings/data/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
+
+  /* `html, body { overflow-x: hidden }` is a site-wide guard against sideways
+     scroll, and it silently breaks position: sticky everywhere below it: a
+     computed overflow of hidden makes the body a scroll container, so the
+     sidebar scrolled away with the page instead of sticking. It had never
+     worked, on any knowledge base page, since the day they shipped.
+
+     `clip` does the same clipping job without creating a scroll container, so
+     the guard holds and sticky works. Scoped to these pages because this is
+     the only layout on the site that sticks anything. */
+  html, body { overflow-x: clip; }
   .kbwrap { display: grid; gap: var(--space-xl); align-items: start; }
   @media (min-width: 1000px) {
     .kbwrap { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3xl, 4rem); }
@@ -450,7 +461,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbnav .kbnav__sub { margin: 0.5rem 0 0.8rem 0; padding-left: 1.15rem;
     border-left: 1px solid var(--hairline); }
   .kbnav .kbnav__sub li { margin: 0 0 0.4rem; }
-  .kbnav .kbnav__sub a { font-size: var(--step--2); }
+  .kbnav .kbnav__sub a { font-size: var(--step--2); line-height: 1.4; display: block; }
+  /* The section you're reading. A left rule rather than a colour change alone,
+     because the sub list is already the dimmest text on the page and going one
+     step brighter isn't a strong enough signal at this size. */
+  .kbnav .kbnav__sub li { position: relative; }
+  .kbnav .kbnav__sub a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+  /* A 1px line drawn exactly over the list's own left rule, the height of this
+     item. The first version used a box-shadow offset by the padding, which at
+     this size rendered as a small black block beside the label rather than a
+     line. left: -1.15rem is the ul's padding-left, so the two coincide. */
+  .kbnav .kbnav__sub a[aria-current="true"]::before { content: ""; position: absolute;
+    left: -1.15rem; top: 0; bottom: 0; width: 1px; background: var(--ink); }
+  /* The list of 22 plus the open page's sections is taller than a laptop
+     viewport, and a sticky element taller than the screen has its foot
+     permanently out of reach. So it scrolls inside itself. Safe here because
+     the overflow is on the sticky element, not on an ancestor: an ancestor
+     with overflow silently kills position:sticky. */
+  @media (min-width: 1000px) {
+    .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
+  }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -531,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink-faint); }
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Data Pipeline","item":"https://searchscope.io/knowledge-base/settings/data/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Foundation","item":"https://searchscope.io/knowledge-base/#foundation"},{"@type":"ListItem","position":4,"name":"Data Pipeline","item":"https://searchscope.io/knowledge-base/settings/data/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -675,13 +706,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>document.documentElement.classList.add("kb-js");</script>
   <section class="section">
     <div class="container">
-      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <span>Data Pipeline</span></nav>
+      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#foundation">Foundation</a> <span aria-hidden="true">&middot;</span> <span>Data Pipeline</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Data Pipeline</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/" aria-current="page">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Data Pipeline</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/" aria-current="page">Data Pipeline</a><ul class="kbnav__sub"><li><a href="/knowledge-base/settings/data/#the-two-sources">The two sources</a></li><li><a href="/knowledge-base/settings/data/#reading-the-stages">Reading the stages</a></li><li><a href="/knowledge-base/settings/data/#tuning-the-crawl">Tuning the crawl</a></li><li><a href="/knowledge-base/settings/data/#excluding-the-parts-of-your-site-that-aren-t-pag">Excluding the parts of your site that aren't pages</a></li><li><a href="/knowledge-base/settings/data/#filtering-what-each-analyzer-reports">Filtering what each analyzer reports</a></li><li><a href="/knowledge-base/settings/data/#business-context-is-on-this-page-too">Business context is on this page too</a></li><li><a href="/knowledge-base/settings/data/#running-one-analyzer-instead-of-all-of-them">Running one analyzer instead of all of them</a></li><li><a href="/knowledge-base/settings/data/#when-something-looks-wrong">When something looks wrong</a></li></ul></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Data Pipeline</h1>
           <p class="kblede">Where your data comes from, how to tune the crawl, and how to stop the analyzers reporting on pages you don't care about.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Settings</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Data</b></p><h2>The two sources</h2><p><b>Google Search Console</b> supplies what people searched for, what they saw and what they clicked. <b>The crawl</b> supplies what's actually on your pages.</p><p>Every analyzer reads from those two. That's why a finding can be out of date if either one is stale, and why this page is the first thing to check when a number looks wrong.</p><h2>Reading the stages</h2><p>The stages run in order: search data comes in, the site is crawled, the pages are grouped into topics, then the analyzers run against the result.</p><p>A stage that hasn't finished holds up everything after it. That's what a greyed-out workspace in the sidebar means, and it clears on its own.</p><h2>Tuning the crawl</h2><p>Open <b>Site crawl</b> to change what gets crawled. <b>Crawl scope</b> sets how many pages: Quick at 100, Standard at 500, Deep at 2000, or a custom number up to 10,000. On a large site the default won't reach everything, and a finding can only exist for a page that was crawled.</p><p><b>JavaScript rendering</b> matters if your pages build their content in the browser. Without it the crawler sees an empty shell and your pages look thin when they aren't. <b>Test render</b> fetches one page and reports the word count, which is the quickest way to tell.</p><p>Under <b>Fine-tune</b> there's depth, parallel requests, crawl delay, timeout and the user agent. Most sites never need these. Crawl delay is the one to reach for if your server struggles while a crawl is running.</p><h2>Excluding the parts of your site that aren't pages</h2><p><b>Excluded paths</b>, in the Site crawl panel, stops URLs being crawled at all. One pattern per line with <code>*</code> as a wildcard, so <code>/admin/*</code> or <code>*.pdf</code>. Use it for anything that isn't a page a searcher would ever open.</p><p>This is worth doing early. Crawl budget spent on admin screens and PDFs is budget not spent on your real pages.</p><p><b>A worked example.</b> Say your careers section sits at <code>/jobs/</code> and <code>/roles/</code>. Those pages are real, but they're not pages you're trying to rank, and they'll happily fill your workspaces with thin-content findings, missing schema and internal-link suggestions nobody will ever action. Adding <code>/jobs/*</code> and <code>/roles/*</code> here keeps them out of the crawl entirely.</p><p>If you'd rather they were still crawled, because something else uses them, exclude them per analyzer instead. That's the next section, and it's the better choice when you only want them out of one list.</p><h2>Filtering what each analyzer reports</h2><p>Separate from the crawl, and a different setting. Each analyzer has a <b>Configure</b> button, and inside it <b>Excluded pages</b>: patterns that never become findings for that analyzer. Plain text matches anywhere in the URL, <code>*</code> is a wildcard, and it applies from the next run.</p><p>So a page can be crawled and still be excluded from one analyzer's findings. That's usually what you want: tag pages and author archives are real pages, they're just not worth a Content Decay finding.</p><p>The same panel lists the findings you've <b>Ignored</b>, each with <b>Add to excluded pages</b>, which is the fastest route from "I keep dismissing this" to "stop showing me this".</p><p><b>Cannibalization has one more</b>: <b>Excluded keywords</b>. Matching queries are dropped from the analysis so they can't form a conflict. Brand searches are detected automatically; this is for the extras, like your careers or press terms.</p><h2>Running one analyzer instead of all of them</h2><p>You don't have to run the whole suite. Each analyzer in the list can be switched on or off, and the run button follows what you've picked: it reads <b>Run all analyzers</b> when everything is on, and <b>Run selected analyzers</b> when it isn't.</p><p>Useful when you've just changed one analyzer's settings and want to see the effect without waiting for the rest, or when you've added an exclusion and want that list rebuilt now.</p><p>The scheduled run has its own version of this, under <b>Set the analyzers</b> in the Scheduler, so a nightly run and a manual one can cover different ground.</p><h2>When something looks wrong</h2><p>Check the date on the last run first. Most surprises are a number from before a change you made, not a number that's wrong.</p><p>Search Console data arrives with a delay of a couple of days at Google's end, which is normal and not something Searchscope can shorten.</p><p>If a whole workspace looks noisy, the fix is usually an exclusion rather than ignoring findings one at a time. If the numbers look like the wrong market, that's <b>Target market</b> in Business Context, not a pipeline setting.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Settings</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Data</b></p><h2 id="the-two-sources">The two sources</h2><p><b>Google Search Console</b> supplies what people searched for, what they saw and what they clicked. <b>The crawl</b> supplies what's actually on your pages.</p><p>Every analyzer reads from those two. That's why a finding can be out of date if either one is stale, and why this page is the first thing to check when a number looks wrong.</p><h2 id="reading-the-stages">Reading the stages</h2><p>The stages run in order: search data comes in, the site is crawled, the pages are grouped into topics, then the analyzers run against the result.</p><p>A stage that hasn't finished holds up everything after it. That's what a greyed-out workspace in the sidebar means, and it clears on its own.</p><h2 id="tuning-the-crawl">Tuning the crawl</h2><p>Open <b>Site crawl</b> to change what gets crawled. <b>Crawl scope</b> sets how many pages: Quick at 100, Standard at 500, Deep at 2000, or a custom number up to 10,000. On a large site the default won't reach everything, and a finding can only exist for a page that was crawled.</p><p><b>JavaScript rendering</b> matters if your pages build their content in the browser. Without it the crawler sees an empty shell and your pages look thin when they aren't. <b>Test render</b> fetches one page and reports the word count, which is the quickest way to tell.</p><p>Under <b>Fine-tune</b> there's depth, parallel requests, crawl delay, timeout and the user agent. Most sites never need these. Crawl delay is the one to reach for if your server struggles while a crawl is running.</p><h2 id="excluding-the-parts-of-your-site-that-aren-t-pag">Excluding the parts of your site that aren't pages</h2><p><b>Excluded paths</b>, in the Site crawl panel, stops URLs being crawled at all. One pattern per line with <code>*</code> as a wildcard, so <code>/admin/*</code> or <code>*.pdf</code>. Use it for anything that isn't a page a searcher would ever open.</p><p>This is worth doing early. Crawl budget spent on admin screens and PDFs is budget not spent on your real pages.</p><p><b>Example.</b> Say your careers section sits at <code>/jobs/</code> and <code>/roles/</code>. Those pages are real and they may well rank. The point isn't how they perform, it's that you're never going to optimize them: nobody is going to rewrite a job advert for search. Left in, they fill your workspaces with thin-content findings, missing schema and internal-link suggestions that nobody will ever action, and every one of those pushes a page you do care about further down the list. Adding <code>/jobs/*</code> and <code>/roles/*</code> here keeps them out entirely.</p><p>That's the question to ask of any section: not whether it ranks, but whether you'd ever act on a finding about it. If the answer is no, it's noise in every list you open.</p><p>If you'd rather they were still crawled, because something else uses them, exclude them per analyzer instead. That's the next section, and it's the better choice when you only want them out of one list.</p><h2 id="filtering-what-each-analyzer-reports">Filtering what each analyzer reports</h2><p>Separate from the crawl, and a different setting. Each analyzer has a <b>Configure</b> button, and inside it <b>Excluded pages</b>: patterns that never become findings for that analyzer. Plain text matches anywhere in the URL, <code>*</code> is a wildcard, and it applies from the next run.</p><p>So a page can be crawled and still be excluded from one analyzer's findings. That's usually what you want: tag pages and author archives are real pages, they're just not worth a Content Decay finding.</p><p>The same panel lists the findings you've <b>Ignored</b>, each with <b>Add to excluded pages</b>, which is the fastest route from "I keep dismissing this" to "stop showing me this".</p><p><b>Cannibalization has one more</b>: <b>Excluded keywords</b>. Matching queries are dropped from the analysis so they can't form a conflict. Brand searches are detected automatically; this is for the extras, like your careers or press terms.</p><h2 id="business-context-is-on-this-page-too">Business context is on this page too</h2><p>It's the next tab along, and it's the highest-return thing on this screen. The crawl settings decide which pages get looked at; Business context decides whether what comes back sounds like your business or like anybody's.</p><p>Twelve boxes, all optional. The ones that change the most are <b>About the business</b>, which nearly everything reads, and <b>Commercial priorities</b>, which is what stops advice being spread evenly across a site where the parts aren't equally valuable. <b>Primary locations &amp; markets</b>, <b>Differentiators (USP)</b>, <b>Conversion goals</b>, <b>Brand voice</b>, <b>Style rules</b> and <b>Words &amp; claims to avoid</b> shape the writing rather than the analysis.</p><p>The Business context page goes through all twelve and what each one actually changes, including the two whose boxes promise more than they deliver.</p><h2 id="running-one-analyzer-instead-of-all-of-them">Running one analyzer instead of all of them</h2><p>You don't have to run the whole suite. Each analyzer in the list can be switched on or off, and the run button follows what you've picked: it reads <b>Run all analyzers</b> when everything is on, and <b>Run selected analyzers</b> when it isn't.</p><p>Useful when you've just changed one analyzer's settings and want to see the effect without waiting for the rest, or when you've added an exclusion and want that list rebuilt now.</p><p>The scheduled run has its own version of this, under <b>Set the analyzers</b> in the Scheduler, so a nightly run and a manual one can cover different ground.</p><h2 id="when-something-looks-wrong">When something looks wrong</h2><p>Check the date on the last run first. Most surprises are a number from before a change you made, not a number that's wrong.</p><p>Search Console data arrives with a delay of a couple of days at Google's end, which is normal and not something Searchscope can shorten.</p><p>If a whole workspace looks noisy, the fix is usually an exclusion rather than ignoring findings one at a time. If the numbers look like the wrong market, that's <b>Target market</b> in Business Context, not a pipeline setting.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/platform/">What this does, and why it matters</a></li></ul></div>
         </div>
       </div>
@@ -705,6 +736,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Mark the section you're reading, in the nav.
+  //
+  // Not IntersectionObserver: sections here are anything from one paragraph to
+  // a screenful, so "is it visible" answers the wrong question when three of
+  // them are on screen at once. The question is which heading you have most
+  // recently passed, which is a scroll position and a list of offsets.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('.kbnav__sub a'));
+    if (!links.length) return;
+    var heads = links.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return id ? document.getElementById(id) : null;
+    });
+
+    var current = null, queued = false;
+    function sync() {
+      queued = false;
+      var y = window.scrollY + 140, found = null;
+      for (var i = 0; i < heads.length; i++) {
+        if (heads[i] && heads[i].getBoundingClientRect().top + window.scrollY <= y) found = i;
+      }
+      // Past the end of the article, the last heading is still the answer.
+      if (found === current) return;
+      if (current !== null) links[current].removeAttribute('aria-current');
+      current = found;
+      if (current === null) return;
+      links[current].setAttribute('aria-current', 'true');
+      // Keep it visible when the nav is taller than the screen and scrolling
+      // inside itself.
+      var l = links[current].getBoundingClientRect(), n = nav.getBoundingClientRect();
+      if (l.top < n.top + 8) nav.scrollTop += l.top - n.top - 8;
+      else if (l.bottom > n.bottom - 8) nav.scrollTop += l.bottom - n.bottom + 8;
+    }
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+
+    // On a long nav, open on the page you're on rather than at the top of the
+    // list. 22 entries is taller than a laptop viewport.
+    var here = nav.querySelector('a[aria-current="page"]');
+    if (here && nav.scrollHeight > nav.clientHeight + 4) {
+      var off = here.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      if (off > nav.clientHeight - 120) nav.scrollTop += off - 80;
+    }
   })();
 </script>
 

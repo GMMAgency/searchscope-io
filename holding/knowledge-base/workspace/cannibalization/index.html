@@ -424,6 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://searchscope.io/knowledge-base/workspace/cannibalization/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
+
+  /* `html, body { overflow-x: hidden }` is a site-wide guard against sideways
+     scroll, and it silently breaks position: sticky everywhere below it: a
+     computed overflow of hidden makes the body a scroll container, so the
+     sidebar scrolled away with the page instead of sticking. It had never
+     worked, on any knowledge base page, since the day they shipped.
+
+     `clip` does the same clipping job without creating a scroll container, so
+     the guard holds and sticky works. Scoped to these pages because this is
+     the only layout on the site that sticks anything. */
+  html, body { overflow-x: clip; }
   .kbwrap { display: grid; gap: var(--space-xl); align-items: start; }
   @media (min-width: 1000px) {
     .kbwrap { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3xl, 4rem); }
@@ -450,7 +461,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbnav .kbnav__sub { margin: 0.5rem 0 0.8rem 0; padding-left: 1.15rem;
     border-left: 1px solid var(--hairline); }
   .kbnav .kbnav__sub li { margin: 0 0 0.4rem; }
-  .kbnav .kbnav__sub a { font-size: var(--step--2); }
+  .kbnav .kbnav__sub a { font-size: var(--step--2); line-height: 1.4; display: block; }
+  /* The section you're reading. A left rule rather than a colour change alone,
+     because the sub list is already the dimmest text on the page and going one
+     step brighter isn't a strong enough signal at this size. */
+  .kbnav .kbnav__sub li { position: relative; }
+  .kbnav .kbnav__sub a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+  /* A 1px line drawn exactly over the list's own left rule, the height of this
+     item. The first version used a box-shadow offset by the padding, which at
+     this size rendered as a small black block beside the label rather than a
+     line. left: -1.15rem is the ul's padding-left, so the two coincide. */
+  .kbnav .kbnav__sub a[aria-current="true"]::before { content: ""; position: absolute;
+    left: -1.15rem; top: 0; bottom: 0; width: 1px; background: var(--ink); }
+  /* The list of 22 plus the open page's sections is taller than a laptop
+     viewport, and a sticky element taller than the screen has its foot
+     permanently out of reach. So it scrolls inside itself. Safe here because
+     the overflow is on the sticky element, not on an ancestor: an ancestor
+     with overflow silently kills position:sticky. */
+  @media (min-width: 1000px) {
+    .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
+  }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -531,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink-faint); }
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Cannibalization","item":"https://searchscope.io/knowledge-base/workspace/cannibalization/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Workspace analyzers","item":"https://searchscope.io/knowledge-base/#workspace-analyzers"},{"@type":"ListItem","position":4,"name":"Cannibalization","item":"https://searchscope.io/knowledge-base/workspace/cannibalization/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -675,13 +706,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>document.documentElement.classList.add("kb-js");</script>
   <section class="section">
     <div class="container">
-      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <span>Cannibalization</span></nav>
+      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#workspace-analyzers">Workspace analyzers</a> <span aria-hidden="true">&middot;</span> <span>Cannibalization</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Cannibalization</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/" aria-current="page">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Cannibalization</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/" aria-current="page">Cannibalization</a><ul class="kbnav__sub"><li><a href="/knowledge-base/workspace/cannibalization/#what-the-list-shows">What the list shows</a></li><li><a href="/knowledge-base/workspace/cannibalization/#reading-a-pair">Reading a pair</a></li><li><a href="/knowledge-base/workspace/cannibalization/#what-to-do-with-it">What to do with it</a></li><li><a href="/knowledge-base/workspace/cannibalization/#when-there-s-nothing-in-the-list">When there's nothing in the list</a></li><li><a href="/knowledge-base/workspace/cannibalization/#working-a-finding">Working a finding</a></li><li><a href="/knowledge-base/workspace/cannibalization/#getting-rid-of-one-you-don-t-want">Getting rid of one you don't want</a></li></ul></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Cannibalization</h1>
           <p class="kblede">Two of your own pages competing for the same search, and which one should win.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Workspaces</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Cannibalization</b></p><h2>What the list shows</h2><p>Each row is a pair of your pages that both rank for the same queries. The pair at the top is the one with the most search traffic at stake, so start there rather than working down the alphabet.</p><p>The severity band tells you how much is at stake. The counts beside it are how many queries the two pages overlap on.</p><h2>Reading a pair</h2><p>Open a row and you get both pages side by side: what each ranks for, which one Google prefers, and how often the winner changes. A pair where the winner keeps switching is usually worse than a pair with a clear loser, because neither page ever builds up momentum.</p><p>The recommendation names which page should win and why. It's based on which one already has the stronger signals, not on which one you'd prefer.</p><h2>What to do with it</h2><p>Every pair has two actions. <b>Create brief</b> sends the winning page to Content Studio with the conflict and the queries already filled in, so the rebuild starts from the problem rather than a blank page.</p><p><b>Ask Advisor</b> puts the pair to your Strategist, which talks the merge through in plain words: whether to redirect, combine or keep both and separate them.</p><h2>When there's nothing in the list</h2><p>An empty list means the analyzer ran and found no pairs worth acting on. It isn't a failure, and it's common on smaller sites.</p><h2>Working a finding</h2><p>Open any finding and you can take it somewhere else without retyping it. <b>Ask Advisor</b> opens the Strategic Advisor with that finding and its full context already loaded, so you can ask why it matters or what to do first and get an answer using your own numbers. <b>Create brief</b> (or <b>Rebuild in Studio</b>) opens a Content Studio session for the page, pre-filled the same way.</p><p>Both carry the finding with them. You're not starting a conversation or a brief from nothing, which is the whole point of launching them from here rather than from their own screens.</p><p>Most findings also carry an <b>AI Playbook</b>: a written recommendation for that specific page. Some are generated automatically after a run, the rest are generated when you ask. You can also tick several rows and generate advice for all of them in one go, with the cost shown before anything runs. How many are written automatically is the <b>Auto-generate for top</b> setting in that analyzer's Configure panel, and zero means they're only written on request.</p><p><b>Mark applied</b> does more than tick it off. The page joins <b>Impact Tracking</b> in Command Center, which then follows its clicks, impressions and position from that date onward, so you can see whether the change did anything.</p><h2>Getting rid of one you don't want</h2><p><b>Ignore</b> on any finding hides it. It leaves the queue and moves to the <b>Ignored</b> pill in the filter rail, where <b>Restore</b> puts it back, so nothing is destroyed. The Ignored pill only appears once you've ignored something.</p><p>Ignoring handles one finding. If the same pages keep coming back, add them to <b>Excluded pages</b> in Settings, under Data Pipeline: find Cannibalization in the analyzer list and click <b>Configure</b>. One pattern per line, <code>*</code> as a wildcard, and plain text matches anywhere in the URL. Matching pages stop becoming findings from the next run.</p><p>That's the difference worth knowing: ignoring hides one finding, excluding a page stops future findings for it. Tag pages, author archives and paginated listings are the usual candidates.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Workspaces</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Cannibalization</b></p><h2 id="what-the-list-shows">What the list shows</h2><p>Each row is a pair of your pages that both rank for the same queries. The pair at the top is the one with the most search traffic at stake, so start there rather than working down the alphabet.</p><p>The severity band tells you how much is at stake. The counts beside it are how many queries the two pages overlap on.</p><h2 id="reading-a-pair">Reading a pair</h2><p>Open a row and you get both pages side by side: what each ranks for, which one Google prefers, and how often the winner changes. A pair where the winner keeps switching is usually worse than a pair with a clear loser, because neither page ever builds up momentum.</p><p>The recommendation names which page should win and why. It's based on which one already has the stronger signals, not on which one you'd prefer.</p><h2 id="what-to-do-with-it">What to do with it</h2><p>Every pair has two actions. <b>Create brief</b> sends the winning page to Content Studio with the conflict and the queries already filled in, so the rebuild starts from the problem rather than a blank page.</p><p><b>Ask Advisor</b> puts the pair to your Strategist, which talks the merge through in plain words: whether to redirect, combine or keep both and separate them.</p><h2 id="when-there-s-nothing-in-the-list">When there's nothing in the list</h2><p>An empty list means the analyzer ran and found no pairs worth acting on. It isn't a failure, and it's common on smaller sites.</p><h2 id="working-a-finding">Working a finding</h2><p>Open any finding and you can take it somewhere else without retyping it. <b>Ask Advisor</b> opens the Strategic Advisor with that finding and its full context already loaded, so you can ask why it matters or what to do first and get an answer using your own numbers. <b>Create brief</b> (or <b>Rebuild in Studio</b>) opens a Content Studio session for the page, pre-filled the same way.</p><p>Both carry the finding with them. You're not starting a conversation or a brief from nothing, which is the whole point of launching them from here rather than from their own screens.</p><p>Most findings also carry an <b>AI Playbook</b>: a written recommendation for that specific page. Some are generated automatically after a run, the rest are generated when you ask. You can also tick several rows and generate advice for all of them in one go, with the cost shown before anything runs. How many are written automatically is the <b>Auto-generate for top</b> setting in that analyzer's Configure panel, and zero means they're only written on request.</p><p><b>Mark applied</b> does more than tick it off. The page joins <b>Impact Tracking</b> in Command Center, which then follows its clicks, impressions and position from that date onward, so you can see whether the change did anything.</p><h2 id="getting-rid-of-one-you-don-t-want">Getting rid of one you don't want</h2><p><b>Ignore</b> on any finding hides it. It leaves the queue and moves to the <b>Ignored</b> pill in the filter rail, where <b>Restore</b> puts it back, so nothing is destroyed. The Ignored pill only appears once you've ignored something.</p><p>Ignoring handles one finding. If the same pages keep coming back, add them to <b>Excluded pages</b> in Settings, under Data Pipeline: find Cannibalization in the analyzer list and click <b>Configure</b>. One pattern per line, <code>*</code> as a wildcard, and plain text matches anywhere in the URL. Matching pages stop becoming findings from the next run.</p><p>That's the difference worth knowing: ignoring hides one finding, excluding a page stops future findings for it. Tag pages, author archives and paginated listings are the usual candidates.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li><li><a href="/platform/analyzers/cannibalization/">What this does, and why it matters</a></li></ul></div>
         </div>
       </div>
@@ -705,6 +736,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Mark the section you're reading, in the nav.
+  //
+  // Not IntersectionObserver: sections here are anything from one paragraph to
+  // a screenful, so "is it visible" answers the wrong question when three of
+  // them are on screen at once. The question is which heading you have most
+  // recently passed, which is a scroll position and a list of offsets.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('.kbnav__sub a'));
+    if (!links.length) return;
+    var heads = links.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return id ? document.getElementById(id) : null;
+    });
+
+    var current = null, queued = false;
+    function sync() {
+      queued = false;
+      var y = window.scrollY + 140, found = null;
+      for (var i = 0; i < heads.length; i++) {
+        if (heads[i] && heads[i].getBoundingClientRect().top + window.scrollY <= y) found = i;
+      }
+      // Past the end of the article, the last heading is still the answer.
+      if (found === current) return;
+      if (current !== null) links[current].removeAttribute('aria-current');
+      current = found;
+      if (current === null) return;
+      links[current].setAttribute('aria-current', 'true');
+      // Keep it visible when the nav is taller than the screen and scrolling
+      // inside itself.
+      var l = links[current].getBoundingClientRect(), n = nav.getBoundingClientRect();
+      if (l.top < n.top + 8) nav.scrollTop += l.top - n.top - 8;
+      else if (l.bottom > n.bottom - 8) nav.scrollTop += l.bottom - n.bottom + 8;
+    }
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+
+    // On a long nav, open on the page you're on rather than at the top of the
+    // list. 22 entries is taller than a laptop viewport.
+    var here = nav.querySelector('a[aria-current="page"]');
+    if (here && nav.scrollHeight > nav.clientHeight + 4) {
+      var off = here.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      if (off > nav.clientHeight - 120) nav.scrollTop += off - 80;
+    }
   })();
 </script>
 

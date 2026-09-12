@@ -424,6 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://searchscope.io/knowledge-base/intelligence/strategic-advisor/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
+
+  /* `html, body { overflow-x: hidden }` is a site-wide guard against sideways
+     scroll, and it silently breaks position: sticky everywhere below it: a
+     computed overflow of hidden makes the body a scroll container, so the
+     sidebar scrolled away with the page instead of sticking. It had never
+     worked, on any knowledge base page, since the day they shipped.
+
+     `clip` does the same clipping job without creating a scroll container, so
+     the guard holds and sticky works. Scoped to these pages because this is
+     the only layout on the site that sticks anything. */
+  html, body { overflow-x: clip; }
   .kbwrap { display: grid; gap: var(--space-xl); align-items: start; }
   @media (min-width: 1000px) {
     .kbwrap { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3xl, 4rem); }
@@ -450,7 +461,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbnav .kbnav__sub { margin: 0.5rem 0 0.8rem 0; padding-left: 1.15rem;
     border-left: 1px solid var(--hairline); }
   .kbnav .kbnav__sub li { margin: 0 0 0.4rem; }
-  .kbnav .kbnav__sub a { font-size: var(--step--2); }
+  .kbnav .kbnav__sub a { font-size: var(--step--2); line-height: 1.4; display: block; }
+  /* The section you're reading. A left rule rather than a colour change alone,
+     because the sub list is already the dimmest text on the page and going one
+     step brighter isn't a strong enough signal at this size. */
+  .kbnav .kbnav__sub li { position: relative; }
+  .kbnav .kbnav__sub a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+  /* A 1px line drawn exactly over the list's own left rule, the height of this
+     item. The first version used a box-shadow offset by the padding, which at
+     this size rendered as a small black block beside the label rather than a
+     line. left: -1.15rem is the ul's padding-left, so the two coincide. */
+  .kbnav .kbnav__sub a[aria-current="true"]::before { content: ""; position: absolute;
+    left: -1.15rem; top: 0; bottom: 0; width: 1px; background: var(--ink); }
+  /* The list of 22 plus the open page's sections is taller than a laptop
+     viewport, and a sticky element taller than the screen has its foot
+     permanently out of reach. So it scrolls inside itself. Safe here because
+     the overflow is on the sticky element, not on an ancestor: an ancestor
+     with overflow silently kills position:sticky. */
+  @media (min-width: 1000px) {
+    .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
+  }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -531,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink-faint); }
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Strategic Advisor","item":"https://searchscope.io/knowledge-base/intelligence/strategic-advisor/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Search intelligence","item":"https://searchscope.io/knowledge-base/#search-intelligence"},{"@type":"ListItem","position":4,"name":"Strategic Advisor","item":"https://searchscope.io/knowledge-base/intelligence/strategic-advisor/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -675,13 +706,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>document.documentElement.classList.add("kb-js");</script>
   <section class="section">
     <div class="container">
-      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <span>Strategic Advisor</span></nav>
+      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#search-intelligence">Search intelligence</a> <span aria-hidden="true">&middot;</span> <span>Strategic Advisor</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Strategic Advisor</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/" aria-current="page">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Strategic Advisor</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/" aria-current="page">Strategic Advisor</a><ul class="kbnav__sub"><li><a href="/knowledge-base/intelligence/strategic-advisor/#what-it-can-see">What it can see</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/#where-to-start">Where to start</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/#asking-your-own-questions">Asking your own questions</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/#from-answer-to-action">From answer to action</a></li></ul></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Strategic Advisor</h1>
           <p class="kblede">A strategist that has already read your data, and answers from it.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Strategic Advisor</b></p><h2>What it can see</h2><p>The chips at the top say what it's reading: your Search Console history, analyzer findings, competitors, objectives, business context, brand and AI runs, and the live web. Green means connected.</p><p>That's the difference between this and a general assistant. Answers come back with your own numbers in them, and it shows which data it used.</p><h2>Where to start</h2><p>Before you ask anything it surfaces what looks most important right now. <b>Dig into this</b> opens the conversation with that finding already loaded.</p><p>The quick prompts underneath are good first questions. Each one runs a real analysis over your numbers rather than returning generic advice.</p><h2>Asking your own questions</h2><p>Type anything, or paste a screenshot straight in: a ranking chart, a competitor's page, an email from a client. Below the box you can pick the model and how deeply it should think.</p><p>It remembers the conversation, so you can push back on an answer rather than starting again.</p><h2>From answer to action</h2><p>Every reply carries actions. <b>Send to Studio</b> turns what a reply recommends into Content Studio briefs, and the whole conversation travels with it rather than the single message you clicked from.</p><p>The <b>Reasoning</b> tab shows it working: every data pull, what it asked for and what came back. Worth opening when an answer surprises you.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Strategic Advisor</b></p><h2 id="what-it-can-see">What it can see</h2><p>The chips at the top say what it's reading: your Search Console history, analyzer findings, competitors, objectives, business context, brand and AI runs, and the live web. Green means connected.</p><p>That's the difference between this and a general assistant. Answers come back with your own numbers in them, and it shows which data it used.</p><h2 id="where-to-start">Where to start</h2><p>Before you ask anything it surfaces what looks most important right now. <b>Dig into this</b> opens the conversation with that finding already loaded.</p><p>The quick prompts underneath are good first questions. Each one runs a real analysis over your numbers rather than returning generic advice.</p><h2 id="asking-your-own-questions">Asking your own questions</h2><p>Type anything, or paste a screenshot straight in: a ranking chart, a competitor's page, an email from a client. Below the box you can pick the model and how deeply it should think.</p><p>It remembers the conversation, so you can push back on an answer rather than starting again.</p><h2 id="from-answer-to-action">From answer to action</h2><p>Every reply carries actions. <b>Send to Studio</b> turns what a reply recommends into Content Studio briefs, and the whole conversation travels with it rather than the single message you clicked from.</p><p>The <b>Reasoning</b> tab shows it working: every data pull, what it asked for and what came back. Worth opening when an answer surprises you.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/platform/search-intelligence/">What this does, and why it matters</a></li></ul></div>
         </div>
       </div>
@@ -705,6 +736,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Mark the section you're reading, in the nav.
+  //
+  // Not IntersectionObserver: sections here are anything from one paragraph to
+  // a screenful, so "is it visible" answers the wrong question when three of
+  // them are on screen at once. The question is which heading you have most
+  // recently passed, which is a scroll position and a list of offsets.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('.kbnav__sub a'));
+    if (!links.length) return;
+    var heads = links.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return id ? document.getElementById(id) : null;
+    });
+
+    var current = null, queued = false;
+    function sync() {
+      queued = false;
+      var y = window.scrollY + 140, found = null;
+      for (var i = 0; i < heads.length; i++) {
+        if (heads[i] && heads[i].getBoundingClientRect().top + window.scrollY <= y) found = i;
+      }
+      // Past the end of the article, the last heading is still the answer.
+      if (found === current) return;
+      if (current !== null) links[current].removeAttribute('aria-current');
+      current = found;
+      if (current === null) return;
+      links[current].setAttribute('aria-current', 'true');
+      // Keep it visible when the nav is taller than the screen and scrolling
+      // inside itself.
+      var l = links[current].getBoundingClientRect(), n = nav.getBoundingClientRect();
+      if (l.top < n.top + 8) nav.scrollTop += l.top - n.top - 8;
+      else if (l.bottom > n.bottom - 8) nav.scrollTop += l.bottom - n.bottom + 8;
+    }
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+
+    // On a long nav, open on the page you're on rather than at the top of the
+    // list. 22 entries is taller than a laptop viewport.
+    var here = nav.querySelector('a[aria-current="page"]');
+    if (here && nav.scrollHeight > nav.clientHeight + 4) {
+      var off = here.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      if (off > nav.clientHeight - 120) nav.scrollTop += off - 80;
+    }
   })();
 </script>
 

@@ -424,6 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://searchscope.io/knowledge-base/intelligence/command-centre/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
+
+  /* `html, body { overflow-x: hidden }` is a site-wide guard against sideways
+     scroll, and it silently breaks position: sticky everywhere below it: a
+     computed overflow of hidden makes the body a scroll container, so the
+     sidebar scrolled away with the page instead of sticking. It had never
+     worked, on any knowledge base page, since the day they shipped.
+
+     `clip` does the same clipping job without creating a scroll container, so
+     the guard holds and sticky works. Scoped to these pages because this is
+     the only layout on the site that sticks anything. */
+  html, body { overflow-x: clip; }
   .kbwrap { display: grid; gap: var(--space-xl); align-items: start; }
   @media (min-width: 1000px) {
     .kbwrap { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3xl, 4rem); }
@@ -450,7 +461,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbnav .kbnav__sub { margin: 0.5rem 0 0.8rem 0; padding-left: 1.15rem;
     border-left: 1px solid var(--hairline); }
   .kbnav .kbnav__sub li { margin: 0 0 0.4rem; }
-  .kbnav .kbnav__sub a { font-size: var(--step--2); }
+  .kbnav .kbnav__sub a { font-size: var(--step--2); line-height: 1.4; display: block; }
+  /* The section you're reading. A left rule rather than a colour change alone,
+     because the sub list is already the dimmest text on the page and going one
+     step brighter isn't a strong enough signal at this size. */
+  .kbnav .kbnav__sub li { position: relative; }
+  .kbnav .kbnav__sub a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+  /* A 1px line drawn exactly over the list's own left rule, the height of this
+     item. The first version used a box-shadow offset by the padding, which at
+     this size rendered as a small black block beside the label rather than a
+     line. left: -1.15rem is the ul's padding-left, so the two coincide. */
+  .kbnav .kbnav__sub a[aria-current="true"]::before { content: ""; position: absolute;
+    left: -1.15rem; top: 0; bottom: 0; width: 1px; background: var(--ink); }
+  /* The list of 22 plus the open page's sections is taller than a laptop
+     viewport, and a sticky element taller than the screen has its foot
+     permanently out of reach. So it scrolls inside itself. Safe here because
+     the overflow is on the sticky element, not on an ancestor: an ancestor
+     with overflow silently kills position:sticky. */
+  @media (min-width: 1000px) {
+    .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
+  }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -531,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink-faint); }
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Command Center","item":"https://searchscope.io/knowledge-base/intelligence/command-centre/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Search intelligence","item":"https://searchscope.io/knowledge-base/#search-intelligence"},{"@type":"ListItem","position":4,"name":"Command Center","item":"https://searchscope.io/knowledge-base/intelligence/command-centre/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -675,13 +706,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>document.documentElement.classList.add("kb-js");</script>
   <section class="section">
     <div class="container">
-      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <span>Command Center</span></nav>
+      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#search-intelligence">Search intelligence</a> <span aria-hidden="true">&middot;</span> <span>Command Center</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Command Center</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/" aria-current="page">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Command Center</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/" aria-current="page">Command Center</a><ul class="kbnav__sub"><li><a href="/knowledge-base/intelligence/command-centre/#the-headline-numbers">The headline numbers</a></li><li><a href="/knowledge-base/intelligence/command-centre/#the-detailed-views">The detailed views</a></li><li><a href="/knowledge-base/intelligence/command-centre/#brand-against-non-brand">Brand against non-brand</a></li><li><a href="/knowledge-base/intelligence/command-centre/#impact-tracking">Impact Tracking</a></li><li><a href="/knowledge-base/intelligence/command-centre/#brand-keywords">Brand keywords live here, not in Settings</a></li><li><a href="/knowledge-base/intelligence/command-centre/#setting-a-target">Setting a target</a></li></ul></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Command Center</h1>
           <p class="kblede">A year of your search performance, and the detail behind it.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Command Center</b></p><h2>The headline numbers</h2><p>Clicks, impressions, click-through rate and average position, each with the change against the previous period. Refreshed on every run.</p><p>Position is an average of averages, so treat a small move in it as noise. Clicks and impressions are the numbers to trust.</p><h2>The detailed views</h2><p>Every query, every page, the two combined, and Impact Tracking. Query and page together is the one people underuse: it shows which searches each page actually wins, rather than which searches exist.</p><h2>Brand against non-brand</h2><p>How much of your traffic comes from people already searching for you by name, against people finding you for the first time.</p><p>This one matters more than it looks. Traffic growth that's all brand means your marketing is working and your search presence isn't.</p><h2 id="impact-tracking">Impact Tracking</h2><p>The fifth tab, and the one that closes the loop. Every finding you mark as <b>Applied</b> in a workspace turns up here with the search performance for that page, so you can see whether the change did anything.</p><p>Each card is one page, with a marker on the chart for the day you applied it and clicks, impressions and average position beside it. A page changed more than once gets a timeline rather than a second card.</p><p><b>Track a page</b> is the manual entry, and it's worth more than it looks. Marking a finding applied tracks the URL named in the finding, which isn't always the URL you changed. A cannibalization finding names two pages competing for the same query; if you fixed it by rewriting the other one, that's the page whose performance you want to watch, and it's not the one being tracked.</p><p>So add it yourself: the URL, what you changed and the date. Same for anything you changed with no finding behind it. The 28 days before that date become the baseline, so moving the date re-baselines the comparison.</p><p>It stays empty until you start marking things applied, which is worth knowing before you go looking for it on day one.</p><h2 id="brand-keywords">Brand keywords live here, not in Settings</h2><p>The <b>Brand Keywords</b> button in the filter bar is what decides which searches count as brand. Add your company name, product names and the misspellings people actually type.</p><p><b>With nothing in that list the brand cards read zero</b>, which looks like a data problem and isn't. It's the one setting on this page that changes the numbers rather than filtering them.</p><h2>Setting a target</h2><p>Set one measurable target and every weekly briefing tracks progress against it. Optional, and worth doing: it's the difference between reporting numbers and knowing whether the work is paying off.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Command Center</b></p><h2 id="the-headline-numbers">The headline numbers</h2><p>Clicks, impressions, click-through rate and average position, each with the change against the previous period. Refreshed on every run.</p><p>Position is an average of averages, so treat a small move in it as noise. Clicks and impressions are the numbers to trust.</p><h2 id="the-detailed-views">The detailed views</h2><p>Every query, every page, the two combined, and Impact Tracking. Query and page together is the one people underuse: it shows which searches each page actually wins, rather than which searches exist.</p><h2 id="brand-against-non-brand">Brand against non-brand</h2><p>How much of your traffic comes from people already searching for you by name, against people finding you for the first time.</p><p>This one matters more than it looks. Traffic growth that's all brand means your marketing is working and your search presence isn't.</p><h2 id="impact-tracking">Impact Tracking</h2><p>The fifth tab, and the one that closes the loop. Every finding you mark as <b>Applied</b> in a workspace turns up here with the search performance for that page, so you can see whether the change did anything.</p><p>Each card is one page, with a marker on the chart for the day you applied it and clicks, impressions and average position beside it. A page changed more than once gets a timeline rather than a second card.</p><p><b>Track a page</b> is the manual entry, and it's worth more than it looks. Marking a finding applied tracks the URL named in the finding, which isn't always the URL you changed. A cannibalization finding names two pages competing for the same query; if you fixed it by rewriting the other one, that's the page whose performance you want to watch, and it's not the one being tracked.</p><p>So add it yourself: the URL, what you changed and the date. Same for anything you changed with no finding behind it. The 28 days before that date become the baseline, so moving the date re-baselines the comparison.</p><p>It stays empty until you start marking things applied, which is worth knowing before you go looking for it on day one.</p><h2 id="brand-keywords">Brand keywords live here, not in Settings</h2><p>The <b>Brand Keywords</b> button in the filter bar is what decides which searches count as brand. Add your company name, product names and the misspellings people actually type.</p><p><b>With nothing in that list the brand cards read zero</b>, which looks like a data problem and isn't. It's the one setting on this page that changes the numbers rather than filtering them.</p><h2 id="setting-a-target">Setting a target</h2><p>Set one measurable target and every weekly briefing tracks progress against it. Optional, and worth doing: it's the difference between reporting numbers and knowing whether the work is paying off.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/platform/search-intelligence/">What this does, and why it matters</a></li></ul></div>
         </div>
       </div>
@@ -705,6 +736,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Mark the section you're reading, in the nav.
+  //
+  // Not IntersectionObserver: sections here are anything from one paragraph to
+  // a screenful, so "is it visible" answers the wrong question when three of
+  // them are on screen at once. The question is which heading you have most
+  // recently passed, which is a scroll position and a list of offsets.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('.kbnav__sub a'));
+    if (!links.length) return;
+    var heads = links.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return id ? document.getElementById(id) : null;
+    });
+
+    var current = null, queued = false;
+    function sync() {
+      queued = false;
+      var y = window.scrollY + 140, found = null;
+      for (var i = 0; i < heads.length; i++) {
+        if (heads[i] && heads[i].getBoundingClientRect().top + window.scrollY <= y) found = i;
+      }
+      // Past the end of the article, the last heading is still the answer.
+      if (found === current) return;
+      if (current !== null) links[current].removeAttribute('aria-current');
+      current = found;
+      if (current === null) return;
+      links[current].setAttribute('aria-current', 'true');
+      // Keep it visible when the nav is taller than the screen and scrolling
+      // inside itself.
+      var l = links[current].getBoundingClientRect(), n = nav.getBoundingClientRect();
+      if (l.top < n.top + 8) nav.scrollTop += l.top - n.top - 8;
+      else if (l.bottom > n.bottom - 8) nav.scrollTop += l.bottom - n.bottom + 8;
+    }
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+
+    // On a long nav, open on the page you're on rather than at the top of the
+    // list. 22 entries is taller than a laptop viewport.
+    var here = nav.querySelector('a[aria-current="page"]');
+    if (here && nav.scrollHeight > nav.clientHeight + 4) {
+      var off = here.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      if (off > nav.clientHeight - 120) nav.scrollTop += off - 80;
+    }
   })();
 </script>
 

@@ -424,6 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="canonical" href="https://searchscope.io/knowledge-base/intelligence/demand-trends/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
+
+  /* `html, body { overflow-x: hidden }` is a site-wide guard against sideways
+     scroll, and it silently breaks position: sticky everywhere below it: a
+     computed overflow of hidden makes the body a scroll container, so the
+     sidebar scrolled away with the page instead of sticking. It had never
+     worked, on any knowledge base page, since the day they shipped.
+
+     `clip` does the same clipping job without creating a scroll container, so
+     the guard holds and sticky works. Scoped to these pages because this is
+     the only layout on the site that sticks anything. */
+  html, body { overflow-x: clip; }
   .kbwrap { display: grid; gap: var(--space-xl); align-items: start; }
   @media (min-width: 1000px) {
     .kbwrap { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3xl, 4rem); }
@@ -450,7 +461,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbnav .kbnav__sub { margin: 0.5rem 0 0.8rem 0; padding-left: 1.15rem;
     border-left: 1px solid var(--hairline); }
   .kbnav .kbnav__sub li { margin: 0 0 0.4rem; }
-  .kbnav .kbnav__sub a { font-size: var(--step--2); }
+  .kbnav .kbnav__sub a { font-size: var(--step--2); line-height: 1.4; display: block; }
+  /* The section you're reading. A left rule rather than a colour change alone,
+     because the sub list is already the dimmest text on the page and going one
+     step brighter isn't a strong enough signal at this size. */
+  .kbnav .kbnav__sub li { position: relative; }
+  .kbnav .kbnav__sub a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+  /* A 1px line drawn exactly over the list's own left rule, the height of this
+     item. The first version used a box-shadow offset by the padding, which at
+     this size rendered as a small black block beside the label rather than a
+     line. left: -1.15rem is the ul's padding-left, so the two coincide. */
+  .kbnav .kbnav__sub a[aria-current="true"]::before { content: ""; position: absolute;
+    left: -1.15rem; top: 0; bottom: 0; width: 1px; background: var(--ink); }
+  /* The list of 22 plus the open page's sections is taller than a laptop
+     viewport, and a sticky element taller than the screen has its foot
+     permanently out of reach. So it scrolls inside itself. Safe here because
+     the overflow is on the sticky element, not on an ancestor: an ancestor
+     with overflow silently kills position:sticky. */
+  @media (min-width: 1000px) {
+    .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
+      overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
+  }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -531,7 +562,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink-faint); }
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Demand & Trends","item":"https://searchscope.io/knowledge-base/intelligence/demand-trends/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Search intelligence","item":"https://searchscope.io/knowledge-base/#search-intelligence"},{"@type":"ListItem","position":4,"name":"Demand & Trends","item":"https://searchscope.io/knowledge-base/intelligence/demand-trends/"}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -675,13 +706,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>document.documentElement.classList.add("kb-js");</script>
   <section class="section">
     <div class="container">
-      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <span>Demand &amp; Trends</span></nav>
+      <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#search-intelligence">Search intelligence</a> <span aria-hidden="true">&middot;</span> <span>Demand &amp; Trends</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Demand &amp; Trends</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/" aria-current="page">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Demand &amp; Trends</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/" aria-current="page">Demand &amp; Trends</a><ul class="kbnav__sub"><li><a href="/knowledge-base/intelligence/demand-trends/#reading-the-chart">Reading the chart</a></li><li><a href="/knowledge-base/intelligence/demand-trends/#the-figures-above-it">The figures above it</a></li><li><a href="/knowledge-base/intelligence/demand-trends/#the-filter-pills-and-what-each-one-finds">The filter pills, and what each one finds</a></li><li><a href="/knowledge-base/intelligence/demand-trends/#what-to-do-with-it">What to do with it</a></li><li><a href="/knowledge-base/intelligence/demand-trends/#the-region-these-numbers-are-for">The region these numbers are for</a></li></ul></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/">Content Planner</a></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Demand &amp; Trends</h1>
           <p class="kblede">What the market is searching for, plotted against how much of it you capture.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Demand &amp; Trends</b></p><h2>Reading the chart</h2><p>Your topics are plotted against the market: how much demand each carries, and where you sit in it.</p><p><b>High demand where you rank poorly is the quadrant to work in.</b> It's the shaded zone on the chart, and it's the whole reason this view exists.</p><h2>The figures above it</h2><p>How many topics carry search demand, how many are growing, and how much of that demand turns into clicks for you. That last one is usually humbling, and it should be: most searches never click any result.</p><p>The pills underneath are filters. Click one to narrow the list to a kind of problem rather than scrolling the whole thing.</p><h2>The filter pills, and what each one finds</h2><p>The row marked <b>Issues</b> narrows the list to one kind of problem. They're the fastest way into this screen, because each one answers a different question.</p><ul class="kblist"><li><b>Losing share</b>: your slice of the demand is shrinking, whether or not the topic itself is growing.</li><li><b>Demand falling</b>: the topic is shrinking. May be seasonal, may be permanent. Different problem from losing share, and it wants a different response: one is about your pages, the other is about the market.</li><li><b>Rising + weak</b>: demand is growing and you rank poorly. Usually the most valuable pill on the row.</li><li><b>Rising + strong</b>: the same growth where you already rank well. This is what to defend.</li><li><b>High demand, no clicks</b>: you appear and nobody clicks. A title and description problem far more often than a ranking one, and among the cheapest things to fix here.</li><li><b>Cannibalized</b>: more than one of your pages is competing inside the topic. The Cannibalization workspace's problem seen from the topic end.</li><li><b>Competitor cluster gap</b>: a topic competitors cover and you don't.</li><li><b>Uncontested</b>: demand nobody is really serving. Rarer than it sounds, and worth checking why before you commit to it.</li><li><b>Topics you don't cover</b>: no page of yours addresses the topic at all.</li></ul><p>The number on each pill is how many topics match, so a pill showing zero is a question you don't have to ask today.</p><h2>What to do with it</h2><p>Every topic card carries the same two actions as the workspaces. <b>Brief</b> sends it to Content Studio, <b>Ask Advisor</b> puts it to your Strategist.</p><p>Cards also have <b>Ignore</b>, which drops a topic out of the list.</p><h2>The region these numbers are for</h2><p>The subtitle names the region the demand and volume figures come from. There's no picker on this screen: it follows <b>Target market</b> in Settings, under Business Context, and the volumes are pulled and cached per country.</p><p>So if these numbers look like the wrong market, that's the field to change.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Demand &amp; Trends</b></p><h2 id="reading-the-chart">Reading the chart</h2><p>Your topics are plotted against the market: how much demand each carries, and where you sit in it.</p><p><b>High demand where you rank poorly is the quadrant to work in.</b> It's the shaded zone on the chart, and it's the whole reason this view exists.</p><h2 id="the-figures-above-it">The figures above it</h2><p>How many topics carry search demand, how many are growing, and how much of that demand turns into clicks for you. That last one is usually humbling, and it should be: most searches never click any result.</p><p>The pills underneath are filters. Click one to narrow the list to a kind of problem rather than scrolling the whole thing.</p><h2 id="the-filter-pills-and-what-each-one-finds">The filter pills, and what each one finds</h2><p>The row marked <b>Issues</b> narrows the list to one kind of problem. They're the fastest way into this screen, because each one answers a different question.</p><ul class="kblist"><li><b>Losing share</b>: demand for the topic is rising and your impressions are falling. The market is growing and you're taking less of it, which is the one on this row that most often turns out to matter.</li><li><b>Demand falling</b>: the topic itself is shrinking, whatever your position. A different problem from losing share and it wants a different answer: one is about your pages, the other is about the market. Useful for deciding what to stop spending on.</li><li><b>Rising + weak</b>: demand is growing and your average position is worse than 8, so you're off the top of page one as the topic gets bigger.</li><li><b>Rising + strong</b>: demand rising, your impressions rising too, and an average position in the top 10. What to defend, and worth reading for what's working.</li><li><b>High demand, no clicks</b>: at least 500 searches a month and not one click to your site. That's a title and description problem far more often than a ranking one, so it's usually the quickest thing on the row: you're rewriting two lines, not writing a page.</li><li><b>Cannibalized</b>: more than one of your pages ranks for the same query inside the topic, splitting the impressions. The Cannibalization workspace's problem seen from the topic end.</li><li><b>Competitor cluster gap</b>: a competitor you track is in the top 20 and beats your position by five or more, or ranks in the top 20 for keywords here you have no presence for at all.</li><li><b>Uncontested</b>: none of the competitors you track has any ranking touching the topic. Read it carefully, because it's about them and not about you: your own position isn't part of the test. And it's only as good as your competitor list, so open a few before you act on it.</li><li><b>Topics you don't cover</b>: whole topics your competitors rank for where you have no page and no visibility. This one swaps the list below rather than filtering it.</li></ul><p>The number on each pill is how many topics match, so a pill showing zero is a question you don't have to ask today.</p><p><b>The last three need a competitor.</b> They're greyed out until you've added one in Competitive Landscape, and they compare against the three most recently added, using cached rankings rather than a live search. So they tell you about the competitors you named, not about everyone in the results: a topic can be uncontested by your list and busy in the actual search results.</p><h2 id="what-to-do-with-it">What to do with it</h2><p>Every topic card carries the same two actions as the workspaces. <b>Brief</b> sends it to Content Studio, <b>Ask Advisor</b> puts it to your Strategist.</p><p>Cards also have <b>Ignore</b>, which drops a topic out of the list.</p><h2 id="the-region-these-numbers-are-for">The region these numbers are for</h2><p>The subtitle names the region the demand and volume figures come from. There's no picker on this screen: it follows <b>Target market</b> in Settings, under Business Context, and the volumes are pulled and cached per country.</p><p>So if these numbers look like the wrong market, that's the field to change.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/platform/search-intelligence/">What this does, and why it matters</a></li></ul></div>
         </div>
       </div>
@@ -705,6 +736,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Mark the section you're reading, in the nav.
+  //
+  // Not IntersectionObserver: sections here are anything from one paragraph to
+  // a screenful, so "is it visible" answers the wrong question when three of
+  // them are on screen at once. The question is which heading you have most
+  // recently passed, which is a scroll position and a list of offsets.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var links = [].slice.call(nav.querySelectorAll('.kbnav__sub a'));
+    if (!links.length) return;
+    var heads = links.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return id ? document.getElementById(id) : null;
+    });
+
+    var current = null, queued = false;
+    function sync() {
+      queued = false;
+      var y = window.scrollY + 140, found = null;
+      for (var i = 0; i < heads.length; i++) {
+        if (heads[i] && heads[i].getBoundingClientRect().top + window.scrollY <= y) found = i;
+      }
+      // Past the end of the article, the last heading is still the answer.
+      if (found === current) return;
+      if (current !== null) links[current].removeAttribute('aria-current');
+      current = found;
+      if (current === null) return;
+      links[current].setAttribute('aria-current', 'true');
+      // Keep it visible when the nav is taller than the screen and scrolling
+      // inside itself.
+      var l = links[current].getBoundingClientRect(), n = nav.getBoundingClientRect();
+      if (l.top < n.top + 8) nav.scrollTop += l.top - n.top - 8;
+      else if (l.bottom > n.bottom - 8) nav.scrollTop += l.bottom - n.bottom + 8;
+    }
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+
+    // On a long nav, open on the page you're on rather than at the top of the
+    // list. 22 entries is taller than a laptop viewport.
+    var here = nav.querySelector('a[aria-current="page"]');
+    if (here && nav.scrollHeight > nav.clientHeight + 4) {
+      var off = here.getBoundingClientRect().top - nav.getBoundingClientRect().top;
+      if (off > nav.clientHeight - 120) nav.scrollTop += off - 80;
+    }
   })();
 </script>
 
