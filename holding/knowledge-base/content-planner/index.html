@@ -477,11 +477,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      viewport, and a sticky element taller than the screen has its foot
      permanently out of reach. So it scrolls inside itself. Safe here because
      the overflow is on the sticky element, not on an ancestor: an ancestor
-     with overflow silently kills position:sticky. */
+     with overflow silently kills position:sticky.
+
+     The max-height here is the WORST case, for the moment before the script
+     runs and for anyone with JS off. Once it runs, the height is set from
+     where the nav actually is, which matters at the top of the page: the nav
+     starts below the breadcrumb, so a height of a full viewport puts its last
+     items below the fold, and they can't be scrolled to without first
+     scrolling the article. That's the bug this replaces. */
   @media (min-width: 1000px) {
     .kbnav { max-height: calc(100vh - var(--space-l) * 2); overflow-y: auto;
       overscroll-behavior: contain; scrollbar-width: thin; padding-right: 0.5rem; }
   }
+
+  /* ---- the fold control on the open page ---- */
+  .kbnav__row { display: flex; align-items: baseline; gap: 0.4rem; }
+  .kbnav__row a { flex: 1 1 auto; min-width: 0; }
+  .kbnav__fold { flex: none; width: 1.5rem; height: 1.5rem; display: none;
+    align-items: center; justify-content: center; padding: 0; cursor: pointer;
+    background: none; border: 1px solid transparent; border-radius: var(--radius-s);
+    color: var(--ink-faint); }
+  .kb-js .kbnav__fold { display: inline-flex; }
+  .kbnav__fold:hover { border-color: var(--hairline); color: var(--ink); }
+  /* A chevron from two borders on a rotated square: no icon font, no SVG, and
+     it turns with the button rather than being swapped for a second glyph. */
+  .kbnav__chev { width: 6px; height: 6px; border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg);
+    transition: transform var(--dur, .2s) var(--ease-out, ease); }
+  .kbnav__fold[aria-expanded="false"] .kbnav__chev { transform: translateY(1px) rotate(-45deg); }
+  .kbnav .kbnav__sub[hidden] { display: none; }
   @media (max-width: 999px) { .kbnav { position: static; } }
 
   /* ---- the section menu on a phone ----
@@ -708,7 +732,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <nav class="crumb reveal" aria-label="Breadcrumb"><a href="/">Searchscope</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/">Knowledge base</a> <span aria-hidden="true">&middot;</span> <a href="/knowledge-base/#instruments">Instruments</a> <span aria-hidden="true">&middot;</span> <span>Content Planner</span></nav>
       <div class="kbwrap">
-        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Content Planner</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/knowledge-base/content-planner/" aria-current="page">Content Planner</a><ul class="kbnav__sub"><li><a href="/knowledge-base/content-planner/#what-s-in-it">What's in it</a></li><li><a href="/knowledge-base/content-planner/#drafting-a-plan">Drafting a plan</a></li><li><a href="/knowledge-base/content-planner/#the-journey-ladder">The journey ladder</a></li><li><a href="/knowledge-base/content-planner/#why-some-stages-move-on-their-own-and-some-don-t">Why some stages move on their own and some don't</a></li><li><a href="/knowledge-base/content-planner/#cited-in-ai-the-stage-most-plans-never-reach">Cited in AI, the stage most plans never reach</a></li><li><a href="/knowledge-base/content-planner/#projects-and-the-seo-or-pr-group">Projects, and the SEO or PR group</a></li></ul></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
+        <nav class="kbnav" aria-label="Knowledge base"><button type="button" class="navtoggle kbbar" id="kb-sections-toggle" aria-expanded="false" aria-controls="kb-sections"><span class="kbbar__k">Content Planner</span><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span></button><div class="kbnav__list" id="kb-sections"><h2>Getting started</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/dashboard/">The dashboard</a></li></ul><h2>Foundation</h2><ul><li><a href="/knowledge-base/settings/data/">Data Pipeline</a></li><li><a href="/knowledge-base/settings/business/">Business context</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li></ul><h2>Workspace analyzers</h2><ul><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/workspace/links/">Internal Links</a></li><li><a href="/knowledge-base/workspace/index/">Index Bloat</a></li><li><a href="/knowledge-base/workspace/opportunity/">Opportunities</a></li><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/workspace/schema/">Schema</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li></ul><h2>Search intelligence</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li></ul><h2>AI and brand intelligence</h2><ul><li><a href="/knowledge-base/intelligence/brand-ai/">AI &amp; Brand Intelligence</a></li></ul><h2>Instruments</h2><ul><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><div class="kbnav__row"><a href="/knowledge-base/content-planner/" aria-current="page">Content Planner</a><button type="button" class="kbnav__fold" id="kb-fold-toggle" aria-expanded="true" aria-controls="kb-fold" aria-label="Hide the sections on this page"><span class="kbnav__chev" aria-hidden="true"></span></button></div><ul class="kbnav__sub" id="kb-fold"><li><a href="/knowledge-base/content-planner/#what-s-in-it">What's in it</a></li><li><a href="/knowledge-base/content-planner/#drafting-a-plan">Drafting a plan</a></li><li><a href="/knowledge-base/content-planner/#the-journey-ladder">The journey ladder</a></li><li><a href="/knowledge-base/content-planner/#why-some-stages-move-on-their-own-and-some-don-t">Why some stages move on their own and some don't</a></li><li><a href="/knowledge-base/content-planner/#cited-in-ai-the-stage-most-plans-never-reach">Cited in AI, the stage most plans never reach</a></li><li><a href="/knowledge-base/content-planner/#projects-and-the-seo-or-pr-group">Projects, and the SEO or PR group</a></li></ul></li><li><a href="/knowledge-base/tools/page-experience/">Page Experience</a></li></ul></div></nav>
         <div class="kbbody">
           <h1 class="sec__title">Content Planner</h1>
           <p class="kblede">Every piece of content work in one sheet, from idea to published and cited.</p>
@@ -736,6 +760,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       list.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  })();
+
+  // Fold the open page's section list away.
+  (function () {
+    var btn = document.getElementById('kb-fold-toggle');
+    var list = document.getElementById('kb-fold');
+    if (!btn || !list) return;
+    btn.addEventListener('click', function () {
+      var open = list.hasAttribute('hidden');
+      if (open) list.removeAttribute('hidden'); else list.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Hide the sections on this page'
+                                          : 'Show the sections on this page');
+      window.dispatchEvent(new Event('kb:resize'));
+    });
+  })();
+
+  // Fit the nav to the space it's actually in.
+  //
+  // The CSS cap is a full viewport, which is right once the nav is stuck to
+  // the top and wrong before that: at the top of the page it starts under the
+  // breadcrumb, so a viewport-tall nav hangs below the fold and its last group
+  // can't be reached by scrolling the nav. You had to scroll the ARTICLE to
+  // bring the bottom of the nav into view, which is a strange thing to have to
+  // work out.
+  (function () {
+    var nav = document.querySelector('.kbnav');
+    if (!nav) return;
+    var wide = window.matchMedia('(min-width: 1000px)');
+    var queued = false;
+    function fit() {
+      queued = false;
+      if (!wide.matches) { nav.style.maxHeight = ''; return; }
+      var top = nav.getBoundingClientRect().top;
+      // 24px of air at the foot, and never so short it becomes a slot.
+      nav.style.maxHeight = Math.max(240, window.innerHeight - top - 24) + 'px';
+    }
+    function queue() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(fit);
+    }
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    window.addEventListener('kb:resize', queue);
+    if (wide.addEventListener) wide.addEventListener('change', queue);
+    fit();
   })();
 
   // Mark the section you're reading, in the nav.
