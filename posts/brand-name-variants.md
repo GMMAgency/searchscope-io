@@ -1,18 +1,18 @@
 ---
 title: Names you weren't getting credit for
-description: AI engines don't always use your full company name. Searchscope spots the variants your saved brand names miss and offers them for approval, with the evidence attached.
+description: AI engines rarely use a brand name in exactly the same way every time. Searchscope finds missed name variants and lets you approve them before they affect your reporting.
 pubDate: 2026-08-22
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-AI engines don't always use your full company name. They shorten it, drop the suffix, split it in two, or use the product name instead of the company. Every time that happens the answer is about you and your visibility numbers don't know it.
+AI engines don't always use the exact brand name you've saved. They shorten it, drop a suffix, use a product name, or write it differently enough that a normal match misses it.
 
-After each run, Searchscope checks the answers for variants your saved brand names missed and offers them for approval.
+That matters because the answer can clearly be about your brand while your visibility report records no mention at all.
 
-It won't guess. A loose match is worse than a miss here, because calling a common word a brand variant makes every unrelated answer count as a mention and quietly inflates everything downstream of it. So a variant is only put forward with evidence behind it, meaning at least three answers that talked about you without the credit.
+After each run, Searchscope looks for likely variants and puts them forward for approval. It doesn't add them automatically. Loose matching creates a worse problem, where a common word starts counting as your brand and inflates the numbers.
 
-Approved variants join the next run and count from then on. They're not applied backwards, so your history stays comparable.
+A suggested variant only appears when there is evidence behind it, with the answers that triggered the suggestion attached. Approve it and it counts from the next run onwards. Historical data stays as it was, so you're not rewriting the past every time the brand list changes.
 
-You'll find it on your brand settings in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).
+You'll find it in brand settings under [AI and Brand Intelligence](/platform/ai-brand-intelligence/).

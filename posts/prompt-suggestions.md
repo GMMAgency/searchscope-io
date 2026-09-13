@@ -1,18 +1,18 @@
 ---
 title: Prompt suggestions from your own search data
-description: Searchscope turns the searches that already bring people to your site into the questions buyers ask AI, then checks how often those questions get asked.
+description: Build AI tracking prompts from the searches already bringing people to your site, then keep the ones that reflect real demand rather than a guessed prompt list.
 pubDate: 2026-08-11
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-You don't have to guess which questions to track.
+Most AI visibility tracking starts with someone sitting down and guessing which prompts matter.
 
-Searchscope takes the searches that already bring people to your site, turns them into the questions buyers ask AI, and checks how often those get asked. Review the list, keep what matters, and they join your next run.
+Searchscope now starts with the search data you already have. It looks at the queries bringing people to your site, turns them into natural questions and checks how often those questions are being asked. You review the suggestions and keep the ones worth tracking.
 
-A hand-written prompt list describes the market you think you're in. Your search data describes the one you're in, including the queries nobody would have thought to write down and the ones you'd have phrased far more formally than anyone actually types them.
+That gives you a better starting point than a hand-written list. Search data tends to surface the awkward wording, long-tail questions and unexpected demand that a tidy strategy document misses.
 
-Citation rows gained a Pitch this action the same week. It composes a pitch from that row's own numbers and opens [Content Studio](/platform/instruments/content-studio/) with it ready, which turns a citation you don't have into the thing you'd send to get it.
+Citation rows also have a Pitch this action. It uses the context from that row and opens [Content Studio](/platform/instruments/content-studio/) with a draft ready to work on. The aim is to shorten the gap between spotting a citation opportunity and doing something about it.
 
-Prompts live in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).
+Prompt management lives in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).
