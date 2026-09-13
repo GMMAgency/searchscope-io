@@ -19,18 +19,27 @@ INPUTS
   scripts/scenes/<slug>.html  the hero picture, built from the .u-* primitives
                               already in the shared CSS (add no new CSS rules,
                               or the CSS block stops being identical across
-                              pages and the next person has to diff 15 files)
+                              pages and the next person has to diff 15 files).
+                              OPTIONAL once a page exists: leave it out and the
+                              page keeps the picture it already has, which is
+                              what makes a copy edit safe to run over the whole
+                              blog.
+
+TEMPLATE. A page that already exists is its own template, so rebuilding it
+touches the copy and nothing else: its hero picture and its More posts grid
+come through untouched. A brand new post uses a sibling instead.
 
 USAGE
   python3 scripts/build_post.py <slug> [<slug> ...]
 """
 import html
+import json
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE = os.path.join(ROOT, "holding", "blog", "worksheets", "index.html")
+SIBLING = os.path.join(ROOT, "holding", "blog", "worksheets", "index.html")
 SITE = "https://searchscope.io"
 WORDS_PER_MINUTE = 200
 
@@ -56,6 +65,15 @@ def read_post(slug):
         if required not in meta:
             raise SystemExit("%s is missing %s" % (path, required))
     return meta, body.strip()
+
+
+def tag_list(meta):
+    """`tags: ['Search Systems']` in the frontmatter. They join the category in
+    the JSON-LD keywords, but articleSection stays the single category."""
+    raw = meta.get("tags", "").strip()
+    if not raw.startswith("["):
+        return []
+    return [t.strip().strip("'\"") for t in raw[1:-1].split(",") if t.strip()]
 
 
 def pretty_date(iso):
@@ -91,28 +109,49 @@ def inline(text):
 
 def render(body):
     """Markdown to the prose HTML these pages use. Returns (html, headings)."""
+    fences = []
+
+    def stash(m):
+        fences.append(m.group(1))
+        return "\n\n\x00%d\x00\n\n" % (len(fences) - 1)
+
+    body = re.sub(r"```[^\n]*\n(.*?)```[ \t]*", stash, body, flags=re.S)
+
     out, headings, bullets = [], [], []
+    ordered = [False]
 
     def flush():
         if bullets:
-            out.append("<ul>")
+            tag = "ol" if ordered[0] else "ul"
+            out.append("<%s>" % tag)
             out.extend("<li>%s</li>" % b for b in bullets)
-            out.append("</ul>")
+            out.append("</%s>" % tag)
             bullets.clear()
 
     for block in re.split(r"\n\s*\n", body):
         block = block.strip()
         if not block:
             continue
-        if block.startswith("## "):
+        fenced = re.fullmatch(r"\x00(\d+)\x00", block)
+        if fenced:
+            flush()
+            out.append("<pre><code>%s</code></pre>"
+                       % html.escape(fences[int(fenced.group(1))], quote=True))
+        elif block.startswith("## "):
             flush()
             heading = block[3:].strip()
             anchor = slugify(heading)
             headings.append((anchor, inline(heading)))
             out.append('<h2 id="%s">%s</h2>' % (anchor, inline(heading)))
-        elif block.startswith(("- ", "* ")):
+        elif block.startswith(("- ", "* ")) or re.match(r"^\d+\. ", block):
+            numbered = bool(re.match(r"^\d+\. ", block))
+            if bullets and numbered != ordered[0]:
+                flush()
+            ordered[0] = numbered
             for line in block.split("\n"):
-                bullets.append(inline(line.strip()[2:]))
+                item = line.strip()
+                item = re.sub(r"^(?:[-*]|\d+\.)\s+", "", item)
+                bullets.append(inline(item))
         else:
             flush()
             out.append("<p>%s</p>" % inline(" ".join(block.split("\n"))))
@@ -134,13 +173,21 @@ def build(slug):
     prose, headings = render(body)
     words = word_count(body)
 
+    existing = os.path.join(ROOT, "holding", "blog", slug, "index.html")
+    template = existing if os.path.exists(existing) else SIBLING
+
     scene_path = os.path.join(ROOT, "scripts", "scenes", slug + ".html")
-    with open(scene_path, encoding="utf-8") as fh:
-        scene = fh.read().rstrip("\n")
-    if not scene.lstrip().startswith('<div class="uscene"'):
-        raise SystemExit("%s must start with the .uscene div" % scene_path)
-    if 'aria-label="' not in scene.split(">", 1)[0] + ">":
-        raise SystemExit("%s needs an aria-label: it is the picture's alt text" % scene_path)
+    scene = None
+    if os.path.exists(scene_path):
+        with open(scene_path, encoding="utf-8") as fh:
+            scene = fh.read().rstrip("\n")
+        if not scene.lstrip().startswith('<div class="uscene"'):
+            raise SystemExit("%s must start with the .uscene div" % scene_path)
+        if 'aria-label="' not in scene.split(">", 1)[0] + ">":
+            raise SystemExit("%s needs an aria-label: it is the picture's alt text" % scene_path)
+    elif template is SIBLING:
+        raise SystemExit("%s is a new post and needs a hero picture at %s"
+                         % (slug, os.path.relpath(scene_path, ROOT)))
 
     minutes = max(1, round(words / WORDS_PER_MINUTE))
     url = "%s/blog/%s/" % (SITE, slug)
@@ -150,9 +197,15 @@ def build(slug):
     esc_desc = html.escape(desc, quote=True)
     date = meta["pubDate"]
 
+    hide = "" if headings else " hidden"
     toc = "".join('<li><a href="#%s">%s</a></li>' % h for h in headings)
     toc_ul_m = '<ul class="toc">%s</ul>' % toc
     toc_ul_r = '<ul class="toc" data-toc data-count="%d">%s</ul>' % (len(headings), toc)
+
+    def j(value):
+        """A JSON string body. The block is inside a <script>, so it is JSON
+        rather than HTML and an apostrophe must stay an apostrophe."""
+        return json.dumps(value, ensure_ascii=False)[1:-1]
 
     ld = (
         '{"@context":"https://schema.org","@type":"BlogPosting",'
@@ -161,11 +214,12 @@ def build(slug):
         '"publisher":{"@type":"Organization","name":"Searchscope","url":"%s/"},'
         '"keywords":"%s","articleSection":"%s","wordCount":%d,"timeRequired":"PT%dM",'
         '"inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"%s"},"url":"%s"}'
-    ) % (esc_title, esc_desc, date, date, meta["author"], SITE,
-         meta["author"].lower(), SITE, meta["category"], meta["category"],
+    ) % (j(title), j(desc), date, date, j(meta["author"]), SITE,
+         meta["author"].lower(), SITE,
+         j(", ".join([meta["category"]] + tag_list(meta))), j(meta["category"]),
          words, minutes, url, url)
 
-    share_title = title.replace(" ", "%20").replace("&", "%26")
+    share_title = esc_title  # the live pages leave the spaces alone
     share = (
         '<div class="share">'
         '<a href="https://www.linkedin.com/sharing/share-offsite/?url={url}" target="_blank" rel="noopener" aria-label="Share on LinkedIn" title="Share on LinkedIn">{li}</a>'
@@ -175,7 +229,7 @@ def build(slug):
         "</div>"
     )
 
-    with open(TEMPLATE, encoding="utf-8") as fh:
+    with open(template, encoding="utf-8") as fh:
         page = fh.read()
 
     # The share block's four SVGs are template furniture; lift them rather than
@@ -186,7 +240,7 @@ def build(slug):
                          li=svgs[0], x=svgs[1], fb=svgs[2], em=svgs[3])
 
     slots = [
-        (r"page_name:'[^']*'", "page_name:'%s'" % slug),
+        (r"page_name:'[^']*'", "page_name:'%s'" % slug.replace("-", "_")),
         (r"<title>[^<]*</title>", "<title>%s · Searchscope</title>" % esc_title),
         (r'<meta name="description" content="[^"]*">',
          '<meta name="description" content="%s">' % esc_desc),
@@ -208,8 +262,13 @@ def build(slug):
         (r'<span>\d+ min read</span>', "<span>%d min read</span>" % minutes),
         (r'(<time datetime=")[^"]*("[^>]*>)[^<]*(</time>)', None),
         (r'(<p class="posthead__sub reveal"[^>]*>).*?(</p>)', esc_desc),
-        (r'<div class="uscene" role="img".*?\n          </div>', scene),
+        # A short update has nothing worth a contents list. Both blocks stay
+        # in the page and are hidden, so a post that later grows headings gets
+        # them back without the markup having to be restored by hand.
+        (r'<details class="mtoc"[^>]*>', '<details class="mtoc"%s>' % hide),
         (r'(<summary>.*?</summary>\s*)<ul class="toc">.*?</ul>', toc_ul_m),
+        (r'<div class="rail__b" data-tocblock[^>]*>',
+         '<div class="rail__b" data-tocblock%s>' % hide),
         (r'<ul class="toc" data-toc data-count="\d+">.*?</ul>', toc_ul_r),
         (r'(<div class="prose">).*?(\n\s*</div>)',
          "\n" + prose),
@@ -225,6 +284,9 @@ def build(slug):
         if len(groups) == 1:
             return groups[0] + body
         return groups[0] + body + "".join(groups[1:])
+
+    if scene is not None:
+        slots.append((r'<div class="uscene" role="img".*?\n          </div>', scene))
 
     for pattern, body in slots:
         if body is None:  # the date is built from two parts

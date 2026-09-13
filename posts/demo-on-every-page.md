@@ -7,16 +7,12 @@ category: Product Updates
 draft: false
 ---
 
-Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you're actually looking at.
+Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you're looking at.
 
-## No hunting for the right video
+The usual version of this is a help centre with a video library inside it. The moment you're confused you have to stop, go somewhere else, and work out which of forty videos matches the screen you just left.
 
-The usual version of this is a help center with a video library in it, which means the moment you're confused you have to stop, go somewhere else, and work out which of forty videos matches the screen you left behind.
+Here the demo is on the screen it explains, and the button only appears where there's a video for that surface, so it isn't a promise the page can't keep.
 
-Here the demo is on the screen it explains. The button only appears where there's a video for that surface, so it isn't a promise the page can't keep.
+The step-by-step tour is separate and still available any time, not just on a first visit. Some people want to be shown and some want to be walked through, and they're often the same person on a different day.
 
-## The tour is still there
-
-The step-by-step walk through a page is separate and still available any time, not just on your first visit. Some people want to be shown and some want to be walked through, and they aren't the same person on the same day.
-
-You'll find them on every workspace and instrument across the [platform](/platform/).
+They're on every workspace and instrument across the [platform](/platform/).

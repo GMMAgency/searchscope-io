@@ -23,6 +23,7 @@ import datetime as dt
 import html
 import os
 import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -147,16 +148,14 @@ def author_pages(posts):
     return out
 
 
-def more_posts(posts, only):
-    """A post page's own 'More posts' grid: the newest siblings in its category.
-
-    Only the pages named in `only` are rewritten. Rebuilding all of them would
-    reshuffle thirteen live pages for no reader benefit, and holding/ deploys
-    the moment it merges.
-    """
+def more_posts(posts):
+    """Every post page's own 'More posts' grid: the newest siblings in its
+    category. Rebuilt everywhere, because these cards carry other posts'
+    titles, descriptions and read times, and a copy edit anywhere leaves them
+    stale on every other page."""
     out = []
     by_slug = {p["slug"]: p for p in posts}
-    for slug in only:
+    for slug in by_slug:
         me = by_slug[slug]
         siblings = [p for p in posts
                     if p["category"] == me["category"] and p["slug"] != slug][:RELATED]
@@ -171,6 +170,23 @@ def sitemap(posts):
     with open(path, encoding="utf-8") as fh:
         xml = fh.read()
     today = dt.date.today().isoformat()
+    # A page whose file differs from the last commit changed today, so its
+    # lastmod should say so rather than keeping the date of the previous build.
+    changed = set(subprocess.run(
+        ["git", "diff", "--name-only", "HEAD", "--", "holding/blog"],
+        cwd=ROOT, capture_output=True, text=True).stdout.split())
+    for p in posts:
+        if "holding/blog/%s/index.html" % p["slug"] in changed:
+            xml = re.sub(
+                r"(<loc>%s/blog/%s/</loc>\s*<lastmod>)[^<]*" % (re.escape(SITE), re.escape(p["slug"])),
+                lambda m: m.group(1) + today, xml, count=1)
+    # A post that has been withdrawn should leave the sitemap with it.
+    live = {"%s/blog/%s/" % (SITE, p["slug"]) for p in posts}
+    for loc in re.findall(r"<loc>(%s/blog/[^/<]+/)</loc>" % re.escape(SITE), xml):
+        if loc not in live:
+            xml = re.sub(r"  <url>\s*<loc>%s</loc>\s*<lastmod>[^<]*</lastmod>\s*</url>\n"
+                         % re.escape(loc), "", xml, count=1)
+
     added = []
     for p in sorted(posts, key=lambda p: p["slug"]):
         loc = "%s/blog/%s/" % (SITE, p["slug"])
@@ -231,7 +247,7 @@ def main():
     writes += blog_index(posts)
     writes += category_pages(posts)
     writes += author_pages(posts)
-    writes += more_posts(posts, only=[p["slug"] for p in posts[:2]])
+    writes += more_posts(posts)
     sm, added = sitemap(posts)
     writes += sm
     writes += rss(posts)

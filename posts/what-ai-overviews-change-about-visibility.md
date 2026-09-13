@@ -1,51 +1,34 @@
 ---
 title: What AI Overviews change about visibility
-description: You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it's a leaky one.
+description: You can rank first and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it's a leaky one.
 pubDate: 2026-06-12
 author: Ray
 category: AI Search
 draft: false
 ---
 
-For as long as anyone reading this has done SEO, the scoreboard was rankings. Position one was the prize. Everything (audits, content, links) pointed at moving up the page.
+For as long as anyone reading this has done SEO, the scoreboard was rankings. Position one was the prize, and audits, content and links all pointed at moving up the page.
 
 AI Overviews have quietly broken that scoreboard.
 
 ## Rank and click have come apart
 
-The old equation was simple: higher rank → more clicks → more business. It was never perfect, but it held well enough to plan around.
+Higher rank used to mean more clicks, which meant more business. Never perfect, but reliable enough to plan around.
 
-Now an AI Overview can sit above your #1 result and answer the query outright. The user gets what they came for and never scrolls. You still "rank first"; your clicks just fell off a cliff. The position is real; the traffic isn't.
+An AI Overview can now sit above your first result and answer the query outright. The user gets what they came for and never scrolls. You still rank first, and your clicks fall off a cliff, so the position is real and the traffic isn't.
 
-The inverse is also true. You can be nowhere in the traditional ten blue links and still be the source an AI summary cites and links. Invisible on the old scoreboard, present in the answer.
+It runs the other way too. You can be nowhere in the ten blue links and still be the source the summary cites and links to. Invisible on the old scoreboard, present in the answer.
 
-So "position" has gone from a decent proxy to a leaky one. Optimizing for it now can actively mislead you.
+Position has gone from a decent proxy to a leaky one, and optimising for it now can actively mislead you.
 
-## Visibility is presence in the answer
+## What to watch instead
 
-The thing that actually matters in the AI era is **presence in the answer**, whoever or whatever is doing the answering.
+Presence in the answer, whoever is doing the answering. For a person scrolling the page that means being the result they choose. For a model summarising the topic it means being the source it pulls from and attributes. Neither shows up in a rank tracker.
 
-A human scrolling the page: are you the result they choose?
+Reading it properly takes three things at once. What people are searching and how that's moving. The shape of the results page, meaning whether there's an AI Overview, a pack or a panel, and how much room is left for a click. And whether you're in the answer rather than nominally ranking below it.
 
-A model summarizing the topic: are you the source it pulls from and attributes?
+The practical changes are small and worth making now. Stop reporting rank on its own and pair every position with its click reality, because a first place that doesn't convert is a flag rather than a win. Write sections that answer a question cleanly, since those are what get pulled into summaries. Treat an AI Overview appearing over a cluster you own as an algorithm event, because for your traffic that's what it is. And measure citations, because being the cited source is now closer to the front page than position three is.
 
-Both are "visibility", and neither is captured by a rank tracker alone. To see them you have to read three things together:
+None of this is a one-off. The results page is being rewritten continuously, which means visibility has to be read continuously, which is the [operating-system model](/blog/seo-is-now-an-operating-system/) applied to a different problem.
 
-- **Demand**: what people are actually searching, and how that's moving.
-- **The shape of the SERP**: is there an AI Overview, a pack, a panel? How much real estate is left for a click?
-- **Your presence**: are you in the answer, in the citations, in the click-through, or just nominally "ranking"?
-
-## What to do about it
-
-A few practical moves we're making on client sites right now:
-
-- **Stop reporting rank in isolation.** Pair every position with its click reality. A #1 that doesn't convert to clicks is a flag, not a win.
-- **Write answer-shaped sections.** Clear, extractable answers to real questions get pulled into summaries. Burying the answer three scrolls down doesn't.
-- **Watch the SERP shape as a signal.** When an AI Overview appears over a cluster you own, treat it like an algorithm event, because for your traffic, it is one.
-- **Measure citations, not just rankings.** Being the cited source is the new front page.
-
-The uncomfortable part is that none of this is a one-off. The results page is being rewritten continuously, which means visibility has to be *read* continuously, exactly the kind of always-on synthesis the [search-operating-system model](/blog/seo-is-now-an-operating-system/) is built for.
-
-Rankings aren't dead. They're just no longer the scoreboard. The scoreboard is the answer, and whether you're in it.
-
-This is the whole of [Brand & AI visibility](/platform/ai-brand-intelligence/): tracking how the answers describe you, and the PR to move them.
+Rankings still matter. They just stopped being the thing to report. [Brand and AI visibility](/platform/ai-brand-intelligence/) tracks how the answers describe you, and the PR work to move them.
