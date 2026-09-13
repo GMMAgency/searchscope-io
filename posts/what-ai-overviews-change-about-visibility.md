@@ -2,7 +2,7 @@
 title: What AI Overviews change about visibility
 description: Rankings still matter, but they no longer tell you enough on their own. AI Overviews can take the click above you, or cite you when you don't rank in the traditional results at all.
 pubDate: 2026-06-12
-author: Ray
+author: Ray Olaibi
 category: AI Search
 draft: false
 ---

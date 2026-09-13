@@ -2,7 +2,7 @@
 title: Prompt suggestions from your own search data
 description: Build AI tracking prompts from the searches already bringing people to your site, then keep the ones that reflect real demand rather than a guessed prompt list.
 pubDate: 2026-08-11
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

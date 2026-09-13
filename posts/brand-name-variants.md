@@ -2,7 +2,7 @@
 title: Names you weren't getting credit for
 description: AI engines rarely use a brand name in exactly the same way every time. Searchscope finds missed name variants and lets you approve them before they affect your reporting.
 pubDate: 2026-08-22
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

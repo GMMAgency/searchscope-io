@@ -2,7 +2,7 @@
 title: Reading demand vs. your share
 description: Rankings show where you sit. Demand against share shows where the commercial headroom is. High demand with low captured share is usually the part of the site worth looking at first.
 pubDate: 2026-05-22
-author: Ray
+author: Ray Olaibi
 category: Search Data
 tags: ['Search Systems']
 draft: false

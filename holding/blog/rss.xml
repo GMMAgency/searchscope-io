@@ -6,14 +6,14 @@
     <atom:link href="https://searchscope.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Writing on search systems, algorithm updates, AI search and search data.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Sep 2026 11:47:27 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 12:01:58 +0000</lastBuildDate>
     <item>
       <title>Page Experience</title>
       <link>https://searchscope.io/blog/page-experience/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/page-experience/</guid>
       <description>See which technical issues matter, whether Google has indexed the page, and how it performs. Page Experience brings the checks together without making you join the dots across three tools.</description>
       <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -22,7 +22,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/brand-name-variants/</guid>
       <description>AI engines rarely use a brand name in exactly the same way every time. Searchscope finds missed name variants and lets you approve them before they affect your reporting.</description>
       <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -31,7 +31,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/all-six-ai-engines/</guid>
       <description>ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini now run side by side. The differences between them are often more useful than the combined score.</description>
       <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -40,7 +40,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/content-planner/</guid>
       <description>The Content Planner builds an SEO and PR plan from the data already in Searchscope, then sends approved pieces into Content Studio with the context intact.</description>
       <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -49,7 +49,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/send-to-studio/</guid>
       <description>Send a Strategic Advisor reply into Content Studio without losing the conversation that produced it. The useful context comes with the task.</description>
       <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -58,7 +58,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/ai-visibility-overview/</guid>
       <description>See how often your brand is named and cited, how much share of voice it holds, and where it appears inside the answer. Every metric shows the numbers behind it.</description>
       <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -67,7 +67,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/worksheets/</guid>
       <description>Turn any analyzer workspace into a working sheet with status, priority, notes and batch recommendations. Preview the output before you run it across the full set.</description>
       <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -76,7 +76,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/prompt-suggestions/</guid>
       <description>Build AI tracking prompts from the searches already bringing people to your site, then keep the ones that reflect real demand rather than a guessed prompt list.</description>
       <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -85,7 +85,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/demo-on-every-page/</guid>
       <description>Seventeen narrated walkthroughs now sit on the screens they explain. When a page has a demo, you can watch it without leaving the work you&#x27;re doing.</description>
       <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Product Updates</category>
     </item>
     <item>
@@ -94,7 +94,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/seo-is-now-an-operating-system/</guid>
       <description>SEO still gets managed like a sequence of projects, even though search changes every week. The better model is continuous: read what changed, decide what matters, then act while the signal is still useful.</description>
       <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Search Systems</category>
     </item>
     <item>
@@ -103,7 +103,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/what-ai-overviews-change-about-visibility/</guid>
       <description>Rankings still matter, but they no longer tell you enough on their own. AI Overviews can take the click above you, or cite you when you don&#x27;t rank in the traditional results at all.</description>
       <pubDate>Fri, 12 Jun 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>AI Search</category>
     </item>
     <item>
@@ -112,7 +112,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/cannibalization-is-a-data-problem/</guid>
       <description>Cannibalization isn&#x27;t something you should diagnose because two pages look similar. The useful signal is in query-by-page search data, where multiple URLs are competing for the same intent.</description>
       <pubDate>Thu, 04 Jun 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Search Data</category>
     </item>
     <item>
@@ -121,7 +121,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/reading-demand-vs-your-share/</guid>
       <description>Rankings show where you sit. Demand against share shows where the commercial headroom is. High demand with low captured share is usually the part of the site worth looking at first.</description>
       <pubDate>Fri, 22 May 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Search Data</category>
     </item>
     <item>
@@ -130,7 +130,7 @@
       <guid isPermaLink="true">https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</guid>
       <description>AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgement, priorities and decisions that follow.</description>
       <pubDate>Sun, 10 May 2026 09:00:00 +0000</pubDate>
-      <author>noreply@searchscope.io (Ray)</author>
+      <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Agency</category>
     </item>
   </channel>

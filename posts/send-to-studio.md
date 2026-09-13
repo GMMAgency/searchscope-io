@@ -2,7 +2,7 @@
 title: Send any strategist reply to Content Studio
 description: Send a Strategic Advisor reply into Content Studio without losing the conversation that produced it. The useful context comes with the task.
 pubDate: 2026-08-14
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

@@ -46,6 +46,28 @@ WORDS_PER_MINUTE = 200
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 
+# An author's page lives at a slug that must not move, whatever the display
+# name becomes: /blog/author/ray/ is a live URL and is in the sitemap.
+AUTHOR_SLUGS = {"ray olaibi": "ray", "ray": "ray", "stu": "stu"}
+
+# The LinkedIn link under a byline is the person's, not the company's. An
+# author with no entry here falls back to the company page.
+AUTHOR_LINKEDIN = {
+    "ray": "https://www.linkedin.com/in/ray-olaibi-540875121/",
+}
+COMPANY_LINKEDIN = "https://www.linkedin.com/company/searchscope-ai"
+
+
+def author_slug(name):
+    key = name.strip().lower()
+    if key in AUTHOR_SLUGS:
+        return AUTHOR_SLUGS[key]
+    return re.sub(r"[^a-z0-9]+", "-", key.split()[0]).strip("-")
+
+
+def author_linkedin(name):
+    return AUTHOR_LINKEDIN.get(author_slug(name), COMPANY_LINKEDIN)
+
 
 # ---------------------------------------------------------------- frontmatter
 
@@ -197,6 +219,9 @@ def build(slug):
     esc_desc = html.escape(desc, quote=True)
     date = meta["pubDate"]
 
+    a_slug = author_slug(meta["author"])
+    a_link = author_linkedin(meta["author"])
+    esc_author = html.escape(meta["author"], quote=True)
     hide = "" if headings else " hidden"
     toc = "".join('<li><a href="#%s">%s</a></li>' % h for h in headings)
     toc_ul_m = '<ul class="toc">%s</ul>' % toc
@@ -215,7 +240,7 @@ def build(slug):
         '"keywords":"%s","articleSection":"%s","wordCount":%d,"timeRequired":"PT%dM",'
         '"inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"%s"},"url":"%s"}'
     ) % (j(title), j(desc), date, date, j(meta["author"]), SITE,
-         meta["author"].lower(), SITE,
+         author_slug(meta["author"]), SITE,
          j(", ".join([meta["category"]] + tag_list(meta))), j(meta["category"]),
          words, minutes, url, url)
 
@@ -273,6 +298,15 @@ def build(slug):
         (r'(<div class="prose">).*?(\n\s*</div>)',
          "\n" + prose),
         (r'<div class="share">.*?</div>', share),
+        # The byline, the rail's "Written by" name, and the LinkedIn icon
+        # beside it. All three were template furniture until now, which is why
+        # every page carried one author's name and the company's LinkedIn.
+        (r'(<span>Author: <a href=")[^"]*(">)[^<]*(</a></span>)',
+         lambda m: "%s/blog/author/%s/%s%s%s" % (m.group(1), a_slug, m.group(2), esc_author, m.group(3))),
+        (r'(<p class="rail__name">\s*<a href=")[^"]*(">)[^<]*(</a>)',
+         lambda m: "%s/blog/author/%s/%s%s%s" % (m.group(1), a_slug, m.group(2), esc_author, m.group(3))),
+        (r'(<a class="lin" href=")[^"]*("[^>]*aria-label=")[^"]*(")',
+         lambda m: "%s%s%s%s on LinkedIn%s" % (m.group(1), a_link, m.group(2), esc_author, m.group(3))),
     ]
 
     def fill(match, body):
@@ -294,6 +328,8 @@ def build(slug):
                 pattern,
                 lambda m: m.group(1) + date + m.group(2) + pretty_date(date) + m.group(3),
                 page, count=1, flags=re.S)
+        elif callable(body):
+            page, n = re.subn(pattern, body, page, count=1, flags=re.S)
         else:
             page, n = re.subn(pattern, lambda m, b=body: fill(m, b),
                               page, count=1, flags=re.S)
