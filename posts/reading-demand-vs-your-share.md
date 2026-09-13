@@ -1,6 +1,6 @@
 ---
 title: Reading demand vs. your share
-description: The single most useful view in search isn't rankings or traffic. It's market demand plotted against the share you actually capture. It shows you where the growth is hiding.
+description: Rankings show where you sit. Demand against share shows where the commercial headroom is. High demand with low captured share is usually the part of the site worth looking at first.
 pubDate: 2026-05-22
 author: Ray
 category: Search Data
@@ -8,37 +8,36 @@ tags: ['Search Systems']
 draft: false
 ---
 
-If you could keep only one view of your search performance, it shouldn't be rankings, and it shouldn't be a traffic line. It should be **demand against share**: how much the market is searching for a thing, plotted against how much of that you actually capture.
+If I had to keep one view for deciding where to spend SEO time, I'd take demand against captured share over a ranking report.
 
-That one view answers the question every other report dances around: *where is our growth hiding?*
+Rankings tell you where a page sits for a query. Useful, but narrow. Demand and share tell you how much opportunity exists around a topic and how much of it you're actually winning.
 
-## Two axes, one picture
+That is much closer to the question most teams are trying to answer: where is the headroom?
 
-Put market demand on one axis and your captured share on the other, page by page or cluster by cluster, and four quadrants appear:
+## The useful quadrant
 
-- **High demand, high share**: your strongholds. Defend them.
-- **Low demand, high share**: you own it, but few are looking. Fine, low priority.
-- **Low demand, low share**: ignore, mostly. Not where growth lives.
-- **High demand, low share**: *this is the money quadrant.* Lots of demand, and you're barely in it.
+Plot market demand on one axis and your captured share on the other, then look at it by topic or cluster.
 
-Every page in that last quadrant is share you're leaving on the table. Plotted this way, the opportunities stop being a list of keywords and become a map you can read at a glance.
+High demand and high share is a strong position. Protect it. High share in a low-demand area can be perfectly healthy, but there may not be much more to win. Low demand and low share is usually a low priority unless the topic matters strategically.
 
-## Why share beats rank
+The interesting area is high demand with low share.
 
-Rank tells you where you sit on one query. Share tells you how much of the *available demand* you're actually winning across a whole cluster, which is the thing that maps to revenue.
+That's where the market is already telling you the opportunity exists, but your site isn't capturing much of it. It gives you a much better starting point than sorting a keyword export by search volume and hoping the biggest number is the best opportunity.
 
-A page can rank well on its head term and still capture a tiny share of the cluster's total demand because it's missing the long tail, losing the AI Overview, or splitting intent with another page. Share catches that. Rank doesn't.
+## Why rank can hide the gap
 
-It also reframes losing. A page where demand is climbing and your share is flat isn't standing still; it's *losing ground*, because the market grew and you didn't. That "losing share" signal is often the earliest warning you'll get, well before traffic visibly drops.
+A page can rank well for the obvious head term and still have weak share across the wider topic. It might be missing long-tail demand, losing clicks to changing SERP features, or splitting visibility with another page.
 
-## Making it operational
+A single position won't show that.
 
-The reason most teams don't work from this view is that building it is fiddly: you need demand data, your own Search Console reality, and a way to compute share per cluster, then keep it current as both move.
+Demand against share also makes decline easier to spot. If demand is rising and your captured share is flat, you're losing relative ground even if traffic hasn't fallen yet. That is the kind of signal worth seeing early.
 
-But once you have it, prioritization gets easy. You work the high-demand / low-share pages in order of recoverable opportunity, and you watch the "demand up, share flat" pages like a hawk. It turns an overwhelming site into a short, ranked list of moves.
+## Turning the view into work
 
-This is the heart of what Searchscope's [Demand & Trends](/platform/search-intelligence/) view does, and it's the most direct expression of the [operating-system model](/blog/seo-is-now-an-operating-system/): read the system continuously, act on the gap while it's still open.
+The reason more teams don't use this view is simple: keeping it current is awkward. You need demand data, your own search data and a consistent way to group and compare the two.
 
-Stop asking "where do we rank?" Start asking "where is demand rising faster than our share?" The answer is your growth plan.
+Once that's in place, prioritisation gets much easier. Start with the high-demand, low-share areas, then look at where the gap is realistically recoverable. Not every gap is worth chasing, and commercial relevance still matters.
 
-See it in the product: [how Searchscope surfaces the opportunities](/platform/analyzers/opportunities/) where demand outruns your share.
+That's an important final filter. A huge demand gap around a topic with little connection to what you sell can be less useful than a smaller gap around a service that regularly becomes revenue. The chart narrows the field. It doesn't replace judgement.
+
+[Demand and Trends](/platform/search-intelligence/) is built around this view, and the [operating-system model](/blog/seo-is-now-an-operating-system/) is the broader idea behind keeping it current. The [opportunities view](/platform/analyzers/opportunities/) turns the gap into a ranked list.

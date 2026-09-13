@@ -1,22 +1,18 @@
 ---
 title: Names you weren't getting credit for
-description: AI engines don't always use your full company name. Searchscope now spots the variants your saved brand names miss, and offers them for approval with the evidence attached.
+description: AI engines rarely use a brand name in exactly the same way every time. Searchscope finds missed name variants and lets you approve them before they affect your reporting.
 pubDate: 2026-08-22
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-AI engines don't always use your full company name. They shorten it, drop the suffix, split it in two, or use the product name instead of the company. Every time that happens, the answer is about you and your visibility numbers don't know it.
+AI engines don't always use the exact brand name you've saved. They shorten it, drop a suffix, use a product name, or write it differently enough that a normal match misses it.
 
-After every run, Searchscope checks the answers for name variants your saved brand names miss, and offers them for approval.
+That matters because the answer can clearly be about your brand while your visibility report records no mention at all.
 
-## It won't guess
+After each run, Searchscope looks for likely variants and puts them forward for approval. It doesn't add them automatically. Loose matching creates a worse problem, where a common word starts counting as your brand and inflates the numbers.
 
-A loose match here is worse than a miss. Call a common word a brand variant and every unrelated answer starts counting as a mention, which quietly inflates every number downstream of it.
+A suggested variant only appears when there is evidence behind it, with the answers that triggered the suggestion attached. Approve it and it counts from the next run onwards. Historical data stays as it was, so you're not rewriting the past every time the brand list changes.
 
-So a variant is only suggested when there's real evidence behind it: at least three answers that mentioned you without the credit. You approve it or you don't, and nothing changes until you do.
-
-## Where to find it
-
-It's in [AI and Brand Intelligence](/platform/ai-brand-intelligence/), on your brand settings. Approved variants join the next run and are counted from then on, not applied backwards, so your history stays comparable.
+You'll find it in brand settings under [AI and Brand Intelligence](/platform/ai-brand-intelligence/).

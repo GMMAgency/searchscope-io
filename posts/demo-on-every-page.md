@@ -1,22 +1,18 @@
 ---
 title: A demo on every page
-description: Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you're actually looking at.
+description: Seventeen narrated walkthroughs now sit on the screens they explain. When a page has a demo, you can watch it without leaving the work you're doing.
 pubDate: 2026-07-29
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you're actually looking at.
+There are now 17 narrated walkthroughs across Searchscope, one for each main surface.
 
-## No hunting for the right video
+We didn't put them in a separate help centre. When you're trying to understand a screen, leaving it to hunt through a video library is unnecessary friction. The demo should be where the question happens.
 
-The usual version of this is a help center with a video library in it, which means the moment you're confused you have to stop, go somewhere else, and work out which of forty videos matches the screen you left behind.
+So each walkthrough sits behind a Watch demo button on the page it explains. If there isn't a relevant video for that surface, the button doesn't appear.
 
-Here the demo is on the screen it explains. The button only appears where there's a video for that surface, so it isn't a promise the page can't keep.
+The step-by-step product tour is still separate and you can run it again whenever you want. Sometimes you need a quick explanation of the screen in front of you. Other times you want to be taken through the full workflow. They solve different problems.
 
-## The tour is still there
-
-The step-by-step walk through a page is separate and still available any time, not just on your first visit. Some people want to be shown and some want to be walked through, and they aren't the same person on the same day.
-
-You'll find them on every workspace and instrument across the [platform](/platform/).
+You'll find the walkthroughs across the workspaces and instruments on the [platform](/platform/).

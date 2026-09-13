@@ -1,6 +1,6 @@
 ---
 title: Cannibalization is a data problem
-description: Most cannibalization advice is just vibes (merge the pages that feel similar). But it's visible in the data, page by page, query by query. Here's how to actually find it.
+description: Cannibalization isn't something you should diagnose because two pages look similar. The useful signal is in query-by-page search data, where multiple URLs are competing for the same intent.
 pubDate: 2026-06-04
 author: Ray
 aliases: ['cannibalisation-is-a-data-problem']
@@ -8,50 +8,42 @@ category: Search Data
 draft: false
 ---
 
-Keyword cannibalization gets talked about like a content-strategy opinion: these two pages *feel* similar, so maybe merge them. That's how you end up consolidating pages that were fine and missing the ones quietly bleeding you.
+Cannibalization gets overdiagnosed.
 
-Cannibalization isn't a vibe. It's a measurable pattern in your Search Console data. If you read it properly, it tells you exactly which pages are competing, and which to keep.
+Two pages cover a similar topic, someone decides they're competing, and the recommendation is to merge them. Sometimes that's right. Sometimes the pages serve different intents and were doing perfectly well until someone "fixed" them.
 
-## The signal
+The better place to start is the search data.
 
-True cannibalization has a fingerprint: **two or more URLs ranking for the same query, with the impressions split and the click-through depressed on all of them.** Neither page wins cleanly because Google keeps swapping which one it shows, and the rotation costs you positions.
+## Look for the query-to-page pattern
 
-The tell isn't "these pages are about the same topic." It's:
+The pattern we care about is one query earning meaningful impressions across more than one URL, with Google switching between them over time. If positions wobble and neither page owns the query cleanly, you have something worth investigating.
 
-- the same query showing impressions against multiple URLs,
-- positions that wobble as Google alternates between them, and
-- a combined CTR lower than a single consolidated page would earn.
+That is different from simply finding two pages that mention the same subject.
 
-## Reading it from your search data
-
-You can see this in the Search Console performance export if you pull query **and** page together. Group by query, then look for queries mapping to more than one URL with meaningful impressions on each:
+Pull query and page together in Google Search Console and the problem becomes much easier to see:
 
 ```
 query: "seo audit checklist"
   /blog/seo-audit-checklist      pos 8.4   impr 5,200   clicks 110
   /guides/seo-audit              pos 11.2  impr 3,900   clicks 41
-
-→ two URLs, one intent, positions wobbling, CTR split
 ```
 
-That's a cannibalization candidate you can act on, not because the titles look alike, but because the data shows two pages dividing one intent.
+That doesn't prove cannibalization on its own, but it's a good candidate. One query is splitting impressions across two URLs, and the next job is to work out whether those pages are genuinely competing for the same intent.
 
-## Why it's hard by hand
+## The hard part is doing it at scale
 
-The reason cannibalization stays unfixed isn't that it's mysterious. It's that finding it across a real site means pivoting a large query×page export, spotting the split-intent patterns, ruling out the false positives (a brand term legitimately showing your homepage and a product page is fine), and then ranking the fixes by what actually costs you clicks.
+For one query, this is easy. Across thousands of queries, every week, it becomes a data problem.
 
-Do that for one query and it's a five-minute job. Do it for ten thousand queries every week and it's nobody's job, so it doesn't happen.
+You need to find the repeated query-to-page pattern, remove the obvious false positives and then prioritise what's left. Brand queries are a good example of why judgement still matters. Seeing a homepage and product page together might be exactly what you want.
 
-This is squarely co-pilot work. Software is excellent at finding the split-intent fingerprint across the whole dataset and scoring each instance by recoverable clicks. The strategist then makes the call that needs judgment: consolidate, differentiate, or leave it alone.
+Software is useful for finding the pattern across the full dataset. It can surface the cases, estimate the recoverable opportunity and save someone from living in pivot tables. The decision at the end still belongs to a person.
 
-## The fix is a decision, not a merge
+The scoring matters as well. Ten weak overlaps with almost no impressions should not sit above one query where two valuable pages keep trading places. If the tool can't tell you which cases are likely to matter, it has only automated the export.
 
-Once you've found a real instance, you have three options, and the right one depends on intent:
+## Fix the intent, not the spreadsheet
 
-- **Consolidate** when both pages chase the same intent: redirect the weaker into the stronger and merge the useful content.
-- **Differentiate** when the intent is subtly different: re-target each page so they stop overlapping.
-- **Leave it** when both URLs legitimately deserve to rank (brand queries, for example).
+If two pages genuinely chase the same intent, consolidate them and redirect the weaker URL where appropriate. If they serve different intents, make that difference clearer. If Google is showing two useful pages for good reason, leave them alone.
 
-Cannibalization is a data problem with a decision at the end. Find it in the data, then decide with your head, not by eyeballing which pages *feel* like duplicates.
+That's the part that often gets missed. Cannibalization detection should narrow the investigation, not make the decision for you.
 
-See it in the product: [how Searchscope catches cannibalization](/platform/analyzers/cannibalization/), scored, with the consolidation drafted.
+[Searchscope catches cannibalization](/platform/analyzers/cannibalization/) from query-by-page data, scores the opportunity and drafts the consolidation work where it makes sense.

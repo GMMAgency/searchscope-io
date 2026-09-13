@@ -1,22 +1,18 @@
 ---
 title: Prompt suggestions from your own search data
-description: Searchscope turns the searches that already bring people to your site into the questions buyers ask AI, then checks how often people actually ask them.
+description: Build AI tracking prompts from the searches already bringing people to your site, then keep the ones that reflect real demand rather than a guessed prompt list.
 pubDate: 2026-08-11
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-You don't have to guess which questions to track.
+Most AI visibility tracking starts with someone sitting down and guessing which prompts matter.
 
-Searchscope takes the searches that already bring people to your site, turns them into the questions buyers ask AI, and checks how often people actually ask them. Review the list, keep the ones that matter, and they join your next run.
+Searchscope now starts with the search data you already have. It looks at the queries bringing people to your site, turns them into natural questions and checks how often those questions are being asked. You review the suggestions and keep the ones worth tracking.
 
-## Why guessing goes wrong
+That gives you a better starting point than a hand-written list. Search data tends to surface the awkward wording, long-tail questions and unexpected demand that a tidy strategy document misses.
 
-A hand-written prompt list tends to describe the market you think you're in. Your search data describes the one you're actually in, including the queries you'd never have thought to write down and the ones you'd have written far more formally than anyone types them.
+Citation rows also have a Pitch this action. It uses the context from that row and opens [Content Studio](/platform/instruments/content-studio/) with a draft ready to work on. The aim is to shorten the gap between spotting a citation opportunity and doing something about it.
 
-## Pitch this
-
-Citation rows gained a Pitch this action the same week. It composes a pitch from that row's own numbers and opens [Content Studio](/platform/instruments/content-studio/) with it ready, so a citation you don't have turns into the thing you'd send to get it.
-
-Prompts live in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).
+Prompt management lives in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).

@@ -1,24 +1,20 @@
 ---
 title: Worksheets
-description: Any workspace can become a live sheet your team works through, with status, priority and notes. Generate recommendations for many rows at once, with a preview first.
+description: Turn any analyzer workspace into a working sheet with status, priority, notes and batch recommendations. Preview the output before you run it across the full set.
 pubDate: 2026-08-12
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-Findings are only useful if the work gets done. Any workspace can now become a worksheet: a live sheet your team works through, with status, priority and notes.
+Finding an issue is only useful if someone can turn it into work.
 
-## Recommendations in bulk, with a preview
+Any analyzer workspace can now become a worksheet, with status, priority and notes attached to each row. It gives the team somewhere to work through the findings without exporting them into another system first.
 
-Tick the rows you want and generate AI recommendations for all of them in one go. There's a preview first, so you can test on ten before committing to hundreds. Running a batch across a whole workspace and finding out afterwards that the prompt was slightly wrong is an expensive way to learn.
+You can select a group of rows and generate recommendations in one batch. There's a preview before the full run, which is there for a practical reason: a prompt that's slightly wrong across ten rows is easy to fix. Across hundreds, it's just wasted output.
 
-## Ask the sheet a question
+For rows that need more investigation, you can ask the sheet directly. Searchscope works through the row and the open web, then writes the answer back into the notes so the context stays attached to the finding.
 
-When a row needs more thought, ask the sheet directly. It works through every row and the open web, and records what it finds in your notes, so the answer stays attached to the row it belongs to.
+Shared links only show rows you've released. Internal notes stay private.
 
-## Sharing without oversharing
-
-Share a link that shows only the rows you've released. Your working notes stay yours.
-
-Worksheets are available in every one of the [workspace analyzers](/platform/analyzers/).
+Worksheets are available across the [workspace analyzers](/platform/analyzers/).

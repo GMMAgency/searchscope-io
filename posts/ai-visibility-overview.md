@@ -1,22 +1,20 @@
 ---
 title: A rebuilt AI visibility overview
-description: Your score, how often you're named and cited, your share of voice, and where you land inside the answer. Every number shows what it's out of.
+description: See how often your brand is named and cited, how much share of voice it holds, and where it appears inside the answer. Every metric shows the numbers behind it.
 pubDate: 2026-08-12
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-When buyers ask ChatGPT or Perplexity a question, some brands get named. Most don't.
+AI visibility is easy to flatten into one score. That usually hides the part you actually need to understand.
 
-The overview now gives you that read at a glance: your score, how often you're named and cited, your share of voice against the brands actually appearing in the answers, and where you sit inside the answer itself.
+The rebuilt overview shows how often your brand is named, how often it's cited, your share of voice and where you appear inside the answer. You can see the headline quickly, then open the detail behind it.
 
-## Share of voice against who's really there
+Share of voice is measured against the brands that actually appeared in the answers, not a competitor list someone entered months ago. That's an important distinction. AI engines often surface brands you weren't expecting, and those are the ones you're really competing with in the answer.
 
-Share of voice measured against a list you typed in is a number about your assumptions. This one is measured against the brands that actually turned up in the answers, which is frequently not the list you'd have written.
+Every metric also shows its denominator. If you're named in 14 of 60 answers and cited in 6 of those 14, you can see exactly what changed when the score moves.
 
-## Every number shows what it's out of
-
-One difference we kept on purpose: each figure shows its denominator. Named in 14 of 60 answers, cited in 6 of 14. You can check the evidence rather than take the score on trust, and a number that moves can be traced to which half of it moved.
+No black box, and no need to take the headline number on trust.
 
 It's the front page of [AI and Brand Intelligence](/platform/ai-brand-intelligence/).

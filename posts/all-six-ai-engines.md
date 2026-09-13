@@ -1,22 +1,20 @@
 ---
 title: All six AI engines, live
-description: ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini are all part of every visibility run. They disagree more than you'd expect, which is the point.
+description: ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini now run side by side. The differences between them are often more useful than the combined score.
 pubDate: 2026-08-20
 author: Ray
 category: Product Updates
 draft: false
 ---
 
-ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini are now all part of every visibility run.
+ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini are now part of every visibility run.
 
-## They disagree, and that's the useful part
+The useful bit isn't simply having six engines in one report. It's seeing where they disagree.
 
-A brand that ChatGPT names constantly can be close to invisible in Gemini. You'd never know from checking one of them, and checking one of them is what most reporting does.
+A brand can appear consistently in ChatGPT and barely at all in Gemini. If you only track one engine, that difference disappears and a single score can make the picture look much cleaner than it really is.
 
-Six engines on the same prompts turns a single score into a spread. A wide spread is a finding in itself: it usually means the engines are drawing on different sources about you, and the ones naming you least are reading something you don't control.
+Searchscope runs the same prompt set across all six and reports share of voice, citation rate and answer position by engine as well as overall. You can see which engines already understand the brand, which ones don't, and open the answers behind the numbers.
 
-## What it changes in the numbers
+That makes the combined score a starting point rather than the whole story.
 
-Share of voice, citation rate and answer position are all reported per engine as well as combined, so a headline number can be opened up rather than taken on trust.
-
-It's in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).
+You'll find the breakdown in [AI and Brand Intelligence](/platform/ai-brand-intelligence/).

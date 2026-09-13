@@ -6,123 +6,132 @@
     <atom:link href="https://searchscope.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Writing on search systems, algorithm updates, AI search and search data.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 11 Sep 2026 16:39:40 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 11:47:27 +0000</lastBuildDate>
+    <item>
+      <title>Page Experience</title>
+      <link>https://searchscope.io/blog/page-experience/</link>
+      <guid isPermaLink="true">https://searchscope.io/blog/page-experience/</guid>
+      <description>See which technical issues matter, whether Google has indexed the page, and how it performs. Page Experience brings the checks together without making you join the dots across three tools.</description>
+      <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
+      <author>noreply@searchscope.io (Ray)</author>
+      <category>Product Updates</category>
+    </item>
     <item>
       <title>Names you weren&#x27;t getting credit for</title>
       <link>https://searchscope.io/blog/brand-name-variants/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/brand-name-variants/</guid>
-      <description>AI engines don&#x27;t always use your full company name. Searchscope now spots the variants your saved brand names miss, and offers them for approval with the evidence attached.</description>
+      <description>AI engines rarely use a brand name in exactly the same way every time. Searchscope finds missed name variants and lets you approve them before they affect your reporting.</description>
       <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>All six AI engines, live</title>
       <link>https://searchscope.io/blog/all-six-ai-engines/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/all-six-ai-engines/</guid>
-      <description>ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini are all part of every visibility run. They disagree more than you&#x27;d expect, which is the point.</description>
+      <description>ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini now run side by side. The differences between them are often more useful than the combined score.</description>
       <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>The Content Planner</title>
       <link>https://searchscope.io/blog/content-planner/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/content-planner/</guid>
-      <description>One plan for everything you&#x27;re creating, across SEO and PR, built from the data Searchscope already holds about you. Each piece hands off to Content Studio to build.</description>
+      <description>The Content Planner builds an SEO and PR plan from the data already in Searchscope, then sends approved pieces into Content Studio with the context intact.</description>
       <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>Send any strategist reply to Content Studio</title>
       <link>https://searchscope.io/blog/send-to-studio/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/send-to-studio/</guid>
-      <description>Every Strategic Advisor reply now carries a Send to Studio action, and the whole conversation travels with it rather than a single message.</description>
+      <description>Send a Strategic Advisor reply into Content Studio without losing the conversation that produced it. The useful context comes with the task.</description>
       <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>A rebuilt AI visibility overview</title>
       <link>https://searchscope.io/blog/ai-visibility-overview/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/ai-visibility-overview/</guid>
-      <description>Your score, how often you&#x27;re named and cited, your share of voice, and where you land inside the answer. Every number shows what it&#x27;s out of.</description>
+      <description>See how often your brand is named and cited, how much share of voice it holds, and where it appears inside the answer. Every metric shows the numbers behind it.</description>
       <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>Worksheets</title>
       <link>https://searchscope.io/blog/worksheets/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/worksheets/</guid>
-      <description>Any workspace can become a live sheet your team works through, with status, priority and notes. Generate recommendations for many rows at once, with a preview first.</description>
+      <description>Turn any analyzer workspace into a working sheet with status, priority, notes and batch recommendations. Preview the output before you run it across the full set.</description>
       <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>Prompt suggestions from your own search data</title>
       <link>https://searchscope.io/blog/prompt-suggestions/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/prompt-suggestions/</guid>
-      <description>Searchscope turns the searches that already bring people to your site into the questions buyers ask AI, then checks how often people actually ask them.</description>
+      <description>Build AI tracking prompts from the searches already bringing people to your site, then keep the ones that reflect real demand rather than a guessed prompt list.</description>
       <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>A demo on every page</title>
       <link>https://searchscope.io/blog/demo-on-every-page/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/demo-on-every-page/</guid>
-      <description>Seventeen narrated walkthroughs, one for each surface, played from a Watch demo button on the page you&#x27;re actually looking at.</description>
+      <description>Seventeen narrated walkthroughs now sit on the screens they explain. When a page has a demo, you can watch it without leaving the work you&#x27;re doing.</description>
       <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Product Updates</category>
     </item>
     <item>
       <title>SEO is now an operating system</title>
       <link>https://searchscope.io/blog/seo-is-now-an-operating-system/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/seo-is-now-an-operating-system/</guid>
-      <description>For two decades SEO came in projects (audit, fix, wait). That model breaks the moment search starts changing faster than you can audit it. Here&#x27;s the shift.</description>
+      <description>SEO still gets managed like a sequence of projects, even though search changes every week. The better model is continuous: read what changed, decide what matters, then act while the signal is still useful.</description>
       <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Search Systems</category>
     </item>
     <item>
       <title>What AI Overviews change about visibility</title>
       <link>https://searchscope.io/blog/what-ai-overviews-change-about-visibility/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/what-ai-overviews-change-about-visibility/</guid>
-      <description>You can rank #1 and lose the click. You can be absent from the ten blue links and still be the source an AI quotes. Position was always a proxy; now it&#x27;s a leaky one.</description>
+      <description>Rankings still matter, but they no longer tell you enough on their own. AI Overviews can take the click above you, or cite you when you don&#x27;t rank in the traditional results at all.</description>
       <pubDate>Fri, 12 Jun 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>AI Search</category>
     </item>
     <item>
       <title>Cannibalization is a data problem</title>
       <link>https://searchscope.io/blog/cannibalization-is-a-data-problem/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/cannibalization-is-a-data-problem/</guid>
-      <description>Most cannibalization advice is just vibes (merge the pages that feel similar). But it&#x27;s visible in the data, page by page, query by query. Here&#x27;s how to actually find it.</description>
+      <description>Cannibalization isn&#x27;t something you should diagnose because two pages look similar. The useful signal is in query-by-page search data, where multiple URLs are competing for the same intent.</description>
       <pubDate>Thu, 04 Jun 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-
+      <category>Search Data</category>
     </item>
     <item>
       <title>Reading demand vs. your share</title>
       <link>https://searchscope.io/blog/reading-demand-vs-your-share/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/reading-demand-vs-your-share/</guid>
-      <description>The single most useful view in search isn&#x27;t rankings or traffic. It&#x27;s market demand plotted against the share you actually capture. It shows you where the growth is hiding.</description>
+      <description>Rankings show where you sit. Demand against share shows where the commercial headroom is. High demand with low captured share is usually the part of the site worth looking at first.</description>
       <pubDate>Fri, 22 May 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-      <category>Search Systems</category>
+      <category>Search Data</category>
     </item>
     <item>
       <title>The co-pilot model for search teams</title>
       <link>https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</guid>
-      <description>AI won&#x27;t replace your search team, and a search team without AI is about to be outpaced. The model that wins is neither. It&#x27;s a co-pilot. Here&#x27;s what that actually means in practice.</description>
+      <description>AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgement, priorities and decisions that follow.</description>
       <pubDate>Sun, 10 May 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray)</author>
-      <category>Search Systems</category>
+      <category>Agency</category>
     </item>
   </channel>
 </rss>
