@@ -2,7 +2,7 @@
 title: Cannibalization is a data problem
 description: Cannibalization isn't something you should diagnose because two pages look similar. The useful signal is in query-by-page search data, where multiple URLs are competing for the same intent.
 pubDate: 2026-06-04
-author: Ray
+author: Ray Olaibi
 aliases: ['cannibalisation-is-a-data-problem']
 category: Search Data
 draft: false

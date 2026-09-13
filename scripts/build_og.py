@@ -104,24 +104,32 @@ PAGE = """<style>
   <span class="mark">{tick}</span>
   <div class="text">
     <h1>{title}</h1>
-    <p class="meta">By {author} Olaibi<br>{kind}</p>
+    <p class="meta">By {author}<br>{kind}</p>
   </div>
   <div class="logo">{tick}<span>searchscope</span></div>
 </div>
 """
 
 
-def build(slug, keep_html=False):
-    meta, _ = read_post(slug)
-    title = meta["title"]
-    kind = "Product update" if meta["category"] == "Product Updates" else meta["category"]
+def build(slug, keep_html=False, name=None, out_name=None):
+    """A post's card, or an author's card when `name` is given. The author
+    card is the same frame with the name alone: no byline, no category."""
+    if name:
+        title, author, kind = name, "", ""
+    else:
+        meta, _ = read_post(slug)
+        title = meta["title"]
+        author = meta["author"]
+        kind = "Product update" if meta["category"] == "Product Updates" else meta["category"]
     page = PAGE.format(
         fonts="file://" + FONTS, ground=GROUND, grid=GRID, major=GRID_MAJOR,
         bracket=BRACKET, ink=INK, muted=MUTED, tick=TICK,
         tsize=title_size(title), wrap=WRAP_WIDTH, title=no_orphan(html.escape(title)),
-        author=html.escape(meta["author"]), kind=html.escape(kind))
+        author=html.escape(author), kind=html.escape(kind))
+    if name:
+        page = page.replace('<p class="meta">By <br></p>', "")
 
-    out = os.path.join(OUT_DIR, "og-blog-%s-1200x627.png" % slug)
+    out = os.path.join(OUT_DIR, "og-blog-%s-1200x627.png" % (out_name or slug))
     tmp = os.path.join(tempfile.gettempdir(), "og-%s.html" % slug)
     with open(tmp, "w", encoding="utf-8") as fh:
         fh.write(page)
@@ -145,4 +153,10 @@ if __name__ == "__main__":
     if not args:
         raise SystemExit(__doc__)
     for slug in args:
-        print("wrote %s" % os.path.relpath(build(slug, keep), ROOT))
+        if slug.startswith("author:"):
+            who = slug.split(":", 1)[1]
+            from build_post import author_slug
+            print("wrote %s" % os.path.relpath(
+                build(None, keep, name=who, out_name="author-" + author_slug(who)), ROOT))
+        else:
+            print("wrote %s" % os.path.relpath(build(slug, keep), ROOT))

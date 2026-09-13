@@ -2,7 +2,7 @@
 title: A demo on every page
 description: Seventeen narrated walkthroughs now sit on the screens they explain. When a page has a demo, you can watch it without leaving the work you're doing.
 pubDate: 2026-07-29
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

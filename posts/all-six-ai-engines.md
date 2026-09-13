@@ -2,7 +2,7 @@
 title: All six AI engines, live
 description: ChatGPT, Perplexity, Google AI Overviews, Google AI Mode, Claude and Gemini now run side by side. The differences between them are often more useful than the combined score.
 pubDate: 2026-08-20
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: A rebuilt AI visibility overview
 description: See how often your brand is named and cited, how much share of voice it holds, and where it appears inside the answer. Every metric shows the numbers behind it.
 pubDate: 2026-08-12
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

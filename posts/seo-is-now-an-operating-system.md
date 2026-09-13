@@ -2,7 +2,7 @@
 title: SEO is now an operating system
 description: SEO still gets managed like a sequence of projects, even though search changes every week. The better model is continuous: read what changed, decide what matters, then act while the signal is still useful.
 pubDate: 2026-06-20
-author: Ray
+author: Ray Olaibi
 draft: false
 category: Search Systems
 ---

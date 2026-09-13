@@ -2,7 +2,7 @@
 title: Page Experience
 description: See which technical issues matter, whether Google has indexed the page, and how it performs. Page Experience brings the checks together without making you join the dots across three tools.
 pubDate: 2026-09-02
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

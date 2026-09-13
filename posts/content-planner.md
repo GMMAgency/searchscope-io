@@ -2,7 +2,7 @@
 title: The Content Planner
 description: The Content Planner builds an SEO and PR plan from the data already in Searchscope, then sends approved pieces into Content Studio with the context intact.
 pubDate: 2026-08-17
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---

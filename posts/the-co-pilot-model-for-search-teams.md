@@ -2,7 +2,7 @@
 title: The co-pilot model for search teams
 description: AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgement, priorities and decisions that follow.
 pubDate: 2026-05-10
-author: Ray
+author: Ray Olaibi
 draft: false
 category: Agency
 tags: ['Search Systems']

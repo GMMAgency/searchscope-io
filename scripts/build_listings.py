@@ -27,8 +27,8 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_post import (ROOT, SITE, WORDS_PER_MINUTE, pretty_date, read_post,
-                        word_count)
+from build_post import (ROOT, SITE, WORDS_PER_MINUTE, author_slug, pretty_date,
+                        read_post, word_count)
 
 UPDATES = "Product Updates"
 RELATED = 3          # cards in a post page's "More posts" grid
@@ -130,13 +130,17 @@ def author_pages(posts):
     out = []
     seen = {}
     for p in posts:
-        seen.setdefault(p["author"].lower(), []).append(p)
+        seen.setdefault(author_slug(p["author"]), []).append(p)
     for name, group in seen.items():
         path = os.path.join(ROOT, "holding", "blog", "author", name, "index.html")
         if not os.path.exists(path):
             continue
         cards = [card(p, '<li class="mcard">') for p in group]
         path, page = replace_grid(path, "\n".join(cards))
+        # The count is in the page's description twice as well, and it was
+        # stale: the page said 13 posts while listing 14.
+        page = re.sub(r"\b\d+ posts?\.", "%d post%s." % (len(group), "" if len(group) == 1 else "s"),
+                      page)
         page, n = re.subn(r'(<h2 class="more__h"[^>]*>)\d+ posts?(</h2>)',
                           lambda m: "%s%d post%s%s" % (m.group(1), len(group),
                                                        "" if len(group) == 1 else "s",

@@ -2,7 +2,7 @@
 title: Worksheets
 description: Turn any analyzer workspace into a working sheet with status, priority, notes and batch recommendations. Preview the output before you run it across the full set.
 pubDate: 2026-08-12
-author: Ray
+author: Ray Olaibi
 category: Product Updates
 draft: false
 ---
