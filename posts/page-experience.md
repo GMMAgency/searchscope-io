@@ -9,7 +9,7 @@ draft: false
 
 Most technical audits give you a list of problems. The harder part is knowing which ones are worth fixing first.
 
-Page Experience runs 19 checks across the crawl, including broken links, redirect chains, canonical loops, sitemap gaps and hreflang issues. Each finding sits next to the search traffic that page is already earning, so an issue on an important page doesn't get buried under low-impact noise.
+Page Experience runs 19 checks across the crawl, including broken links, redirect chains, canonical loops, sitemap gaps and hreflang issues. Each finding sits next to the search traffic that page already gets, so an issue on an important page doesn't get buried under low-impact noise.
 
 It also checks index coverage. We first look for the page in Google Search. If it isn't there, we check it directly with Google and show the status in plain English.
 

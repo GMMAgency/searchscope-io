@@ -9,7 +9,7 @@ draft: false
 
 There are now 17 narrated walkthroughs across Searchscope, one for each main surface.
 
-We didn't put them in a separate help centre. When you're trying to understand a screen, leaving it to hunt through a video library is unnecessary friction. The demo should be where the question happens.
+We didn't put them in a separate help center. When you're trying to understand a screen, leaving it to hunt through a video library is unnecessary friction. The demo should be where the question happens.
 
 So each walkthrough sits behind a Watch demo button on the page it explains. If there isn't a relevant video for that surface, the button doesn't appear.
 

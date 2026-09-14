@@ -13,7 +13,7 @@ That model made sense when the search environment changed slowly enough for the 
 
 ## The problem with project-shaped SEO
 
-A technical issue can appear this week. Demand can move next week. An AI Overview can turn up over a query that was driving clicks yesterday. By the time the next monthly report or quarterly audit lands, you're often explaining a change that has already been happening for weeks.
+A technical issue can appear this week. Demand can move next week. An AI Overview can turn up over a query that was driving clicks yesterday. By the time the next monthly report or quarterly audit arrives, you're often explaining a change that has already been happening for weeks.
 
 The issue isn't that audits are bad. It's that they are snapshots.
 
@@ -27,11 +27,11 @@ For us, that means looking at the search picture as one system. Demand, share, d
 
 The useful question each week is not "what does the report say?" It's "what changed, and is any of it important enough to act on?"
 
-That also changes what gets prioritised. A small technical issue on a page driving meaningful enquiries can matter more than a dramatic-looking problem on a page nobody lands on. The system has to carry commercial context, not just severity labels.
+That also changes what gets prioritized. A small technical issue on a page driving meaningful enquiries can matter more than a dramatic-looking problem on a page nobody visits. The system has to carry commercial context, not just severity labels.
 
 Doing that manually is the bottleneck. Pulling the data, comparing periods, spotting anomalies, checking whether they're real and working out which ones matter commercially can take longer than fixing the issue itself.
 
-That's where software earns its place. It can read the full dataset repeatedly and surface the small number of changes worth a human looking at. The strategist still makes the call. Context, commercial judgement and execution don't disappear because the synthesis got faster.
+That's the job software is for. It can read the full dataset repeatedly and surface the small number of changes worth a human looking at. The strategist still makes the call. Context, commercial judgment and execution don't disappear because the synthesis got faster.
 
 That's the operating-system idea behind Searchscope. Keep reading the search environment, keep a short list of what changed, and act before the next audit would have found it.
 

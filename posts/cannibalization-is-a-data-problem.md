@@ -16,7 +16,7 @@ The better place to start is the search data.
 
 ## Look for the query-to-page pattern
 
-The pattern we care about is one query earning meaningful impressions across more than one URL, with Google switching between them over time. If positions wobble and neither page owns the query cleanly, you have something worth investigating.
+The pattern we care about is one query getting meaningful impressions across more than one URL, with Google switching between them over time. If positions wobble and neither page owns the query cleanly, you have something worth investigating.
 
 That is different from simply finding two pages that mention the same subject.
 
@@ -34,7 +34,7 @@ That doesn't prove cannibalization on its own, but it's a good candidate. One qu
 
 For one query, this is easy. Across thousands of queries, every week, it becomes a data problem.
 
-You need to find the repeated query-to-page pattern, remove the obvious false positives and then prioritise what's left. Brand queries are a good example of why judgement still matters. Seeing a homepage and product page together might be exactly what you want.
+You need to find the repeated query-to-page pattern, remove the obvious false positives and then prioritize what's left. Brand queries are a good example of why judgment still matters. Seeing a homepage and product page together might be exactly what you want.
 
 Software is useful for finding the pattern across the full dataset. It can surface the cases, estimate the recoverable opportunity and save someone from living in pivot tables. The decision at the end still belongs to a person.
 

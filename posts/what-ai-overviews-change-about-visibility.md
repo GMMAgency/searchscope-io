@@ -25,7 +25,7 @@ That's why position on its own is becoming a weaker way to describe visibility.
 
 Keep the ranking data, but put it next to the rest of the search result.
 
-Is there an AI Overview? Is your page cited inside it? Is the result still earning clicks? Has the click-through rate changed even though position hasn't? Those signals tell you whether the ranking is still doing the job you think it is.
+Is there an AI Overview? Is your page cited inside it? Is the result still getting clicks? Has the click-through rate changed even though position hasn't? Those signals tell you whether the ranking is still doing the job you think it is.
 
 The content implication is fairly practical too. Pages need sections that answer the query cleanly enough to be useful outside the page itself. That doesn't mean writing everything as a series of snippet-sized answers. It means making the useful parts easy to identify, understand and cite.
 

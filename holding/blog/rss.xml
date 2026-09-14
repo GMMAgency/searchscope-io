@@ -6,7 +6,7 @@
     <atom:link href="https://searchscope.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Writing on search systems, algorithm updates, AI search and search data.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 13 Sep 2026 12:01:58 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 17:17:58 +0000</lastBuildDate>
     <item>
       <title>Page Experience</title>
       <link>https://searchscope.io/blog/page-experience/</link>
@@ -128,7 +128,7 @@
       <title>The co-pilot model for search teams</title>
       <link>https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</link>
       <guid isPermaLink="true">https://searchscope.io/blog/the-co-pilot-model-for-search-teams/</guid>
-      <description>AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgement, priorities and decisions that follow.</description>
+      <description>AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgment, priorities and decisions that follow.</description>
       <pubDate>Sun, 10 May 2026 09:00:00 +0000</pubDate>
       <author>noreply@searchscope.io (Ray Olaibi)</author>
       <category>Agency</category>

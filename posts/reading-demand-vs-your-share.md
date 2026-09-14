@@ -38,6 +38,6 @@ The reason more teams don't use this view is simple: keeping it current is awkwa
 
 Once that's in place, prioritisation gets much easier. Start with the high-demand, low-share areas, then look at where the gap is realistically recoverable. Not every gap is worth chasing, and commercial relevance still matters.
 
-That's an important final filter. A huge demand gap around a topic with little connection to what you sell can be less useful than a smaller gap around a service that regularly becomes revenue. The chart narrows the field. It doesn't replace judgement.
+That's an important final filter. A huge demand gap around a topic with little connection to what you sell can be less useful than a smaller gap around a service that regularly becomes revenue. The chart narrows the field. It doesn't replace judgment.
 
 [Demand and Trends](/platform/search-intelligence/) is built around this view, and the [operating-system model](/blog/seo-is-now-an-operating-system/) is the broader idea behind keeping it current. The [opportunities view](/platform/analyzers/opportunities/) turns the gap into a ranked list.

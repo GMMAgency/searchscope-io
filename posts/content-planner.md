@@ -13,7 +13,7 @@ It uses your objectives, search performance, findings, competitors and AI visibi
 
 The planner suggests the pieces it thinks are worth creating. You review them, remove what doesn't make sense and keep the work you want to progress. Nothing gets created just because the system suggested it.
 
-Approved pieces can move straight into [Content Studio](/platform/instruments/content-studio/) with the target page and context carried across. Once something is published, Searchscope keeps watching the result, including whether it starts earning citations in AI answers.
+Approved pieces can move straight into [Content Studio](/platform/instruments/content-studio/) with the target page and context carried across. Once something is published, Searchscope keeps tracking the result, including whether it starts getting cited in AI answers.
 
 A content plan should get better from what actually happened, not keep recycling the same recommendations.
 
