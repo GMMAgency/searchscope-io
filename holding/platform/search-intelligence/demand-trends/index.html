@@ -676,6 +676,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="mockpane__h">ISSUES</p>
             <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">Losing share</span><span class="mockchip mockrow" style="--i:1">Rising + weak</span><span class="mockchip mockrow" style="--i:2">High demand, no clicks</span><span class="mockchip mockrow" style="--i:3">Demand falling</span><span class="mockchip mockrow" style="--i:4">Uncontested</span></div>
             <p class="mocknote mockrow" style="--i:5">Losing share: the topic is growing and your impressions are falling</p>
+            <p class="mockpane__h" style="margin-top:.9rem">THIS ACCOUNT</p>
+            <p class="mockledg mockrow" style="--i:6"><b>38 topics</b><em>with real demand</em></p>
+            <p class="mockledg mockrow" style="--i:7"><b>11 rising</b><em>4 of them you rank badly for</em></p>
             </div>
             <div>
 <table class="mocktable">
@@ -685,6 +688,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <tr class="mockrow" style="--i:3"><td>boot care and cleaning</td><td class="num">6,600</td><td class="num">22.8</td></tr>
             <tr class="mockrow" style="--i:4"><td>boots for wide feet</td><td class="num">4,400</td><td class="num">9.1</td></tr>
             <tr class="mockrow" style="--i:5"><td>hiking in winter</td><td class="num">2,900</td><td class="num">31.0</td></tr>
+            <tr class="mockrow" style="--i:6"><td>boot resoling</td><td class="num">1,600</td><td class="num">not ranking</td></tr>
+            <tr class="mockrow" style="--i:7"><td>walking boots vs shoes</td><td class="num">1,300</td><td class="num">6.4</td></tr>
             </tbody></table>
             <p class="mocknote mockrow" style="--i:6">Demand is the market a month. Position is yours.</p>
             </div>
@@ -1145,7 +1150,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>

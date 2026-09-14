@@ -684,6 +684,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mockledg mockledg--h" style="margin-top:.9rem"><b>Brand</b><em>Non-brand</em></p>
             <p class="mockledg mockrow" style="--i:7"><b>1,704 clicks</b><em>2,190 clicks</em></p>
             <p class="mocknote mockrow" style="--i:8">the two never quite reach the headline: Google withholds some queries</p>
+            <p class="mockpane__h" style="margin-top:.9rem">IMPACT TRACKING</p>
+            <p class="mockledg mockrow" style="--i:9"><b>/boot-care/</b><em>+31 clicks vs baseline</em></p>
+            <p class="mockledg mockrow" style="--i:10"><b>/walking-boots/</b><em>+12 clicks vs baseline</em></p>
             </div>
           </div>
         </div>
@@ -1112,7 +1115,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>

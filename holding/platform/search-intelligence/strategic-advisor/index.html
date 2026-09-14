@@ -674,16 +674,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="mockcols" style="--mock-split:46fr 54fr">
             <div>
 <p class="mockpane__h">CONNECTED TO</p>
-            <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">GSC</span><span class="mockchip mockchip--on mockrow" style="--i:1">Analyzers</span><span class="mockchip mockchip--on mockrow" style="--i:2">Competitors</span><span class="mockchip mockchip--on mockrow" style="--i:3">Objectives</span><span class="mockchip mockchip--on mockrow" style="--i:4">Business Context</span><span class="mockchip mockchip--on mockrow" style="--i:5">Web</span></div>
-            <p class="mockmsg mockmsg--you mockrow" style="--i:6">Where am I losing to competitors?</p>
+            <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">GSC</span><span class="mockchip mockchip--on mockrow" style="--i:1">Analyzers</span><span class="mockchip mockchip--on mockrow" style="--i:2">Competitors</span><span class="mockchip mockchip--on mockrow" style="--i:3">Objectives</span><span class="mockchip mockchip--on mockrow" style="--i:4">Business Context</span><span class="mockchip mockchip--on mockrow" style="--i:5">Brand &amp; AI</span><span class="mockchip mockchip--on mockrow" style="--i:6">Web</span></div>
+            <p class="mockmsg mockmsg--you mockrow" style="--i:7">Where am I losing to competitors?</p>
+            <p class="mockmsg mockrow" style="--i:8">Three topics, and the same rival wins all three. Your boot-care pages rank 18th on average against their 4th.</p>
+            <p class="mockmsg mockrow" style="--i:9">They publish depth you don&rsquo;t have: 12 pages to your 3.</p>
+            <p class="mocknote mockrow" style="--i:10">Send to Studio &middot; 3 pieces found in this reply</p>
             </div>
             <div>
 <p class="mockpane__h">ITS WORKING</p>
             <p class="mocksrc mockrow" style="--i:1"><b>query_gsc_performance</b><em>top pages</em></p>
             <p class="mocksrc mockrow" style="--i:2"><b>get_competitive_landscape</b><em>412 gaps</em></p>
             <p class="mocksrc mockrow" style="--i:3"><b>get_analyzer_findings</b><em>decay</em></p>
-            <p class="mocksrc mockrow" style="--i:4"><b>web_search</b><em>2 sources</em></p>
-            <p class="mocknote mockrow" style="--i:6">Every pull is shown, with what it asked for and what came back</p>
+            <p class="mocksrc mockrow" style="--i:4"><b>get_demand_trends</b><em>24 topics</em></p>
+            <p class="mocksrc mockrow" style="--i:5"><b>get_objectives</b><em>2 active</em></p>
+            <p class="mocksrc mockrow" style="--i:6"><b>web_search</b><em>2 sources</em></p>
+            <p class="mocknote mockrow" style="--i:7">6 steps &middot; 11s in tools &middot; 2 citations</p>
+            <p class="mockpane__h" style="margin-top:.9rem">SOURCES</p>
+            <p class="mockledg mockrow" style="--i:7"><b>northwood-rival.com</b><em>boot care guide</em></p>
+            <p class="mockledg mockrow" style="--i:8"><b>outdoorgearlab.com</b><em>waterproofing test</em></p>
             </div>
           </div>
         </div>
@@ -1123,7 +1131,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>

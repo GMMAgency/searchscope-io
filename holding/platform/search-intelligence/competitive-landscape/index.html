@@ -676,6 +676,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="mockpane__h">KEYWORD GAP</p>
             <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">Missing 412</span><span class="mockchip mockrow" style="--i:1">Weak 188</span><span class="mockchip mockrow" style="--i:2">Strong 96</span><span class="mockchip mockrow" style="--i:3">Untapped 1,204</span></div>
             <p class="mocknote mockrow" style="--i:4">Missing: a rival is in the top 20 and you don&rsquo;t rank at all</p>
+            <p class="mockpane__h" style="margin-top:.9rem">TRACKING</p>
+            <p class="mockledg mockrow" style="--i:5"><b>rival-outdoors.com</b><em>synced 6 days ago</em></p>
+            <p class="mockledg mockrow" style="--i:6"><b>bootsdirect.co.uk</b><em>synced 6 days ago</em></p>
             </div>
             <div>
 <table class="mocktable">
@@ -685,6 +688,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <tr class="mockrow" style="--i:3"><td>best walking boots uk</td><td class="num">&ndash;</td><td class="num">7</td></tr>
             <tr class="mockrow" style="--i:4"><td>gore-tex boots review</td><td class="num">&ndash;</td><td class="num">6</td></tr>
             <tr class="mockrow" style="--i:5"><td>winter hiking socks</td><td class="num">&ndash;</td><td class="num">9</td></tr>
+            <tr class="mockrow" style="--i:6"><td>leather boot conditioner</td><td class="num">&ndash;</td><td class="num">11</td></tr>
+            <tr class="mockrow" style="--i:7"><td>how to waterproof boots</td><td class="num">&ndash;</td><td class="num">3</td></tr>
             </tbody></table>
             <p class="mocknote mockrow" style="--i:6">Sorted by opportunity score, highest first</p>
             </div>
@@ -1136,7 +1141,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>

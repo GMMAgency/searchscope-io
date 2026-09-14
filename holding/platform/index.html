@@ -1101,7 +1101,7 @@ html, body { overflow-x: hidden; }
       .navmenu__btn { font-size: var(--step--2); }
     }
 
-</style><style>
+</style><style>html{scroll-padding-top:6rem}</style><style>
   .snip .snipline { display:block; opacity:0; transform:translateY(6px);
     transition:opacity var(--dur, .28s) var(--ease-out, ease),
                transform var(--dur, .28s) var(--ease-out, ease);
@@ -1116,8 +1116,7 @@ html, body { overflow-x: hidden; }
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style><style>html{scroll-padding-top:6rem}</style>
-</head>
+</style></head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4MLC48F"
@@ -1816,7 +1815,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>

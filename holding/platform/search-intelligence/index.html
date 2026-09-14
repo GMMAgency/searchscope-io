@@ -677,6 +677,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mocknav__i mockrow" style="--i:2">Demand &amp; Trends</p>
             <p class="mocknav__i mockrow" style="--i:3">Strategic Advisor</p>
             <p class="mocknote mockrow" style="--i:5">One account. One set of search data.</p>
+            <p class="mockledg mockrow" style="--i:6"><b>Northwood Outdoors</b><em>geo uk</em></p>
             </div>
             <div>
 <p class="mockpane__h">WHAT EACH ONE READS</p>
@@ -685,6 +686,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mockledg mockrow" style="--i:3"><b>Competitive Landscape</b><em>3 rival domains</em></p>
             <p class="mockledg mockrow" style="--i:4"><b>Demand &amp; Trends</b><em>the market&rsquo;s volumes</em></p>
             <p class="mockledg mockrow" style="--i:5"><b>Strategic Advisor</b><em>all of the above</em></p>
+            <p class="mockpane__h" style="margin-top:.9rem">FILLED BY</p>
+            <p class="mockledg mockrow" style="--i:6"><b>One analysis run</b><em>three of the four</em></p>
+            <p class="mockledg mockrow" style="--i:7"><b>Naming competitors</b><em>the fourth</em></p>
             </div>
           </div>
         </div>
@@ -1112,7 +1116,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Desktop only. Below the collapse point the panes stack, and a floor
      there would only add space under a mock that is already tall. */
   @media (min-width: 1001px) {
-    .mockwin--hero { min-height:420px; display:flex; flex-direction:column; }
+    /* 360, not 420. A floor taller than the content is whitespace, and on
+     2026-09-14 the Strategic Advisor mock was filling 46% of its own frame.
+     The floor exists so the hero visual has presence beside a tall heading,
+     which 360 still gives it; anything with more content than that grows
+     past it as before. Check the fill rather than trusting this: the
+     instruments mocks sit at 65 to 85%, which is the band to stay in. */
+  .mockwin--hero { min-height:360px; display:flex; flex-direction:column; }
     .mockwin--hero .mockcols { flex:1 1 auto; }
   }
   </style>
