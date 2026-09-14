@@ -12,13 +12,13 @@ const problems = [
   { no: '03', label: 'Buried content', line: 'Strong pages sit deep with few internal links, so the system reads them as unimportant, however good they are.' },
 ];
 
-// The on-demand run: seven analysers reading a 1,240-page site. Findings
+// The on-demand run: seven analyzers reading a 1,240-page site. Findings
 // reconcile with the stat row (169 total, 5 critical). data-t is the second
 // at which each row completes; the run strip animates on scroll.
 const run = [
   { no: '01', nm: 'Index bloat', st: 'index coverage · canonicals · thin and orphaned pages', res: "18 findings · <span class='ok'>2 fixed since last run</span>", t: 14 },
   { no: '02', nm: 'Internal links', st: 'graphing 14,600 internal links · starving targets', res: '34 placements · 12 source pages', t: 38 },
-  { no: '03', nm: 'Cannibalisation', st: 'shared-query page pairs · click splits', res: "6 conflicts · <span class='c'>1 critical</span>", t: 61 },
+  { no: '03', nm: 'Cannibalization', st: 'shared-query page pairs · click splits', res: "6 conflicts · <span class='c'>1 critical</span>", t: 61 },
   { no: '04', nm: 'Content decay', st: '90-day trends across 412 pages with traffic', res: '41 findings · 12,400 clicks at risk', t: 96 },
   { no: '05', nm: 'Opportunities', st: 'positions 4 to 20 vs heading coverage', res: '58 findings · +8,900 clicks in reach', t: 132 },
   { no: '06', nm: 'Schema', st: 'structured data vs rich-result eligibility', res: '27 findings · 11 fixable today', t: 158 },
@@ -57,7 +57,7 @@ const softwareLd = {
           </p>
           <div class="hero__actions reveal" style="--reveal-delay:200ms">
             <a href="/contact" class="btn">
-              Join the pilot programme
+              Join the pilot program
               <span class="btn__arrow" aria-hidden="true">→</span>
             </a>
             <a href="/platform" class="hero__link">
@@ -102,7 +102,7 @@ const softwareLd = {
 
       <div class="obj runstrip reveal" style="margin-top:var(--space-l)">
         <div class="rs-head">
-          <span>Analyser engine · on-demand run</span>
+          <span>Analyzer engine · on-demand run</span>
           <span class="mono rsclock">00:00</span>
         </div>
         <div class="rows">
@@ -136,7 +136,7 @@ const softwareLd = {
           <div class="wave">
             <span class="wn">The first wave</span>
             <h4>The algorithm</h4>
-            <p>Optimise for what the engine could measure: keyword placement, links, endless page variations.</p>
+            <p>Optimize for what the engine could measure: keyword placement, links, endless page variations.</p>
           </div>
           <div class="wave">
             <span class="wn">The second wave</span>
@@ -245,7 +245,7 @@ const softwareLd = {
           <div class="awbody lchat">
             <div class="cq">Which pages are quietly losing traffic that I haven't noticed?</div>
             <div class="cpull"><span class="ok">✓</span> read 90 days of search performance · 1,240 pages</div>
-            <div class="cpull"><span class="ok">✓</span> cross-checked the decay analyser's latest run</div>
+            <div class="cpull"><span class="ok">✓</span> cross-checked the decay analyzer's latest run</div>
             <div class="ca">
               <b>Three pages are sliding behind a stable overall number:</b>
               <table>
@@ -284,7 +284,7 @@ const softwareLd = {
   <CTABand
     eyebrow="Join the pilot"
     title="Ready for improved search visibility?"
-    sub="Join the pilot programme and we will show you what it finds."
+    sub="Join the pilot program and we will show you what it finds."
     secondaryLabel="See the platform"
     secondaryHref="/platform"
   />
@@ -399,7 +399,7 @@ const softwareLd = {
   }
 </style>
 
-<!-- On-demand run strip: staged completion loop, mirrors the analyser engine. -->
+<!-- On-demand run strip: staged completion loop, mirrors the analyzer engine. -->
 <script is:inline>
   (function () {
     var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
