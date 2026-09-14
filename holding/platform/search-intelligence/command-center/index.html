@@ -316,7 +316,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-top: 1px solid var(--hairline);
     }.stickycta .btn{ width: 100%; }@media (max-width: 720px){.stickycta{ display: block; }.site-head__cta{ display: none; }body{ padding-bottom: 5.5rem; }}.lede{ font-size: var(--step-1); line-height: 1.6; color: var(--ink-dim); max-width: 60ch; margin: var(--space-m) 0 0; }.lede + .lede{ margin-top: var(--space-s); }.lede b{ color: var(--ink); font-weight: 600; }.sec__head{ max-width: 62ch; }.sec__title{ font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem); line-height: 1.1; letter-spacing: -0.03em; margin: var(--space-2xs) 0 0; text-wrap: balance; }.cols3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }.ucard{ border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); background: var(--surface-panel); }.ucard__k{ font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }.ucard__t{ font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; margin: var(--space-2xs) 0 0; }.ucard__d{ color: var(--ink-dim); font-size: var(--step-0); line-height: 1.6; margin: var(--space-2xs) 0 0; }.cols2{ display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); margin-top: var(--space-xl); }@media (max-width: 900px){.cols2{ grid-template-columns: 1fr; }}.hero .hero__grid{ grid-template-columns: 0.855fr 1.145fr; align-items: center; gap: clamp(2rem, 5vw, 4rem); }.crumb{ font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); margin: 0 0 var(--space-s); }.crumb a{ color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
 .tlink { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
-.tlink:hover { color: var(--ink); border-color: var(--ink); }.crumb a:hover{ color: var(--ink); border-color: var(--ink); }.snip{ font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.75; background: var(--surface-panel); border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: var(--space-m); margin: var(--space-l) 0 0; overflow-x: auto; }.snip b{ color: var(--ink); font-weight: 500; }.snip span{ color: var(--ink-faint); }.snip em{ font-style: normal; color: var(--sev-rose-ink); }.backlink{ margin: var(--space-xl) 0 0; }.btn--ghost{ background: transparent; color: var(--ink); border-color: var(--hairline); }.btn--ghost:hover{ background: transparent; border-color: var(--ink); box-shadow: none; }@media (max-width: 980px){.hero .hero__grid{ grid-template-columns: minmax(0, 1fr); }}.site-foot{
+.tlink:hover { color: var(--ink); border-color: var(--ink); }.crumb a:hover{ color: var(--ink); border-color: var(--ink); }.backlink{ margin: var(--space-xl) 0 0; }.btn--ghost{ background: transparent; color: var(--ink); border-color: var(--hairline); }.btn--ghost:hover{ background: transparent; border-color: var(--ink); box-shadow: none; }@media (max-width: 980px){.hero .hero__grid{ grid-template-columns: minmax(0, 1fr); }}.site-foot{
       border-top: 1px solid var(--hairline);
       padding-block: var(--space-l);
       text-align: left;
@@ -759,23 +759,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Brand against non-brand</span>
         <h2 class="sec__title">Separate existing brand demand from wider search discovery</h2>
         <p class="lede">Branded and non-branded searches tell you different things. Brand traffic is people who already have your name or your products in mind. Non-brand traffic is how often you&rsquo;re being found through the wider topics and needs you compete for. The two cards here are how you tell them apart.</p>
-      </div>      <div class="ticked">
+      </div>      <div class="ticked mockframe">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
           <span class="ticks__c ticks__tr"></span>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
-        <div class="snip reveal">
-          <span class="snipline" style="--i:0"><span class="md">Brand keywords</span></span>
-          <span class="snipline" style="--i:1">&nbsp;</span>
-          <span class="snipline" style="--i:2">northwood            northwood outdoors</span>
-          <span class="snipline" style="--i:3">northwood boots      north wood</span>
-          <span class="snipline" style="--i:4">northwod             northwood co uk</span>
-          <span class="snipline" style="--i:5">&nbsp;</span>
-          <span class="snipline" style="--i:6"><span class="md">4,218 clicks</span>  1,704 brand  2,190 non-brand</span>
+        <div class="appwin mockwin reveal">
+          <div class="awbar">
+            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="awbar__t">Command Center &middot; brand and non-brand</span>
+          </div>
+          <div class="mockpanes">
+            <div class="mockpane">
+              <p class="mockpane__h">BRAND KEYWORDS</p>
+              <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">northwood</span><span class="mockchip mockchip--on mockrow" style="--i:1">northwood outdoors</span><span class="mockchip mockchip--on mockrow" style="--i:2">northwood boots</span><span class="mockchip mockchip--on mockrow" style="--i:3">north wood</span><span class="mockchip mockchip--on mockrow" style="--i:4">northwod</span><span class="mockchip mockchip--on mockrow" style="--i:5">northwood co uk</span></div>
+              <p class="mocknote mockrow" style="--i:6">A plain text match. Any query containing one of these counts as brand.</p>
+              <p class="mockfield mockrow" style="--i:7"><span>Edit brand keywords</span><em>in the filter bar</em></p>
+            </div>
+            <div class="mockpane">
+              <p class="mockpane__h">WITH THE LIST EMPTY</p>
+              <p class="mockledg mockrow" style="--i:8"><b>Brand</b><em>0 clicks</em></p>
+              <p class="mockledg mockrow" style="--i:9"><b>Non-brand</b><em>3,894 clicks</em></p>
+              <p class="mocknote mockrow" style="--i:10">Zero looks like a measurement. It means nothing has been told what your brand is.</p>
+            </div>
+          </div>
         </div>
-      </div>      <div class="cols3">
+      </div>
+      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">How it decides</p>
           <h3 class="ucard__t">A list of words you write</h3>
@@ -842,14 +854,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="ucard__d">Search Console runs two or three days behind, so the ranges here end at the newest day actually imported. That&rsquo;s why a 28-day window can end four days ago and still be 28 days.</p>
         </article>
       </div>
-    </div>
-  </section>
       <p class="backlink reveal">
         <a href="/platform/search-intelligence/" class="btn btn--sm btn--ghost">
           Explore Search Intelligence
           <span class="btn__arrow" aria-hidden="true">&#8594;</span>
         </a>
-      </p>  <section class="section cta bg-grid">
+      </p>
+    </div>
+  </section>
+  <section class="section cta bg-grid">
     <div class="container">
       <div class="cta__frame ticked reveal">
         <span class="ticks" aria-hidden="true">
