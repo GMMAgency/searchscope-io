@@ -6,11 +6,11 @@ import Ticks from '../../components/Ticks.astro';
 
 // Chapter 03 · Data Pipeline. Mirrors the real Settings · Data Pipeline
 // tab: three stat tiles, the sync/crawl/run overview with receipts, the
-// dark Telemetry Bay with a live feed, and the seven-analyser fleet.
+// dark Telemetry Bay with a live feed, and the seven-analyzer fleet.
 const fleet = [
   { a: 'Index bloat', reads: 'crawl + search data', catches: 'Thin, zero-traffic, orphaned and duplicate pages worth pruning or merging.', eff: '18 findings', cls: '' },
   { a: 'Internal links', reads: 'crawl', catches: 'Where to add internal links, with the anchor text and the page to point at.', eff: '34 placements', cls: '' },
-  { a: 'Cannibalisation', reads: 'search data', catches: 'Pages competing for the same queries: merge, redirect or differentiate.', eff: '1 critical', cls: 'low' },
+  { a: 'Cannibalization', reads: 'search data', catches: 'Pages competing for the same queries: merge, redirect or differentiate.', eff: '1 critical', cls: 'low' },
   { a: 'Content decay', reads: 'search data', catches: 'Pages losing impressions and clicks over time, with a refresh playbook.', eff: '41 findings', cls: '' },
   { a: 'Opportunities', reads: 'search data', catches: 'Striking-distance keywords and the content gaps between you and page one.', eff: '58 findings', cls: '' },
   { a: 'Schema', reads: 'crawl', catches: 'Structured-data errors and missing types, with the fix written in JSON-LD.', eff: '27 findings', cls: '' },
@@ -20,12 +20,12 @@ const fleet = [
 
 <BaseLayout
   title="Data Pipeline"
-  description="Every insight is only as current as your data. Connect once, then sync your search data, crawl your site and run the analysers in order, and watch the engine work in a live terminal."
+  description="Every insight is only as current as your data. Connect once, then sync your search data, crawl your site and run the analyzers in order, and watch the engine work in a live terminal."
   headerTheme="dark"
 >
   <PageHero
     eyebrow="Data Pipeline"
-    title="Sync, crawl, analyse. One pass, one live feed."
+    title="Sync, crawl, analyze. One pass, one live feed."
     lede="Searchscope pulls in Search Console, crawler data, and site changes, then processes the site in a clear pipeline."
   />
 
@@ -41,7 +41,7 @@ const fleet = [
         <div class="stiles">
           <div class="stile ink"><span class="sl">Search data</span><span class="sv"><span class="cnt" data-n="486">486</span></span><span class="ss">days · 12.4M rows · synced 2h ago</span></div>
           <div class="stile"><span class="sl">Site crawl</span><span class="sv"><span class="cnt" data-n="1240">1,240</span></span><span class="ss">pages · crawled 2h ago · 6m 12s</span></div>
-          <div class="stile"><span class="sl">Findings</span><span class="sv"><span class="cnt" data-n="169">169</span></span><span class="ss">open · 7 analysers · last run 2h ago</span></div>
+          <div class="stile"><span class="sl">Findings</span><span class="sv"><span class="cnt" data-n="169">169</span></span><span class="ss">open · 7 analyzers · last run 2h ago</span></div>
           <div class="stile"><span class="sl">Critical</span><span class="sv em" style="color:var(--sev-rose-ink)"><span class="cnt" data-n="5">5</span></span><span class="ss">need action this run</span></div>
           <div class="stile"><span class="sl">This run's triage</span><span class="sv"><span class="cnt" data-n="38">38</span><span style="font-size:12px;color:var(--ink-faint)">%</span></span><div class="trmeter"><i style="width:38%"></i></div><span class="ss">64 of 169 handled</span></div>
         </div>
@@ -54,8 +54,8 @@ const fleet = [
           </div>
           <div class="awbody">
             <div class="awhead">
-              <div><span class="awtitle">Data pipeline</span><span class="awsub">runs in order · sync → crawl → analyse</span></div>
-              <span class="lchip on">Run all analysers ▶</span>
+              <div><span class="awtitle">Data Pipeline</span><span class="awsub">runs in order · sync → crawl → analyze</span></div>
+              <span class="lchip on">Run all analyzers ▶</span>
             </div>
             <div style="margin-top:var(--space-2xs)">
               <div class="wqrow prow" style="border-top:none">
@@ -69,12 +69,12 @@ const fleet = [
                 <span class="lchip">Crawl</span>
               </div>
               <div class="wqrow prow open">
-                <div><span class="tt">03 · Analysers</span><span class="sub" style="color:var(--sev-blue-ink)">running · reading the crawl from 2h ago</span></div>
+                <div><span class="tt">03 · Analyzers</span><span class="sub" style="color:var(--sev-blue-ink)">running · reading the crawl from 2h ago</span></div>
                 <div class="wqmet"><span style="color:var(--sev-blue-ink)">4 / 7</span></div>
                 <span class="lchip ink">Stop</span>
               </div>
             </div>
-            <p class="awnote"><span style="color:var(--sev-emerald-ink)">●</span> Everything is fresh. The analysers are reading current data.</p>
+            <p class="awnote"><span style="color:var(--sev-emerald-ink)">●</span> Everything is fresh. The analyzers are reading current data.</p>
           </div>
         </div>
         <p class="objcap">Three inputs, one order. The sync, the crawl and the run each carry their own receipts.</p>
@@ -115,21 +115,21 @@ const fleet = [
     </div>
   </section>
 
-  <!-- ===== The analysers fleet ===== -->
+  <!-- ===== The analyzers fleet ===== -->
   <section class="section theme-dark">
     <div class="container container--wide">
       <div class="reveal">
-        <span class="eyebrow">The analysers</span>
+        <span class="eyebrow">The analyzers</span>
         <div class="sechead" style="margin-top:var(--space-s)">
-          <h2>One engine. Seven analysers.</h2>
-          <p>Index bloat, internal links, cannibalisation, content decay, opportunities, schema, cluster volatility.</p>
+          <h2>One engine. Seven analyzers.</h2>
+          <p>Index bloat, internal links, cannibalization, content decay, opportunities, schema, cluster volatility.</p>
         </div>
         <div class="fleet">
           <div class="fh">The fleet · 169 findings this run</div>
           <div class="fleet-wrap">
             <table class="ft">
               <thead>
-                <tr><th>Analyser</th><th>Reads</th><th>Catches</th><th class="eff">This run</th></tr>
+                <tr><th>Analyzer</th><th>Reads</th><th>Catches</th><th class="eff">This run</th></tr>
               </thead>
               <tbody>
                 {fleet.map((f) => (
@@ -144,7 +144,7 @@ const fleet = [
             </table>
           </div>
         </div>
-        <p class="foot-note">Mirrors the real Settings · Data Pipeline tab: the three inputs and their receipts, the live Telemetry Bay, and the seven-analyser fleet. Model names in the config drawers are deliberately not shown.</p>
+        <p class="foot-note">Mirrors the real Settings · Data Pipeline tab: the three inputs and their receipts, the live Telemetry Bay, and the seven-analyzer fleet. Model names in the config drawers are deliberately not shown.</p>
       </div>
     </div>
   </section>
@@ -152,8 +152,8 @@ const fleet = [
   <CTABand
     eyebrow="See it read your site"
     title="Run the engine."
-    sub="Join the pilot programme and we will sync your search data, crawl your site and run the engine in the first session, live, on your numbers."
-    secondaryLabel="See the analyser workspaces"
+    sub="Join the pilot program and we will sync your search data, crawl your site and run the engine in the first session, live, on your numbers."
+    secondaryLabel="See the analyzer workspaces"
     secondaryHref="/workspaces"
   />
 </BaseLayout>

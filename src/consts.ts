@@ -101,19 +101,19 @@ export const FEATURES = [
     no: '01',
     name: 'Data Pipeline',
     href: '/platform/data-pipeline',
-    line: 'Sync your search data, crawl your site, run the analysers. Watch the engine work in a live terminal. This is what feeds everything else.',
+    line: 'Sync your search data, crawl your site, run the analyzers. Watch the engine work in a live terminal. This is what feeds everything else.',
   },
   {
     no: '02',
-    name: 'Analyser Workspaces',
+    name: 'Analyzer Workspaces',
     href: '/workspaces',
-    line: 'Seven analysers hand you a queue of findings, each one scored, judged and with the fix drafted. Work top to bottom and clear the week.',
+    line: 'Seven analyzers give you a queue of findings, each one scored, judged and with the fix drafted. Work top to bottom and clear the week.',
   },
   {
     no: '03',
     name: 'Intelligence Hub',
     href: '/intelligence',
-    line: 'Your performance, the competitive gap, rising demand and an AI strategist that has already read your data. The command centre.',
+    line: 'Your performance, the competitive gap, rising demand and an AI strategist that has already read your data. The command center.',
   },
   {
     no: '04',
@@ -142,7 +142,7 @@ export const FEATURES = [
 export const ANALYZERS = [
   { slug: 'index-bloat', name: 'Index bloat' },
   { slug: 'internal-links', name: 'Internal links' },
-  { slug: 'cannibalisation', name: 'Cannibalisation' },
+  { slug: 'cannibalisation', name: 'Cannibalization' },
   { slug: 'content-decay', name: 'Content decay' },
   { slug: 'opportunities', name: 'Opportunities' },
   { slug: 'schema', name: 'Schema' },
