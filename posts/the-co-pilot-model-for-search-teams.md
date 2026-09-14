@@ -1,6 +1,6 @@
 ---
 title: The co-pilot model for search teams
-description: AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgement, priorities and decisions that follow.
+description: AI is useful for the parts of search work that involve reading, checking and sorting at scale. The strategist should still own the judgment, priorities and decisions that follow.
 pubDate: 2026-05-10
 author: Ray Olaibi
 draft: false
@@ -18,7 +18,7 @@ The co-pilot comparison is useful because it puts the split in the right place. 
 
 ## Where software helps
 
-A real search programme has a lot to read. Search data, technical health, demand, competitors, changing SERPs, AI answers and the work already in flight.
+A real search program has a lot to read. Search data, technical health, demand, competitors, changing SERPs, AI answers and the work already in flight.
 
 Most teams don't struggle because nobody knows what a canonical tag is. They struggle because the useful signal is buried across too much data, and reviewing all of it properly every week takes time that then isn't available for the work itself.
 
@@ -34,7 +34,7 @@ That context changes the recommendation.
 
 It's why we don't think "AI strategy" means handing the account to a model. Synthesis is useful, but strategy is deciding what matters for this business, what to ignore and what to do next. Someone still has to own that decision.
 
-The opposite approach has a problem too. Refusing the software means asking skilled people to spend more of their week assembling datasets, checking repeated patterns and rebuilding the same analysis. That's not protecting the craft. It's using expensive judgement for work a machine can do well.
+The opposite approach has a problem too. Refusing the software means asking skilled people to spend more of their week assembling datasets, checking repeated patterns and rebuilding the same analysis. That's not protecting the craft. It's using expensive judgment for work a machine can do well.
 
 ## What the loop looks like
 
