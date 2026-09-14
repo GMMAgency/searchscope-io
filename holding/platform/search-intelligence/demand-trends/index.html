@@ -649,8 +649,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1 class="hero__title reveal">
           Where demand is rising faster than your visibility.
         </h1>
-        <p class="lede reveal" style="--reveal-delay:100ms">Your search topics plotted against estimated market demand: how much each one is searched for, which way that&rsquo;s moving, and where you sit in it.</p>
-        <p class="lede reveal" style="--reveal-delay:140ms">A topic growing without you is a problem long before it shows up as a drop in traffic.</p>
+        <p class="lede reveal" style="--reveal-delay:100ms">Your search topics plotted against estimated market demand: how much demand sits behind each topic, which way it&rsquo;s moving, and where your search visibility sits alongside it.</p>
+        <p class="lede reveal" style="--reveal-delay:140ms">A topic can start growing without you well before that gap is obvious in your own traffic.</p>
         <div class="hero__actions reveal" style="--reveal-delay:220ms">
           <a href="/beta/" class="btn">
             Join the beta
@@ -677,7 +677,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mockchips mockchips--tight"><span class="mockchip mockchip--on mockrow" style="--i:0">Losing share</span><span class="mockchip mockrow" style="--i:1">Rising + weak</span><span class="mockchip mockrow" style="--i:2">High demand, no clicks</span><span class="mockchip mockrow" style="--i:3">Demand falling</span><span class="mockchip mockrow" style="--i:4">Uncontested</span></div>
             <p class="mocknote mockrow" style="--i:5">Losing share: the topic is growing and your impressions are falling</p>
             <p class="mockpane__h" style="margin-top:.9rem">THIS ACCOUNT</p>
-            <p class="mockledg mockrow" style="--i:6"><b>38 topics</b><em>with real demand</em></p>
+            <p class="mockledg mockrow" style="--i:6"><b>38 topics</b><em>above the threshold</em></p>
             <p class="mockledg mockrow" style="--i:7"><b>11 rising</b><em>4 of them you rank badly for</em></p>
             </div>
             <div>
@@ -706,7 +706,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">Topics, not keywords</span>
         <h2 class="sec__title">Built from your own searches, then measured against the market</h2>
-        <p class="lede">The analysis groups the queries in your Search Console into topics that mean roughly the same thing to a searcher. Then it asks a market data source what each one is actually searched for a month, per country.</p>
+        <p class="lede">The analysis groups the queries in your Search Console into topics that mean roughly the same thing to a searcher. Searchscope then uses a market data source to estimate monthly search demand for each topic, in your target country.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Your side</p>
@@ -715,13 +715,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">The market&rsquo;s side</p>
-          <h3 class="ucard__t">How many people search for it a month</h3>
-          <p class="ucard__d">An estimate of the whole topic&rsquo;s monthly searches, which is a different thing from your impressions. Impressions tell you how often you were shown. Demand tells you how many people were looking, including the ones who never saw you.</p>
+          <h3 class="ucard__t">Estimated monthly search demand</h3>
+          <p class="ucard__d">An estimate of the wider market, not your impressions. Impressions tell you how often your site appeared. Estimated search demand gives you a directional view of what exists beyond your own visibility.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Counted once</p>
           <h3 class="ucard__t">Close variants are folded together</h3>
-          <p class="ucard__d">Search tools report the same volume against every variant of a phrase. Left alone, a topic worth 1,900 searches reads as 5,700. Variants are folded into one before anything is totalled, and the ones that were folded are still listed underneath.</p>
+          <p class="ucard__d">Search-volume datasets can assign the same or overlapping volume across close variants, so left alone a topic worth 1,900 searches can read as 5,700. Searchscope folds them together before totalling a topic, and keeps the underlying queries visible.</p>
         </article>
       </div>
     </div>
@@ -731,17 +731,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sec__head reveal">
         <span class="eyebrow">The chart</span>
         <h2 class="sec__title">Every topic you&rsquo;re in, in one picture</h2>
-        <p class="lede">A bubble for each topic: the higher it sits the more people are searching for it, the further right it sits the worse you rank for it, and the bigger it is the more there is to win. The ones worth your quarter are up and to the right, which is the one part of the chart you can read at a glance.</p>
+        <p class="lede">Each bubble is a topic. Higher means greater estimated demand, further right means a weaker average position, and a larger bubble means more to gain. The color says whether market demand is rising, flat or falling.</p>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">The shaded zone</p>
           <h3 class="ucard__t">High demand, weak position</h3>
-          <p class="ucard__d">Marked out because that combination is where the work usually is: anything at position 10 or worse with real volume behind it. It&rsquo;s a position and volume zone and nothing else, so read the color of the bubble for the direction.</p>
+          <p class="ucard__d">It marks the topics with meaningful estimated demand where your average position is 10 or worse. Position and demand only, with no trend in it, so read the color of the bubble for the direction.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Color is the trend</p>
           <h3 class="ucard__t">Of the market, not of you</h3>
-          <p class="ucard__d">A falling topic in the shaded zone is a different decision from a rising one. The first is usually not worth chasing. The second is the reason this screen exists.</p>
+          <p class="ucard__d">A falling topic in the shaded zone is a different decision from a rising one. A falling market may deserve a different level of investment rather than none at all.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">The chart and the list are one thing</p>
@@ -760,8 +760,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Clusters</p>
-          <h3 class="ucard__t">Topics with real demand behind them</h3>
-          <p class="ucard__d">Only topics reaching 30 searches a month are counted, so a long tail of near-zero groups doesn&rsquo;t pad the number.</p>
+          <h3 class="ucard__t">Topics above the demand threshold</h3>
+          <p class="ucard__d">Only topics with at least 30 estimated searches a month are counted, so a long tail of near-zero groups doesn&rsquo;t inflate the total.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Rising demand</p>
@@ -770,8 +770,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Demand captured</p>
-          <h3 class="ucard__t">The searches you turn into clicks</h3>
-          <p class="ucard__d">Usually a small percentage, and it should be: most searches never click any result at all. It&rsquo;s a number to watch for direction rather than to judge in isolation.</p>
+          <h3 class="ucard__t">Clicks against estimated demand</h3>
+          <p class="ucard__d">Your Search Console clicks as a share of the estimated demand behind the topics you track. A directional measure rather than an exact share of the market, and one to watch over time rather than judge in isolation.</p>
         </article>
       </div>
     </div>
@@ -785,33 +785,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>      <div class="cols2">
         <article class="ucard reveal">
           <p class="ucard__k">Losing share</p>
-          <h3 class="ucard__t">The market is growing and you&rsquo;re taking less of it</h3>
-          <p class="ucard__d">Demand rising while your impressions fall. Usually the one worth opening first, because it&rsquo;s a change in your position rather than in the weather.</p>
+          <h3 class="ucard__t">Demand rising, visibility falling</h3>
+          <p class="ucard__d">Estimated demand is rising while your Search Console impressions fall, which says your visibility is moving in the opposite direction to the market. Usually the one worth opening first.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Rising + weak</p>
-          <h3 class="ucard__t">Growing, and you&rsquo;re off the top of page one</h3>
-          <p class="ucard__d">Demand rising with your average position worse than 8.</p>
+          <h3 class="ucard__t">Growing, with weak average visibility</h3>
+          <p class="ucard__d">Estimated demand is rising and your average position is worse than 8.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Rising + strong</p>
-          <h3 class="ucard__t">Growing, and you&rsquo;re capturing it</h3>
-          <p class="ucard__d">Top-10 average position with impressions rising too. What to defend, and worth reading for what&rsquo;s working.</p>
+          <h3 class="ucard__t">Growing, and your visibility is rising with it</h3>
+          <p class="ucard__d">A top-10 average position with impressions rising too. Useful for spotting what to defend, and for seeing where your visibility is keeping pace with demand.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:240ms">
           <p class="ucard__k">High demand, no clicks</p>
           <h3 class="ucard__t">500 searches a month and not one click</h3>
-          <p class="ucard__d">You&rsquo;re being shown and nobody is choosing you, so the title and description are worth reading before the ranking is.</p>
+          <p class="ucard__d">High estimated demand and no Search Console clicks. Worth checking the average position, the intent behind the query and how your result appears, to work out why visibility isn&rsquo;t becoming traffic.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:320ms">
           <p class="ucard__k">Demand falling</p>
           <h3 class="ucard__t">The topic itself is shrinking</h3>
-          <p class="ucard__d">Whatever your position. Useful for deciding what to stop spending time on.</p>
+          <p class="ucard__d">Whatever your position. Useful context when you&rsquo;re deciding whether a topic still deserves the same level of investment.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:400ms">
           <p class="ucard__k">Cannibalized</p>
-          <h3 class="ucard__t">More than one of your pages splitting a query</h3>
-          <p class="ucard__d">The Cannibalization workspace&rsquo;s problem, seen from the topic end.</p>
+          <h3 class="ucard__t">Queries inside the topic splitting between your pages</h3>
+          <p class="ucard__d">The same overlap the Cannibalization workspace looks for, seen from the topic end, so you can read the conflict against the topic&rsquo;s demand and your visibility in it.</p>
         </article>
       </div>
     </div>
@@ -825,18 +825,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>      <div class="cols3">
         <article class="ucard reveal">
           <p class="ucard__k">Competitor cluster gap</p>
-          <h3 class="ucard__t">They&rsquo;re ahead of you here</h3>
-          <p class="ucard__d">A competitor you track is in the top 20 and more than five places ahead, or ranks in the top 20 for keywords in the topic you have no presence for at all.</p>
+          <h3 class="ucard__t">A tracked competitor ranks more strongly</h3>
+          <p class="ucard__d">One of the competitors you track is in the top 20 and more than five places ahead of you, or ranks in the top 20 for keywords in the topic you have no presence for at all.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">Uncontested</p>
-          <h3 class="ucard__t">None of them is anywhere near it</h3>
-          <p class="ucard__d">Read it carefully: it&rsquo;s about them, not you. Your own position isn&rsquo;t part of the test, and the live results can still be owned by sites you don&rsquo;t track.</p>
+          <h3 class="ucard__t">None of your tracked competitors is close</h3>
+          <p class="ucard__d">Read it carefully: it&rsquo;s about them, not you. Your own position isn&rsquo;t part of the test, and the live results can still contain strong sites that aren&rsquo;t among the domains you track.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:160ms">
           <p class="ucard__k">Topics you don&rsquo;t cover</p>
           <h3 class="ucard__t">A view, not a filter</h3>
-          <p class="ucard__d">Swaps the list for whole topics your competitors rank for where you have no page and no visibility, split into the ones nobody in your set wins and the ones a competitor already owns. With competitors in and nothing to show, it drops out of the row.</p>
+          <p class="ucard__d">Swaps the list for whole topics your tracked competitors rank for where you have no page and no visibility, split into the ones nobody in your set wins and the ones where a tracked competitor already ranks. With competitors in and nothing to show, it drops out of the row.</p>
         </article>
       </div>
     </div>
@@ -845,8 +845,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="sec__head reveal">
         <span class="eyebrow">Where the volumes come from</span>
-        <h2 class="sec__title">Estimated per market, for the one you actually sell in</h2>
-        <p class="lede">Volumes are pulled per market and stored, so opening the screen twice doesn&rsquo;t pull them twice. Refresh re-pulls them when you want today&rsquo;s figures.</p>
+        <h2 class="sec__title">Market-specific demand estimates</h2>
+        <p class="lede">Search volumes are pulled for your target market and stored with the account, so opening the screen twice doesn&rsquo;t pull them twice. <b>Refresh</b> pulls the latest available estimates from the market data source.</p>
       </div>      <div class="ticked">
         <span class="ticks" aria-hidden="true">
           <span class="ticks__c ticks__tl"></span>
@@ -857,9 +857,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="snip reveal">
           <span class="snipline" style="--i:0"><span class="md">waterproof boots</span></span>
           <span class="snipline" style="--i:1">&nbsp;</span>
-          <span class="snipline" style="--i:2">demand        18,100 a month   up 14%</span>
-          <span class="snipline" style="--i:3">you           14.2 average     down 6%</span>
-          <span class="snipline" style="--i:4">capture       0.8% of it</span>
+          <span class="snipline" style="--i:2">demand est.   18,100 a month   up 14%</span>
+          <span class="snipline" style="--i:3">you           14.2 average      down 6%</span>
+          <span class="snipline" style="--i:4">capture       0.8% of the est.</span>
           <span class="snipline" style="--i:5">&nbsp;</span>
           <span class="snipline" style="--i:6">rising market, falling share</span>
         </div>
@@ -867,12 +867,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="ucard reveal">
           <p class="ucard__k">The market you sell in</p>
           <h3 class="ucard__t">Not a global average</h3>
-          <p class="ucard__d">The market comes from <b>Target market</b> in Business Context, not from a picker on this screen. Change it there and the whole dataset changes, including the volumes, because they&rsquo;re pulled and stored per country.</p>
+          <p class="ucard__d">The market comes from <b>Target market</b> in Business Context, not from a picker on this screen. Change it there and Searchscope refreshes the demand dataset for that country, because the estimates are pulled and stored per market.</p>
         </article>
         <article class="ucard reveal" style="--reveal-delay:80ms">
           <p class="ucard__k">A topic, and two ways to act on it</p>
           <h3 class="ucard__t">All on one card</h3>
-          <p class="ucard__d">Twelve months of demand beside twelve months of your impressions, your strongest ranking page, and the keywords inside. <b>Create Brief</b> sends it to Content Studio, <b>Ask Advisor</b> puts it to your strategist, and <b>Ignore</b> moves it to an archive you can restore from.</p>
+          <p class="ucard__d">Twelve months of estimated demand beside twelve months of your Search Console impressions, your strongest ranking page, and the queries inside the cluster. From there, <b>Create Brief</b> opens Content Studio, <b>Ask Advisor</b> puts the topic to the <a class="tlink" href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor</a>, and <b>Ignore</b> moves it to an archive you can restore from.</p>
         </article>
       </div>
     </div>
@@ -894,7 +894,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Join the beta program</span>
         <h2 class="cta__title">See where the market is moving</h2>
         <p class="cta__sub">
-          Your topics, the demand behind them, and where you sit in each one.
+          Your topics, the estimated market demand behind them, and where your search visibility sits in each one.
         </p>
         <div class="cta__actions">
           <a href="/beta/" class="btn btn--lg">
