@@ -420,7 +420,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style>
+</style><style>html{scroll-padding-top:6rem}</style>
+
 <link rel="canonical" href="https://searchscope.io/knowledge-base/dashboard/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
@@ -554,6 +555,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--space-s); }
   .kbnext ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .kbnext a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  /* What kind of page the link goes to, after the name. Not underlined, because
+     it is a label rather than part of the link text, and dimmer so the name is
+     still what you read first. */
+  /* inline-block, not just text-decoration: none. An underline is painted by
+     the ancestor that sets it, so a child can't opt out of the link's own
+     underline; a new inline formatting context can. Without this the label
+     reads as part of the link text, which is the opposite of the point. */
+  .kbnext__k { display: inline-block; font-family: var(--font-mono);
+    font-size: var(--step--2); color: var(--ink-faint); text-decoration: none;
+    white-space: nowrap; }
+  .kbnext__k::before { content: "·"; margin: 0 0.45em; }
   .kbhub { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid;
     gap: var(--space-m); }
   @media (min-width: 700px) { .kbhub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -737,7 +749,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 class="sec__title">The dashboard</h1>
           <p class="kblede">What Searchscope puts in front of you, and what to open first.</p>
           <p class="kbwhere"><span class="kbwhere__k">In app</span><b>Dashboard</b></p><h2 id="your-week-then-your-problems">Your week, then your problems</h2><p>The left side is your search performance, straight from Google Search Console. The right side is the critical and high issues from the latest analysis.</p><p>That split is deliberate. The left tells you how you're doing, the right tells you what to do about it, and the right is where to start.</p><h2 id="the-three-bands-below">The three bands below</h2><p><b>Intelligence</b> holds the strategic analyses: topics gaining or losing ground, and pages ranking just off page 1. Open a card and the workspace walks you through every finding.</p><p><b>Technical checks</b> are the analyzers: index bloat, internal links, pages competing with each other, decaying content, missing schema. The badge on each one is what that check found.</p><p><b>Your Strategist</b> has already read your search data, findings and competitors. Asking it what to prioritize is a reasonable first move on any day you don't know where to start.</p><h2 id="if-a-card-is-greyed-out">If a card is greyed out</h2><p>It's waiting for its analyzer. The checks run in order and unlock as they finish, so on a new account the dashboard fills in over the first session rather than all at once.</p>
-          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope</a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay</a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor</a></li><li><a href="/platform/">What this does, and why it matters</a></li></ul></div>
+          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/">Getting started with Searchscope<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/">The Searchscope platform<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
     </div>

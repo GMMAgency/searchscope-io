@@ -420,7 +420,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style>
+</style><style>html{scroll-padding-top:6rem}</style>
+
 <link rel="canonical" href="https://searchscope.io/knowledge-base/reporting/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
@@ -554,6 +555,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--space-s); }
   .kbnext ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .kbnext a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  /* What kind of page the link goes to, after the name. Not underlined, because
+     it is a label rather than part of the link text, and dimmer so the name is
+     still what you read first. */
+  /* inline-block, not just text-decoration: none. An underline is painted by
+     the ancestor that sets it, so a child can't opt out of the link's own
+     underline; a new inline formatting context can. Without this the label
+     reads as part of the link text, which is the opposite of the point. */
+  .kbnext__k { display: inline-block; font-family: var(--font-mono);
+    font-size: var(--step--2); color: var(--ink-faint); text-decoration: none;
+    white-space: nowrap; }
+  .kbnext__k::before { content: "·"; margin: 0 0.45em; }
   .kbhub { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid;
     gap: var(--space-m); }
   @media (min-width: 700px) { .kbhub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -737,7 +749,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 class="sec__title">Reporting</h1>
           <p class="kblede">Client-ready reports written from your live data.</p>
           <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Instruments</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Reporting</b></p><h2 id="composing-one">Composing one</h2><p>The rail on the left shapes what gets written, and the paper preview on the right updates as you go, so you're never guessing what you'll end up with.</p><h2 id="the-four-decisions">The four decisions</h2><p><b>Written for</b> picks the voice and the default sections: a client report leads with outcomes, an internal one keeps the detail. You can still add or drop sections after.</p><p><b>The period</b> is the window it covers. <b>Compared against</b> is what the numbers are measured against: the previous period, the same period last year, custom dates, or nothing at all.</p><p><b>Contents</b> is the section list. Each one is written from your real data: performance, wins, risks, workspace findings, AI visibility, and an action plan.</p><h2 id="generating">Generating</h2><p>About a minute, and you watch each section get written. The finished report exports as a styled document, a deck or a workbook.</p>
-          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center</a></li><li><a href="/knowledge-base/worksheets/">Worksheets</a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler</a></li><li><a href="/platform/instruments/reporting/">What this does, and why it matters</a></li></ul></div>
+          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/intelligence/command-centre/">Command Center<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/worksheets/">Worksheets<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/weekly-scheduler/">Scheduler<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/instruments/reporting/">Reporting<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
     </div>

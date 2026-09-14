@@ -420,7 +420,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style>
+</style><style>html{scroll-padding-top:6rem}</style>
+
 <link rel="canonical" href="https://searchscope.io/knowledge-base/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
@@ -554,6 +555,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--space-s); }
   .kbnext ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .kbnext a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  /* What kind of page the link goes to, after the name. Not underlined, because
+     it is a label rather than part of the link text, and dimmer so the name is
+     still what you read first. */
+  /* inline-block, not just text-decoration: none. An underline is painted by
+     the ancestor that sets it, so a child can't opt out of the link's own
+     underline; a new inline formatting context can. Without this the label
+     reads as part of the link text, which is the opposite of the point. */
+  .kbnext__k { display: inline-block; font-family: var(--font-mono);
+    font-size: var(--step--2); color: var(--ink-faint); text-decoration: none;
+    white-space: nowrap; }
+  .kbnext__k::before { content: "·"; margin: 0 0.45em; }
   .kbhub { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid;
     gap: var(--space-m); }
   @media (min-width: 700px) { .kbhub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
