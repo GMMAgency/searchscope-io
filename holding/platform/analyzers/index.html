@@ -841,6 +841,8 @@ html, body { overflow-x: hidden; }
     .hp { position: absolute; left: -9999px; }
     .secondary { margin: var(--space-m) 0 0; font-size: var(--step--1); color: var(--ink-faint); text-align: center; }
     .secondary a { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.tlink { color: var(--ink-dim); text-decoration: none; border-bottom: 1px solid var(--hairline); }
+.tlink:hover { color: var(--ink); border-color: var(--ink); }
     .secondary a:hover { color: var(--ink); border-color: var(--ink); }
 
     /* ---- footer ---- */
@@ -1427,7 +1429,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-content-decay" aria-labelledby="tab-content-decay" hidden>
           <h3 class="tabpanel__t">Content Decay</h3>
-          <p class="tabpanel__d">Find pages that are losing organic clicks against their own historical performance. Searchscope shows which queries are driving the decline and whether performance is worsening, recovering or following a seasonal pattern. From the finding, you can investigate the decline with the <b>Strategic Advisor</b> or take it into <b>Content Studio</b> to work on the content gaps.</p>
+          <p class="tabpanel__d">Find pages that are losing organic clicks against their own historical performance. Searchscope shows which queries are driving the decline and whether performance is worsening, recovering or following a seasonal pattern. From the finding, you can investigate the decline with the <b><a class="tlink" href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor</a></b> or take it into <b>Content Studio</b> to work on the content gaps.</p>
           <p class="tabpanel__go">
             <a href="/platform/analyzers/content-decay/" class="btn btn--sm btn--ghost">
               Explore Content Decay
