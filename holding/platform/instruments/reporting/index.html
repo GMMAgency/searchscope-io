@@ -890,6 +890,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
     color:var(--ink-dim); letter-spacing:.02em; }
   .mockpanes { display:grid; grid-template-columns:25fr 46fr 29fr; }
+  /* The base track list is the Content Studio session: three panes. A mock
+     with only two children laid itself into the first two tracks and left
+     the third, 29% of the window, empty. It doesn't read as a layout error,
+     it reads as a mock that ran out of things to say, which is how all five
+     of the Search Intelligence mid-page mocks shipped on 2026-09-15.
+
+     Declared here, before the stacking media queries below, so those still
+     win at narrow widths and inside .headsplit. */
+  .mockpanes--2 { grid-template-columns:42fr 58fr; }
   .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
   .mockpane:first-child { border-left:0; }
   .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
@@ -931,6 +940,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .mockpanes { grid-template-columns:1fr; }
     .mockpane { border-left:0; border-top:1px solid var(--hairline); }
     .mockpane:first-child { border-top:0; }
+  }
+
+  /* A chart drawn inline rather than in panes: it needs the window's padding
+     but none of its column rules. The axis caption is two labels, one per
+     axis, because a reader who gets "better position is to the left"
+     backwards reads the whole picture backwards. */
+  .mockchart { padding:.7rem .8rem .8rem; }
+  .mockchart svg { display:block; width:100%; height:auto; }
+  .mockaxis { display:flex; justify-content:space-between; gap:1rem;
+    font-family:var(--font-mono); font-size:var(--step--2);
+    color:var(--ink-faint); margin:.2rem 0 .5rem; }
+
+  /* ---- a mock beside its heading ----------------------------------------
+     A mid-page mock across the full content column is a 1,150px-wide window
+     holding two short columns of rows, which reads as a band of mostly-empty
+     interface however full the columns are. The hero mocks get away with it
+     because they're paired with an h1 and three ledes; a mid-page one has a
+     heading and a sentence.
+
+     So the heading block and the mock share a row: the window lands at about
+     620px, which is nearer what a window is drawn to look like, and the
+     heading stops being a lonely line above a wide box. Added 2026-09-15.
+
+     Under 900px this is a plain stack, which is the mobile layout it always
+     had. */
+  .headsplit { display:grid; gap:clamp(1.4rem, 4vw, 2.8rem); align-items:start; }
+  @media (min-width: 900px) {
+    .headsplit { grid-template-columns:0.88fr 1.12fr; align-items:center; }
+    .headsplit > .sec__head { margin-bottom:0; }
+    .headsplit .mockframe { margin-top:0; }
+    /* The window is half the width it was, so its panes stack rather than
+       squeeze, exactly as they do on a phone. Without this the two panes
+       come out around 260px and 360px and the rows inside wrap to three
+       lines each. */
+    .headsplit .mockpanes { grid-template-columns:1fr; }
+    .headsplit .mockpane { border-left:0; border-top:1px solid var(--hairline); }
+    .headsplit .mockpane:first-child { border-top:0; }
   }
 
   /* ---- the hero mocks ---------------------------------------------------
