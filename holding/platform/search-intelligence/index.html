@@ -969,6 +969,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      axis, because a reader who gets "better position is to the left"
      backwards reads the whole picture backwards. */
   .mockchart { padding:.7rem .8rem .8rem; }
+  .mockchart__t { display:flex; align-items:center; justify-content:space-between;
+    gap:.6rem; font-size:var(--step--1); font-weight:600; color:var(--ink);
+    margin:0 0 .5rem; }
+  /* The app's AREA / LINE segmented pill: one active segment, filled. */
+  .mockseg { display:inline-flex; border:1px solid var(--hairline);
+    border-radius:var(--radius-pill); overflow:hidden;
+    font-family:var(--font-mono); font-size:9px; letter-spacing:.06em; }
+  .mockseg b, .mockseg em { padding:.16rem .46rem; font-style:normal;
+    font-weight:500; }
+  .mockseg b { background:var(--ink); color:var(--surface-panel); }
+  .mockseg em { color:var(--ink-faint); border-left:1px solid var(--hairline); }
+  /* The series dot on a metric chip. An inactive chip keeps its dot and
+     fades, which is what the app does rather than filling it grey. */
+  .mockdot { width:6px; height:6px; border-radius:50%; background:var(--dot);
+    display:inline-block; margin-right:.34rem; vertical-align:middle; }
+  /* A metric chip is never filled: the app marks the selected ones with a
+     darker border and full-strength text, and fades the rest. Filling it
+     with .mockchip--on hid the clicks dot, which is black on black. */
+  .mockchip--lit { color:var(--ink); border-color:var(--ink-dim); }
+  .mockchip--dim { opacity:.55; }
   .mockchart svg { display:block; width:100%; height:auto; }
   .mockaxis { display:flex; justify-content:space-between; gap:1rem;
     font-family:var(--font-mono); font-size:var(--step--2);
