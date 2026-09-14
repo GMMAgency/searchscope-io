@@ -420,7 +420,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style>
+</style><style>html{scroll-padding-top:6rem}</style>
+
 <link rel="canonical" href="https://searchscope.io/knowledge-base/intelligence/demand-trends/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
@@ -554,6 +555,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--space-s); }
   .kbnext ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .kbnext a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  /* What kind of page the link goes to, after the name. Not underlined, because
+     it is a label rather than part of the link text, and dimmer so the name is
+     still what you read first. */
+  /* inline-block, not just text-decoration: none. An underline is painted by
+     the ancestor that sets it, so a child can't opt out of the link's own
+     underline; a new inline formatting context can. Without this the label
+     reads as part of the link text, which is the opposite of the point. */
+  .kbnext__k { display: inline-block; font-family: var(--font-mono);
+    font-size: var(--step--2); color: var(--ink-faint); text-decoration: none;
+    white-space: nowrap; }
+  .kbnext__k::before { content: "·"; margin: 0 0.45em; }
   .kbhub { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid;
     gap: var(--space-m); }
   @media (min-width: 700px) { .kbhub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -737,7 +749,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 class="sec__title">Demand &amp; Trends</h1>
           <p class="kblede">What the market is searching for, plotted against how much of it you capture.</p>
           <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Demand &amp; Trends</b></p><h2 id="reading-the-chart">Reading the chart</h2><p>Your topics are plotted against the market: how much demand each carries, and where you sit in it.</p><p><b>High demand where you rank poorly is the quadrant to work in.</b> It's the shaded zone on the chart, and it's the whole reason this view exists.</p><h2 id="the-figures-above-it">The figures above it</h2><p>How many topics carry search demand, how many are growing, and how much of that demand turns into clicks for you. That last one is usually humbling, and it should be: most searches never click any result.</p><p>The pills underneath are filters. Click one to narrow the list to a kind of problem rather than scrolling the whole thing.</p><h2 id="the-filter-pills-and-what-each-one-finds">The filter pills, and what each one finds</h2><p>The row marked <b>Issues</b> narrows the list to one kind of problem. They're the fastest way into this screen, because each one answers a different question.</p><ul class="kblist"><li><b>Losing share</b>: demand for the topic is rising and your impressions are falling. The market is growing and you're taking less of it, which is the one on this row that most often turns out to matter.</li><li><b>Demand falling</b>: the topic itself is shrinking, whatever your position. A different problem from losing share and it wants a different answer: one is about your pages, the other is about the market. Useful for deciding what to stop spending on.</li><li><b>Rising + weak</b>: demand is growing and your average position is worse than 8, so you're off the top of page one as the topic gets bigger.</li><li><b>Rising + strong</b>: demand rising, your impressions rising too, and an average position in the top 10. What to defend, and worth reading for what's working.</li><li><b>High demand, no clicks</b>: at least 500 searches a month and not one click to your site. That's a title and description problem far more often than a ranking one, so it's usually the quickest thing on the row: you're rewriting two lines, not writing a page.</li><li><b>Cannibalized</b>: more than one of your pages ranks for the same query inside the topic, splitting the impressions. The Cannibalization workspace's problem seen from the topic end.</li><li><b>Competitor cluster gap</b>: a competitor you track is in the top 20 and beats your position by five or more, or ranks in the top 20 for keywords here you have no presence for at all.</li><li><b>Uncontested</b>: none of the competitors you track has any ranking touching the topic. Read it carefully, because it's about them and not about you: your own position isn't part of the test. And it's only as good as your competitor list, so open a few before you act on it.</li><li><b>Topics you don't cover</b>: whole topics your competitors rank for where you have no page and no visibility. This one swaps the list below rather than filtering it.</li></ul><p>The number on each pill is how many topics match, so a pill showing zero is a question you don't have to ask today.</p><p><b>The last three need a competitor.</b> They're greyed out until you've added one in Competitive Landscape, and they compare against the three most recently added, using cached rankings rather than a live search. So they tell you about the competitors you named, not about everyone in the results: a topic can be uncontested by your list and busy in the actual search results.</p><h2 id="what-to-do-with-it">What to do with it</h2><p>Every topic card carries the same two actions as the workspaces. <b>Brief</b> sends it to Content Studio, <b>Ask Advisor</b> puts it to your Strategist.</p><p>Cards also have <b>Ignore</b>, which drops a topic out of the list.</p><h2 id="the-region-these-numbers-are-for">The region these numbers are for</h2><p>The subtitle names the region the demand and volume figures come from. There's no picker on this screen: it follows <b>Target market</b> in Settings, under Business Context, and the volumes are pulled and cached per country.</p><p>So if these numbers look like the wrong market, that's the field to change.</p>
-          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/knowledge-base/content-studio/">Content Studio</a></li><li><a href="/platform/search-intelligence/">What this does, and why it matters</a></li></ul></div>
+          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/workspace/cluster_volatility/">Cluster Volatility<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/content-studio/">Content Studio<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/search-intelligence/">Search Intelligence<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
     </div>

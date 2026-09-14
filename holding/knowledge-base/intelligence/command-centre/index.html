@@ -420,7 +420,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .snip .snipline { opacity:1; transform:none; transition:none; }
     .snipline--cursor::after { animation:none; }
   }
-</style>
+</style><style>html{scroll-padding-top:6rem}</style>
+
 <link rel="canonical" href="https://searchscope.io/knowledge-base/intelligence/command-centre/">
 <style>
   /* Knowledge base. Built on the site's own tokens, so a theme change carries. */
@@ -554,6 +555,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--space-s); }
   .kbnext ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .kbnext a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  /* What kind of page the link goes to, after the name. Not underlined, because
+     it is a label rather than part of the link text, and dimmer so the name is
+     still what you read first. */
+  /* inline-block, not just text-decoration: none. An underline is painted by
+     the ancestor that sets it, so a child can't opt out of the link's own
+     underline; a new inline formatting context can. Without this the label
+     reads as part of the link text, which is the opposite of the point. */
+  .kbnext__k { display: inline-block; font-family: var(--font-mono);
+    font-size: var(--step--2); color: var(--ink-faint); text-decoration: none;
+    white-space: nowrap; }
+  .kbnext__k::before { content: "·"; margin: 0 0.45em; }
   .kbhub { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: grid;
     gap: var(--space-m); }
   @media (min-width: 700px) { .kbhub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -737,7 +749,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 class="sec__title">Command Center</h1>
           <p class="kblede">A year of your search performance, and the detail behind it.</p>
           <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Command Center</b></p><h2 id="the-headline-numbers">The headline numbers</h2><p>Clicks, impressions, click-through rate and average position, each with the change against the previous period. Refreshed on every run.</p><p>Position is an average of averages, so treat a small move in it as noise. Clicks and impressions are the numbers to trust.</p><h2 id="the-detailed-views">The detailed views</h2><p>Every query, every page, the two combined, and Impact Tracking. Query and page together is the one people underuse: it shows which searches each page actually wins, rather than which searches exist.</p><h2 id="brand-against-non-brand">Brand against non-brand</h2><p>How much of your traffic comes from people already searching for you by name, against people finding you for the first time.</p><p>This one matters more than it looks. Traffic growth that's all brand means your marketing is working and your search presence isn't.</p><h2 id="impact-tracking">Impact Tracking</h2><p><b>Impact Tracking</b> is the tab that closes the loop, and the fifth along. Every finding you mark as <b>Applied</b> in a workspace turns up here with the search performance for that page, so you can see whether the change did anything.</p><p>Each card is one page, with a marker on the chart for the day you applied it and clicks, impressions and average position beside it. A page changed more than once gets a timeline rather than a second card.</p><p><b>Track a page</b> is the manual entry, and it's worth more than it looks. Marking a finding applied tracks the URL named in the finding, which isn't always the URL you changed. A cannibalization finding names two pages competing for the same query; if you fixed it by rewriting the other one, that's the page whose performance you want to watch, and it's not the one being tracked.</p><p>So add it yourself: the URL, what you changed and the date. Same for anything you changed with no finding behind it. The 28 days before that date become the baseline, so moving the date re-baselines the comparison.</p><p>It stays empty until you start marking things applied, which is worth knowing before you go looking for it on day one.</p><h2 id="brand-keywords">Brand keywords live here, not in Settings</h2><p>The <b>Brand Keywords</b> button in the filter bar is what decides which searches count as brand. Add your company name, product names and the misspellings people actually type.</p><p><b>With nothing in that list the brand cards read zero</b>, which looks like a data problem and isn't. It's the one setting on this page that changes the numbers rather than filtering them.</p><h2 id="setting-a-target">Setting a target</h2><p>Set one measurable target and every weekly briefing tracks progress against it. Optional, and worth doing: it's the difference between reporting numbers and knowing whether the work is paying off.</p>
-          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends</a></li><li><a href="/knowledge-base/reporting/">Reporting</a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape</a></li><li><a href="/platform/search-intelligence/">What this does, and why it matters</a></li></ul></div>
+          <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/intelligence/demand-trends/">Demand &amp; Trends<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/reporting/">Reporting<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/">Competitive Landscape<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/search-intelligence/">Search Intelligence<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
     </div>
