@@ -1,7 +1,8 @@
 /**
  * Netlify fires this automatically on every verified form submission.
- * It adds the person to a Resend audience; a Resend Automation enrols them
- * from there.
+ * It adds the person to a Resend audience, then sends a named event so the
+ * matching Resend Automation enrols them. Both steps are needed: adding the
+ * contact on its own starts nothing.
  *
  * Two rules this file must never break:
  *
@@ -39,6 +40,23 @@ const SAFE_FIELDS = ['portfolio', 'role', 'job_title', 'priority'];
 
 const TOPIC_GETTING_STARTED = '0fd9a6b1-0aae-4d77-a673-ae2bdaea2173';
 const TOPIC_PRODUCT_NEWS = '6243d4a4-4670-4253-80a1-7a7cda0521f7';
+
+/*
+ * WHICH FORMS FIRE AN AUTOMATION, and under what name.
+ *
+ * Creating the contact is NOT enough to start a sequence. A Resend Automation
+ * only runs when a named event is sent for that contact, so without the call
+ * below a beta applicant is added to the audience, subscribed to the topic, and
+ * then hears nothing. That was the state from August to October 2026.
+ *
+ * Only the beta form fires one. The agency-demo note promises a conversation,
+ * not a drip, and the checker promises one report. Adding either here would
+ * send people a sequence they didn't ask for, which is the same fault the
+ * topicsFor() comment above describes.
+ */
+const EVENT_BY_FORM = {
+  'beta': 'beta.applied',
+};
 
 /*
  * WHAT EACH FORM ACTUALLY PROMISED, expressed as explicit topic subscriptions.
@@ -158,9 +176,45 @@ export default async (req) => {
     if (!res.ok) {
       const detail = await res.text().catch(() => '');
       console.error(`submission-created: Resend returned ${res.status} for "${form}" :: ${detail.slice(0, 300)}`);
-    } else {
-      const summary = (topics || []).map((t) => `${t.id.slice(0, 8)}=${t.subscription}`).join(' ');
-      console.log(`submission-created: added a contact to ${form} (topics: ${summary})`);
+      return new Response('ok', { status: 200 });
+    }
+
+    const summary = (topics || []).map((t) => `${t.id.slice(0, 8)}=${t.subscription}`).join(' ');
+    console.log(`submission-created: added a contact to ${form} (topics: ${summary})`);
+
+    /*
+     * Fire the automation trigger. This runs only after the contact exists,
+     * because the event attaches to a contact and an automation started against
+     * a contact that failed to create has nothing to send to.
+     *
+     * Rule 1 still holds: a failure here is logged and swallowed. The person is
+     * already in the audience and in the Netlify dashboard, so the worst case is
+     * a sequence that doesn't start, not a lead that disappears.
+     */
+    const eventName = EVENT_BY_FORM[form];
+    if (eventName) {
+      try {
+        const evt = await fetch('https://api.resend.com/events/send', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            event: eventName,
+            email,
+            payload: { form, role: String(data.role || '') },
+          }),
+        });
+        if (!evt.ok) {
+          const detail = await evt.text().catch(() => '');
+          console.error(`submission-created: event "${eventName}" returned ${evt.status} :: ${detail.slice(0, 300)}`);
+        } else {
+          console.log(`submission-created: fired "${eventName}" for a ${form} submission`);
+        }
+      } catch (err) {
+        console.error(`submission-created: event "${eventName}" failed:`, err?.message || err);
+      }
     }
   } catch (err) {
     console.error('submission-created failed:', err?.message || err);
