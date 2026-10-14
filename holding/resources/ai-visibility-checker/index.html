@@ -1743,9 +1743,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             var done = wrap.querySelector('.formdone');
             wrap.classList.add('is-done');
             if (done) { done.setAttribute('tabindex', '-1'); done.focus(); }
-            (window.dataLayer = window.dataLayer || []).push({
-              event: 'form_success', form_name: form.getAttribute('name')
-            });
+            /* user_email is here for Google Ads Enhanced Conversions, which
+               needs an email address to match a lead back to a click.
+
+               Normalized at the push rather than in GTM. Google matches on
+               the exact string, so a stray capital or a trailing space fails
+               silently: the only symptom is a quietly worse match rate, which
+               nobody goes looking for. One place to get it right.
+
+               It is the plain address rather than a hash, which is Google's
+               documented path and keeps normalization in one place. It adds
+               no exposure that the page did not already have: the reader
+               typed it into this form a moment ago and it is about to be
+               POSTed. Nothing reads it until a conversion tag exists, and GTM
+               does not load at all until Cookiebot has consent.
+
+               sites_managed moves here too. It was pushed on form_submit, and
+               GTM's data layer is cumulative, so a variable read at
+               form_success picked it up anyway. That only worked by accident
+               of ordering, because form_submit fires on the capture phase and
+               this fires after a network round trip. The event that IS the
+               conversion should carry its own segment. */
+            var emailField = form.querySelector('input[name="email"]');
+            var portfolio = form.querySelector('select[name="portfolio"]');
+            var success = {
+              event: 'form_success',
+              form_name: form.getAttribute('name')
+            };
+            if (emailField && emailField.value) {
+              success.user_email = emailField.value.trim().toLowerCase();
+            }
+            if (portfolio && portfolio.value) {
+              success.sites_managed = portfolio.value;
+            }
+            (window.dataLayer = window.dataLayer || []).push(success);
           }).catch(function () {
             if (settled) return;
             settled = true;
