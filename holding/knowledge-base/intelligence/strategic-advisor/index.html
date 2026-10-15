@@ -598,6 +598,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Search intelligence","item":"https://searchscope.io/knowledge-base/#search-intelligence"},{"@type":"ListItem","position":4,"name":"Strategic Advisor","item":"https://searchscope.io/knowledge-base/intelligence/strategic-advisor/"}]}</script>
+<style id="screens">
+/* Product screenshots (Ray, 14-15 Oct 2026). Dark app screens in a window
+   frame with the corner brackets, a mono figure label and a plain caption.
+   Hairlines, no shadows or gradients. Pages carry this inline, like the
+   rest of their CSS. */
+.pshot { margin: 0; min-width: 0; position: relative; }
+.pshot__frame { position: relative; display: block; }
+.pshot__ticks { position: absolute; inset: -13px; pointer-events: none; color: color-mix(in oklab, var(--ink, #16150f) 30%, transparent); }
+.pshot__ticks i { position: absolute; width: 16px; height: 16px; }
+.pshot__ticks .tl { top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__ticks .tr { top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .br { bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .bl { bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__win { position: relative; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 16%, transparent); border-radius: var(--radius-m, 16px); overflow: hidden; background: #121110; }
+.pshot__bar { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.85rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: #181715; }
+.pshot__dots { display: inline-flex; gap: 6px; }
+.pshot__dots i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.14); }
+.pshot__url { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pshot img, .pthumb img { display: block; width: 100%; height: auto; background: #121110; }
+.pshot__cap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1.1rem; font-family: var(--font-body, system-ui, sans-serif); font-size: var(--step--1, 0.875rem); line-height: 1.5; color: var(--ink-dim, rgba(22, 21, 16, 0.62)); }
+.pshot__fig, .pshot__demo { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint, rgba(22, 21, 16, 0.42)); white-space: nowrap; }
+.pshot__demo { margin-left: auto; padding-left: 0.75rem; }
+.pshot__cap p { margin: 0; min-width: 0; }
+.pshot--section { margin-top: clamp(2.25rem, 1.6rem + 2vw, 3.25rem); }
+.pshot--inset { max-width: 980px; }
+.kbbody .pshot, .prose .pshot { margin: 2rem 0 2.25rem; }
+.kbbody .pshot--top { margin-top: 1.75rem; }
+.psplit { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 1.4rem + 2vw, 3.5rem); align-items: center; }
+.psplit__text { min-width: 0; }
+.psplit .psplit__fig { margin: 0; width: 100%; max-width: 560px !important; justify-self: end; }
+@media (min-width: 960px) { .psplit { grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); } }
+.pthumb-frame { position: relative; display: block; margin: 0.5rem 0 1.4rem; }
+.pthumb { display: block; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 14%, transparent); border-radius: var(--radius-s, 10px); overflow: hidden; background: #121110; aspect-ratio: 16 / 9; }
+.pthumb img { height: 100%; object-fit: cover; object-position: top left; }
+.tabpanel .pshot__frame { max-width: 64ch; margin: var(--space-l, 2rem) 0 0; }
+.tabpanel .pshot__frame > .tabpanel__shot { margin: 0; max-width: none; }
+.feat .pshot__frame { min-width: 0; }
+@media (max-width: 720px) { .pshot__demo { display: none; } }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -747,9 +786,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="kbbody">
           <h1 class="sec__title">Strategic Advisor</h1>
           <p class="kblede">A strategist that has already read your data, and answers from it.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Strategic Advisor</b></p><h2 id="what-it-can-see">What it can see</h2><p>The chips at the top say what it's reading: your Search Console history, analyzer findings, competitors, objectives, business context, brand and AI runs, and the live web. Green means connected.</p><p>That's the difference between this and a general assistant. Answers come back with your own numbers in them, and it shows which data it used.</p><h2 id="where-to-start">Where to start</h2><p>Before you ask anything it surfaces what looks most important right now. <b>Dig into this</b> opens the conversation with that finding already loaded.</p><p>The quick prompts underneath are good first questions. Each one runs a real analysis over your numbers rather than returning generic advice.</p><h2 id="asking-your-own-questions">Asking your own questions</h2><p>Type anything, or paste a screenshot straight in: a ranking chart, a competitor's page, an email from a client. Below the box you can pick the model and how deeply it should think.</p><p>It remembers the conversation, so you can push back on an answer rather than starting again.</p><h2 id="from-answer-to-action">From answer to action</h2><p>Every reply carries actions. <b>Send to Studio</b> turns what a reply recommends into Content Studio briefs, and the whole conversation travels with it rather than the single message you clicked from.</p><p>The <b>Reasoning</b> tab shows it working: every data pull, what it asked for and what came back. Worth opening when an answer surprises you.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Search Intelligence</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Strategic Advisor</b></p><figure class="pshot pshot--top"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/intelligence/strategic-advisor</span></div><img alt="The Strategic Advisor answering from the account's own data, with its working on the right." decoding="async" height="900" loading="lazy" src="/brand/screens/adv-main.webp" width="1244"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 1</span><p>The Strategic Advisor answering from the account's own data, with its working on the right.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="what-it-can-see">What it can see</h2><p>The chips at the top say what it's reading: your Search Console history, analyzer findings, competitors, objectives, business context, brand and AI runs, and the live web. Green means connected.</p><p>That's the difference between this and a general assistant. Answers come back with your own numbers in them, and it shows which data it used.</p><h2 id="where-to-start">Where to start</h2><p>Before you ask anything it surfaces what looks most important right now. <b>Dig into this</b> opens the conversation with that finding already loaded.</p><p>The quick prompts underneath are good first questions. Each one runs a real analysis over your numbers rather than returning generic advice.</p><figure class="pshot" style="max-width:762px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/intelligence/strategic-advisor</span></div><img alt="Before you ask anything: what the Advisor has already noticed in the account." decoding="async" height="590" loading="lazy" src="/brand/screens/adv-start.webp" width="680"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>Before you ask anything: what the Advisor has already noticed in the account.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="asking-your-own-questions">Asking your own questions</h2><p>Type anything, or paste a screenshot straight in: a ranking chart, a competitor's page, an email from a client. Below the box you can pick the model and how deeply it should think.</p><p>It remembers the conversation, so you can push back on an answer rather than starting again.</p><h2 id="from-answer-to-action">From answer to action</h2><p>Every reply carries actions. <b>Send to Studio</b> turns what a reply recommends into Content Studio briefs, and the whole conversation travels with it rather than the single message you clicked from.</p><p>The <b>Reasoning</b> tab shows it working: every data pull, what it asked for and what came back. Worth opening when an answer surprises you.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/content-studio/">Content Studio<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/intelligence/command-centre/">Command Center<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor<span class="kbnext__k">Product page</span></a></li></ul></div>
-        </div>
+        <figure class="pshot" style="max-width:948px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/intelligence/strategic-advisor</span></div><img alt="The same conversation turned into a Content Studio brief." decoding="async" height="704" loading="lazy" src="/brand/screens/adv-brief.webp" width="846"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 3</span><p>The same conversation turned into a Content Studio brief.</p><span class="pshot__demo">Demo data</span></figcaption></figure></div>
       </div>
     </div>
   </section>
