@@ -28,6 +28,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <!-- /favicon block -->
 <style>html{scroll-padding-top:6rem}</style>
+<style id="screens">
+/* Product screenshots (Ray, 14-15 Oct 2026). Dark app screens in a window
+   frame with the corner brackets, a mono figure label and a plain caption.
+   Hairlines, no shadows or gradients. Pages carry this inline, like the
+   rest of their CSS. */
+.pshot { margin: 0; min-width: 0; position: relative; }
+.pshot__frame { position: relative; display: block; }
+.pshot__ticks { position: absolute; inset: -13px; pointer-events: none; color: color-mix(in oklab, var(--ink, #16150f) 30%, transparent); }
+.pshot__ticks i { position: absolute; width: 16px; height: 16px; }
+.pshot__ticks .tl { top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__ticks .tr { top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .br { bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .bl { bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__win { position: relative; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 16%, transparent); border-radius: var(--radius-m, 16px); overflow: hidden; background: #121110; }
+.pshot__bar { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.85rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: #181715; }
+.pshot__dots { display: inline-flex; gap: 6px; }
+.pshot__dots i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.14); }
+.pshot__url { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pshot img, .pthumb img { display: block; width: 100%; height: auto; background: #121110; }
+.pshot__cap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1.1rem; font-family: var(--font-body, system-ui, sans-serif); font-size: var(--step--1, 0.875rem); line-height: 1.5; color: var(--ink-dim, rgba(22, 21, 16, 0.62)); }
+.pshot__fig, .pshot__demo { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint, rgba(22, 21, 16, 0.42)); white-space: nowrap; }
+.pshot__demo { margin-left: auto; padding-left: 0.75rem; }
+.pshot__cap p { margin: 0; min-width: 0; }
+.pshot--section { margin-top: clamp(2.25rem, 1.6rem + 2vw, 3.25rem); }
+.pshot--inset { max-width: 980px; }
+.kbbody .pshot, .prose .pshot { margin: 2rem 0 2.25rem; }
+.kbbody .pshot--top { margin-top: 1.75rem; }
+.psplit { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 1.4rem + 2vw, 3.5rem); align-items: center; }
+.psplit__text { min-width: 0; }
+.psplit .psplit__fig { margin: 0; width: 100%; max-width: 560px !important; justify-self: end; }
+@media (min-width: 960px) { .psplit { grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); } }
+.pthumb-frame { position: relative; display: block; margin: 0.5rem 0 1.4rem; }
+.pthumb { display: block; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 14%, transparent); border-radius: var(--radius-s, 10px); overflow: hidden; background: #121110; aspect-ratio: 16 / 9; }
+.pthumb img { height: 100%; object-fit: cover; object-position: top left; }
+.tabpanel .pshot__frame { max-width: 64ch; margin: var(--space-l, 2rem) 0 0; }
+.tabpanel .pshot__frame > .tabpanel__shot { margin: 0; max-width: none; }
+.feat .pshot__frame { min-width: 0; }
+@media (max-width: 720px) { .pshot__demo { display: none; } }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -222,7 +261,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <p>Add optional <b>Business Context</b> in Settings, covering your product, audience, locations and tone of voice, and it feeds every output and suggestion.</p>
       <span class="chipnote">Pre-configured for you: no pipeline setup needed</span>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/pipeline</span></div><img src="/brand/welcome/01-pipeline.jpg" alt="Data Pipeline" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/settings</span></div><img src="/brand/screens/settings-pipeline.webp" alt="Data Pipeline" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -232,7 +271,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <p>Each analyzer has its own workspace: opportunities within striking distance of page one, content that's decaying, pages competing with each other, structured data gaps, internal link fixes and more.</p>
       <p>Every finding carries its evidence, an impact estimate, and an AI recommendation you can generate on demand.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/workspaces/opportunities</span></div><img src="/brand/welcome/02-workspace.jpg" alt="Opportunities workspace" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/workspaces/opportunity</span></div><img src="/brand/screens/ws-opportunity-open.webp" alt="Opportunities workspace" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -242,7 +281,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <p>Monitor your own search performance, see the wider <b>Competitive Landscape</b>, and explore search <b>Demand &amp; Trends</b> for your market.</p>
       <p>Then talk it through with the <b>Strategic Advisor</b>: an AI chat with context of everything the tool is connected to, from your GSC data and analyzer findings to competitors, business context and objectives.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence</span></div><img src="/brand/welcome/03-center.jpg" alt="Command Center" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/command-centre</span></div><img src="/brand/screens/command-center.webp" alt="Command Center" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -251,7 +290,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <h3>Ask anything, grounded in your data</h3>
       <p>Performance reads on any page, prioritization calls, next steps: the Advisor answers with your real numbers and can hand work straight to the Content Studio.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/strategic-advisor</span></div><img src="/brand/welcome/04-advisor.jpg" alt="Strategic Advisor" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/strategic-advisor</span></div><img src="/brand/screens/advisor-answer.webp" alt="Strategic Advisor" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -261,7 +300,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <p>Searchscope tracks whether <b>ChatGPT, Claude, Gemini, Perplexity, Google AI Overviews and Google AI Mode</b> mention or cite your brand and pages, combined into a visibility score you can track over time. Fifty prompts are pre-loaded for you, across brand and non-brand, and you can add your own.</p>
       <p>The <b>Campaign Radar</b> tracks your competition for backlink bursts, the pattern that usually marks a PR campaign: what earned the links, who linked, and how to counter via the <b>PR Strategist</b>.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai</span></div><img src="/brand/welcome/05-and-ai-visibility.jpg" alt="Brand and AI Visibility" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/intelligence/brand-ai?view=overview</span></div><img src="/brand/screens/brand-overview.webp" alt="Brand and AI Visibility" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -270,7 +309,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <h3>From finding to brief to draft</h3>
       <p>Start from a finding in any workspace, or just describe what you need. The <b>Content Studio</b> scrapes the live SERP for your country, reads the top competitors, and uses that evidence to generate a content brief or a full draft.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/content-studio</span></div><img src="/brand/welcome/06-studio.jpg" alt="Content Studio" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/content-studio</span></div><img src="/brand/screens/studio-session.webp" alt="Content Studio" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 
   <div class="feat">
@@ -279,7 +318,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
       <h3>Reports shaped for the reader</h3>
       <p>Turn everything Searchscope runs on into tailored reports, formatted for the recipient: marketing, technical, executive, or your client.</p>
     </div>
-    <figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/reporting</span></div><img src="/brand/welcome/07-composer.jpg" alt="Report Composer" loading="lazy"></figure>
+    <div class="pshot__frame"><span class="pshot__ticks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><figure class="appwin"><div class="awbar"><span class="awdots"><i></i><i></i><i></i></span><span class="awurl">app.searchscope.io/reporting</span></div><img src="/brand/screens/reporting.webp" alt="Report Composer" loading="lazy" width="1440" height="900"></figure></div>
   </div>
 </div></section>
 

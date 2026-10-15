@@ -598,6 +598,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .kbbody .kblist b { color: var(--ink); font-weight: 600; }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Searchscope","item":"https://searchscope.io/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://searchscope.io/knowledge-base/"},{"@type":"ListItem","position":3,"name":"Instruments","item":"https://searchscope.io/knowledge-base/#instruments"},{"@type":"ListItem","position":4,"name":"Content Studio","item":"https://searchscope.io/knowledge-base/content-studio/"}]}</script>
+<style id="screens">
+/* Product screenshots (Ray, 14-15 Oct 2026). Dark app screens in a window
+   frame with the corner brackets, a mono figure label and a plain caption.
+   Hairlines, no shadows or gradients. Pages carry this inline, like the
+   rest of their CSS. */
+.pshot { margin: 0; min-width: 0; position: relative; }
+.pshot__frame { position: relative; display: block; }
+.pshot__ticks { position: absolute; inset: -13px; pointer-events: none; color: color-mix(in oklab, var(--ink, #16150f) 30%, transparent); }
+.pshot__ticks i { position: absolute; width: 16px; height: 16px; }
+.pshot__ticks .tl { top: 0; left: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__ticks .tr { top: 0; right: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .br { bottom: 0; right: 0; border-bottom: 1.5px solid currentColor; border-right: 1.5px solid currentColor; }
+.pshot__ticks .bl { bottom: 0; left: 0; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; }
+.pshot__win { position: relative; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 16%, transparent); border-radius: var(--radius-m, 16px); overflow: hidden; background: #121110; }
+.pshot__bar { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.85rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: #181715; }
+.pshot__dots { display: inline-flex; gap: 6px; }
+.pshot__dots i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.14); }
+.pshot__url { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pshot img, .pthumb img { display: block; width: 100%; height: auto; background: #121110; }
+.pshot__cap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1.1rem; font-family: var(--font-body, system-ui, sans-serif); font-size: var(--step--1, 0.875rem); line-height: 1.5; color: var(--ink-dim, rgba(22, 21, 16, 0.62)); }
+.pshot__fig, .pshot__demo { font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--step--2, 0.75rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint, rgba(22, 21, 16, 0.42)); white-space: nowrap; }
+.pshot__demo { margin-left: auto; padding-left: 0.75rem; }
+.pshot__cap p { margin: 0; min-width: 0; }
+.pshot--section { margin-top: clamp(2.25rem, 1.6rem + 2vw, 3.25rem); }
+.pshot--inset { max-width: 980px; }
+.kbbody .pshot, .prose .pshot { margin: 2rem 0 2.25rem; }
+.kbbody .pshot--top { margin-top: 1.75rem; }
+.psplit { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 1.4rem + 2vw, 3.5rem); align-items: center; }
+.psplit__text { min-width: 0; }
+.psplit .psplit__fig { margin: 0; width: 100%; max-width: 560px !important; justify-self: end; }
+@media (min-width: 960px) { .psplit { grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); } }
+.pthumb-frame { position: relative; display: block; margin: 0.5rem 0 1.4rem; }
+.pthumb { display: block; border: 1px solid color-mix(in oklab, var(--ink, #16150f) 14%, transparent); border-radius: var(--radius-s, 10px); overflow: hidden; background: #121110; aspect-ratio: 16 / 9; }
+.pthumb img { height: 100%; object-fit: cover; object-position: top left; }
+.tabpanel .pshot__frame { max-width: 64ch; margin: var(--space-l, 2rem) 0 0; }
+.tabpanel .pshot__frame > .tabpanel__shot { margin: 0; max-width: none; }
+.feat .pshot__frame { min-width: 0; }
+@media (max-width: 720px) { .pshot__demo { display: none; } }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -747,7 +786,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="kbbody">
           <h1 class="sec__title">Content Studio</h1>
           <p class="kblede">Briefs and drafts written from your own data, not from a blank page.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Instruments</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Content Studio</b></p><h2 id="four-ways-to-start">Four ways to start</h2><p>Improve a page, write something new, fix one of this week's findings, or open a blank canvas. Each mode asks for exactly what it needs and opens the session pre-filled.</p><p>Most sessions don't start here at all. They arrive from a workspace finding or a Strategic Advisor reply, carrying their context with them.</p><h2 id="what-a-session-does">What a session does</h2><p>A session reads the top-ranking pages for your target, breaks down what they cover that you don't, and writes a structured brief: title, headings, keyword strategy.</p><p>From the brief you can generate a full draft. The brief is the part worth reading carefully, because it's where the thinking is.</p><h2 id="where-sessions-live">Where sessions live</h2><p>Every brief stays in the sessions list, so a piece you started and left is where you put it.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Instruments</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Content Studio</b></p><figure class="pshot pshot--top"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/content-studio</span></div><img alt="Content Studio: the chat, the draft and the source context side by side." decoding="async" height="900" loading="lazy" src="/brand/screens/studio-main.webp" width="1244"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 1</span><p>Content Studio: the chat, the draft and the source context side by side.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="four-ways-to-start">Four ways to start</h2><p>Improve a page, write something new, fix one of this week's findings, or open a blank canvas. Each mode asks for exactly what it needs and opens the session pre-filled.</p><p>Most sessions don't start here at all. They arrive from a workspace finding or a Strategic Advisor reply, carrying their context with them.</p><figure class="pshot"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/content-studio</span></div><img alt="Four ways to start a session." decoding="async" height="420" loading="lazy" src="/brand/screens/studio-ask.webp" width="1226"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>Four ways to start a session.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="what-a-session-does">What a session does</h2><p>A session reads the top-ranking pages for your target, breaks down what they cover that you don't, and writes a structured brief: title, headings, keyword strategy.</p><p>From the brief you can generate a full draft. The brief is the part worth reading carefully, because it's where the thinking is.</p><h2 id="where-sessions-live">Where sessions live</h2><p>Every brief stays in the sessions list, so a piece you started and left is where you put it.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/content-planner/">Content Planner<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/">Strategic Advisor<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/workspace/decay/">Content Decay<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/instruments/content-studio/">Content Studio<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
