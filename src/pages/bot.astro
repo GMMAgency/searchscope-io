@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { GMM } from '../consts';
+---
+
+<BaseLayout
+  title="The Searchscope crawler"
+  description="What SearchscopeBot is, why it visits a website, how to recognize it, and how to allow or block it."
+  headerTheme="dark"
+>
+  <PageHero
+    eyebrow="Crawler"
+    title="The Searchscope crawler"
+    lede="SearchscopeBot reads websites that their owners have connected to Searchscope. This page explains what it does, how to recognize it, and how to allow or block it."
+  />
+
+  <section class="section section--tight theme-dark">
+    <div class="container container--narrow">
+      <div class="prose reveal">
+        <h2>What it does</h2>
+        <p>
+          SearchscopeBot visits a website when the site owner connects it to Searchscope. It fetches
+          the public HTML pages, follows internal links and reads the sitemap. It records titles,
+          headings, links, images, structured data (schema.org) and the page text, so the analysis
+          can run. It does not log in, submit forms or fetch anything behind a password.
+        </p>
+
+        <h2>How to recognize it</h2>
+        <dl class="bot-id">
+          <dt>Name</dt>
+          <dd>SearchscopeBot</dd>
+          <dt>User agent</dt>
+          <dd>SearchscopeBot/1.0 (+https://searchscope.io/bot)</dd>
+          <dt>IP address</dt>
+          <dd>161.35.167.82</dd>
+        </dl>
+        <p>Every request comes from that one IP address.</p>
+
+        <h2>How it behaves</h2>
+        <ul class="bot-list">
+          <li>
+            It checks robots.txt before it fetches a URL. It follows the rules for its user agent,
+            including a Crawl-delay line if you set one.
+          </li>
+          <li>
+            It makes at most 6 requests at a time, with a 0.3 second pause between requests to the
+            same site. A customer can slow it down further in their settings.
+          </li>
+          <li>A crawl reads between about 500 and 10,000 pages, depending on the customer's plan.</li>
+          <li>
+            After a crawl it checks up to 100 outbound links from the site to see that they still
+            work. It sends a HEAD request for each one, which asks for the headers only, not the page.
+          </li>
+        </ul>
+
+        <h2>Allow it</h2>
+        <p>
+          If a firewall or bot protection blocks unknown crawlers, allow the IP address
+          <code>161.35.167.82</code> or the user agent string above. This applies to Cloudflare,
+          Sucuri, Wordfence and similar tools.
+        </p>
+
+        <h2>Block it</h2>
+        <p>Add these two lines to your robots.txt:</p>
+        <pre><code>User-agent: SearchscopeBot
+Disallow: /</code></pre>
+        <p>Or block the IP address <code>161.35.167.82</code>.</p>
+        <p>
+          Blocking the crawler stops the analysis for that site. The site owner then sees no findings
+          from Searchscope. If someone else set up Searchscope for the site, check with them before
+          you block it.
+        </p>
+
+        <h2>Content Studio</h2>
+        <p>
+          When a customer uses Content Studio, the same user agent fetches single public pages they
+          point it at: their own page, or a competitor's page they are studying. That is one request
+          per page, not a crawl.
+        </p>
+
+        <p class="prose__foot">
+          Questions about the crawler? <a href="/contact">Contact us</a>. Searchscope is built and run
+          by {GMM.name}.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 68ch;
+  }
+  .prose h2 {
+    font-size: var(--step-2);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xs);
+  }
+  .prose h2:first-of-type {
+    margin-top: 0;
+  }
+  .prose p {
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    margin-bottom: var(--space-s);
+  }
+  .prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    color: var(--ink);
+  }
+  .prose pre {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--surface-panel);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    padding: var(--space-s) var(--space-m);
+    margin-bottom: var(--space-s);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .prose pre code {
+    font-size: inherit;
+  }
+  .bot-id {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.7rem var(--space-m);
+    margin: var(--space-m) 0 var(--space-s);
+    padding: var(--space-m);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-s);
+    background: var(--surface-panel);
+  }
+  .bot-id dt {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    padding-top: 0.2em;
+  }
+  .bot-id dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 560px) {
+    .bot-id {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+    .bot-id dd {
+      margin-bottom: 0.7rem;
+    }
+    .bot-id dd:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .bot-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-s);
+    display: grid;
+    gap: 0.7rem;
+  }
+  .bot-list li {
+    position: relative;
+    padding-left: 1.15rem;
+    color: var(--ink-dim);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+  .bot-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+  .prose__foot {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--hairline);
+  }
+</style>
