@@ -1005,18 +1005,6 @@ html, body { overflow-x: hidden; }
 
     /* ---- proposed homepage: the new components ---- */
 
-    /* 02 · the overview numbers */
-    .hpk { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid;
-           grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-l); }
-    .hpk__i { border-top: 1px solid var(--ink); padding-top: var(--space-s); min-width: 0; }
-    .hpk__v { display: block; font-family: var(--font-display); font-weight: 600;
-              font-size: var(--step-4); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
-    .hpk__v--down { color: var(--sev-rose-ink); }
-    .hpk__l { display: block; margin-top: var(--space-2xs); font-family: var(--font-mono);
-              font-size: var(--step--1); color: var(--ink-dim); line-height: 1.4; }
-    @media (max-width: 900px) { .hpk { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 460px) { .hpk { grid-template-columns: 1fr; } }
-
     /* 03 · the three pillars */
     .pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
                gap: var(--space-l); margin: var(--space-xl) 0 0; }
@@ -1079,25 +1067,75 @@ html, body { overflow-x: hidden; }
     @media (max-width: 1080px) { .anat--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 620px) { .anat--four { grid-template-columns: 1fr; } }
 
-    /* hero: copy left, the account panel right */
-    .hero .hero__grid { grid-template-columns: 0.825fr 1.175fr; align-items: center;
-                        gap: clamp(2rem, 5vw, 4.5rem); }
-    .hero .sec__head, .hero .hero__grid, .hero .hero__actions { min-width: 0; }
-    .hero .hero__visual, .hero .hpanel { min-width: 0; }
-    .hero .hero__title { max-width: 18ch; }
-    .hero .hero__sub { max-width: 54ch; }
-    @media (max-width: 980px) {
-      .hero .hero__grid { grid-template-columns: minmax(0, 1fr); }
-      .hero .hero__visual { order: 0; }
-      .hero .hero__title { max-width: 22ch; }
-    }
+    /* hero: a centered statement over the filter window. The window stands tilted
+       back on the grid and straightens as it scrolls in (Ray, 21 Oct 2026). */
+    .hero--stage { padding-bottom: 0; border-bottom: 1px solid var(--hairline); text-align: center; }
+    .hero--stage .hero__title { font-size: clamp(2.3rem, 0.9rem + 5vw, 5.4rem); line-height: 0.95;
+                                letter-spacing: -0.052em; max-width: 20ch; margin: var(--space-s) auto 0; }
+    .hero--stage .hero__sub { font-size: var(--step-0); max-width: 62ch; margin: var(--space-l) auto 0; }
+    .hero--stage .hero__actions { justify-content: center; }
+    /* centered, a wrapped eyebrow leaves one word alone on a phone: even the lines out */
+    .hero--stage .eyebrow { display: block; text-wrap: balance; }
+    .hstage { position: relative; margin-top: clamp(2.5rem, 5vw, 4rem); perspective: 1700px; perspective-origin: 50% 0%; }
+    .hstage__floor { position: absolute; left: -40%; right: -40%; bottom: 0; height: 90%; z-index: -1; pointer-events: none;
+                     transform: rotateX(74deg); transform-origin: 50% 100%;
+                     background-image:
+                       linear-gradient(to right, color-mix(in oklab, var(--ink) 10%, transparent) 1px, transparent 1px),
+                       linear-gradient(to bottom, color-mix(in oklab, var(--ink) 10%, transparent) 1px, transparent 1px);
+                     background-size: 64px 64px;
+                     -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 92%);
+                     mask-image: linear-gradient(to top, #000 0%, transparent 92%); }
+    .hstage__panel { position: relative; max-width: 1100px; margin-inline: auto; text-align: left;
+                     transform-origin: 50% 100%; transform: rotateX(var(--tilt, 14deg)); will-change: transform; }
 
-    /* the hero queue: one row per source, so the breadth is the point */
-    .appwin .hpk { grid-template-columns: repeat(4, minmax(0, 1fr));
-                   gap: var(--space-s); margin: var(--space-m) 0 0; }
-    .appwin .hpk__i { border-top-color: var(--hairline); padding-top: var(--space-2xs); }
-    .appwin .hpk__v { font-size: var(--step-2); }
-    .appwin .hpk__l { font-size: var(--step--2); }
+    /* the filter window: five sources in, a "worth your time?" line, the queue out */
+    .flow { border: 1px solid var(--hairline); border-bottom: 0; border-radius: var(--radius-m) var(--radius-m) 0 0;
+            background: var(--surface-panel); overflow: hidden; font-family: var(--font-display);
+            box-shadow: 0 60px 120px -50px rgba(0, 0, 0, 0.45), 0 18px 40px -24px rgba(0, 0, 0, 0.25); }
+    .awtally { margin-left: auto; font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); white-space: nowrap; }
+    .awtally b { color: var(--ink); font-weight: 500; }
+    .flow__body { position: relative; display: grid; min-height: 400px;
+                  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.15fr) minmax(0, 1.3fr); }
+    .flow__body canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .flow__src { position: relative; z-index: 1; padding: 1.4rem 1.25rem; display: flex; flex-direction: column;
+                 justify-content: space-around; gap: var(--space-xs); }
+    .flow__h { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+    .src { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.3rem var(--space-xs); align-items: baseline; }
+    .src__n { font-family: var(--font-body); font-size: var(--step--1); font-weight: 550; }
+    .src__c { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+    .src__bar { grid-column: 1 / -1; height: 3px; border-radius: 2px; background: var(--surface-panel-2); overflow: hidden; }
+    .src__bar i { display: block; height: 100%; width: var(--w); background: var(--ink); opacity: 0.5; border-radius: 2px; }
+    .flow__mid { position: relative; z-index: 1; }
+    .gate { position: absolute; top: 2.6rem; bottom: 2.6rem; left: 60%; border-left: 1px dashed color-mix(in oklab, var(--ink) 34%, transparent); }
+    .gate__q { position: absolute; top: 0; left: 0; transform: translate(-50%, -130%); font-family: var(--font-mono); font-size: var(--step--2);
+               white-space: nowrap; color: var(--ink); background: var(--surface-panel); border: 1px solid var(--hairline);
+               border-radius: var(--radius-pill); padding: 0.25em 0.75em; }
+    .gate__k { position: absolute; bottom: 0; left: 0; transform: translate(-50%, 130%); display: flex; gap: 0.9rem;
+               font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); white-space: nowrap; }
+    .gate__k span { display: inline-flex; align-items: center; gap: 0.4em; }
+    .gate__k span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: color-mix(in oklab, var(--ink) 30%, transparent); }
+    .gate__k span:last-child { color: var(--ink); }
+    .gate__k span:last-child::before { background: var(--rose); }
+    .flow__q { position: relative; z-index: 1; border-left: 1px solid var(--hairline); padding: 1.1rem 1.15rem 0.9rem;
+               display: flex; flex-direction: column; }
+    .flow__q .qq { margin-top: 0.9rem; }
+    .flow__q .qq__foot { margin-top: auto; padding-top: 0.8rem; }
+    /* Below 900px the window stacks and stands flat: no tilt, no floor, no flow,
+       the counts stay as text. */
+    @media (max-width: 900px) {
+      .hstage__panel { transform: none; }
+      .hstage__floor { display: none; }
+      .flow__body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+      .flow__body canvas { display: none; }
+      .flow__src { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1.5rem; padding: 1.1rem; }
+      .flow__h { grid-column: 1 / -1; }
+      .flow__mid { border-top: 1px solid var(--hairline); padding: 0.75rem 1.1rem; }
+      .gate { position: static; border: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; }
+      .gate__q, .gate__k { position: static; transform: none; }
+      .flow__q { border-left: 0; border-top: 1px solid var(--hairline); }
+    }
+    @media (max-width: 620px) { .awtally .long { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .hstage__panel { transform: none; } }
 
     .qq { list-style: none; padding: 0; margin: var(--space-l) 0 0;
           border-top: 1px solid var(--hairline); }
@@ -1127,26 +1165,22 @@ html, body { overflow-x: hidden; }
     .qq__s { font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-dim);
              border: 1px solid var(--hairline); border-radius: var(--radius-pill);
              padding: 0.2em 0.6em; white-space: nowrap; }
+    .flow__q .qq__s { display: none; }
+    @keyframes qq-ping { 0% { box-shadow: 0 0 0 0 currentColor; } 100% { box-shadow: 0 0 0 8px transparent; } }
+    .qq__d.ping { animation: qq-ping 650ms ease-out; }
     .qq__foot { display: flex; justify-content: flex-end; margin: var(--space-s) 0 0;
                 font-family: var(--font-mono); font-size: var(--step--2); color: var(--ink-faint); }
-    /* Mobile: the panel is the same height as on desktop while the width halves,
-       so it reads as a long strip (334x724 at 375px, h/w 2.17). Trim the rows
-       and tighten the spacing to bring it back towards square. */
+    /* Mobile: the stacked window runs long on a phone. Trim the rows and
+       tighten the spacing to keep it near one screen. */
     @media (max-width: 620px) {
-      .appwin .hpk { grid-template-columns: repeat(2, minmax(0, 1fr));
-                     gap: var(--space-xs) var(--space-m); margin-top: var(--space-s); }
-      .appwin .hpk__v { font-size: var(--step-1); }
-      .qq { margin-top: var(--space-m); }
       .qq__r { padding: 0.5rem 0; gap: var(--space-xs); }
       .qq__s { display: none; }
       .qq__r:nth-child(n+4) { display: none; }   /* 3 rows is enough to make the point */
       .qq__foot { margin-top: var(--space-xs); }
       .qq__n { display: none; }   /* rows are trimmed here, so the count would lie */
-      .hero .awsub { display: none; }            /* the lede already says this */
     }
     @media (max-width: 400px) {
       .qq__r:nth-child(n+3) { display: none; }
-      .appwin .hpk__l { font-size: 9px; }
     }
 </style>
 <style>html{scroll-padding-top:6rem}</style>
@@ -1330,88 +1364,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
   <!-- ============ 01 · HERO ============ -->
-  <section class="section hero bg-grid">
+  <section class="section hero hero--stage bg-grid">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="hero__grid">
-      <div class="sec__head">
-        <span class="eyebrow reveal">Operating system for modern search teams</span>
-        <h1 class="hero__title reveal" style="--reveal-delay:60ms">
-          The SEO &amp; AI Search Intelligence Platform.
-        </h1>
-        <p class="hero__sub reveal" style="--reveal-delay:170ms">
-          Search teams don&rsquo;t need another dashboard full of data.
-          <b>Searchscope brings together your search performance, site crawl, competitors, market demand and AI visibility</b>, filters out the findings that aren&rsquo;t worth your time, and shows you what deserves attention next. Then you can track what happened after the work was done.
-        </p>
-        <div class="hero__actions reveal" style="--reveal-delay:220ms">
-          <a href="/beta/" class="btn btn--lg">
-            Join the beta
-            <span class="btn__arrow" aria-hidden="true">&#8594;</span>
-          </a>
-        </div>
+      <span class="eyebrow reveal">Operating system for modern search teams</span>
+      <h1 class="hero__title reveal" style="--reveal-delay:60ms">
+        The SEO &amp; AI Search Intelligence Platform.
+      </h1>
+      <p class="hero__sub reveal" style="--reveal-delay:170ms">
+        Search teams don&rsquo;t need another dashboard full of data.
+        <b>Searchscope brings together your search performance, site crawl, competitors, market demand and AI visibility</b>, filters out the findings that aren&rsquo;t worth your time, and shows you what deserves attention next. Then you can track what happened after the work was done.
+      </p>
+      <div class="hero__actions reveal" style="--reveal-delay:220ms">
+        <a href="/beta/" class="btn btn--lg">
+          Join the beta
+          <span class="btn__arrow" aria-hidden="true">&#8594;</span>
+        </a>
       </div>
 
-      <div class="hero__visual reveal" style="--reveal-delay:200ms">
-        <div class="ticked">
-          <span class="ticks" aria-hidden="true">
-            <span class="ticks__c ticks__tl"></span>
-            <span class="ticks__c ticks__tr"></span>
-            <span class="ticks__c ticks__br"></span>
-            <span class="ticks__c ticks__bl"></span>
-          </span>
-          <div class="appwin">
-            <div class="awbar">
-              <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="awurl">app.searchscope.io</span>
-              <span class="awtab">This week</span>
-            </div>
-            <div class="awbody">
-              <div class="awhead">
-                <div>
+      <div class="reveal" style="--reveal-delay:260ms">
+        <div class="hstage" id="hero-stage">
+          <div class="hstage__floor" aria-hidden="true"></div>
+          <div class="hstage__panel">
+            <div class="flow">
+              <div class="awbar">
+                <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="awurl">app.searchscope.io</span>
+                <span class="awtally"><b class="cnt" data-n="1284">1,284</b> <span class="long">checked this week</span> &rarr; <b>23</b> <span class="long">worth your time</span></span>
+              </div>
+              <div class="flow__body">
+                <canvas aria-hidden="true"></canvas>
+                <div class="flow__src">
+                  <span class="flow__h">Sources</span>
+                  <div class="src" data-w="642"><span class="src__n">Search data</span><span class="src__c">642</span><span class="src__bar"><i style="--w:100%"></i></span></div>
+                  <div class="src" data-w="318"><span class="src__n">Site crawl</span><span class="src__c">318</span><span class="src__bar"><i style="--w:49.5%"></i></span></div>
+                  <div class="src" data-w="147"><span class="src__n">Competitors</span><span class="src__c">147</span><span class="src__bar"><i style="--w:22.9%"></i></span></div>
+                  <div class="src" data-w="96"><span class="src__n">Market demand</span><span class="src__c">96</span><span class="src__bar"><i style="--w:15%"></i></span></div>
+                  <div class="src" data-w="81"><span class="src__n">AI answers</span><span class="src__c">81</span><span class="src__bar"><i style="--w:12.6%"></i></span></div>
+                </div>
+                <div class="flow__mid">
+                  <div class="gate">
+                    <span class="gate__q">Worth your time?</span>
+                    <span class="gate__k"><span>1,261 set aside</span><span>23 kept</span></span>
+                  </div>
+                </div>
+                <div class="flow__q">
                   <span class="awtitle">What needs your attention</span>
-                  <span class="awsub">Your site, your market, your competitors, and how AI assistants answer questions in your category</span>
+                  <ul class="qq">
+                    <li class="qq__r" style="--i:0">
+                      <span class="qq__d" style="background:var(--rose);color:var(--rose)" aria-hidden="true"></span>
+                      <span class="qq__m"><b>Content decay</b><span>/blog/best-campsites-uk &middot; 412 clicks lost</span></span>
+                      <span class="qq__s">Analyzers</span>
+                    </li>
+                    <li class="qq__r" style="--i:1">
+                      <span class="qq__d" style="background:var(--rose);color:var(--rose)" aria-hidden="true"></span>
+                      <span class="qq__m"><b>Dropped out of ChatGPT</b><span>&ldquo;best waterproof jacket&rdquo; &middot; competitor named instead</span></span>
+                      <span class="qq__s">AI &amp; Brand</span>
+                    </li>
+                    <li class="qq__r" style="--i:2">
+                      <span class="qq__d" style="background:var(--amber);color:var(--amber)" aria-hidden="true"></span>
+                      <span class="qq__m"><b>Competitor link spike</b><span>alpinetrail.co.uk &middot; 46 new domains this month</span></span>
+                      <span class="qq__s">AI &amp; Brand</span>
+                    </li>
+                    <li class="qq__r" style="--i:3">
+                      <span class="qq__d" style="background:var(--amber);color:var(--amber)" aria-hidden="true"></span>
+                      <span class="qq__m"><b>Losing share as demand rises</b><span>&ldquo;campsites uk&rdquo; cluster &middot; demand +15%, you capture 43%</span></span>
+                      <span class="qq__s">Search Intel</span>
+                    </li>
+                  </ul>
+                  <p class="qq__foot"><span class="qq__n">4 of 23</span></p>
                 </div>
               </div>
-
-              <div class="hpk">
-                <div class="hpk__i"><span class="hpk__v cnt" data-n="23">23</span><span class="hpk__l">findings prioritized</span></div>
-                <div class="hpk__i"><span class="hpk__v cnt" data-n="5">5</span><span class="hpk__l">topics losing visibility</span></div>
-                <div class="hpk__i"><span class="hpk__v hpk__v--down cnt" data-n="-7" data-suf="%">&minus;7%</span><span class="hpk__l">AI visibility</span></div>
-                <div class="hpk__i"><span class="hpk__v cnt" data-n="3">3</span><span class="hpk__l">competitor activity spikes</span></div>
-              </div>
-
-              <ul class="qq">
-                <li class="qq__r" style="--i:0">
-                  <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
-                  <span class="qq__m"><b>Content decay</b><span>/blog/best-campsites-uk &middot; 412 clicks lost</span></span>
-                  <span class="qq__s">Analyzers</span>
-                </li>
-                <li class="qq__r" style="--i:1">
-                  <span class="qq__d" style="background:var(--rose)" aria-hidden="true"></span>
-                  <span class="qq__m"><b>Dropped out of ChatGPT</b><span>&ldquo;best waterproof jacket&rdquo; &middot; competitor named instead</span></span>
-                  <span class="qq__s">AI &amp; Brand</span>
-                </li>
-                <li class="qq__r" style="--i:2">
-                  <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
-                  <span class="qq__m"><b>Competitor link spike</b><span>alpinetrail.co.uk &middot; 46 new domains this month</span></span>
-                  <span class="qq__s">AI &amp; Brand</span>
-                </li>
-                <li class="qq__r" style="--i:3">
-                  <span class="qq__d" style="background:var(--amber)" aria-hidden="true"></span>
-                  <span class="qq__m"><b>Losing share as demand rises</b><span>&ldquo;campsites uk&rdquo; cluster &middot; demand +15%, you capture 43%</span></span>
-                  <span class="qq__s">Search Intel</span>
-                </li>
-                <li class="qq__r qq__r--cut" style="--i:4">
-                  <span class="qq__d" style="background:var(--emerald)" aria-hidden="true"></span>
-                  <span class="qq__m"><b>Applied change working</b><span>/blog/best-hiking-boots &middot; +18% impressions since 12 Aug</span></span>
-                  <span class="qq__s">Impact</span>
-                </li>
-              </ul>
-              <p class="qq__foot"><span class="qq__n">5 of 23</span></p>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </section>
@@ -1668,6 +1694,134 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     // failsafe: never leave content hidden
     setTimeout(function () { revealEls.forEach(function (el) { if (el.classList.contains('is-in')) return; var r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) activate(el); }); }, 2600);
+  })();
+</script>
+
+<script>
+  /* Hero stage. The filter window stands tilted back on the grid and straightens
+     as it scrolls in; inside it, findings flow from the five sources to the
+     "worth your time?" line, most are set aside, and the kept ones reach their
+     row in the queue. The canvas tilts with the window, so geometry comes from
+     layout offsets, not screen rectangles. Off below 900px (the window stacks)
+     and for reduced motion (a still frame). */
+  (function () {
+    var stage = document.getElementById('hero-stage');
+    if (!stage) return;
+    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var panel = stage.querySelector('.hstage__panel');
+    var body = stage.querySelector('.flow__body');
+    var cv = body.querySelector('canvas');
+    var srcZone = body.querySelector('.flow__src'), qZone = body.querySelector('.flow__q'), gate = body.querySelector('.gate');
+    var srcs = [].slice.call(body.querySelectorAll('.src'));
+    var dots = [].slice.call(qZone.querySelectorAll('.qq__d'));
+    var cols = dots.map(function (d) { return getComputedStyle(d).backgroundColor; });
+    var srcW = srcs.map(function (s) { return +s.getAttribute('data-w'); });
+    var rowW = [3, 3, 2, 2];
+    var TAU = Math.PI * 2, GREY = 'rgba(22,21,15,0.36)';
+
+    /* tilt: 20deg as the stage enters the bottom of the screen, flat by 15% from the top */
+    if (!reduced) {
+      var pending = false;
+      var tilt = function () {
+        pending = false;
+        var vh = window.innerHeight || 800, r = stage.getBoundingClientRect();
+        var p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.85)));
+        panel.style.setProperty('--tilt', (20 * (1 - p)).toFixed(2) + 'deg');
+      };
+      window.addEventListener('scroll', function () { if (!pending) { pending = true; requestAnimationFrame(tilt); } }, { passive: true });
+      window.addEventListener('resize', tilt);
+      tilt();
+    }
+
+    var ctx = null, W = 0, H = 0, S = [], GP = [], T = [], parts = [];
+    var ok = false, on = false, visible = false, raf = 0, last = 0, acc = 0;
+
+    function pick(w) {
+      var s = 0, i; for (i = 0; i < w.length; i++) s += w[i];
+      var r = Math.random() * s; for (i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i; } return w.length - 1;
+    }
+    function bez(c, t) {
+      var u = 1 - t;
+      return { x: u*u*u*c[0].x + 3*u*u*t*c[1].x + 3*u*t*t*c[2].x + t*t*t*c[3].x,
+               y: u*u*u*c[0].y + 3*u*u*t*c[1].y + 3*u*t*t*c[2].y + t*t*t*c[3].y };
+    }
+    function off(el) { var x = 0, y = 0; while (el && el !== body) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x: x, y: y }; }
+    function geo() {
+      ok = getComputedStyle(cv).display !== 'none';
+      if (!ok) return;
+      W = body.offsetWidth; H = body.offsetHeight;
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var sz = off(srcZone), qz = off(qZone), g = off(gate);
+      var gy = g.y + gate.offsetHeight / 2;
+      S = srcs.map(function (s) { var o = off(s); return { x: sz.x + srcZone.offsetWidth - 10, y: o.y + s.offsetHeight / 2 }; });
+      GP = srcs.map(function (_, i) { return { x: g.x, y: gy + (i - (srcs.length - 1) / 2) * 8 }; });
+      T = dots.map(function (d) { var o = off(d); return { x: qz.x, y: o.y + d.offsetHeight / 2 }; });
+    }
+    function toGate(i) { var a = S[i], d = GP[i], dx = d.x - a.x; return [a, { x: a.x + dx * 0.55, y: a.y }, { x: a.x + dx * 0.45, y: d.y }, d]; }
+    function toRow(i, j) { var a = GP[i], d = T[j], dx = d.x - a.x; return [a, { x: a.x + dx * 0.5, y: a.y }, { x: a.x + dx * 0.5, y: d.y }, d]; }
+    function spawn(t0) {
+      return { i: pick(srcW), t: t0 || 0, ph: 0, sp: 1 / (2.3 + Math.random() * 1.5), keep: Math.random() < 0.07, j: pick(rowW),
+               dx: 0, dy: 0, vx: 28 + Math.random() * 40, vy: 6 + Math.random() * 22, a: 1, jit: (Math.random() - 0.5) * 7 };
+    }
+    function ping(d) { d.classList.remove('ping'); void d.offsetWidth; d.classList.add('ping'); }
+    function step(dt) {
+      acc += dt * 36;
+      while (acc > 1) { acc -= 1; parts.push(spawn()); }
+      for (var k = parts.length - 1; k >= 0; k--) {
+        var p = parts[k];
+        if (p.ph === 0) {
+          p.t += dt * p.sp;
+          if (p.t >= 1) { p.t = 0; if (p.keep) { p.ph = 1; p.sp = 1 / (1 + Math.random() * 0.5); } else { p.ph = 2; } }
+        } else if (p.ph === 1) {
+          p.t += dt * p.sp;
+          if (p.t >= 1) { ping(dots[p.j]); parts.splice(k, 1); }
+        } else {
+          p.t += dt; p.dx += p.vx * dt; p.dy += p.vy * dt; p.vy += 70 * dt; p.a = 1 - p.t / 0.9;
+          if (p.a <= 0) parts.splice(k, 1);
+        }
+      }
+    }
+    function stroke(c) { ctx.beginPath(); ctx.moveTo(c[0].x, c[0].y); ctx.bezierCurveTo(c[1].x, c[1].y, c[2].x, c[2].y, c[3].x, c[3].y); ctx.stroke(); }
+    function draw() {
+      if (!ok || !ctx) return;
+      ctx.clearRect(0, 0, W, H);
+      var i, mid = Math.floor(S.length / 2);
+      ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(22,21,15,0.08)';
+      for (i = 0; i < S.length; i++) stroke(toGate(i));
+      ctx.setLineDash([2, 4]); ctx.strokeStyle = 'rgba(22,21,15,0.14)';
+      for (i = 0; i < T.length; i++) stroke(toRow(mid, i));
+      ctx.setLineDash([]);
+      for (var k = 0; k < parts.length; k++) {
+        var p = parts[k], pt, r;
+        if (p.ph === 0) { pt = bez(toGate(p.i), p.t); pt.y += p.jit * Math.sin(Math.PI * p.t); ctx.fillStyle = GREY; r = 1.7; }
+        else if (p.ph === 1) { pt = bez(toRow(p.i, p.j), p.t); ctx.fillStyle = cols[p.j]; r = 2.7; }
+        else { pt = { x: GP[p.i].x + p.dx, y: GP[p.i].y + p.dy }; ctx.fillStyle = 'rgba(22,21,15,' + (0.3 * Math.max(0, p.a)).toFixed(3) + ')'; r = 1.6; }
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, r, 0, TAU); ctx.fill();
+      }
+    }
+    function frame(ts) {
+      if (!on) return;
+      var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016; last = ts;
+      step(dt); draw(); raf = requestAnimationFrame(frame);
+    }
+    function start() { if (on || reduced || !ok) return; on = true; last = 0; raf = requestAnimationFrame(frame); }
+    function stop() { on = false; cancelAnimationFrame(raf); }
+    /* start mid-flow, so the first frame (and the reduced-motion still) already shows it */
+    function seed() {
+      parts = [];
+      for (var n = 0; n < 64; n++) parts.push(spawn(Math.random()));
+      for (var m = 0; m < 4; m++) { var q = spawn(); q.ph = 1; q.j = m; q.t = 0.25 + Math.random() * 0.55; parts.push(q); }
+    }
+    function init() { geo(); if (!ok) { stop(); return; } if (!parts.length) seed(); draw(); if (visible) start(); }
+
+    if ('ResizeObserver' in window) new ResizeObserver(init).observe(body); else window.addEventListener('resize', init);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) start(); else stop(); }).observe(body);
+    } else { visible = true; }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+    init();
   })();
 </script>
 
