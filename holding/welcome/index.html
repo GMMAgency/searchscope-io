@@ -226,7 +226,7 @@ footer .container { display:flex; justify-content:space-between; align-items:cen
   /* Nothing may create a horizontal scrollbar. See MOBILE.md in the workspace:
      a nowrap label wider than the screen dragged /use-cases/agencies/ sideways
      on a phone. This page has no .btn rule, so it only needs the guard. */
-  html, body { overflow-x: hidden; }
+  html, body { overflow-x: hidden; overflow-x: clip; }
 </style>
 
 <header class="site-head"><div class="container">

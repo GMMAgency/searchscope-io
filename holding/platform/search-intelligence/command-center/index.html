@@ -155,6 +155,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden on body breaks the sticky header (hidden stays as the fallback for old browsers) */
 }h1,h2,h3{
   margin: 0;
   font-family: var(--font-display);
@@ -209,7 +210,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
   white-space: nowrap;
   cursor: pointer;
-}@media (max-width: 560px){.btn{ white-space: normal; }}.sec__head,.sec__head,.hero__visual,.hero__grid,.hero__actions{ min-width: 0; }html,body{ overflow-x: hidden; }.btn:hover{
+}@media (max-width: 560px){.btn{ white-space: normal; }}.sec__head,.sec__head,.hero__visual,.hero__grid,.hero__actions{ min-width: 0; }html,body{ overflow-x: hidden; overflow-x: clip; }.btn:hover{
   background: var(--accent-deep);
   transform: translateY(-1px);
   box-shadow: 0 10px 30px -12px var(--accent-glow);
