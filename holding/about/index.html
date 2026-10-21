@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Searchscope · Built for Modern Search Teams</title>
 <meta name="description" content="Meet Searchscope: a practitioner-built search operating system connecting intelligence, workflows and measurement to help teams do better search work.">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://searchscope.io/about/">
 <meta property="og:title" content="About Searchscope · Built for Modern Search Teams">
 <meta property="og:description" content="Meet Searchscope: a practitioner-built search operating system connecting intelligence, workflows and measurement to help teams do better search work.">
@@ -1178,7 +1178,7 @@ html, body { overflow-x: hidden; overflow-x: clip; }
 .ab-links { display: flex; flex-wrap: wrap; gap: var(--space-m) var(--space-l); align-items: center; margin-top: var(--space-l); }
 .ab-link { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hairline); padding-bottom: 2px; }
 .ab-link:hover { border-color: var(--ink); }
-.ab-link:focus-visible, .ab-switch a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+.ab-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
 @media (max-width: 900px) {
   .ab-two { grid-template-columns: minmax(0, 1fr); }
   .ab-two__aside { position: static; }
@@ -1240,12 +1240,6 @@ html, body { overflow-x: hidden; overflow-x: clip; }
 
 @media (max-width: 560px) { .cta .btn--lg { font-size: var(--step-0); white-space: nowrap; } }
 
-/* drafts only: flip between the three versions */
-.ab-switch { position: fixed; z-index: 60; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 2px; padding: 4px; border-radius: 999px; background: var(--ink); color: #fff; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; box-shadow: var(--shadow-m); }
-.ab-switch b { font-weight: 500; padding: 0 10px 0 8px; opacity: 0.6; }
-.ab-switch a { color: #fff; text-decoration: none; padding: 6px 11px; border-radius: 999px; }
-.ab-switch a[aria-current] { background: #fff; color: var(--ink); }
-@media (max-width: 1000px) { .ab-switch { bottom: auto; top: 76px; } }
 </style>
 </head>
 <body>
@@ -1368,7 +1362,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Product updates</span>
                 <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
-              <span class="navmenu__soon">About <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
               <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
               <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
             </div>
@@ -1431,7 +1425,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </section>
-<nav class="ab-switch" aria-label="About page drafts"><b>Draft</b><a href="/about/v1/" title="Editorial">1 · Editorial</a><a href="/about/v2/" aria-current="page" title="Tight">2 · Tight</a><a href="/about/v3/" title="Principles">3 · Principles</a></nav>
 </main>
 
 <div class="stickycta">
