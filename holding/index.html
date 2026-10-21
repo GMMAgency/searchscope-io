@@ -1071,8 +1071,9 @@ html, body { overflow-x: hidden; overflow-x: clip; }
     /* hero: a centered statement over the filter window. The window stands tilted
        back on the grid and straightens as it scrolls in (Ray, 21 Oct 2026). */
     .hero--stage { padding-bottom: 0; border-bottom: 1px solid var(--hairline); text-align: center; }
-    .hero--stage .hero__title { font-size: clamp(2.3rem, 0.9rem + 5vw, 5.4rem); line-height: 0.95;
-                                letter-spacing: -0.052em; max-width: 20ch; margin: var(--space-s) auto 0; }
+    /* Instrument display: weight 600, letter-spacing -0.02 to -0.03em (Ray, 21 Oct 2026: was -0.052em) */
+    .hero--stage .hero__title { font-size: clamp(2.3rem, 0.9rem + 5vw, 5.4rem); line-height: 1;
+                                letter-spacing: -0.03em; max-width: 20ch; margin: var(--space-s) auto 0; }
     .hero--stage .hero__sub { font-size: var(--step-0); max-width: 62ch; margin: var(--space-l) auto 0; }
     .hero--stage .hero__actions { justify-content: center; }
     /* centered, a wrapped eyebrow leaves one word alone on a phone: even the lines out */
