@@ -1293,7 +1293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </a>
               <a class="navmenu__sublink" href="/platform/agent/">
                 <span class="navmenu__label">Searchscope Agent</span>
-                <span class="navmenu__sub">Plans a job from your data and creates the work, with your approval</span>
+                <span class="navmenu__sub">Plans a job and creates the work, with your approval</span>
               </a>
             </div>
           </div>
@@ -1538,91 +1538,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- ============ 04b · THE SEARCHSCOPE AGENT ============ -->
   <section class="section">
-    <style>
-    /* The Agent's drawn plan: the same rules as /platform/agent/, copied here because each page carries its own. */
-    .mockstep { display:grid; grid-template-columns:auto 1fr auto; align-items:baseline;
-    gap:.65rem; padding:.34rem 0; font-size:var(--step--2); color:var(--ink-dim); }
-    .mockstep + .mockstep { border-top:1px solid var(--hairline); }
-    .mockstep i { align-self:center; width:7px; height:7px; border-radius:50%;
-    background:var(--surface-panel-2); border:1px solid var(--hairline); }
-    .mockstep b { font-weight:500; color:var(--ink); }
-    .mockstep s { text-decoration:none; color:var(--ink-dim); }
-    .mockstep em { font-style:normal; font-family:var(--font-mono);
-    font-size:var(--step--2); color:var(--ink-faint); white-space:nowrap; }
-    @media (max-width: 560px) {
-    .mockstep { grid-template-columns:auto 1fr; }
-    .mockstep em { grid-column:2; }
-    }
-    .mockframe { margin-top:var(--space-xl); }
-    .mockwin { --mock-step: 170ms; }
-    .mockwin .awbar__t { font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-dim); letter-spacing:.02em; }
-    .mockpane { padding:.7rem .8rem; min-width:0; border-left:1px solid var(--hairline); }
-    .mockpane:first-child { border-left:0; }
-    .mockpane__h { font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-faint); margin:0 0 .55rem; letter-spacing:.04em; }
-    .mockwin.is-armed .mockrow { opacity:0; transform:translateY(5px);
-    transition:opacity var(--dur, .28s) var(--ease-out, ease),
-    transform var(--dur, .28s) var(--ease-out, ease);
-    transition-delay:calc(120ms + var(--i, 0) * var(--mock-step)); }
-    .mockwin.is-armed.is-shown .mockrow { opacity:1; transform:none; }
-    .mockfield { display:flex; justify-content:space-between; gap:.5rem;
-    border:1px solid var(--hairline); border-radius:var(--radius-s);
-    padding:.34rem .5rem; margin:.5rem 0 0; font-family:var(--font-mono);
-    font-size:var(--step--2); color:var(--ink-faint); }
-    .mockfield span { white-space:nowrap; }
-    .mockfield em { font-style:normal; color:var(--ink); overflow:hidden;
-    text-overflow:ellipsis; white-space:nowrap; }
-    .mockfield--wrap em { white-space:normal; text-align:right; }
-    .mockstep--wait i { background:var(--sev-amber-ink); border-color:var(--sev-amber-ink); }
-    .mockstep--wait em { color:var(--sev-amber-ink); }
-    .mocknote { font-family:var(--font-mono); font-size:var(--step--2);
-    color:var(--ink-faint); line-height:1.5; margin:.7rem 0 0; }
-    .mockstep--done i { background:var(--ink); border-color:var(--ink); }
-    .mockstep--off i { background:var(--surface); border-color:var(--hairline); }
-    .mockstep--off b { color:var(--ink-dim); font-weight:400; }
-    </style>
     <div class="container"><div class="psplit"><div class="psplit__text">
       <div class="strip__head reveal">
         <span class="eyebrow">Searchscope Agent</span>
         <h2 class="strip__title">Give any of these to the Agent as a job.</h2>
         <p class="strip__sub">
-          Describe the work in a sentence, or pick one of 22 templates. The Searchscope Agent plans the steps from your search data, runs the analysis, and waits for your approval before it creates a worksheet, a Content Studio draft or a report.
+          Describe the work or pick a template. The Agent plans it from your data and asks before it creates anything.
         </p>
       </div>
       <ul class="chips reveal">
         <li>Worksheets of fixes</li>
         <li>Content Studio briefs and drafts</li>
         <li>Word, PDF, PowerPoint and Excel files</li>
-        <li>Monthly search reports</li>
       </ul>
       <p class="reveal" style="margin:var(--space-l) 0 0"><a class="pillar__go" href="/platform/agent/">Explore the Searchscope Agent <span aria-hidden="true">&#8594;</span></a></p>
-    </div><div class="psplit__fig reveal">
-      <div class="ticked mockframe">
-        <span class="ticks" aria-hidden="true">
-          <span class="ticks__c ticks__tl"></span>
-          <span class="ticks__c ticks__tr"></span>
-          <span class="ticks__c ticks__br"></span>
-          <span class="ticks__c ticks__bl"></span>
-        </span>
-        <div class="appwin mockwin">
-          <div class="awbar">
-            <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="awbar__t">Searchscope Agent &middot; plan</span>
-          </div>
-          <div class="mockpane">
-            <p class="mockpane__h">INPUTS</p>
-            <p class="mockfield mockfield--wrap"><span>You asked</span><em>Resolve pages competing for the same searches</em></p>
-            <p class="mockfield"><span>Ends in</span><em>A worksheet</em></p>
-            <p class="mockpane__h" style="margin-top:1rem">THE PLAN</p>
-            <p class="mockstep mockstep--done"><i></i><b>01 &middot; Read &middot; Find the pairs that matter most</b><em>done</em></p>
-            <p class="mocknote">Needs your approval</p>
-            <p class="mockstep mockstep--wait"><i></i><b>02 &middot; Worksheet &middot; Put the competing pages in a worksheet</b><em>your approval</em></p>
-            <p class="mocknote">Analysis steps run on their own. A step that creates something waits for your OK.</p>
-          </div>
-        </div>
-      </div>
-    </div></div></div>
+    </div><figure class="pshot psplit__fig" style="max-width:560px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/intelligence/agent</span></div><img alt="A Searchscope Agent plan: two Read steps done on their own, the Word report waiting for approval." decoding="async" height="585" loading="lazy" src="/brand/screens/agent-plan-col.webp" width="660"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>A Searchscope Agent plan: two Read steps done on their own, the Word report waiting for approval.</p><span class="pshot__demo">Demo data</span></figcaption></figure>
+    </div></div>
   </section>
 
   <!-- ============ 05 · HOW IT WORKS ============ -->
@@ -1638,7 +1569,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ol class="steps reveal">
         <li><span class="steps__k">Understand</span><span class="steps__d">See your search performance, site, competitors, market demand and AI visibility in the same context.</span></li>
         <li><span class="steps__k">Prioritize</span><span class="steps__d">Findings are filtered and prioritized against your search data, so the main queue focuses on higher-impact issues and opportunities.</span></li>
-        <li><span class="steps__k">Act</span><span class="steps__d">Ask the Strategic Advisor what a finding means, give the job to the Searchscope Agent, or open Content Studio to brief the work yourself.</span></li>
+        <li><span class="steps__k">Act</span><span class="steps__d">Ask the Strategic Advisor, give the job to the Searchscope Agent, or brief it yourself in Content Studio.</span></li>
         <li><span class="steps__k">Measure</span><span class="steps__d">Mark the work as applied. Impact Tracker records the baseline from that date and shows what happened next.</span></li>
       </ol>
     </div>
@@ -1679,7 +1610,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>Brand intelligence</li>
         <li>Applied changes</li>
       </ul>
-    </div><figure class="pshot psplit__fig" style="max-width:1039px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/settings</span></div><img alt="The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness." decoding="async" height="846" loading="lazy" src="/brand/screens/set-pipeline.webp" width="928"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness.</p><span class="pshot__demo">Demo data</span></figcaption></figure></div></div>
+    </div><figure class="pshot psplit__fig" style="max-width:1039px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/settings</span></div><img alt="The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness." decoding="async" height="846" loading="lazy" src="/brand/screens/set-pipeline.webp" width="928"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 3</span><p>The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness.</p><span class="pshot__demo">Demo data</span></figcaption></figure></div></div>
   </section>
 
   <!-- ============ 08 · FROM INSIGHT TO ACTION ============ -->
