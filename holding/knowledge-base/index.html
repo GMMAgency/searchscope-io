@@ -637,6 +637,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .feat .pshot__frame { min-width: 0; }
 @media (max-width: 720px) { .pshot__demo { display: none; } }
 </style>
+<style id="nav-sleek">
+/* Menus, sleeker (Ray, 6 Nov 2026): quiet mono headings, item names in Geist, one plain Inter line under each, no arrows. */
+.navmenu__panel .navmenu__h, .navmenu__panel a.navmenu__h:not(.navmenu__sublink) { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 0.45rem; }
+.navmenu__panel a.navmenu__h:hover, .navmenu__panel a.navmenu__h:focus-visible { color: var(--ink); text-decoration: none; }
+.navmenu__panel a { font-family: var(--font-display); font-size: 14px; letter-spacing: -0.005em; padding: 0.5rem 0.75rem; border-radius: 8px; transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out); }
+.navmenu__panel a::before, .navmenu__panel .navmenu__sublink .navmenu__label::before { content: none; }
+.navmenu__panel a.navmenu__sublink { gap: 0.1rem; }
+.navmenu__panel a.navmenu__sublink .navmenu__label { font-weight: 500; color: var(--ink); }
+.navmenu__panel .navmenu__sub { padding-left: 0; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0; line-height: 1.45; color: var(--ink-dim); opacity: 1; }
+.navmenu__panel a:hover, .navmenu__panel a:focus-visible { background: var(--surface-panel-2); color: var(--ink); }
+.navmenu__panel a:hover .navmenu__sub { color: var(--ink-dim); }
+@media (min-width: 861px) {
+  /* Platform: the product list takes the rest of the panel, two to a row, so each line fits. */
+  #menu-platform .navmenu__cols > div:last-child { grid-column: span 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem; align-content: start; }
+  #menu-platform .navmenu__cols > div:last-child > .navmenu__h { grid-column: 1 / -1; }
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -669,20 +686,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <a class="navmenu__h" href="/platform/">Platform overview</a>
-              <div class="ticked navfig">
-                <span class="ticks" aria-hidden="true">
-                  <span class="ticks__c ticks__tl"></span>
-                  <span class="ticks__c ticks__tr"></span>
-                  <span class="ticks__c ticks__br"></span>
-                  <span class="ticks__c ticks__bl"></span>
-                </span>
-                <div class="navfig__b">
-                <p class="navfig__r" style="--i:0"><b>Data</b><span>search performance, site crawl</span></p>
-                <p class="navfig__r" style="--i:1"><b>Understand</b><span>analyzers, competitors, AI answers</span></p>
-                <p class="navfig__r" style="--i:2"><b>Decide</b><span>Strategic Advisor, PR Strategist</span></p>
-                <p class="navfig__r" style="--i:3"><b>Work</b><span>content, planning, page health</span></p>
-                <p class="navfig__r" style="--i:4"><b>Measure</b><span>Impact Tracker, Reporting</span></p>
-                </div>
+              <div class="navflow">
+                <style>
+                /* The platform as five stages on a line. When the menu opens, each stage lights in turn and the line draws
+                   down to the next; the products under each stage link to their pages (Ray, 6 Nov 2026: "needs to wow"). */
+                .navflow { position: relative; margin: 1rem 0.75rem 0; padding-left: 1.5rem; }
+                .navflow__r { position: relative; margin: 0; padding: 0 0 0.8rem; }
+                .navflow__n { position: absolute; left: -1.5rem; top: 0.3rem; width: 9px; height: 9px; box-sizing: border-box; border-radius: 2px;
+                              background: var(--ink); border: 1px solid var(--ink); }
+                .navflow__r:not(:last-of-type)::before, .navflow__r:not(:last-of-type)::after { content: ""; position: absolute; left: calc(-1.5rem + 4px);
+                              top: calc(0.3rem + 9px); bottom: -0.3rem; width: 1px; }
+                .navflow__r::before { background: var(--hairline); }
+                .navflow__r::after { background: var(--ink); transform-origin: top; }
+                .navflow__t { display: flex; align-items: baseline; gap: 0.5rem; margin: 0; }
+                .navflow__t i { font-style: normal; font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+                .navflow__t b { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+                .navflow__c { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+                .navflow__chip, .navmenu__panel .navflow a.navflow__chip { display: inline-block; padding: 0.14rem 0.5rem; border: 1px solid var(--hairline);
+                              border-radius: 999px; font-family: var(--font-mono); font-size: 10px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.5;
+                              color: var(--ink-dim); background: none; white-space: nowrap; }
+                .navmenu__panel .navflow a.navflow__chip::before { content: none; }
+                .navmenu__panel .navflow a.navflow__chip:hover, .navmenu__panel .navflow a.navflow__chip:focus-visible { border-color: var(--ink); color: var(--ink); background: none; }
+                .navflow__loop { display: flex; align-items: center; gap: 0.4rem; margin: 0.1rem 0 0 -1.5rem; font-family: var(--font-mono); font-size: 10px;
+                              letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+                .navflow__loop svg { width: 10px; height: 10px; flex: none; }
+                .navmenu__panel:not([hidden]) .navflow__n { animation: navflow-lit 0.3s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 120ms); }
+                .navmenu__panel:not([hidden]) .navflow__r::after { animation: navflow-draw 0.24s linear both; animation-delay: calc(var(--i, 0) * 240ms + 300ms); }
+                .navmenu__panel:not([hidden]) .navflow__t, .navmenu__panel:not([hidden]) .navflow__c { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 80ms); }
+                .navmenu__panel:not([hidden]) .navflow__loop { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: 1.35s; }
+                @keyframes navflow-lit { from { background: var(--surface-panel, #fff); border-color: var(--ink-faint); } to { background: var(--ink); border-color: var(--ink); } }
+                @keyframes navflow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+                @media (prefers-reduced-motion: reduce) {
+                  .navmenu__panel:not([hidden]) .navflow__n, .navmenu__panel:not([hidden]) .navflow__r::after, .navmenu__panel:not([hidden]) .navflow__t,
+                  .navmenu__panel:not([hidden]) .navflow__c, .navmenu__panel:not([hidden]) .navflow__loop { animation: none; }
+                }
+                @media (max-width: 860px) { .navflow { display: none; } }
+                </style>
+                <div class="navflow__r" style="--i:0"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>01</i><b>Data</b></p><p class="navflow__c"><span class="navflow__chip">Search data</span><span class="navflow__chip">Site crawl</span></p></div>
+                <div class="navflow__r" style="--i:1"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>02</i><b>Understand</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/analyzers/">Analyzers</a><a class="navflow__chip" href="/platform/search-intelligence/competitive-landscape/">Competitors</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">AI answers</a></p></div>
+                <div class="navflow__r" style="--i:2"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>03</i><b>Decide</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">PR Strategist</a></p></div>
+                <div class="navflow__r" style="--i:3"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>04</i><b>Work</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/agent/">Searchscope Agent</a><a class="navflow__chip" href="/platform/instruments/content-studio/">Content Studio</a><a class="navflow__chip" href="/platform/instruments/page-experience/">Page Experience</a></p></div>
+                <div class="navflow__r" style="--i:4"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>05</i><b>Measure</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/command-center/">Impact Tracker</a><a class="navflow__chip" href="/platform/instruments/reporting/">Reporting</a></p></div>
+                <p class="navflow__loop"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M10 6a4 4 0 1 1-1.2-2.85"/><path d="M9.2 1.2v2.2H7"/></svg>Repeats with every weekly run</p>
               </div>
             </div>
             <div>
@@ -703,28 +748,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Instruments</span>
                 <span class="navmenu__sub">Content Studio, Content Planner, Page Experience and Reporting</span>
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="navmenu">
-        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-solutions">
-          Solutions
-          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
-        </button>
-        <div class="navmenu__panel" id="menu-solutions" hidden>
-          <div class="navmenu__cols">
-            <div>
-              <p class="navmenu__h">Use cases</p>
-              <a href="/use-cases/agencies/">Agencies</a>
-            </div>
-            <div>
-              <p class="navmenu__h">By size</p>
-              <span class="navmenu__soon">Enterprise <b>Coming soon</b></span>
-              <span class="navmenu__soon">Small teams <b>Coming soon</b></span>
-              <span class="navmenu__soon">Solopreneur <b>Coming soon</b></span>
-              <span class="navmenu__soon">Agencies <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/platform/agent/">
+                <span class="navmenu__label">Searchscope Agent</span>
+                <span class="navmenu__sub">Plans a job and creates the work, with your approval</span>
+              </a>
             </div>
           </div>
         </div>
@@ -752,15 +779,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="navmenu__h">Free resources</p>
               <a href="/resources/ai-visibility-checker/">AI visibility checker</a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navmenu">
+        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-about">
+          About
+          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="navmenu__panel" id="menu-about" hidden>
+          <div class="navmenu__cols">
             <div>
               <p class="navmenu__h">About Searchscope</p>
+              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
               <a class="navmenu__sublink" href="/blog/category/product-updates/">
                 <span class="navmenu__label">Product updates</span>
                 <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
-              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
-              <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
-              <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
             </div>
           </div>
         </div>
@@ -787,7 +823,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="eyebrow">Knowledge base</span>
           <h1 class="sec__title">Getting started with Searchscope</h1>
           <p class="kblede">What to do in your first session, and what each part of Searchscope is for.</p><figure class="pshot pshot--top"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/</span></div><img alt="The dashboard: the last 28 days of search performance beside the findings that need attention first." decoding="async" height="900" loading="lazy" src="/brand/screens/dash-main.webp" width="1244"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 1</span><p>The dashboard: the last 28 days of search performance beside the findings that need attention first.</p><span class="pshot__demo">Demo data</span></figcaption></figure>
-          <h2 id="connect-your-data-first">Connect your data first</h2><p>Searchscope works from two things: your Google Search Console account and a crawl of your site. Connect Search Console and point it at the property you want to work on, and the first crawl starts on its own.</p><p>Nothing else works properly until this is done, because every analyzer reads from the same crawl and the same search data. The Data Pipeline page shows you how far it's got.</p><figure class="pshot" style="max-width:1039px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/settings</span></div><img alt="The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness." decoding="async" height="846" loading="lazy" src="/brand/screens/set-pipeline.webp" width="928"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="then-let-the-first-analysis-run">Then let the first analysis run</h2><p>The analyzers run in order and unlock as they finish, so the sidebar fills in over the first session rather than all at once. A greyed workspace isn't broken, it's waiting for its analyzer.</p><p>You don't have to sit and watch. The dashboard shows what's finished and what each check found.</p><h2 id="start-with-the-findings-not-the-tools">Start with the findings, not the tools</h2><p>The dashboard puts the critical and high issues from the latest analysis in front of you. Open one, read the recommendation written for that page, and use it.</p><p>That's the shortest route to something useful. The rest of the platform makes more sense once you've seen a finding and acted on it.</p><h2 id="fill-in-your-business-context-early">Fill in your business context early</h2><p>Settings has a <b>Business Context</b> tab, and it changes more of Searchscope than anything else you can fill in. Ten short fields: what the business does, how it makes money, who it sells to, what sets it apart, what a conversion is, which pages actually make money, and how your URLs are organized.</p><p>It's read by the Strategic Advisor, Content Studio, the Content Planner, prompt discovery and your reports. Left empty, all of those still work and all of them are generic in a way that's hard to put your finger on.</p><p><b>Target market</b> is on the same tab, and it's worth getting right on day one: it sets the country behind Demand &amp; Trends, including the search volumes, and the default market for Competitive Landscape.</p><p>If your business has a season, turn on <b>Seasonal business</b> while you're there. It stops Content Decay reading your quiet half of the year as decline.</p><p>A couple of sentences per field is plenty. It's the highest return on ten minutes anywhere in the product.</p><h2 id="where-everything-lives">Where everything lives</h2><p><b>Workspace analyzers</b> are the technical checks: pages competing with each other, content losing clicks, missing internal links, index bloat, schema gaps.</p><p><b>Search intelligence</b> is the strategic view: how topics are moving, where competitors are stronger, and a Strategist that has already read your data.</p><p><b>AI and brand intelligence</b> is how assistants answer questions about you.</p><p><b>Instruments</b> are where the work gets done: Content Studio writes, Content Planner sequences, Reporting shows the result.</p>
+          <h2 id="connect-your-data-first">Connect your data first</h2><p>Searchscope works from two things: your Google Search Console account and a crawl of your site. Connect Search Console and point it at the property you want to work on, and the first crawl starts on its own.</p><p>Nothing else works properly until this is done, because every analyzer reads from the same crawl and the same search data. The Data Pipeline page shows you how far it's got.</p><figure class="pshot" style="max-width:1039px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/settings</span></div><img alt="The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness." decoding="async" height="846" loading="lazy" src="/brand/screens/set-pipeline.webp" width="928"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>The data pipeline: search data, the crawl and the analyzers, run in order and checked for freshness.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="then-let-the-first-analysis-run">Then let the first analysis run</h2><p>The analyzers run in order and unlock as they finish, so the sidebar fills in over the first session rather than all at once. A greyed workspace isn't broken, it's waiting for its analyzer.</p><p>You don't have to sit and watch. The dashboard shows what's finished and what each check found.</p><h2 id="start-with-the-findings-not-the-tools">Start with the findings</h2><p>The dashboard puts the critical and high issues from the latest analysis in front of you. Open one, read the recommendation written for that page, and use it.</p><p>That's the shortest route to something useful. The rest of the platform makes more sense once you've seen a finding and acted on it.</p><h2 id="fill-in-your-business-context-early">Fill in your business context early</h2><p>Settings has a <b>Business Context</b> tab, and it changes more of Searchscope than anything else you can fill in. Ten short fields: what the business does, how it makes money, who it sells to, what sets it apart, what a conversion is, which pages actually make money, and how your URLs are organized.</p><p>It's read by the Strategic Advisor, Content Studio, the Content Planner, prompt discovery and your reports. Left empty, all of those still work and all of them are generic in a way that's hard to put your finger on.</p><p><b>Target market</b> is on the same tab, and it's worth getting right on day one: it sets the country behind Demand &amp; Trends, including the search volumes, and the default market for Competitive Landscape.</p><p>If your business has a season, turn on <b>Seasonal business</b> while you're there. It stops Content Decay reading your quiet half of the year as decline.</p><p>A couple of sentences per field is plenty. It's the highest return on ten minutes anywhere in the product.</p><h2 id="where-everything-lives">Where everything lives</h2><p><b>Workspace analyzers</b> are the technical checks: pages competing with each other, content losing clicks, missing internal links, index bloat, schema gaps.</p><p><b>Search intelligence</b> is the strategic view: how topics are moving, where competitors are stronger, and a Strategist that has already read your data.</p><p><b>AI and brand intelligence</b> is how assistants answer questions about you.</p><p><b>Instruments</b> are where the work gets done: Content Studio writes, Content Planner sequences, Reporting shows the result.</p>
           <p class="kbgroup" id="getting-started">Getting started</p><ul class="kbhub"><li><a href="/knowledge-base/dashboard/"><b>The dashboard</b><span>What Searchscope puts in front of you, and what to open first.</span></a></li></ul><p class="kbgroup" id="foundation">Foundation</p><ul class="kbhub"><li><a href="/knowledge-base/settings/data/"><b>Data Pipeline</b><span>Where your data comes from, how to tune the crawl, and how to stop the analyzers reporting on pages you don't care about.</span></a></li><li><a href="/knowledge-base/settings/business/"><b>Business context</b><span>What your business does, in your words. It changes more of Searchscope than anything else you can fill in.</span></a></li><li><a href="/knowledge-base/weekly-scheduler/"><b>Scheduler</b><span>What Searchscope runs automatically, and when.</span></a></li></ul><p class="kbgroup" id="workspace-analyzers">Workspace analyzers</p><ul class="kbhub"><li><a href="/knowledge-base/workspace/cannibalization/"><b>Cannibalization</b><span>Two of your own pages competing for the same search, and which one should win.</span></a></li><li><a href="/knowledge-base/workspace/decay/"><b>Content Decay</b><span>Pages slowly losing the clicks they used to get, and a recovery plan for each.</span></a></li><li><a href="/knowledge-base/workspace/links/"><b>Internal Links</b><span>Internal links your site is missing, with the anchor text to use.</span></a></li><li><a href="/knowledge-base/workspace/index/"><b>Index Bloat</b><span>Pages that hurt more than they help: thin, duplicated, or getting no traffic at all.</span></a></li><li><a href="/knowledge-base/workspace/opportunity/"><b>Opportunities</b><span>Pages ranking just off page 1, where a small push could move them onto it.</span></a></li><li><a href="/knowledge-base/workspace/cluster_volatility/"><b>Cluster Volatility</b><span>Whole topics moving up or down, rather than single keywords.</span></a></li><li><a href="/knowledge-base/workspace/schema/"><b>Schema</b><span>Structured data your pages are missing, with the JSON-LD ready to paste.</span></a></li><li><a href="/knowledge-base/worksheets/"><b>Worksheets</b><span>A snapshot of a workspace turned into a sheet your team can work through.</span></a></li></ul><p class="kbgroup" id="search-intelligence">Search intelligence</p><ul class="kbhub"><li><a href="/knowledge-base/intelligence/command-centre/"><b>Command Center</b><span>Your search performance over time, and the detail behind it.</span></a></li><li><a href="/knowledge-base/intelligence/competitive-landscape/"><b>Competitive Landscape</b><span>What competitors rank for that you don't, and where the gaps are worth closing.</span></a></li><li><a href="/knowledge-base/intelligence/demand-trends/"><b>Demand &amp; Trends</b><span>What the market is searching for, plotted against how much of it you capture.</span></a></li><li><a href="/knowledge-base/intelligence/strategic-advisor/"><b>Strategic Advisor</b><span>A strategist that has already read your data, and answers from it.</span></a></li></ul><p class="kbgroup" id="ai-and-brand-intelligence">AI and brand intelligence</p><ul class="kbhub"><li><a href="/knowledge-base/intelligence/brand-ai/"><b>AI &amp; Brand Intelligence</b><span>How AI assistants answer questions in your market, and whether they name you.</span></a></li></ul><p class="kbgroup" id="instruments">Instruments</p><ul class="kbhub"><li><a href="/knowledge-base/reporting/"><b>Reporting</b><span>Client-ready reports written from your live data.</span></a></li><li><a href="/knowledge-base/content-studio/"><b>Content Studio</b><span>Briefs and drafts written from your own data, not from a blank page.</span></a></li><li><a href="/knowledge-base/content-planner/"><b>Content Planner</b><span>Every piece of content work in one sheet, from idea to published and cited.</span></a></li><li><a href="/knowledge-base/tools/page-experience/"><b>Page Experience</b><span>Three checks in one place: what's broken on your pages, whether Google can index them, and how fast they are for real visitors.</span></a></li></ul>
         </div>
       </div>

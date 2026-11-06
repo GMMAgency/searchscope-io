@@ -637,6 +637,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .feat .pshot__frame { min-width: 0; }
 @media (max-width: 720px) { .pshot__demo { display: none; } }
 </style>
+<style id="nav-sleek">
+/* Menus, sleeker (Ray, 6 Nov 2026): quiet mono headings, item names in Geist, one plain Inter line under each, no arrows. */
+.navmenu__panel .navmenu__h, .navmenu__panel a.navmenu__h:not(.navmenu__sublink) { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 0.45rem; }
+.navmenu__panel a.navmenu__h:hover, .navmenu__panel a.navmenu__h:focus-visible { color: var(--ink); text-decoration: none; }
+.navmenu__panel a { font-family: var(--font-display); font-size: 14px; letter-spacing: -0.005em; padding: 0.5rem 0.75rem; border-radius: 8px; transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out); }
+.navmenu__panel a::before, .navmenu__panel .navmenu__sublink .navmenu__label::before { content: none; }
+.navmenu__panel a.navmenu__sublink { gap: 0.1rem; }
+.navmenu__panel a.navmenu__sublink .navmenu__label { font-weight: 500; color: var(--ink); }
+.navmenu__panel .navmenu__sub { padding-left: 0; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0; line-height: 1.45; color: var(--ink-dim); opacity: 1; }
+.navmenu__panel a:hover, .navmenu__panel a:focus-visible { background: var(--surface-panel-2); color: var(--ink); }
+.navmenu__panel a:hover .navmenu__sub { color: var(--ink-dim); }
+@media (min-width: 861px) {
+  /* Platform: the product list takes the rest of the panel, two to a row, so each line fits. */
+  #menu-platform .navmenu__cols > div:last-child { grid-column: span 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem; align-content: start; }
+  #menu-platform .navmenu__cols > div:last-child > .navmenu__h { grid-column: 1 / -1; }
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -669,20 +686,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <a class="navmenu__h" href="/platform/">Platform overview</a>
-              <div class="ticked navfig">
-                <span class="ticks" aria-hidden="true">
-                  <span class="ticks__c ticks__tl"></span>
-                  <span class="ticks__c ticks__tr"></span>
-                  <span class="ticks__c ticks__br"></span>
-                  <span class="ticks__c ticks__bl"></span>
-                </span>
-                <div class="navfig__b">
-                <p class="navfig__r" style="--i:0"><b>Data</b><span>search performance, site crawl</span></p>
-                <p class="navfig__r" style="--i:1"><b>Understand</b><span>analyzers, competitors, AI answers</span></p>
-                <p class="navfig__r" style="--i:2"><b>Decide</b><span>Strategic Advisor, PR Strategist</span></p>
-                <p class="navfig__r" style="--i:3"><b>Work</b><span>content, planning, page health</span></p>
-                <p class="navfig__r" style="--i:4"><b>Measure</b><span>Impact Tracker, Reporting</span></p>
-                </div>
+              <div class="navflow">
+                <style>
+                /* The platform as five stages on a line. When the menu opens, each stage lights in turn and the line draws
+                   down to the next; the products under each stage link to their pages (Ray, 6 Nov 2026: "needs to wow"). */
+                .navflow { position: relative; margin: 1rem 0.75rem 0; padding-left: 1.5rem; }
+                .navflow__r { position: relative; margin: 0; padding: 0 0 0.8rem; }
+                .navflow__n { position: absolute; left: -1.5rem; top: 0.3rem; width: 9px; height: 9px; box-sizing: border-box; border-radius: 2px;
+                              background: var(--ink); border: 1px solid var(--ink); }
+                .navflow__r:not(:last-of-type)::before, .navflow__r:not(:last-of-type)::after { content: ""; position: absolute; left: calc(-1.5rem + 4px);
+                              top: calc(0.3rem + 9px); bottom: -0.3rem; width: 1px; }
+                .navflow__r::before { background: var(--hairline); }
+                .navflow__r::after { background: var(--ink); transform-origin: top; }
+                .navflow__t { display: flex; align-items: baseline; gap: 0.5rem; margin: 0; }
+                .navflow__t i { font-style: normal; font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+                .navflow__t b { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+                .navflow__c { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+                .navflow__chip, .navmenu__panel .navflow a.navflow__chip { display: inline-block; padding: 0.14rem 0.5rem; border: 1px solid var(--hairline);
+                              border-radius: 999px; font-family: var(--font-mono); font-size: 10px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.5;
+                              color: var(--ink-dim); background: none; white-space: nowrap; }
+                .navmenu__panel .navflow a.navflow__chip::before { content: none; }
+                .navmenu__panel .navflow a.navflow__chip:hover, .navmenu__panel .navflow a.navflow__chip:focus-visible { border-color: var(--ink); color: var(--ink); background: none; }
+                .navflow__loop { display: flex; align-items: center; gap: 0.4rem; margin: 0.1rem 0 0 -1.5rem; font-family: var(--font-mono); font-size: 10px;
+                              letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+                .navflow__loop svg { width: 10px; height: 10px; flex: none; }
+                .navmenu__panel:not([hidden]) .navflow__n { animation: navflow-lit 0.3s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 120ms); }
+                .navmenu__panel:not([hidden]) .navflow__r::after { animation: navflow-draw 0.24s linear both; animation-delay: calc(var(--i, 0) * 240ms + 300ms); }
+                .navmenu__panel:not([hidden]) .navflow__t, .navmenu__panel:not([hidden]) .navflow__c { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 80ms); }
+                .navmenu__panel:not([hidden]) .navflow__loop { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: 1.35s; }
+                @keyframes navflow-lit { from { background: var(--surface-panel, #fff); border-color: var(--ink-faint); } to { background: var(--ink); border-color: var(--ink); } }
+                @keyframes navflow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+                @media (prefers-reduced-motion: reduce) {
+                  .navmenu__panel:not([hidden]) .navflow__n, .navmenu__panel:not([hidden]) .navflow__r::after, .navmenu__panel:not([hidden]) .navflow__t,
+                  .navmenu__panel:not([hidden]) .navflow__c, .navmenu__panel:not([hidden]) .navflow__loop { animation: none; }
+                }
+                @media (max-width: 860px) { .navflow { display: none; } }
+                </style>
+                <div class="navflow__r" style="--i:0"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>01</i><b>Data</b></p><p class="navflow__c"><span class="navflow__chip">Search data</span><span class="navflow__chip">Site crawl</span></p></div>
+                <div class="navflow__r" style="--i:1"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>02</i><b>Understand</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/analyzers/">Analyzers</a><a class="navflow__chip" href="/platform/search-intelligence/competitive-landscape/">Competitors</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">AI answers</a></p></div>
+                <div class="navflow__r" style="--i:2"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>03</i><b>Decide</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">PR Strategist</a></p></div>
+                <div class="navflow__r" style="--i:3"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>04</i><b>Work</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/agent/">Searchscope Agent</a><a class="navflow__chip" href="/platform/instruments/content-studio/">Content Studio</a><a class="navflow__chip" href="/platform/instruments/page-experience/">Page Experience</a></p></div>
+                <div class="navflow__r" style="--i:4"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>05</i><b>Measure</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/command-center/">Impact Tracker</a><a class="navflow__chip" href="/platform/instruments/reporting/">Reporting</a></p></div>
+                <p class="navflow__loop"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M10 6a4 4 0 1 1-1.2-2.85"/><path d="M9.2 1.2v2.2H7"/></svg>Repeats with every weekly run</p>
               </div>
             </div>
             <div>
@@ -703,28 +748,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__label">Instruments</span>
                 <span class="navmenu__sub">Content Studio, Content Planner, Page Experience and Reporting</span>
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="navmenu">
-        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-solutions">
-          Solutions
-          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
-        </button>
-        <div class="navmenu__panel" id="menu-solutions" hidden>
-          <div class="navmenu__cols">
-            <div>
-              <p class="navmenu__h">Use cases</p>
-              <a href="/use-cases/agencies/">Agencies</a>
-            </div>
-            <div>
-              <p class="navmenu__h">By size</p>
-              <span class="navmenu__soon">Enterprise <b>Coming soon</b></span>
-              <span class="navmenu__soon">Small teams <b>Coming soon</b></span>
-              <span class="navmenu__soon">Solopreneur <b>Coming soon</b></span>
-              <span class="navmenu__soon">Agencies <b>Coming soon</b></span>
+              <a class="navmenu__sublink" href="/platform/agent/">
+                <span class="navmenu__label">Searchscope Agent</span>
+                <span class="navmenu__sub">Plans a job and creates the work, with your approval</span>
+              </a>
             </div>
           </div>
         </div>
@@ -752,15 +779,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="navmenu__h">Free resources</p>
               <a href="/resources/ai-visibility-checker/">AI visibility checker</a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navmenu">
+        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-about">
+          About
+          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="navmenu__panel" id="menu-about" hidden>
+          <div class="navmenu__cols">
             <div>
               <p class="navmenu__h">About Searchscope</p>
+              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
               <a class="navmenu__sublink" href="/blog/category/product-updates/">
                 <span class="navmenu__label">Product updates</span>
                 <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
-              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
-              <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
-              <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
             </div>
           </div>
         </div>
@@ -786,7 +822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="kbbody">
           <h1 class="sec__title">Index Bloat</h1>
           <p class="kblede">Pages that hurt more than they help: thin, duplicated, or getting no traffic at all.</p>
-          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Workspaces</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Index Bloat</b></p><figure class="pshot pshot--top"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/workspaces/index</span></div><img alt="Index Bloat: indexable pages wasting crawl budget or getting no search visibility." decoding="async" height="900" loading="lazy" src="/brand/screens/ws-index.webp" width="1244"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 1</span><p>Index Bloat: indexable pages wasting crawl budget or getting no search visibility.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="what-the-list-shows">What the list shows</h2><p>Pages Google has indexed that aren't doing anything for you. Thin pages, near duplicates, orphans with no internal links pointing at them, and pages that have had no clicks for a long stretch.</p><p>Each one is flagged with why it's here, and the worst are at the top.</p><h2 id="prune-consolidate-or-strengthen">Prune, consolidate or strengthen</h2><p>Those are the three outcomes, and the recommendation on each finding says which one it thinks applies. A thin page on a topic you care about is usually worth strengthening; three near-identical pages usually want consolidating into one.</p><p>Removing pages feels drastic and often isn't. A page nobody reads and nothing links to still takes up crawl budget, and it dilutes the pages that do work.</p><h2 id="what-to-do-with-it">What to do with it</h2><p><b>Create brief</b> sends the page to Content Studio pre-filled, which is the route when the answer is to strengthen it.</p><p><b>Ask Advisor</b> sends it to your Strategist with its full context, which is worth doing before you delete anything.</p><h2 id="working-a-finding">Working a finding</h2><p>Open any finding and you can take it somewhere else without retyping it. <b>Ask Advisor</b> opens the Strategic Advisor with that finding and its full context already loaded, so you can ask why it matters or what to do first and get an answer using your own numbers. <b>Create brief</b> (or <b>Rebuild in Studio</b>) opens a Content Studio session for the page, pre-filled the same way.</p><p>Both carry the finding with them. You're not starting a conversation or a brief from nothing, which is the whole point of launching them from here rather than opening the Strategic Advisor or Content Studio cold.</p><p>Most findings also carry an <b>AI Playbook</b>: a written recommendation for that specific page. Some are generated automatically after a run, the rest are generated when you ask. You can also tick several rows and generate advice for all of them in one go, with the cost shown before anything runs. How many are written automatically is the <b>Auto-generate for top</b> setting in that analyzer's Configure panel, and zero means they're only written on request.</p><p><b>Mark applied</b> does more than tick it off. The page joins <b>Impact Tracking</b> in Command Center, which then follows its clicks, impressions and position from that date onward, so you can see what happened after the change.</p><h2 id="getting-rid-of-one-you-don-t-want">Getting rid of one you don't want</h2><p><b>Ignore</b> on any finding hides it. It leaves the queue and moves to the <b>Ignored</b> pill in the filter rail, where <b>Restore</b> puts it back, so nothing is destroyed. The Ignored pill only appears once you've ignored something.</p><p>Ignoring handles one finding. If the same pages keep coming back, add them to <b>Excluded pages</b> in Settings, under Data Pipeline: find Index Bloat in the analyzer list and click <b>Configure</b>. One pattern per line, <code>*</code> as a wildcard, and plain text matches anywhere in the URL. Matching pages stop becoming findings from the next run.</p><p>That's the difference worth knowing: ignoring hides one finding, excluding a page stops future findings for it. Tag pages, author archives and paginated listings are the usual candidates.</p>
+          <p class="kbwhere"><span class="kbwhere__k">In app</span><span>Workspaces</span><span class="kbwhere__s" aria-hidden="true">&#8250;</span><b>Index Bloat</b></p><figure class="pshot pshot--top"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/workspaces/index</span></div><img alt="Index Bloat: indexable pages wasting crawl budget or getting no search visibility." decoding="async" height="900" loading="lazy" src="/brand/screens/ws-index.webp" width="1244"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 1</span><p>Index Bloat: indexable pages wasting crawl budget or getting no search visibility.</p><span class="pshot__demo">Demo data</span></figcaption></figure><h2 id="what-the-list-shows">What the list shows</h2><p>Pages Google has indexed that aren't doing anything for you. Thin pages, near duplicates, orphans with no internal links pointing at them, and pages that have had no clicks for a long stretch.</p><p>Each one is flagged with why it's here, and the worst are at the top.</p><h2 id="prune-consolidate-or-strengthen">Prune, consolidate or strengthen</h2><p>Those are the three outcomes, and the recommendation on each finding says which one it thinks applies. A thin page on a topic you care about is usually worth strengthening; three near-identical pages usually want consolidating into one.</p><p>Removing pages feels drastic and often isn't. A page nobody reads and nothing links to still takes up crawl budget, and it dilutes the pages that do work.</p><h2 id="what-to-do-with-it">What to do with it</h2><p><b>Create brief</b> sends the page to Content Studio pre-filled, which is the route when the answer is to strengthen it.</p><p><b>Ask Advisor</b> sends it to your Strategist with its full context, which is worth doing before you delete anything.</p><h2 id="working-a-finding">Review and apply a finding</h2><p>Open any finding and you can take it somewhere else without retyping it. <b>Ask Advisor</b> opens the Strategic Advisor with that finding and its full context already loaded, so you can ask why it matters or what to do first and get an answer using your own numbers. <b>Create brief</b> (or <b>Rebuild in Studio</b>) opens a Content Studio session for the page, pre-filled the same way.</p><p>Both carry the finding with them. You're not starting a conversation or a brief from nothing, which is the whole point of launching them from here rather than opening the Strategic Advisor or Content Studio cold.</p><p>Most findings also carry an <b>AI Playbook</b>: a written recommendation for that specific page. Some are generated automatically after a run, the rest are generated when you ask. You can also tick several rows and generate advice for all of them in one go, with the cost shown before anything runs. How many are written automatically is the <b>Auto-generate for top</b> setting in that analyzer's Configure panel, and zero means they're only written on request.</p><p><b>Mark applied</b> does more than tick it off. The page joins <b>Impact Tracking</b> in Command Center, which then follows its clicks, impressions and position from that date onward, so you can see what happened after the change.</p><h2 id="getting-rid-of-one-you-don-t-want">Dismiss a finding</h2><p><b>Ignore</b> on any finding hides it. It leaves the queue and moves to the <b>Ignored</b> pill in the filter rail, where <b>Restore</b> puts it back, so nothing is destroyed. The Ignored pill only appears once you've ignored something.</p><p>Ignoring handles one finding. If the same pages keep coming back, add them to <b>Excluded pages</b> in Settings, under Data Pipeline: find Index Bloat in the analyzer list and click <b>Configure</b>. One pattern per line, <code>*</code> as a wildcard, and plain text matches anywhere in the URL. Matching pages stop becoming findings from the next run.</p><p>That's the difference worth knowing: ignoring hides one finding, excluding a page stops future findings for it. Tag pages, author archives and paginated listings are the usual candidates.</p>
           <div class="kbnext"><h2>Next</h2><ul><li><a href="/knowledge-base/workspace/links/">Internal Links<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/workspace/cannibalization/">Cannibalization<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/knowledge-base/worksheets/">Worksheets<span class="kbnext__k">Knowledge base</span></a></li><li><a href="/platform/analyzers/index-bloat/">Index Bloat<span class="kbnext__k">Product page</span></a></li></ul></div>
         </div>
       </div>
