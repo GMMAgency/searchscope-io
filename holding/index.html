@@ -1257,20 +1257,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="navmenu__cols">
             <div>
               <a class="navmenu__h" href="/platform/">Platform overview</a>
-              <div class="ticked navfig">
-                <span class="ticks" aria-hidden="true">
-                  <span class="ticks__c ticks__tl"></span>
-                  <span class="ticks__c ticks__tr"></span>
-                  <span class="ticks__c ticks__br"></span>
-                  <span class="ticks__c ticks__bl"></span>
-                </span>
-                <div class="navfig__b">
-                <p class="navfig__r" style="--i:0"><b>Data</b><span>search performance, site crawl</span></p>
-                <p class="navfig__r" style="--i:1"><b>Understand</b><span>analyzers, competitors, AI answers</span></p>
-                <p class="navfig__r" style="--i:2"><b>Decide</b><span>Strategic Advisor, PR Strategist</span></p>
-                <p class="navfig__r" style="--i:3"><b>Work</b><span>Searchscope Agent, content, planning, page health</span></p>
-                <p class="navfig__r" style="--i:4"><b>Measure</b><span>Impact Tracker, Reporting</span></p>
-                </div>
+              <div class="navflow">
+                <style>
+                /* The platform in five stages, as a line with a dot per stage: no box, no corner marks (Ray, 6 Nov 2026). */
+                .navflow { position: relative; margin: 1.1rem 0.75rem 0; padding-left: 1.15rem; }
+                .navflow::before { content: ""; position: absolute; left: 3px; top: 0.9rem; bottom: 2.1rem; width: 1px; background: var(--hairline); }
+                .navflow__r { position: relative; margin: 0; padding: 0.38rem 0; }
+                .navflow__r::before { content: ""; position: absolute; left: -1.15rem; top: 0.66rem; width: 7px; height: 7px; box-sizing: border-box;
+                                      border-radius: 50%; border: 1px solid var(--ink-faint); background: var(--surface-panel, #fff); }
+                .navflow__r b { display: block; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em;
+                                text-transform: uppercase; color: var(--ink); }
+                .navflow__r span { display: block; margin-top: 0.12rem; font-size: 12.5px; line-height: 1.4; color: var(--ink-dim); }
+                .navmenu__panel:not([hidden]) .navflow__r { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 60ms); }
+                @media (prefers-reduced-motion: reduce) { .navmenu__panel:not([hidden]) .navflow__r { animation: none; } }
+                @media (max-width: 860px) { .navflow { display: none; } }
+                </style>
+                <p class="navflow__r" style="--i:0"><b>Data</b><span>Search performance and site crawl</span></p>
+                <p class="navflow__r" style="--i:1"><b>Understand</b><span>Analyzers, competitors and AI answers</span></p>
+                <p class="navflow__r" style="--i:2"><b>Decide</b><span>Strategic Advisor and PR Strategist</span></p>
+                <p class="navflow__r" style="--i:3"><b>Work</b><span>Searchscope Agent, content and page health</span></p>
+                <p class="navflow__r" style="--i:4"><b>Measure</b><span>Impact Tracker and Reporting</span></p>
               </div>
             </div>
             <div>
@@ -1322,13 +1328,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="navmenu__h">Free resources</p>
               <a href="/resources/ai-visibility-checker/">AI visibility checker</a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navmenu">
+        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-about">
+          About
+          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="navmenu__panel" id="menu-about" hidden>
+          <div class="navmenu__cols">
             <div>
               <p class="navmenu__h">About Searchscope</p>
+              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
               <a class="navmenu__sublink" href="/blog/category/product-updates/">
                 <span class="navmenu__label">Product updates</span>
                 <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
-              <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
             </div>
           </div>
         </div>
