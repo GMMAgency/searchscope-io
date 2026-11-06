@@ -974,6 +974,23 @@ strong, b { font-weight: 600; color: var(--ink); }
 
 </style>
 <style>html{scroll-padding-top:6rem}</style>
+<style id="nav-sleek">
+/* Menus, sleeker (Ray, 6 Nov 2026): quiet mono headings, item names in Geist, one plain Inter line under each, no arrows. */
+.navmenu__panel .navmenu__h, .navmenu__panel a.navmenu__h:not(.navmenu__sublink) { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 0.45rem; }
+.navmenu__panel a.navmenu__h:hover, .navmenu__panel a.navmenu__h:focus-visible { color: var(--ink); text-decoration: none; }
+.navmenu__panel a { font-family: var(--font-display); font-size: 14px; letter-spacing: -0.005em; padding: 0.5rem 0.75rem; border-radius: 8px; transition: background-color 0.15s var(--ease-out), color 0.15s var(--ease-out); }
+.navmenu__panel a::before, .navmenu__panel .navmenu__sublink .navmenu__label::before { content: none; }
+.navmenu__panel a.navmenu__sublink { gap: 0.1rem; }
+.navmenu__panel a.navmenu__sublink .navmenu__label { font-weight: 500; color: var(--ink); }
+.navmenu__panel .navmenu__sub { padding-left: 0; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0; line-height: 1.45; color: var(--ink-dim); opacity: 1; }
+.navmenu__panel a:hover, .navmenu__panel a:focus-visible { background: var(--surface-panel-2); color: var(--ink); }
+.navmenu__panel a:hover .navmenu__sub { color: var(--ink-dim); }
+@media (min-width: 861px) {
+  /* Platform: the product list takes the rest of the panel, two to a row, so each line fits. */
+  #menu-platform .navmenu__cols > div:last-child { grid-column: span 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem; align-content: start; }
+  #menu-platform .navmenu__cols > div:last-child > .navmenu__h { grid-column: 1 / -1; }
+}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1008,24 +1025,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="navmenu__h">Platform overview</p>
               <div class="navflow">
                 <style>
-                /* The platform in five stages, as a line with a dot per stage: no box, no corner marks (Ray, 6 Nov 2026). */
-                .navflow { position: relative; margin: 1.1rem 0.75rem 0; padding-left: 1.15rem; }
-                .navflow::before { content: ""; position: absolute; left: 3px; top: 0.9rem; bottom: 2.1rem; width: 1px; background: var(--hairline); }
-                .navflow__r { position: relative; margin: 0; padding: 0.38rem 0; }
-                .navflow__r::before { content: ""; position: absolute; left: -1.15rem; top: 0.66rem; width: 7px; height: 7px; box-sizing: border-box;
-                                      border-radius: 50%; border: 1px solid var(--ink-faint); background: var(--surface-panel, #fff); }
-                .navflow__r b { display: block; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em;
-                                text-transform: uppercase; color: var(--ink); }
-                .navflow__r span { display: block; margin-top: 0.12rem; font-size: 12.5px; line-height: 1.4; color: var(--ink-dim); }
-                .navmenu__panel:not([hidden]) .navflow__r { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 60ms); }
-                @media (prefers-reduced-motion: reduce) { .navmenu__panel:not([hidden]) .navflow__r { animation: none; } }
+                /* The platform as five stages on a line. When the menu opens, each stage lights in turn and the line draws
+                   down to the next; the products under each stage link to their pages (Ray, 6 Nov 2026: "needs to wow"). */
+                .navflow { position: relative; margin: 1rem 0.75rem 0; padding-left: 1.5rem; }
+                .navflow__r { position: relative; margin: 0; padding: 0 0 0.8rem; }
+                .navflow__n { position: absolute; left: -1.5rem; top: 0.3rem; width: 9px; height: 9px; box-sizing: border-box; border-radius: 2px;
+                              background: var(--ink); border: 1px solid var(--ink); }
+                .navflow__r:not(:last-of-type)::before, .navflow__r:not(:last-of-type)::after { content: ""; position: absolute; left: calc(-1.5rem + 4px);
+                              top: calc(0.3rem + 9px); bottom: -0.3rem; width: 1px; }
+                .navflow__r::before { background: var(--hairline); }
+                .navflow__r::after { background: var(--ink); transform-origin: top; }
+                .navflow__t { display: flex; align-items: baseline; gap: 0.5rem; margin: 0; }
+                .navflow__t i { font-style: normal; font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+                .navflow__t b { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+                .navflow__c { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+                .navflow__chip, .navmenu__panel .navflow a.navflow__chip { display: inline-block; padding: 0.14rem 0.5rem; border: 1px solid var(--hairline);
+                              border-radius: 999px; font-family: var(--font-mono); font-size: 10px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.5;
+                              color: var(--ink-dim); background: none; white-space: nowrap; }
+                .navmenu__panel .navflow a.navflow__chip::before { content: none; }
+                .navmenu__panel .navflow a.navflow__chip:hover, .navmenu__panel .navflow a.navflow__chip:focus-visible { border-color: var(--ink); color: var(--ink); background: none; }
+                .navflow__loop { display: flex; align-items: center; gap: 0.4rem; margin: 0.1rem 0 0 -1.5rem; font-family: var(--font-mono); font-size: 10px;
+                              letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+                .navflow__loop svg { width: 10px; height: 10px; flex: none; }
+                .navmenu__panel:not([hidden]) .navflow__n { animation: navflow-lit 0.3s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 120ms); }
+                .navmenu__panel:not([hidden]) .navflow__r::after { animation: navflow-draw 0.24s linear both; animation-delay: calc(var(--i, 0) * 240ms + 300ms); }
+                .navmenu__panel:not([hidden]) .navflow__t, .navmenu__panel:not([hidden]) .navflow__c { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 240ms + 80ms); }
+                .navmenu__panel:not([hidden]) .navflow__loop { animation: navfig-in 0.38s var(--ease-out) both; animation-delay: 1.35s; }
+                @keyframes navflow-lit { from { background: var(--surface-panel, #fff); border-color: var(--ink-faint); } to { background: var(--ink); border-color: var(--ink); } }
+                @keyframes navflow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+                @media (prefers-reduced-motion: reduce) {
+                  .navmenu__panel:not([hidden]) .navflow__n, .navmenu__panel:not([hidden]) .navflow__r::after, .navmenu__panel:not([hidden]) .navflow__t,
+                  .navmenu__panel:not([hidden]) .navflow__c, .navmenu__panel:not([hidden]) .navflow__loop { animation: none; }
+                }
                 @media (max-width: 860px) { .navflow { display: none; } }
                 </style>
-                <p class="navflow__r" style="--i:0"><b>Data</b><span>Search performance and site crawl</span></p>
-                <p class="navflow__r" style="--i:1"><b>Understand</b><span>Analyzers, competitors and AI answers</span></p>
-                <p class="navflow__r" style="--i:2"><b>Decide</b><span>Strategic Advisor and PR Strategist</span></p>
-                <p class="navflow__r" style="--i:3"><b>Work</b><span>Searchscope Agent, content and page health</span></p>
-                <p class="navflow__r" style="--i:4"><b>Measure</b><span>Impact Tracker and Reporting</span></p>
+                <div class="navflow__r" style="--i:0"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>01</i><b>Data</b></p><p class="navflow__c"><span class="navflow__chip">Search data</span><span class="navflow__chip">Site crawl</span></p></div>
+                <div class="navflow__r" style="--i:1"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>02</i><b>Understand</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/analyzers/">Analyzers</a><a class="navflow__chip" href="/platform/search-intelligence/competitive-landscape/">Competitors</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">AI answers</a></p></div>
+                <div class="navflow__r" style="--i:2"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>03</i><b>Decide</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/strategic-advisor/">Strategic Advisor</a><a class="navflow__chip" href="/platform/ai-brand-intelligence/">PR Strategist</a></p></div>
+                <div class="navflow__r" style="--i:3"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>04</i><b>Work</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/agent/">Searchscope Agent</a><a class="navflow__chip" href="/platform/instruments/content-studio/">Content Studio</a><a class="navflow__chip" href="/platform/instruments/page-experience/">Page Experience</a></p></div>
+                <div class="navflow__r" style="--i:4"><i class="navflow__n" aria-hidden="true"></i><p class="navflow__t"><i>05</i><b>Measure</b></p><p class="navflow__c"><a class="navflow__chip" href="/platform/search-intelligence/command-center/">Impact Tracker</a><a class="navflow__chip" href="/platform/instruments/reporting/">Reporting</a></p></div>
+                <p class="navflow__loop"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M10 6a4 4 0 1 1-1.2-2.85"/><path d="M9.2 1.2v2.2H7"/></svg>Repeats with every weekly run</p>
               </div>
             </div>
             <div>
