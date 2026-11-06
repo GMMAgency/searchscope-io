@@ -575,28 +575,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="navmenu">
-        <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-solutions">
-          Solutions
-          <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
-        </button>
-        <div class="navmenu__panel" id="menu-solutions" hidden>
-          <div class="navmenu__cols">
-            <div>
-              <p class="navmenu__h">Use cases</p>
-              <a href="/use-cases/agencies/">Agencies</a>
-            </div>
-            <div>
-              <p class="navmenu__h">By size</p>
-              <span class="navmenu__soon">Enterprise <b>Coming soon</b></span>
-              <span class="navmenu__soon">Small teams <b>Coming soon</b></span>
-              <span class="navmenu__soon">Solopreneur <b>Coming soon</b></span>
-              <span class="navmenu__soon">Agencies <b>Coming soon</b></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="navmenu">
         <button type="button" class="navmenu__btn" aria-expanded="false" aria-controls="menu-resources">
           Resources
           <span class="navmenu__chev" aria-hidden="true">&#9662;</span>
@@ -625,8 +603,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="navmenu__sub">What&#8217;s new in Searchscope</span>
               </a>
               <a class="navmenu__sublink" href="/about/"><span class="navmenu__label">About</span><span class="navmenu__sub">Who builds Searchscope, and why</span></a>
-              <span class="navmenu__soon">Contact us <b>Coming soon</b></span>
-              <span class="navmenu__soon">Our roadmap <b>Coming soon</b></span>
             </div>
           </div>
         </div>
@@ -669,32 +645,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ticks__c ticks__br"></span>
           <span class="ticks__c ticks__bl"></span>
         </span>
+        <style>
+        /* Search Intelligence hero: the app's own tab row, Command Center's four headline
+           numbers, the keyword gap and the demand rows, and the Advisor's ask bar. Figures
+           are the Northwind Trail Co. demo account's, as in the screenshots below. */
+        .si { padding: 1rem 1.1rem 1.1rem; display: grid; gap: .85rem; font-size: 12.5px; }
+        .si-tabs { display: flex; flex-wrap: wrap; gap: .3rem; }
+        .si-tab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-dim);
+                  border: 1px solid var(--hairline); border-radius: 999px; padding: .28rem .6rem; white-space: nowrap; }
+        .si-tab--on { background: var(--ink); color: var(--surface-panel, #fff); border-color: var(--ink); }
+        .si-k { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+        .si-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--hairline); border-radius: var(--radius-s); }
+        .si-kpi { padding: .6rem .7rem; min-width: 0; }
+        .si-kpi + .si-kpi { border-left: 1px solid var(--hairline); }
+        .si-kpi b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: -.02em; color: var(--ink); margin-top: .2rem; }
+        .si-kpi span { font-family: var(--font-mono); font-size: 10px; color: var(--sev-rose-ink); white-space: nowrap; }
+        .si-two { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: .85rem; }
+        .si-box { border: 1px solid var(--hairline); border-radius: var(--radius-s); padding: .6rem .7rem; min-width: 0; }
+        .si-gaps { display: flex; flex-wrap: wrap; gap: .35rem .7rem; margin: .45rem 0 .5rem; font-family: var(--font-mono); font-size: 10px; color: var(--ink-dim); }
+        .si-gaps i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: .3rem; vertical-align: 1px; }
+        .si-gaps b { color: var(--ink); font-weight: 500; margin-right: .2rem; }
+        .si-row { display: flex; justify-content: space-between; gap: .6rem; padding: .32rem 0; border-top: 1px solid var(--hairline); color: var(--ink); }
+        .si-row em { font-style: normal; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .si-row em u { text-decoration: none; color: var(--sev-rose-ink); }
+        .si-row em s { text-decoration: none; color: var(--sev-emerald-ink); }
+        .si-ask { display: flex; align-items: center; gap: .6rem; border: 1px solid var(--hairline); border-radius: 999px; padding: .4rem .45rem .4rem .8rem; }
+        .si-ask p { margin: 0; flex: 1; min-width: 0; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .si-ask small { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+        .si-ask span { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .09em; text-transform: uppercase; background: var(--ink); color: var(--surface-panel, #fff); border-radius: 999px; padding: .3rem .65rem; }
+        @media (max-width: 560px) {
+          .si-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .si-kpi:nth-child(3) { border-left: 0; }
+          .si-kpi:nth-child(n+3) { border-top: 1px solid var(--hairline); }
+          .si-two { grid-template-columns: minmax(0, 1fr); }
+          .si-ask small { display: none; }
+        }
+        </style>
         <div class="appwin mockwin mockwin--hero reveal">
           <div class="awbar">
             <span class="awdots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="awbar__t">Search Intelligence</span>
+            <span class="awbar__t">Search Intelligence &middot; northwindtrail.co.uk</span>
           </div>
-          <div class="mockcols" style="--mock-split:40fr 60fr">
-            <div>
-<p class="mocknav__g mocknav__g--on">SEARCH INTELLIGENCE</p>
-            <p class="mocknav__i mocknav__i--on mockrow" style="--i:0">Command Center</p>
-            <p class="mocknav__i mockrow" style="--i:1">Competitive Landscape</p>
-            <p class="mocknav__i mockrow" style="--i:2">Demand &amp; Trends</p>
-            <p class="mocknav__i mockrow" style="--i:3">Strategic Advisor</p>
-            <p class="mocknote mockrow" style="--i:5">One account. Shared search context.</p>
-            <p class="mockledg mockrow" style="--i:6"><b>Northwood Outdoors</b><em>geo uk</em></p>
+          <div class="si">
+            <div class="si-tabs mockrow" style="--i:0">
+              <span class="si-tab si-tab--on">Command Center</span><span class="si-tab">Competitive Landscape</span><span class="si-tab">Demand &amp; Trends</span><span class="si-tab">Strategic Advisor</span>
             </div>
-            <div>
-<p class="mockpane__h">WHAT EACH ONE READS</p>
-            <p class="mockledg mockledg--h"><b>Tool</b><em>Its source</em></p>
-            <p class="mockledg mockrow" style="--i:2"><b>Command Center</b><em>your Search Console</em></p>
-            <p class="mockledg mockrow" style="--i:3"><b>Competitive Landscape</b><em>the rivals you name</em></p>
-            <p class="mockledg mockrow" style="--i:4"><b>Demand &amp; Trends</b><em>estimated market demand</em></p>
-            <p class="mockledg mockrow" style="--i:5"><b>Strategic Advisor</b><em>all of the above</em></p>
-            <p class="mockpane__h" style="margin-top:.9rem">FILLED BY</p>
-            <p class="mockledg mockrow" style="--i:6"><b>One analysis run</b><em>two of the three views</em></p>
-            <p class="mockledg mockrow" style="--i:7"><b>Naming competitors</b><em>the third</em></p>
-            <p class="mockledg mockrow" style="--i:8"><b>The advisor</b><em>reads across what&rsquo;s filled</em></p>
+            <div class="mockrow" style="--i:1">
+              <p class="si-k" style="margin-bottom:.4rem">Last 28 days vs previous period</p>
+              <div class="si-kpis">
+                <div class="si-kpi"><p class="si-k">Clicks</p><b>2.8K</b><span>&darr; 17.7%</span></div>
+                <div class="si-kpi"><p class="si-k">Impressions</p><b>166.7K</b><span>&darr; 16.4%</span></div>
+                <div class="si-kpi"><p class="si-k">Avg CTR</p><b>1.70%</b><span>&darr; 0.03 pts</span></div>
+                <div class="si-kpi"><p class="si-k">Avg position</p><b>8.8</b><span>&darr; 0.8</span></div>
+              </div>
+            </div>
+            <div class="si-two">
+              <div class="si-box mockrow" style="--i:2">
+                <p class="si-k">Keyword gap &middot; 3 rivals</p>
+                <p class="si-gaps"><span><i style="background:var(--sev-rose-ink)"></i><b>6</b>missing</span><span><i style="background:var(--sev-amber-ink)"></i><b>4</b>weak</span><span><i style="background:var(--sev-emerald-ink)"></i><b>3</b>strong</span><span><i style="background:var(--sev-blue-ink)"></i><b>3</b>untapped</span></p>
+                <p class="si-row"><span>best waterproof jacket</span><em>12.1K &middot; <u>you don&rsquo;t rank</u></em></p>
+                <p class="si-row"><span>Fellside Gear ranks</span><em>3rd</em></p>
+              </div>
+              <div class="si-box mockrow" style="--i:3">
+                <p class="si-k">Demand &amp; Trends &middot; est. a month</p>
+                <p class="si-row" style="margin-top:.45rem"><span>waterproof boots</span><em>18,100 <s>&uarr;</s></em></p>
+                <p class="si-row"><span>boot care and cleaning</span><em>8,600</em></p>
+                <p class="si-row"><span>hiking in winter</span><em>2,900 <s>&uarr;</s></em></p>
+              </div>
+            </div>
+            <div class="si-ask mockrow" style="--i:4">
+              <p>Why did clicks fall 17.7% this month?</p><small>Strategic Advisor</small><span>Ask</span>
             </div>
           </div>
         </div>
