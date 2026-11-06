@@ -1479,8 +1479,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============ 03 · THE THREE CORE AREAS ============ -->
-  <!-- ============ 02 · THE PROBLEM ============ -->
+  <!-- ============ 02 · TRUSTED BY ============ -->
+  <section class="trust" aria-label="Trusted by">
+    <style>
+    /* Logos in one ink tone at matched visual sizes: the brand stays monochrome (Ray, 6 Nov 2026). */
+    .trust { padding-block: clamp(2rem, 1.5rem + 2vw, 3rem); border-bottom: 1px solid var(--hairline); }
+    .trust__k { margin: 0 0 1.5rem; text-align: center; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em;
+                 text-transform: uppercase; color: var(--ink-faint); }
+    .trust__logos { list-style: none; margin: 0 auto; padding: 0; max-width: 1040px; display: flex; flex-wrap: wrap; align-items: center;
+                     justify-content: center; gap: 1.6rem clamp(2rem, 0.8rem + 3.6vw, 4rem); }
+    .trust__logos img { display: block; width: auto; filter: brightness(0); opacity: 0.5; transition: opacity 0.2s var(--ease-out); }
+    .trust__logos li:hover img { opacity: 0.85; }
+    @media (max-width: 640px) { .trust__logos { gap: 1.4rem 2.2rem; } }
+    </style>
+    <div class="container">
+      <p class="trust__k">Trusted by search teams at</p>
+      <ul class="trust__logos">
+        <li><img src="/brand/logos/justpark.svg" alt="JustPark" width="107" height="22" style="height:22px" loading="lazy" decoding="async"></li>
+        <li><img src="/brand/logos/koru-kids.svg" alt="Koru Kids" width="115" height="27" style="height:27px" loading="lazy" decoding="async"></li>
+        <li><img src="/brand/logos/flow-neuroscience.png" alt="Flow Neuroscience" width="180" height="15" style="height:15px" loading="lazy" decoding="async"></li>
+        <li><img src="/brand/logos/tideway.svg" alt="Tideway" width="82" height="26" style="height:26px" loading="lazy" decoding="async"></li>
+        <li><img src="/brand/logos/elementa-workspace.svg" alt="Elementa Workspace" width="110" height="28" style="height:28px" loading="lazy" decoding="async"></li>
+        <li><img src="/brand/logos/growth-minded-marketing.png" alt="Growth Minded Marketing" width="68" height="36" style="height:36px" loading="lazy" decoding="async"></li>
+      </ul>
+    </div>
+  </section>
 
   <!-- ============ 03 · THE PLATFORM ============ -->
   <section class="section bg-grid" id="platform">
@@ -1570,14 +1593,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div><figure class="pshot psplit__fig" style="max-width:560px"><div class="pshot__frame"><span aria-hidden="true" class="pshot__ticks"><i class="tl"></i><i class="tr"></i><i class="br"></i><i class="bl"></i></span><div class="pshot__win"><div class="pshot__bar"><span aria-hidden="true" class="pshot__dots"><i></i><i></i><i></i></span><span class="pshot__url">app.searchscope.io/intelligence/agent</span></div><img alt="A Searchscope Agent plan: two Read steps done on their own, the Word report waiting for approval." decoding="async" height="585" loading="lazy" src="/brand/screens/agent-plan-col.webp" width="660"/></div></div><figcaption class="pshot__cap"><span class="pshot__fig">Fig 2</span><p>A Searchscope Agent plan: two Read steps done on their own, the Word report waiting for approval.</p><span class="pshot__demo">Demo data</span></figcaption></figure>
     </div></div>
   </section>
-
-  <!-- ============ 05 · HOW IT WORKS ============ -->
-
-  <!-- ============ 06 · WHY SEARCHSCOPE ============ -->
-
-  <!-- ============ 07 · SHARED DATA LAYER ============ -->
-
-  <!-- ============ 08 · FROM INSIGHT TO ACTION ============ -->
 
   <!-- ============ 09 · CTA ============ -->
   <section class="section cta bg-grid">
